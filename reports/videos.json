@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-02T20:32:21.109Z",
+ "checkedAt": "2026-10-02T20:32:55.906Z",
  "rows": [
   {
    "course": "foundations",
@@ -8,7 +8,10 @@
    "id": "EXUxMOM03Bo",
    "expectedTitle": "Start Learning Logic | Part 1",
    "expectedChannel": "The Bright Side of Mathematics",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction [dark version]",
+   "actualChannel": "The Bright Side of Mathematics",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -17,7 +20,10 @@
    "id": "0exBzsexUoI",
    "expectedTitle": "1.4.1 Propositional Operators",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.4.1 Propositional Operators: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -26,7 +32,10 @@
    "id": "eMWG-jTh-GE",
    "expectedTitle": "1.4.3 Digital Logic",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.4.3 Digital Logic: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -35,7 +44,10 @@
    "id": "UroprmQHTLc",
    "expectedTitle": "1.5.1 Predicate Logic 1",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.5.1 Predicate Logic 1: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -44,7 +56,10 @@
    "id": "L5uBeAGJV1k",
    "expectedTitle": "1.5.4 Predicate Logic 3",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.5.4 Predicate Logic 3: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -53,7 +68,10 @@
    "id": "GyFVgJZ0hIs",
    "expectedTitle": "1.1.2 Intro To Proofs: Part 1",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.1.2 Intro to Proofs: Part 1",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -62,7 +80,10 @@
    "id": "wfr4XbR5VP8",
    "expectedTitle": "1.1.3 Intro to Proofs: Part 2",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.1.3 Intro to Proofs: Part 2",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -71,7 +92,10 @@
    "id": "uDJfx4bK3Jc",
    "expectedTitle": "[Discrete Mathematics] Direct Proofs Examples",
    "expectedChannel": "TrevTutor",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "[Discrete Mathematics] Direct Proofs Examples",
+   "actualChannel": "TrevTutor",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -80,7 +104,10 @@
    "id": "CpW0ZJ7i0oc",
    "expectedTitle": "1.2.1 Proof By Contradiction",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.2.1 Proof by Contradiction",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -89,7 +116,10 @@
    "id": "vzpFQ3uNyPo",
    "expectedTitle": "1.2.3 Proof By Cases",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.2.3 Proof by Cases",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -98,7 +128,10 @@
    "id": "fV3v6qQ3w4A",
    "expectedTitle": "1.3.1 Well Ordering Principle 1",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.3.1 Well Ordering Principle 1: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -107,7 +140,10 @@
    "id": "I1HpgnWQI7I",
    "expectedTitle": "1.3.3 Well Ordering Principle 2",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.3.3 Well Ordering Principle 2: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -116,7 +152,10 @@
    "id": "hNrtGiCFPGs",
    "expectedTitle": "1.3.5 Well Ordering Principle 3",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.3.5 Well Ordering Principle 3: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -125,7 +164,10 @@
    "id": "tOsdeaYDCMk",
    "expectedTitle": "1.10.7 Recursive Functions",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.10.7 Recursive Functions: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -134,7 +176,10 @@
    "id": "XnV8GAuAqJM",
    "expectedTitle": "1.8.1 Induction",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.8.1 Induction: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -143,7 +188,10 @@
    "id": "K8ZfzNN1miQ",
    "expectedTitle": "1.8.6 WOP vs Induction",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.8.6 WOP vs Induction: Video [optional]",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -152,7 +200,10 @@
    "id": "TXNXT3oBROw",
    "expectedTitle": "1.10.1 Recursive Data",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.10.1 Recursive Data: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -161,7 +212,10 @@
    "id": "D3E5CKebKuQ",
    "expectedTitle": "1.8.2 Bogus Induction",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.8.2 Bogus Induction: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -170,7 +224,10 @@
    "id": "TUueMeRooBk",
    "expectedTitle": "1.8.4 Strong Induction",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.8.4 Strong Induction: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -179,7 +236,10 @@
    "id": "VWIDwHCGJDQ",
    "expectedTitle": "1.10.4 Structural Induction",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.10.4 Structural Induction: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -188,7 +248,7 @@
    "id": "iA-Dtf7529M",
    "expectedTitle": "Start Learning Sets | Part 1 (Overview and Element Relation)",
    "expectedChannel": "The Bright Side of Mathematics",
-   "status": "network"
+   "status": "not-embeddable"
   },
   {
    "course": "foundations",
@@ -197,7 +257,7 @@
    "id": "twBYYTJdcjc",
    "expectedTitle": "Start Learning Sets | Part 5 (Range, Image and Preimage)",
    "expectedChannel": "The Bright Side of Mathematics",
-   "status": "network"
+   "status": "not-embeddable"
   },
   {
    "course": "foundations",
@@ -206,7 +266,10 @@
    "id": "KZ7jjLTQ9r4",
    "expectedTitle": "1.6.1 Sets Definitions",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.6.1 Sets Definitions: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -215,7 +278,10 @@
    "id": "Mhip1rljvRo",
    "expectedTitle": "1.6.2 Sets Operations",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.6.2 Sets Operations: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -224,7 +290,10 @@
    "id": "fpy5Hsz5t6E",
    "expectedTitle": "1.7.5 Finite Cardinality",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.7.5 Finite Cardinality: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -233,7 +302,10 @@
    "id": "FkfsmwAtDdY",
    "expectedTitle": "1.7.1 Relations",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.7.1 Relations: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -242,7 +314,10 @@
    "id": "gFD1Lp6zK3w",
    "expectedTitle": "1.7.3 Relational Mappings",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.7.3 Relational Mappings: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -251,7 +326,7 @@
    "id": "xVEJPDVaQ8s",
    "expectedTitle": "Start Learning Numbers | Part 4 (Natural Numbers (Ordering))",
    "expectedChannel": "The Bright Side of Mathematics",
-   "status": "network"
+   "status": "not-embeddable"
   },
   {
    "course": "foundations",
@@ -260,7 +335,10 @@
    "id": "QzSCf62kzjE",
    "expectedTitle": "1.11.1 Cardinality",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.11.1 Cardinality: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -269,7 +347,10 @@
    "id": "AipSRi3CyLg",
    "expectedTitle": "1.11.3 Countable Sets",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.11.3 Countable Sets: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -278,7 +359,10 @@
    "id": "4dj1ogUwTEM",
    "expectedTitle": "1.11.4 Cantor's Theorem",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1.11.4 Cantor's Theorem: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -287,7 +371,10 @@
    "id": "g7zyXk0XJt4",
    "expectedTitle": "Set Theory - What is Set Theory and what is it for? Oxford Mathematics 3rd Year Student Lecture",
    "expectedChannel": "Oxford Mathematics",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Set Theory - What is Set Theory and what is it for? Oxford Mathematics 3rd Year Student Lecture",
+   "actualChannel": "Oxford Mathematics",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -296,7 +383,10 @@
    "id": "gxm1Ur_Be0s",
    "expectedTitle": "Set Theory - Russell's Paradox: Oxford Mathematics 3rd Year Student Lecture",
    "expectedChannel": "Oxford Mathematics",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Set Theory - Russell's Paradox: Oxford Mathematics 3rd Year Student Lecture",
+   "actualChannel": "Oxford Mathematics",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -305,7 +395,10 @@
    "id": "qrltuEzDhxI",
    "expectedTitle": "Set Theory - The first few axioms: Oxford Mathematics 3rd Year Student Lecture",
    "expectedChannel": "Oxford Mathematics",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Set Theory - The first few axioms: Oxford Mathematics 3rd Year Student Lecture",
+   "actualChannel": "Oxford Mathematics",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -314,7 +407,10 @@
    "id": "9syvZr-9xwk",
    "expectedTitle": "L1: Introduction, Finite Automata, Regular Expressions",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1. Introduction, Finite Automata, Regular Expressions",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 0.8333333333333334
   },
   {
    "course": "foundations",
@@ -323,7 +419,10 @@
    "id": "IycOPFmEQk8",
    "expectedTitle": "L5: CF Pumping Lemma, Turing Machines",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "5. CF Pumping Lemma, Turing Machines",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 0.8333333333333334
   },
   {
    "course": "foundations",
@@ -332,7 +431,10 @@
    "id": "TTArY7ojshU",
    "expectedTitle": "L6: TM Variants, Church-Turing Thesis",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "6. TM Variants, Church-Turing Thesis",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 0.8333333333333334
   },
   {
    "course": "foundations",
@@ -341,7 +443,10 @@
    "id": "4MgN6uxd4i4",
    "expectedTitle": "L7: Decision Problems for Automata and Grammars",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "7. Decision Problems for Automata and Grammars",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 0.8333333333333334
   },
   {
    "course": "foundations",
@@ -349,7 +454,10 @@
    "index": 0,
    "id": "eis11j_iGMs",
    "expectedTitle": "Lambda Calculus - Computerphile",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lambda Calculus - Computerphile",
+   "actualChannel": "Computerphile",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -358,7 +466,10 @@
    "id": "N28g_YBXY8Y",
    "expectedTitle": "L9: Reducibility",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "title-mismatch",
+   "actualTitle": "9. Reducibility",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 0.5
   },
   {
    "course": "foundations",
@@ -367,7 +478,10 @@
    "id": "MGqoLm2aAgc",
    "expectedTitle": "L10: Computation History Method",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "10. Computation History Method",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 0.75
   },
   {
    "course": "foundations",
@@ -376,7 +490,10 @@
    "id": "O4ndIDcDSGc",
    "expectedTitle": "Gödel's Incompleteness Theorem - Numberphile",
    "expectedChannel": "Numberphile",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Gödel's Incompleteness Theorem - Numberphile",
+   "actualChannel": "Numberphile",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -385,7 +502,10 @@
    "id": "PpSxqde0af4",
    "expectedTitle": "Godel's 1st Incompleteness Theorem - Proof by Diagonalization",
    "expectedChannel": "as found, see item 12.3",
-   "status": "network"
+   "status": "channel-mismatch",
+   "actualTitle": "Godel's 1st Incompleteness Theorem - Proof by Diagonalization",
+   "actualChannel": "Stable Sort",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -394,7 +514,10 @@
    "id": "Y5trjR5aw0k",
    "expectedTitle": "The Gödel incompleteness phenomenon",
    "expectedChannel": "Hamkins's own upload, or the hosting institution",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "The Gödel incompleteness phenomenon",
+   "actualChannel": "Joel David Hamkins",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -402,7 +525,10 @@
    "index": 0,
    "id": "eis11j_iGMs",
    "expectedTitle": "(tilføjet) Computerphile – \"Lambda Calculus\" (Graham Hutton, 13 min) — spring over, hvis du så den i uge 10.",
-   "status": "network"
+   "status": "title-mismatch",
+   "actualTitle": "Lambda Calculus - Computerphile",
+   "actualChannel": "Computerphile",
+   "score": 0.2727272727272727
   },
   {
    "course": "foundations",
@@ -411,7 +537,10 @@
    "id": "5V-qka70DAE",
    "expectedTitle": "Peter Dybjer: Intuitionistic Type Theory (Lecture I)",
    "expectedChannel": "Hausdorff Center for Mathematics (Trimester Program \"Types, Sets and Constructions\")",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Peter Dybjer: Intuitionistic Type Theory (Lecture I)",
+   "actualChannel": "Hausdorff Center for Mathematics",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -420,7 +549,10 @@
    "id": "IOiZatlZtGU",
    "expectedTitle": "Propositions as Types",
    "expectedChannel": "Strange Loop Conference",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "\"Propositions as Types\" by Philip Wadler",
+   "actualChannel": "Strange Loop Conference",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -429,7 +561,10 @@
    "id": "I8LbkfSSR58",
    "expectedTitle": "Category Theory 1.1: Motivation and Philosophy",
    "expectedChannel": "Bartosz Milewski",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Category Theory 1.1: Motivation and Philosophy",
+   "actualChannel": "Bartosz Milewski",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -438,7 +573,10 @@
    "id": "p54Hd7AmVFU",
    "expectedTitle": "Category Theory 1.2: What is a category?",
    "expectedChannel": "Bartosz Milewski",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Category Theory 1.2: What is a category?",
+   "actualChannel": "Bartosz Milewski",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -447,7 +585,10 @@
    "id": "O2lZkr-aAqk",
    "expectedTitle": "Category Theory 2.1: Functions, epimorphisms",
    "expectedChannel": "Bartosz Milewski",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Category Theory 2.1: Functions, epimorphisms",
+   "actualChannel": "Bartosz Milewski",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -456,7 +597,10 @@
    "id": "NcT7CGPICzo",
    "expectedTitle": "Category Theory 2.2: Monomorphisms, simple types",
    "expectedChannel": "Bartosz Milewski",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Category Theory 2.2: Monomorphisms, simple types",
+   "actualChannel": "Bartosz Milewski",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -465,7 +609,10 @@
    "id": "aZjhqkD6k6w",
    "expectedTitle": "Category Theory 3.1: Examples of categories, orders, monoids",
    "expectedChannel": "Bartosz Milewski",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Category Theory 3.1: Examples of categories, orders, monoids",
+   "actualChannel": "Bartosz Milewski",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -474,7 +621,10 @@
    "id": "i9CU4CuHADQ",
    "expectedTitle": "Category Theory 3.2: Kleisli category",
    "expectedChannel": "Bartosz Milewski",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Category Theory 3.2: Kleisli category",
+   "actualChannel": "Bartosz Milewski",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -482,7 +632,10 @@
    "index": 0,
    "id": "FyoQjkwsy7o",
    "expectedTitle": "Category Theory 6.1: Functors",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Category Theory 6.1: Functors",
+   "actualChannel": "Bartosz Milewski",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -491,7 +644,10 @@
    "id": "bLQBbA8yh7c",
    "expectedTitle": "Hedge funds, venture capital, and private equity | Finance & Capital Markets | Khan Academy",
    "expectedChannel": "Khan Academy",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Hedge funds, venture capital, and private equity | Finance & Capital Markets | Khan Academy",
+   "actualChannel": "Khan Academy",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -500,7 +656,10 @@
    "id": "txTaBKZ8qrs",
    "expectedTitle": "20. Professional Money Managers and their Influence",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "20. Professional Money Managers and their Influence",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -509,7 +668,10 @@
    "id": "DMbhgSBIUfk",
    "expectedTitle": "14. Guest Lecture by Andrew Redleaf",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "14. Guest Lecture by Andrew Redleaf",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -518,7 +680,10 @@
    "id": "AtSlRK0SZoM",
    "expectedTitle": "9. Guest Lecture by David Swensen",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "9. Guest Lecture by David Swensen",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -527,7 +692,10 @@
    "id": "WEDIj9JBTC8",
    "expectedTitle": "William Ackman: Everything You Need to Know About Finance and Investing in Under an Hour | Big Think",
    "expectedChannel": "Big Think",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "William Ackman: Everything You Need to Know About Finance and Investing in Under an Hour | Big Think",
+   "actualChannel": "Big Think",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -536,7 +704,10 @@
    "id": "Kv7j9SNexFM",
    "expectedTitle": "Session 2: The Bermuda Triangle of Valuation",
    "expectedChannel": "Aswath Damodaran",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Session 2: The Bermuda Triangle of Valuation",
+   "actualChannel": "Aswath Damodaran",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -545,7 +716,10 @@
    "id": "bK6YC8oBX-c",
    "expectedTitle": "Session 4: The DCF Big Picture and first steps on Riskfree rates",
    "expectedChannel": "Aswath Damodaran",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Session 4: The DCF Big Picture and first steps on Riskfree rates",
+   "actualChannel": "Aswath Damodaran",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -554,7 +728,10 @@
    "id": "qWSxyWsA09w",
    "expectedTitle": "Session 7: Betas, relative risk and first steps on cost of debt",
    "expectedChannel": "Aswath Damodaran",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Session 7: Betas, relative risk and first steps on cost of debt",
+   "actualChannel": "Aswath Damodaran",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -563,7 +740,10 @@
    "id": "A3MJAXEyJiY",
    "expectedTitle": "Session 12: The Terminal Value",
    "expectedChannel": "Aswath Damodaran",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Session 12: The Terminal Value",
+   "actualChannel": "Aswath Damodaran",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -572,7 +752,10 @@
    "id": "rjqwM6ZTpA0",
    "expectedTitle": "Session 21 (UG) and Session 19 (MBA): Pricing Analytics and Peer Groups",
    "expectedChannel": "Aswath Damodaran",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Session 21 (UG) and Session 19 (MBA): Pricing Analytics and Peer Groups",
+   "actualChannel": "Aswath Damodaran",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -581,7 +764,10 @@
    "id": "3UOJ5tTZEZI",
    "expectedTitle": "Everything You Thought You Knew About GameStop Was Wrong!",
    "expectedChannel": "Patrick Boyle",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Everything You Thought You Knew About GameStop Was Wrong!",
+   "actualChannel": "Patrick Boyle",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -590,7 +776,10 @@
    "id": "ADnRm5LWCjg",
    "expectedTitle": "GameStop and Predatory Trading with Lasse Pedersen | Markus Academy | Ep. 54",
    "expectedChannel": "Markus' Academy",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "GameStop and Predatory Trading with Lasse Pedersen  | Markus Academy | Ep. 54",
+   "actualChannel": "Markus' Academy",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -599,7 +788,10 @@
    "id": "PHe0bXAIuk0",
    "expectedTitle": "How The Economic Machine Works by Ray Dalio",
    "expectedChannel": "Principles by Ray Dalio",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "How The Economic Machine Works by Ray Dalio",
+   "actualChannel": "Principles by Ray Dalio",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -608,7 +800,10 @@
    "id": "_SpIaGTq0u8",
    "expectedTitle": "18. Monetary Policy",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "18. Monetary Policy",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -617,7 +812,10 @@
    "id": "q4k8SGmJqIA",
    "expectedTitle": "How George Soros Broke the Bank of England",
    "expectedChannel": "Patrick Boyle",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "How George Soros Broke the Bank of England",
+   "actualChannel": "Patrick Boyle",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -626,7 +824,10 @@
    "id": "VnQs_HhfYKI",
    "expectedTitle": "Merger Arbitrage Hedge Fund Strategy ― How Does it Work?",
    "expectedChannel": "Patrick Boyle",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Merger Arbitrage Hedge Fund Strategy ― How Does it Work?",
+   "actualChannel": "Patrick Boyle",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -635,7 +836,10 @@
    "id": "HlfgQ4_7EYA",
    "expectedTitle": "15. Guest Lecture by Carl Icahn",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "15. Guest Lecture by Carl Icahn",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -644,7 +848,10 @@
    "id": "hMNxBHuzl4k",
    "expectedTitle": "Howard Marks: \"Mastering the Market Cycle\"",
    "expectedChannel": "Goldman Sachs",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Howard Marks: \"Mastering the Market Cycle\"",
+   "actualChannel": "Goldman Sachs",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -653,7 +860,10 @@
    "id": "i5KfP293MVQ",
    "expectedTitle": "Long Term Capital Management and the Role of the Federal Reserve",
    "expectedChannel": "Ludwig Chincarini",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Long Term Capital Management and the Role of the Federal Reserve",
+   "actualChannel": "Ludwig Chincarini",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -662,7 +872,10 @@
    "id": "6BUatQ10HA4",
    "expectedTitle": "Victor Haghani - LTCM to Elm Partners",
    "expectedChannel": "Patrick Boyle",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Victor Haghani - LTCM to Elm Partners",
+   "actualChannel": "Patrick Boyle",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -671,7 +884,10 @@
    "id": "3Ir6sbDAx4c",
    "expectedTitle": "8. Theory of Debt, Its Proper Role, Leverage Cycles",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "8. Theory of Debt, Its Proper Role, Leverage Cycles",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -680,7 +896,10 @@
    "id": "U5kIdtMJGc8",
    "expectedTitle": "The mathematician who cracked Wall Street | Jim Simons",
    "expectedChannel": "TED",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "The mathematician who cracked Wall Street | Jim Simons",
+   "actualChannel": "TED",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -689,7 +908,10 @@
    "id": "zf91UDTxbSM",
    "expectedTitle": "An introduction to Man AHL",
    "expectedChannel": "Man AHL",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "An introduction to Man AHL",
+   "actualChannel": "Man AHL",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -698,7 +920,10 @@
    "id": "D_WhInJePC8",
    "expectedTitle": "AHL Explains - Momentum",
    "expectedChannel": "Man AHL",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "AHL Explains - Momentum",
+   "actualChannel": "Man AHL",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -707,7 +932,10 @@
    "id": "2QrPCewZO9E",
    "expectedTitle": "Cliff Asness on Factor Investing and the History of Financial Economics | Capitalism and Freedom",
    "expectedChannel": "Hoover Institution",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Cliff Asness on Factor Investing and the History of Financial Economics | Capitalism and Freedom",
+   "actualChannel": "Hoover Institution",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -716,7 +944,10 @@
    "id": "__teQiAK0dg",
    "expectedTitle": "Adaptive Markets: Financial Evolution At The Speed Of Thought | Andrew W. Lo | Talks at Google",
    "expectedChannel": "Talks at Google",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Adaptive Markets: Financial Evolution At The Speed Of Thought | Andrew W. Lo | Talks at Google",
+   "actualChannel": "Talks at Google",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -725,7 +956,10 @@
    "id": "LiuRFzLgPn4",
    "expectedTitle": "Winton Founder David Harding on Rewriting His Hedge Fund's Strategy",
    "expectedChannel": "Bloomberg Television",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Winton Founder David Harding on Rewriting His Hedge Fund's Strategy",
+   "actualChannel": "Bloomberg Television",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -734,7 +968,10 @@
    "id": "2t4lGmNDiHo",
    "expectedTitle": "Archegos Capital Blowup | Bill Hwang's Margin Call",
    "expectedChannel": "Patrick Boyle",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Archegos Capital Blowup | Bill Hwang's Margin Call",
+   "actualChannel": "Patrick Boyle",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -743,7 +980,10 @@
    "id": "92WaNz9mPeY",
    "expectedTitle": "7. Value At Risk (VAR) Models",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "7. Value At Risk (VAR) Models",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -752,7 +992,10 @@
    "id": "lb5Q1Jur0I0",
    "expectedTitle": "25. The Leverage Cycle and the Subprime Mortgage Crisis",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "25. The Leverage Cycle and the Subprime Mortgage Crisis",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -761,7 +1004,10 @@
    "id": "yenfxh_arkg",
    "expectedTitle": "26. The Leverage Cycle and Crashes",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "26. The Leverage Cycle and Crashes",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -770,7 +1016,10 @@
    "id": "kpGNvgzwDSE",
    "expectedTitle": "2010 Methods Lecture, Andrew Lo, \"Financial Econometrics in Action Analyzing Hedge Funds and...\"",
    "expectedChannel": "NBER",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "2010 Methods Lecture, Andrew Lo, \"Financial Econometrics in Action Analyzing Hedge Funds and...\"",
+   "actualChannel": "NBER",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -779,7 +1028,10 @@
    "id": "3wUJesUik5A",
    "expectedTitle": "60 Minutes Archive: The man who figured out Madoff's Ponzi scheme",
    "expectedChannel": "60 Minutes",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "60 Minutes Archive: The man who figured out Madoff's Ponzi scheme",
+   "actualChannel": "60 Minutes",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -788,7 +1040,10 @@
    "id": "LEB2k9jJzzc",
    "expectedTitle": "8. Human Foibles, Fraud, Manipulation, and Regulation",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "8. Human Foibles, Fraud, Manipulation, and Regulation",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -797,7 +1052,10 @@
    "id": "AF-gzN3ppbE",
    "expectedTitle": "Opening Statement of Harry Markopolos",
    "expectedChannel": "PublicResourceOrg",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Opening Statement of Harry Markopolos",
+   "actualChannel": "PublicResourceOrg",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -806,7 +1064,10 @@
    "id": "fLVl9QfbrG0",
    "expectedTitle": "Melvin Capital, Citadel CEOs on short selling interest in GameStop",
    "expectedChannel": "CNBC Television",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Melvin Capital, Citadel CEOs on short selling interest in GameStop",
+   "actualChannel": "CNBC Television",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -815,7 +1076,10 @@
    "id": "HXbsVbFAczg",
    "expectedTitle": "How to build a company where the best ideas win | Ray Dalio",
    "expectedChannel": "TED",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "How to build a company where the best ideas win | Ray Dalio",
+   "actualChannel": "TED",
+   "score": 1
   },
   {
    "course": "hedgefund",
@@ -824,7 +1088,10 @@
    "id": "QNznD9hMEh0",
    "expectedTitle": "Jim Simons (full length interview) - Numberphile",
    "expectedChannel": "Numberphile2",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Jim Simons (full length interview) - Numberphile",
+   "actualChannel": "Numberphile2",
+   "score": 1
   },
   {
    "course": "quant",
@@ -833,7 +1100,10 @@
    "id": "wvXDB9dMdEo",
    "expectedTitle": "1. Introduction, Financial Terms and Concepts",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "1. Introduction, Financial Terms and Concepts",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -842,7 +1112,10 @@
    "id": "kAl8DezwLAE",
    "expectedTitle": "21. Exchanges, Brokers, Dealers, Clearinghouses",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "21. Exchanges, Brokers, Dealers, Clearinghouses",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "quant",
@@ -851,7 +1124,10 @@
    "id": "pXJb29s3nmY",
    "expectedTitle": "6. Efficient Markets vs. Excess Volatility",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "6. Efficient Markets vs. Excess Volatility",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "quant",
@@ -860,7 +1136,10 @@
    "id": "U5kIdtMJGc8",
    "expectedTitle": "The mathematician who cracked Wall Street | Jim Simons",
    "expectedChannel": "TED",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "The mathematician who cracked Wall Street | Jim Simons",
+   "actualChannel": "TED",
+   "score": 1
   },
   {
    "course": "quant",
@@ -869,7 +1148,10 @@
    "id": "U03Md5enU-0",
    "expectedTitle": "Ses 2: Present Value Relations I",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 2: Present Value Relations I",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -878,7 +1160,10 @@
    "id": "Q2qjnLO3I_M",
    "expectedTitle": "Ses 12: Options III & Risk and Return I",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 12: Options III & Risk and Return I",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -887,7 +1172,10 @@
    "id": "tL7Lcl90Sc0",
    "expectedTitle": "Ses 13: Risk and Return II & Portfolio Theory I",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 13: Risk and Return II & Portfolio Theory I",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -896,7 +1184,10 @@
    "id": "bQUWLkKzpxE",
    "expectedTitle": "Quantopian Lecture Series: Introduction to Python",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Quantopian Lecture Series: Introduction to Python",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -905,7 +1196,10 @@
    "id": "xfzGZB4HhEE",
    "expectedTitle": "Algorithmic Trading Using Python - Full Course",
    "expectedChannel": "freeCodeCamp.org",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Algorithmic Trading Using Python - Full Course",
+   "actualChannel": "freeCodeCamp.org",
+   "score": 1
   },
   {
    "course": "quant",
@@ -914,7 +1208,10 @@
    "id": "P7NE4WF8j-Q",
    "expectedTitle": "Lecture 4: Conditional Probability | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 4: Conditional Probability | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -923,7 +1220,10 @@
    "id": "JzDvVgNDxo8",
    "expectedTitle": "Lecture 5: Conditioning Continued, Law of Total Probability | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 5: Conditioning Continued, Law of Total Probability | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -932,7 +1232,10 @@
    "id": "PNrqCdslGi4",
    "expectedTitle": "Lecture 7: Gambler's Ruin and Random Variables | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 7: Gambler's Ruin and Random Variables | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -941,7 +1244,10 @@
    "id": "k2BB0p8byGA",
    "expectedTitle": "Lecture 8: Random Variables and Their Distributions | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 8: Random Variables and Their Distributions | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -950,7 +1256,10 @@
    "id": "LX2q356N2rU",
    "expectedTitle": "Lecture 9: Expectation, Indicator Random Variables, Linearity | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 9: Expectation, Indicator Random Variables, Linearity | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -959,7 +1268,10 @@
    "id": "72QjzHnYvL0",
    "expectedTitle": "Lecture 13: Normal distribution | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 13: Normal distribution | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -968,7 +1280,10 @@
    "id": "J70dP_AECzQ",
    "expectedTitle": "Lecture 19: Joint, Conditional, and Marginal Distributions | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 19: Joint, Conditional, and Marginal Distributions | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -977,7 +1292,10 @@
    "id": "IujCYxtpszU",
    "expectedTitle": "Lecture 21: Covariance and Correlation | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 21: Covariance and Correlation | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -986,7 +1304,10 @@
    "id": "OprNqnHsVIA",
    "expectedTitle": "Lecture 29: Law of Large Numbers and Central Limit Theorem | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 29: Law of Large Numbers and Central Limit Theorem | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -995,7 +1316,10 @@
    "id": "8AJPs3gvNlY",
    "expectedTitle": "Lecture 31: Markov Chains | Statistics 110",
    "expectedChannel": "Harvard University",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 31: Markov Chains | Statistics 110",
+   "actualChannel": "Harvard University",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1004,7 +1328,10 @@
    "id": "f9XFM8YLccg",
    "expectedTitle": "3. Probability Theory",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "3. Probability Theory",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1013,7 +1340,10 @@
    "id": "rLlZpnT02ZU",
    "expectedTitle": "4. Parametric Inference (cont.) and Maximum Likelihood Estimation",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "4. Parametric Inference (cont.) and Maximum Likelihood Estimation",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1022,7 +1352,10 @@
    "id": "phbw9r1iUDI",
    "expectedTitle": "7. Parametric Hypothesis Testing",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "7. Parametric Hypothesis Testing",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1031,7 +1364,10 @@
    "id": "4HRhg4eUiMo",
    "expectedTitle": "8. Parametric Hypothesis Testing (cont.)",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "8. Parametric Hypothesis Testing (cont.)",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1040,7 +1376,10 @@
    "id": "YiDfbYtgUPc",
    "expectedTitle": "Quantopian Lecture Series: p-Hacking and Multiple Comparisons Bias",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Quantopian Lecture Series: p-Hacking and Multiple Comparisons Bias",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1049,7 +1388,10 @@
    "id": "Y_Ac6KiQ1t0",
    "expectedTitle": "15. Projections onto Subspaces",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "15. Projections onto Subspaces",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1058,7 +1400,10 @@
    "id": "osh80YCg_GM",
    "expectedTitle": "16. Projection Matrices and Least Squares",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "16. Projection Matrices and Least Squares",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1067,7 +1412,10 @@
    "id": "yP1S37BiEsQ",
    "expectedTitle": "13. Regression",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "13. Regression",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1076,7 +1424,10 @@
    "id": "cdZnhQjJu4I",
    "expectedTitle": "21. Eigenvalues and Eigenvectors",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "21. Eigenvalues and Eigenvectors",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1085,7 +1436,10 @@
    "id": "UCc9q_cAhho",
    "expectedTitle": "25. Symmetric Matrices and Positive Definiteness",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "25. Symmetric Matrices and Positive Definiteness",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1094,7 +1448,10 @@
    "id": "l1kLCrxL9Hk",
    "expectedTitle": "6. Regression Analysis",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "6. Regression Analysis",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1103,7 +1460,10 @@
    "id": "J7d3vcaS9-o",
    "expectedTitle": "Ses 14: Portfolio Theory II",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 14: Portfolio Theory II",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1112,7 +1472,10 @@
    "id": "z2oQe6B1Qa4",
    "expectedTitle": "Ses 15: Portfolio Theory III & The CAPM and APT I",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 15: Portfolio Theory III & The CAPM and APT I",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1121,7 +1484,10 @@
    "id": "N8gtnbJuMoo",
    "expectedTitle": "Ses 16: The CAPM and APT II",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 16: The CAPM and APT II",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1130,7 +1496,10 @@
    "id": "ywl3pq6yc54",
    "expectedTitle": "14. Portfolio Theory",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "14. Portfolio Theory",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1139,7 +1508,10 @@
    "id": "ViTnIebSzj4",
    "expectedTitle": "Should You Be Factor Investing?",
    "expectedChannel": "Ben Felix",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Should You Be Factor Investing?",
+   "actualChannel": "Ben Felix",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1148,7 +1520,10 @@
    "id": "Ep8Y5JfQoRg",
    "expectedTitle": "Quantopian Lecture Series: Risk Factor Expsosure *(the typo is in the official title)*",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Quantopian Lecture Series: Risk Factor Expsosure",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1157,7 +1532,10 @@
    "id": "P16zDtf0CE0",
    "expectedTitle": "Quantopian Lecture Series: Fundamental Factor Models",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Quantopian Lecture Series: Fundamental Factor Models",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1166,7 +1544,10 @@
    "id": "WW3ZJHPwvyg",
    "expectedTitle": "19. Principal Component Analysis",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "19. Principal Component Analysis",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1175,7 +1556,10 @@
    "id": "ro07evEWbCE",
    "expectedTitle": "15. Factor Modeling",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "15. Factor Modeling",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1184,7 +1568,10 @@
    "id": "oY-j2Wof51c",
    "expectedTitle": "Time Series Talk : Stationarity",
    "expectedChannel": "ritvikmath",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Time Series Talk : Stationarity",
+   "actualChannel": "ritvikmath",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1193,7 +1580,10 @@
    "id": "DeORzP0go5I",
    "expectedTitle": "Time Series Talk : Autocorrelation and Partial Autocorrelation",
    "expectedChannel": "ritvikmath",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Time Series Talk : Autocorrelation and Partial Autocorrelation",
+   "actualChannel": "ritvikmath",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1202,7 +1592,10 @@
    "id": "5-2C4eO4cPQ",
    "expectedTitle": "Time Series Talk : Autoregressive Model",
    "expectedChannel": "ritvikmath",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Time Series Talk : Autoregressive Model",
+   "actualChannel": "ritvikmath",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1211,7 +1604,10 @@
    "id": "voryLhxiPzE",
    "expectedTitle": "Time Series Talk : Moving Average Model",
    "expectedChannel": "ritvikmath",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Time Series Talk : Moving Average Model",
+   "actualChannel": "ritvikmath",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1220,7 +1616,10 @@
    "id": "uBeM1FUk4Ps",
    "expectedTitle": "8. Time Series Analysis I",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "8. Time Series Analysis I",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1229,7 +1628,10 @@
    "id": "Li95a2biFCU",
    "expectedTitle": "Time Series Talk : ARCH Model",
    "expectedChannel": "ritvikmath",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Time Series Talk : ARCH Model",
+   "actualChannel": "ritvikmath",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1238,7 +1640,10 @@
    "id": "inoBpq1UEn4",
    "expectedTitle": "GARCH Model : Time Series Talk",
    "expectedChannel": "ritvikmath",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "GARCH Model : Time Series Talk",
+   "actualChannel": "ritvikmath",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1247,7 +1652,10 @@
    "id": "cDlbEQz1PQk",
    "expectedTitle": "9. Volatility Modeling",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "9. Volatility Modeling",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1256,7 +1664,10 @@
    "id": "Pn_RiDbK82M",
    "expectedTitle": "Integration, Cointegration, and Stationarity",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Integration, Cointegration, and Stationarity",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1265,7 +1676,10 @@
    "id": "vvTKjm94Ars",
    "expectedTitle": "Cointegration - an introduction",
    "expectedChannel": "Ben Lambert",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Cointegration - an introduction",
+   "actualChannel": "Ben Lambert",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1274,7 +1688,10 @@
    "id": "BRUlSm4gdQ4",
    "expectedTitle": "The 7 Reasons Most Machine Learning Funds Fail Marcos Lopez de Prado from QuantCon 2018",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "The 7 Reasons Most Machine Learning Funds Fail Marcos Lopez de Prado from QuantCon 2018",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1283,7 +1700,10 @@
    "id": "KNCgvjyKrcw",
    "expectedTitle": "Quantopian Lecture Series: Overfitting",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Quantopian Lecture Series: Overfitting",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1292,7 +1712,10 @@
    "id": "jPI1oo_Ss5U",
    "expectedTitle": "The Deflated Sharpe Ratio",
    "expectedChannel": "Advances in Financial Machine Learning",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "The Deflated Sharpe Ratio",
+   "actualChannel": "Advances in Financial Machine Learning",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1301,7 +1724,10 @@
    "id": "OxNcA6RO_ZE",
    "expectedTitle": "Enhancing Statistical Significance of Backtests by Dr. Ernest Chan at QuantCon 2017",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Enhancing Statistical Significance of Backtests by Dr. Ernest Chan at QuantCon 2017",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1310,7 +1736,10 @@
    "id": "a5PF2PcElV0",
    "expectedTitle": "Ses 19: Efficient Markets II",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 19: Efficient Markets II",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1319,7 +1748,10 @@
    "id": "D_WhInJePC8",
    "expectedTitle": "AHL Explains - Momentum",
    "expectedChannel": "Man AHL",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "AHL Explains - Momentum",
+   "actualChannel": "Man AHL",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1328,7 +1760,10 @@
    "id": "tfNI6YwDG_o",
    "expectedTitle": "AHL Explains - Cross Sectional Momentum",
    "expectedChannel": "Man AHL",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "AHL Explains - Cross Sectional Momentum",
+   "actualChannel": "Man AHL",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1337,7 +1772,10 @@
    "id": "JTucMRYMOyY",
    "expectedTitle": "Introduction to Pairs Trading",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Introduction to Pairs Trading",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1346,7 +1784,10 @@
    "id": "mopIwlSqkc0",
    "expectedTitle": "Mean Reversion Strategy with Ernest Chan | Cointegration, Stationarity & Bollinger Bands Explained",
    "expectedChannel": "Quantra",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Mean Reversion Strategy with Ernest Chan | Cointegration, Stationarity & Bollinger Bands Explained",
+   "actualChannel": "Quantra",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1355,7 +1796,10 @@
    "id": "9G1IDAqrWkg",
    "expectedTitle": "12. Time Series Analysis III",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "12. Time Series Analysis III",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1364,7 +1808,10 @@
    "id": "2QrPCewZO9E",
    "expectedTitle": "Cliff Asness on Factor Investing and the History of Financial Economics | Capitalism and Freedom",
    "expectedChannel": "Hoover Institution",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Cliff Asness on Factor Investing and the History of Financial Economics | Capitalism and Freedom",
+   "actualChannel": "Hoover Institution",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1373,7 +1820,10 @@
    "id": "8TJQhQ2GZ0Y",
    "expectedTitle": "16. Portfolio Management",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "16. Portfolio Management",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1382,7 +1832,10 @@
    "id": "pVE8sehGzCQ",
    "expectedTitle": "Trading Strategies Deep Dive with Rob Carver and Alan Dunne | Systematic Investor 266",
    "expectedChannel": "Top Traders Unplugged",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Trading Strategies Deep Dive with Rob Carver and Alan Dunne | Systematic Investor 266",
+   "actualChannel": "Top Traders Unplugged",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1391,7 +1844,10 @@
    "id": "1J5GKfcedE0",
    "expectedTitle": "Causal Factor Investing",
    "expectedChannel": "Advances in Financial Machine Learning",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Causal Factor Investing",
+   "actualChannel": "Advances in Financial Machine Learning",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1400,7 +1856,10 @@
    "id": "TuTmC8aOQJE",
    "expectedTitle": "5. Stochastic Processes I",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "5. Stochastic Processes I",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1409,7 +1868,10 @@
    "id": "PPl-7_RL0Ko",
    "expectedTitle": "17. Stochastic Processes II",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "17. Stochastic Processes II",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1418,7 +1880,10 @@
    "id": "Z5yRMMVUC5w",
    "expectedTitle": "18. Itō Calculus",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "18. Itō Calculus",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1427,7 +1892,10 @@
    "id": "qdbkvD4N-us",
    "expectedTitle": "21. Stochastic Differential Equations",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "21. Stochastic Differential Equations",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1436,7 +1904,10 @@
    "id": "IwA7nVEwqto",
    "expectedTitle": "Ses 10: Forward and Futures Contracts II & Options I",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 10: Forward and Futures Contracts II & Options I",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1445,7 +1916,10 @@
    "id": "rMsu4v-UlkA",
    "expectedTitle": "Ses 11: Options II",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Ses 11: Options II",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1454,7 +1928,10 @@
    "id": "pr-u4LCFYEY",
    "expectedTitle": "Introduction to the Black-Scholes formula | Finance & Capital Markets | Khan Academy",
    "expectedChannel": "Khan Academy",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Introduction to the Black-Scholes formula | Finance & Capital Markets | Khan Academy",
+   "actualChannel": "Khan Academy",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1463,7 +1940,10 @@
    "id": "TnS8kI_KuJc",
    "expectedTitle": "19. Black-Scholes Formula, Risk-neutral Valuation",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "19. Black-Scholes Formula, Risk-neutral Valuation",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1472,7 +1952,10 @@
    "id": "VIHldsSmASU",
    "expectedTitle": "Implied volatility | Finance & Capital Markets | Khan Academy",
    "expectedChannel": "Khan Academy",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Implied volatility | Finance & Capital Markets | Khan Academy",
+   "actualChannel": "Khan Academy",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1481,7 +1964,10 @@
    "id": "VkUEWUxI6u0",
    "expectedTitle": "17. Options Markets",
    "expectedChannel": "YaleCourses",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "17. Options Markets",
+   "actualChannel": "YaleCourses",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1490,7 +1976,10 @@
    "id": "eG_aRPy1KVE",
    "expectedTitle": "20. Option Price and Probability Duality",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "20. Option Price and Probability Duality",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1499,7 +1988,10 @@
    "id": "nPqat782ADI",
    "expectedTitle": "Lecture 1: Concepts and Institutions (Financial Markets Microstructure)",
    "expectedChannel": "economification",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 1: Concepts and Institutions (Financial Markets Microstructure)",
+   "actualChannel": "economification",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1508,7 +2000,10 @@
    "id": "P0-92CIfAUo",
    "expectedTitle": "Lecture 3, part 1: Information and Prices (Financial Markets Microstructure)",
    "expectedChannel": "economification",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 3, part 1: Information and Prices (Financial Markets Microstructure)",
+   "actualChannel": "economification",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1517,7 +2012,10 @@
    "id": "0isdYyPNXis",
    "expectedTitle": "Lecture 5, part 1: Depth determinants, Kyle Model (Financial Markets Microstructure)",
    "expectedChannel": "economification",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 5, part 1: Depth determinants, Kyle Model (Financial Markets Microstructure)",
+   "actualChannel": "economification",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1526,7 +2024,10 @@
    "id": "II0tXd4nADo",
    "expectedTitle": "Lecture 12, part 1: High-Frequency and Algorithmic Trading (Financial Markets Microstructure)",
    "expectedChannel": "economification",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Lecture 12, part 1: High-Frequency and Algorithmic Trading (Financial Markets Microstructure)",
+   "actualChannel": "economification",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1535,7 +2036,10 @@
    "id": "92WaNz9mPeY",
    "expectedTitle": "7. Value At Risk (VAR) Models",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "7. Value At Risk (VAR) Models",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1544,7 +2048,10 @@
    "id": "qBNmIjbBz3s",
    "expectedTitle": "Quantopian Lecture Series: Leverage",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Quantopian Lecture Series: Leverage",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1553,7 +2060,10 @@
    "id": "I1z7B2_FarQ",
    "expectedTitle": "Quantopian Lecture Series: Position Concentration Risk",
    "expectedChannel": "Quantopian",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Quantopian Lecture Series: Position Concentration Risk",
+   "actualChannel": "Quantopian",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1562,7 +2072,10 @@
    "id": "UQSWzkqLp0U",
    "expectedTitle": "Cornell University (ORIE 5256): Advances in Financial Machine Learning",
    "expectedChannel": "Mathematical Investor",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Cornell University (ORIE 5256): Advances in Financial Machine Learning",
+   "actualChannel": "Mathematical Investor",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1571,7 +2084,10 @@
    "id": "DC6DevRRSrs",
    "expectedTitle": "Stefan Jansen talks about Machine Learning for Algorithmic Trading",
    "expectedChannel": "algoseek",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Stefan Jansen talks about Machine Learning for Algorithmic Trading",
+   "actualChannel": "algoseek",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1580,7 +2096,10 @@
    "id": "NT_I1MjckaU",
    "expectedTitle": "A Jane Street Trading Mock Interview with Graham and Andrea",
    "expectedChannel": "Jane Street",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "A Jane Street Trading Mock Interview with Graham and Andrea",
+   "actualChannel": "Jane Street",
+   "score": 1
   },
   {
    "course": "quant",
@@ -1589,7 +2108,10 @@
    "id": "QNznD9hMEh0",
    "expectedTitle": "Jim Simons (full length interview) - Numberphile",
    "expectedChannel": "Numberphile2",
-   "status": "network"
+   "status": "ok",
+   "actualTitle": "Jim Simons (full length interview) - Numberphile",
+   "actualChannel": "Numberphile2",
+   "score": 1
   }
  ]
 }
