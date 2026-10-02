@@ -1,0 +1,12 @@
+# Which source files the importer (npm run import) turns into course folders.
+# plan:    the study plan (copied to content/courses/<slug>/plan.md)
+# handoff: the video handoff used to build content/courses/<slug>/videos.yaml
+- slug: foundations
+  plan: Foundations_of_Mathematics_Laeringsplan.md
+  handoff: Foundations_of_Mathematics_Cloud_Handoff.md
+- slug: quant
+  plan: Quant_Trading_Research_Laeringsplan.md
+  handoff: Quant_Trading_Research_Cloud_Handoff.md
+- slug: hedgefund
+  plan: Hedge_Fund_Laeringsplan.md
+  handoff: Hedge_Fund_Cloud_Handoff.md

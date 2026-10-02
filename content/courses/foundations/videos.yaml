@@ -1,0 +1,440 @@
+# Video-ID'er for kurset "foundations". Genereret af "npm run import" ud fra Foundations_of_Mathematics_Cloud_Handoff.md.
+# Nøgle: playlist-nøglen (fx Q3.2) eller "<uge>.<nr>" for punkter, hvis nøgle går igen.
+# Tilføj selv et YouTube-ID under "youtube:" — det bevares, når importen køres igen.
+videos:
+  '1.1':
+    key: P1
+    sources:
+    - title: Start Learning Logic | Part 1
+      channel: The Bright Side of Mathematics
+      youtube: EXUxMOM03Bo
+  '1.2':
+    key: P1
+    sources:
+    - title: Start Learning Logic | Part 2
+      channel: The Bright Side of Mathematics
+      search: Start Learning Logic | Part 2 The Bright Side of Mathematics
+  '1.3':
+    key: P1
+    sources:
+    - title: Start Learning Logic | Part 3
+      channel: The Bright Side of Mathematics
+      search: Start Learning Logic | Part 3 The Bright Side of Mathematics
+  '1.4':
+    key: P2
+    sources:
+    - title: 1.4.1 Propositional Operators
+      channel: MIT OpenCourseWare
+      youtube: 0exBzsexUoI
+    - title: 1.4.4 Truth Tables
+      channel: MIT OpenCourseWare
+      search: MIT 6.042J 1.4.4 Truth Tables
+    - title: 1.4.6 Implies
+      channel: MIT OpenCourseWare
+      search: MIT 6.042J 1.4.6 Implies
+    - title: 1.4.7 Propositional Logic
+      channel: MIT OpenCourseWare
+      search: MIT 6.042J 1.4.7 Propositional Logic
+    - title: 1.4.3 Digital Logic
+      channel: MIT OpenCourseWare
+      youtube: eMWG-jTh-GE
+  '2.1':
+    key: P2
+    sources:
+    - title: 1.5.1 Predicate Logic 1
+      channel: MIT OpenCourseWare
+      youtube: UroprmQHTLc
+    - title: 1.5.2 Predicate Logic 2
+      channel: MIT OpenCourseWare
+      search: MIT 6.042J 1.5.2 Predicate Logic 2
+    - title: 1.5.4 Predicate Logic 3
+      channel: MIT OpenCourseWare
+      youtube: L5uBeAGJV1k
+  '2.2':
+    key: P2
+    sources:
+    - title: '1.1.2 Intro To Proofs: Part 1'
+      channel: MIT OpenCourseWare
+      youtube: GyFVgJZ0hIs
+    - title: '1.1.3 Intro to Proofs: Part 2'
+      channel: MIT OpenCourseWare
+      youtube: wfr4XbR5VP8
+  P3:
+    key: P3
+    sources:
+    - title: '[Discrete Mathematics] Direct Proofs Examples'
+      channel: TrevTutor
+      youtube: uDJfx4bK3Jc
+    - title: one TrevTutor video on proof by contraposition and one on proof by contradiction, from the same series
+      channel: TrevTutor
+      search: one TrevTutor video on proof by contraposition and one on proof by contradiction, from the same series TrevTutor
+  '2.4':
+    key: P2
+    sources:
+    - title: 1.2.1 Proof By Contradiction
+      channel: MIT OpenCourseWare
+      youtube: CpW0ZJ7i0oc
+  '2.5':
+    key: P2
+    sources:
+    - title: 1.2.3 Proof By Cases
+      channel: MIT OpenCourseWare
+      youtube: vzpFQ3uNyPo
+  '3.1':
+    key: P2
+    sources:
+    - title: 1.3.1 Well Ordering Principle 1
+      channel: MIT OpenCourseWare
+      youtube: fV3v6qQ3w4A
+    - title: 1.3.3 Well Ordering Principle 2
+      channel: MIT OpenCourseWare
+      youtube: I1HpgnWQI7I
+    - title: 1.3.5 Well Ordering Principle 3
+      channel: MIT OpenCourseWare
+      youtube: hNrtGiCFPGs
+    - title: 1.10.7 Recursive Functions
+      channel: MIT OpenCourseWare
+      youtube: tOsdeaYDCMk
+  '3.2':
+    key: P2
+    sources:
+    - title: 1.8.1 Induction
+      channel: MIT OpenCourseWare
+      youtube: XnV8GAuAqJM
+    - title: 1.8.6 WOP vs Induction
+      channel: MIT OpenCourseWare
+      youtube: K8ZfzNN1miQ
+    - title: 1.10.1 Recursive Data
+      channel: MIT OpenCourseWare
+      youtube: TXNXT3oBROw
+  '3.3':
+    key: P2
+    sources:
+    - title: 1.8.2 Bogus Induction
+      channel: MIT OpenCourseWare
+      youtube: D3E5CKebKuQ
+    - title: 1.8.4 Strong Induction
+      channel: MIT OpenCourseWare
+      youtube: TUueMeRooBk
+    - title: 1.10.4 Structural Induction
+      channel: MIT OpenCourseWare
+      youtube: VWIDwHCGJDQ
+  '4.1':
+    key: P1
+    sources:
+    - title: Start Learning Sets | Part 1 (Overview and Element Relation)
+      channel: The Bright Side of Mathematics
+      youtube: iA-Dtf7529M
+  '4.2':
+    key: P1
+    sources:
+    - title: Start Learning Sets | Part 2 (Predicates, Equality and Subsets)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Sets Part 2
+    - title: Start Learning Sets | Part 3 (Union, Intersection, Differences and Power Set)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Sets Part 3
+  '4.3':
+    key: P1
+    sources:
+    - title: Start Learning Sets | Part 4 (Cartesian Product and Maps)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Sets Part 4
+    - title: Start Learning Sets | Part 5 (Range, Image and Preimage)
+      channel: The Bright Side of Mathematics
+      youtube: twBYYTJdcjc
+  '4.4':
+    key: P1
+    sources:
+    - title: Start Learning Sets | Part 6 (Injectivity, Surjectivity and Bijectivity)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Sets Part 6
+    - title: Start Learning Sets | Part 7 (Composition of Maps)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Sets Part 7
+  '4.5':
+    key: P2
+    sources:
+    - title: 1.6.1 Sets Definitions
+      channel: MIT OpenCourseWare
+      youtube: KZ7jjLTQ9r4
+    - title: 1.6.2 Sets Operations
+      channel: MIT OpenCourseWare
+      youtube: Mhip1rljvRo
+    - title: 1.7.5 Finite Cardinality
+      channel: MIT OpenCourseWare
+      youtube: fpy5Hsz5t6E
+  '4.6':
+    key: P2
+    sources:
+    - title: 1.7.1 Relations
+      channel: MIT OpenCourseWare
+      youtube: FkfsmwAtDdY
+    - title: 1.7.3 Relational Mappings
+      channel: MIT OpenCourseWare
+      youtube: gFD1Lp6zK3w
+  '5.1':
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 1 (Natural Numbers (in Set Theory))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 1
+  '5.2':
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 2 (Natural Numbers (Successor Map and Addition))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 2
+  '5.3':
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 3 (Natural Numbers (Induction and Associativity))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 3
+  '5.4':
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 4 (Natural Numbers (Ordering))
+      channel: The Bright Side of Mathematics
+      youtube: xVEJPDVaQ8s
+  '5.5':
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 5 (Natural Numbers (Multiplication))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 5
+  '6.1':
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 6 (Integers (Construction))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 6
+    - title: Start Learning Numbers | Part 7 (Integers (Addition and Inverses))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 7
+    - title: Start Learning Numbers | Part 8 (Integers (Multiplication))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 8
+  '6.2':
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 9 (Rational Numbers (Construction))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 9
+    - title: Start Learning Numbers | Part 10 (Rational Numbers (Addition and Multiplication))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 10
+    - title: Start Learning Numbers | Part 11 (Rational Numbers (Ordering))
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Numbers Part 11
+  '6.3':
+    key: P1
+    sources:
+    - title: Start Learning Reals | Part 1 (Cauchy Sequences)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Reals Part 1
+    - title: Start Learning Reals | Part 3 (Working With Axioms)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Reals Part 3
+    - title: Start Learning Reals | Part 4 (Construction)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Reals Part 4
+  '6.4':
+    key: P1
+    sources:
+    - title: Start Learning Reals | Part 2 (Completeness Axiom)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Reals Part 2
+    - title: Start Learning Complex | Part 1 (Introduction)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Complex Part 1
+    - title: Start Learning Complex | Part 2 (Definition)
+      channel: The Bright Side of Mathematics
+      search: Bright Side of Mathematics Start Learning Complex Part 2
+  '7.1':
+    key: P2
+    sources:
+    - title: 1.11.1 Cardinality
+      channel: MIT OpenCourseWare
+      youtube: QzSCf62kzjE
+    - title: 1.11.3 Countable Sets
+      channel: MIT OpenCourseWare
+      youtube: AipSRi3CyLg
+    - title: 1.11.4 Cantor's Theorem
+      channel: MIT OpenCourseWare
+      youtube: 4dj1ogUwTEM
+  '7.2':
+    key: P2
+    sources:
+    - title: 'P2: videoerne om binære relationer og funktioner (binary relations/functions) — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.'
+      search: 'P2: videoerne om binære relationer og funktioner  — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.'
+  '7.4':
+    sources:
+    - title: Hilbert's hotel infinity explained
+      search: Hilbert's hotel infinity explained
+  P4:
+    key: P4
+    sources:
+    - title: Set Theory - What is Set Theory and what is it for? Oxford Mathematics 3rd Year Student Lecture
+      channel: Oxford Mathematics
+      youtube: g7zyXk0XJt4
+  P5:
+    key: P5
+    sources:
+    - title: 'Set Theory - Russell''s Paradox: Oxford Mathematics 3rd Year Student Lecture'
+      channel: Oxford Mathematics
+      youtube: gxm1Ur_Be0s
+  P6:
+    key: P6
+    sources:
+    - title: 'Set Theory - The first few axioms: Oxford Mathematics 3rd Year Student Lecture'
+      channel: Oxford Mathematics
+      youtube: qrltuEzDhxI
+  '9.1':
+    sources:
+    - title: first-order logic syntax semantics lecture
+      search: first-order logic syntax semantics lecture
+  '9.2':
+    sources:
+    - title: MU puzzle Hofstadter MIU system
+      search: MU puzzle Hofstadter MIU system
+  '9.3':
+    sources:
+    - title: Gödel completeness theorem lecture
+      search: Gödel completeness theorem lecture
+  '9.4':
+    sources:
+    - title: nonstandard models of arithmetic compactness theorem
+      search: nonstandard models of arithmetic compactness theorem
+  '10.1':
+    key: P7
+    sources:
+    - title: 'L1: Introduction, Finite Automata, Regular Expressions'
+      channel: MIT OpenCourseWare
+      youtube: 9syvZr-9xwk
+  '10.2':
+    key: P7
+    sources:
+    - title: 'L5: CF Pumping Lemma, Turing Machines'
+      channel: MIT OpenCourseWare
+      youtube: IycOPFmEQk8
+  '10.3':
+    key: P7
+    sources:
+    - title: 'L6: TM Variants, Church-Turing Thesis'
+      channel: MIT OpenCourseWare
+      youtube: TTArY7ojshU
+  '10.4':
+    key: P7
+    sources:
+    - title: 'L7: Decision Problems for Automata and Grammars'
+      channel: MIT OpenCourseWare
+      youtube: 4MgN6uxd4i4
+  '10.5':
+    sources:
+    - title: Lambda Calculus - Computerphile
+      youtube: eis11j_iGMs
+  '11.1':
+    key: P7
+    sources:
+    - title: 'L8: Undecidability'
+      channel: MIT OpenCourseWare
+      search: MIT 18.404J Sipser Lecture 8 Undecidability
+  '11.2':
+    key: P7
+    sources:
+    - title: 'L9: Reducibility'
+      channel: MIT OpenCourseWare
+      youtube: N28g_YBXY8Y
+  '11.3':
+    key: P7
+    sources:
+    - title: 'L10: Computation History Method'
+      channel: MIT OpenCourseWare
+      youtube: MGqoLm2aAgc
+  '12.1':
+    key: P7
+    sources:
+    - title: 'L11: Recursion Theorem and Logic'
+      channel: MIT OpenCourseWare
+      search: MIT 18.404J Sipser Lecture 11 Recursion Theorem and Logic
+  P8:
+    key: P8
+    sources:
+    - title: Gödel's Incompleteness Theorem - Numberphile
+      channel: Numberphile
+      youtube: O4ndIDcDSGc
+  P9:
+    key: P9
+    sources:
+    - title: Godel's 1st Incompleteness Theorem - Proof by Diagonalization
+      channel: as found, see item 12.3
+      youtube: PpSxqde0af4
+  P10:
+    key: P10
+    sources:
+    - title: The Gödel incompleteness phenomenon
+      channel: Hamkins's own upload, or the hosting institution
+      youtube: Y5trjR5aw0k
+  '13.1':
+    sources:
+    - title: (tilføjet) Computerphile – "Lambda Calculus" (Graham Hutton, 13 min) — spring over, hvis du så den i uge 10.
+      youtube: eis11j_iGMs
+  P11:
+    key: P11
+    sources:
+    - title: 'Peter Dybjer: Intuitionistic Type Theory (Lecture I)'
+      channel: Hausdorff Center for Mathematics (Trimester Program "Types, Sets and Constructions")
+      youtube: 5V-qka70DAE
+  P12:
+    key: P12
+    sources:
+    - title: Propositions as Types
+      channel: Strange Loop Conference
+      youtube: IOiZatlZtGU
+  P13:
+    key: P13
+    sources:
+    - title: one introductory Homotopy Type Theory lecture, e.g. from the HoTT Summer School 2022 playlist or an introduction by Andrej Bauer, Steve Awodey or Emily Riehl. It must come after 13.1–13.2.
+      channel: university or HoTT summer-school channel
+      search: one introductory Homotopy Type Theory lecture, e.g. from the HoTT Summer School 2022 playlist or an introduction by Andrej Bauer, Steve Awodey or Emily Riehl. It must come after 13.1–13.2. university or HoTT summer-school channel
+  '14.1':
+    key: P14
+    sources:
+    - title: 'Category Theory 1.1: Motivation and Philosophy'
+      channel: Bartosz Milewski
+      youtube: I8LbkfSSR58
+  '14.2':
+    key: P14
+    sources:
+    - title: 'Category Theory 1.2: What is a category?'
+      channel: Bartosz Milewski
+      youtube: p54Hd7AmVFU
+  '14.3':
+    key: P14
+    sources:
+    - title: 'Category Theory 2.1: Functions, epimorphisms'
+      channel: Bartosz Milewski
+      youtube: O2lZkr-aAqk
+  '14.4':
+    key: P14
+    sources:
+    - title: 'Category Theory 2.2: Monomorphisms, simple types'
+      channel: Bartosz Milewski
+      youtube: NcT7CGPICzo
+  '14.5':
+    key: P14
+    sources:
+    - title: 'Category Theory 3.1: Examples of categories, orders, monoids'
+      channel: Bartosz Milewski
+      youtube: aZjhqkD6k6w
+  '14.6':
+    key: P14
+    sources:
+    - title: 'Category Theory 3.2: Kleisli category'
+      channel: Bartosz Milewski
+      youtube: i9CU4CuHADQ
+  '14.7':
+    sources:
+    - title: 'Category Theory 6.1: Functors'
+      youtube: FyoQjkwsy7o
