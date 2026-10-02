@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verify-videos": "tsx scripts/verify-videos.ts",
+    "find-videos": "tsx scripts/find-videos.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",
