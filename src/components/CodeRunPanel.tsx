@@ -10,7 +10,7 @@ export function CodeRunPanel({ lang, code, onResult }: { lang: string; code: str
     let alive = true
     getRunner(lang).then(async (runner) => {
       if (!runner) {
-        setStatus(`Ingen runner for ${lang}. Sammenlign selv med referenceløsningen.`)
+        setStatus(`Koden kan ikke køres her. Sammenlign selv med løsningen.`)
         return
       }
       const r = await runner.run(code, { onStatus: (s) => alive && setStatus(s) })

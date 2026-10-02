@@ -33,7 +33,7 @@ export default function Courses() {
     <div className="space-y-6">
       <div>
         <h1 className="page-title">Kurser</h1>
-        <p className="muted">Pilene viser rækkefølgen: hvert kursus bygger på de foregående.</p>
+        <p className="muted">Kurserne bygger videre på hinanden — tag dem gerne i rækkefølge.</p>
       </div>
       <ol className="grid gap-4 md:grid-cols-3">
         {order.map((c, i) => {
