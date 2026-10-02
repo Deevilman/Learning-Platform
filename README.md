@@ -79,15 +79,21 @@ tests/unit, tests/e2e      Vitest og Playwright
 
 - **Mestring** pr. emne og uge: eksponentielt vægtet gennemsnit af scorer (auto-tjek 0/1; selvvurdering 0 / 0,33 / 0,66 / 1), hvor sværere øvelser vægter mere (★ 0,8, ★★ 1,0, ★★★ 1,25), glemsel med en halveringstid, der vokser med antal forsøg (10·(1 + n/4) dage), og en sikkerhed på 1 − e^(−n/4).
 - **Repetition:** SM-2-variant. Kunne ikke → 1 dag og lavere "ease"; ellers 1–2 → 2–4 → interval × ease dage.
-- **Træning:** blander øvelser, der er klar til repetition (40 %), nye genererede opgaver (45 %) og nye øvelser fra planerne (15 %). Sværhedsgraden går op efter 3 rigtige i træk og ned efter 2 fejl.
+- **Træning:** blander øvelser, der er klar til repetition (40 %), nye genererede opgaver (45 %) og nye øvelser fra planerne (15 %). Sværhedsgraden går op efter 3 rigtige i træk og ned efter 2 fejl. *Dagens repetition* tager også regneopgaver med: hver generator har sit eget repetitionskort (`gen:<id>`) og kommer igen med nye tal.
+- **Hvad kan du allerede?** (`src/lib/placement.ts`): 2–3 automatisk tjekkede spørgsmål pr. uge, let → svær; en uge stopper ved 2 rigtige eller 2 forkerte, testen efter to nye uger i træk. Klarede uger markeres, og startpunktet flyttes.
+- **Lektioner:** kernebegreberne deles i korte trin (`src/lib/lesson.ts`) med et lille spørgsmål efter hvert tredje trin. Hver uge har Se → Læs → Øv og en *Ugens test* (5 spørgsmål, 4 rigtige = klaret).
+- **Hints og svarform:** hint-stige på alle øvelser (strategi → første skridt → løsning; hints koster lidt i mestring). *Opgavetype* (Blandet / Kun multiple choice / Kun skriv selv) styrer Træn og ugernes øvelser; multiple choice laves med plausible fejlsvar (`src/lib/choices.ts`).
+- **Mestringsniveauer:** Ikke startet → Øvet (forsøgt) → Kendt (≥ 0,5) → Mestret (≥ 0,8 med sikkerhed ≥ 0,5).
+- **Dagligt mål og stribe** (kan slås fra i Indstillinger).
 - **Svaghedsfinderen:** rangerer emner i de uger, du er nået til, efter (1 − mestring), vægtet med sikkerhed, og begrunder fx "3 af de sidste 5 forkert", "ikke øvet i 21 dage" og "★★-øvelser under 50 %".
 - **Kursus gennemført:** alle checkpoints er afkrydset, eller mestring ≥ 0,7 i alle kursets emner. Så anbefales kurserne i `next:`.
 
 ## Valg og begrænsninger
 
-- **Foundations-videoer:** handoff'en har kun URL'er til 7 af 91 videoer. Resten vises som "Video mangler, indsæt URL" med en færdig YouTube-søgning. Indsæt URL'en på ugesiden (gemmes for dig), eller skriv ID'et i `content/courses/foundations/videos.yaml` (gælder for alle).
+- **Videoer:** alle ID'er tjekkes med YouTubes oEmbed (titel og kanal) af `npm run verify-videos` i GitHub Actions (blødt: fejler ikke uden netværk); `npm run find-videos` foreslår kandidater fra officielle playlister og søgning. Rapporterne ligger i `reports/`. Videoer, som udgiveren ikke tillader indlejret (`embed: false`), vises som et link til YouTube. Videoer uden ID vises med en færdig søgning, og eleven kan indsætte et link selv.
 - **Python i browseren:** alle 101 selvstændige Python-blokke i planerne er afprøvet i Pyodide. 7 blokke bygger på anden kode: 5 numpy-varianter (kør dem med **Kør med koden ovenfor**; numpy hentes første gang), og løsning 9.12 og 11.11 i Foundations, der importerer kode fra en tidligere løsning (kopiér den ind i dit eget svarfelt).
 - **Lean** køres ikke i browseren. Lean-blokke har et link til den officielle Lean 4-editor.
-- **Auto-tjek:** de fleste øvelser i planerne er beviser eller åbne spørgsmål og vurderes af dig selv. Generatorerne har altid auto-tjek.
+- **Auto-tjek:** de fleste øvelser i planerne er beviser eller åbne spørgsmål og vurderes af dig selv. Generatorerne har altid auto-tjek, og 40 øvelser har et kort "Tjek dig selv"-spørgsmål (se CONTENT_GUIDE.md, afsnit 8).
+- **Henvisninger frem i kurset** fjernes ved bygning efter en gennemgået liste (`forward-refs.yaml`); `plan.md` ændres ikke.
 - **Synkronisering** fletter post for post. Redigerer du det samme svar på to enheder uden at synkronisere imellem, vinder den seneste ændring.
 - Interaktive komponenter er placeret via `overrides.yaml`, så `plan.md` forbliver uændret og kan importeres igen.
