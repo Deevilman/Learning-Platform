@@ -54,9 +54,11 @@ export function numericClose(got: number, want: number, tolerance?: number, rela
 export function evaluate(check: AutoCheck, answer: string): CheckResult {
   switch (check.type) {
     case 'numeric': {
-      const v = parseNumber(answer)
+      // When the expected value is itself in percent (unit "%"), "12,5 %" means 12.5;
+      // otherwise "25 %" means 0.25.
+      const pctUnit = check.unit === '%'
+      const v = parseNumber(pctUnit ? answer.replace(/%/g, '') : answer)
       if (v === null) return { correct: false, message: 'Skriv et tal (fx 0,25 eller 1/4).' }
-      // Allow answers written in percent when the expected value is a fraction and vice versa.
       const ok = numericClose(v, check.answer, check.tolerance, check.relative)
       return ok ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: `Ikke helt. Det forventede svar er ${fmt(check.answer)}${check.unit ? ' ' + check.unit : ''}.` }
     }
