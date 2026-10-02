@@ -6,6 +6,7 @@ import { useSetting, useTable } from '@/lib/store'
 import { generators, generatedChoices, type Generator } from '@/lib/generators'
 import { ANSWER_PREF_KEY, ANSWER_PREF_LABEL, matchesAnswerPref, type AnswerPref } from '@/lib/answer-type'
 import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
+import { DailyGoal } from '@/components/DailyGoal'
 import { TrainingSession, startLevel, type TrainItem } from '@/lib/training'
 import { findWeakTopics } from '@/lib/weakness'
 import { reachedWeeks } from '@/lib/progress'
@@ -152,7 +153,7 @@ export default function TrainPage() {
           </div>
         )}
         <div className="rounded-lg p-3 text-sm" style={{ background: 'var(--surface-2)' }}>
-          <b>Omfang:</b> {scopeLabel(index, scope) || 'ingen emner valgt'}
+          <b>Du træner:</b> {scopeLabel(index, scope) || 'ingen emner valgt'}
           <br />
           {mode === 'gennemgang' ? `${bank.length + gens.length} ${bank.length + gens.length === 1 ? 'opgave' : 'opgaver'} klar til repetition` : `${bank.length} opgaver fra kurset (${dueCount} klar til repetition)`}
           {mode !== 'gennemgang' && gens.length ? ' · plus regneopgaver med nye tal hver gang' : ''}
@@ -272,7 +273,7 @@ function Session(props: {
   const meta =
     item.kind === 'generated'
       ? { label: `${props.gens.find((g) => g.id === item.generatorId)?.title}`, sub: 'Nye tal' }
-      : { label: `${bankEx?.course || ''} · ${bankEx?.week ? `uge ${bankEx.week}` : bankEx?.set || ''}`, sub: item.reason === 'due' ? 'Klar til repetition' : item.reason === 'new' ? 'Ny for dig' : 'Repetition' }
+      : { label: `${props.index.courses.find((c) => c.slug === bankEx?.course)?.title || ''} · ${bankEx?.week ? `uge ${bankEx.week}` : bankEx?.set === 'selftest' ? 'selvtest' : bankEx?.set === 'interview' ? 'interviewtræning' : ''}`, sub: item.reason === 'due' ? 'Klar til repetition' : item.reason === 'new' ? 'Ny for dig' : 'Repetition' }
 
   return (
     <div className="mx-auto max-w-3xl space-y-4">
@@ -289,6 +290,7 @@ function Session(props: {
         </span>
         <span className="muted ml-auto truncate text-xs">{props.scopeLabel}</span>
       </div>
+      <DailyGoal compact />
       <div className="muted text-xs">
         {meta.label} · {meta.sub}
       </div>

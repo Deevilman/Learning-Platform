@@ -5,6 +5,7 @@ import { exportAll, importAll, validateExport } from '@/lib/storage/transfer'
 import { getSession, lastSync, signIn, signOut, signUp, syncNow } from '@/lib/storage/supabase-sync'
 import { useTheme, type ThemePref } from '@/components/ThemeToggle'
 import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
+import { DailyGoalSettings } from '@/components/DailyGoal'
 import { loadCourse, loadIndex, loadWeek } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 
@@ -17,6 +18,10 @@ export default function SettingsPage() {
         <h2 className="section-title">Opgaver</h2>
         <AnswerPrefPicker />
         <p className="muted text-sm">Gælder i Træn og i ugernes øvelser. "Blandet" skifter mellem at vælge et svar og at skrive det selv.</p>
+      </section>
+      <section className="card space-y-2">
+        <h2 className="section-title">Dagligt mål</h2>
+        <DailyGoalSettings />
       </section>
       <SyncSection />
       <BackupSection />

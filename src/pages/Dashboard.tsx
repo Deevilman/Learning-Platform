@@ -7,6 +7,7 @@ import { findWeakTopics } from '@/lib/weakness'
 import { generators } from '@/lib/generators'
 import { nextSteps, reachedWeeks, weekProgress } from '@/lib/progress'
 import { CourseDot, ErrorBox, Loading, Progress, type Position } from '@/components/ui'
+import { DailyGoal } from '@/components/DailyGoal'
 
 function greeting(now: Date) {
   const h = now.getHours()
@@ -46,9 +47,12 @@ export default function Dashboard() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <header>
-        <h1 className="page-title">{greeting(new Date(now))}!</h1>
-        <p className="muted">{new Date(now).toLocaleDateString('da-DK', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+      <header className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 className="page-title">{greeting(new Date(now))}!</h1>
+          <p className="muted">{new Date(now).toLocaleDateString('da-DK', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+        </div>
+        <DailyGoal />
       </header>
 
       {/* 1. Fortsæt */}
