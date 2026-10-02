@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-02T20:44:29.079Z",
+ "checkedAt": "2026-10-02T20:48:50.146Z",
  "rows": [
   {
    "course": "foundations",
@@ -17,7 +17,7 @@
    "course": "foundations",
    "key": "1.2",
    "index": 0,
-   "id": "Jw6KxvMKbys",
+   "id": "AjdIPOXRgoQ",
    "expectedTitle": "Start Learning Logic | Part 2",
    "expectedChannel": "The Bright Side of Mathematics",
    "status": "not-embeddable"
@@ -302,7 +302,7 @@
    "course": "foundations",
    "key": "4.1",
    "index": 0,
-   "id": "iA-Dtf7529M",
+   "id": "_TnRs_ijXDA",
    "expectedTitle": "Start Learning Sets | Part 1 (Overview and Element Relation)",
    "expectedChannel": "The Bright Side of Mathematics",
    "status": "not-embeddable"
@@ -311,7 +311,7 @@
    "course": "foundations",
    "key": "4.2",
    "index": 0,
-   "id": "8Lj3CT1ZjJg",
+   "id": "yIdECC6QExY",
    "expectedTitle": "Start Learning Sets | Part 2 (Predicates, Equality and Subsets)",
    "expectedChannel": "The Bright Side of Mathematics",
    "status": "not-embeddable"
@@ -332,8 +332,17 @@
    "course": "foundations",
    "key": "4.3",
    "index": 1,
-   "id": "twBYYTJdcjc",
+   "id": "kQC-g7Ry-Wo",
    "expectedTitle": "Start Learning Sets | Part 5 (Range, Image and Preimage)",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "4.4",
+   "index": 1,
+   "id": "NiJ1yWKM9CU",
+   "expectedTitle": "Start Learning Sets | Part 7 (Composition of Maps)",
    "expectedChannel": "The Bright Side of Mathematics",
    "status": "not-embeddable"
   },
@@ -399,10 +408,109 @@
   },
   {
    "course": "foundations",
+   "key": "5.1",
+   "index": 0,
+   "id": "SpXHqrMGb0Y",
+   "expectedTitle": "Start Learning Numbers | Part 1 (Natural Numbers (in Set Theory))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "5.2",
+   "index": 0,
+   "id": "C9DLEHu1l-g",
+   "expectedTitle": "Start Learning Numbers | Part 2 (Natural Numbers (Successor Map and Addition))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
    "key": "5.4",
    "index": 0,
-   "id": "xVEJPDVaQ8s",
+   "id": "W1wITJIu0SI",
    "expectedTitle": "Start Learning Numbers | Part 4 (Natural Numbers (Ordering))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "5.5",
+   "index": 0,
+   "id": "qHYtMzt1k00",
+   "expectedTitle": "Start Learning Numbers | Part 5 (Natural Numbers (Multiplication))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.1",
+   "index": 1,
+   "id": "bGP0wgMlM3M",
+   "expectedTitle": "Start Learning Numbers | Part 7 (Integers (Addition and Inverses))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.1",
+   "index": 2,
+   "id": "6iOH38SiK2Q",
+   "expectedTitle": "Start Learning Numbers | Part 8 (Integers (Multiplication))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.2",
+   "index": 1,
+   "id": "jam6_3trtyI",
+   "expectedTitle": "Start Learning Numbers | Part 10 (Rational Numbers (Addition and Multiplication))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.2",
+   "index": 2,
+   "id": "TTHJmm_vaBE",
+   "expectedTitle": "Start Learning Numbers | Part 11 (Rational Numbers (Ordering))",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.3",
+   "index": 0,
+   "id": "3olS8tyoQEE",
+   "expectedTitle": "Start Learning Reals | Part 1 (Cauchy Sequences)",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.3",
+   "index": 2,
+   "id": "I1fHi9rXAAI",
+   "expectedTitle": "Start Learning Reals | Part 4 (Construction)",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.4",
+   "index": 0,
+   "id": "pR_HD2WaN_k",
+   "expectedTitle": "Start Learning Reals | Part 2 (Completeness Axiom)",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "6.4",
+   "index": 1,
+   "id": "bZSYcIJBMqE",
+   "expectedTitle": "Start Learning Complex | Part 1 (Introduction)",
    "expectedChannel": "The Bright Side of Mathematics",
    "status": "not-embeddable"
   },
@@ -444,6 +552,18 @@
   },
   {
    "course": "foundations",
+   "key": "7.4",
+   "index": 0,
+   "id": "Uj3_KqkI9Zo",
+   "expectedTitle": "The Infinite Hotel Paradox - Jeff Dekofsky",
+   "expectedChannel": "TED-Ed",
+   "status": "ok",
+   "actualTitle": "The Infinite Hotel Paradox - Jeff Dekofsky",
+   "actualChannel": "TED-Ed",
+   "score": 1
+  },
+  {
+   "course": "foundations",
    "key": "P4",
    "index": 0,
    "id": "g7zyXk0XJt4",
@@ -476,6 +596,30 @@
    "status": "ok",
    "actualTitle": "Set Theory - The first few axioms: Oxford Mathematics 3rd Year Student Lecture",
    "actualChannel": "Oxford Mathematics",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "9.3",
+   "index": 0,
+   "id": "Ih5i3xlSs5k",
+   "expectedTitle": "Mathematical Logic - The Completeness Theorem",
+   "expectedChannel": "Jan Reimann",
+   "status": "ok",
+   "actualTitle": "Mathematical Logic - The Completeness Theorem",
+   "actualChannel": "Jan Reimann",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "9.4",
+   "index": 0,
+   "id": "fOq9ZeXHkLE",
+   "expectedTitle": "Mathematical Logic – The Compactness Theorem",
+   "expectedChannel": "Jan Reimann",
+   "status": "ok",
+   "actualTitle": "Mathematical Logic – The Compactness Theorem",
+   "actualChannel": "Jan Reimann",
    "score": 1
   },
   {
@@ -539,6 +683,18 @@
   },
   {
    "course": "foundations",
+   "key": "11.1",
+   "index": 0,
+   "id": "3PzuSPQPEU4",
+   "expectedTitle": "L8: Undecidability",
+   "expectedChannel": "MIT OpenCourseWare",
+   "status": "ok",
+   "actualTitle": "8. Undecidability",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
+  },
+  {
+   "course": "foundations",
    "key": "11.2",
    "index": 0,
    "id": "N28g_YBXY8Y",
@@ -558,6 +714,18 @@
    "expectedChannel": "MIT OpenCourseWare",
    "status": "ok",
    "actualTitle": "10. Computation History Method",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "12.1",
+   "index": 0,
+   "id": "N-_XmLanPYg",
+   "expectedTitle": "L11: Recursion Theorem and Logic",
+   "expectedChannel": "MIT OpenCourseWare",
+   "status": "ok",
+   "actualTitle": "11. Recursion Theorem and Logic",
    "actualChannel": "MIT OpenCourseWare",
    "score": 1
   },
@@ -630,6 +798,18 @@
    "status": "ok",
    "actualTitle": "\"Propositions as Types\" by Philip Wadler",
    "actualChannel": "Strange Loop Conference",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "P13",
+   "index": 0,
+   "id": "HvYYCHMeM-8",
+   "expectedTitle": "HoTT Lecture 1: Dependent types and dependent functions -- HoTTEST Summer School 2022",
+   "expectedChannel": "HoTTEST",
+   "status": "ok",
+   "actualTitle": "HoTT Lecture 1: Dependent types and dependent functions -- HoTTEST Summer School 2022",
+   "actualChannel": "HoTTEST",
    "score": 1
   },
   {
@@ -833,6 +1013,18 @@
    "status": "ok",
    "actualTitle": "Session 21 (UG) and Session 19 (MBA): Pricing Analytics and Peer Groups",
    "actualChannel": "Aswath Damodaran",
+   "score": 1
+  },
+  {
+   "course": "hedgefund",
+   "key": "H4.2",
+   "index": 0,
+   "id": "0PZxxT2ewvU",
+   "expectedTitle": "A Short Explanation of Short Selling (feat. The Plain Bagel)",
+   "expectedChannel": "Two Cents",
+   "status": "ok",
+   "actualTitle": "A Short Explanation of Short Selling (feat. @ThePlainBagel)",
+   "actualChannel": "Two Cents",
    "score": 1
   },
   {
@@ -1149,6 +1341,18 @@
   },
   {
    "course": "hedgefund",
+   "key": "H11.4",
+   "index": 0,
+   "id": "1szayJV505M",
+   "expectedTitle": "Before The Mets, Steve Cohen Was The Hedge-Fund King (full documentary) | FRONTLINE (To Catch a Trader)",
+   "expectedChannel": "FRONTLINE PBS | Official",
+   "status": "ok",
+   "actualTitle": "Before The Mets, Steve Cohen Was The Hedge-Fund King (full documentary) | FRONTLINE",
+   "actualChannel": "FRONTLINE PBS | Official",
+   "score": 1
+  },
+  {
+   "course": "hedgefund",
    "key": "H12.1",
    "index": 0,
    "id": "HXbsVbFAczg",
@@ -1169,6 +1373,18 @@
    "status": "ok",
    "actualTitle": "Jim Simons (full length interview) - Numberphile",
    "actualChannel": "Numberphile2",
+   "score": 1
+  },
+  {
+   "course": "hedgefund",
+   "key": "H12.3",
+   "index": 0,
+   "id": "Pq3_u1xNRhc",
+   "expectedTitle": "What Are Hedge Fund Pod Shops?",
+   "expectedChannel": "Bob Elliott",
+   "status": "ok",
+   "actualTitle": "What Are Hedge Fund Pod Shops?",
+   "actualChannel": "Bob Elliott",
    "score": 1
   },
   {
@@ -1881,6 +2097,30 @@
   },
   {
    "course": "quant",
+   "key": "Q12.1",
+   "index": 0,
+   "id": "ZJXsoZprTn8",
+   "expectedTitle": "AHL Explains - Volatility Scaling",
+   "expectedChannel": "Man AHL",
+   "status": "ok",
+   "actualTitle": "AHL Explains - Volatility Scaling",
+   "actualChannel": "Man AHL",
+   "score": 1
+  },
+  {
+   "course": "quant",
+   "key": "Q12.1",
+   "index": 1,
+   "id": "xckEWD5daBY",
+   "expectedTitle": "AHL Explains - Signal Diversification",
+   "expectedChannel": "Man AHL",
+   "status": "ok",
+   "actualTitle": "AHL Explains - Signal Diversification",
+   "actualChannel": "Man AHL",
+   "score": 1
+  },
+  {
+   "course": "quant",
    "key": "Q12.2",
    "index": 0,
    "id": "2QrPCewZO9E",
@@ -2105,6 +2345,18 @@
    "status": "ok",
    "actualTitle": "Lecture 12, part 1: High-Frequency and Algorithmic Trading (Financial Markets Microstructure)",
    "actualChannel": "economification",
+   "score": 1
+  },
+  {
+   "course": "quant",
+   "key": "Q15.5",
+   "index": 0,
+   "id": "SczGh4CIlMM",
+   "expectedTitle": "A Deep Dive into Optimal Trade Execution - Robert Almgren",
+   "expectedChannel": "The Wall Street Lab",
+   "status": "ok",
+   "actualTitle": "A Deep Dive into Optimal Trade Execution - Robert Almgren",
+   "actualChannel": "The Wall Street Lab",
    "score": 1
   },
   {
