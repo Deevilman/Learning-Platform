@@ -29,7 +29,7 @@ jobs:
         run: npm run content
       - name: Unit-tests (importer, generatorer, mestring, lagring, udvidelighed)
         run: npm test
-      - name: Tjek video-ID'er (blødt: fejler ikke uden netværk)
+      - name: "Tjek video-ID'er (blødt — fejler ikke uden netværk)"
         run: npm run verify-videos
       - name: Typecheck og build
         run: npx tsc --noEmit && npx vite build

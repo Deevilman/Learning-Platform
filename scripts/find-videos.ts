@@ -68,6 +68,8 @@ function collectVideos(data: any, out: Video[]): string | null {
   walk(data, (k, v) => {
     if (k === 'playlistVideoRenderer' && v.videoId) out.push({ id: v.videoId, title: text(v.title), channel: text(v.shortBylineText) })
     if (k === 'videoRenderer' && v.videoId) out.push({ id: v.videoId, title: text(v.title), channel: text(v.ownerText) || text(v.longBylineText) })
+    if (k === 'lockupViewModel' && v.contentType === 'LOCKUP_CONTENT_TYPE_VIDEO' && v.contentId)
+      out.push({ id: v.contentId, title: text(v.metadata?.lockupMetadataViewModel?.title), channel: text(v.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel?.metadataRows?.[0]?.metadataParts?.[0]?.text) })
     if (k === 'continuationCommand' && v.token) next = v.token
   })
   return next
@@ -75,7 +77,9 @@ function collectVideos(data: any, out: Video[]): string | null {
 
 async function playlist(id: string): Promise<Video[]> {
   const out: Video[] = []
-  let token = collectVideos(await api('browse', { browseId: 'VL' + id }), out)
+  const first = await api('browse', { browseId: 'VL' + id })
+  let token = collectVideos(first, out)
+  if (!out.length) throw new Error(`tom playliste; svarets nøgler: ${Object.keys(first || {}).join(', ')}; alert: ${JSON.stringify(first?.alerts || '').slice(0, 200)}`)
   for (let i = 0; token && i < 20; i++) token = collectVideos(await api('browse', { continuation: token }), out)
   return out
 }
@@ -104,10 +108,26 @@ async function channelPlaylists(handle: string): Promise<{ id: string; title: st
   return out
 }
 
-async function search(q: string): Promise<Video[]> {
+/** oEmbed answers 401 when the uploader has turned off embedding. */
+async function embeddable(id: string): Promise<boolean | undefined> {
+  try {
+    const r = await fetch(`https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=${id}`, { signal: AbortSignal.timeout(15000) })
+    return r.ok ? true : r.status === 401 ? false : undefined
+  } catch {
+    return undefined
+  }
+}
+
+async function search(q: string): Promise<(Video & { embeddable?: boolean })[]> {
   const out: Video[] = []
   collectVideos(await api('search', { query: q }), out)
-  return out.slice(0, 6)
+  return Promise.all(out.slice(0, 6).map(async (v) => ({ ...v, embeddable: await embeddable(v.id) })))
+}
+
+/** "Start Learning Logic | Part 3" is titled "Start Learning Logic 3 | …" on YouTube. */
+function seriesQuery(title: string): string | undefined {
+  const m = /^Start Learning (\w+) \| Part (\d+)/.exec(title)
+  return m ? `"Start Learning ${m[1] === "Complex" ? "Complex Numbers" : m[1]} ${m[2]}" The Bright Side of Mathematics` : undefined
 }
 
 async function main() {
@@ -137,7 +157,7 @@ async function main() {
         // A video that can't be embedded may have an embeddable re-upload by the same channel.
         const blocked = s.youtube && notEmbeddable.has(s.youtube)
         if (s.youtube && !blocked) continue
-        const q = blocked ? `${s.title.replace(/\|\s*Part\s*/i, '')} ${s.channel || ''} dark version` : s.search || `${s.title} ${s.channel || ''}`
+        const q = blocked ? `${s.title.replace(/\|\s*Part\s*/i, '')} ${s.channel || ''} dark version` : seriesQuery(s.title) || s.search || `${s.title} ${s.channel || ''}`
         report.searches.push({ course, key, index: i, title: s.title, ...(blocked ? { replaces: s.youtube } : {}), query: q, results: (await safe(q, () => search(q))) || [] })
       }
   }

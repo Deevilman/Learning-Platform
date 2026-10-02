@@ -34,7 +34,7 @@ test('progress survives a reload, and export → import restores it in a clean p
 
   // Export
   await page.goto('/#/indstillinger')
-  const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Eksportér (JSON)' }).click()])
+  const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Gem sikkerhedskopi' }).click()])
   const file = await download.path()
   const data = JSON.parse(readFileSync(file!, 'utf8'))
   expect(data.tables.attempts.length).toBe(1)
@@ -44,7 +44,7 @@ test('progress survives a reload, and export → import restores it in a clean p
   const p2 = await ctx.newPage()
   await p2.goto('/#/indstillinger')
   await p2.locator('input[type=file]').setInputFiles(file!)
-  await expect(p2.getByText(/Importeret: \d+ poster/)).toBeVisible()
+  await expect(p2.getByText(/Sikkerhedskopien er hentet/)).toBeVisible()
   await p2.goto('/#/kursus/quant/uge/3')
   await expect(p2.getByRole('checkbox', { name: 'Markér som set' }).first()).toBeChecked()
   await p2.getByRole('tab', { name: /Øvelser/ }).click()
