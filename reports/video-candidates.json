@@ -1,633 +1,508 @@
 {
- "generatedAt": "2026-10-02T20:48:50.611Z",
+ "generatedAt": "2026-10-02T20:51:12.432Z",
  "playlists": {
   "MIT 6.042J Spring 2015": [
    {
     "id": "wIq4CssPoO0",
-    "title": "1.1.1 Welcome to 6.042",
-    "channel": "331K views"
+    "title": "1.1.1 Welcome to 6.042"
    },
    {
     "id": "GyFVgJZ0hIs",
-    "title": "1.1.2 Intro to Proofs: Part 1",
-    "channel": "163K views"
+    "title": "1.1.2 Intro to Proofs: Part 1"
    },
    {
     "id": "wfr4XbR5VP8",
-    "title": "1.1.3 Intro to Proofs: Part 2",
-    "channel": "81K views"
+    "title": "1.1.3 Intro to Proofs: Part 2"
    },
    {
     "id": "CpW0ZJ7i0oc",
-    "title": "1.2.1 Proof by Contradiction",
-    "channel": "122K views"
+    "title": "1.2.1 Proof by Contradiction"
    },
    {
     "id": "vzpFQ3uNyPo",
-    "title": "1.2.3 Proof by Cases",
-    "channel": "42K views"
+    "title": "1.2.3 Proof by Cases"
    },
    {
     "id": "fV3v6qQ3w4A",
-    "title": "1.3.1 Well Ordering Principle 1: Video",
-    "channel": "116K views"
+    "title": "1.3.1 Well Ordering Principle 1: Video"
    },
    {
     "id": "I1HpgnWQI7I",
-    "title": "1.3.3 Well Ordering Principle 2: Video",
-    "channel": "44K views"
+    "title": "1.3.3 Well Ordering Principle 2: Video"
    },
    {
     "id": "hNrtGiCFPGs",
-    "title": "1.3.5 Well Ordering Principle 3: Video",
-    "channel": "34K views"
+    "title": "1.3.5 Well Ordering Principle 3: Video"
    },
    {
     "id": "0exBzsexUoI",
-    "title": "1.4.1 Propositional Operators: Video",
-    "channel": "25K views"
+    "title": "1.4.1 Propositional Operators: Video"
    },
    {
     "id": "eMWG-jTh-GE",
-    "title": "1.4.3 Digital Logic: Video",
-    "channel": "31K views"
+    "title": "1.4.3 Digital Logic: Video"
    },
    {
     "id": "_3WDzxt5p8c",
-    "title": "1.4.4 Truth Tables: Video",
-    "channel": "20K views"
+    "title": "1.4.4 Truth Tables: Video"
    },
    {
     "id": "UroprmQHTLc",
-    "title": "1.5.1 Predicate Logic 1: Video",
-    "channel": "46K views"
+    "title": "1.5.1 Predicate Logic 1: Video"
    },
    {
     "id": "T1AtlGrCoU8",
-    "title": "1.5.2 Predicate Logic 2: Video",
-    "channel": "19K views"
+    "title": "1.5.2 Predicate Logic 2: Video"
    },
    {
     "id": "L5uBeAGJV1k",
-    "title": "1.5.4 Predicate Logic 3: Video",
-    "channel": "13K views"
+    "title": "1.5.4 Predicate Logic 3: Video"
    },
    {
     "id": "KZ7jjLTQ9r4",
-    "title": "1.6.1 Sets Definitions: Video",
-    "channel": "18K views"
+    "title": "1.6.1 Sets Definitions: Video"
    },
    {
     "id": "Mhip1rljvRo",
-    "title": "1.6.2 Sets Operations: Video",
-    "channel": "17K views"
+    "title": "1.6.2 Sets Operations: Video"
    },
    {
     "id": "FkfsmwAtDdY",
-    "title": "1.7.1 Relations: Video",
-    "channel": "18K views"
+    "title": "1.7.1 Relations: Video"
    },
    {
     "id": "gFD1Lp6zK3w",
-    "title": "1.7.3 Relational Mappings: Video",
-    "channel": "11K views"
+    "title": "1.7.3 Relational Mappings: Video"
    },
    {
     "id": "fpy5Hsz5t6E",
-    "title": "1.7.5 Finite Cardinality: Video",
-    "channel": "10K views"
+    "title": "1.7.5 Finite Cardinality: Video"
    },
    {
     "id": "XnV8GAuAqJM",
-    "title": "1.8.1 Induction: Video",
-    "channel": "15K views"
+    "title": "1.8.1 Induction: Video"
    },
    {
     "id": "D3E5CKebKuQ",
-    "title": "1.8.2 Bogus Induction: Video",
-    "channel": "19K views"
+    "title": "1.8.2 Bogus Induction: Video"
    },
    {
     "id": "TUueMeRooBk",
-    "title": "1.8.4 Strong Induction: Video",
-    "channel": "64K views"
+    "title": "1.8.4 Strong Induction: Video"
    },
    {
     "id": "K8ZfzNN1miQ",
-    "title": "1.8.6 WOP vs Induction: Video [optional]",
-    "channel": "8.8K views"
+    "title": "1.8.6 WOP vs Induction: Video [optional]"
    },
    {
     "id": "VuG2JNcRXYg",
-    "title": "1.9.1 State Machines Invariants: Video",
-    "channel": "12K views"
+    "title": "1.9.1 State Machines Invariants: Video"
    },
    {
     "id": "a7JUH-EtHtI",
-    "title": "1.9.3 Derived Variables: Video",
-    "channel": "8K views"
+    "title": "1.9.3 Derived Variables: Video"
    },
    {
     "id": "TXNXT3oBROw",
-    "title": "1.10.1 Recursive Data: Video",
-    "channel": "10K views"
+    "title": "1.10.1 Recursive Data: Video"
    },
    {
     "id": "VWIDwHCGJDQ",
-    "title": "1.10.4 Structural Induction: Video",
-    "channel": "46K views"
+    "title": "1.10.4 Structural Induction: Video"
    },
    {
     "id": "tOsdeaYDCMk",
-    "title": "1.10.7 Recursive Functions: Video",
-    "channel": "9K views"
+    "title": "1.10.7 Recursive Functions: Video"
    },
    {
     "id": "QzSCf62kzjE",
-    "title": "1.11.1 Cardinality: Video",
-    "channel": "8.5K views"
+    "title": "1.11.1 Cardinality: Video"
    },
    {
     "id": "AipSRi3CyLg",
-    "title": "1.11.3 Countable Sets: Video",
-    "channel": "33K views"
+    "title": "1.11.3 Countable Sets: Video"
    },
    {
     "id": "4dj1ogUwTEM",
-    "title": "1.11.4 Cantor's Theorem: Video",
-    "channel": "33K views"
+    "title": "1.11.4 Cantor's Theorem: Video"
    },
    {
     "id": "WQHOImO0pX0",
-    "title": "1.11.7 The Halting Problem: Video [Optional]",
-    "channel": "8.1K views"
+    "title": "1.11.7 The Halting Problem: Video [Optional]"
    },
    {
     "id": "5hETv64GIuE",
-    "title": "1.11.9 Russell's Paradox: Video",
-    "channel": "7.3K views"
+    "title": "1.11.9 Russell's Paradox: Video"
    },
    {
     "id": "zcvsyL7GtH4",
-    "title": "1.11.11 Set Theory Axioms: Video [Optional]",
-    "channel": "22K views"
+    "title": "1.11.11 Set Theory Axioms: Video [Optional]"
    },
    {
     "id": "et3FOZdI6pk",
-    "title": "2.1.1 GCDs & Linear Combinations: Video",
-    "channel": "12K views"
+    "title": "2.1.1 GCDs & Linear Combinations: Video"
    },
    {
     "id": "dW0f62lcCLE",
-    "title": "2.1.2 Euclidean Algorithm: Video",
-    "channel": "11K views"
+    "title": "2.1.2 Euclidean Algorithm: Video"
    },
    {
     "id": "yzKPotFLfsc",
-    "title": "2.1.4 Pulverizer: Video",
-    "channel": "11K views"
+    "title": "2.1.4 Pulverizer: Video"
    },
    {
     "id": "c3qNBNl1h8g",
-    "title": "2.1.6 Revisiting Die Hard: Video",
-    "channel": "5K views"
+    "title": "2.1.6 Revisiting Die Hard: Video"
    },
    {
     "id": "QsKtEuUyIdw",
-    "title": "2.1.7 Prime Factorization: Video",
-    "channel": "7.8K views"
+    "title": "2.1.7 Prime Factorization: Video"
    },
    {
     "id": "KvtLWgCTwn4",
-    "title": "2.2.1 Congruence mod n: Video",
-    "channel": "157K views"
+    "title": "2.2.1 Congruence mod n: Video"
    },
    {
     "id": "CAKSh3M0y8k",
-    "title": "2.2.3 Inverses mod n: Video",
-    "channel": "12K views"
+    "title": "2.2.3 Inverses mod n: Video"
    },
    {
     "id": "TeRYL7kkhqs",
-    "title": "2.3.1 Modular Exponentiation Euler's Function: Video",
-    "channel": "15K views"
+    "title": "2.3.1 Modular Exponentiation Euler's Function: Video"
    },
    {
     "id": "dZgI16nMuqE",
-    "title": "2.3.3 The Ring Z: Video",
-    "channel": "6.9K views"
+    "title": "2.3.3 The Ring Z: Video"
    },
    {
     "id": "ZUZ8VbX1YNQ",
-    "title": "2.4.1 RSA Public Key Encryption: Video",
-    "channel": "50K views"
+    "title": "2.4.1 RSA Public Key Encryption: Video"
    },
    {
     "id": "yWIQCewgfwY",
-    "title": "2.4.3 Reducing Factoring To SAT: Video",
-    "channel": "5.2K views"
+    "title": "2.4.3 Reducing Factoring To SAT: Video"
    },
    {
     "id": "MX-mBxt6huU",
-    "title": "2.5.1 Digraphs: Walks & Paths: Video",
-    "channel": "16K views"
+    "title": "2.5.1 Digraphs: Walks & Paths: Video"
    },
    {
     "id": "QORX1OUabio",
-    "title": "2.5.3 Digraphs: Connected Vertices: Video",
-    "channel": "5.3K views"
+    "title": "2.5.3 Digraphs: Connected Vertices: Video"
    },
    {
     "id": "Sdw8_0RDZuw",
-    "title": "2.6.1 DAGs: Video",
-    "channel": "9.8K views"
+    "title": "2.6.1 DAGs: Video"
    },
    {
     "id": "1TpzSCMLg08",
-    "title": "2.6.3 Scheduling: Video",
-    "channel": "4.7K views"
+    "title": "2.6.3 Scheduling: Video"
    },
    {
     "id": "cUYTlKA8jaw",
-    "title": "2.6.5 Time versus Processors: Video",
-    "channel": "3.7K views"
+    "title": "2.6.5 Time versus Processors: Video"
    },
    {
     "id": "0w9luYcxHrw",
-    "title": "2.7.1 Partial Orders: Video",
-    "channel": "16K views"
+    "title": "2.7.1 Partial Orders: Video"
    },
    {
     "id": "bHvMYZvZp7Y",
-    "title": "2.7.3 Representing Partial Orders As Subset Relations: Video",
-    "channel": "15K views"
+    "title": "2.7.3 Representing Partial Orders As Subset Relations: Video"
    },
    {
     "id": "s-E5T3igntw",
-    "title": "2.7.4 Equivalence Relations: Video",
-    "channel": "6.4K views"
+    "title": "2.7.4 Equivalence Relations: Video"
    },
    {
     "id": "TIpnudrzvgg",
-    "title": "2.8.1 Degree: Video",
-    "channel": "4K views"
+    "title": "2.8.1 Degree: Video"
    },
    {
     "id": "hVerxuP4cFg",
-    "title": "2.8.3 Isomorphism: Video",
-    "channel": "12K views"
+    "title": "2.8.3 Isomorphism: Video"
    },
    {
     "id": "Penh4mv5gAg",
-    "title": "2.9.1 Coloring: Video",
-    "channel": "7.5K views"
+    "title": "2.9.1 Coloring: Video"
    },
    {
     "id": "TIQ3xN38jgM",
-    "title": "2.9.3 Connectivity: Video",
-    "channel": "3.4K views"
+    "title": "2.9.3 Connectivity: Video"
    },
    {
     "id": "5wCZqdCDafc",
-    "title": "2.9.4 k-Connectivity: Video",
-    "channel": "49K views"
+    "title": "2.9.4 k-Connectivity: Video"
    },
    {
     "id": "ZEsk64C0fJg",
-    "title": "2.10.1 Trees: Video",
-    "channel": "5.5K views"
+    "title": "2.10.1 Trees: Video"
    },
    {
     "id": "g2mOvmC1TKc",
-    "title": "2.10.3 Tree Coloring: Video",
-    "channel": "4.5K views"
+    "title": "2.10.3 Tree Coloring: Video"
    },
    {
     "id": "_RqqzyWDVMA",
-    "title": "2.10.5 Spanning Trees: Video",
-    "channel": "5.7K views"
+    "title": "2.10.5 Spanning Trees: Video"
    },
    {
     "id": "RE5PmdGNgj0",
-    "title": "2.11.1 Stable Matching: Video",
-    "channel": "57K views"
+    "title": "2.11.1 Stable Matching: Video"
    },
    {
     "id": "6vgHIImFwHo",
-    "title": "2.11.2 Matching Ritual: Video",
-    "channel": "9.3K views"
+    "title": "2.11.2 Matching Ritual: Video"
    },
    {
     "id": "n4KKgKpp--0",
-    "title": "2.11.5 Optimal Stable Matching: Video",
-    "channel": "8.5K views"
+    "title": "2.11.5 Optimal Stable Matching: Video"
    },
    {
     "id": "HZLKDC9OSaQ",
-    "title": "2.11.7 Bipartite Matching",
-    "channel": "45K views"
+    "title": "2.11.7 Bipartite Matching"
    },
    {
     "id": "i5AWE-OoOsY",
-    "title": "2.11.9 Hall's Theorem",
-    "channel": "41K views"
+    "title": "2.11.9 Hall's Theorem"
    },
    {
     "id": "v6axtBS6IF8",
-    "title": "3.1.1 Arithmetic Sums: Video",
-    "channel": "5.6K views"
+    "title": "3.1.1 Arithmetic Sums: Video"
    },
    {
     "id": "ZDQk45NQbEo",
-    "title": "3.1.3 Geometric Sums: Video",
-    "channel": "3.8K views"
+    "title": "3.1.3 Geometric Sums: Video"
    },
    {
     "id": "CdhuVhWTSMI",
-    "title": "3.1.5 Book Stacking: Video",
-    "channel": "13K views"
+    "title": "3.1.5 Book Stacking: Video"
    },
    {
     "id": "EegG5TPL29c",
-    "title": "3.1.7 Integral Method: Video",
-    "channel": "4.1K views"
+    "title": "3.1.7 Integral Method: Video"
    },
    {
     "id": "lU_QT5GSuxI",
-    "title": "3.1.9 Stirling's Formula: Video",
-    "channel": "22K views"
+    "title": "3.1.9 Stirling's Formula: Video"
    },
    {
     "id": "CWkh5kb4TGc",
-    "title": "3.2.1 Asymptotic Notation: Video",
-    "channel": "12K views"
+    "title": "3.2.1 Asymptotic Notation: Video"
    },
    {
     "id": "HeyEK0TWiBw",
-    "title": "3.2.3 Asymptotic Properties: Video",
-    "channel": "5.7K views"
+    "title": "3.2.3 Asymptotic Properties: Video"
    },
    {
     "id": "Y9Blo_G-Mvg",
-    "title": "3.2.6 Asymptotic Blunders",
-    "channel": "3.5K views"
+    "title": "3.2.6 Asymptotic Blunders"
    },
    {
     "id": "yTrtVwKZkwU",
-    "title": "3.3.1 Sum And Product Rules: Video",
-    "channel": "10K views"
+    "title": "3.3.1 Sum And Product Rules: Video"
    },
    {
     "id": "n0lce1dMAh8",
-    "title": "3.3.3 Counting with Bijections: Video",
-    "channel": "20K views"
+    "title": "3.3.3 Counting with Bijections: Video"
    },
    {
     "id": "iDfyX8WRIyM",
-    "title": "3.4.1 Generalized Counting Rules: Video",
-    "channel": "5.5K views"
+    "title": "3.4.1 Generalized Counting Rules: Video"
    },
    {
     "id": "HswnmlLPGZ4",
-    "title": "3.4.3 Two Pair Poker Hands: Video",
-    "channel": "5.6K views"
+    "title": "3.4.3 Two Pair Poker Hands: Video"
    },
    {
     "id": "jwjDj4GoSV0",
-    "title": "3.4.4 Binomial Theorem: Video",
-    "channel": "5.7K views"
+    "title": "3.4.4 Binomial Theorem: Video"
    },
    {
     "id": "juGgfHsO-xM",
-    "title": "3.4.5 Multinomial Theorem: Video",
-    "channel": "45K views"
+    "title": "3.4.5 Multinomial Theorem: Video"
    },
    {
     "id": "4Dz4vNUxnZM",
-    "title": "3.5.1 The Pigeonhole Principle: Video",
-    "channel": "55K views"
+    "title": "3.5.1 The Pigeonhole Principle: Video"
    },
    {
     "id": "51-b2mgZVNY",
-    "title": "3.5.3 Inclusion-Exclusion Example: Video",
-    "channel": "113K views"
+    "title": "3.5.3 Inclusion-Exclusion Example: Video"
    },
    {
     "id": "nwpzBE9IwJQ",
-    "title": "3.5.4 Inclusion-Exclusion 2 Sets: Video",
-    "channel": "14K views"
+    "title": "3.5.4 Inclusion-Exclusion 2 Sets: Video"
    },
    {
     "id": "dEsFEK4vnV4",
-    "title": "4.1.1 Tree Model: Video",
-    "channel": "9.1K views"
+    "title": "4.1.1 Tree Model: Video"
    },
    {
     "id": "L30HPgryd6I",
-    "title": "4.1.3 Simplified Monty Hall Tree: Video",
-    "channel": "8.7K views"
+    "title": "4.1.3 Simplified Monty Hall Tree: Video"
    },
    {
     "id": "Amd_bNYzgUw",
-    "title": "4.1.5 Sample Spaces: Video",
-    "channel": "3.4K views"
+    "title": "4.1.5 Sample Spaces: Video"
    },
    {
     "id": "Cu9_LaaWgHo",
-    "title": "4.2.1 Conditional Probability Definitions: Video",
-    "channel": "5.5K views"
+    "title": "4.2.1 Conditional Probability Definitions: Video"
    },
    {
     "id": "F3y8qupFfUs",
-    "title": "4.2.3 Law of Total Probability: Video",
-    "channel": "29K views"
+    "title": "4.2.3 Law of Total Probability: Video"
    },
    {
     "id": "e-yQFC6dACA",
-    "title": "4.2.5 Bayes' Theorem: Video",
-    "channel": "7.1K views"
+    "title": "4.2.5 Bayes' Theorem: Video"
    },
    {
     "id": "BEAv82FinM0",
-    "title": "4.2.7 Monty Hall Problem: Video",
-    "channel": "3.5K views"
+    "title": "4.2.7 Monty Hall Problem: Video"
    },
    {
     "id": "1vQ2x5O_xqk",
-    "title": "4.3.1 Independence: Video",
-    "channel": "2.8K views"
+    "title": "4.3.1 Independence: Video"
    },
    {
     "id": "wJzBU7Do1ls",
-    "title": "4.3.3 Mutual Independence: Video",
-    "channel": "4.6K views"
+    "title": "4.3.3 Mutual Independence: Video"
    },
    {
     "id": "BH4qlkYCLW0",
-    "title": "4.4.1 Bigger Number Game: Video",
-    "channel": "3K views"
+    "title": "4.4.1 Bigger Number Game: Video"
    },
    {
     "id": "VJzv6WJTtNc",
-    "title": "4.4.2 Random Variables: Independence: Video",
-    "channel": "3.1K views"
+    "title": "4.4.2 Random Variables: Independence: Video"
    },
    {
     "id": "L2yOSFsMvnc",
-    "title": "4.4.4 Random Variables: Uniform & Binomial: Video",
-    "channel": "3.5K views"
+    "title": "4.4.4 Random Variables: Uniform & Binomial: Video"
    },
    {
     "id": "YVQdVzSkcmQ",
-    "title": "4.5.1 Expectation: Video",
-    "channel": "3.4K views"
+    "title": "4.5.1 Expectation: Video"
    },
    {
     "id": "D9l-pIg1Ayo",
-    "title": "4.5.3 Expected Number Of Heads: Video",
-    "channel": "4.2K views"
+    "title": "4.5.3 Expected Number Of Heads: Video"
    },
    {
     "id": "mqoDXWrSais",
-    "title": "4.5.5 Total Expectation: Video",
-    "channel": "7.6K views"
+    "title": "4.5.5 Total Expectation: Video"
    },
    {
     "id": "Dqx56lZ_icg",
-    "title": "4.5.7 Mean Time to Failure: Video",
-    "channel": "11K views"
+    "title": "4.5.7 Mean Time to Failure: Video"
    },
    {
     "id": "KFcodn4qfrQ",
-    "title": "4.5.9 Linearity of Expectation: Video",
-    "channel": "31K views"
+    "title": "4.5.9 Linearity of Expectation: Video"
    }
   ],
   "MIT 18.404J Fall 2020": [
    {
     "id": "9syvZr-9xwk",
-    "title": "1. Introduction, Finite Automata, Regular Expressions",
-    "channel": "608K views"
+    "title": "1. Introduction, Finite Automata, Regular Expressions"
    },
    {
     "id": "oNsscmUwjMU",
-    "title": "2. Nondeterminism, Closure Properties, Conversion of Regular Expressions to FA",
-    "channel": "161K views"
+    "title": "2. Nondeterminism, Closure Properties, Conversion of Regular Expressions to FA"
    },
    {
     "id": "KAySmSEGc9U",
-    "title": "3. Regular Pumping Lemma, Conversion of FA to Regular Expressions",
-    "channel": "128K views"
+    "title": "3. Regular Pumping Lemma, Conversion of FA to Regular Expressions"
    },
    {
     "id": "m9eHViDPAJQ",
-    "title": "4. Pushdown Automata, Conversion of CFG to PDA and Reverse Conversion",
-    "channel": "126K views"
+    "title": "4. Pushdown Automata, Conversion of CFG to PDA and Reverse Conversion"
    },
    {
     "id": "IycOPFmEQk8",
-    "title": "5. CF Pumping Lemma, Turing Machines",
-    "channel": "96K views"
+    "title": "5. CF Pumping Lemma, Turing Machines"
    },
    {
     "id": "TTArY7ojshU",
-    "title": "6. TM Variants, Church-Turing Thesis",
-    "channel": "76K views"
+    "title": "6. TM Variants, Church-Turing Thesis"
    },
    {
     "id": "4MgN6uxd4i4",
-    "title": "7. Decision Problems for Automata and Grammars",
-    "channel": "59K views"
+    "title": "7. Decision Problems for Automata and Grammars"
    },
    {
     "id": "3PzuSPQPEU4",
-    "title": "8. Undecidability",
-    "channel": "65K views"
+    "title": "8. Undecidability"
    },
    {
     "id": "N28g_YBXY8Y",
-    "title": "9. Reducibility",
-    "channel": "69K views"
+    "title": "9. Reducibility"
    },
    {
     "id": "MGqoLm2aAgc",
-    "title": "10. Computation History Method",
-    "channel": "27K views"
+    "title": "10. Computation History Method"
    },
    {
     "id": "N-_XmLanPYg",
-    "title": "11. Recursion Theorem and Logic",
-    "channel": "27K views"
+    "title": "11. Recursion Theorem and Logic"
    },
    {
     "id": "asjAc90L8rE",
-    "title": "12. Time Complexity",
-    "channel": "48K views"
+    "title": "12. Time Complexity"
    },
    {
     "id": "1VhnDdQsELo",
-    "title": "14. P and NP, SAT, Poly-Time Reducibility",
-    "channel": "44K views"
+    "title": "14. P and NP, SAT, Poly-Time Reducibility"
    },
    {
     "id": "iZPzBHGDsWI",
-    "title": "15. NP-Completeness",
-    "channel": "39K views"
+    "title": "15. NP-Completeness"
    },
    {
     "id": "6Az1gtDRaAU",
-    "title": "16. Cook-Levin Theorem",
-    "channel": "31K views"
+    "title": "16. Cook-Levin Theorem"
    },
    {
     "id": "cT_qwkTigv4",
-    "title": "17. Space Complexity, PSPACE, Savitch's Theorem",
-    "channel": "23K views"
+    "title": "17. Space Complexity, PSPACE, Savitch's Theorem"
    },
    {
     "id": "aVv9WXwW95w",
-    "title": "18. PSPACE-Completeness",
-    "channel": "14K views"
+    "title": "18. PSPACE-Completeness"
    },
    {
     "id": "4dFPVJrNLDs",
-    "title": "19. Games, Generalized Geography",
-    "channel": "12K views"
+    "title": "19. Games, Generalized Geography"
    },
    {
     "id": "q3xvno_KgRY",
-    "title": "20. L and NL, NL = coNL",
-    "channel": "15K views"
+    "title": "20. L and NL, NL = coNL"
    },
    {
     "id": "vqFRAWeEcUs",
-    "title": "21. Hierarchy Theorems",
-    "channel": "13K views"
+    "title": "21. Hierarchy Theorems"
    },
    {
     "id": "N32bnUliSzo",
-    "title": "22. Provably Intractable Problems, Oracles",
-    "channel": "8.4K views"
+    "title": "22. Provably Intractable Problems, Oracles"
    },
    {
     "id": "Vp_AzDGQyrA",
-    "title": "23. Probabilistic Computation, BPP",
-    "channel": "11K views"
+    "title": "23. Probabilistic Computation, BPP"
    },
    {
     "id": "7J1HD9rqEB4",
-    "title": "24. Probabilistic Computation (cont.)",
-    "channel": "8.6K views"
+    "title": "24. Probabilistic Computation (cont.)"
    },
    {
     "id": "TSI3LR5WZmo",
-    "title": "25. Interactive Proof Systems, IP",
-    "channel": "10K views"
+    "title": "25. Interactive Proof Systems, IP"
    },
    {
     "id": "eEXSv0jChO4",
-    "title": "26. coNP is a subset of IP",
-    "channel": "7.5K views"
+    "title": "26. coNP is a subset of IP"
    }
   ],
   "Oxford 3rd year lectures": [
@@ -870,103 +745,83 @@
   "Milewski Category Theory": [
    {
     "id": "I8LbkfSSR58",
-    "title": "Category Theory 1.1: Motivation and Philosophy",
-    "channel": "391K views"
+    "title": "Category Theory 1.1: Motivation and Philosophy"
    },
    {
     "id": "p54Hd7AmVFU",
-    "title": "Category Theory 1.2: What is a category?",
-    "channel": "287K views"
+    "title": "Category Theory 1.2: What is a category?"
    },
    {
     "id": "O2lZkr-aAqk",
-    "title": "Category Theory 2.1: Functions, epimorphisms",
-    "channel": "146K views"
+    "title": "Category Theory 2.1: Functions, epimorphisms"
    },
    {
     "id": "NcT7CGPICzo",
-    "title": "Category Theory 2.2: Monomorphisms, simple types",
-    "channel": "88K views"
+    "title": "Category Theory 2.2: Monomorphisms, simple types"
    },
    {
     "id": "aZjhqkD6k6w",
-    "title": "Category Theory 3.1: Examples of categories, orders, monoids",
-    "channel": "94K views"
+    "title": "Category Theory 3.1: Examples of categories, orders, monoids"
    },
    {
     "id": "i9CU4CuHADQ",
-    "title": "Category Theory 3.2: Kleisli category",
-    "channel": "75K views"
+    "title": "Category Theory 3.2: Kleisli category"
    },
    {
     "id": "zer1aFgj4aU",
-    "title": "Category Theory 4.1: Terminal and initial objects",
-    "channel": "68K views"
+    "title": "Category Theory 4.1: Terminal and initial objects"
    },
    {
     "id": "Bsdl_NKbNnU",
-    "title": "Category Theory 4.2: Products",
-    "channel": "53K views"
+    "title": "Category Theory 4.2: Products"
    },
    {
     "id": "LkIRsNj9T-8",
-    "title": "Category Theory 5.1: Coproducts, sum types",
-    "channel": "44K views"
+    "title": "Category Theory 5.1: Coproducts, sum types"
    },
    {
     "id": "w1WMykh7AxA",
-    "title": "Category Theory 5.2: Algebraic data types",
-    "channel": "43K views"
+    "title": "Category Theory 5.2: Algebraic data types"
    },
    {
     "id": "FyoQjkwsy7o",
-    "title": "Category Theory 6.1: Functors",
-    "channel": "65K views"
+    "title": "Category Theory 6.1: Functors"
    },
    {
     "id": "EO86S2EZssc",
-    "title": "Category Theory 6.2: Functors in programming",
-    "channel": "45K views"
+    "title": "Category Theory 6.2: Functors in programming"
    },
    {
     "id": "pUQ0mmbIdxs",
-    "title": "Category Theory 7.1: Functoriality, bifunctors",
-    "channel": "47K views"
+    "title": "Category Theory 7.1: Functoriality, bifunctors"
    },
    {
     "id": "wtIKd8AhJOc",
-    "title": "Category Theory 7.2: Monoidal Categories, Functoriality of ADTs, Profunctors",
-    "channel": "40K views"
+    "title": "Category Theory 7.2: Monoidal Categories, Functoriality of ADTs, Profunctors"
    },
    {
     "id": "REqRzMI26Nw",
-    "title": "Category Theory 8.1: Function objects, exponentials",
-    "channel": "31K views"
+    "title": "Category Theory 8.1: Function objects, exponentials"
    },
    {
     "id": "iXZR1v3YN-8",
-    "title": "Category Theory 8.2: Type algebra, Curry-Howard-Lambek isomorphism",
-    "channel": "24K views"
+    "title": "Category Theory 8.2: Type algebra, Curry-Howard-Lambek isomorphism"
    },
    {
     "id": "2LJC-XD5Ffo",
-    "title": "Category Theory 9.1: Natural transformations",
-    "channel": "38K views"
+    "title": "Category Theory 9.1: Natural transformations"
    },
    {
     "id": "wrpxBXXgLCI",
-    "title": "Category Theory 9.2: bicategories",
-    "channel": "24K views"
+    "title": "Category Theory 9.2: bicategories"
    },
    {
     "id": "gHiyzctYqZ0",
-    "title": "Category Theory 10.1: Monads",
-    "channel": "70K views"
+    "title": "Category Theory 10.1: Monads"
    },
    {
     "id": "GmgoPd7VQ9Q",
-    "title": "Category Theory 10.2: Monoid in the category of endofunctors",
-    "channel": "31K views"
+    "title": "Category Theory 10.2: Monoid in the category of endofunctors"
    }
   ]
  },
@@ -1004,14 +859,14 @@
      "embeddable": true
     },
     {
-     "id": "DU4wKBDm2Z4",
-     "title": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction",
+     "id": "aidZPdDR-q4",
+     "title": "Start Learning Reals 2 | Completeness Axiom [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "aidZPdDR-q4",
-     "title": "Start Learning Reals 2 | Completeness Axiom [dark version]",
+     "id": "DU4wKBDm2Z4",
+     "title": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1025,14 +880,14 @@
    "query": "\"Start Learning Logic 3\" The Bright Side of Mathematics",
    "results": [
     {
-     "id": "DU4wKBDm2Z4",
-     "title": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction",
+     "id": "AjdIPOXRgoQ",
+     "title": "Start Learning Logic 2 | Disjunction, Tautology and Logical Equivalence",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "AjdIPOXRgoQ",
-     "title": "Start Learning Logic 2 | Disjunction, Tautology and Logical Equivalence",
+     "id": "DU4wKBDm2Z4",
+     "title": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
@@ -1099,26 +954,26 @@
      "embeddable": false
     },
     {
-     "id": "iTZfATpm0Yk",
-     "title": "Everything You Need To Know About Set Theory | All-in-One Video",
-     "channel": "Brain Station Advanced",
-     "embeddable": true
-    },
-    {
-     "id": "6ZSKwJgXLP4",
-     "title": "Start Learning Sets 4 | Cartesian Product and Maps [dark version]",
+     "id": "8Lj3CT1ZjJg",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets [dark version]",
      "channel": "The Bright Side of Mathematics",
-     "embeddable": true
+     "embeddable": false
     },
     {
-     "id": "5ZhNmKb-dqk",
-     "title": "Set Theory | All-in-One Video",
-     "channel": "Dr. Will Wood",
-     "embeddable": true
+     "id": "_oGe5xHKLUc",
+     "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory) [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
     },
     {
-     "id": "NiJ1yWKM9CU",
-     "title": "Start Learning Sets 7 | Composition of Maps",
+     "id": "6CLX6vQipd0",
+     "title": "Element Symbol [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
+    },
+    {
+     "id": "X6MNPKEJbt4",
+     "title": "Algebra 23 | First Isomorphism Theorem [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1155,6 +1010,18 @@
      "title": "Start Learning Sets 1 | Overview and Element Relation [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
+    },
+    {
+     "id": "aidZPdDR-q4",
+     "title": "Start Learning Reals 2 | Completeness Axiom [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
+    },
+    {
+     "id": "ivNyTmVgURg",
+     "title": "What is a Subset?",
+     "channel": "MathsByAli",
+     "embeddable": true
     }
    ]
   },
@@ -1172,14 +1039,14 @@
      "embeddable": false
     },
     {
-     "id": "JoLDwNh1lZ8",
-     "title": "Start Learning Sets 4 | Cartesian Product and Maps",
+     "id": "8Lj3CT1ZjJg",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "8Lj3CT1ZjJg",
-     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets [dark version]",
+     "id": "JoLDwNh1lZ8",
+     "title": "Start Learning Sets 4 | Cartesian Product and Maps",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
@@ -1230,10 +1097,10 @@
      "embeddable": false
     },
     {
-     "id": "6ZSKwJgXLP4",
-     "title": "Start Learning Sets 4 | Cartesian Product and Maps [dark version]",
+     "id": "JoLDwNh1lZ8",
+     "title": "Start Learning Sets 4 | Cartesian Product and Maps",
      "channel": "The Bright Side of Mathematics",
-     "embeddable": true
+     "embeddable": false
     },
     {
      "id": "yIdECC6QExY",
@@ -1257,14 +1124,14 @@
      "embeddable": false
     },
     {
-     "id": "twBYYTJdcjc",
-     "title": "Start Learning Sets 5 | Range, Image and Preimage",
+     "id": "yIdECC6QExY",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "yIdECC6QExY",
-     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets",
+     "id": "twBYYTJdcjc",
+     "title": "Start Learning Sets 5 | Range, Image and Preimage",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
@@ -1275,14 +1142,14 @@
      "embeddable": false
     },
     {
-     "id": "kQC-g7Ry-Wo",
-     "title": "Start Learning Sets 5 | Range, Image and Preimage [dark version]",
+     "id": "SpXHqrMGb0Y",
+     "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory)",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "SpXHqrMGb0Y",
-     "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory)",
+     "id": "kQC-g7Ry-Wo",
+     "title": "Start Learning Sets 5 | Range, Image and Preimage [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1355,26 +1222,26 @@
      "embeddable": false
     },
     {
-     "id": "W1wITJIu0SI",
-     "title": "Start Learning Numbers 4 | Natural Numbers (Ordering) [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
      "id": "6MPcEl-1vHQ",
      "title": "Natural Numbers [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": true
     },
     {
-     "id": "3Js5X1jiPA8",
-     "title": "Start Learning Numbers 11 | Rational Numbers (Ordering) [dark version]",
+     "id": "9BJk76oDnYI",
+     "title": "Start Learning Numbers 5 | Natural Numbers (Multiplication) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "1F5nAc4qe68",
-     "title": "Start Learning Numbers 2 | Natural Numbers (Successor Map and Addition) [dark version]",
+     "id": "ipc7nagpN3w",
+     "title": "Start Learning Numbers 10 | Rational Numbers (Addition and Multiplication) [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
+    },
+    {
+     "id": "3Js5X1jiPA8",
+     "title": "Start Learning Numbers 11 | Rational Numbers (Ordering) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1407,16 +1274,16 @@
      "embeddable": false
     },
     {
-     "id": "_oGe5xHKLUc",
-     "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory) [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
      "id": "6MPcEl-1vHQ",
      "title": "Natural Numbers [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": true
+    },
+    {
+     "id": "_oGe5xHKLUc",
+     "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory) [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
     },
     {
      "id": "pJc_r0K24zU",
@@ -1464,9 +1331,9 @@
      "embeddable": false
     },
     {
-     "id": "S9LIhis7p5E",
-     "title": "Associativity of Addition Operation on the Natural Numbers",
-     "channel": "Mike, the Mathematician",
+     "id": "GpSIeBjaUvk",
+     "title": "Prove by mathematical induction || P(n) || P(k) || P(k+1)",
+     "channel": "Instructor Alison Academy",
      "embeddable": true
     }
    ]
@@ -1492,10 +1359,10 @@
      "embeddable": false
     },
     {
-     "id": "6MPcEl-1vHQ",
-     "title": "Natural Numbers [dark version]",
+     "id": "9BJk76oDnYI",
+     "title": "Start Learning Numbers 5 | Natural Numbers (Multiplication) [dark version]",
      "channel": "The Bright Side of Mathematics",
-     "embeddable": true
+     "embeddable": false
     },
     {
      "id": "_oGe5xHKLUc",
@@ -1510,8 +1377,8 @@
      "embeddable": false
     },
     {
-     "id": "90nQgffyt78",
-     "title": "Start Learning Reals 4 | Construction [dark version]",
+     "id": "1F5nAc4qe68",
+     "title": "Start Learning Numbers 2 | Natural Numbers (Successor Map and Addition) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1544,6 +1411,12 @@
      "embeddable": false
     },
     {
+     "id": "6MPcEl-1vHQ",
+     "title": "Natural Numbers [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": true
+    },
+    {
      "id": "_oGe5xHKLUc",
      "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory) [dark version]",
      "channel": "The Bright Side of Mathematics",
@@ -1554,12 +1427,6 @@
      "title": "Start Learning Numbers 10 | Rational Numbers (Addition and Multiplication) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
-    },
-    {
-     "id": "6MPcEl-1vHQ",
-     "title": "Natural Numbers [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": true
     }
    ]
   },
@@ -1577,8 +1444,8 @@
      "embeddable": false
     },
     {
-     "id": "bGP0wgMlM3M",
-     "title": "Start Learning Numbers 7 | Integers (Addition and Inverses)",
+     "id": "9BJk76oDnYI",
+     "title": "Start Learning Numbers 5 | Natural Numbers (Multiplication) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
@@ -1589,8 +1456,8 @@
      "embeddable": false
     },
     {
-     "id": "9BJk76oDnYI",
-     "title": "Start Learning Numbers 5 | Natural Numbers (Multiplication) [dark version]",
+     "id": "bGP0wgMlM3M",
+     "title": "Start Learning Numbers 7 | Integers (Addition and Inverses)",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
@@ -1641,16 +1508,16 @@
      "embeddable": false
     },
     {
-     "id": "ZjhoVgkK3hw",
-     "title": "Integers",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
      "id": "eHP9M6nMh0k",
      "title": "Adding Integers:  Using Rules & Integer Chips | 7.NS.A.1 💚",
      "channel": "The Magic Of Math",
      "embeddable": true
+    },
+    {
+     "id": "ZjhoVgkK3hw",
+     "title": "Integers",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
     }
    ]
   },
@@ -1675,15 +1542,21 @@
      "embeddable": false
     },
     {
-     "id": "bGP0wgMlM3M",
-     "title": "Start Learning Numbers 7 | Integers (Addition and Inverses)",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
+     "id": "u69pYSdwugo",
+     "title": "Integers Song: With Introduction to Absolute Value",
+     "channel": "Numberock",
+     "embeddable": true
     },
     {
-     "id": "O6bRgxVRoZ4",
-     "title": "How to Add, Subtract, Multiply, and Divide Integers | A Review of Integers | Math with Mr. J",
-     "channel": "Math with Mr. J",
+     "id": "e68-XmjEGvk",
+     "title": "Human Calculator Solves World’s Longest Math Problem #shorts",
+     "channel": "zhc",
+     "embeddable": true
+    },
+    {
+     "id": "pJc_r0K24zU",
+     "title": "Start Learning Numbers 7 | Integers (Addition and Inverses) [dark version]",
+     "channel": "The Bright Side of Mathematics",
      "embeddable": true
     },
     {
@@ -1691,12 +1564,6 @@
      "title": "Start Learning Numbers 5 | Natural Numbers (Multiplication) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
-    },
-    {
-     "id": "pJc_r0K24zU",
-     "title": "Start Learning Numbers 7 | Integers (Addition and Inverses) [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": true
     }
    ]
   },
@@ -1708,26 +1575,8 @@
    "query": "\"Start Learning Numbers 9\" The Bright Side of Mathematics",
    "results": [
     {
-     "id": "F-jFRoxAUH0",
-     "title": "Start Learning Numbers 8 | Integers (Multiplication) [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
      "id": "TTHJmm_vaBE",
      "title": "Start Learning Numbers 11 | Rational Numbers (Ordering)",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
-     "id": "xVEJPDVaQ8s",
-     "title": "Start Learning Numbers 4 | Natural Numbers (Ordering)",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
-     "id": "jam6_3trtyI",
-     "title": "Start Learning Numbers 10 | Rational Numbers (Addition and Multiplication)",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
@@ -1738,8 +1587,26 @@
      "embeddable": false
     },
     {
+     "id": "F-jFRoxAUH0",
+     "title": "Start Learning Numbers 8 | Integers (Multiplication) [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
+    },
+    {
+     "id": "xVEJPDVaQ8s",
+     "title": "Start Learning Numbers 4 | Natural Numbers (Ordering)",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
+    },
+    {
      "id": "SpXHqrMGb0Y",
      "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory)",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
+    },
+    {
+     "id": "jam6_3trtyI",
+     "title": "Start Learning Numbers 10 | Rational Numbers (Addition and Multiplication)",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1772,16 +1639,16 @@
      "embeddable": false
     },
     {
-     "id": "F-jFRoxAUH0",
-     "title": "Start Learning Numbers 8 | Integers (Multiplication) [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
      "id": "pJc_r0K24zU",
      "title": "Start Learning Numbers 7 | Integers (Addition and Inverses) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": true
+    },
+    {
+     "id": "F-jFRoxAUH0",
+     "title": "Start Learning Numbers 8 | Integers (Multiplication) [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
     },
     {
      "id": "TTHJmm_vaBE",
@@ -1824,14 +1691,14 @@
      "embeddable": false
     },
     {
-     "id": "F-jFRoxAUH0",
-     "title": "Start Learning Numbers 8 | Integers (Multiplication) [dark version]",
+     "id": "_oGe5xHKLUc",
+     "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "_oGe5xHKLUc",
-     "title": "Start Learning Numbers 1 | Natural Numbers (in Set Theory) [dark version]",
+     "id": "F-jFRoxAUH0",
+     "title": "Start Learning Numbers 8 | Integers (Multiplication) [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1870,14 +1737,14 @@
      "embeddable": false
     },
     {
-     "id": "bBkz_mNy6O4",
-     "title": "Start Learning Complex Numbers 1 | Introduction [dark version]",
+     "id": "PFk9NbnHMVk",
+     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "PFk9NbnHMVk",
-     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
+     "id": "bBkz_mNy6O4",
+     "title": "Start Learning Complex Numbers 1 | Introduction [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -1949,22 +1816,22 @@
      "embeddable": false
     },
     {
-     "id": "W1wITJIu0SI",
-     "title": "Start Learning Numbers 4 | Natural Numbers (Ordering) [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
      "id": "aidZPdDR-q4",
      "title": "Start Learning Reals 2 | Completeness Axiom [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
     {
-     "id": "kdmBkmWVo2Y",
-     "title": "Real Analysis 7 | Cauchy Sequences and Completeness [dark version]",
+     "id": "5HqewhNkNWY",
+     "title": "Start Learning Reals 1 | Cauchy Sequences [dark version]",
      "channel": "The Bright Side of Mathematics",
-     "embeddable": true
+     "embeddable": false
+    },
+    {
+     "id": "PFk9NbnHMVk",
+     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
     },
     {
      "id": "3olS8tyoQEE",
@@ -1995,14 +1862,8 @@
      "embeddable": false
     },
     {
-     "id": "PFk9NbnHMVk",
-     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
-     "id": "90nQgffyt78",
-     "title": "Start Learning Reals 4 | Construction [dark version]",
+     "id": "xHwlUvghzTA",
+     "title": "Real Analysis 2 | Sequences and Limits [dark version]",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     },
@@ -2013,8 +1874,14 @@
      "embeddable": false
     },
     {
-     "id": "O5DnbFd426s",
-     "title": "Real Analysis 1 | Introduction [dark version]",
+     "id": "90nQgffyt78",
+     "title": "Start Learning Reals 4 | Construction [dark version]",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": false
+    },
+    {
+     "id": "3olS8tyoQEE",
+     "title": "Start Learning Reals 1 | Cauchy Sequences",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
     }
@@ -2035,12 +1902,6 @@
      "embeddable": false
     },
     {
-     "id": "bZSYcIJBMqE",
-     "title": "Start Learning Complex Numbers 1 | Introduction",
-     "channel": "The Bright Side of Mathematics",
-     "embeddable": false
-    },
-    {
      "id": "PFk9NbnHMVk",
      "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
      "channel": "The Bright Side of Mathematics",
@@ -2053,10 +1914,16 @@
      "embeddable": false
     },
     {
-     "id": "dEu5ie25U0Y",
-     "title": "Complex Analysis 1 | Introduction",
+     "id": "bZSYcIJBMqE",
+     "title": "Start Learning Complex Numbers 1 | Introduction",
      "channel": "The Bright Side of Mathematics",
      "embeddable": false
+    },
+    {
+     "id": "N-X1EU7tHVo",
+     "title": "Start Learning Mathematics - Introduction to the Course",
+     "channel": "The Bright Side of Mathematics",
+     "embeddable": true
     },
     {
      "id": "O5DnbFd426s",
@@ -2089,59 +1956,26 @@
   },
   {
    "course": "foundations",
-   "key": "7.2",
-   "index": 0,
-   "title": "P2: videoerne om binære relationer og funktioner (binary relations/functions) — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.",
-   "query": "P2: videoerne om binære relationer og funktioner  — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.",
-   "results": [
-    {
-     "id": "bZred_Ksz2k",
-     "title": "INJEKTIVE, SURJEKTIVE OG BIJEKTIVE FUNKTIONER - DISKRETE MATEMATIK",
-     "channel": "TrevTutor",
-     "embeddable": true
-    },
-    {
-     "id": "_2FUt2zEYd4",
-     "title": "Relations, Functions, Injections, Surjections, & Bijections",
-     "channel": "Adam Glesser",
-     "embeddable": true
-    },
-    {
-     "id": "nOTBPOwUTVM",
-     "title": "Functions: Injections, Surjections, and  Bijections",
-     "channel": "Luay Nakhleh",
-     "embeddable": true
-    },
-    {
-     "id": "Z8tQfbrWFjo",
-     "title": "Injektive funktioner",
-     "channel": "Matematik EUC Nord HHX",
-     "embeddable": true
-    },
-    {
-     "id": "YBGJ8BzmgRY",
-     "title": "Bijectivity: Surjective and Injective Functions",
-     "channel": "Infinium",
-     "embeddable": true
-    },
-    {
-     "id": "XoEc_KbKJKM",
-     "title": "Section 4.4 (part 5) - relationships between injective/surjective/bijective and left/right inverses",
-     "channel": "Pete Kosek",
-     "embeddable": true
-    }
-   ]
-  },
-  {
-   "course": "foundations",
    "key": "9.1",
    "index": 0,
    "title": "first-order logic syntax semantics lecture",
    "query": "first-order logic syntax semantics lecture",
    "results": [
     {
+     "id": "dpDYPU6E5nY",
+     "title": "First Order Logic-Predicate Logic-Artificial Intelligence-Logical Reasoning-Unit-2-15A05606",
+     "channel": "D Sumathi",
+     "embeddable": true
+    },
+    {
      "id": "Z-O0Q3_oTJM",
      "title": "Logic 7 - First Order Logic | Stanford CS221: AI (Autumn 2021)",
+     "channel": "Stanford Online",
+     "embeddable": false
+    },
+    {
+     "id": "_Iz83hfkFds",
+     "title": "Logic 2 - First-order Logic | Stanford CS221: AI (Autumn 2019)",
      "channel": "Stanford Online",
      "embeddable": false
     },
@@ -2152,8 +1986,8 @@
      "embeddable": true
     },
     {
-     "id": "_Iz83hfkFds",
-     "title": "Logic 2 - First-order Logic | Stanford CS221: AI (Autumn 2019)",
+     "id": "xL0kNw5TudI",
+     "title": "Logic 1 - Propositional Logic | Stanford CS221: AI (Autumn 2019)",
      "channel": "Stanford Online",
      "embeddable": false
     },
@@ -2161,18 +1995,6 @@
      "id": "ARywou8HLQk",
      "title": "Introduction to First Order Logic",
      "channel": "Neso Academy",
-     "embeddable": true
-    },
-    {
-     "id": "RVST8Aqt1bU",
-     "title": "Mathematical Logic  – First Order Logic: Syntax",
-     "channel": "Jan Reimann",
-     "embeddable": true
-    },
-    {
-     "id": "0Z8CMWrthEU",
-     "title": "Lecture 7: First Order Logic - Reasoning",
-     "channel": "URBS-Lab with Ryan Urbanowicz",
      "embeddable": true
     }
    ]
@@ -2203,15 +2025,15 @@
      "embeddable": true
     },
     {
-     "id": "9lED9pKtTqQ",
-     "title": "MIU",
-     "channel": "Ted Hodgson",
-     "embeddable": true
-    },
-    {
      "id": "nGw64rbQXPI",
      "title": "The MU Puzzle",
      "channel": "The Math Institute",
+     "embeddable": true
+    },
+    {
+     "id": "9lED9pKtTqQ",
+     "title": "MIU",
+     "channel": "Ted Hodgson",
      "embeddable": true
     },
     {
@@ -2242,12 +2064,6 @@
      "embeddable": true
     },
     {
-     "id": "wZaYyNAXHK4",
-     "title": "Scott Bessent Is at War With Prices — and Prices Are Winning!",
-     "channel": "Patrick Boyle",
-     "embeddable": true
-    },
-    {
      "id": "14Z3lLJI530",
      "title": "How High Water Marks Work For Hedge Funds",
      "channel": "Bridger Pennington | Fund Launch",
@@ -2256,6 +2072,12 @@
     {
      "id": "aXWCSQUvnKI",
      "title": "The Next Hedge Fund Scandal",
+     "channel": "Patrick Boyle",
+     "embeddable": true
+    },
+    {
+     "id": "wZaYyNAXHK4",
+     "title": "Scott Bessent Is at War With Prices — and Prices Are Winning!",
      "channel": "Patrick Boyle",
      "embeddable": true
     },
@@ -2275,39 +2097,39 @@
    "query": "Amaranth natural gas Senate hearing 2007 C-SPAN",
    "results": [
     {
-     "id": "mHEdZaTgkic",
-     "title": "The Natural-Gas Bet That Was Too Big to Sell",
-     "channel": "Liquidated",
-     "embeddable": true
-    },
-    {
-     "id": "OX_BIV0oAdc",
-     "title": "Treasury Sec. Paulson at Senate Banking Hearing",
-     "channel": "C-SPAN",
-     "embeddable": true
-    },
-    {
-     "id": "rbHi87cuSBw",
-     "title": "Oil Executives Testify on High Gas Prices",
-     "channel": "C-SPAN",
-     "embeddable": true
-    },
-    {
      "id": "PuaEgilBXDQ",
      "title": "Strategists on Sen. Schmitt's Mix-up at Jack Smith Hearing",
      "channel": "C-SPAN",
      "embeddable": true
     },
     {
-     "id": "uRFYj8onirw",
-     "title": "The Trader Who Lost $6 Billion in One Week Betting on Natural Gas",
-     "channel": "Weird Finance Facts",
+     "id": "xzKedsrDaGs",
+     "title": "FDA commissioner nominee testifies at confirmation hearing",
+     "channel": "C-SPAN",
      "embeddable": true
     },
     {
-     "id": "1I3XdfoJ6sE",
-     "title": "Senate Finance Cmte. Mark Up of Health Care Legislation",
+     "id": "pXXN31sGgow",
+     "title": "Surgeon General nominee testifies before Senate",
      "channel": "C-SPAN",
+     "embeddable": true
+    },
+    {
+     "id": "lbIpoMOvBFk",
+     "title": "Surgeon general nominee testifies at confirmation hearing",
+     "channel": "C-SPAN",
+     "embeddable": true
+    },
+    {
+     "id": "QbvI1wit7Lc",
+     "title": "\"You are the biggest fraud to ever sit in the U.S. Senate!\"",
+     "channel": "C-SPAN",
+     "embeddable": true
+    },
+    {
+     "id": "mHEdZaTgkic",
+     "title": "The Natural-Gas Bet That Was Too Big to Sell",
+     "channel": "Liquidated",
      "embeddable": true
     }
    ]
@@ -2326,21 +2148,9 @@
      "embeddable": true
     },
     {
-     "id": "cx3cp6RA6xI",
-     "title": "M&A Webinar: Due Diligence",
-     "channel": "Doida Crow Legal",
-     "embeddable": true
-    },
-    {
-     "id": "bNJyQIUHkSQ",
-     "title": "Allocating Money and the Due Diligence Process",
-     "channel": "Richey May",
-     "embeddable": true
-    },
-    {
-     "id": "66tjScXdSV8",
-     "title": "2024 CAIA Level 1 Upermark Lecture Video -  LI R8 1 Funds of Funds",
-     "channel": "FRM & CAIA PASS",
+     "id": "yk2P6My4KWg",
+     "title": "CAIA | Career Pathways & Growth in Alternative Investments ",
+     "channel": "Risk Inn ",
      "embeddable": true
     },
     {
@@ -2350,9 +2160,21 @@
      "embeddable": true
     },
     {
-     "id": "WNDMQaWtico",
-     "title": "HFA Webinar: Top Hedge Fund Strategies",
-     "channel": "The Hedge Fund Association",
+     "id": "cx3cp6RA6xI",
+     "title": "M&A Webinar: Due Diligence",
+     "channel": "Doida Crow Legal",
+     "embeddable": true
+    },
+    {
+     "id": "TbrrGvL542k",
+     "title": "CAIA - Introduction to Hedge Funds",
+     "channel": "Career Topper",
+     "embeddable": true
+    },
+    {
+     "id": "qjRVY171X2o",
+     "title": "M&A MASTERCLASS : FDD Financial Due Diligence",
+     "channel": "Titan Capital Education",
      "embeddable": true
     }
    ]

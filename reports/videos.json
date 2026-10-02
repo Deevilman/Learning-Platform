@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-02T20:48:50.146Z",
+ "checkedAt": "2026-10-02T20:51:12.033Z",
  "rows": [
   {
    "course": "foundations",
@@ -547,6 +547,30 @@
    "expectedChannel": "MIT OpenCourseWare",
    "status": "ok",
    "actualTitle": "1.11.4 Cantor's Theorem: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "7.2",
+   "index": 0,
+   "id": "FkfsmwAtDdY",
+   "expectedTitle": "1.7.1 Relations",
+   "expectedChannel": "MIT OpenCourseWare",
+   "status": "ok",
+   "actualTitle": "1.7.1 Relations: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "7.2",
+   "index": 1,
+   "id": "gFD1Lp6zK3w",
+   "expectedTitle": "1.7.3 Relational Mappings",
+   "expectedChannel": "MIT OpenCourseWare",
+   "status": "ok",
+   "actualTitle": "1.7.3 Relational Mappings: Video",
    "actualChannel": "MIT OpenCourseWare",
    "score": 1
   },
