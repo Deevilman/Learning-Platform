@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "import": "tsx scripts/import-sources.ts",
-    "content": "tsx scripts/build-content.ts",
+    "content": "tsx scripts/build-content.ts && tsx scripts/copy-pyodide.ts",
     "dev": "npm run content && vite",
     "build": "npm run content && tsc --noEmit && vite build",
     "preview": "vite preview",
@@ -34,6 +34,7 @@
     "hast-util-to-text": "^4.0.2",
     "jsdom": "^25.0.1",
     "postcss": "^8.5.28",
+    "pyodide": "^0.27.7",
     "rehype-katex": "^7.0.1",
     "rehype-raw": "^7.0.0",
     "rehype-stringify": "^10.0.1",

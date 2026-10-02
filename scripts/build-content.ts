@@ -248,7 +248,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
         return {
           id,
           key: v.key,
-          title: inl(v.title, planFile, v.line),
+          title: inl(v.title.replace(/\s*[—–-]\s*\(valgfri\)\s*$/, ''), planFile, v.line),
           optional: v.optional,
           added: v.added,
           focus: v.focus ? inl(v.focus.replace(/^\*+|\*+$/g, ''), planFile, v.line) : undefined,
