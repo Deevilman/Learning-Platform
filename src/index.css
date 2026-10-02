@@ -46,6 +46,19 @@ body {
   color: var(--text);
 }
 
+h1,
+h2,
+h3 {
+  /* Long Danish compounds ("ufuldstændighedssætninger") must not overflow on phones. */
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.grid > * {
+  /* Grid items default to min-width: auto, which lets long text blow out the layout on phones. */
+  min-width: 0;
+}
+
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -210,6 +223,13 @@ body {
 }
 .prose-content details[open] > summary {
   margin-bottom: 0.6em;
+}
+.prose-content p,
+.prose-content li,
+.prose-content dd {
+  /* Long inline formulas (e.g. data lists) cannot wrap: let that paragraph scroll, not the page. */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .prose-content .katex-display {
   overflow-x: auto;

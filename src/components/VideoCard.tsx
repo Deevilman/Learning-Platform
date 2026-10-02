@@ -16,7 +16,7 @@ function YouTube({ id, title }: { id: string; title: string }) {
   if (!on)
     return (
       <button
-        className="flex aspect-video w-full flex-col items-center justify-center gap-2 rounded-lg border text-sm"
+        className="flex aspect-video w-full min-w-0 flex-col items-center justify-center gap-2 overflow-hidden rounded-lg border text-sm"
         style={{ borderColor: 'var(--border)', background: 'var(--surface-2)' }}
         onClick={() => setOn(true)}
         aria-label={`Afspil video: ${title}`}
@@ -24,7 +24,7 @@ function YouTube({ id, title }: { id: string; title: string }) {
         <span className="grid h-12 w-12 place-items-center rounded-full text-xl text-white" style={{ background: '#dc2626' }}>
           ▶
         </span>
-        <span className="max-w-[90%] truncate font-medium">{title}</span>
+        <span className="block w-[90%] truncate font-medium">{title}</span>
         <span className="muted text-xs">youtube-nocookie.com indlæses først, når du klikker</span>
       </button>
     )
@@ -54,10 +54,10 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
 
   if (id && !editing)
     return (
-      <div className="space-y-1">
+      <div className="min-w-0 space-y-1">
         <YouTube id={id} title={source.title} />
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className="muted truncate">{label}</span>
+          <span className="muted min-w-0 max-w-full truncate">{label}</span>
           <a className="link" href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener noreferrer">
             Åbn på YouTube ↗
           </a>
@@ -72,7 +72,7 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
 
   const search = source.search || source.title
   return (
-    <div className="rounded-lg border border-dashed p-3 text-sm" style={{ borderColor: 'var(--warn)' }}>
+    <div className="min-w-0 rounded-lg border border-dashed p-3 text-sm" style={{ borderColor: 'var(--warn)' }}>
       <div className="font-medium">Video mangler, indsæt URL</div>
       <div className="muted mb-2 text-xs">{label}</div>
       <form
@@ -134,7 +134,7 @@ export function VideoCard({ course, item }: { course: string; item: VideoItem })
         </div>
       </div>
       {item.sources.length > 0 && (
-        <div className={`grid gap-3 ${item.sources.length > 1 ? 'sm:grid-cols-2' : ''}`}>
+        <div className={`grid grid-cols-1 gap-3 ${item.sources.length > 1 ? 'sm:grid-cols-2' : ''}`}>
           {item.sources.map((s, i) => (
             <Source key={i} course={course} itemId={item.id} index={i} source={s} />
           ))}
