@@ -42,7 +42,7 @@ export const pythonRunner: CodeRunner = {
   language: 'python',
   label: 'Python (Pyodide)',
   async run(code: string, opts: RunOptions = {}): Promise<RunResult> {
-    const timeoutMs = opts.timeoutMs ?? 20000
+    const timeoutMs = opts.timeoutMs ?? 60000
     statusCb = opts.onStatus
     if (!worker) {
       opts.onStatus?.('Indlæser Python (første gang tager det et par sekunder)…')

@@ -85,12 +85,16 @@ export function Html({ html, className = '' }: { html: string; className?: strin
         }
       })
 
-    // Code blocks
+    // Code blocks. Blocks that continue earlier code ("koden ovenfor") can be
+    // run together with the preceding blocks of the same language.
+    const previous = new Map<string, string[]>()
     el.querySelectorAll<HTMLElement>('pre.code-block').forEach((pre) => {
       const lang = pre.dataset.lang || 'text'
       const code = pre.textContent || ''
       if (lang === 'text' && !/^(def |import |from |print\()/m.test(code)) return
-      mount(pre, <CodeTools lang={lang} code={code} />, 'after', 'code-tools-host')
+      const before = previous.get(lang) || []
+      mount(pre, <CodeTools lang={lang} code={code} prelude={before.join('\n\n')} />, 'after', 'code-tools-host')
+      previous.set(lang, [...before, code])
     })
 
     return () => {
@@ -108,15 +112,21 @@ export function Html({ html, className = '' }: { html: string; className?: strin
   return <div ref={ref} className={`prose-content ${className}`} dangerouslySetInnerHTML={{ __html: html }} />
 }
 
-function CodeTools({ lang, code }: { lang: string; code: string }) {
+function CodeTools({ lang, code, prelude }: { lang: string; code: string; prelude: string }) {
   const [run, setRun] = useState(0)
+  const [withPrelude, setWithPrelude] = useState(false)
   const [copied, setCopied] = useState(false)
   const playground = externalPlayground(lang, code)
   const runnable = hasRunner(lang)
   return (
     <div>
       <div className="code-tools">
-        {runnable && <button onClick={() => setRun((n) => n + 1)}>▶ Kør i browseren</button>}
+        {runnable && <button onClick={() => (setWithPrelude(false), setRun((n) => n + 1))}>▶ Kør i browseren</button>}
+        {runnable && prelude && (
+          <button onClick={() => (setWithPrelude(true), setRun((n) => n + 1))} title="Kør de foregående kodeblokke på siden først (til kode, der bygger videre på koden ovenfor)">
+            ▶ Kør med koden ovenfor
+          </button>
+        )}
         {playground && (
           <a href={playground.url} target="_blank" rel="noopener noreferrer">
             {playground.label} ↗
@@ -133,7 +143,7 @@ function CodeTools({ lang, code }: { lang: string; code: string }) {
           {copied ? 'Kopieret ✓' : 'Kopiér'}
         </button>
       </div>
-      {run > 0 && <CodeRunPanel key={run} lang={lang} code={code} />}
+      {run > 0 && <CodeRunPanel key={run} lang={lang} code={withPrelude ? `${prelude}\n\n${code}` : code} />}
     </div>
   )
 }

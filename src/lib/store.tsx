@@ -60,8 +60,17 @@ export function useRecord<T extends TableName>(table: T, id: string): [Tables[T]
 export function useCheck(id: string): [boolean, (v: boolean) => void] {
   const store = useStore()
   const [rec] = useRecord('checks', id)
-  const set = useCallback((value: boolean) => void store.put('checks', { id, value }), [store, id])
-  return [!!rec?.value, set]
+  // Optimistic local state so a controlled checkbox flips immediately.
+  const [local, setLocal] = useState<boolean | null>(null)
+  useEffect(() => setLocal(null), [rec, id])
+  const set = useCallback(
+    (value: boolean) => {
+      setLocal(value)
+      void store.put('checks', { id, value })
+    },
+    [store, id],
+  )
+  return [local ?? !!rec?.value, set]
 }
 
 /** A persisted setting with a default. */
