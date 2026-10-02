@@ -1,0 +1,676 @@
+{
+ "generatedAt": "2026-10-02T20:32:56.323Z",
+ "playlists": {
+  "MIT 6.042J Spring 2015": [],
+  "MIT 18.404J Fall 2020": [],
+  "Oxford 3rd year lectures": [],
+  "Milewski Category Theory": []
+ },
+ "searches": [
+  {
+   "course": "foundations",
+   "key": "1.2",
+   "index": 0,
+   "title": "Start Learning Logic | Part 2",
+   "query": "Start Learning Logic | Part 2 The Bright Side of Mathematics",
+   "results": [
+    {
+     "id": "AjdIPOXRgoQ",
+     "title": "Start Learning Logic 2 | Disjunction, Tautology and Logical Equivalence",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "Jw6KxvMKbys",
+     "title": "Start Learning Logic 2 | Disjunction, Tautology and Logical Equivalence [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "DU4wKBDm2Z4",
+     "title": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "yIdECC6QExY",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "N-X1EU7tHVo",
+     "title": "Start Learning Mathematics - Introduction to the Course",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "PFk9NbnHMVk",
+     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "1.3",
+   "index": 0,
+   "title": "Start Learning Logic | Part 3",
+   "query": "Start Learning Logic | Part 3 The Bright Side of Mathematics",
+   "results": [
+    {
+     "id": "DU4wKBDm2Z4",
+     "title": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "AjdIPOXRgoQ",
+     "title": "Start Learning Logic 2 | Disjunction, Tautology and Logical Equivalence",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "PFk9NbnHMVk",
+     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "EXUxMOM03Bo",
+     "title": "Start Learning Logic 1 | Logical Statements, Negations and Conjunction [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "iA-Dtf7529M",
+     "title": "Start Learning Sets 1 | Overview and Element Relation",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "yIdECC6QExY",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets",
+     "channel": "The Bright Side of Mathematics"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "1.4",
+   "index": 1,
+   "title": "1.4.4 Truth Tables",
+   "query": "MIT 6.042J 1.4.4 Truth Tables",
+   "results": [
+    {
+     "id": "_3WDzxt5p8c",
+     "title": "1.4.4 Truth Tables: Video",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "0exBzsexUoI",
+     "title": "1.4.1 Propositional Operators: Video",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "eMWG-jTh-GE",
+     "title": "1.4.3 Digital Logic: Video",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "GyFVgJZ0hIs",
+     "title": "1.1.2 Intro to Proofs: Part 1",
+     "channel": "MIT OpenCourseWare"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "1.4",
+   "index": 2,
+   "title": "1.4.6 Implies",
+   "query": "MIT 6.042J 1.4.6 Implies",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "1.4",
+   "index": 3,
+   "title": "1.4.7 Propositional Logic",
+   "query": "MIT 6.042J 1.4.7 Propositional Logic",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "2.1",
+   "index": 1,
+   "title": "1.5.2 Predicate Logic 2",
+   "query": "MIT 6.042J 1.5.2 Predicate Logic 2",
+   "results": [
+    {
+     "id": "T1AtlGrCoU8",
+     "title": "1.5.2 Predicate Logic 2: Video",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "UroprmQHTLc",
+     "title": "1.5.1 Predicate Logic 1: Video",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "L5uBeAGJV1k",
+     "title": "1.5.4 Predicate Logic 3: Video",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "GyFVgJZ0hIs",
+     "title": "1.1.2 Intro to Proofs: Part 1",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "0exBzsexUoI",
+     "title": "1.4.1 Propositional Operators: Video",
+     "channel": "MIT OpenCourseWare"
+    },
+    {
+     "id": "UI6-tBWEQOY",
+     "title": "Proofs and Fundamentals",
+     "channel": "Andrei Rodin"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "P3",
+   "index": 1,
+   "title": "one TrevTutor video on proof by contraposition and one on proof by contradiction, from the same series",
+   "query": "one TrevTutor video on proof by contraposition and one on proof by contradiction, from the same series TrevTutor",
+   "results": [
+    {
+     "id": "X-hJ7krLBn0",
+     "title": "PROOF by CONTRAPOSITION - DISCRETE MATHEMATICS",
+     "channel": "TrevTutor"
+    },
+    {
+     "id": "sRDwsfNDXak",
+     "title": "PROOF by CONTRADICTION - DISCRETE MATHEMATICS",
+     "channel": "TrevTutor"
+    },
+    {
+     "id": "0YqZIHFmVzg",
+     "title": "Proof by Contrapositive | Method & First Example",
+     "channel": "Dr. Trefor Bazett"
+    },
+    {
+     "id": "huGWXh4l1M0",
+     "title": "Proof by Contradiction | Method & First Example",
+     "channel": "Dr. Trefor Bazett"
+    },
+    {
+     "id": "YFZzLQN5qOU",
+     "title": "DIRECT PROOFS - DISCRETE MATHEMATICS",
+     "channel": "TrevTutor"
+    },
+    {
+     "id": "YDKBEOuMuy8",
+     "title": "[Discrete Mathematics] Proof by Case",
+     "channel": "TrevTutor"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "4.2",
+   "index": 0,
+   "title": "Start Learning Sets | Part 2 (Predicates, Equality and Subsets)",
+   "query": "Bright Side of Mathematics Start Learning Sets Part 2",
+   "results": [
+    {
+     "id": "yIdECC6QExY",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "8Lj3CT1ZjJg",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "iA-Dtf7529M",
+     "title": "Start Learning Sets 1 | Overview and Element Relation",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "JoLDwNh1lZ8",
+     "title": "Start Learning Sets 4 | Cartesian Product and Maps",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "N-X1EU7tHVo",
+     "title": "Start Learning Mathematics - Introduction to the Course",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "GbhxMv-Epg8",
+     "title": "lesson 2 on sets.",
+     "channel": "BrightSide Hub"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "4.2",
+   "index": 1,
+   "title": "Start Learning Sets | Part 3 (Union, Intersection, Differences and Power Set)",
+   "query": "Bright Side of Mathematics Start Learning Sets Part 3",
+   "results": [
+    {
+     "id": "iA-Dtf7529M",
+     "title": "Start Learning Sets 1 | Overview and Element Relation",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "twBYYTJdcjc",
+     "title": "Start Learning Sets 5 | Range, Image and Preimage",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "JoLDwNh1lZ8",
+     "title": "Start Learning Sets 4 | Cartesian Product and Maps",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "cr8gFZ48Qsk",
+     "title": "lesson 3 on sets",
+     "channel": "BrightSide Hub"
+    },
+    {
+     "id": "yIdECC6QExY",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "PFk9NbnHMVk",
+     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "4.3",
+   "index": 0,
+   "title": "Start Learning Sets | Part 4 (Cartesian Product and Maps)",
+   "query": "Bright Side of Mathematics Start Learning Sets Part 4",
+   "results": [
+    {
+     "id": "JoLDwNh1lZ8",
+     "title": "Start Learning Sets 4 | Cartesian Product and Maps",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "6ZSKwJgXLP4",
+     "title": "Start Learning Sets 4 | Cartesian Product and Maps [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "iA-Dtf7529M",
+     "title": "Start Learning Sets 1 | Overview and Element Relation",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "I1fHi9rXAAI",
+     "title": "Start Learning Reals 4 | Construction",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "90nQgffyt78",
+     "title": "Start Learning Reals 4 | Construction [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "twBYYTJdcjc",
+     "title": "Start Learning Sets 5 | Range, Image and Preimage",
+     "channel": "The Bright Side of Mathematics"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "4.4",
+   "index": 0,
+   "title": "Start Learning Sets | Part 6 (Injectivity, Surjectivity and Bijectivity)",
+   "query": "Bright Side of Mathematics Start Learning Sets Part 6",
+   "results": [
+    {
+     "id": "iA-Dtf7529M",
+     "title": "Start Learning Sets 1 | Overview and Element Relation",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "twBYYTJdcjc",
+     "title": "Start Learning Sets 5 | Range, Image and Preimage",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "yIdECC6QExY",
+     "title": "Start Learning Sets 2 | Predicates, Equality and Subsets",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "PFk9NbnHMVk",
+     "title": "Start Learning Mathematics - Introduction to the Course [dark version]",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "NiJ1yWKM9CU",
+     "title": "Start Learning Sets 7 | Composition of Maps",
+     "channel": "The Bright Side of Mathematics"
+    },
+    {
+     "id": "3olS8tyoQEE",
+     "title": "Start Learning Reals 1 | Cauchy Sequences",
+     "channel": "The Bright Side of Mathematics"
+    }
+   ]
+  },
+  {
+   "course": "foundations",
+   "key": "4.4",
+   "index": 1,
+   "title": "Start Learning Sets | Part 7 (Composition of Maps)",
+   "query": "Bright Side of Mathematics Start Learning Sets Part 7",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "5.1",
+   "index": 0,
+   "title": "Start Learning Numbers | Part 1 (Natural Numbers (in Set Theory))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 1",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "5.2",
+   "index": 0,
+   "title": "Start Learning Numbers | Part 2 (Natural Numbers (Successor Map and Addition))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 2",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "5.3",
+   "index": 0,
+   "title": "Start Learning Numbers | Part 3 (Natural Numbers (Induction and Associativity))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 3",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "5.5",
+   "index": 0,
+   "title": "Start Learning Numbers | Part 5 (Natural Numbers (Multiplication))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 5",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.1",
+   "index": 0,
+   "title": "Start Learning Numbers | Part 6 (Integers (Construction))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 6",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.1",
+   "index": 1,
+   "title": "Start Learning Numbers | Part 7 (Integers (Addition and Inverses))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 7",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.1",
+   "index": 2,
+   "title": "Start Learning Numbers | Part 8 (Integers (Multiplication))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 8",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.2",
+   "index": 0,
+   "title": "Start Learning Numbers | Part 9 (Rational Numbers (Construction))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 9",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.2",
+   "index": 1,
+   "title": "Start Learning Numbers | Part 10 (Rational Numbers (Addition and Multiplication))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 10",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.2",
+   "index": 2,
+   "title": "Start Learning Numbers | Part 11 (Rational Numbers (Ordering))",
+   "query": "Bright Side of Mathematics Start Learning Numbers Part 11",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.3",
+   "index": 0,
+   "title": "Start Learning Reals | Part 1 (Cauchy Sequences)",
+   "query": "Bright Side of Mathematics Start Learning Reals Part 1",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.3",
+   "index": 1,
+   "title": "Start Learning Reals | Part 3 (Working With Axioms)",
+   "query": "Bright Side of Mathematics Start Learning Reals Part 3",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.3",
+   "index": 2,
+   "title": "Start Learning Reals | Part 4 (Construction)",
+   "query": "Bright Side of Mathematics Start Learning Reals Part 4",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.4",
+   "index": 0,
+   "title": "Start Learning Reals | Part 2 (Completeness Axiom)",
+   "query": "Bright Side of Mathematics Start Learning Reals Part 2",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.4",
+   "index": 1,
+   "title": "Start Learning Complex | Part 1 (Introduction)",
+   "query": "Bright Side of Mathematics Start Learning Complex Part 1",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "6.4",
+   "index": 2,
+   "title": "Start Learning Complex | Part 2 (Definition)",
+   "query": "Bright Side of Mathematics Start Learning Complex Part 2",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "7.2",
+   "index": 0,
+   "title": "P2: videoerne om binære relationer og funktioner (binary relations/functions) — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.",
+   "query": "P2: videoerne om binære relationer og funktioner  — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "7.4",
+   "index": 0,
+   "title": "Hilbert's hotel infinity explained",
+   "query": "Hilbert's hotel infinity explained",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "9.1",
+   "index": 0,
+   "title": "first-order logic syntax semantics lecture",
+   "query": "first-order logic syntax semantics lecture",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "9.2",
+   "index": 0,
+   "title": "MU puzzle Hofstadter MIU system",
+   "query": "MU puzzle Hofstadter MIU system",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "9.3",
+   "index": 0,
+   "title": "Gödel completeness theorem lecture",
+   "query": "Gödel completeness theorem lecture",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "9.4",
+   "index": 0,
+   "title": "nonstandard models of arithmetic compactness theorem",
+   "query": "nonstandard models of arithmetic compactness theorem",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "11.1",
+   "index": 0,
+   "title": "L8: Undecidability",
+   "query": "MIT 18.404J Sipser Lecture 8 Undecidability",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "12.1",
+   "index": 0,
+   "title": "L11: Recursion Theorem and Logic",
+   "query": "MIT 18.404J Sipser Lecture 11 Recursion Theorem and Logic",
+   "results": []
+  },
+  {
+   "course": "foundations",
+   "key": "P13",
+   "index": 0,
+   "title": "one introductory Homotopy Type Theory lecture, e.g. from the HoTT Summer School 2022 playlist or an introduction by Andrej Bauer, Steve Awodey or Emily Riehl. It must come after 13.1–13.2.",
+   "query": "one introductory Homotopy Type Theory lecture, e.g. from the HoTT Summer School 2022 playlist or an introduction by Andrej Bauer, Steve Awodey or Emily Riehl. It must come after 13.1–13.2. university or HoTT summer-school channel",
+   "results": []
+  },
+  {
+   "course": "hedgefund",
+   "key": "H2.2",
+   "index": 0,
+   "title": "One credible explainer of hedge-fund fees and structure (2-and-20, high-water mark, hurdle, prime broker, administrator).",
+   "query": "Patrick Boyle hedge fund fees high water mark",
+   "results": []
+  },
+  {
+   "course": "hedgefund",
+   "key": "H4.2",
+   "index": 0,
+   "title": "A short-selling mechanics explainer: `A Short Explanation of Short Selling (feat. Plain Bagel)` (PBS Two Cents), or The Plain Bagel's own short-selling video",
+   "query": "A short-selling mechanics explainer: `A Short Explanation of Short Selling (feat. Plain Bagel)` (PBS Two Cents), or The Plain Bagel's own short-selling video PBS / The Plain Bagel only",
+   "results": []
+  },
+  {
+   "course": "hedgefund",
+   "key": "H9.5",
+   "index": 0,
+   "title": "Amaranth Advisors 2006, only from an official source, e.g. the 2007 U.S. Senate Permanent Subcommittee on Investigations hearing on C-SPAN, or a Patrick Boyle video.",
+   "query": "Amaranth natural gas Senate hearing 2007 C-SPAN",
+   "results": []
+  },
+  {
+   "course": "hedgefund",
+   "key": "H10.3",
+   "index": 0,
+   "title": "An operational or investment due-diligence webinar from CAIA Association or CFA Institute.",
+   "query": "CAIA hedge fund due diligence webinar",
+   "results": []
+  },
+  {
+   "course": "hedgefund",
+   "key": "H11.4",
+   "index": 0,
+   "title": "FRONTLINE \"To Catch a Trader\" (SAC Capital), only from the official FRONTLINE PBS channel",
+   "query": "FRONTLINE \"To Catch a Trader\" (SAC Capital), only from the official FRONTLINE PBS channel FRONTLINE PBS",
+   "results": []
+  },
+  {
+   "course": "hedgefund",
+   "key": "H12.3",
+   "index": 0,
+   "title": "One credible explainer of multi-manager \"pod\" funds (Citadel, Millennium, Balyasny).",
+   "query": "Patrick Boyle multi-manager hedge funds pod shops",
+   "results": []
+  },
+  {
+   "course": "quant",
+   "key": "Q12.1",
+   "index": 0,
+   "title": "AHL Explains - Volatility Scaling og AHL Explains - Signal Diversification (Man AHL)",
+   "query": "AHL Explains - Volatility Scaling og AHL Explains - Signal Diversification",
+   "results": []
+  },
+  {
+   "course": "quant",
+   "key": "Q15.5",
+   "index": 0,
+   "title": "One university-level lecture or talk by a recognized researcher (e.g. Robert Almgren, Charles-Albert Lehalle) on optimal execution / the Almgren–Chriss model.",
+   "query": "Almgren Chriss optimal execution lecture",
+   "results": []
+  }
+ ],
+ "errors": [
+  "Bright Side of Mathematics Start Learning Sets Part 7: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 1: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 2: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 3: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 5: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 6: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 7: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 8: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 9: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 10: fetch failed",
+  "Bright Side of Mathematics Start Learning Numbers Part 11: fetch failed",
+  "Bright Side of Mathematics Start Learning Reals Part 1: fetch failed",
+  "Bright Side of Mathematics Start Learning Reals Part 3: fetch failed",
+  "Bright Side of Mathematics Start Learning Reals Part 4: fetch failed",
+  "Bright Side of Mathematics Start Learning Reals Part 2: fetch failed",
+  "Bright Side of Mathematics Start Learning Complex Part 1: fetch failed",
+  "Bright Side of Mathematics Start Learning Complex Part 2: fetch failed",
+  "P2: videoerne om binære relationer og funktioner  — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.: fetch failed",
+  "Hilbert's hotel infinity explained: fetch failed",
+  "first-order logic syntax semantics lecture: fetch failed",
+  "MU puzzle Hofstadter MIU system: fetch failed",
+  "Gödel completeness theorem lecture: fetch failed",
+  "nonstandard models of arithmetic compactness theorem: fetch failed",
+  "MIT 18.404J Sipser Lecture 8 Undecidability: fetch failed",
+  "MIT 18.404J Sipser Lecture 11 Recursion Theorem and Logic: fetch failed",
+  "one introductory Homotopy Type Theory lecture, e.g. from the HoTT Summer School 2022 playlist or an introduction by Andrej Bauer, Steve Awodey or Emily Riehl. It must come after 13.1–13.2. university or HoTT summer-school channel: fetch failed",
+  "Patrick Boyle hedge fund fees high water mark: fetch failed",
+  "A short-selling mechanics explainer: `A Short Explanation of Short Selling (feat. Plain Bagel)` (PBS Two Cents), or The Plain Bagel's own short-selling video PBS / The Plain Bagel only: fetch failed",
+  "Amaranth natural gas Senate hearing 2007 C-SPAN: fetch failed",
+  "CAIA hedge fund due diligence webinar: fetch failed",
+  "FRONTLINE \"To Catch a Trader\" (SAC Capital), only from the official FRONTLINE PBS channel FRONTLINE PBS: fetch failed",
+  "Patrick Boyle multi-manager hedge funds pod shops: fetch failed",
+  "AHL Explains - Volatility Scaling og AHL Explains - Signal Diversification: fetch failed",
+  "Almgren Chriss optimal execution lecture: fetch failed"
+ ]
+}
