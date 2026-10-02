@@ -19,6 +19,7 @@ import NotFound from '@/pages/NotFound'
 const TrainPage = lazy(() => import('@/pages/TrainPage'))
 const InteractivesPage = lazy(() => import('@/pages/InteractivesPage'))
 const StatsPage = lazy(() => import('@/pages/StatsPage'))
+const PlacementPage = lazy(() => import('@/pages/PlacementPage'))
 
 const NAV = [
   { to: '/', label: 'Overblik', icon: '⌂', end: true },
@@ -154,6 +155,7 @@ export default function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/kurser" element={<Courses />} />
               <Route path="/kursus/:slug" element={<CoursePage />} />
+              <Route path="/kursus/:slug/test" element={<PlacementPage />} />
               <Route path="/kursus/:slug/uge/:week" element={<WeekPage />} />
               <Route path="/kursus/:slug/uge/:week/opgave/:num" element={<ExercisePage />} />
               <Route path="/kursus/:slug/saet/:set" element={<SetPage />} />
