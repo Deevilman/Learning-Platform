@@ -41,3 +41,14 @@ describe('mastery model', () => {
     expect(m.recent).toEqual([0, 0.33, 1])
   })
 })
+
+import { masteryLevel } from '@/lib/mastery'
+describe('mastery levels', () => {
+  it('goes Ikke startet → Øvet → Kendt → Mestret', () => {
+    expect(masteryLevel({ mastery: 0, confidence: 0, attempts: 0 })).toBe('ikke-startet')
+    expect(masteryLevel({ mastery: 0.3, confidence: 0.2, attempts: 1 })).toBe('oevet')
+    expect(masteryLevel({ mastery: 0.6, confidence: 0.4, attempts: 2 })).toBe('kendt')
+    expect(masteryLevel({ mastery: 0.9, confidence: 0.3, attempts: 1 })).toBe('kendt') // too little evidence
+    expect(masteryLevel({ mastery: 0.9, confidence: 0.6, attempts: 4 })).toBe('mestret')
+  })
+})

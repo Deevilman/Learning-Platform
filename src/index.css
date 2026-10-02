@@ -472,3 +472,200 @@ body {
   box-shadow: var(--shadow);
   font-weight: 600;
 }
+
+/* One accent colour per course (course.yaml "color"), set as --course on a wrapper */
+.course-theme {
+  --accent: var(--course);
+  --accent-soft: color-mix(in srgb, var(--course) 12%, var(--surface));
+}
+:root[data-theme='dark'] .course-theme {
+  --accent: color-mix(in srgb, var(--course) 55%, white);
+  --accent-soft: color-mix(in srgb, var(--course) 28%, var(--surface));
+}
+
+/* Course path: weeks as nodes on a line */
+.path {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+}
+.path::before {
+  content: '';
+  position: absolute;
+  left: 1.05rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 2px;
+  background: var(--border);
+}
+.path-node {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.path-dot {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-top: 0.4rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--muted);
+  transition: transform 0.2s;
+}
+.path-card {
+  flex: 1;
+  min-width: 0;
+  border-radius: 1rem;
+  padding: 0.7rem 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s;
+}
+.path-card:hover {
+  transform: translateY(-1px);
+}
+.path-done .path-dot,
+.path-known .path-dot {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: white;
+}
+.path-current .path-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.path-current .path-card {
+  outline: 2px solid var(--accent);
+}
+.path-started .path-dot {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.path-later .path-card {
+  opacity: 0.8;
+}
+.path-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.path-tag-ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+/* Mastery level dots: Ikke startet → Øvet → Kendt → Mestret */
+.lvl {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+  border: 2px solid var(--accent);
+}
+.lvl-ikke-startet {
+  border-color: var(--border);
+}
+.lvl-oevet {
+  background: linear-gradient(90deg, var(--accent) 33%, transparent 33%);
+}
+.lvl-kendt {
+  background: linear-gradient(90deg, var(--accent) 66%, transparent 66%);
+}
+.lvl-mestret {
+  background: var(--accent);
+}
+
+/* Se → Læs → Øv stepper */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  position: sticky;
+  top: 57px;
+  z-index: 20;
+  padding: 0.5rem 0;
+  background: var(--bg);
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  border-radius: 0.9rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: background-color 0.15s;
+}
+.step-on {
+  background: var(--accent-soft);
+  outline: 2px solid var(--accent);
+}
+.step-num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+.step-on .step-num {
+  background: var(--accent);
+  color: white;
+}
+.step-done .step-num {
+  background: var(--ok);
+  color: white;
+}
+@media (max-width: 480px) {
+  .step .muted {
+    display: none;
+  }
+  .step {
+    justify-content: center;
+    padding: 0.5rem;
+  }
+}
+
+/* Lesson progress dots */
+.lesson-dots {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+}
+.dot {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  transition: background-color 0.3s;
+}
+.dot-done {
+  background: color-mix(in srgb, var(--accent) 55%, var(--surface-2));
+}
+.dot-on {
+  background: var(--accent);
+}
+.dot-q {
+  flex: 0.5;
+}
