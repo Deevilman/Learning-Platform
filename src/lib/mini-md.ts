@@ -3,6 +3,7 @@
 // $$display$$ math (KaTeX).
 
 import katex from 'katex'
+import 'katex/contrib/mhchem' // \ce{…} for chemistry
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 

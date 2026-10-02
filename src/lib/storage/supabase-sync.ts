@@ -46,10 +46,14 @@ export async function signOut() {
 
 const SYNC_KEY = 'sync.state'
 interface SyncState {
-  lastPush: number
-  lastPull: number
+  lastPush: number // local clock: records edited after this are uploaded
+  lastPull?: string // server clock (ISO) of the newest row seen
   lastSync?: number
 }
+
+// Re-read a small window before the watermark: rows committed in the same
+// instant as our last read are not missed, and re-merging them is harmless.
+const OVERLAP_MS = 60_000
 
 export interface SyncResult {
   pushed: number
@@ -58,12 +62,22 @@ export interface SyncResult {
 
 const PAGE = 1000
 
+/** The slice of the Supabase client that sync needs (so tests can fake it). */
+export interface RecordsClient {
+  from(table: 'records'): any
+}
+
 export async function syncNow(store: StorageAdapter): Promise<SyncResult> {
   const sb = await supabase()
   const session = await getSession()
   if (!session) throw new Error('Du er ikke logget ind.')
+  return syncWith(store, sb, session.user.id)
+}
+
+export async function syncWith(store: StorageAdapter, sb: RecordsClient, userId: string): Promise<SyncResult> {
   const stateRec = await store.get('settings', SYNC_KEY)
-  const state: SyncState = (stateRec?.value as SyncState) || { lastPush: 0, lastPull: 0 }
+  const state: SyncState = (stateRec?.value as SyncState) || { lastPush: 0 }
+  const since = state.lastPull ? new Date(new Date(state.lastPull).getTime() - OVERLAP_MS).toISOString() : '1970-01-01T00:00:00Z'
   const startedAt = Date.now()
 
   // ---- push
@@ -71,7 +85,7 @@ export async function syncNow(store: StorageAdapter): Promise<SyncResult> {
   for (const t of TABLES) {
     const recs = (await store.listRaw(t)).filter((r) => r.updatedAt > state.lastPush && !(t === 'settings' && r.id === SYNC_KEY))
     for (let i = 0; i < recs.length; i += 500) {
-      const rows = recs.slice(i, i + 500).map((r) => ({ user_id: session.user.id, tbl: t, id: r.id, data: r, updated_at: r.updatedAt, deleted: !!r.deleted }))
+      const rows = recs.slice(i, i + 500).map((r) => ({ user_id: userId, tbl: t, id: r.id, data: r, updated_at: r.updatedAt, deleted: !!r.deleted }))
       const { error } = await sb.from('records').upsert(rows, { onConflict: 'user_id,tbl,id' })
       if (error) throw new Error(`Upload fejlede: ${error.message}`)
       pushed += rows.length
@@ -82,15 +96,17 @@ export async function syncNow(store: StorageAdapter): Promise<SyncResult> {
   let pulled = 0
   let from = 0
   const byTable = new Map<TableName, Rec[]>()
+  let maxSynced = state.lastPull
   for (;;) {
     const { data, error } = await sb
       .from('records')
-      .select('tbl,id,data,updated_at')
-      .gt('updated_at', state.lastPull)
-      .order('updated_at', { ascending: true })
+      .select('tbl,id,data,updated_at,synced_at')
+      .gt('synced_at', since)
+      .order('synced_at', { ascending: true })
       .range(from, from + PAGE - 1)
     if (error) throw new Error(`Download fejlede: ${error.message}`)
     for (const row of data || []) {
+      if (!maxSynced || row.synced_at > maxSynced) maxSynced = row.synced_at
       if (!TABLES.includes(row.tbl as TableName)) continue
       const list = byTable.get(row.tbl as TableName) || []
       list.push(row.data as Rec)
@@ -105,8 +121,7 @@ export async function syncNow(store: StorageAdapter): Promise<SyncResult> {
     pulled += fresh.length
   }
 
-  const maxRemote = Math.max(state.lastPull, ...[...byTable.values()].flat().map((r) => r.updatedAt || 0))
-  await store.putRaw('settings', [{ id: SYNC_KEY, value: { lastPush: startedAt, lastPull: maxRemote, lastSync: Date.now() }, updatedAt: 0 }])
+  await store.putRaw('settings', [{ id: SYNC_KEY, value: { lastPush: startedAt, lastPull: maxSynced, lastSync: Date.now() } satisfies SyncState, updatedAt: 0 }])
   return { pushed, pulled }
 }
 
