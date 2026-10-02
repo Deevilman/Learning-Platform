@@ -1,0 +1,258 @@
+# Henvisninger frem i kurset ("vender tilbage i uge 9", "forsmag på …"), fundet af npm run forward-refs.
+# action: remove (slet teksten) · replace (erstat med "with") · keep (behold). "review" stopper bygget.
+# Teksten skal stå præcis én gang i feltet (prompt, hint eller solution). plan.md ændres aldrig.
+exercises:
+  "1.8":
+  - field: prompt
+    text: (Bruges i uge 7.)
+    action: remove
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "1.11":
+  - field: prompt
+    text: (Motoren genbruges i uge 15.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  "2.7":
+  - field: prompt
+    text: (Bruges i uge 7.)
+    action: remove
+  "2.9":
+  - field: prompt
+    text: (Bruges i uge 9.)
+    action: remove
+  "2.10":
+  - field: prompt
+    text: (Forsmag på Kelly-kriteriet i uge 3 og 16.)
+    action: remove
+  - field: solution
+    text: (uge 3 og 16)
+    action: remove
+  "2.11":
+  - field: prompt
+    text: (Funktionerne genbruges i uge 10.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  - field: solution
+    text: (uge 5 og 10)
+    action: remove
+  "3.7":
+  - field: prompt
+    text: (Bruges i uge 16.)
+    action: remove
+  "4.3":
+  - field: prompt
+    text: (Bruges i uge 16 om VaR.)
+    action: remove
+  - field: solution
+    text: (uge 16)
+    action: remove
+  "4.5":
+  - field: prompt
+    text: (Bruges i uge 6 og 7.)
+    action: remove
+  - field: solution
+    text: Vi ser det igen som positiv semidefinithed i uge 6.
+    action: remove
+  "5.6":
+  - field: prompt
+    text: (Ordreankomster som Poisson-proces bruges i uge 15.)
+    action: remove
+  "5.7":
+  - field: prompt
+    text: (Bruges i uge 7, hvor Markowitz-optimering er meget følsom over for $\hat\mu$.)
+    action: remove
+  "6.11":
+  - field: solution
+    text: Funktionen `solve` genbruges i uge 7 til porteføljeoptimering.
+    action: replace
+    with: Gem funktionen `solve` — du får brug for den igen senere.
+  "7.11":
+  - field: prompt
+    text: (Funktionerne genbruges i uge 12.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  "8.11":
+  - field: prompt
+    text: (Byggestenen genbruges i uge 11 og 12.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  "9.6":
+  - field: prompt
+    text: (Bruges i uge 16 til VaR.)
+    action: remove
+  "9.10":
+  - field: prompt
+    text: (Bruges i uge 11 til halveringstider.)
+    action: remove
+  "11.5":
+  - field: prompt
+    text: (bruges i uge 12)
+    action: remove
+  "13.5":
+  - field: prompt
+    text: (bruges i uge 14 med $\mu = r$)
+    action: remove
+  - field: solution
+    text: "I uge 14 erstattes $\\mu$ af den risikofri rente $r$: den diskonterede kurs er en martingal under det risikoneutrale mål."
+    action: remove
+  "1.4":
+  - field: prompt
+    text: (Put-call-paritet i uge 14.)
+    action: remove
+  - field: solution
+    text: (put-call-paritet, uge 14)
+    action: replace
+    with: (put-call-paritet)
+  "1.7":
+  - field: solution
+    text: (og emnet i uge 8 og 12)
+    action: remove
+  "1.9":
+  - field: solution
+    text: ", som vi bruger med log-afkast fra uge 2"
+    action: remove
+  "1.10":
+  - field: solution
+    text: (stationaritet, uge 9)
+    action: replace
+    with: (stationaritet)
+  "2.2":
+  - field: solution
+    text: (Jensens ulighed, uge 4)
+    action: replace
+    with: (Jensens ulighed)
+  "2.8":
+  - field: solution
+    text: (uge 16)
+    action: remove
+  "2.13":
+  - field: solution
+    text: (uge 5 og 10)
+    action: remove
+  "3.3":
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "3.9":
+  - field: solution
+    text: (loven om total forventning, uge 4)
+    action: replace
+    with: (loven om total forventning)
+  "3.10":
+  - field: prompt
+    text: (Ifølge store tals lov, uge 4, går gennemsnittet mod $g(f)$.)
+    action: replace
+    with: (Ifølge store tals lov går gennemsnittet mod $g(f)$.)
+  - field: prompt
+    text: (Uddybes i uge 16.)
+    action: remove
+  - field: solution
+    text: (uge 5 og 10)
+    action: remove
+  "3.11":
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "3.13":
+  - field: solution
+    text: (multiple comparisons/p-hacking, uge 5; deflated Sharpe ratio og overfitting, uge 10)
+    action: replace
+    with: (multiple comparisons/p-hacking; deflated Sharpe ratio og overfitting)
+  "4.2":
+  - field: solution
+    text: (delta-hedging, uge 14)
+    action: replace
+    with: (delta-hedging)
+  "4.6":
+  - field: prompt
+    text: (Udtrykket $\mu-\sigma^2/2$ dukker op igen i uge 13–14.)
+    action: remove
+  "4.7":
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "4.8":
+  - field: prompt
+    text: (Forbindelse til uge 9.)
+    action: remove
+  - field: solution
+    text: ", og det modelleres med ARCH/GARCH i uge 9"
+    action: remove
+  "4.11":
+  - field: solution
+    text: (uge 8)
+    action: remove
+  "5.3":
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "6.3":
+  - field: solution
+    text: (Risk parity i uge 12 vælger vægte, så bidragene er ens.)
+    action: remove
+  "6.6":
+  - field: prompt
+    text: (uge 7)
+    action: remove
+  "6.12":
+  - field: solution
+    text: (uge 8)
+    action: remove
+  "6.13":
+  - field: solution
+    text: (size, value, momentum — uge 8)
+    action: replace
+    with: (size, value, momentum)
+  "7.13":
+  - field: solution
+    text: (uge 16)
+    action: remove
+  "9.3":
+  - field: solution
+    text: (uge 15)
+    action: remove
+  "9.12":
+  - field: prompt
+    text: (Grundlaget for pairs trading i uge 11.)
+    action: remove
+  - field: solution
+    text: "Bemærk til uge 10–11:"
+    action: replace
+    with: "Bemærk:"
+  "9.13":
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "10.12":
+  - field: solution
+    text: (fx langsom informationsspredning/risikopræmie, jf. uge 11)
+    action: replace
+    with: (fx langsom informationsspredning/risikopræmie)
+  "11.6":
+  - field: prompt
+    text: (sammenlign med uge 13)
+    action: remove
+  "11.12":
+  - field: solution
+    text: (kapacitet, uge 12)
+    action: replace
+    with: (kapacitet)
+  "12.8":
+  - field: solution
+    text: (uge 15)
+    action: remove
+  "13.13":
+  - field: prompt
+    text: (uge 14)
+    action: remove
+  - field: prompt
+    text: (uge 16)
+    action: remove
+  - field: solution
+    text: (uge 14)
+    action: remove
+  - field: solution
+    text: (uge 16)
+    action: remove

@@ -1,0 +1,56 @@
+# Henvisninger frem i kurset ("vender tilbage i uge 9", "forsmag på …"), fundet af npm run forward-refs.
+# action: remove (slet teksten) · replace (erstat med "with") · keep (behold). "review" stopper bygget.
+# Teksten skal stå præcis én gang i feltet (prompt, hint eller solution). plan.md ændres aldrig.
+exercises:
+  "1.4":
+  - field: prompt
+    text: (bruges i uge 4)
+    action: remove
+  "1.11":
+  - field: prompt
+    text: (bruges i uge 10)
+    action: remove
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "5.8":
+  - field: prompt
+    text: (a) Hvis fastkursen holder, og pundet vender tilbage til centralkursen, hvad er tabet i %?
+    action: keep
+  "6.7":
+  - field: prompt
+    text: (bruges i uge 9)
+    action: remove
+  "8.5":
+  - field: prompt
+    text: (bruges i uge 10)
+    action: remove
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "1.9":
+  - field: prompt
+    text: (uddybes i uge 2)
+    action: remove
+  - field: solution
+    text: Det er kernen i moral hazard-problemet i uge 2.
+    action: replace
+    with: Det er kernen i det, man kalder moral hazard.
+  "1.10":
+  - field: solution
+    text: (uge 2)
+    action: remove
+  "2.6":
+  - field: solution
+    text: "(risiko: strenge stop-loss-regler og mindre selvstændighed, uge 12)"
+    action: replace
+    with: "(risiko: strenge stop-loss-regler og mindre selvstændighed)"
+  "7.10":
+  - field: solution
+    text: (uge 9)
+    action: remove
+  "8.9":
+  - field: prompt
+    text: (bruges i 8.11 og uge 9)
+    action: replace
+    with: (bruges i 8.11)

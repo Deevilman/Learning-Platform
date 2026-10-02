@@ -386,3 +386,44 @@ body {
   font-size: 1.05rem;
   color: var(--text);
 }
+
+/* Sub-questions "(a) (b) …": hanging letter, no bullet. (Items scroll sideways
+   for long formulas, so the letter must stay inside the item's box.) */
+.prose-content ul.subq {
+  list-style: none;
+  padding-left: 0;
+}
+.prose-content ul.subq > li {
+  padding-left: 2.2em;
+  text-indent: -2.2em;
+}
+.prose-content ul.subq > li > * {
+  text-indent: 0;
+}
+.prose-content ul.subq > li > strong:first-child,
+.prose-content ul.subq > li > p:first-child > strong:first-child {
+  display: inline-block;
+  width: 2.2em;
+  text-indent: 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+.prose-content ul.subq > li > p:first-child {
+  text-indent: -2.2em;
+}
+.prose-content ul.subq > li + li {
+  margin-top: 0.6em;
+}
+.prose-content ul.subq > li > p + p,
+.prose-content ul.subq > li > p + .katex-display,
+.prose-content ul.subq > li > .katex-display + p {
+  margin-top: 0.4em;
+}
+.prose-content pre {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.prose-content table {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

@@ -56,8 +56,11 @@ export function normaliseDisplayMath(md: string): string {
       const rest = t.slice(2)
       const close = rest.indexOf('$$')
       if (close >= 0) {
-        const after = rest.slice(close + 2).trim()
-        out.push(indent + '$$', indent + rest.slice(0, close), indent + '$$')
+        let after = rest.slice(close + 2).trim()
+        // "$$…$$, så …": the punctuation belongs inside the formula
+        const p = /^[.,;:]/.exec(after)?.[0] || ''
+        after = after.slice(p.length).trim()
+        out.push(indent + '$$', indent + rest.slice(0, close) + p, indent + '$$')
         if (after) out.push(indent + after)
       } else {
         out.push(indent + '$$')
@@ -70,8 +73,11 @@ export function normaliseDisplayMath(md: string): string {
       const close = t.indexOf('$$')
       if (close >= 0) {
         const before = t.slice(0, close)
-        const after = t.slice(close + 2).trim()
-        if (before.trim()) out.push(indent + before)
+        let after = t.slice(close + 2).trim()
+        const p = /^[.,;:]/.exec(after)?.[0] || ''
+        after = after.slice(p.length).trim()
+        if (before.trim()) out.push(indent + before + p)
+        else if (p) out[out.length - 1] += p
         out.push(indent + '$$')
         if (after) out.push(indent + after)
         inMath = false
@@ -167,7 +173,9 @@ function makeProcessor(ctx: RenderContext) {
 export function renderMarkdown(md: string, ctx: RenderContext): string {
   if (!md || !md.trim()) return ''
   const pre = preprocess(md, ctx)
-  return String(makeProcessor(ctx).processSync(pre)).trim()
+  const html = String(makeProcessor(ctx).processSync(pre)).trim()
+  // A list that starts with "**(a)**" holds sub-questions: style it as such.
+  return html.replace(/<ul>(\s*<li>\s*(?:<p>)?<strong>\(a\)<\/strong>)/g, '<ul class="subq">$1')
 }
 
 /** Render a single line/paragraph without the wrapping <p>. */

@@ -44,6 +44,22 @@ describe('content pipeline', () => {
     const course = readFileSync(join(out, 'courses/foundations.json'), 'utf8')
     expect(course).toContain('mermaid-src')
   })
+
+  it('shows sub-questions as lists and strips reviewed forward references', () => {
+    const w1 = JSON.parse(readFileSync(join(out, 'courses/foundations/week-1.json'), 'utf8'))
+    const e14 = w1.exercises.find((e: { number: string }) => e.number === '1.4')
+    expect(e14.prompt).toContain('<ul class="subq">')
+    expect(e14.prompt).not.toMatch(/Forsmag/i)
+    expect(e14.solution).toContain('<ul class="subq">')
+    // no exercise anywhere still points ahead with the reviewed phrases
+    for (const c of ['foundations', 'quant', 'hedgefund']) {
+      const weeks = report.courses.find((x) => x.slug === c)!.weeks
+      for (let n = 1; n <= weeks; n++) {
+        const w = JSON.parse(readFileSync(join(out, `courses/${c}/week-${n}.json`), 'utf8'))
+        for (const e of w.exercises) expect(`${c} ${e.number}: ${e.prompt}`).not.toMatch(/forsmag på|bruges i uge|se uge \d/i)
+      }
+    }
+  })
 })
 
 describe('plan parser validation', () => {

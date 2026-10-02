@@ -7,6 +7,7 @@ import { join, relative, basename } from 'node:path'
 import YAML from 'yaml'
 import { parsePlan, parseGlossary, type RawPlan, type RawWeek, type RawQA } from './lib/plan-parser.ts'
 import { renderMarkdown, renderInline, plainText, type RenderContext } from './lib/markdown.ts'
+import { applyForwardRefs, displayLongMath, splitSubquestions, type ForwardRefRule } from './lib/exercise-text.ts'
 import type {
   AutoCheck,
   ContentIndex,
@@ -36,6 +37,7 @@ export interface BuildReport {
   errors: { file: string; line: number; message: string }[]
   warnings: string[]
   courses: { slug: string; weeks: number; exercises: number; solutions: number; videos: number; videosMissing: number; selftest: number; interview: number }[]
+  forwardRefsRemoved?: number
 }
 
 interface Overrides {
@@ -206,7 +208,28 @@ export function buildContent(opts: BuildOptions): BuildReport {
     const md = (s: string | undefined, file: string, line: number) => (s ? renderMarkdown(s, ctx(file, line)) : '')
     const inl = (s: string | undefined, file: string, line: number) => (s ? renderInline(s, ctx(file, line)) : '')
 
-    const makeExercise = (w: RawWeek, e: RawWeek['exercises'][number], sol: RawWeek['solutions'][number] | undefined, file: string, set: ExerciseSummary['set']): Exercise => {
+    // ---------- forward-refs.yaml (reviewed list of remarks that point ahead in the course)
+    const frFile = rel('forward-refs.yaml')
+    const forwardRefs: Record<string, (ForwardRefRule & { field: 'prompt' | 'hint' | 'solution' })[]> = existsSync(join(dir, 'forward-refs.yaml'))
+      ? YAML.parse(readFileSync(join(dir, 'forward-refs.yaml'), 'utf8'))?.exercises || {}
+      : {}
+    for (const [num, rules] of Object.entries(forwardRefs)) {
+      if (!allNumbers.has(num)) err(frFile, 0, `ukendt øvelse "${num}"`)
+      for (const r of rules) if (!['remove', 'replace', 'keep'].includes(r.action)) err(frFile, 0, `øvelse ${num}: "${r.text.slice(0, 50)}" er ikke gennemgået (action: ${r.action})`)
+    }
+    /** Remove reviewed forward references, then turn inline (a) (b) … into a list. */
+    const tidy = (num: string, field: 'prompt' | 'hint' | 'solution', text: string | undefined) => {
+      if (!text) return text
+      const rules = (forwardRefs[num] || []).filter((r) => r.field === field)
+      const { md: out, problems } = applyForwardRefs(text, rules)
+      for (const p of problems) err(frFile, 0, `øvelse ${num} (${field}): ${p}`)
+      if (rules.some((r) => r.action !== 'keep')) report.forwardRefsRemoved = (report.forwardRefsRemoved || 0) + rules.filter((r) => r.action !== 'keep').length
+      return displayLongMath(splitSubquestions(out))
+    }
+
+    const makeExercise = (w: RawWeek, e0: RawWeek['exercises'][number], sol0: RawWeek['solutions'][number] | undefined, file: string, set: ExerciseSummary['set']): Exercise => {
+      const e = { ...e0, prompt: tidy(e0.number, 'prompt', e0.prompt)! }
+      const sol = sol0 && { ...sol0, hint: tidy(e0.number, 'hint', sol0.hint), body: tidy(e0.number, 'solution', sol0.body)! }
       const ov = overrides.exercises?.[e.number] || {}
       const topics = ov.topics || [...new Set([...weekTopics(w.number), ...(ov.add_topics || [])])]
       const kind = ov.kind || classify(e.markers, e.prompt)
@@ -320,9 +343,11 @@ export function buildContent(opts: BuildOptions): BuildReport {
     const sets: CourseData['sets'] = []
     const makeSet = (key: 'selftest' | 'interview', raw: { line: number; title: string; intro: string; items: RawQA[] } | undefined) => {
       if (!raw) return 0
-      const exercises: Exercise[] = raw.items.map((q) => {
+      const exercises: Exercise[] = raw.items.map((q0) => {
+        let q = q0
         const ov = overrides.exercises?.[`${key}/${q.number}`] || {}
         const weeks = [...new Set([...`${q.prompt} ${q.answer}`.matchAll(/uge\s+(\d+)/gi)].map((m) => Number(m[1])))]
+        q = { ...q, prompt: displayLongMath(splitSubquestions(q.prompt)), answer: displayLongMath(splitSubquestions(q.answer)) }
         const topics = ov.topics || [...new Set(weeks.flatMap(weekTopics))]
         const ex: Exercise = {
           id: `${slug}/${key}/${q.number}`,

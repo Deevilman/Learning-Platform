@@ -293,3 +293,16 @@ Et nyt sprog (C, assembly, …) tilføjes ved at implementere `CodeRunner` i `sr
 ## 6. Fejl i en plan
 
 Ret aldrig fagligt indhold i stilhed. Skriv fejlen i `content/ERRATA.md` (fil, linje, hvad der er galt, forslag), og ret derefter kildefilen i `content/source/` og kør `npm run import`.
+
+## 7. Opgavetekster: delspørgsmål, lange formler og henvisninger frem
+
+Bygget (`npm run content`) gør tre ting ved øvelser, løsninger og hints — `plan.md` ændres ikke:
+
+- **Delspørgsmål** skrevet på én linje, `(a) … (b) … (c) …`, bliver til en liste. Kun en række, der starter ved (a) og fortsætter i alfabetisk rækkefølge, tæller, så "brug (b)" inde i (c) bliver stående.
+- **Lange formler** (over 90 tegn) i `$…$` flyttes ud på deres egen linje som display-matematik.
+- **Henvisninger frem i kurset** ("vender tilbage i uge 9", "bruges i uge 7", "se uge 12", "forsmag på …" og "(uge N)" efter øvelsens egen uge) forvirrer, fordi eleven ikke har set stoffet endnu. `npm run forward-refs` finder dem og skriver forslag i `content/courses/<kursus>/forward-refs.yaml` med `action: review`. Gennemgå hvert forslag og sæt:
+  - `remove` — teksten fjernes,
+  - `replace` + `with: "…"` — teksten erstattes (fx "(Jensens ulighed, uge 4)" → "(Jensens ulighed)"),
+  - `keep` — teksten bliver (fx når "vender tilbage" handler om noget andet).
+
+  Bygget stopper, hvis et forslag står på `review`, eller hvis en tekst ikke findes præcis én gang i feltet (`prompt`, `hint` eller `solution`). Teksten må gerne være en del af en sætning.
