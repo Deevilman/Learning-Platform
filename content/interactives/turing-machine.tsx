@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Widget, Buttons } from './_ui'
 
-export const meta = { title: 'Turing-maskine-simulator', course: 'foundations' }
+export const meta = { title: 'Turing-maskine-simulator', course: 'foundations', intro: 'Kør en Turing-maskine skridt for skridt, og se båndet ændre sig.' }
 
 type Rule = { write: string; move: -1 | 0 | 1; next: string }
 interface Machine {

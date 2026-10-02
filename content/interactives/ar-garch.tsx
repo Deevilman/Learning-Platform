@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Buttons, Stat, rng, fmt } from './_ui'
 
-export const meta = { title: 'AR(1)- og GARCH(1,1)-simulator', course: 'quant' }
+export const meta = { title: 'AR(1)- og GARCH(1,1)-simulator', course: 'quant', intro: 'Skru på parametrene, og se forskellen på hukommelse i niveauet (AR) og hukommelse i udsvingene (GARCH).' }
 
 export default function ArGarch() {
   const [model, setModel] = useState<'ar' | 'garch'>('ar')

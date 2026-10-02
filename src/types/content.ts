@@ -161,6 +161,8 @@ export interface CourseData {
   sets: { slug: string; title: string; count: number }[]
   glossary: GlossaryEntry[]
   counts: { weeks: number; exercises: number; solutions: number; videos: number; videosMissing: number }
+  /** "Prøv selv": the interactive components in this course's notes. */
+  tryIt: { id: string; title: string; intro?: string; week: number }[]
 }
 
 export interface SearchDoc {
@@ -177,4 +179,5 @@ export interface ContentIndex {
   generatedAt: string
   courses: CourseMeta[]
   exercises: ExerciseSummary[]
+  interactives: { id: string; title: string; intro?: string; course?: string }[]
 }

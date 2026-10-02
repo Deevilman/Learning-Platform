@@ -65,7 +65,12 @@ export default function TrainPage() {
   const srsMap = new Map(srs.map((c) => [c.id, c]))
   const fits = (e: { hasChoices: boolean }) => matchesAnswerPref({ choices: e.hasChoices, typed: true }, pref)
   let bank = index.exercises.filter((e) => inScope(e.course, e.topics) && fits(e))
-  const gens = mode === 'gennemgang' ? [] : generators.filter((g) => inScope(g.course, g.topics) && matchesAnswerPref(generatorCaps(g), pref))
+  const srsMapEarly = new Map(srs.map((c) => [c.id, c]))
+  const gens =
+    mode === 'gennemgang'
+      ? // generated skills that are due for repetition come back with new numbers
+        generators.filter((g) => courses.some((c) => c.slug === g.course) && (srsMapEarly.get(`gen:${g.id}`)?.due ?? Infinity) <= now && matchesAnswerPref(generatorCaps(g), pref))
+      : generators.filter((g) => inScope(g.course, g.topics) && matchesAnswerPref(generatorCaps(g), pref))
   if (mode === 'gennemgang') bank = index.exercises.filter((e) => courses.some((c) => c.slug === e.course) && fits(e) && srsMap.get(e.id) && srsMap.get(e.id)!.due <= now)
   const dueCount = bank.filter((e) => srsMap.get(e.id) && srsMap.get(e.id)!.due <= now).length
 
@@ -149,12 +154,13 @@ export default function TrainPage() {
         <div className="rounded-lg p-3 text-sm" style={{ background: 'var(--surface-2)' }}>
           <b>Omfang:</b> {scopeLabel(index, scope) || 'ingen emner valgt'}
           <br />
-          {bank.length} opgaver fra kurset ({dueCount} klar til repetition){gens.length ? ' · plus regneopgaver med nye tal hver gang' : ''}
+          {mode === 'gennemgang' ? `${bank.length + gens.length} ${bank.length + gens.length === 1 ? 'opgave' : 'opgaver'} klar til repetition` : `${bank.length} opgaver fra kurset (${dueCount} klar til repetition)`}
+          {mode !== 'gennemgang' && gens.length ? ' · plus regneopgaver med nye tal hver gang' : ''}
           {pref !== 'blandet' && <span className="muted"> · {ANSWER_PREF_LABEL[pref].toLowerCase()}</span>}
         </div>
         <AnswerPrefPicker />
         <button className="btn btn-primary w-full py-2.5 text-base" disabled={!bank.length && !gens.length} onClick={() => setRunning(true)}>
-          {mode === 'gennemgang' && !bank.length ? 'Intet at gennemgå i dag 🎉' : 'Start træning'}
+          {mode === 'gennemgang' && !bank.length && !gens.length ? 'Intet at repetere i dag 🎉' : 'Start træning'}
         </button>
       </section>
       <p className="muted text-sm">
@@ -206,6 +212,7 @@ function Session(props: {
       generators: props.gens,
       now: Date.now(),
       startDifficulty: props.start,
+      reviewOnly: props.mode === 'gennemgang',
     })
   const [item, setItem] = useState<TrainItem | null | undefined>(undefined)
   const [bankEx, setBankEx] = useState<Exercise | null>(null)
@@ -215,7 +222,6 @@ function Session(props: {
 
   const advance = () => {
     const next = session.current!.next()
-    if (props.mode === 'gennemgang' && next && next.kind === 'bank' && next.reason !== 'due') return setItem(null)
     setItem(next)
     setDone(false)
     setBankEx(null)

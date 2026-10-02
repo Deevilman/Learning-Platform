@@ -136,6 +136,16 @@ export function buildContent(opts: BuildOptions): BuildReport {
       : [],
   )
 
+  // title, course and "Prøv selv" intro from each component's `export const meta = { … }`
+  const interactiveMeta = new Map<string, { title: string; intro?: string; course?: string }>()
+  for (const id of interactives) {
+    const src = readFileSync(join(contentDir, 'interactives', `${id}.tsx`), 'utf8')
+    const meta = /export const meta = \{([^}]*)\}/.exec(src)?.[1] || ''
+    const get = (k: string) => new RegExp(`${k}:\\s*'((?:\\\\'|[^'])*)'`).exec(meta)?.[1]?.replace(/\\'/g, "'")
+    interactiveMeta.set(id, { title: get('title') || id, intro: get('intro'), course: get('course') })
+  }
+  const allInteractives: ContentIndex['interactives'] = []
+
   const metas: CourseMeta[] = []
   const allSummaries: ExerciseSummary[] = []
   const search: SearchDoc[] = []
@@ -214,7 +224,8 @@ export function buildContent(opts: BuildOptions): BuildReport {
     const videoMap: Record<string, { sources: any[] }> = videosFile.videos || {}
     const usedVideoKeys = new Set<string>()
 
-    const ctx = (file: string, line: number): RenderContext => ({ file, line, interactives, errors: report.errors, directives: [] })
+    const ctx = (file: string, line: number): RenderContext => ({ file, line, interactives, interactiveMeta, errors: report.errors, directives: [] })
+    const tryIt: CourseData['tryIt'] = []
     const md = (s: string | undefined, file: string, line: number) => (s ? renderMarkdown(s, ctx(file, line)) : '')
     const inl = (s: string | undefined, file: string, line: number) => (s ? renderInline(s, ctx(file, line)) : '')
 
@@ -341,6 +352,11 @@ export function buildContent(opts: BuildOptions): BuildReport {
       exCount += exercises.length
 
       const notesMd = applyInserts(w.notes, overrides.inserts, w.number, 'notes', ovFile, report.errors)
+      for (const m of notesMd.matchAll(/::interactive\{([^}]*)\}/g)) {
+        const id = /id="([^"]+)"/.exec(m[1])?.[1]
+        const meta = id && interactiveMeta.get(id)
+        if (id && meta) tryIt.push({ id, title: meta.title, intro: meta.intro ? renderInline(meta.intro, ctx(ovFile, 0)) : undefined, week: w.number })
+      }
       const week: Week = {
         course: slug,
         number: w.number,
@@ -467,6 +483,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       sets,
       glossary,
       counts: { weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing },
+      tryIt,
     }
     outputs.push({ path: `courses/${slug}.json`, data: courseData })
     metas.push(meta)
@@ -488,7 +505,8 @@ export function buildContent(opts: BuildOptions): BuildReport {
       mkdirSync(join(p, '..'), { recursive: true })
       writeFileSync(p, JSON.stringify(o.data))
     }
-    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries }
+    for (const [id, m] of interactiveMeta) allInteractives.push({ id, title: m.title, intro: m.intro, course: m.course })
+    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries, interactives: allInteractives }
     writeFileSync(join(opts.out, 'index.json'), JSON.stringify(index))
     writeFileSync(join(opts.out, 'search.json'), JSON.stringify(search))
   }

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Buttons, Stat, fmt } from './_ui'
 
-export const meta = { title: 'Binomialtræ for optioner', course: 'quant' }
+export const meta = { title: 'Binomialtræ for optioner', course: 'quant', intro: 'Byg et binomialtræ, og se optionsprisen regnes baglæns fra udløb til i dag.' }
 
 export default function BinomialTree() {
   const [n, setN] = useState(3)

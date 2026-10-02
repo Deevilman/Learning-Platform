@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Stat, rng, pct, fmt } from './_ui'
 
-export const meta = { title: 'Geometrisk brownsk bevægelse', course: 'quant' }
+export const meta = { title: 'Geometrisk brownsk bevægelse', course: 'quant', intro: 'Skift drift og volatilitet, og se kursstierne sprede sig — og hvorfor medianen ligger under middelværdien.' }
 
 export default function GBM({ props }: { props: Record<string, string> }) {
   const [mu, setMu] = useState(Number(props.mu) || 0.08)

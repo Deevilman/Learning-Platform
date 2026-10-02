@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Stat, fmt, pct } from './_ui'
 
-export const meta = { title: 'Gebyrmotor med high-water mark', course: 'hedgefund' }
+export const meta = { title: 'Gebyrmotor med high-water mark', course: 'hedgefund', intro: 'Ret afkastene år for år, og se, hvornår high-water mark stopper resultathonoraret.' }
 
 // The plan's week-2 fee engine (hard hurdle).
 function run(gs: number[], m: number, p: number, h: number, hwm: boolean) {

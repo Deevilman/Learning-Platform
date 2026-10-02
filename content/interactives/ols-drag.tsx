@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import { Widget, Chart, Stat, fmt } from './_ui'
 
-export const meta = { title: 'OLS-regression med træk-selv-punkter', course: 'quant' }
+export const meta = { title: 'OLS-regression med træk-selv-punkter', course: 'quant', intro: 'Træk i punkterne, og se regressionslinjen og $R^2$ følge med.' }
 
 const START: [number, number][] = [
   [1, 2.1],

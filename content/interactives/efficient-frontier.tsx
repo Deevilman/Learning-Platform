@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Stat, pct } from './_ui'
 
-export const meta = { title: 'Den effektive rand (3 aktiver)', course: 'quant' }
+export const meta = { title: 'Den effektive rand (3 aktiver)', course: 'quant', intro: 'Ændr afkast, volatilitet og korrelationer for tre aktiver, og se minimum-varians- og tangentporteføljen flytte sig.' }
 
 export default function EfficientFrontier() {
   const [mu, setMu] = useState([0.06, 0.09, 0.12])

@@ -83,12 +83,17 @@ export function useSetting<V>(key: string, fallback: V): [V, (v: V) => void, boo
 
 export const uid = () => (crypto.randomUUID ? crypto.randomUUID() : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`)
 
-/** Save an attempt and (for bank exercises) update the spaced-repetition card. */
+/** Repetition card for a generator (a skill), e.g. "gen:q-sharpe". */
+export const srsGeneratorId = (generatorId: string) => `gen:${generatorId}`
+
+/** Save an attempt and update the spaced-repetition card (bank exercise or generator). */
 export async function recordAttempt(store: StorageAdapter, a: Omit<Attempt, 'id' | 'updatedAt' | 'ts'>, rating?: Rating) {
   const now = Date.now()
   await store.put('attempts', { ...a, id: uid(), ts: now })
-  if (a.source === 'bank' && rating !== undefined) {
-    const card = (await store.get('srs', a.exerciseId)) || newCard(a.exerciseId, now)
-    await store.put('srs', review(card, rating, now))
-  }
+  if (rating === undefined) return
+  // Bank exercises are repeated as themselves; generated ones as a skill (the generator) with new numbers.
+  const cardId = a.source === 'bank' ? a.exerciseId : a.generatorId ? srsGeneratorId(a.generatorId) : null
+  if (!cardId) return
+  const card = (await store.get('srs', cardId)) || newCard(cardId, now)
+  await store.put('srs', review(card, rating, now))
 }

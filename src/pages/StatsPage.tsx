@@ -5,6 +5,7 @@ import { useTable } from '@/lib/store'
 import { weekProgress } from '@/lib/progress'
 import { computeMastery } from '@/lib/mastery'
 import { DAY } from '@/lib/srs'
+import { generators } from '@/lib/generators'
 import { CourseDot, ErrorBox, Loading, Progress } from '@/components/ui'
 
 function startOfWeek(now: number) {
@@ -36,7 +37,7 @@ export default function StatsPage() {
     { label: 'rigtige svar', value: weekAttempts.filter((a) => a.score >= 0.66).length },
     { label: 'timer (logbog)', value: (logbook.filter((l) => new Date(l.date).getTime() >= weekStart - DAY / 2).reduce((s, l) => s + (l.minutes || 0), 0) / 60).toLocaleString('da-DK', { maximumFractionDigits: 1 }) },
   ]
-  const exTitle = new Map(data.idx.exercises.map((e) => [e.id, e]))
+  const exTitle = new Set([...data.idx.exercises.map((e) => e.id), ...generators.map((g) => `gen:${g.id}`)])
   const due = srs.filter((c) => c.due <= now && exTitle.has(c.id)).sort((a, b) => a.due - b.due)
   const upcoming = srs.filter((c) => c.due > now && c.due < now + 7 * DAY && exTitle.has(c.id)).length
 

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Stat, rng, fmt } from './_ui'
 
-export const meta = { title: 'Overfitting: den bedste af N tilfældige strategier', course: 'quant' }
+export const meta = { title: 'Overfitting: den bedste af N tilfældige strategier', course: 'quant', intro: 'Lad computeren vælge den bedste af N tilfældige strategier, og se, hvordan den klarer sig bagefter.' }
 
 export default function Overfitting() {
   const [N, setN] = useState(100)

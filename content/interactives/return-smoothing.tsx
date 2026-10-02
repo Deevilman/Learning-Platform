@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Stat, rng, fmt, pct } from './_ui'
 
-export const meta = { title: 'Afkastudglatning og oppustet Sharpe', course: 'hedgefund' }
+export const meta = { title: 'Afkastudglatning og oppustet Sharpe', course: 'hedgefund', intro: 'Glat afkastene ud, og se Sharpe ratio blive pustet op, uden at risikoen er ændret.' }
 
 export default function ReturnSmoothing() {
   const [theta, setTheta] = useState(0.6)

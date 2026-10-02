@@ -4,6 +4,7 @@ import { loadCourse, loadIndex } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 import { useSetting, useTable } from '@/lib/store'
 import { findWeakTopics } from '@/lib/weakness'
+import { generators } from '@/lib/generators'
 import { nextSteps, reachedWeeks, weekProgress } from '@/lib/progress'
 import { CourseDot, ErrorBox, Loading, Progress, type Position } from '@/components/ui'
 
@@ -37,7 +38,7 @@ export default function Dashboard() {
   if (error) return <ErrorBox error={error} />
   if (!data || !derived) return <Loading what="overblik" />
 
-  const known = new Set(data.idx.exercises.map((e) => e.id))
+  const known = new Set([...data.idx.exercises.map((e) => e.id), ...generators.map((g) => `gen:${g.id}`)])
   const due = (srs || []).filter((c) => c.due <= now && known.has(c.id)).length
   const course = position?.course ? data.courses.get(position.course) : undefined
   const wp = course && position?.week ? weekProgress(course, position.week, derived.checkMap, attempts || []) : null

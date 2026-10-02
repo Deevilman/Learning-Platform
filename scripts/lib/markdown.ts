@@ -19,6 +19,8 @@ export interface RenderContext {
   file: string
   line: number
   interactives: Set<string>
+  /** Title and "Prøv selv" intro per interactive component (from its meta). */
+  interactiveMeta?: Map<string, { title: string; intro?: string }>
   errors: { file: string; line: number; message: string }[]
   directives: { id: string; file: string; line: number }[]
 }
@@ -107,7 +109,11 @@ function preprocess(md: string, ctx: RenderContext): string {
       }
       if (!ctx.interactives.has(id)) ctx.errors.push({ file: ctx.file, line: ctx.line + i, message: `Ukendt interaktiv komponent "${id}" (findes ikke i content/interactives/)` })
       ctx.directives.push({ id, file: ctx.file, line: ctx.line + i })
-      return `\n<div class="interactive" data-interactive="${escapeAttr(id)}" data-props="${escapeAttr(JSON.stringify(attrs))}"></div>\n`
+      // a short "Prøv selv: …" line introduces every component (attribute intro="…" overrides the component's own)
+      const intro = attrs.intro || ctx.interactiveMeta?.get(id)?.intro
+      delete attrs.intro
+      const lead = intro ? `\n**Prøv selv:** ${intro}\n` : ''
+      return `${lead}\n<div class="interactive" data-interactive="${escapeAttr(id)}" data-props="${escapeAttr(JSON.stringify(attrs))}"></div>\n`
     })
     .join('\n')
 }

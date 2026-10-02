@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Widget, Buttons, NumberInput, fmt } from './_ui'
 
-export const meta = { title: 'Ordrebog og matching', course: 'quant' }
+export const meta = { title: 'Ordrebog og matching', course: 'quant', intro: 'Læg købs- og salgsordrer i bogen, og se, hvornår de bliver handlet, og hvad det gør ved spreadet.' }
 
 interface Order {
   id: number

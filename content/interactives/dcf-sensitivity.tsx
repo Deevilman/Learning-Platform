@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Widget, Slider, Stat, fmt, pct } from './_ui'
 
-export const meta = { title: 'DCF med følsomhedstabel', course: 'hedgefund' }
+export const meta = { title: 'DCF med følsomhedstabel', course: 'hedgefund', intro: 'Ændr vækst og diskonteringsrente, og se, hvor følsom værdien er — især over for terminalværdien.' }
 
 function dcf(fcf0: number, growth: number, years: number, wacc: number, g: number) {
   let pv = 0

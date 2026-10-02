@@ -53,3 +53,18 @@ describe('training session', () => {
     for (let i = 0; i < 20; i++) expect(s.next()).not.toBeNull()
   })
 })
+
+describe('daily review with generated exercises', () => {
+  it('serves due bank exercises and one new variant of each due generator, then stops', async () => {
+    const { generators } = await import('@/lib/generators')
+    const b = bank(4)
+    const now = 1_000_000_000
+    const srs = new Map<string, SrsRec>([[b[0].id, { id: b[0].id, due: now - 1, interval: 1, ease: 2.5, reps: 1, lapses: 0, last: 0, updatedAt: 0 }]])
+    const gens = generators.filter((g) => g.course === 'quant').slice(0, 2)
+    const s = new TrainingSession({ bank: b, srs, attempted: new Set(), generators: gens, now, reviewOnly: true, random: () => 0.3 })
+    const items = [s.next(), s.next(), s.next(), s.next()]
+    expect(items.filter((x) => x?.kind === 'bank').map((x) => x && x.kind === 'bank' && x.reason)).toEqual(['due'])
+    expect(new Set(items.filter((x) => x?.kind === 'generated').map((x) => x && x.kind === 'generated' && x.generatorId))).toEqual(new Set(gens.map((g) => g.id)))
+    expect(items[3]).toBeNull()
+  })
+})

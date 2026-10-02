@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Widget, Buttons } from './_ui'
 
-export const meta = { title: 'Mængdeoperationer (Venn)', course: 'foundations' }
+export const meta = { title: 'Mængdeoperationer (Venn)', course: 'foundations', intro: 'Vælg en mængdeoperation, og se den farvet i Venn-diagrammet.' }
 
 // Regions of three sets: bit 0 = A, bit 1 = B, bit 2 = C. Region 0 = outside all.
 type Expr = { id: string; label: string; f: (a: boolean, b: boolean, c: boolean) => boolean; three?: boolean }
