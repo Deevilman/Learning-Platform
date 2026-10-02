@@ -1,0 +1,11 @@
+# Tilføjelser til plan.md, som ikke ændrer selve planen (så den kan importeres igen).
+# inserts: indsæt Markdown i en uges noter før/efter en linje, der indeholder teksten.
+# exercises: emner, sværhedsgrad eller auto-tjek pr. øvelse (se CONTENT_GUIDE.md).
+inserts:
+  - { week: 1, before: "**Typiske fejl**", markdown: '::interactive{id="truth-table" formula="(p -> q) <-> (~q -> ~p)"}' }
+  - { week: 4, before: "**Potensmængde**", markdown: '::interactive{id="venn" expr="dm"}' }
+  - { week: 7, before: "**Cantors sætning.**", markdown: '::interactive{id="cantor-diagonal"}' }
+  - { week: 9, before: "#### 4. Et Hilbert-system", markdown: '::interactive{id="miu"}' }
+  - { week: 10, before: "**Varianter.**", markdown: '::interactive{id="turing-machine" machine="inc"}' }
+  - { week: 12, before: "**Aritmetisering.**", markdown: '::interactive{id="godel-encoder" formula="0=0"}' }
+  - { week: 13, before: "**3. Ikke-terminering og rekursion.**", markdown: '::interactive{id="lambda-reducer" term="PLUS 2 3"}' }

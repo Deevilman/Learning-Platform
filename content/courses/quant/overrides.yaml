@@ -1,0 +1,13 @@
+# Tilføjelser til plan.md, som ikke ændrer selve planen (så den kan importeres igen).
+inserts:
+  - { week: 3, before: "**3. Uafhængighed.**", markdown: '::interactive{id="bayes" prior="0.01" sens="0.95" spec="0.95"}' }
+  - { week: 4, before: "**8. Random walk.**", markdown: '::interactive{id="lln-clt"}' }
+  - { week: 6, before: "**5. Inferens for koefficienterne.**", markdown: '::interactive{id="ols-drag"}' }
+  - { week: 7, before: "**6. CAPM.**", markdown: '::interactive{id="efficient-frontier"}' }
+  - { week: 9, before: "**8. Integration, spurious", markdown: '::interactive{id="ar-garch"}' }
+  - { week: 10, before: "**6. PSR og Deflated Sharpe Ratio.**", markdown: '::interactive{id="overfitting"}' }
+  - { week: 13, before: "**7. Ornstein–Uhlenbeck", markdown: '::interactive{id="gbm" mu="0.08" sigma="0.2"}' }
+  - { week: 14, before: "**6. Risikoneutral prisfastsættelse", markdown: '::interactive{id="binomial-tree"}' }
+  - { week: 14, before: "**10. Delta-hedging og gamma-P&L.**", markdown: '::interactive{id="option-payoff"}' }
+  - { week: 15, before: "**2. Hvorfor findes spreadet?**", markdown: '::interactive{id="order-book"}' }
+  - { week: 16, before: "**7. Machine learning i finans.**", markdown: '::interactive{id="kelly" p="0.55" b="1"}' }

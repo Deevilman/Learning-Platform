@@ -40,7 +40,7 @@ export interface BuildReport {
 
 interface Overrides {
   exercises?: Record<string, { topics?: string[]; add_topics?: string[]; difficulty?: Difficulty; kind?: ExerciseKind; check?: AutoCheck }>
-  inserts?: { week: number; section?: 'notes' | 'connection' | 'exercises' | 'videos'; after?: string; markdown: string }[]
+  inserts?: { week: number; section?: 'notes' | 'connection' | 'exercises' | 'videos'; after?: string; before?: string; markdown: string }[]
 }
 
 const slugify = (s: string) =>
@@ -86,14 +86,21 @@ function applyInserts(md: string, inserts: Overrides['inserts'], week: number, s
   if (!inserts) return md
   let out = md
   for (const ins of inserts.filter((i) => i.week === week && (i.section || 'notes') === section)) {
-    if (!ins.after) {
+    if (!ins.after && !ins.before) {
       out = `${out}\n\n${ins.markdown.trim()}\n`
       continue
     }
     const lines = out.split('\n')
-    const idx = lines.findIndex((l) => l.includes(ins.after!))
-    if (idx < 0) {
-      errors.push({ file, line: 0, message: `insert i uge ${week} (${section}): teksten "${ins.after}" blev ikke fundet` })
+    const anchor = (ins.before || ins.after)!
+    const hits = lines.map((l, i) => (l.includes(anchor) ? i : -1)).filter((i) => i >= 0)
+    if (hits.length !== 1) {
+      errors.push({ file, line: 0, message: `insert i uge ${week} (${section}): teksten "${anchor}" blev fundet ${hits.length} gange (skal være præcis 1)` })
+      continue
+    }
+    const idx = hits[0]
+    if (ins.before) {
+      lines.splice(idx, 0, ins.markdown.trim(), '')
+      out = lines.join('\n')
       continue
     }
     // Insert after the paragraph / block that contains the match.

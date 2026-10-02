@@ -1,0 +1,7 @@
+# Tilføjelser til plan.md, som ikke ændrer selve planen (så den kan importeres igen).
+inserts:
+  - { week: 2, before: "**6. Likviditetsvilkår.**", markdown: '::interactive{id="fee-engine"}' }
+  - { week: 3, before: "**6. Relativ værdiansættelse", markdown: '::interactive{id="dcf-sensitivity"}' }
+  - { week: 6, before: "**3. Aktiebytte og hedge-ratio.**", markdown: '::interactive{id="merger-arb"}' }
+  - { week: 9, before: "**4. Likviditetsrisiko.**", markdown: '::interactive{id="leverage-cascade"}' }
+  - { week: 10, before: "**6. Lo's korrektion", markdown: '::interactive{id="return-smoothing"}' }
