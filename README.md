@@ -1,4 +1,4 @@
-# Det seje — personlig læringsplatform
+# Læring — personlig læringsplatform
 
 En statisk webapp, der gør Olivers læringsplaner (Markdown) til kurser med indlejrede videoer, et stort opgavebibliotek, uendelig træning med opgavegeneratorer, spaced repetition, en svaghedsfinder, interaktive forklaringer og Python i browseren. Alt, hvad du laver, gemmes lokalt og kan synkroniseres mellem enheder.
 

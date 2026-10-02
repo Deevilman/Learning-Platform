@@ -32,7 +32,7 @@ export default function Courses() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Kurser</h1>
+        <h1 className="page-title">Kurser</h1>
         <p className="muted">Pilene viser rækkefølgen: hvert kursus bygger på de foregående.</p>
       </div>
       <ol className="grid gap-4 md:grid-cols-3">

@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 
 test('dashboard, courses and a week with notes, KaTeX and an interactive', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByRole('heading', { name: 'Overblik' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: /Kom i gang|Fortsæt hvor du slap/ })).toBeVisible()
   await page.getByRole('link', { name: 'Kurser', exact: true }).first().click()
   await expect(page.getByRole('heading', { name: 'Kurser' })).toBeVisible()
   await expect(page.getByText('Quant Trading & Research').first()).toBeVisible()

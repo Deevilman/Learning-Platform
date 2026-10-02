@@ -183,7 +183,7 @@ function BackupSection() {
             const blob = new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' })
             const a = document.createElement('a')
             a.href = URL.createObjectURL(blob)
-            a.download = `det-seje-backup-${new Date().toISOString().slice(0, 10)}.json`
+            a.download = `laering-backup-${new Date().toISOString().slice(0, 10)}.json`
             a.click()
             setTimeout(() => URL.revokeObjectURL(a.href), 1000)
           }}

@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f8fafc;
+  --bg: #f7f7f9;
   --surface: #ffffff;
-  --surface-2: #f1f5f9;
-  --border: #e2e8f0;
+  --surface-2: #f2f2f6;
+  --border: #e6e6ec;
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px rgb(15 23 42 / 0.05);
   --text: #0f172a;
   --muted: #64748b;
   --accent: #7c3aed;
@@ -22,10 +23,11 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #0b1020;
-  --surface: #121933;
-  --surface-2: #1a2342;
-  --border: #26304f;
+  --bg: #0d1020;
+  --surface: #151a2e;
+  --surface-2: #1c2238;
+  --border: #262d47;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
   --text: #e5e9f5;
   --muted: #94a3b8;
   --accent: #a78bfa;
@@ -62,16 +64,83 @@ h3 {
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 @layer components {
+  /* One card style everywhere: no border, soft shadow, generous padding. */
   .card {
-    @apply rounded-xl border p-4;
+    @apply rounded-2xl p-5;
     background: var(--surface);
-    border-color: var(--border);
+    box-shadow: var(--shadow);
+  }
+  .card-flat {
+    @apply rounded-2xl p-5;
+    background: var(--surface-2);
+  }
+  /* Reading width for notes and exercises (~70 characters). */
+  .reading {
+    max-width: 70ch;
+  }
+  .page-title {
+    @apply text-2xl font-bold tracking-tight sm:text-3xl;
+  }
+  .section-title {
+    @apply text-lg font-semibold;
+  }
+  .nav-item {
+    @apply inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-medium;
+    color: var(--muted);
+  }
+  .nav-item:hover {
+    color: var(--text);
+  }
+  .nav-active {
+    color: var(--accent) !important;
+    background: var(--accent-soft);
+  }
+  .icon-btn {
+    @apply grid h-10 w-10 place-items-center rounded-full;
+    color: var(--muted);
+  }
+  .icon-btn:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .menu {
+    @apply absolute z-40 flex w-48 flex-col rounded-xl p-1.5;
+    background: var(--surface);
+    box-shadow: var(--shadow), 0 0 0 1px var(--border);
+  }
+  .menu-item {
+    @apply rounded-lg px-3 py-2 text-[15px];
+  }
+  .menu-item:hover {
+    background: var(--surface-2);
+  }
+  .app-header {
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .tabbar {
+    @apply fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 px-2 pb-[env(safe-area-inset-bottom)];
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 -1px 0 var(--border);
+  }
+  .tabbar .nav-item {
+    @apply w-full flex-col gap-0 rounded-xl py-1.5 text-xs;
+  }
+  .tabbar .nav-active {
+    background: transparent;
+  }
+  .nav-icon {
+    font-size: 1.25rem;
+    line-height: 1.4;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl border px-4 py-2 text-[15px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
     border-color: var(--border);
     background: var(--surface);
     color: var(--text);
@@ -115,7 +184,7 @@ body {
 
 /* ---------- Rendered study-plan content ---------- */
 .prose-content {
-  line-height: 1.65;
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
 .prose-content > * + * {
