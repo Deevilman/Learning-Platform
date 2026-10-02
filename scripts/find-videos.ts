@@ -69,7 +69,7 @@ function collectVideos(data: any, out: Video[]): string | null {
     if (k === 'playlistVideoRenderer' && v.videoId) out.push({ id: v.videoId, title: text(v.title), channel: text(v.shortBylineText) })
     if (k === 'videoRenderer' && v.videoId) out.push({ id: v.videoId, title: text(v.title), channel: text(v.ownerText) || text(v.longBylineText) })
     if (k === 'lockupViewModel' && v.contentType === 'LOCKUP_CONTENT_TYPE_VIDEO' && v.contentId)
-      out.push({ id: v.contentId, title: text(v.metadata?.lockupMetadataViewModel?.title), channel: text(v.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel?.metadataRows?.[0]?.metadataParts?.[0]?.text) })
+      out.push({ id: v.contentId, title: text(v.metadata?.lockupMetadataViewModel?.title), channel: (v.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel?.metadataRows || []).flatMap((r: any) => r.metadataParts || []).map((p: any) => text(p.text)).find((t: string) => t && !/views|visninger|ago|siden/i.test(t)) })
     if (k === 'continuationCommand' && v.token) next = v.token
   })
   return next
