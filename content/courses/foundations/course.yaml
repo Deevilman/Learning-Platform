@@ -1,0 +1,25 @@
+slug: foundations
+title: "Matematikkens grundlag"
+short: "Fra logik over mængder til Gödel"
+color: "#7c3aed"
+icon: logic
+level: "gymnasium → universitet (introducerende)"
+estimated_weeks: 14
+prerequisites: []
+next: [quant, aktuar]
+video_key_pattern: "P{n}"
+topics:
+  - { id: propositional-logic, name: "Udsagnslogik", weeks: [1] }
+  - { id: proofs-quantifiers, name: "Kvantorer og bevismetoder", weeks: [2] }
+  - { id: induction, name: "Induktion og rekursion", weeks: [3] }
+  - { id: sets-functions, name: "Mængder, relationer og funktioner", weeks: [4] }
+  - { id: naturals, name: "De naturlige tal (Peano)", weeks: [5] }
+  - { id: number-systems, name: "ℤ, ℚ, ℝ og ℂ", weeks: [6] }
+  - { id: infinity, name: "Uendelighed og tællelighed", weeks: [7] }
+  - { id: zfc, name: "Aksiomatisk mængdelære (ZFC)", weeks: [8] }
+  - { id: formal-systems, name: "Formelle systemer", weeks: [9] }
+  - { id: computability, name: "Beregnelighed og automater", weeks: [10] }
+  - { id: undecidability, name: "Uafgørlighed", weeks: [11] }
+  - { id: godel, name: "Gödels ufuldstændighed", weeks: [12] }
+  - { id: type-theory, name: "Typeteori og λ-kalkyle", weeks: [10, 13] }
+  - { id: category-theory, name: "Kategoriteori", weeks: [14] }
