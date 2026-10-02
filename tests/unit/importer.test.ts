@@ -5,6 +5,7 @@ import { join } from 'node:path'
 import { buildContent, type BuildReport } from '../../scripts/build-content'
 import { parsePlan } from '../../scripts/lib/plan-parser'
 import { normaliseDisplayMath } from '../../scripts/lib/markdown'
+import { evaluate } from '../../src/lib/check'
 
 const ROOT = join(import.meta.dirname, '../..')
 
@@ -43,6 +44,31 @@ describe('content pipeline', () => {
     expect(w1).toContain('data-interactive=\\"truth-table\\"')
     const course = readFileSync(join(out, 'courses/foundations.json'), 'utf8')
     expect(course).toContain('mermaid-src')
+  })
+
+  it('gives every exercise a hint and every quiz exactly one correct option', () => {
+    let quizzes = 0
+    for (const c of ['foundations', 'quant', 'hedgefund']) {
+      const weeks = report.courses.find((x) => x.slug === c)!.weeks
+      for (let n = 1; n <= weeks; n++) {
+        const w = JSON.parse(readFileSync(join(out, `courses/${c}/week-${n}.json`), 'utf8'))
+        for (const e of w.exercises) {
+          expect(e.hints.length, `${c} ${e.number}`).toBeGreaterThan(0)
+          if (!e.quiz) continue
+          quizzes++
+          const { choices, check } = e.quiz
+          expect(choices.options.length).toBeGreaterThanOrEqual(3)
+          expect(new Set(choices.options).size).toBe(choices.options.length)
+          if (check?.type === 'numeric') {
+            const unit = check.unit === '%' ? /\s%$/ : new RegExp(`\\s*${(check.unit || '').replace('.', '\\.')}$`)
+            const ok = choices.options.map((o: string) => evaluate(check, o.replace(unit, '').replace(/−/g, '-').replace(/(\d)\.(?=\d{3}\b)/g, '$1')).correct)
+            expect(ok.filter(Boolean), `${c} ${e.number}: ${choices.options.join(' | ')}`).toHaveLength(1)
+            expect(ok[choices.correct]).toBe(true)
+          }
+        }
+      }
+    }
+    expect(quizzes).toBeGreaterThanOrEqual(40)
   })
 
   it('shows sub-questions as lists and strips reviewed forward references', () => {

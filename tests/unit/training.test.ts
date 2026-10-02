@@ -7,7 +7,7 @@ import type { SrsRec } from '@/lib/storage/types'
 
 const NOW = 1_800_000_000_000
 const bank = (n: number): ExerciseSummary[] =>
-  Array.from({ length: n }, (_, i) => ({ id: `quant/3/3.${i + 1}`, course: 'quant', week: 3, number: `3.${i + 1}`, topics: ['probability'], difficulty: ((i % 3) + 1) as 1 | 2 | 3, kind: 'compute', hasHint: false, hasCheck: false, set: 'week', title: '' }))
+  Array.from({ length: n }, (_, i) => ({ id: `quant/3/3.${i + 1}`, course: 'quant', week: 3, number: `3.${i + 1}`, topics: ['probability'], difficulty: ((i % 3) + 1) as 1 | 2 | 3, kind: 'compute', hasHint: false, hasCheck: false, hasChoices: false, set: 'week', title: '' }))
 
 describe('training session', () => {
   it('runs 150 items without repeating a generated exercise', () => {

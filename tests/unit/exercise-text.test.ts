@@ -74,3 +74,17 @@ describe('sub-answers split over paragraphs', () => {
     expect(splitSubquestions('(a)\n\n$$\nx\n$$\n\n(b) Videre.')).toBe('**(a)**\n\n$$\nx\n$$\n\n**(b)** Videre.')
   })
 })
+
+import { firstStep } from '../../scripts/lib/exercise-text'
+describe('first step hint', () => {
+  it('cuts the result off a calculation', () => {
+    expect(firstStep('$r = 1{,}04/1{,}025 - 1 = 1{,}463\\,\\%$; tilnærmelse $1{,}5\\,\\%$.')).toBe('$r = 1{,}04/1{,}025 - 1$ …')
+  })
+  it('never cuts inside braces', () => {
+    expect(firstStep('(a) $\\ln(W_n/W_0) = \\sum_{k=1}^n\\ln(1 + fX_k)$. Leddene er iid.')).toBe('$\\ln(W_n/W_0) = \\sum_{k=1}^n\\ln(1 + fX_k)$.')
+  })
+  it('gives nothing when the sentence is only the answer', () => {
+    expect(firstStep('$L = 26{,}6$.')).toBeUndefined()
+    expect(firstStep('Svaret er **42**, fordi det er sådan.')).toBeUndefined()
+  })
+})

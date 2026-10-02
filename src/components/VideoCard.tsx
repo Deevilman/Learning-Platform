@@ -42,7 +42,7 @@ function YouTube({ id, title, embed = true }: { id: string; title: string; embed
           ▶
         </span>
         <span className="block w-[90%] truncate font-medium">{title}</span>
-        <span className="muted text-xs">youtube-nocookie.com indlæses først, når du klikker</span>
+        <span className="muted text-xs">Afspilles fra YouTube, når du trykker</span>
       </button>
     )
   return (
@@ -80,7 +80,7 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
           </a>
           {override && (
             <button className="link" onClick={() => setEditing(true)}>
-              Ret URL
+              Ret link
             </button>
           )}
         </div>
@@ -89,21 +89,21 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
 
   const search = source.search || source.title
   return (
-    <div className="min-w-0 rounded-lg border border-dashed p-3 text-sm" style={{ borderColor: 'var(--warn)' }}>
-      <div className="font-medium">Video mangler, indsæt URL</div>
-      <div className="muted mb-2 text-xs">{label}</div>
+    <div className="min-w-0 rounded-lg border border-dashed p-3 text-sm" style={{ borderColor: 'var(--border)' }}>
+      <div className="font-medium">Vi har ikke fundet videoen endnu</div>
+      <div className="muted mb-2 text-xs">{label}. Finder du den, kan du indsætte linket her.</div>
       <form
         className="flex flex-col gap-2 sm:flex-row"
         onSubmit={(e) => {
           e.preventDefault()
           const yt = parseYoutubeId(input)
-          if (!yt) return setError('Det ligner ikke en YouTube-URL eller et video-ID.')
+          if (!yt) return setError('Det ligner ikke et link til en YouTube-video.')
           setError('')
           setEditing(false)
           store.put('videoIds', { id: key, youtube: yt })
         }}
       >
-        <input className="input" placeholder="https://www.youtube.com/watch?v=…" value={input} onChange={(e) => setInput(e.target.value)} aria-label={`YouTube-URL til ${source.title}`} />
+        <input className="input" placeholder="https://www.youtube.com/watch?v=…" value={input} onChange={(e) => setInput(e.target.value)} aria-label={`Link til ${source.title}`} />
         <button className="btn btn-primary shrink-0" type="submit">
           Gem
         </button>

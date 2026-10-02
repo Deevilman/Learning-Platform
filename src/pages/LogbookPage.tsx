@@ -50,8 +50,8 @@ export default function LogbookPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       <div>
-        <h1 className="text-2xl font-bold">Logbog</h1>
-        <p className="muted">Fem minutter efter hver arbejdsgang. Tiden tæller med i overblikket.</p>
+        <h1 className="page-title">Logbog</h1>
+        <p className="muted">Fem minutter efter hver arbejdsgang. Tiden tæller med i din statistik.</p>
       </div>
       <form className="card space-y-3" onSubmit={save}>
         <h2 className="font-semibold">{draft.id ? 'Ret indlæg' : 'Nyt indlæg'}</h2>

@@ -4,15 +4,20 @@ import { useSetting, useStore, useTable } from '@/lib/store'
 import { exportAll, importAll, validateExport } from '@/lib/storage/transfer'
 import { getSession, lastSync, signIn, signOut, signUp, syncNow } from '@/lib/storage/supabase-sync'
 import { useTheme, type ThemePref } from '@/components/ThemeToggle'
+import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { loadCourse, loadIndex, loadWeek } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
-import { TABLES } from '@/lib/storage/types'
 
 export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      <h1 className="text-2xl font-bold">Indstillinger</h1>
+      <h1 className="page-title">Indstillinger</h1>
       <ThemeSection />
+      <section className="card space-y-2">
+        <h2 className="section-title">Opgaver</h2>
+        <AnswerPrefPicker />
+        <p className="muted text-sm">Gælder i Træn og i ugernes øvelser. "Blandet" skifter mellem at vælge et svar og at skrive det selv.</p>
+      </section>
       <SyncSection />
       <BackupSection />
       <MissingVideos />
@@ -25,7 +30,7 @@ function ThemeSection() {
   const [pref, setPref] = useTheme()
   return (
     <section className="card space-y-2">
-      <h2 className="font-semibold">Udseende</h2>
+      <h2 className="section-title">Udseende</h2>
       <div className="flex gap-2" role="radiogroup" aria-label="Tema">
         {(['system', 'light', 'dark'] as ThemePref[]).map((t) => (
           <button key={t} role="radio" aria-checked={pref === t} className="btn" style={pref === t ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : undefined} onClick={() => setPref(t)}>
@@ -67,9 +72,9 @@ function SyncSection() {
 
   return (
     <section className="card space-y-3">
-      <h2 className="font-semibold">Synkronisering mellem enheder (Supabase)</h2>
+      <h2 className="section-title">Brug Læring på flere enheder</h2>
       <p className="muted text-sm">
-        Dine data ligger altid lokalt i browseren. Når du er logget ind, bliver de også gemt i skyen og flettet med dine andre enheder (nyeste ændring vinder).
+        Dine fremskridt gemmes altid på denne enhed. Logger du ind, kan du også fortsætte på din telefon eller en anden computer.
       </p>
       {email === undefined ? (
         <p className="muted text-sm">Tjekker login…</p>
@@ -77,26 +82,26 @@ function SyncSection() {
         <div className="space-y-3">
           <p className="text-sm">
             Logget ind som <b>{email}</b>.{' '}
-            {last ? `Senest synkroniseret ${new Date(last).toLocaleString('da-DK', { dateStyle: 'short', timeStyle: 'short' })}.` : 'Ikke synkroniseret endnu.'}
+            {last ? `Senest opdateret ${new Date(last).toLocaleString('da-DK', { dateStyle: 'short', timeStyle: 'short' })}.` : 'Ikke opdateret endnu.'}
           </p>
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={auto} onChange={(e) => setAuto(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
-            Synkronisér automatisk (ved start, hvert 5. minut og når du forlader siden)
+            Hold mine enheder opdateret automatisk
           </label>
           <div className="flex flex-wrap gap-2">
             <button className="btn btn-primary" disabled={busy} onClick={() => run(async () => {
               const r = await syncNow(store)
-              return `Synkroniseret: ${r.pushed} sendt, ${r.pulled} hentet.`
+              return r.pushed + r.pulled ? 'Dine enheder er opdateret.' : 'Alt var allerede opdateret.'
             })}>
-              {busy ? 'Synkroniserer…' : 'Synkronisér nu'}
+              {busy ? 'Opdaterer…' : 'Opdatér nu'}
             </button>
-            <button className="btn" disabled={busy} onClick={() => run(async () => (await signOut(), 'Logget ud. Dine lokale data er bevaret.'))}>
+            <button className="btn" disabled={busy} onClick={() => run(async () => (await signOut(), 'Du er logget ud. Dine fremskridt på denne enhed er bevaret.'))}>
               Log ud
             </button>
           </div>
         </div>
       ) : (
-        <form className="space-y-2" onSubmit={(e) => (e.preventDefault(), run(async () => (await signIn(form.email, form.password), 'Logget ind. Tryk "Synkronisér nu".')))}>
+        <form className="space-y-2" onSubmit={(e) => (e.preventDefault(), run(async () => (await signIn(form.email, form.password), 'Du er logget ind.')))}>
           <div className="grid gap-2 sm:grid-cols-2">
             <input className="input" type="email" autoComplete="email" placeholder="E-mail" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required aria-label="E-mail" />
             <input className="input" type="password" autoComplete="current-password" placeholder="Adgangskode (mindst 6 tegn)" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required minLength={6} aria-label="Adgangskode" />
@@ -168,12 +173,11 @@ function BackupSection() {
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const fileRef = useRef<HTMLInputElement>(null)
-  const counts = TABLES.map((t) => [t, useTable(t)?.length ?? 0] as const) // eslint-disable-line react-hooks/rules-of-hooks
   return (
     <section className="card space-y-3">
-      <h2 className="font-semibold">Eksport og import</h2>
+      <h2 className="section-title">Sikkerhedskopi</h2>
       <p className="muted text-sm">
-        Gemmer alt: forsøg, svar, noter, afkrydsninger, video-URL'er, logbog, repetitionsplan og indstillinger. ({counts.map(([t, n]) => `${n} ${t}`).join(' · ')})
+        Gem alle dine fremskridt i en fil — svar, noter, sete videoer, logbog og indstillinger. Du kan hente filen ind igen senere eller på en anden enhed.
       </p>
       <div className="flex flex-wrap items-center gap-2">
         <button
@@ -188,14 +192,14 @@ function BackupSection() {
             setTimeout(() => URL.revokeObjectURL(a.href), 1000)
           }}
         >
-          Eksportér (JSON)
+          Gem sikkerhedskopi
         </button>
-        <select className="input w-auto" value={mode} onChange={(e) => setMode(e.target.value as 'merge' | 'replace')} aria-label="Importtilstand">
-          <option value="merge">Flet med eksisterende data</option>
-          <option value="replace">Erstat alle data</option>
+        <select className="input w-auto" value={mode} onChange={(e) => setMode(e.target.value as 'merge' | 'replace')} aria-label="Når du henter en kopi">
+          <option value="merge">Læg sammen med det, der er her</option>
+          <option value="replace">Erstat det, der er her</option>
         </select>
         <button className="btn" onClick={() => fileRef.current?.click()}>
-          Importér…
+          Hent sikkerhedskopi…
         </button>
         <input
           ref={fileRef}
@@ -208,10 +212,10 @@ function BackupSection() {
             if (!f) return
             try {
               const data = JSON.parse(await f.text())
-              if (!validateExport(data)) throw new Error('Filen er ikke en eksport fra platformen.')
-              if (mode === 'replace' && !confirm('Erstat ALLE lokale data med filens indhold?')) return
+              if (!validateExport(data)) throw new Error('Filen er ikke en sikkerhedskopi fra Læring.')
+              if (mode === 'replace' && !confirm('Erstat alle dine fremskridt på denne enhed med indholdet af filen?')) return
               const n = await importAll(store, data, mode)
-              setMsg({ ok: true, text: `Importeret: ${n} poster.` })
+              setMsg({ ok: true, text: `Sikkerhedskopien er hentet (${n} ting).` })
             } catch (err) {
               setMsg({ ok: false, text: (err as Error).message })
             }
@@ -249,8 +253,8 @@ function MissingVideos() {
   const missing = (data || []).filter((m) => !filled.has(`${m.course}/${m.item}/${m.index}`))
   return (
     <section className="card space-y-2">
-      <h2 className="font-semibold">Videoer uden YouTube-ID ({data ? missing.length : '…'})</h2>
-      <p className="muted text-sm">Indsæt URL'en direkte på ugesiden — den gemmes og synkroniseres. For at gøre den permanent for alle kan ID'et skrives i kursets videos.yaml.</p>
+      <h2 className="section-title">Videoer, vi mangler ({data ? missing.length : '…'})</h2>
+      <p className="muted text-sm">Finder du en af dem på YouTube, kan du indsætte linket direkte på ugens side.</p>
       {missing.length > 0 && (
         <ul className="max-h-72 space-y-1 overflow-auto text-sm">
           {missing.map((m) => (
@@ -271,10 +275,10 @@ function DangerSection() {
   const store = useStore()
   return (
     <section className="card space-y-2" style={{ borderColor: 'var(--bad)' }}>
-      <h2 className="font-semibold">Nulstil</h2>
-      <p className="muted text-sm">Sletter alle lokale data i denne browser. Eksportér først, hvis du vil kunne fortryde.</p>
-      <button className="btn" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }} onClick={() => confirm('Slet ALLE lokale data? Det kan ikke fortrydes.') && store.clear()}>
-        Slet alle lokale data
+      <h2 className="section-title">Nulstil</h2>
+      <p className="muted text-sm">Sletter alle dine fremskridt på denne enhed. Gem en sikkerhedskopi først, hvis du vil kunne fortryde.</p>
+      <button className="btn" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }} onClick={() => confirm('Slet alle dine fremskridt på denne enhed? Det kan ikke fortrydes.') && store.clear()}>
+        Slet alle fremskridt
       </button>
     </section>
   )

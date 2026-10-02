@@ -7,7 +7,8 @@ import { join, relative, basename } from 'node:path'
 import YAML from 'yaml'
 import { parsePlan, parseGlossary, type RawPlan, type RawWeek, type RawQA } from './lib/plan-parser.ts'
 import { renderMarkdown, renderInline, plainText, type RenderContext } from './lib/markdown.ts'
-import { applyForwardRefs, displayLongMath, splitSubquestions, type ForwardRefRule } from './lib/exercise-text.ts'
+import { applyForwardRefs, displayLongMath, firstStep, kindHint, splitSubquestions, type ForwardRefRule } from './lib/exercise-text.ts'
+import { makeChoices, shuffledOptions } from '../src/lib/choices.ts'
 import type {
   AutoCheck,
   ContentIndex,
@@ -40,8 +41,17 @@ export interface BuildReport {
   forwardRefsRemoved?: number
 }
 
+/** A short auto-checked question for a bank exercise: either a typed answer (check) or options (first = correct), or both. */
+interface QuizOverride {
+  question: string
+  check?: AutoCheck
+  options?: string[]
+  distractors?: (number | string)[]
+  explain?: string
+}
+
 interface Overrides {
-  exercises?: Record<string, { topics?: string[]; add_topics?: string[]; difficulty?: Difficulty; kind?: ExerciseKind; check?: AutoCheck }>
+  exercises?: Record<string, { topics?: string[]; add_topics?: string[]; difficulty?: Difficulty; kind?: ExerciseKind; check?: AutoCheck; hint?: string; quiz?: QuizOverride }>
   inserts?: { week: number; section?: 'notes' | 'connection' | 'exercises' | 'videos'; after?: string; before?: string; markdown: string }[]
 }
 
@@ -227,12 +237,40 @@ export function buildContent(opts: BuildOptions): BuildReport {
       return displayLongMath(splitSubquestions(out))
     }
 
+    /** Hints, one step at a time: a strategy for the kind of exercise, then the plan's hint or the first step of the solution. */
+    const hintLadder = (kind: string, planHint: string | undefined, solution: string | undefined, file: string, line: number) => {
+      const steps = [kindHint(kind)]
+      const second = planHint || (kind !== 'code' && solution ? firstStep(solution) : undefined)
+      if (second) steps.push(planHint ? second : `Første skridt: ${second}`)
+      return steps.map((h) => md(h, file, line))
+    }
+    const makeQuiz = (num: string, q: QuizOverride | undefined, file: string, line: number): Exercise['quiz'] => {
+      if (!q) return undefined
+      const where = `øvelse ${num}: quiz`
+      if (!q.question) err(ovFile, 0, `${where} mangler "question"`)
+      if (q.check) {
+        const msg = validateCheck(q.check)
+        if (msg) err(ovFile, 0, `${where}: ${msg}`)
+      }
+      let choices: { options: string[]; correct: number } | undefined
+      if (q.options) {
+        if (q.options.length < 3 || new Set(q.options).size !== q.options.length) err(ovFile, 0, `${where}: "options" skal have mindst 3 forskellige svar (det første er det rigtige)`)
+        choices = shuffledOptions(q.options, `${slug}/${num}`)
+      } else if (q.check) {
+        choices = makeChoices(q.check, `${slug}/${num}`, q.distractors) || undefined
+        if (!choices) err(ovFile, 0, `${where}: kunne ikke lave svarmuligheder — angiv "options" eller "distractors"`)
+      }
+      if (!q.check && !choices) err(ovFile, 0, `${where} skal have "check" eller "options"`)
+      return { question: md(q.question, file, line), check: q.check, choices, explain: q.explain ? md(q.explain, file, line) : undefined }
+    }
+
     const makeExercise = (w: RawWeek, e0: RawWeek['exercises'][number], sol0: RawWeek['solutions'][number] | undefined, file: string, set: ExerciseSummary['set']): Exercise => {
       const e = { ...e0, prompt: tidy(e0.number, 'prompt', e0.prompt)! }
       const sol = sol0 && { ...sol0, hint: tidy(e0.number, 'hint', sol0.hint), body: tidy(e0.number, 'solution', sol0.body)! }
       const ov = overrides.exercises?.[e.number] || {}
       const topics = ov.topics || [...new Set([...weekTopics(w.number), ...(ov.add_topics || [])])]
       const kind = ov.kind || classify(e.markers, e.prompt)
+      const quiz = makeQuiz(e.number, ov.quiz, file, e.line)
       return {
         id: `${slug}/${w.number}/${e.number}`,
         course: slug,
@@ -243,12 +281,14 @@ export function buildContent(opts: BuildOptions): BuildReport {
         kind,
         hasHint: !!sol?.hint,
         hasCheck: !!ov.check,
+        hasChoices: ov.check?.type === 'choice' || !!quiz?.choices,
         set,
         title: plainText(e.prompt, 140),
         prompt: md(e.prompt, file, e.line),
-        hint: sol?.hint ? md(sol.hint, file, sol.line) : undefined,
+        hints: hintLadder(kind, ov.hint || sol?.hint, sol?.body, file, sol?.line ?? e.line),
         solution: sol ? md(sol.body, file, sol.line) : '',
         check: ov.check,
+        quiz,
         source: 'bank',
       }
     }
@@ -328,7 +368,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
         topics: weekTopics(w.number),
       })
       for (const ex of exercises) {
-        const { prompt: _p, hint: _h, solution: _s, check: _c, source: _src, ...summary } = ex
+        const { prompt: _p, hints: _h, solution: _s, check: _c, quiz: _q, source: _src, ...summary } = ex
         allSummaries.push(summary)
         search.push({ id: ex.id, type: 'exercise', course: slug, week: w.number, title: `Øvelse ${ex.number}`, text: plainText(w.exercises.find((x) => x.number === ex.number)?.prompt || ex.title), href: `/kursus/${slug}/uge/${w.number}/opgave/${ex.number}` })
       }
@@ -359,9 +399,11 @@ export function buildContent(opts: BuildOptions): BuildReport {
           kind: ov.kind || key,
           hasHint: false,
           hasCheck: !!ov.check,
+          hasChoices: ov.check?.type === 'choice',
           set: key,
           title: plainText(q.prompt, 140),
           prompt: md(q.prompt, planFile, q.line),
+          hints: hintLadder(ov.kind || key, ov.hint, q.answer, planFile, q.line),
           solution: md(q.answer, planFile, q.line),
           check: ov.check,
           source: 'bank',
@@ -372,7 +414,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       outputs.push({ path: `courses/${slug}/set-${key}.json`, data: set })
       sets.push({ slug: key, title: raw.title.replace(/^[^\p{L}]+/u, ''), count: exercises.length })
       for (const ex of exercises) {
-        const { prompt: _p, hint: _h, solution: _s, check: _c, source: _src, ...summary } = ex
+        const { prompt: _p, hints: _h, solution: _s, check: _c, quiz: _q, source: _src, ...summary } = ex
         allSummaries.push(summary)
         search.push({ id: ex.id, type: 'exercise', course: slug, title: `${set.title.replace(/^[^\p{L}]+/u, '')} ${ex.number}`, text: ex.title, href: `/kursus/${slug}/saet/${key}#q-${ex.number}` })
       }

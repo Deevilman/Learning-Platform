@@ -198,3 +198,85 @@ export function displayLongMath(md: string, limit = 90): string {
   }
   return out.join('\n')
 }
+
+// ---------------------------------------------------------------- hint ladder
+
+const KIND_HINT: Record<string, string> = {
+  compute: 'Skriv op, hvilke størrelser du kender, og hvad du skal finde. Hvilken formel fra ugens kernebegreber forbinder dem?',
+  proof: 'Skriv præcist op, hvad du må antage, og hvad du skal vise. Slå definitionerne op — og overvej, om et direkte bevis, et modstridsbevis eller induktion passer bedst.',
+  code: 'Del opgaven op: hvad er input, og hvad skal ud? Skriv først en lille funktion, der klarer det simpleste tilfælde, og afprøv den.',
+  explain: 'Forklar det med dine egne ord, som til en ven: hvad er idéen, og hvorfor holder den? Et konkret eksempel hjælper.',
+  interview: 'Start med definitionen eller hovedidéen, og byg svaret op i to-tre trin.',
+  selftest: 'Start med definitionen eller hovedidéen, og byg svaret op i to-tre trin.',
+  project: 'Del opgaven op i små skridt, og få det første til at virke, før du går videre.',
+}
+export const kindHint = (kind: string) => KIND_HINT[kind] || KIND_HINT.compute
+
+/**
+ * A first step taken from the solution, without the result: the first
+ * sentence of the first prose paragraph, with any formula cut before its last
+ * "=" (so "$r = 1{,}04/1{,}025 - 1 = 1{,}463\,\%$" becomes "$r = 1{,}04/1{,}025 - 1$").
+ * Returns undefined when no safe first step can be found.
+ */
+export function firstStep(solutionMd: string): string | undefined {
+  const paras = solutionMd.split(/\n{2,}/).map((p) => p.trim())
+  const para = paras.find((p) => p && !/^(```|\$\$|\||<|>)/.test(p))
+  if (!para) return undefined
+  let text = para.replace(/^[-*]\s+/, '').replace(/^\*\*\([a-n]\)\*\*\s*/, '').replace(/^\([a-n]\)\s*/, '').replace(/\n/g, ' ')
+  // first sentence, not splitting inside math
+  const ranges = protectedRanges(text)
+  let end = text.length
+  for (const m of text.matchAll(/[.!?](\s|$)/g)) if (!inside(ranges, m.index!) && !/\b(fx|dvs|ca|bl\.a|nr|jf)$/i.test(text.slice(0, m.index!))) {
+    end = m.index! + 1
+    break
+  }
+  text = text.slice(0, end).trim()
+  // cut the result off formulas; stop after the first formula that had a result
+  let out = ''
+  let pos = 0
+  for (const m of text.matchAll(/\$((?:\\.|[^$\\])+)\$/g)) {
+    out += text.slice(pos, m.index)
+    const body = m[1]
+    const cuts = topLevelRelations(body)
+    const last = cuts[cuts.length - 1]
+    const rhs = last ? body.slice(last.end).trim() : ''
+    const onlyNumber = /^[-−]?[\d{},.\s\\%]+$/.test(rhs)
+    if (cuts.length >= 2 || (cuts.length === 1 && onlyNumber)) {
+      const kept = body.slice(0, last.start).trim()
+      if (cuts.length === 1 && /^\\?[a-zA-Z]+(?:_\{?\w+\}?)?$/.test(kept)) return undefined // "$L = 26{,}6$": nothing but the answer
+      out += `$${kept}$`
+      return tidyStep(out)
+    }
+    out += m[0]
+    pos = m.index! + m[0].length
+  }
+  out += text.slice(pos)
+  if (/\*\*|svar/i.test(out)) return undefined // bold text is usually the answer
+  return tidyStep(out)
+}
+
+/** Positions of "=" and "\\approx" outside braces, e.g. not the one in \\sum_{k=1}. */
+function topLevelRelations(tex: string): { start: number; end: number }[] {
+  const out: { start: number; end: number }[] = []
+  let depth = 0
+  for (let i = 0; i < tex.length; i++) {
+    const c = tex[i]
+    if (c === '\\' && tex.startsWith('\\approx', i) && depth === 0) {
+      out.push({ start: i, end: i + 7 })
+      i += 6
+    } else if (c === '\\') i++
+    else if (c === '{') depth++
+    else if (c === '}') depth--
+    else if (c === '=' && depth === 0) out.push({ start: i, end: i + 1 })
+  }
+  return out
+}
+
+function tidyStep(s: string): string | undefined {
+  const t = s.trim().replace(/[,:;]$/, '').trim()
+  if (t.length < 20 || t.length > 280) return undefined
+  if (/\$\$|\bdef\s|\breturn\b|\s\d+\.$/.test(t)) return undefined // code, display math or the start of a numbered list
+  const tokens = t.replace(/\$[^$]*\$/g, ' X ').split(/\s+/)
+  if (tokens.filter((w) => /\d/.test(w) && /^[\d.,%−-]+$/.test(w)).length > tokens.length * 0.3) return undefined // a list of results
+  return /[.!?]$/.test(t) ? t : `${t} …`
+}

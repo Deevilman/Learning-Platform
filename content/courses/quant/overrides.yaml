@@ -11,3 +11,53 @@ inserts:
   - { week: 14, before: "**10. Delta-hedging og gamma-P&L.**", markdown: '::interactive{id="option-payoff"}' }
   - { week: 15, before: "**2. Hvorfor findes spreadet?**", markdown: '::interactive{id="order-book"}' }
   - { week: 16, before: "**7. Machine learning i finans.**", markdown: '::interactive{id="kelly" p="0.55" b="1"}' }
+
+# Korte "Tjek dig selv"-spørgsmål (se foundations/overrides.yaml).
+exercises:
+  '10.1':
+    quiz:
+      question: 'Et z-score-signal bruger middelværdi og standardafvigelse beregnet på hele perioden 2000–2020. Hvilken fejl er det?'
+      options: ['Look-ahead bias', 'Survivorship bias', 'Selection bias', 'Ingen fejl']
+      explain: 'Statistikken for hele perioden indeholder fremtiden set fra hver dag. Brug rullende eller ekspanderende estimater.'
+  '10.2':
+    quiz:
+      question: '10 aktier følges i 10 år. 7 overlever med et samlet afkast på $+35\,\%$ hver; 3 afnoteres med $-50\,\%$, $-70\,\%$ og $-100\,\%$. Hvad er det korrekte ligevægtede gennemsnitsafkast?'
+      check: { type: numeric, answer: 2.5, tolerance: 0.05, unit: '%' }
+      distractors: [35, -22, 24.5]
+      explain: '$(7 \cdot 35 - 50 - 70 - 100)/10 = 25/10 = 2{,}5\,\%$. Kun overleverne giver $+35\,\%$ — det er survivorship bias.'
+  '10.3':
+    quiz:
+      question: 'Brutto-merafkast $12\,\%$, volatilitet $10\,\%$, omkostning $8$ bp pr. enhed turnover og turnover $25$ gange om året. Hvad er netto-Sharpe ratio?'
+      check: { type: numeric, answer: 1.0, tolerance: 0.01 }
+      distractors: [1.2, 0.8, -0.8]
+      explain: 'Omkostning $25 \cdot 0{,}0008 = 2\,\%$, netto-merafkast $10\,\%$, så SR $= 0{,}10/0{,}10 = 1{,}0$.'
+  '10.5':
+    quiz:
+      question: 'Standardfejlen på en annualiseret Sharpe ratio er ca. $1/\sqrt{Y}$ med $Y$ år. Hvor mange hele år skal der til, før en sand SR på $1{,}0$ forventes at give et 95 %-interval, der udelukker $0$?'
+      check: { type: numeric, answer: 4, tolerance: 0 }
+      distractors: [2, 16, 1]
+      explain: 'Kravet er $1 - 1{,}96/\sqrt{Y} > 0$, dvs. $Y > 1{,}96^2 = 3{,}84$ — altså 4 år.'
+  '15.1':
+    quiz:
+      question: 'Bedste bid er $100{,}00$ og bedste ask $100{,}02$. Hvad er spreadet i basispoint af mid (afrundet)?'
+      check: { type: numeric, answer: 2, tolerance: 0.05, unit: 'bp' }
+      distractors: [1, 4, 20]
+      explain: 'Mid $= 100{,}01$, spread $= 0{,}02$ kr., og $0{,}02/100{,}01 \cdot 10^4 \approx 2$ bp.'
+  '15.2':
+    quiz:
+      question: 'Roll-modellen: $\widehat{\mathrm{Cov}}(\Delta P_t, \Delta P_{t-1}) = -0{,}0004$ kr.² for en aktie til ca. $20$ kr. Hvad er det estimerede spread i basispoint?'
+      check: { type: numeric, answer: 20, tolerance: 0.5, unit: 'bp' }
+      distractors: [40, 10, 2]
+      explain: '$\hat s = 2\sqrt{0{,}0004} = 0{,}04$ kr., og $0{,}04/20 \cdot 10^4 = 20$ bp.'
+  '15.3':
+    quiz:
+      question: 'Square-root-loven: impact $= Y \sigma \sqrt{Q/V}$ med $Y = 0{,}8$, $\sigma = 1{,}5\,\%$ og $Q/V = 0{,}1$. Hvad er impact i basispoint?'
+      check: { type: numeric, answer: 37.9, tolerance: 0.2, unit: 'bp' }
+      distractors: [120, 12, 75.9]
+      explain: '$0{,}8 \cdot 0{,}015 \cdot \sqrt{0{,}1} = 0{,}003795 \approx 37{,}9$ bp.'
+  '15.4':
+    quiz:
+      question: 'Beslutning om at købe $10.000$ aktier ved $50{,}00$ kr. Der købes $8.000$ til $50{,}12$ kr. (kurtage $0{,}02$ kr. pr. aktie); resten handles ikke, og dagen lukker i $50{,}40$ kr. Hvad er implementation shortfall i alt i kr.?'
+      check: { type: numeric, answer: 1920, tolerance: 1, unit: 'kr.' }
+      distractors: [1760, 1120, 960]
+      explain: 'Eksekvering $8.000 \cdot 0{,}12 = 960$, opportunitet $2.000 \cdot 0{,}40 = 800$ og gebyrer $8.000 \cdot 0{,}02 = 160$: i alt $1.920$ kr.'

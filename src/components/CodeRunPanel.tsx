@@ -30,7 +30,7 @@ export function CodeRunPanel({ lang, code, onResult }: { lang: string; code: str
       {result.stdout}
       {result.stderr && <span style={{ color: 'var(--warn)' }}>{result.stderr}</span>}
       {result.error && <span style={{ color: 'var(--bad)' }}>{result.error}</span>}
-      {!result.stdout && !result.stderr && !result.error && <span className="muted">(intet output)</span>}
+      {!result.stdout && !result.stderr && !result.error && <span className="muted">(programmet skrev ikke noget)</span>}
       <div className="muted" style={{ fontSize: '0.7rem', marginTop: '0.4rem' }}>
         {result.ms} ms
       </div>

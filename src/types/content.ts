@@ -66,18 +66,28 @@ export interface ExerciseSummary {
   topics: string[]
   difficulty: Difficulty
   kind: ExerciseKind
-  hasHint: boolean
+  hasHint: boolean // the plan has its own hint (every exercise gets a hint ladder)
   hasCheck: boolean
+  hasChoices: boolean // a multiple-choice question exists (generator, choice check or quiz)
   set: 'week' | 'selftest' | 'interview' | 'extra'
   title: string // plain-text excerpt for lists and search
 }
 
 export interface Exercise extends ExerciseSummary {
   prompt: string // HTML
-  hint?: string // HTML
+  hints: string[] // HTML, shown one step at a time; the solution comes last
   solution: string // HTML
   check?: AutoCheck
+  quiz?: Quiz
   source: 'bank' | 'generated'
+}
+
+/** A short auto-checked question tied to a bank exercise (from overrides.yaml). */
+export interface Quiz {
+  question: string // HTML
+  check?: AutoCheck // typed answer, when the answer is a number or a word
+  choices?: { options: string[]; correct: number } // options in mini-Markdown
+  explain?: string // HTML
 }
 
 export interface Week {

@@ -17,7 +17,7 @@ export default function InteractivesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Interaktive værktøjer og generatorer</h1>
+        <h1 className="page-title">Interaktive værktøjer og generatorer</h1>
         <p className="muted">
           {interactiveIds.length} interaktive komponenter (de står også i noterne, hvor de hører til) og {generators.length} opgavegeneratorer til <Link className="link" to="/traen">træningen</Link>.
         </p>

@@ -2,7 +2,9 @@ import { Link, useParams } from 'react-router-dom'
 import { useEffect, useMemo, useState } from 'react'
 import { loadCourse, loadWeek } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
-import { useCheck, useStore, useTable } from '@/lib/store'
+import { useCheck, useSetting, useStore, useTable } from '@/lib/store'
+import { ANSWER_PREF_KEY, ANSWER_PREF_LABEL, filterByAnswerPref, type AnswerPref } from '@/lib/answer-type'
+import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { checkpointId, visitId } from '@/lib/progress'
 import { Html } from '@/components/Html'
 import { VideoCard } from '@/components/VideoCard'
@@ -25,6 +27,7 @@ export default function WeekPage() {
   const [tab, setTab] = useState<Tab>('videoer')
   const [filter, setFilter] = useState<'alle' | '1' | '2' | '3' | 'kode' | 'ikke'>('alle')
   const attempts = useTable('attempts')
+  const [pref, setPref] = useSetting<AnswerPref>(ANSWER_PREF_KEY, 'blandet')
   useEffect(() => {
     store.put('checks', { id: visitId(slug, n), value: true })
     setTab('videoer')
@@ -39,7 +42,8 @@ export default function WeekPage() {
   const { course, week: w } = data
   const prev = n > 1 ? n - 1 : null
   const next = n < course.weeks.length ? n + 1 : null
-  const exercises = w.exercises.filter((e) => {
+  const byPref = filterByAnswerPref(w.exercises, (e) => ({ choices: e.hasChoices, typed: true }), pref)
+  const exercises = byPref.shown.filter((e) => {
     if (filter === 'alle') return true
     if (filter === 'kode') return e.kind === 'code'
     if (filter === 'ikke') return !tried.has(e.id)
@@ -128,6 +132,7 @@ export default function WeekPage() {
       {tab === 'oevelser' && (
         <section className="space-y-4" role="tabpanel" aria-label="Øvelser">
           {w.exercisesIntro && <Html html={w.exercisesIntro} className="card" />}
+          <AnswerPrefPicker compact />
           <div className="flex flex-wrap items-center gap-2 text-sm">
             <span className="muted">Vis:</span>
             {(
@@ -160,7 +165,15 @@ export default function WeekPage() {
               />
             </div>
           ))}
-          {!exercises.length && <p className="muted">Ingen øvelser matcher filteret.</p>}
+          {byPref.hidden > 0 && (
+            <p className="muted text-sm">
+              {byPref.hidden} af ugens øvelser er skjult, fordi du har valgt "{ANSWER_PREF_LABEL[pref].toLowerCase()}".{' '}
+              <button className="link" onClick={() => setPref('blandet')}>
+                Vis alle
+              </button>
+            </p>
+          )}
+          {!exercises.length && <p className="muted">Ingen øvelser passer til det valgte.</p>}
         </section>
       )}
 
