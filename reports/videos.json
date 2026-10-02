@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-02T20:32:55.906Z",
+ "checkedAt": "2026-10-02T20:44:29.079Z",
  "rows": [
   {
    "course": "foundations",
@@ -15,6 +15,15 @@
   },
   {
    "course": "foundations",
+   "key": "1.2",
+   "index": 0,
+   "id": "Jw6KxvMKbys",
+   "expectedTitle": "Start Learning Logic | Part 2",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
    "key": "1.4",
    "index": 0,
    "id": "0exBzsexUoI",
@@ -22,6 +31,18 @@
    "expectedChannel": "MIT OpenCourseWare",
    "status": "ok",
    "actualTitle": "1.4.1 Propositional Operators: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "1.4",
+   "index": 1,
+   "id": "_3WDzxt5p8c",
+   "expectedTitle": "1.4.4 Truth Tables",
+   "expectedChannel": "MIT OpenCourseWare",
+   "status": "ok",
+   "actualTitle": "1.4.4 Truth Tables: Video",
    "actualChannel": "MIT OpenCourseWare",
    "score": 1
   },
@@ -46,6 +67,18 @@
    "expectedChannel": "MIT OpenCourseWare",
    "status": "ok",
    "actualTitle": "1.5.1 Predicate Logic 1: Video",
+   "actualChannel": "MIT OpenCourseWare",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "2.1",
+   "index": 1,
+   "id": "T1AtlGrCoU8",
+   "expectedTitle": "1.5.2 Predicate Logic 2",
+   "expectedChannel": "MIT OpenCourseWare",
+   "status": "ok",
+   "actualTitle": "1.5.2 Predicate Logic 2: Video",
    "actualChannel": "MIT OpenCourseWare",
    "score": 1
   },
@@ -94,6 +127,30 @@
    "expectedChannel": "TrevTutor",
    "status": "ok",
    "actualTitle": "[Discrete Mathematics] Direct Proofs Examples",
+   "actualChannel": "TrevTutor",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "P3",
+   "index": 1,
+   "id": "X-hJ7krLBn0",
+   "expectedTitle": "Proof by Contraposition - Discrete Mathematics",
+   "expectedChannel": "TrevTutor",
+   "status": "ok",
+   "actualTitle": "PROOF by CONTRAPOSITION - DISCRETE MATHEMATICS",
+   "actualChannel": "TrevTutor",
+   "score": 1
+  },
+  {
+   "course": "foundations",
+   "key": "P3",
+   "index": 2,
+   "id": "sRDwsfNDXak",
+   "expectedTitle": "Proof by Contradiction - Discrete Mathematics",
+   "expectedChannel": "TrevTutor",
+   "status": "ok",
+   "actualTitle": "PROOF by CONTRADICTION - DISCRETE MATHEMATICS",
    "actualChannel": "TrevTutor",
    "score": 1
   },
@@ -249,6 +306,27 @@
    "expectedTitle": "Start Learning Sets | Part 1 (Overview and Element Relation)",
    "expectedChannel": "The Bright Side of Mathematics",
    "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "4.2",
+   "index": 0,
+   "id": "8Lj3CT1ZjJg",
+   "expectedTitle": "Start Learning Sets | Part 2 (Predicates, Equality and Subsets)",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "not-embeddable"
+  },
+  {
+   "course": "foundations",
+   "key": "4.3",
+   "index": 0,
+   "id": "6ZSKwJgXLP4",
+   "expectedTitle": "Start Learning Sets | Part 4 (Cartesian Product and Maps)",
+   "expectedChannel": "The Bright Side of Mathematics",
+   "status": "ok",
+   "actualTitle": "Start Learning Sets 4 | Cartesian Product and Maps [dark version]",
+   "actualChannel": "The Bright Side of Mathematics",
+   "score": 1
   },
   {
    "course": "foundations",
@@ -410,7 +488,7 @@
    "status": "ok",
    "actualTitle": "1. Introduction, Finite Automata, Regular Expressions",
    "actualChannel": "MIT OpenCourseWare",
-   "score": 0.8333333333333334
+   "score": 1
   },
   {
    "course": "foundations",
@@ -422,7 +500,7 @@
    "status": "ok",
    "actualTitle": "5. CF Pumping Lemma, Turing Machines",
    "actualChannel": "MIT OpenCourseWare",
-   "score": 0.8333333333333334
+   "score": 1
   },
   {
    "course": "foundations",
@@ -434,7 +512,7 @@
    "status": "ok",
    "actualTitle": "6. TM Variants, Church-Turing Thesis",
    "actualChannel": "MIT OpenCourseWare",
-   "score": 0.8333333333333334
+   "score": 1
   },
   {
    "course": "foundations",
@@ -446,7 +524,7 @@
    "status": "ok",
    "actualTitle": "7. Decision Problems for Automata and Grammars",
    "actualChannel": "MIT OpenCourseWare",
-   "score": 0.8333333333333334
+   "score": 1
   },
   {
    "course": "foundations",
@@ -466,10 +544,10 @@
    "id": "N28g_YBXY8Y",
    "expectedTitle": "L9: Reducibility",
    "expectedChannel": "MIT OpenCourseWare",
-   "status": "title-mismatch",
+   "status": "ok",
    "actualTitle": "9. Reducibility",
    "actualChannel": "MIT OpenCourseWare",
-   "score": 0.5
+   "score": 1
   },
   {
    "course": "foundations",
@@ -481,7 +559,7 @@
    "status": "ok",
    "actualTitle": "10. Computation History Method",
    "actualChannel": "MIT OpenCourseWare",
-   "score": 0.75
+   "score": 1
   },
   {
    "course": "foundations",
@@ -501,8 +579,8 @@
    "index": 0,
    "id": "PpSxqde0af4",
    "expectedTitle": "Godel's 1st Incompleteness Theorem - Proof by Diagonalization",
-   "expectedChannel": "as found, see item 12.3",
-   "status": "channel-mismatch",
+   "expectedChannel": "Stable Sort",
+   "status": "ok",
    "actualTitle": "Godel's 1st Incompleteness Theorem - Proof by Diagonalization",
    "actualChannel": "Stable Sort",
    "score": 1
@@ -525,10 +603,10 @@
    "index": 0,
    "id": "eis11j_iGMs",
    "expectedTitle": "(tilføjet) Computerphile – \"Lambda Calculus\" (Graham Hutton, 13 min) — spring over, hvis du så den i uge 10.",
-   "status": "title-mismatch",
+   "status": "ok",
    "actualTitle": "Lambda Calculus - Computerphile",
    "actualChannel": "Computerphile",
-   "score": 0.2727272727272727
+   "score": 1
   },
   {
    "course": "foundations",
