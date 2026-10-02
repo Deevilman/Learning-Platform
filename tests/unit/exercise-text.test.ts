@@ -88,3 +88,19 @@ describe('first step hint', () => {
     expect(firstStep('Svaret er **42**, fordi det er sådan.')).toBeUndefined()
   })
 })
+
+describe('forward-reference removal leaves code alone', () => {
+  it('keeps indentation and leaves untouched text identical', () => {
+    const code = '```python\nfor x in xs:\n    if x:\n        print(x)\n```'
+    expect(applyForwardRefs(`Kør:\n\n${code}`, []).md).toBe(`Kør:\n\n${code}`)
+    const md = `Vis det. (Bruges i uge 7.)\n\n${code}\n\n- liste\n  - indrykket`
+    expect(applyForwardRefs(md, [{ text: '(Bruges i uge 7.)', action: 'remove' }]).md).toBe(`Vis det.\n\n${code}\n\n- liste\n  - indrykket`)
+  })
+})
+
+describe('sub-questions never touch code', () => {
+  it('skips paragraphs inside a code block with blank lines', () => {
+    const md = '```python\nprint("(a) x (b) y")\n\nprint("(a) 1 (b) 2")\n```\n\n(a) x (b) y'
+    expect(splitSubquestions(md)).toBe('```python\nprint("(a) x (b) y")\n\nprint("(a) 1 (b) 2")\n```\n\n- **(a)** x\n- **(b)** y')
+  })
+})

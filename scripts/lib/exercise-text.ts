@@ -23,9 +23,15 @@ const LETTERS = 'abcdefghijklmn'
  * display math are left alone.
  */
 export function splitSubquestions(md: string): string {
+  let inFence = false
   return md
     .split(/\n{2,}/)
-    .map((para) => splitParagraph(para))
+    .map((para) => {
+      const fences = (para.match(/^\s*(```|~~~)/gm) || []).length
+      const out = inFence || fences ? para : splitParagraph(para)
+      if (fences % 2) inFence = !inFence
+      return out
+    })
     .join('\n\n')
 }
 
@@ -133,12 +139,20 @@ export function applyForwardRefs(md: string, rules: ForwardRefRule[]): { md: str
     }
     out = out.replace(r.text, r.action === 'replace' ? r.with || '' : '')
   }
-  // tidy up what removal leaves behind
+  if (out === md) return { md, problems }
+  // tidy up what removal leaves behind — outside code only (indentation in code matters)
   out = out
-    .replace(/[ \t]+([.,;:!?])/g, '$1')
-    .replace(/\(\s*\)/g, '')
-    .replace(/[ \t]{2,}/g, ' ')
-    .replace(/[ \t]+\n/g, '\n')
+    .split(/(```[\s\S]*?```|`[^`\n]*`)/)
+    .map((part, i) =>
+      i % 2
+        ? part
+        : part
+            .replace(/(\S)[ \t]+([.,;:!?])/g, '$1$2')
+            .replace(/\(\s*\)/g, '')
+            .replace(/(\S)[ \t]{2,}(?=\S)/g, '$1 ')
+            .replace(/[ \t]+\n/g, '\n'),
+    )
+    .join('')
     .trim()
   return { md: out, problems }
 }
