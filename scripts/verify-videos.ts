@@ -37,14 +37,20 @@ export const norm = (s: string) =>
     .replace(/[̀-ͯ]/g, '')
     .replace(/&amp;/g, '&')
     .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\bl(\d+)\b/g, '$1') // "L9: Reducibility" ≈ "9. Reducibility"
     .trim()
 
 /** Share of the expected title's words that appear in the actual title. */
 export function titleScore(expected: string, actual: string): number {
   const a = new Set(norm(actual).split(' '))
-  const words = norm(expected.replace(/\(.*?\)/g, ' ')).split(' ').filter((w) => w.length > 1 && !['video', 'part', 'the', 'and', 'of'].includes(w))
+  // Ignore notes in parentheses and anything after a spaced dash ("… — spring over, hvis …").
+  const words = norm(expected.replace(/\(.*?\)/g, ' ').split(/\s[—–]\s(?=[^"]*$)/)[0])
+    .split(' ')
+    .filter((w) => (w.length > 1 || /\d/.test(w)) && !['video', 'part', 'the', 'and', 'of'].includes(w))
   if (!words.length) return 1
-  return words.filter((w) => a.has(w)).length / words.length
+  const score = words.filter((w) => a.has(w)).length / words.length
+  // Numbers (part, lecture, section) must all match: "Part 3" is not "Part 1".
+  return words.some((w) => /^\d+$/.test(w) && !a.has(w)) ? Math.min(score, 0.5) : score
 }
 
 export function channelOk(expected: string | undefined, actual: string): boolean {

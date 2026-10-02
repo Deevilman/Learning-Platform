@@ -20,7 +20,7 @@ const PLAYLISTS: Record<string, string> = {
   'Milewski Category Theory': 'PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_',
 }
 /** Channel playlist pages to scan for series such as "Start Learning …". */
-const CHANNELS = ['https://www.youtube.com/@brightsideofmaths/playlists', 'https://www.youtube.com/@TrevTutor/playlists']
+const CHANNELS = ['@brightsideofmaths', '@TrevTutor']
 const SERIES = /start learning|discrete math/i
 
 interface Video {
@@ -29,10 +29,6 @@ interface Video {
   channel?: string
 }
 
-function initialData(html: string): any {
-  const m = /var ytInitialData = (\{.*?\});<\/script>/s.exec(html) || /ytInitialData"\]\s*=\s*(\{.*?\});/s.exec(html)
-  return m ? JSON.parse(m[1]) : null
-}
 const text = (t: any): string => (t?.simpleText ?? t?.runs?.map((r: any) => r.text).join('') ?? t?.content ?? '') as string
 
 function walk(o: any, fn: (k: string, v: any) => void) {
@@ -43,20 +39,28 @@ function walk(o: any, fn: (k: string, v: any) => void) {
   }
 }
 
-async function getHtml(url: string) {
-  const r = await fetch(url, { headers: HEADERS, signal: AbortSignal.timeout(20000) })
-  if (!r.ok) throw new Error(`${r.status} ${url}`)
-  return r.text()
-}
+const CLIENT = { clientName: 'WEB', clientVersion: '2.20250101.00.00', hl: 'en', gl: 'US' }
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
-async function continuation(token: string, clientVersion: string) {
-  const r = await fetch('https://www.youtube.com/youtubei/v1/browse?prettyPrint=false', {
-    method: 'POST',
-    headers: { ...HEADERS, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ context: { client: { clientName: 'WEB', clientVersion, hl: 'en' } }, continuation: token }),
-    signal: AbortSignal.timeout(20000),
-  })
-  return r.ok ? r.json() : null
+/** POST to YouTube's internal API, sequentially, with backoff on failures. */
+async function api(endpoint: 'browse' | 'search', body: object): Promise<any> {
+  let last: unknown
+  for (let attempt = 0; attempt < 4; attempt++) {
+    await sleep(attempt ? 2000 * 2 ** attempt : 800)
+    try {
+      const r = await fetch(`https://www.youtube.com/youtubei/v1/${endpoint}?prettyPrint=false`, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Content-Type': 'application/json', Cookie: 'SOCS=CAI; CONSENT=YES+1' },
+        body: JSON.stringify({ context: { client: CLIENT }, ...body }),
+        signal: AbortSignal.timeout(20000),
+      })
+      if (r.ok) return await r.json()
+      last = new Error(`${r.status} ${endpoint}`)
+    } catch (e) {
+      last = e
+    }
+  }
+  throw last
 }
 
 function collectVideos(data: any, out: Video[]): string | null {
@@ -70,31 +74,39 @@ function collectVideos(data: any, out: Video[]): string | null {
 }
 
 async function playlist(id: string): Promise<Video[]> {
-  const html = await getHtml(`https://www.youtube.com/playlist?list=${id}&hl=en`)
-  const version = /"INNERTUBE_CLIENT_VERSION":"([^"]+)"/.exec(html)?.[1] || '2.20240101.00.00'
   const out: Video[] = []
-  let token = collectVideos(initialData(html), out)
-  for (let i = 0; token && i < 20; i++) {
-    const data = await continuation(token, version)
-    if (!data) break
-    token = collectVideos(data, out)
-  }
+  let token = collectVideos(await api('browse', { browseId: 'VL' + id }), out)
+  for (let i = 0; token && i < 20; i++) token = collectVideos(await api('browse', { continuation: token }), out)
   return out
 }
 
-async function channelPlaylists(url: string): Promise<{ id: string; title: string }[]> {
-  const data = initialData(await getHtml(url + '?hl=en'))
-  const out: { id: string; title: string }[] = []
-  walk(data, (k, v) => {
-    if ((k === 'gridPlaylistRenderer' || k === 'playlistRenderer') && v.playlistId) out.push({ id: v.playlistId, title: text(v.title) })
-    if (k === 'lockupViewModel' && v.contentType === 'LOCKUP_CONTENT_TYPE_PLAYLIST') out.push({ id: v.contentId, title: text(v.metadata?.lockupMetadataViewModel?.title) })
+async function channelPlaylists(handle: string): Promise<{ id: string; title: string }[]> {
+  const r = await fetch(`https://www.youtube.com/youtubei/v1/navigation/resolve_url?prettyPrint=false`, {
+    method: 'POST',
+    headers: { ...HEADERS, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ context: { client: CLIENT }, url: `https://www.youtube.com/${handle}` }),
+    signal: AbortSignal.timeout(20000),
   })
+  const browseId = (await r.json())?.endpoint?.browseEndpoint?.browseId
+  if (!browseId) throw new Error(`kunne ikke slå ${handle} op`)
+  const out: { id: string; title: string }[] = []
+  // "EglwbGF5bGlzdHPyBgQKAkIA" is the params value for a channel's Playlists tab.
+  let data = await api('browse', { browseId, params: 'EglwbGF5bGlzdHPyBgQKAkIA' })
+  for (let i = 0; data && i < 10; i++) {
+    let next: string | null = null
+    walk(data, (k, v) => {
+      if ((k === 'gridPlaylistRenderer' || k === 'playlistRenderer') && v.playlistId) out.push({ id: v.playlistId, title: text(v.title) })
+      if (k === 'lockupViewModel' && v.contentType === 'LOCKUP_CONTENT_TYPE_PLAYLIST') out.push({ id: v.contentId, title: text(v.metadata?.lockupMetadataViewModel?.title) })
+      if (k === 'continuationCommand' && v.token) next = v.token
+    })
+    data = next ? await api('browse', { continuation: next }) : null
+  }
   return out
 }
 
 async function search(q: string): Promise<Video[]> {
   const out: Video[] = []
-  collectVideos(initialData(await getHtml(`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}&hl=en`)), out)
+  collectVideos(await api('search', { query: q }), out)
   return out.slice(0, 6)
 }
 
@@ -114,15 +126,19 @@ async function main() {
     for (const l of lists.filter((x) => SERIES.test(x.title))) report.playlists[`${l.title} [${l.id}]`] = (await safe(l.title, () => playlist(l.id))) || []
   }
   const dir = join(ROOT, 'content/courses')
+  const verified = join(ROOT, 'reports/videos.json')
+  const notEmbeddable = new Set<string>(existsSync(verified) ? JSON.parse(readFileSync(verified, 'utf8')).rows.filter((r: any) => r.status === 'not-embeddable').map((r: any) => r.id) : [])
   for (const course of readdirSync(dir)) {
     const f = join(dir, course, 'videos.yaml')
     if (!existsSync(f)) continue
     const data = YAML.parse(readFileSync(f, 'utf8')) || {}
     for (const [key, entry] of Object.entries<any>(data.videos || {}))
       for (const [i, s] of (entry.sources || []).entries()) {
-        if (s.youtube) continue
-        const q = s.search || `${s.title} ${s.channel || ''}`
-        report.searches.push({ course, key, index: i, title: s.title, query: q, results: (await safe(q, () => search(q))) || [] })
+        // A video that can't be embedded may have an embeddable re-upload by the same channel.
+        const blocked = s.youtube && notEmbeddable.has(s.youtube)
+        if (s.youtube && !blocked) continue
+        const q = blocked ? `${s.title.replace(/\|\s*Part\s*/i, '')} ${s.channel || ''} dark version` : s.search || `${s.title} ${s.channel || ''}`
+        report.searches.push({ course, key, index: i, title: s.title, ...(blocked ? { replaces: s.youtube } : {}), query: q, results: (await safe(q, () => search(q))) || [] })
       }
   }
   mkdirSync(join(ROOT, 'reports'), { recursive: true })

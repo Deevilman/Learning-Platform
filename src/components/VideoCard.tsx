@@ -11,8 +11,25 @@ export function parseYoutubeId(input: string): string | null {
 }
 
 /** Click-to-load embed: nothing is requested from YouTube until you press play. */
-function YouTube({ id, title }: { id: string; title: string }) {
+function YouTube({ id, title, embed = true }: { id: string; title: string; embed?: boolean }) {
   const [on, setOn] = useState(false)
+  // Some uploaders don't allow playback on other sites: open the video on YouTube instead.
+  if (!embed)
+    return (
+      <a
+        className="flex aspect-video w-full min-w-0 flex-col items-center justify-center gap-2 overflow-hidden rounded-lg text-sm"
+        style={{ background: 'var(--surface-2)' }}
+        href={`https://www.youtube.com/watch?v=${id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="grid h-12 w-12 place-items-center rounded-full text-xl text-white" style={{ background: '#dc2626' }}>
+          ▶
+        </span>
+        <span className="block w-[90%] truncate font-medium">{title}</span>
+        <span className="muted text-xs">Denne video kan kun ses på YouTube ↗</span>
+      </a>
+    )
   if (!on)
     return (
       <button
@@ -55,7 +72,7 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
   if (id && !editing)
     return (
       <div className="min-w-0 space-y-1">
-        <YouTube id={id} title={source.title} />
+        <YouTube id={id} title={source.title} embed={override?.youtube ? true : source.embed !== false} />
         <div className="flex flex-wrap items-center gap-2 text-xs">
           <span className="muted min-w-0 max-w-full truncate">{label}</span>
           <a className="link" href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener noreferrer">

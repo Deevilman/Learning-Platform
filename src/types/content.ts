@@ -55,6 +55,7 @@ export interface VideoSource {
   channel?: string
   youtube?: string // YouTube video ID; missing → the app asks for a URL
   search?: string // YouTube search query used when the ID is unknown
+  embed?: false // the uploader has turned off playback on other sites
 }
 
 export interface ExerciseSummary {

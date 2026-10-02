@@ -243,7 +243,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
         if (videoMap[id]) usedVideoKeys.add(id)
         else if (v.key && videoMap[v.key]) usedVideoKeys.add(v.key)
         const ytFromPlan = v.urls.map((u) => /(?:v=|youtu\.be\/)([\w-]{11})/.exec(u)?.[1]).filter(Boolean) as string[]
-        let sources = (entry?.sources || []).map((s: any) => ({ title: String(s.title || ''), channel: s.channel || undefined, youtube: s.youtube ? String(s.youtube) : undefined, search: s.search || undefined }))
+        let sources = (entry?.sources || []).map((s: any) => ({ title: String(s.title || ''), channel: s.channel || undefined, youtube: s.youtube ? String(s.youtube) : undefined, search: s.search || undefined, ...(s.embed === false ? { embed: false as const } : {}) }))
         if (!sources.length && ytFromPlan.length) sources = ytFromPlan.map((yt) => ({ title: plainText(v.title, 80), youtube: yt, channel: undefined, search: undefined }))
         if (!sources.length && v.key) {
           report.warnings.push(`${slug}: video ${id} (${v.key}) står ikke i videos.yaml`)
