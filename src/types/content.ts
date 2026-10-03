@@ -32,10 +32,16 @@ export interface CourseMeta {
   icon: string
   level: string
   estimated_weeks: number
-  prerequisites: string[]
+  prerequisites: string[] // "requires" in a course file
+  recommendedBefore: string[] // nice to have first, never required
   next: string[]
   topics: Topic[]
   disclaimer?: string
+  lang: 'da' | 'en'
+  track?: string // groups courses on the course map
+  exam?: 'htx' | 'olympiade'
+  /** Uploaded by the learner (not part of the site's own content). */
+  uploaded?: boolean
 }
 
 export interface VideoItem {
