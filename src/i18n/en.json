@@ -634,5 +634,13 @@
   "ctf.notes": "My notes (what I tried, what worked)…",
   "ctf.login": "Log in under Settings to check flags.",
   "ctf.unavailable": "The flag check is not answering right now. Try again in a moment.",
-  "ctf.courseLink": "Challenges ({n})"
+  "ctf.courseLink": "Challenges ({n})",
+  "backup.lastAt": "Last saved {date}.",
+  "backup.never": "You have not saved a backup yet.",
+  "backup.remind": "Remind me once a week",
+  "backup.reminderTitle": "Time for a backup",
+  "backup.reminderText": "Save your progress in a file so you keep it even if the browser is cleared.",
+  "backup.reminderLast": "Last: {date}",
+  "backup.later": "Not now",
+  "backup.off": "Turn off the reminder"
 }

@@ -146,3 +146,26 @@ test('flashcards: flip and rate, or type the answer — and they come back on sc
   await page.getByRole('button', { name: 'Tjek svar' }).click()
   await expect(page.getByText('Ikke helt. Svaret står herover.')).toBeVisible()
 })
+
+test('a weekly backup reminder that shows the last backup and can be switched off', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-10-03T10:00:00') })
+  await page.goto('/')
+  await expect(page.getByRole('heading', { name: /Kom i gang|Fortsæt hvor du slap/ })).toBeVisible()
+  await expect(page.getByText('Tid til en sikkerhedskopi')).toHaveCount(0) // not on the first day
+  await page.clock.setSystemTime(new Date('2026-10-05T10:00:00'))
+  await page.reload()
+  await expect(page.getByText('Tid til en sikkerhedskopi')).toBeVisible()
+  const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('note').getByRole('button', { name: 'Gem sikkerhedskopi' }).click()])
+  expect(download.suggestedFilename()).toMatch(/^laering-backup-2026-10-05\.json$/)
+  await expect(page.getByText('Tid til en sikkerhedskopi')).toHaveCount(0)
+  await page.goto('/#/indstillinger')
+  await expect(page.getByText('Senest gemt 5. oktober 2026.')).toBeVisible()
+  // a week later it comes back, unless switched off
+  await page.clock.setSystemTime(new Date('2026-10-13T10:00:00'))
+  await page.goto('/')
+  await expect(page.getByText('Tid til en sikkerhedskopi')).toBeVisible()
+  await page.getByRole('button', { name: 'Slå påmindelsen fra' }).click()
+  await expect(page.getByText('Tid til en sikkerhedskopi')).toHaveCount(0)
+  await page.goto('/#/indstillinger')
+  await expect(page.getByLabel('Mind mig om det en gang om ugen')).not.toBeChecked()
+})
