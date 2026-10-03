@@ -516,5 +516,7 @@
   "cards.flip": "Vend kort",
   "cards.close": "Næsten — se stavningen herover.",
   "cards.wrong": "Ikke helt. Svaret står herover.",
-  "cards.courseLink": "Flashcards ({n} kort)"
+  "cards.courseLink": "Flashcards ({n} kort)",
+  "judge.login": "Log ind under Indstillinger for at sende kode til dommeren. Python kan du køre her uden login.",
+  "judge.unavailable": "Dommeren svarer ikke lige nu. Prøv igen om lidt."
 }

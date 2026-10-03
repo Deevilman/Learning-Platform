@@ -26,6 +26,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Værktøjer til kodeopgavernes referenceløsninger (C#, NASM)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq nasm mono-mcs
       - name: Byg indhold (validerer alle kurser)
         id: content
         run: npm run content
@@ -44,6 +46,12 @@ jobs:
         run: npm run verify-videos
       - name: Typecheck og build
         run: npx tsc --noEmit && npx vite build
+      - name: Skjulte tests til dommeren (Supabase)
+        if: github.ref == 'refs/heads/main'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npx tsx scripts/upload-judge-tests.ts
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main'
         with:

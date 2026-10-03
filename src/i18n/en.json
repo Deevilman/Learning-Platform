@@ -516,5 +516,7 @@
   "cards.flip": "Flip card",
   "cards.close": "Almost — check the spelling above.",
   "cards.wrong": "Not quite. The answer is above.",
-  "cards.courseLink": "Flashcards ({n} cards)"
+  "cards.courseLink": "Flashcards ({n} cards)",
+  "judge.login": "Log in under Settings to send code to the judge. You can run Python here without logging in.",
+  "judge.unavailable": "The judge is not answering right now. Try again in a moment."
 }

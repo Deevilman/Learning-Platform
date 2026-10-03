@@ -88,3 +88,37 @@ create policy "own course files: update" on storage.objects for update to authen
   using (bucket_id = 'courses' and (storage.foldername(name))[1] = (select auth.uid())::text);
 create policy "own course files: delete" on storage.objects for delete to authenticated
   using (bucket_id = 'courses' and (storage.foldername(name))[1] = (select auth.uid())::text);
+
+-- ---------------------------------------------------------------- the code judge
+-- Hidden tests and reference solutions of the site's coding problems. Written
+-- by the deploy workflow (service role); no policies, so no learner can read them.
+create table if not exists public.problem_tests (
+  id text primary key,
+  course text not null,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+alter table public.problem_tests enable row level security;
+
+-- One row per call to the judge, for the rate limit (only the Edge Function reads and writes it).
+create table if not exists public.judge_usage (
+  user_id uuid not null references auth.users (id) on delete cascade,
+  ts timestamptz not null default now()
+);
+create index if not exists judge_usage_user_ts on public.judge_usage (user_id, ts);
+alter table public.judge_usage enable row level security;
+
+-- Submission history as judged on the server; each learner can read their own.
+create table if not exists public.submissions (
+  id bigserial primary key,
+  user_id uuid not null references auth.users (id) on delete cascade,
+  problem_id text not null,
+  language text not null,
+  verdict text not null check (verdict in ('AC', 'WA', 'TLE', 'MLE', 'RE', 'CE')),
+  passed int not null default 0,
+  total int not null default 0,
+  created_at timestamptz not null default now()
+);
+alter table public.submissions enable row level security;
+drop policy if exists "own submissions" on public.submissions;
+create policy "own submissions" on public.submissions for select using ((select auth.uid()) = user_id);
