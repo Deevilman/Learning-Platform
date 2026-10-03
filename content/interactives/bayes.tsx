@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Widget, Slider, Stat, pct, fmt } from './_ui'
 
-export const meta = { title: 'Bayes-beregner med frekvensgitter', course: 'quant' }
+export const meta = { title: 'Bayes-beregner med frekvensgitter', course: 'quant', intro: 'Vælg forekomst, sensitivitet og specificitet, og tæl i gitteret, hvor mange af de positive der faktisk er syge.' }
 
 export default function Bayes({ props }: { props: Record<string, string> }) {
   const [prior, setPrior] = useState(Number(props.prior) || 0.01)

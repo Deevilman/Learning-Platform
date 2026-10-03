@@ -14,7 +14,7 @@ export default function InfoPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-4">
       <Crumbs items={[{ to: `/kursus/${slug}`, label: course.meta.title }, { label: p.title }]} />
-      <h1 className="text-2xl font-bold">{p.title}</h1>
+      <h1 className="page-title">{p.title}</h1>
       <Html html={p.html} className="card" />
       <nav className="flex flex-wrap gap-2 text-sm">
         {course.info.filter((x) => x.slug !== page).map((x) => (

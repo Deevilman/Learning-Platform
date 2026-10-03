@@ -1,7 +1,7 @@
 import { HashRouter, Routes, Route, NavLink, Link, useLocation } from 'react-router-dom'
-import { useEffect, useState, lazy, Suspense } from 'react'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { StoreProvider } from '@/lib/store'
-import { ThemeToggle } from '@/components/ThemeToggle'
+import { useTheme } from '@/components/ThemeToggle'
 import Dashboard from '@/pages/Dashboard'
 import Courses from '@/pages/Courses'
 import CoursePage from '@/pages/CoursePage'
@@ -18,14 +18,21 @@ import NotFound from '@/pages/NotFound'
 
 const TrainPage = lazy(() => import('@/pages/TrainPage'))
 const InteractivesPage = lazy(() => import('@/pages/InteractivesPage'))
+const StatsPage = lazy(() => import('@/pages/StatsPage'))
+const PlacementPage = lazy(() => import('@/pages/PlacementPage'))
 
 const NAV = [
-  { to: '/', label: 'Overblik', end: true },
-  { to: '/kurser', label: 'Kurser' },
-  { to: '/traen', label: 'Træn' },
+  { to: '/', label: 'Overblik', icon: '⌂', end: true },
+  { to: '/kurser', label: 'Kurser', icon: '▤' },
+  { to: '/traen', label: 'Træn', icon: '◎' },
+]
+
+const MORE = [
   { to: '/soeg', label: 'Søg' },
+  { to: '/statistik', label: 'Statistik' },
   { to: '/ordliste', label: 'Ordliste' },
   { to: '/logbog', label: 'Logbog' },
+  { to: '/interaktivt', label: 'Prøv selv' },
   { to: '/indstillinger', label: 'Indstillinger' },
 ]
 
@@ -44,50 +51,91 @@ function ScrollToTop() {
   return null
 }
 
-function Header() {
+function MoreMenu({ placement }: { placement: 'down' | 'up' }) {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
+  const ref = useRef<HTMLDivElement>(null)
   useEffect(() => setOpen(false), [pathname])
+  useEffect(() => {
+    if (!open) return
+    const close = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false)
+    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('mousedown', close)
+    document.addEventListener('keydown', esc)
+    return () => (document.removeEventListener('mousedown', close), document.removeEventListener('keydown', esc))
+  }, [open])
+  const active = MORE.some((m) => pathname.startsWith(m.to))
   return (
-    <header className="sticky top-0 z-30 border-b backdrop-blur" style={{ borderColor: 'var(--border)', background: 'color-mix(in srgb, var(--bg) 85%, transparent)' }}>
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5">
-        <Link to="/" className="flex items-center gap-2 font-bold tracking-tight" aria-label="Det seje — forside">
-          <span className="grid h-8 w-8 place-items-center rounded-lg text-lg text-white" style={{ background: 'var(--accent)', fontFamily: 'Georgia, serif' }}>
-            ∑
-          </span>
-          <span>Det seje</span>
-        </Link>
-        <nav className="ml-4 hidden flex-1 items-center gap-1 md:flex" aria-label="Hovedmenu">
-          {NAV.map((n) => (
-            <NavLink
-              key={n.to}
-              to={n.to}
-              end={n.end}
-              className={({ isActive }) => `rounded-md px-2.5 py-1.5 text-sm font-medium ${isActive ? '' : 'muted hover:opacity-80'}`}
-              style={({ isActive }) => (isActive ? { background: 'var(--accent-soft)', color: 'var(--accent)' } : undefined)}
-            >
-              {n.label}
-            </NavLink>
-          ))}
-        </nav>
-        <div className="ml-auto flex items-center gap-2 md:ml-0">
-          <ThemeToggle />
-          <button className="btn md:hidden" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen((o) => !o)}>
-            {open ? 'Luk' : 'Menu'}
-          </button>
-        </div>
-      </div>
+    <div ref={ref} className="relative">
+      <button
+        className={`nav-item ${active ? 'nav-active' : ''}`}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
+        {placement === 'up' && <span className="nav-icon" aria-hidden>⋯</span>}
+        <span>Mere</span>
+        {placement === 'down' && <span aria-hidden className="text-xs">▾</span>}
+      </button>
       {open && (
-        <nav id="mobile-nav" className="border-t px-4 py-2 md:hidden" style={{ borderColor: 'var(--border)' }} aria-label="Mobilmenu">
-          {NAV.map((n) => (
-            <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `block rounded-md px-2 py-2 text-sm ${isActive ? 'font-semibold' : ''}`}>
-              {n.label}
+        <div role="menu" className={`menu ${placement === 'up' ? 'bottom-full right-0 mb-2' : 'right-0 top-full mt-2'}`}>
+          {MORE.map((m) => (
+            <NavLink key={m.to} role="menuitem" to={m.to} className={({ isActive }) => `menu-item ${isActive ? 'nav-active' : ''}`}>
+              {m.label}
             </NavLink>
           ))}
-        </nav>
+        </div>
       )}
-    </header>
+    </div>
   )
+}
+
+function Header() {
+  return (
+    <>
+      <header className="app-header sticky top-0 z-30">
+        <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-3">
+          <Link to="/" className="flex items-center gap-2 text-lg font-bold tracking-tight" aria-label="Læring — forside">
+            <span className="grid h-8 w-8 place-items-center rounded-lg text-base text-white" style={{ background: 'var(--accent)', fontFamily: 'Georgia, serif' }}>
+              ∑
+            </span>
+            <span>Læring</span>
+          </Link>
+          <nav className="ml-6 hidden items-center gap-1 md:flex" aria-label="Hovedmenu">
+            {NAV.map((n) => (
+              <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `nav-item ${isActive ? 'nav-active' : ''}`}>
+                {n.label}
+              </NavLink>
+            ))}
+            <MoreMenu placement="down" />
+          </nav>
+          <Link to="/soeg" className="icon-btn ml-auto" aria-label="Søg" title="Søg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+          </Link>
+        </div>
+      </header>
+      {/* Phones: the same four items as a bottom tab bar. */}
+      <nav className="tabbar md:hidden" aria-label="Hovedmenu">
+        {NAV.map((n) => (
+          <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `nav-item ${isActive ? 'nav-active' : ''}`}>
+            <span className="nav-icon" aria-hidden>
+              {n.icon}
+            </span>
+            <span>{n.label}</span>
+          </NavLink>
+        ))}
+        <MoreMenu placement="up" />
+      </nav>
+    </>
+  )
+}
+
+function ThemeApplier() {
+  useTheme()
+  return null
 }
 
 export default function App() {
@@ -96,16 +144,18 @@ export default function App() {
       <HashRouter>
         <ScrollToTop />
         <AutoSync />
+        <ThemeApplier />
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 btn">
           Spring til indhold
         </a>
         <Header />
-        <main id="main" className="mx-auto max-w-6xl px-4 pb-24 pt-6">
+        <main id="main" className="mx-auto max-w-5xl px-4 pb-28 pt-8 md:pb-16">
           <Suspense fallback={<p className="muted">Indlæser…</p>}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/kurser" element={<Courses />} />
               <Route path="/kursus/:slug" element={<CoursePage />} />
+              <Route path="/kursus/:slug/test" element={<PlacementPage />} />
               <Route path="/kursus/:slug/uge/:week" element={<WeekPage />} />
               <Route path="/kursus/:slug/uge/:week/opgave/:num" element={<ExercisePage />} />
               <Route path="/kursus/:slug/saet/:set" element={<SetPage />} />
@@ -117,6 +167,7 @@ export default function App() {
               <Route path="/logbog" element={<LogbookPage />} />
               <Route path="/indstillinger" element={<SettingsPage />} />
               <Route path="/interaktivt" element={<InteractivesPage />} />
+              <Route path="/statistik" element={<StatsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

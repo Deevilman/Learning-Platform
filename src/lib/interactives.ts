@@ -7,7 +7,7 @@ import type { ComponentType } from 'react'
 export type InteractiveProps = { props: Record<string, string> }
 export interface InteractiveModule {
   default: ComponentType<InteractiveProps>
-  meta?: { title: string; description?: string; course?: string }
+  meta?: { title: string; course?: string; intro?: string }
 }
 
 const modules = import.meta.glob('../../content/interactives/*.tsx') as Record<string, () => Promise<InteractiveModule>>

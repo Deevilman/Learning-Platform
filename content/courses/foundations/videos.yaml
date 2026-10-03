@@ -13,7 +13,8 @@ videos:
     sources:
     - title: Start Learning Logic | Part 2
       channel: The Bright Side of Mathematics
-      search: Start Learning Logic | Part 2 The Bright Side of Mathematics
+      youtube: AjdIPOXRgoQ
+      embed: false
   '1.3':
     key: P1
     sources:
@@ -28,7 +29,7 @@ videos:
       youtube: 0exBzsexUoI
     - title: 1.4.4 Truth Tables
       channel: MIT OpenCourseWare
-      search: MIT 6.042J 1.4.4 Truth Tables
+      youtube: _3WDzxt5p8c
     - title: 1.4.6 Implies
       channel: MIT OpenCourseWare
       search: MIT 6.042J 1.4.6 Implies
@@ -46,7 +47,7 @@ videos:
       youtube: UroprmQHTLc
     - title: 1.5.2 Predicate Logic 2
       channel: MIT OpenCourseWare
-      search: MIT 6.042J 1.5.2 Predicate Logic 2
+      youtube: T1AtlGrCoU8
     - title: 1.5.4 Predicate Logic 3
       channel: MIT OpenCourseWare
       youtube: L5uBeAGJV1k
@@ -65,9 +66,12 @@ videos:
     - title: '[Discrete Mathematics] Direct Proofs Examples'
       channel: TrevTutor
       youtube: uDJfx4bK3Jc
-    - title: one TrevTutor video on proof by contraposition and one on proof by contradiction, from the same series
+    - title: Proof by Contraposition - Discrete Mathematics
       channel: TrevTutor
-      search: one TrevTutor video on proof by contraposition and one on proof by contradiction, from the same series TrevTutor
+      youtube: X-hJ7krLBn0
+    - title: Proof by Contradiction - Discrete Mathematics
+      channel: TrevTutor
+      youtube: sRDwsfNDXak
   '2.4':
     key: P2
     sources:
@@ -124,13 +128,15 @@ videos:
     sources:
     - title: Start Learning Sets | Part 1 (Overview and Element Relation)
       channel: The Bright Side of Mathematics
-      youtube: iA-Dtf7529M
+      youtube: _TnRs_ijXDA
+      embed: false
   '4.2':
     key: P1
     sources:
     - title: Start Learning Sets | Part 2 (Predicates, Equality and Subsets)
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Sets Part 2
+      youtube: yIdECC6QExY
+      embed: false
     - title: Start Learning Sets | Part 3 (Union, Intersection, Differences and Power Set)
       channel: The Bright Side of Mathematics
       search: Bright Side of Mathematics Start Learning Sets Part 3
@@ -139,10 +145,11 @@ videos:
     sources:
     - title: Start Learning Sets | Part 4 (Cartesian Product and Maps)
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Sets Part 4
+      youtube: 6ZSKwJgXLP4
     - title: Start Learning Sets | Part 5 (Range, Image and Preimage)
       channel: The Bright Side of Mathematics
-      youtube: twBYYTJdcjc
+      youtube: kQC-g7Ry-Wo
+      embed: false
   '4.4':
     key: P1
     sources:
@@ -151,7 +158,8 @@ videos:
       search: Bright Side of Mathematics Start Learning Sets Part 6
     - title: Start Learning Sets | Part 7 (Composition of Maps)
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Sets Part 7
+      youtube: NiJ1yWKM9CU
+      embed: false
   '4.5':
     key: P2
     sources:
@@ -178,13 +186,15 @@ videos:
     sources:
     - title: Start Learning Numbers | Part 1 (Natural Numbers (in Set Theory))
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 1
+      youtube: SpXHqrMGb0Y
+      embed: false
   '5.2':
     key: P1
     sources:
     - title: Start Learning Numbers | Part 2 (Natural Numbers (Successor Map and Addition))
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 2
+      youtube: C9DLEHu1l-g
+      embed: false
   '5.3':
     key: P1
     sources:
@@ -196,13 +206,15 @@ videos:
     sources:
     - title: Start Learning Numbers | Part 4 (Natural Numbers (Ordering))
       channel: The Bright Side of Mathematics
-      youtube: xVEJPDVaQ8s
+      youtube: W1wITJIu0SI
+      embed: false
   '5.5':
     key: P1
     sources:
     - title: Start Learning Numbers | Part 5 (Natural Numbers (Multiplication))
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 5
+      youtube: qHYtMzt1k00
+      embed: false
   '6.1':
     key: P1
     sources:
@@ -211,10 +223,12 @@ videos:
       search: Bright Side of Mathematics Start Learning Numbers Part 6
     - title: Start Learning Numbers | Part 7 (Integers (Addition and Inverses))
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 7
+      youtube: bGP0wgMlM3M
+      embed: false
     - title: Start Learning Numbers | Part 8 (Integers (Multiplication))
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 8
+      youtube: 6iOH38SiK2Q
+      embed: false
   '6.2':
     key: P1
     sources:
@@ -223,31 +237,37 @@ videos:
       search: Bright Side of Mathematics Start Learning Numbers Part 9
     - title: Start Learning Numbers | Part 10 (Rational Numbers (Addition and Multiplication))
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 10
+      youtube: jam6_3trtyI
+      embed: false
     - title: Start Learning Numbers | Part 11 (Rational Numbers (Ordering))
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 11
+      youtube: TTHJmm_vaBE
+      embed: false
   '6.3':
     key: P1
     sources:
     - title: Start Learning Reals | Part 1 (Cauchy Sequences)
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Reals Part 1
+      youtube: 3olS8tyoQEE
+      embed: false
     - title: Start Learning Reals | Part 3 (Working With Axioms)
       channel: The Bright Side of Mathematics
       search: Bright Side of Mathematics Start Learning Reals Part 3
     - title: Start Learning Reals | Part 4 (Construction)
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Reals Part 4
+      youtube: I1fHi9rXAAI
+      embed: false
   '6.4':
     key: P1
     sources:
     - title: Start Learning Reals | Part 2 (Completeness Axiom)
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Reals Part 2
+      youtube: pR_HD2WaN_k
+      embed: false
     - title: Start Learning Complex | Part 1 (Introduction)
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Complex Part 1
+      youtube: bZSYcIJBMqE
+      embed: false
     - title: Start Learning Complex | Part 2 (Definition)
       channel: The Bright Side of Mathematics
       search: Bright Side of Mathematics Start Learning Complex Part 2
@@ -266,12 +286,17 @@ videos:
   '7.2':
     key: P2
     sources:
-    - title: 'P2: videoerne om binære relationer og funktioner (binary relations/functions) — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.'
-      search: 'P2: videoerne om binære relationer og funktioner  — kun hvis du vil genopfriske injektiv/surjektiv/bijektiv fra uge 4.'
+    - title: 1.7.1 Relations
+      channel: MIT OpenCourseWare
+      youtube: FkfsmwAtDdY
+    - title: 1.7.3 Relational Mappings
+      channel: MIT OpenCourseWare
+      youtube: gFD1Lp6zK3w
   '7.4':
     sources:
-    - title: Hilbert's hotel infinity explained
-      search: Hilbert's hotel infinity explained
+    - title: The Infinite Hotel Paradox - Jeff Dekofsky
+      youtube: Uj3_KqkI9Zo
+      channel: TED-Ed
   P4:
     key: P4
     sources:
@@ -300,12 +325,14 @@ videos:
       search: MU puzzle Hofstadter MIU system
   '9.3':
     sources:
-    - title: Gödel completeness theorem lecture
-      search: Gödel completeness theorem lecture
+    - title: Mathematical Logic - The Completeness Theorem
+      youtube: Ih5i3xlSs5k
+      channel: Jan Reimann
   '9.4':
     sources:
-    - title: nonstandard models of arithmetic compactness theorem
-      search: nonstandard models of arithmetic compactness theorem
+    - title: Mathematical Logic – The Compactness Theorem
+      youtube: fOq9ZeXHkLE
+      channel: Jan Reimann
   '10.1':
     key: P7
     sources:
@@ -339,7 +366,7 @@ videos:
     sources:
     - title: 'L8: Undecidability'
       channel: MIT OpenCourseWare
-      search: MIT 18.404J Sipser Lecture 8 Undecidability
+      youtube: 3PzuSPQPEU4
   '11.2':
     key: P7
     sources:
@@ -357,7 +384,7 @@ videos:
     sources:
     - title: 'L11: Recursion Theorem and Logic'
       channel: MIT OpenCourseWare
-      search: MIT 18.404J Sipser Lecture 11 Recursion Theorem and Logic
+      youtube: N-_XmLanPYg
   P8:
     key: P8
     sources:
@@ -368,7 +395,7 @@ videos:
     key: P9
     sources:
     - title: Godel's 1st Incompleteness Theorem - Proof by Diagonalization
-      channel: as found, see item 12.3
+      channel: Stable Sort
       youtube: PpSxqde0af4
   P10:
     key: P10
@@ -395,9 +422,9 @@ videos:
   P13:
     key: P13
     sources:
-    - title: one introductory Homotopy Type Theory lecture, e.g. from the HoTT Summer School 2022 playlist or an introduction by Andrej Bauer, Steve Awodey or Emily Riehl. It must come after 13.1–13.2.
-      channel: university or HoTT summer-school channel
-      search: one introductory Homotopy Type Theory lecture, e.g. from the HoTT Summer School 2022 playlist or an introduction by Andrej Bauer, Steve Awodey or Emily Riehl. It must come after 13.1–13.2. university or HoTT summer-school channel
+    - title: "HoTT Lecture 1: Dependent types and dependent functions -- HoTTEST Summer School 2022"
+      channel: HoTTEST
+      youtube: HvYYCHMeM-8
   '14.1':
     key: P14
     sources:

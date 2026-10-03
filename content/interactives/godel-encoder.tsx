@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget } from './_ui'
 
-export const meta = { title: 'Gödel-nummerering', course: 'foundations' }
+export const meta = { title: 'Gödel-nummerering', course: 'foundations', intro: 'Skriv en formel, og se den blive til ét tal — eller skriv et tal og find formlen.' }
 
 // Symbol codes exactly as in the Foundations plan, week 12 (variables are x, x′, x″, …).
 const CODES: [string, number][] = [

@@ -9,7 +9,7 @@ function load<T>(path: string): Promise<T> {
   let p = cache.get(path)
   if (!p) {
     p = fetch(base + path).then((r) => {
-      if (!r.ok) throw new Error(`Kunne ikke hente ${path} (${r.status})`)
+      if (!r.ok) throw new Error(`Kunne ikke hente indholdet (fejl ${r.status}). Tjek din forbindelse, og prøv igen.`)
       return r.json()
     })
     p.catch(() => cache.delete(path))

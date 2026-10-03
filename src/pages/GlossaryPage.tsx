@@ -26,7 +26,7 @@ export default function GlossaryPage() {
   if (!data) return <Loading what="ordliste" />
   return (
     <div className="mx-auto max-w-4xl space-y-4">
-      <h1 className="text-2xl font-bold">Ordliste: dansk–engelsk</h1>
+      <h1 className="page-title">Ordliste: dansk–engelsk</h1>
       <div className="flex flex-col gap-2 sm:flex-row">
         <input className="input" placeholder="Filtrér (dansk eller engelsk)…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Filtrér ordlisten" />
         <select className="input sm:w-56" value={course} onChange={(e) => setParams(e.target.value === 'alle' ? {} : { kursus: e.target.value })} aria-label="Kursus">

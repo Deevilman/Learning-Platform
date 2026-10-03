@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Widget, rng } from './_ui'
 
-export const meta = { title: 'Cantors diagonalargument', course: 'foundations' }
+export const meta = { title: 'Cantors diagonalargument', course: 'foundations', intro: 'Se diagonalen blive bygget trin for trin — og hvorfor den nye følge ikke kan stå nogen steder på listen.' }
 
 export default function Cantor({ props }: { props: Record<string, string> }) {
   const n = Math.min(12, Math.max(4, Number(props.rows) || 8))

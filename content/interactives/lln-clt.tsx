@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Buttons, rng, fmt, PALETTE, normPdf } from './_ui'
 
-export const meta = { title: 'Monte Carlo: store tals lov og CLT', course: 'quant' }
+export const meta = { title: 'Monte Carlo: store tals lov og CLT', course: 'quant', intro: 'Træk mange stikprøver, og se gennemsnittet falde til ro og fordelingen blive normal.' }
 
 type Dist = 'coin' | 'die' | 'exp' | 'skew'
 const DISTS: { id: Dist; label: string; mean: number; sd: number; draw: (r: ReturnType<typeof rng>) => number }[] = [

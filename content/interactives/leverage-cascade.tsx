@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Stat, fmt, pct } from './_ui'
 
-export const meta = { title: 'Gearing og margin-call-kaskade', course: 'hedgefund' }
+export const meta = { title: 'Gearing og margin-call-kaskade', course: 'hedgefund', intro: 'Skru op for gearingen, og se et lille prisfald udløse en kæde af tvangssalg.' }
 
 /**
  * Several funds hold the same asset with leverage. A price shock lowers their

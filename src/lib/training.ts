@@ -19,6 +19,8 @@ export interface SessionContext {
   now: number
   random?: () => number
   startDifficulty?: Difficulty
+  /** "Dagens repetition": only due bank exercises plus one new variant of each due generator, then stop. */
+  reviewOnly?: boolean
 }
 
 export const MIX = { due: 0.4, generated: 0.45, new: 0.15 }
@@ -89,7 +91,26 @@ export class TrainingSession {
     return null
   }
 
+  private servedGens = new Set<string>()
+
+  private nextReview(): TrainItem | null {
+    const due = this.duePool()
+    const gens = this.ctx.generators.filter((g) => !this.servedGens.has(g.id))
+    const pickGen = () => {
+      const g = gens[0]
+      this.servedGens.add(g.id)
+      const d = g.difficulties.includes(this.level) ? this.level : g.difficulties[0]
+      const seed = Math.floor(this.rnd() * 2 ** 31)
+      return this.tick({ kind: 'generated', generatorId: g.id, seed, difficulty: d, exercise: g.generate(seed, d) })
+    }
+    if (due.length && gens.length) return this.rnd() < due.length / (due.length + gens.length) ? this.tick(this.bank(due[0].id, 'due')) : pickGen()
+    if (due.length) return this.tick(this.bank(due[0].id, 'due'))
+    if (gens.length) return pickGen()
+    return null
+  }
+
   next(): TrainItem | null {
+    if (this.ctx.reviewOnly) return this.nextReview()
     const due = this.duePool()
     const fresh = this.newPool()
     const pools: { w: number; take: () => TrainItem | null }[] = []

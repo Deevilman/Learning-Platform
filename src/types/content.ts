@@ -55,6 +55,7 @@ export interface VideoSource {
   channel?: string
   youtube?: string // YouTube video ID; missing → the app asks for a URL
   search?: string // YouTube search query used when the ID is unknown
+  embed?: false // the uploader has turned off playback on other sites
 }
 
 export interface ExerciseSummary {
@@ -65,18 +66,28 @@ export interface ExerciseSummary {
   topics: string[]
   difficulty: Difficulty
   kind: ExerciseKind
-  hasHint: boolean
+  hasHint: boolean // the plan has its own hint (every exercise gets a hint ladder)
   hasCheck: boolean
+  hasChoices: boolean // a multiple-choice question exists (generator, choice check or quiz)
   set: 'week' | 'selftest' | 'interview' | 'extra'
   title: string // plain-text excerpt for lists and search
 }
 
 export interface Exercise extends ExerciseSummary {
   prompt: string // HTML
-  hint?: string // HTML
+  hints: string[] // HTML, shown one step at a time; the solution comes last
   solution: string // HTML
   check?: AutoCheck
+  quiz?: Quiz
   source: 'bank' | 'generated'
+}
+
+/** A short auto-checked question tied to a bank exercise (from overrides.yaml). */
+export interface Quiz {
+  question: string // HTML
+  check?: AutoCheck // typed answer, when the answer is a number or a word
+  choices?: { options: string[]; correct: number } // options in mini-Markdown
+  explain?: string // HTML
 }
 
 export interface Week {
@@ -150,6 +161,8 @@ export interface CourseData {
   sets: { slug: string; title: string; count: number }[]
   glossary: GlossaryEntry[]
   counts: { weeks: number; exercises: number; solutions: number; videos: number; videosMissing: number }
+  /** "Prøv selv": the interactive components in this course's notes. */
+  tryIt: { id: string; title: string; intro?: string; week: number }[]
 }
 
 export interface SearchDoc {
@@ -166,4 +179,5 @@ export interface ContentIndex {
   generatedAt: string
   courses: CourseMeta[]
   exercises: ExerciseSummary[]
+  interactives: { id: string; title: string; intro?: string; course?: string }[]
 }

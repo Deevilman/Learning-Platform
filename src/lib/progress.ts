@@ -115,7 +115,7 @@ export function nextSteps(
       continue
     }
     const next = d.weeks.find((w) => !weekProgress(d, w.number, checks, attempts).done)
-    if (next) out.push({ kind: 'week', course: slug, week: next.number, title: `Uge ${next.number}: ${next.title}`, reason: `Næste uge i ${d.meta.title} uden fuldført checkpoint` })
+    if (next) out.push({ kind: 'week', course: slug, week: next.number, title: `Uge ${next.number}: ${next.title}`, reason: `Næste uge i ${d.meta.title} som du ikke har afsluttet` })
   }
   if (!out.length && courses.length) {
     const first = courses.find((c) => !c.prerequisites.length) || courses[0]

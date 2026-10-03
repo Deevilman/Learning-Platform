@@ -21,8 +21,8 @@ export default function SearchPage() {
   const color = (slug: string) => data?.index.courses.find((c) => c.slug === slug)?.color || 'var(--muted)'
   return (
     <div className="mx-auto max-w-3xl space-y-4">
-      <h1 className="text-2xl font-bold">Søg</h1>
-      <input className="input text-base" autoFocus placeholder="Søg i øvelser, noter, videoer og ordliste… (fx 'Cantor', 'Sharpe', 'high-water mark')" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Søgetekst" />
+      <h1 className="page-title">Søg</h1>
+      <input className="input text-base" autoFocus placeholder="Søg efter et emne, fx Cantor, Sharpe eller high-water mark" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Søgetekst" />
       <div className="flex flex-wrap gap-1.5 text-sm">
         {['alle', 'exercise', 'note', 'video', 'glossary', 'info'].map((t) => (
           <button key={t} className="btn" aria-pressed={type === t} style={type === t ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : undefined} onClick={() => setType(t)}>

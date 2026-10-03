@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Stat, rng, fmt, pct } from './_ui'
 
-export const meta = { title: 'Kelly-kriteriet og vækstrate', course: 'quant' }
+export const meta = { title: 'Kelly-kriteriet og vækstrate', course: 'quant', intro: 'Vælg sandsynlighed og odds, og find den indsats, der giver den højeste vækst.' }
 
 export default function Kelly({ props }: { props: Record<string, string> }) {
   const [p, setP] = useState(Number(props.p) || 0.55)

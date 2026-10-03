@@ -2,23 +2,25 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { loadExercise, loadIndex } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
-import { useTable } from '@/lib/store'
-import { generators, generatedId } from '@/lib/generators'
+import { useSetting, useTable } from '@/lib/store'
+import { generators, generatedChoices, type Generator } from '@/lib/generators'
+import { ANSWER_PREF_KEY, ANSWER_PREF_LABEL, matchesAnswerPref, type AnswerPref } from '@/lib/answer-type'
+import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
+import { DailyGoal } from '@/components/DailyGoal'
 import { TrainingSession, startLevel, type TrainItem } from '@/lib/training'
 import { findWeakTopics } from '@/lib/weakness'
 import { reachedWeeks } from '@/lib/progress'
 import { computeMastery } from '@/lib/mastery'
-import { miniMarkdown } from '@/lib/mini-md'
-import { ExerciseCard, fromBank, STARS, type ExerciseView } from '@/components/ExerciseCard'
+import { ExerciseCard, fromBank, fromGenerated, STARS, type ExerciseView } from '@/components/ExerciseCard'
 import { ErrorBox, Loading } from '@/components/ui'
 import type { ContentIndex, Exercise } from '@/types/content'
 
 type Mode = 'blandet' | 'svage' | 'emner' | 'gennemgang'
 const MODES: { id: Mode; label: string; help: string }[] = [
-  { id: 'blandet', label: 'Blandet repetition', help: 'Alle emner i de uger, du er nået til' },
-  { id: 'svage', label: 'Mine svage punkter', help: 'De emner, overblikket anbefaler' },
+  { id: 'blandet', label: 'Lidt af det hele', help: 'Alle emner i de uger, du er nået til' },
+  { id: 'svage', label: 'Mine svage punkter', help: 'Det, du har mest gavn af at øve' },
   { id: 'emner', label: 'Vælg emner', help: 'Du bestemmer selv' },
-  { id: 'gennemgang', label: 'Dagens gennemgang', help: 'Kun øvelser, der er klar til repetition' },
+  { id: 'gennemgang', label: 'Dagens repetition', help: 'Opgaver, det er tid til at se igen' },
 ]
 
 export default function TrainPage() {
@@ -31,6 +33,7 @@ export default function TrainPage() {
   const mode = (params.get('tilstand') as Mode) || (params.get('emne') ? 'emner' : 'blandet')
   const chosen = useMemo(() => (params.get('emne') || '').split(',').filter(Boolean), [params])
   const [running, setRunning] = useState(params.get('start') === '1' || params.get('tilstand') === 'gennemgang')
+  const [pref] = useSetting<AnswerPref>(ANSWER_PREF_KEY, 'blandet')
 
   const set = (k: string, v: string | null) => {
     const p = new URLSearchParams(params)
@@ -61,9 +64,15 @@ export default function TrainPage() {
 
   const inScope = (courseSlug: string, topics: string[]) => scope.some((s) => s.course === courseSlug && topics.includes(s.topic))
   const srsMap = new Map(srs.map((c) => [c.id, c]))
-  let bank = index.exercises.filter((e) => inScope(e.course, e.topics))
-  const gens = mode === 'gennemgang' ? [] : generators.filter((g) => inScope(g.course, g.topics))
-  if (mode === 'gennemgang') bank = index.exercises.filter((e) => courses.some((c) => c.slug === e.course) && srsMap.get(e.id) && srsMap.get(e.id)!.due <= now)
+  const fits = (e: { hasChoices: boolean }) => matchesAnswerPref({ choices: e.hasChoices, typed: true }, pref)
+  let bank = index.exercises.filter((e) => inScope(e.course, e.topics) && fits(e))
+  const srsMapEarly = new Map(srs.map((c) => [c.id, c]))
+  const gens =
+    mode === 'gennemgang'
+      ? // generated skills that are due for repetition come back with new numbers
+        generators.filter((g) => courses.some((c) => c.slug === g.course) && (srsMapEarly.get(`gen:${g.id}`)?.due ?? Infinity) <= now && matchesAnswerPref(generatorCaps(g), pref))
+      : generators.filter((g) => inScope(g.course, g.topics) && matchesAnswerPref(generatorCaps(g), pref))
+  if (mode === 'gennemgang') bank = index.exercises.filter((e) => courses.some((c) => c.slug === e.course) && fits(e) && srsMap.get(e.id) && srsMap.get(e.id)!.due <= now)
   const dueCount = bank.filter((e) => srsMap.get(e.id) && srsMap.get(e.id)!.due <= now).length
 
   if (running)
@@ -85,8 +94,8 @@ export default function TrainPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       <div>
-        <h1 className="text-2xl font-bold">Træn</h1>
-        <p className="muted">Uendelig træning: øvelser fra planerne, der er klar til repetition, nye varianter fra opgavegeneratorer og et par øvelser, du ikke har prøvet endnu. Sværhedsgraden følger dig.</p>
+        <h1 className="page-title">Træn</h1>
+        <p className="muted">Bliv ved, så længe du har lyst: opgaver, det er tid til at se igen, nye regneopgaver med andre tal og et par opgaver, du ikke har prøvet. Sværhedsgraden følger dig.</p>
       </div>
       <section className="card space-y-4">
         <div>
@@ -134,7 +143,7 @@ export default function TrainPage() {
                         onClick={() => set('emne', (on ? chosen.filter((x) => x !== t.id) : [...chosen, t.id]).join(','))}
                       >
                         {t.name}
-                        {n > 0 && <span className="opacity-60">· {n}⚙</span>}
+                        {n > 0 && <span className="opacity-60" title="Har regneopgaver med nye tal hver gang"> · ∞</span>}
                       </button>
                     )
                   })}
@@ -144,19 +153,34 @@ export default function TrainPage() {
           </div>
         )}
         <div className="rounded-lg p-3 text-sm" style={{ background: 'var(--surface-2)' }}>
-          <b>Omfang:</b> {scopeLabel(index, scope) || 'ingen emner valgt'}
+          <b>Du træner:</b> {scopeLabel(index, scope) || 'ingen emner valgt'}
           <br />
-          {bank.length} øvelser fra planerne ({dueCount} klar til repetition) · {gens.length} generatorer {gens.length ? '(uendeligt mange varianter)' : ''}
+          {mode === 'gennemgang' ? `${bank.length + gens.length} ${bank.length + gens.length === 1 ? 'opgave' : 'opgaver'} klar til repetition` : `${bank.length} opgaver fra kurset (${dueCount} klar til repetition)`}
+          {mode !== 'gennemgang' && gens.length ? ' · plus regneopgaver med nye tal hver gang' : ''}
+          {pref !== 'blandet' && <span className="muted"> · {ANSWER_PREF_LABEL[pref].toLowerCase()}</span>}
         </div>
+        <AnswerPrefPicker />
         <button className="btn btn-primary w-full py-2.5 text-base" disabled={!bank.length && !gens.length} onClick={() => setRunning(true)}>
-          {mode === 'gennemgang' && !bank.length ? 'Intet at gennemgå i dag 🎉' : 'Start træning'}
+          {mode === 'gennemgang' && !bank.length && !gens.length ? 'Intet at repetere i dag 🎉' : 'Start træning'}
         </button>
       </section>
       <p className="muted text-sm">
-        ⚙ = antal opgavegeneratorer i emnet. Se alle i <Link className="link" to="/interaktivt">oversigten over interaktive værktøjer og generatorer</Link>.
+        ∞ = emnet har regneopgaver, der laves med nye tal hver gang. Vil du lege med begreberne, så prøv <Link className="link" to="/interaktivt">Prøv selv</Link>.
       </p>
     </div>
   )
+}
+
+const capsCache = new Map<string, { choices: boolean; typed: boolean }>()
+/** What answer formats a generator offers (judged from a sample). */
+function generatorCaps(g: Generator) {
+  let c = capsCache.get(g.id)
+  if (!c) {
+    const ex = g.generate(1, g.difficulties[0])
+    c = { choices: !!generatedChoices(ex, 1), typed: ex.check.type !== 'choice' }
+    capsCache.set(g.id, c)
+  }
+  return c
 }
 
 function avgMastery(attempts: import('@/lib/storage/types').Attempt[], scope: { course: string; topic: string }[], now: number) {
@@ -189,6 +213,7 @@ function Session(props: {
       generators: props.gens,
       now: Date.now(),
       startDifficulty: props.start,
+      reviewOnly: props.mode === 'gennemgang',
     })
   const [item, setItem] = useState<TrainItem | null | undefined>(undefined)
   const [bankEx, setBankEx] = useState<Exercise | null>(null)
@@ -198,7 +223,6 @@ function Session(props: {
 
   const advance = () => {
     const next = session.current!.next()
-    if (props.mode === 'gennemgang' && next && next.kind === 'bank' && next.reason !== 'due') return setItem(null)
     setItem(next)
     setDone(false)
     setBankEx(null)
@@ -220,22 +244,7 @@ function Session(props: {
     if (!item) return null
     if (item.kind === 'generated') {
       const g = props.gens.find((x) => x.id === item.generatorId)!
-      return {
-        id: generatedId(item.generatorId, item.seed, item.difficulty),
-        course: g.course,
-        week: 0,
-        topics: g.topics,
-        difficulty: item.difficulty,
-        kind: 'compute',
-        promptHtml: miniMarkdown(item.exercise.prompt),
-        hintHtml: item.exercise.hint ? miniMarkdown(item.exercise.hint) : undefined,
-        solutionHtml: miniMarkdown(item.exercise.solution),
-        check: item.exercise.check,
-        source: 'generated',
-        generatorId: item.generatorId,
-        seed: item.seed,
-        title: g.title,
-      }
+      return fromGenerated(g, item.seed, item.difficulty, item.exercise)
     }
     return bankEx ? fromBank(bankEx) : null
   }, [item, bankEx, props.gens])
@@ -263,8 +272,8 @@ function Session(props: {
 
   const meta =
     item.kind === 'generated'
-      ? { label: `⚙ ${props.gens.find((g) => g.id === item.generatorId)?.title}`, sub: 'Ny variant' }
-      : { label: `${bankEx?.course || ''} · ${bankEx?.week ? `uge ${bankEx.week}` : bankEx?.set || ''}`, sub: item.reason === 'due' ? 'Klar til repetition' : item.reason === 'new' ? 'Ny for dig' : 'Repetition' }
+      ? { label: `${props.gens.find((g) => g.id === item.generatorId)?.title}`, sub: 'Nye tal' }
+      : { label: `${props.index.courses.find((c) => c.slug === bankEx?.course)?.title || ''} · ${bankEx?.week ? `uge ${bankEx.week}` : bankEx?.set === 'selftest' ? 'selvtest' : bankEx?.set === 'interview' ? 'interviewtræning' : ''}`, sub: item.reason === 'due' ? 'Klar til repetition' : item.reason === 'new' ? 'Ny for dig' : 'Repetition' }
 
   return (
     <div className="mx-auto max-w-3xl space-y-4">
@@ -281,6 +290,7 @@ function Session(props: {
         </span>
         <span className="muted ml-auto truncate text-xs">{props.scopeLabel}</span>
       </div>
+      <DailyGoal compact />
       <div className="muted text-xs">
         {meta.label} · {meta.sub}
       </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Widget, Slider, Chart, Stat, pct } from './_ui'
 
-export const meta = { title: 'Fusionsarbitrage: implicit sandsynlighed', course: 'hedgefund' }
+export const meta = { title: 'Fusionsarbitrage: implicit sandsynlighed', course: 'hedgefund', intro: 'Indtast bud og kurser, og se, hvilken sandsynlighed markedet giver for, at handlen gennemføres.' }
 
 export default function MergerArb() {
   const [offer, setOffer] = useState(50)

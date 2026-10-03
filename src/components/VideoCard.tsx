@@ -11,8 +11,25 @@ export function parseYoutubeId(input: string): string | null {
 }
 
 /** Click-to-load embed: nothing is requested from YouTube until you press play. */
-function YouTube({ id, title }: { id: string; title: string }) {
+function YouTube({ id, title, embed = true }: { id: string; title: string; embed?: boolean }) {
   const [on, setOn] = useState(false)
+  // Some uploaders don't allow playback on other sites: open the video on YouTube instead.
+  if (!embed)
+    return (
+      <a
+        className="flex aspect-video w-full min-w-0 flex-col items-center justify-center gap-2 overflow-hidden rounded-lg text-sm"
+        style={{ background: 'var(--surface-2)' }}
+        href={`https://www.youtube.com/watch?v=${id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="grid h-12 w-12 place-items-center rounded-full text-xl text-white" style={{ background: '#dc2626' }}>
+          ▶
+        </span>
+        <span className="block w-[90%] truncate font-medium">{title}</span>
+        <span className="muted text-xs">Denne video kan kun ses på YouTube ↗</span>
+      </a>
+    )
   if (!on)
     return (
       <button
@@ -25,7 +42,7 @@ function YouTube({ id, title }: { id: string; title: string }) {
           ▶
         </span>
         <span className="block w-[90%] truncate font-medium">{title}</span>
-        <span className="muted text-xs">youtube-nocookie.com indlæses først, når du klikker</span>
+        <span className="muted text-xs">Afspilles fra YouTube, når du trykker</span>
       </button>
     )
   return (
@@ -55,7 +72,7 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
   if (id && !editing)
     return (
       <div className="min-w-0 space-y-1">
-        <YouTube id={id} title={source.title} />
+        <YouTube id={id} title={source.title} embed={override?.youtube ? true : source.embed !== false} />
         <div className="flex flex-wrap items-center gap-2 text-xs">
           <span className="muted min-w-0 max-w-full truncate">{label}</span>
           <a className="link" href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener noreferrer">
@@ -63,7 +80,7 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
           </a>
           {override && (
             <button className="link" onClick={() => setEditing(true)}>
-              Ret URL
+              Ret link
             </button>
           )}
         </div>
@@ -72,21 +89,21 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
 
   const search = source.search || source.title
   return (
-    <div className="min-w-0 rounded-lg border border-dashed p-3 text-sm" style={{ borderColor: 'var(--warn)' }}>
-      <div className="font-medium">Video mangler, indsæt URL</div>
-      <div className="muted mb-2 text-xs">{label}</div>
+    <div className="min-w-0 rounded-lg border border-dashed p-3 text-sm" style={{ borderColor: 'var(--border)' }}>
+      <div className="font-medium">Vi har ikke fundet videoen endnu</div>
+      <div className="muted mb-2 text-xs">{label}. Finder du den, kan du indsætte linket her.</div>
       <form
         className="flex flex-col gap-2 sm:flex-row"
         onSubmit={(e) => {
           e.preventDefault()
           const yt = parseYoutubeId(input)
-          if (!yt) return setError('Det ligner ikke en YouTube-URL eller et video-ID.')
+          if (!yt) return setError('Det ligner ikke et link til en YouTube-video.')
           setError('')
           setEditing(false)
           store.put('videoIds', { id: key, youtube: yt })
         }}
       >
-        <input className="input" placeholder="https://www.youtube.com/watch?v=…" value={input} onChange={(e) => setInput(e.target.value)} aria-label={`YouTube-URL til ${source.title}`} />
+        <input className="input" placeholder="https://www.youtube.com/watch?v=…" value={input} onChange={(e) => setInput(e.target.value)} aria-label={`Link til ${source.title}`} />
         <button className="btn btn-primary shrink-0" type="submit">
           Gem
         </button>

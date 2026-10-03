@@ -27,7 +27,7 @@ function start() {
         }
       }
     }
-    worker!.onerror = (e) => reject(new Error(e.message || 'Python-workeren fejlede'))
+    worker!.onerror = (e) => reject(new Error(e.message || 'Python stoppede uventet. Prøv igen.'))
   })
   worker.postMessage({ type: 'init', indexURL })
 }
@@ -40,7 +40,7 @@ function kill() {
 
 export const pythonRunner: CodeRunner = {
   language: 'python',
-  label: 'Python (Pyodide)',
+  label: 'Python',
   async run(code: string, opts: RunOptions = {}): Promise<RunResult> {
     const timeoutMs = opts.timeoutMs ?? 60000
     statusCb = opts.onStatus

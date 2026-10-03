@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget, Slider, Chart, Buttons, Stat, fmt, normCdf, normPdf } from './_ui'
 
-export const meta = { title: 'Optioner: payoff og Black–Scholes med Greeks', course: 'quant' }
+export const meta = { title: 'Optioner: payoff og Black–Scholes med Greeks', course: 'quant', intro: 'Vælg en optionsstrategi, flyt aktiekursen, og se payoff, pris og Greeks ændre sig.' }
 
 type Leg = { type: 'call' | 'put' | 'stock'; K: number; qty: number }
 const STRATS: Record<string, { label: string; legs: (K: number) => Leg[] }> = {

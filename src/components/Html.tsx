@@ -24,7 +24,7 @@ function lazyInteractive(id: string) {
   let c = lazyCache.get(id)
   if (!c) {
     const loader = interactiveLoaders.get(id)
-    c = lazy(async () => (loader ? loader() : { default: () => createElement('div', { className: 'chip' }, `Ukendt komponent: ${id}`) }))
+    c = lazy(async () => (loader ? loader() : { default: () => createElement('div', { className: 'chip' }, `Værktøjet kunne ikke vises.`) }))
     lazyCache.set(id, c)
   }
   return c
@@ -33,7 +33,7 @@ function lazyInteractive(id: string) {
 function InteractiveHost({ id, props }: { id: string; props: Record<string, string> }) {
   const C = lazyInteractive(id)
   return (
-    <Suspense fallback={<div className="widget muted text-sm">Indlæser interaktiv komponent…</div>}>
+    <Suspense fallback={<div className="widget muted text-sm">Henter værktøjet…</div>}>
       <C props={props} />
     </Suspense>
   )
@@ -123,7 +123,7 @@ function CodeTools({ lang, code, prelude }: { lang: string; code: string; prelud
       <div className="code-tools">
         {runnable && <button onClick={() => (setWithPrelude(false), setRun((n) => n + 1))}>▶ Kør i browseren</button>}
         {runnable && prelude && (
-          <button onClick={() => (setWithPrelude(true), setRun((n) => n + 1))} title="Kør de foregående kodeblokke på siden først (til kode, der bygger videre på koden ovenfor)">
+          <button onClick={() => (setWithPrelude(true), setRun((n) => n + 1))} title="Kør også koden ovenfor først (den bygger videre på den)">
             ▶ Kør med koden ovenfor
           </button>
         )}

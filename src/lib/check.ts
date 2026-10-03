@@ -77,7 +77,7 @@ export function evaluate(check: AutoCheck, answer: string): CheckResult {
     case 'choice': {
       const idx = Number(answer)
       const ok = idx === check.correct
-      return ok ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: `Forkert. Det rigtige svar er: ${check.options[check.correct]}` }
+      return ok ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: `Ikke helt. Det rigtige svar er: ${check.options[check.correct]}` }
     }
     case 'text': {
       const norm = (s: string) => (check.caseSensitive ? s : s.toLowerCase()).replace(/\s+/g, ' ').trim()
@@ -87,7 +87,7 @@ export function evaluate(check: AutoCheck, answer: string): CheckResult {
     case 'output': {
       const norm = (s: string) => s.replace(/\r/g, '').replace(/[ \t]+$/gm, '').trim()
       const ok = norm(answer) === norm(check.expected)
-      return ok ? { correct: true, message: 'Outputtet passer!' } : { correct: false, message: 'Outputtet matcher ikke det forventede.' }
+      return ok ? { correct: true, message: 'Udskriften passer!' } : { correct: false, message: 'Udskriften passer ikke med det forventede.' }
     }
   }
 }

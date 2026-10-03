@@ -9,3 +9,84 @@ inserts:
   - { week: 10, before: "**Varianter.**", markdown: '::interactive{id="turing-machine" machine="inc"}' }
   - { week: 12, before: "**Aritmetisering.**", markdown: '::interactive{id="godel-encoder" formula="0=0"}' }
   - { week: 13, before: "**3. Ikke-terminering og rekursion.**", markdown: '::interactive{id="lambda-reducer" term="PLUS 2 3"}' }
+
+# Korte "Tjek dig selv"-spørgsmål til øvelser (bruges også i "Hvad kan du allerede?" og ved Kun multiple choice).
+# options: første svar er det rigtige (rækkefølgen blandes). check: et tal eller ord, der kan tjekkes.
+exercises:
+  '5.1':
+    quiz:
+      question: 'Hvilken mængde er von Neumann-tallet $2$?'
+      options: ['$\{\emptyset, \{\emptyset\}\}$', '$\{\{\emptyset\}\}$', '$\{\emptyset\}$', '$\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}$']
+      explain: 'Med $0 = \emptyset$ og $n + 1 = n \cup \{n\}$ er $2 = \{0, 1\} = \{\emptyset, \{\emptyset\}\}$. Den sidste mulighed er $3$.'
+  '5.2':
+    quiz:
+      question: 'Med $m + 0 = m$ og $m + S(n) = S(m + n)$: hvor mange gange bruger man reglen $m + S(n) = S(m + n)$, når man regner $2 + 3$ ud?'
+      check: { type: numeric, answer: 3, tolerance: 0 }
+      distractors: [2, 5, 1]
+      explain: '$2 + 3 = 2 + S(2) = S(2 + 2) = S(S(2 + 1)) = S(S(S(2 + 0)))$ — én gang for hvert $S$ i $3 = S(S(S(0)))$.'
+  '5.3':
+    quiz:
+      question: 'Strukturen $\{0, 1, 2\}$ med $S(0) = 1$, $S(1) = 2$ og $S(2) = 0$. Hvilket af Peanos krav er brudt?'
+      options: ['$0$ må ikke være efterfølger af noget tal', '$S$ skal være injektiv', 'Induktionsaksiomet', 'Ingen — alle krav holder']
+      explain: '$S(2) = 0$, så $0$ er en efterfølger. $S$ er en bijektion, og en mængde med $0$, der er lukket under $S$, indeholder både $1$ og $2$.'
+  '8.1':
+    quiz:
+      question: 'Med $V_0 = \emptyset$ og $V_{n+1} = \mathcal{P}(V_n)$: hvor mange elementer har $V_3$?'
+      check: { type: numeric, answer: 4, tolerance: 0 }
+      distractors: [3, 8, 16]
+      explain: '$V_1$ har $1$ element, $V_2 = \mathcal{P}(V_1)$ har $2^1 = 2$, og $V_3 = \mathcal{P}(V_2)$ har $2^2 = 4$.'
+  '8.4':
+    quiz:
+      question: 'Hvad viser Russells argument i ZF?'
+      options: ['Der findes ingen mængde af alle mængder', 'ZF er selvmodsigende', 'Enhver mængde er element i sig selv', 'Potensmængden af $A$ har færre elementer end $A$']
+      explain: 'For enhver mængde $A$ er $R_A = \{x \in A : x \notin x\}$ ikke et element i $A$. Altså kan ingen mængde indeholde alle mængder.'
+  '8.5':
+    quiz:
+      question: 'Hvilket aksiom udelukker, at en mængde er element i sig selv ($x \in x$)?'
+      options: ['Funderingsaksiomet', 'Ekstensionalitetsaksiomet', 'Udvalgsaksiomet', 'Potensmængdeaksiomet']
+      explain: 'Fundering: hver ikke-tom mængde har et element, der er disjunkt fra den. Brugt på $\{x\}$ giver det $x \notin x$.'
+  '9.2':
+    quiz:
+      question: 'Hvorfor er MIIIU ikke et teorem i MIU-systemet?'
+      options: ['Antallet af I''er i et teorem er aldrig deleligt med 3 — og MIIIU har 3', 'Der må højst stå ét U i et teorem', 'Alle teoremer slutter på I', 'Det er for kort til at kunne afledes']
+      explain: 'Startstrengen MI har ét I. Reglerne fordobler antallet eller trækker 3 fra, så antallet bliver aldrig deleligt med 3.'
+  '9.3':
+    quiz:
+      question: 'Hvilken struktur gør sætningen $\forall x\, \exists y\, (y < x)$ falsk?'
+      options: ['$(\mathbb{N}, <)$', '$(\mathbb{Z}, <)$', '$(\mathbb{Q}, <)$', 'Ingen af dem']
+      explain: 'I $\mathbb{N}$ findes intet tal mindre end $0$. I $\mathbb{Z}$ og $\mathbb{Q}$ er $x - 1 < x$.'
+  '9.6':
+    quiz:
+      question: 'Hvad betyder det, at bevissystemet for udsagnslogik er *sundt*?'
+      options: ['Alt, hvad der kan bevises, er en tautologi', 'Enhver tautologi kan bevises', 'Systemet kan afgøre, om en formel er en tautologi', 'Aksiomerne er uafhængige af hinanden']
+      explain: 'Sundhed: $\vdash \varphi$ medfører $\vDash \varphi$. Den anden vej — at enhver tautologi kan bevises — hedder fuldstændighed.'
+  '11.2':
+    quiz:
+      question: 'Er spørgsmålet "standser netop denne maskine på netop dette input?" — én fast maskine og ét fast input — afgørligt?'
+      options: ['Ja — et problem med én instans er altid afgørligt', 'Nej, det er halting-problemet', 'Kun hvis maskinen faktisk standser', 'Det kan man ikke vide']
+      explain: 'Afgørlighed handler om én algoritme til uendeligt mange instanser. Med én instans svarer et af programmerne "skriv ja" og "skriv nej" rigtigt — vi ved måske bare ikke hvilket.'
+  '11.3':
+    quiz:
+      question: 'Hvis $L$ er genkendeligt, men ikke afgørligt, hvad gælder så for komplementet $\overline{L}$?'
+      options: ['Det er ikke genkendeligt', 'Det er afgørligt', 'Det er også genkendeligt, men ikke afgørligt', 'Det er tomt']
+      explain: 'Var både $L$ og $\overline{L}$ genkendelige, kunne man køre de to genkendere skiftevis og altid få et svar — så var $L$ afgørligt.'
+  '11.5':
+    quiz:
+      question: 'Hvad viser en afbildningsreduktion $A_{TM} \le_m HALT_{TM}$?'
+      options: ['$HALT_{TM}$ er uafgørligt, fordi $A_{TM}$ er det', '$A_{TM}$ er uafgørligt, fordi $HALT_{TM}$ er det', '$HALT_{TM}$ er afgørligt', '$A_{TM}$ og $HALT_{TM}$ er det samme sprog']
+      explain: 'Kunne man afgøre $HALT_{TM}$, kunne man afgøre $A_{TM}$ ved først at oversætte med reduktionen. Sværheden flytter fra venstre mod højre.'
+  '14.2':
+    quiz:
+      question: 'Monoiden $(\mathbb{N}, +, 0)$ set som en kategori med ét objekt: hvilke morfier er isomorfier?'
+      options: ['Kun $0$', 'Alle morfier', 'Kun $0$ og $1$', 'Ingen']
+      explain: '$m$ har en invers, hvis $m + n = 0$ for et $n \in \mathbb{N}$, og det kræver $m = n = 0$.'
+  '14.3':
+    quiz:
+      question: 'Hvilken mængde er et initialt objekt i kategorien Set?'
+      options: ['Den tomme mængde $\emptyset$', 'En mængde med ét element', '$\mathbb{N}$', 'Set har intet initialt objekt']
+      explain: 'Fra $\emptyset$ findes præcis én afbildning til enhver mængde (den tomme). En ét-punktsmængde er derimod terminal.'
+  '14.4':
+    quiz:
+      question: 'I Set er en monomorfi det samme som en …'
+      options: ['injektiv afbildning', 'surjektiv afbildning', 'bijektiv afbildning', 'konstant afbildning']
+      explain: 'Det er netop opgavens resultat. Tilsvarende er epimorfierne i Set de surjektive afbildninger.'

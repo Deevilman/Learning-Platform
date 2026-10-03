@@ -70,3 +70,19 @@ export function masteryByWeek(attempts: Attempt[], course: string, now: number):
   for (const [w, list] of groups) out.set(w, computeMastery(list, now))
   return out
 }
+
+/** Khan-style levels shown to the learner. */
+export type MasteryLevel = 'ikke-startet' | 'oevet' | 'kendt' | 'mestret'
+export const MASTERY_LEVEL_LABEL: Record<MasteryLevel, string> = { 'ikke-startet': 'Ikke startet', oevet: 'Øvet', kendt: 'Kendt', mestret: 'Mestret' }
+export const MASTERY_LEVELS: MasteryLevel[] = ['ikke-startet', 'oevet', 'kendt', 'mestret']
+
+/**
+ * Øvet: you have tried it. Kendt: mostly right (≥ 0,5). Mestret: reliably
+ * right (≥ 0,8) on enough evidence (confidence ≥ 0,5, i.e. about 3 attempts).
+ */
+export function masteryLevel(m: Pick<Mastery, 'mastery' | 'confidence' | 'attempts'>): MasteryLevel {
+  if (!m.attempts) return 'ikke-startet'
+  if (m.mastery >= 0.8 && m.confidence >= 0.5) return 'mestret'
+  if (m.mastery >= 0.5) return 'kendt'
+  return 'oevet'
+}

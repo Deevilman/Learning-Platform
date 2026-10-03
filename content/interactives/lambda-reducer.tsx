@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { parse, normalize, show, churchValue } from '@/lib/lambda'
 import { Widget } from './_ui'
 
-export const meta = { title: 'λ-kalkyle: β-reduktion', course: 'foundations' }
+export const meta = { title: 'λ-kalkyle: β-reduktion', course: 'foundations', intro: 'Skriv et λ-udtryk, og reducér det skridt for skridt.' }
 
 const EXAMPLES = ['(λx.x) y', '(λx y.x) a b', 'PLUS 2 3', 'MULT 2 3', 'S K K a', 'AND TRUE FALSE', 'NOT FALSE', 'FST (PAIR a b)', '(λx.λy.x y) y', 'OMEGA']
 

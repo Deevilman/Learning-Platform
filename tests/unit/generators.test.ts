@@ -91,3 +91,52 @@ describe('generators', () => {
     })
   }
 })
+
+// ---------- multiple choice: every generated variant must have exactly one correct option
+import { generatedChoices } from '@/lib/generators'
+import { makeChoices } from '@/lib/choices'
+
+/** Grade an option string the way a learner typing it would be graded. */
+function optionIsCorrect(check: AutoCheck, option: string): boolean {
+  // options are Danish: "1.024,5" — make the thousands dots unambiguous for the parser
+  const text = option.replace(/−/g, '-').replace(/(\d)\.(?=\d{3}\b)/g, '$1').replace(/\s*(kr\.?|bp|år|dage|USD|mio\.|%)$/i, (m) => (m.includes('%') && check.type === 'numeric' && check.unit === '%' ? '' : m.includes('%') ? m : ''))
+  return evaluate(check, text).correct
+}
+
+describe('multiple-choice variants', () => {
+  for (const g of generators)
+    it(`${g.id}: four distinct options, exactly one correct`, () => {
+      let made = 0
+      for (const d of g.difficulties)
+        for (let seed = 1; seed <= 25; seed++) {
+          const ex = g.generate(seed, d)
+          expect(ex.hint.trim().length, `${g.id} mangler hint`).toBeGreaterThan(5)
+          const c = generatedChoices(ex, seed)
+          if (!c) {
+            // Only free-text answers without distractors may lack a multiple-choice version.
+            expect(['text', 'output']).toContain(ex.check.type)
+            continue
+          }
+          made++
+          expect(c.options).toHaveLength(ex.check.type === 'choice' ? ex.check.options.length : 4)
+          expect(new Set(c.options).size).toBe(c.options.length)
+          if (ex.check.type === 'choice') {
+            expect(c.correct).toBe(ex.check.correct)
+            continue
+          }
+          const correct = c.options.map((o) => optionIsCorrect(ex.check, o))
+          expect(correct.filter(Boolean), `${g.id} d${d} seed ${seed}: ${c.options.join(' | ')}`).toHaveLength(1)
+          expect(correct[c.correct]).toBe(true)
+        }
+      expect(made, `${g.id} laver ingen multiple choice`).toBeGreaterThan(0)
+    })
+
+  it('uses supplied distractors first and is deterministic', () => {
+    const check: AutoCheck = { type: 'numeric', answer: 2.5, tolerance: 0.05, unit: '%' }
+    const a = makeChoices(check, 'quant/10/10.2', [35, -7.5])!
+    expect(a.options).toContain('35,0\u00a0%')
+    expect(a.options).toContain('−7,5\u00a0%')
+    expect(a.options[a.correct]).toBe('2,5\u00a0%')
+    expect(makeChoices(check, 'quant/10/10.2', [35, -7.5])).toEqual(a)
+  })
+})

@@ -32,8 +32,8 @@ export default function Courses() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Kurser</h1>
-        <p className="muted">Pilene viser rækkefølgen: hvert kursus bygger på de foregående.</p>
+        <h1 className="page-title">Kurser</h1>
+        <p className="muted">Kurserne bygger videre på hinanden — tag dem gerne i rækkefølge.</p>
       </div>
       <ol className="grid gap-4 md:grid-cols-3">
         {order.map((c, i) => {
@@ -59,7 +59,7 @@ export default function Courses() {
                 </dl>
                 <div className="mt-3 space-y-1">
                   <div className="muted flex justify-between text-xs">
-                    <span>Uger med fuldt checkpoint</span>
+                    <span>Uger gennemført</span>
                     <span>
                       {done}/{c.weeks.length}
                     </span>
@@ -78,11 +78,9 @@ export default function Courses() {
         })}
       </ol>
       {future.length > 0 && (
-        <div className="card">
-          <h2 className="font-semibold">Kommer senere</h2>
-          <p className="muted text-sm">
-            Planlagte kurser: {future.join(', ')}. De tilføjes ved at lægge en mappe i <code>content/courses/</code> og køre <code>npm run content</code>.
-          </p>
+        <div className="card-flat">
+          <h2 className="section-title">Kommer senere</h2>
+          <p className="muted text-sm">{future.join(', ')}</p>
         </div>
       )}
     </div>

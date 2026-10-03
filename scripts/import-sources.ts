@@ -181,11 +181,11 @@ function buildVideos(plan: RawPlan, entries: HandoffEntry[], existing: VideosFil
       let sources: VideoEntrySource[] = [...fromHandoff, ...fromPlan]
       if (!sources.length && v.search) sources = [{ title: v.search, search: v.search }]
       if (!sources.length && v.key) sources = [{ title: v.title.replace(/[*_]/g, ''), search: v.title.replace(/[*_"]/g, '').replace(/\(.*?\)/g, '').trim() }]
-      // Keep IDs that were filled in by hand in an earlier run.
+      // Entries with an ID in an earlier run were checked by hand (title, channel, ID): keep them as they are.
       if (prev) {
         sources = sources.map((s, j) => {
           const p = prev.sources[j]
-          return p && p.youtube && !s.youtube ? { ...s, youtube: p.youtube, search: undefined } : s
+          return p && p.youtube ? p : s
         })
         if (prev.sources.length > sources.length) sources.push(...prev.sources.slice(sources.length))
       }

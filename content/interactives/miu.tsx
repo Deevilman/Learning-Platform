@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget } from './_ui'
 
-export const meta = { title: 'MIU-systemet', course: 'foundations' }
+export const meta = { title: 'MIU-systemet', course: 'foundations', intro: 'Prøv at nå fra MI til MU med de fire regler — og find ud af, hvorfor det ikke kan lade sig gøre.' }
 
 interface Move {
   rule: number

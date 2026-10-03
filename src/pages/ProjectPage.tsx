@@ -29,7 +29,7 @@ export default function ProjectPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       <Crumbs items={[{ to: `/kursus/${slug}`, label: course.meta.title }, { label: 'Afsluttende projekt' }]} />
-      <h1 className="text-2xl font-bold">{p.title}</h1>
+      <h1 className="page-title">{p.title}</h1>
       <Html html={p.introHtml} className="card" />
       <nav className="flex flex-wrap gap-2" aria-label="Projektdele">
         {p.parts.map((part) => (

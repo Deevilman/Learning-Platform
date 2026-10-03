@@ -1,0 +1,37 @@
+name: Tjek video-ID'er
+
+# Verifies every YouTube ID with oEmbed and collects candidates for missing
+# videos. The reports are committed back to the branch (reports/), because
+# they are meant to be read and acted on.
+on:
+  push:
+    branches-ignore: [main]
+    paths:
+      - 'content/courses/*/videos.yaml'
+      - 'scripts/verify-videos.ts'
+      - 'scripts/find-videos.ts'
+      - '.github/workflows/videos.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  videos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run verify-videos
+      - run: npm run find-videos
+        continue-on-error: true
+      - name: Commit reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f reports/
+          git diff --cached --quiet || (git commit -m "Video-rapport fra CI" && git push)

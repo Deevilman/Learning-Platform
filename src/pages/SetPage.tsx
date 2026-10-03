@@ -15,7 +15,7 @@ export default function SetPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-4">
       <Crumbs items={[{ to: `/kursus/${slug}`, label: data.course.meta.title }, { label: title }]} />
-      <h1 className="text-2xl font-bold">{data.set.title}</h1>
+      <h1 className="page-title">{data.set.title}</h1>
       {data.set.introHtml && <Html html={data.set.introHtml} className="card" />}
       {data.set.exercises.map((e) => (
         <div key={e.id} id={`q-${e.number}`}>

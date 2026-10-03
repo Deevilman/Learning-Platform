@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f8fafc;
+  --bg: #f7f7f9;
   --surface: #ffffff;
-  --surface-2: #f1f5f9;
-  --border: #e2e8f0;
+  --surface-2: #f2f2f6;
+  --border: #e6e6ec;
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px rgb(15 23 42 / 0.05);
   --text: #0f172a;
   --muted: #64748b;
   --accent: #7c3aed;
@@ -22,10 +23,11 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #0b1020;
-  --surface: #121933;
-  --surface-2: #1a2342;
-  --border: #26304f;
+  --bg: #0d1020;
+  --surface: #151a2e;
+  --surface-2: #1c2238;
+  --border: #262d47;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
   --text: #e5e9f5;
   --muted: #94a3b8;
   --accent: #a78bfa;
@@ -62,16 +64,83 @@ h3 {
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 @layer components {
+  /* One card style everywhere: no border, soft shadow, generous padding. */
   .card {
-    @apply rounded-xl border p-4;
+    @apply rounded-2xl p-5;
     background: var(--surface);
-    border-color: var(--border);
+    box-shadow: var(--shadow);
+  }
+  .card-flat {
+    @apply rounded-2xl p-5;
+    background: var(--surface-2);
+  }
+  /* Reading width for notes and exercises (~70 characters). */
+  .reading {
+    max-width: 70ch;
+  }
+  .page-title {
+    @apply text-2xl font-bold tracking-tight sm:text-3xl;
+  }
+  .section-title {
+    @apply text-lg font-semibold;
+  }
+  .nav-item {
+    @apply inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-medium;
+    color: var(--muted);
+  }
+  .nav-item:hover {
+    color: var(--text);
+  }
+  .nav-active {
+    color: var(--accent) !important;
+    background: var(--accent-soft);
+  }
+  .icon-btn {
+    @apply grid h-10 w-10 place-items-center rounded-full;
+    color: var(--muted);
+  }
+  .icon-btn:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .menu {
+    @apply absolute z-40 flex w-48 flex-col rounded-xl p-1.5;
+    background: var(--surface);
+    box-shadow: var(--shadow), 0 0 0 1px var(--border);
+  }
+  .menu-item {
+    @apply rounded-lg px-3 py-2 text-[15px];
+  }
+  .menu-item:hover {
+    background: var(--surface-2);
+  }
+  .app-header {
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .tabbar {
+    @apply fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 px-2 pb-[env(safe-area-inset-bottom)];
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 -1px 0 var(--border);
+  }
+  .tabbar .nav-item {
+    @apply w-full flex-col gap-0 rounded-xl py-1.5 text-xs;
+  }
+  .tabbar .nav-active {
+    background: transparent;
+  }
+  .nav-icon {
+    font-size: 1.25rem;
+    line-height: 1.4;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl border px-4 py-2 text-[15px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
     border-color: var(--border);
     background: var(--surface);
     color: var(--text);
@@ -115,7 +184,7 @@ body {
 
 /* ---------- Rendered study-plan content ---------- */
 .prose-content {
-  line-height: 1.65;
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
 .prose-content > * + * {
@@ -316,4 +385,287 @@ body {
   display: block;
   font-size: 1.05rem;
   color: var(--text);
+}
+
+/* Sub-questions "(a) (b) …": hanging letter, no bullet. (Items scroll sideways
+   for long formulas, so the letter must stay inside the item's box.) */
+.prose-content ul.subq {
+  list-style: none;
+  padding-left: 0;
+}
+.prose-content ul.subq > li {
+  padding-left: 2.2em;
+  text-indent: -2.2em;
+}
+.prose-content ul.subq > li > * {
+  text-indent: 0;
+}
+.prose-content ul.subq > li > strong:first-child,
+.prose-content ul.subq > li > p:first-child > strong:first-child {
+  display: inline-block;
+  width: 2.2em;
+  text-indent: 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+.prose-content ul.subq > li > p:first-child {
+  text-indent: -2.2em;
+}
+.prose-content ul.subq > li + li {
+  margin-top: 0.6em;
+}
+.prose-content ul.subq > li > p + p,
+.prose-content ul.subq > li > p + .katex-display,
+.prose-content ul.subq > li > .katex-display + p {
+  margin-top: 0.4em;
+}
+.prose-content pre {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.prose-content table {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* Calm, subtle motion */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+.choice {
+  transition: border-color 0.15s, background-color 0.15s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+  }
+}
+
+/* Segmented control */
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 0.8rem;
+  background: var(--surface-2);
+}
+.seg {
+  border-radius: 0.6rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.seg-on {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+
+/* One accent colour per course (course.yaml "color"), set as --course on a wrapper */
+.course-theme {
+  --accent: var(--course);
+  --accent-soft: color-mix(in srgb, var(--course) 12%, var(--surface));
+}
+:root[data-theme='dark'] .course-theme {
+  --accent: color-mix(in srgb, var(--course) 55%, white);
+  --accent-soft: color-mix(in srgb, var(--course) 28%, var(--surface));
+}
+
+/* Course path: weeks as nodes on a line */
+.path {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+}
+.path::before {
+  content: '';
+  position: absolute;
+  left: 1.05rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 2px;
+  background: var(--border);
+}
+.path-node {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.path-dot {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-top: 0.4rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--muted);
+  transition: transform 0.2s;
+}
+.path-card {
+  flex: 1;
+  min-width: 0;
+  border-radius: 1rem;
+  padding: 0.7rem 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s;
+}
+.path-card:hover {
+  transform: translateY(-1px);
+}
+.path-done .path-dot,
+.path-known .path-dot {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: white;
+}
+.path-current .path-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.path-current .path-card {
+  outline: 2px solid var(--accent);
+}
+.path-started .path-dot {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.path-later .path-card {
+  opacity: 0.8;
+}
+.path-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.path-tag-ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+/* Mastery level dots: Ikke startet → Øvet → Kendt → Mestret */
+.lvl {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+  border: 2px solid var(--accent);
+}
+.lvl-ikke-startet {
+  border-color: var(--border);
+}
+.lvl-oevet {
+  background: linear-gradient(90deg, var(--accent) 33%, transparent 33%);
+}
+.lvl-kendt {
+  background: linear-gradient(90deg, var(--accent) 66%, transparent 66%);
+}
+.lvl-mestret {
+  background: var(--accent);
+}
+
+/* Se → Læs → Øv stepper */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  position: sticky;
+  top: 57px;
+  z-index: 20;
+  padding: 0.5rem 0;
+  background: var(--bg);
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  border-radius: 0.9rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: background-color 0.15s;
+}
+.step-on {
+  background: var(--accent-soft);
+  outline: 2px solid var(--accent);
+}
+.step-num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+.step-on .step-num {
+  background: var(--accent);
+  color: white;
+}
+.step-done .step-num {
+  background: var(--ok);
+  color: white;
+}
+@media (max-width: 480px) {
+  .step .muted {
+    display: none;
+  }
+  .step {
+    justify-content: center;
+    padding: 0.5rem;
+  }
+}
+
+/* Lesson progress dots */
+.lesson-dots {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+}
+.dot {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  transition: background-color 0.3s;
+}
+.dot-done {
+  background: color-mix(in srgb, var(--accent) 55%, var(--surface-2));
+}
+.dot-on {
+  background: var(--accent);
+}
+.dot-q {
+  flex: 0.5;
 }

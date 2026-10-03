@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Widget } from './_ui'
 
-export const meta = { title: 'Sandhedstabel-bygger', course: 'foundations' }
+export const meta = { title: 'Sandhedstabel-bygger', course: 'foundations', intro: 'Skriv en formel, og få sandhedstabellen med det samme.' }
 
 type F = { k: 'v'; n: string } | { k: 'not'; a: F } | { k: 'and' | 'or' | 'imp' | 'iff' | 'xor' | 'nand'; a: F; b: F } | { k: 'const'; v: boolean }
 

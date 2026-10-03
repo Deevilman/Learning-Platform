@@ -66,3 +66,6 @@ export function useTrackPosition(p: Omit<Position, 'ts'> | null) {
 export function CourseDot({ color }: { color: string }) {
   return <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: color }} aria-hidden />
 }
+
+/** Wrapper style that gives a page its course's accent colour (see .course-theme). */
+export const courseStyle = (color?: string): React.CSSProperties => (color ? ({ '--course': color } as React.CSSProperties) : {})

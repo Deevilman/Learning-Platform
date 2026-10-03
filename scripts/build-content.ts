@@ -7,6 +7,8 @@ import { join, relative, basename } from 'node:path'
 import YAML from 'yaml'
 import { parsePlan, parseGlossary, type RawPlan, type RawWeek, type RawQA } from './lib/plan-parser.ts'
 import { renderMarkdown, renderInline, plainText, type RenderContext } from './lib/markdown.ts'
+import { applyForwardRefs, displayLongMath, firstStep, kindHint, splitSubquestions, type ForwardRefRule } from './lib/exercise-text.ts'
+import { makeChoices, shuffledOptions } from '../src/lib/choices.ts'
 import type {
   AutoCheck,
   ContentIndex,
@@ -36,10 +38,20 @@ export interface BuildReport {
   errors: { file: string; line: number; message: string }[]
   warnings: string[]
   courses: { slug: string; weeks: number; exercises: number; solutions: number; videos: number; videosMissing: number; selftest: number; interview: number }[]
+  forwardRefsRemoved?: number
+}
+
+/** A short auto-checked question for a bank exercise: either a typed answer (check) or options (first = correct), or both. */
+interface QuizOverride {
+  question: string
+  check?: AutoCheck
+  options?: string[]
+  distractors?: (number | string)[]
+  explain?: string
 }
 
 interface Overrides {
-  exercises?: Record<string, { topics?: string[]; add_topics?: string[]; difficulty?: Difficulty; kind?: ExerciseKind; check?: AutoCheck }>
+  exercises?: Record<string, { topics?: string[]; add_topics?: string[]; difficulty?: Difficulty; kind?: ExerciseKind; check?: AutoCheck; hint?: string; quiz?: QuizOverride }>
   inserts?: { week: number; section?: 'notes' | 'connection' | 'exercises' | 'videos'; after?: string; before?: string; markdown: string }[]
 }
 
@@ -124,6 +136,16 @@ export function buildContent(opts: BuildOptions): BuildReport {
       : [],
   )
 
+  // title, course and "Prøv selv" intro from each component's `export const meta = { … }`
+  const interactiveMeta = new Map<string, { title: string; intro?: string; course?: string }>()
+  for (const id of interactives) {
+    const src = readFileSync(join(contentDir, 'interactives', `${id}.tsx`), 'utf8')
+    const meta = /export const meta = \{([^}]*)\}/.exec(src)?.[1] || ''
+    const get = (k: string) => new RegExp(`${k}:\\s*'((?:\\\\'|[^'])*)'`).exec(meta)?.[1]?.replace(/\\'/g, "'")
+    interactiveMeta.set(id, { title: get('title') || id, intro: get('intro'), course: get('course') })
+  }
+  const allInteractives: ContentIndex['interactives'] = []
+
   const metas: CourseMeta[] = []
   const allSummaries: ExerciseSummary[] = []
   const search: SearchDoc[] = []
@@ -202,14 +224,64 @@ export function buildContent(opts: BuildOptions): BuildReport {
     const videoMap: Record<string, { sources: any[] }> = videosFile.videos || {}
     const usedVideoKeys = new Set<string>()
 
-    const ctx = (file: string, line: number): RenderContext => ({ file, line, interactives, errors: report.errors, directives: [] })
+    const ctx = (file: string, line: number): RenderContext => ({ file, line, interactives, interactiveMeta, errors: report.errors, directives: [] })
+    const tryIt: CourseData['tryIt'] = []
     const md = (s: string | undefined, file: string, line: number) => (s ? renderMarkdown(s, ctx(file, line)) : '')
     const inl = (s: string | undefined, file: string, line: number) => (s ? renderInline(s, ctx(file, line)) : '')
 
-    const makeExercise = (w: RawWeek, e: RawWeek['exercises'][number], sol: RawWeek['solutions'][number] | undefined, file: string, set: ExerciseSummary['set']): Exercise => {
+    // ---------- forward-refs.yaml (reviewed list of remarks that point ahead in the course)
+    const frFile = rel('forward-refs.yaml')
+    const forwardRefs: Record<string, (ForwardRefRule & { field: 'prompt' | 'hint' | 'solution' })[]> = existsSync(join(dir, 'forward-refs.yaml'))
+      ? YAML.parse(readFileSync(join(dir, 'forward-refs.yaml'), 'utf8'))?.exercises || {}
+      : {}
+    for (const [num, rules] of Object.entries(forwardRefs)) {
+      if (!allNumbers.has(num)) err(frFile, 0, `ukendt øvelse "${num}"`)
+      for (const r of rules) if (!['remove', 'replace', 'keep'].includes(r.action)) err(frFile, 0, `øvelse ${num}: "${r.text.slice(0, 50)}" er ikke gennemgået (action: ${r.action})`)
+    }
+    /** Remove reviewed forward references, then turn inline (a) (b) … into a list. */
+    const tidy = (num: string, field: 'prompt' | 'hint' | 'solution', text: string | undefined) => {
+      if (!text) return text
+      const rules = (forwardRefs[num] || []).filter((r) => r.field === field)
+      const { md: out, problems } = applyForwardRefs(text, rules)
+      for (const p of problems) err(frFile, 0, `øvelse ${num} (${field}): ${p}`)
+      if (rules.some((r) => r.action !== 'keep')) report.forwardRefsRemoved = (report.forwardRefsRemoved || 0) + rules.filter((r) => r.action !== 'keep').length
+      return displayLongMath(splitSubquestions(out))
+    }
+
+    /** Hints, one step at a time: a strategy for the kind of exercise, then the plan's hint or the first step of the solution. */
+    const hintLadder = (kind: string, planHint: string | undefined, solution: string | undefined, file: string, line: number) => {
+      const steps = [kindHint(kind)]
+      const second = planHint || (kind !== 'code' && solution ? firstStep(solution) : undefined)
+      if (second) steps.push(planHint ? second : `Første skridt: ${second}`)
+      return steps.map((h) => md(h, file, line))
+    }
+    const makeQuiz = (num: string, q: QuizOverride | undefined, file: string, line: number): Exercise['quiz'] => {
+      if (!q) return undefined
+      const where = `øvelse ${num}: quiz`
+      if (!q.question) err(ovFile, 0, `${where} mangler "question"`)
+      if (q.check) {
+        const msg = validateCheck(q.check)
+        if (msg) err(ovFile, 0, `${where}: ${msg}`)
+      }
+      let choices: { options: string[]; correct: number } | undefined
+      if (q.options) {
+        if (q.options.length < 3 || new Set(q.options).size !== q.options.length) err(ovFile, 0, `${where}: "options" skal have mindst 3 forskellige svar (det første er det rigtige)`)
+        choices = shuffledOptions(q.options, `${slug}/${num}`)
+      } else if (q.check) {
+        choices = makeChoices(q.check, `${slug}/${num}`, q.distractors) || undefined
+        if (!choices) err(ovFile, 0, `${where}: kunne ikke lave svarmuligheder — angiv "options" eller "distractors"`)
+      }
+      if (!q.check && !choices) err(ovFile, 0, `${where} skal have "check" eller "options"`)
+      return { question: md(q.question, file, line), check: q.check, choices, explain: q.explain ? md(q.explain, file, line) : undefined }
+    }
+
+    const makeExercise = (w: RawWeek, e0: RawWeek['exercises'][number], sol0: RawWeek['solutions'][number] | undefined, file: string, set: ExerciseSummary['set']): Exercise => {
+      const e = { ...e0, prompt: tidy(e0.number, 'prompt', e0.prompt)! }
+      const sol = sol0 && { ...sol0, hint: tidy(e0.number, 'hint', sol0.hint), body: tidy(e0.number, 'solution', sol0.body)! }
       const ov = overrides.exercises?.[e.number] || {}
       const topics = ov.topics || [...new Set([...weekTopics(w.number), ...(ov.add_topics || [])])]
       const kind = ov.kind || classify(e.markers, e.prompt)
+      const quiz = makeQuiz(e.number, ov.quiz, file, e.line)
       return {
         id: `${slug}/${w.number}/${e.number}`,
         course: slug,
@@ -220,12 +292,14 @@ export function buildContent(opts: BuildOptions): BuildReport {
         kind,
         hasHint: !!sol?.hint,
         hasCheck: !!ov.check,
+        hasChoices: ov.check?.type === 'choice' || !!quiz?.choices,
         set,
         title: plainText(e.prompt, 140),
         prompt: md(e.prompt, file, e.line),
-        hint: sol?.hint ? md(sol.hint, file, sol.line) : undefined,
+        hints: hintLadder(kind, ov.hint || sol?.hint, sol?.body, file, sol?.line ?? e.line),
         solution: sol ? md(sol.body, file, sol.line) : '',
         check: ov.check,
+        quiz,
         source: 'bank',
       }
     }
@@ -243,7 +317,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
         if (videoMap[id]) usedVideoKeys.add(id)
         else if (v.key && videoMap[v.key]) usedVideoKeys.add(v.key)
         const ytFromPlan = v.urls.map((u) => /(?:v=|youtu\.be\/)([\w-]{11})/.exec(u)?.[1]).filter(Boolean) as string[]
-        let sources = (entry?.sources || []).map((s: any) => ({ title: String(s.title || ''), channel: s.channel || undefined, youtube: s.youtube ? String(s.youtube) : undefined, search: s.search || undefined }))
+        let sources = (entry?.sources || []).map((s: any) => ({ title: String(s.title || ''), channel: s.channel || undefined, youtube: s.youtube ? String(s.youtube) : undefined, search: s.search || undefined, ...(s.embed === false ? { embed: false as const } : {}) }))
         if (!sources.length && ytFromPlan.length) sources = ytFromPlan.map((yt) => ({ title: plainText(v.title, 80), youtube: yt, channel: undefined, search: undefined }))
         if (!sources.length && v.key) {
           report.warnings.push(`${slug}: video ${id} (${v.key}) står ikke i videos.yaml`)
@@ -278,6 +352,11 @@ export function buildContent(opts: BuildOptions): BuildReport {
       exCount += exercises.length
 
       const notesMd = applyInserts(w.notes, overrides.inserts, w.number, 'notes', ovFile, report.errors)
+      for (const m of notesMd.matchAll(/::interactive\{([^}]*)\}/g)) {
+        const id = /id="([^"]+)"/.exec(m[1])?.[1]
+        const meta = id && interactiveMeta.get(id)
+        if (id && meta) tryIt.push({ id, title: meta.title, intro: meta.intro ? renderInline(meta.intro, ctx(ovFile, 0)) : undefined, week: w.number })
+      }
       const week: Week = {
         course: slug,
         number: w.number,
@@ -305,7 +384,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
         topics: weekTopics(w.number),
       })
       for (const ex of exercises) {
-        const { prompt: _p, hint: _h, solution: _s, check: _c, source: _src, ...summary } = ex
+        const { prompt: _p, hints: _h, solution: _s, check: _c, quiz: _q, source: _src, ...summary } = ex
         allSummaries.push(summary)
         search.push({ id: ex.id, type: 'exercise', course: slug, week: w.number, title: `Øvelse ${ex.number}`, text: plainText(w.exercises.find((x) => x.number === ex.number)?.prompt || ex.title), href: `/kursus/${slug}/uge/${w.number}/opgave/${ex.number}` })
       }
@@ -320,9 +399,11 @@ export function buildContent(opts: BuildOptions): BuildReport {
     const sets: CourseData['sets'] = []
     const makeSet = (key: 'selftest' | 'interview', raw: { line: number; title: string; intro: string; items: RawQA[] } | undefined) => {
       if (!raw) return 0
-      const exercises: Exercise[] = raw.items.map((q) => {
+      const exercises: Exercise[] = raw.items.map((q0) => {
+        let q = q0
         const ov = overrides.exercises?.[`${key}/${q.number}`] || {}
         const weeks = [...new Set([...`${q.prompt} ${q.answer}`.matchAll(/uge\s+(\d+)/gi)].map((m) => Number(m[1])))]
+        q = { ...q, prompt: displayLongMath(splitSubquestions(q.prompt)), answer: displayLongMath(splitSubquestions(q.answer)) }
         const topics = ov.topics || [...new Set(weeks.flatMap(weekTopics))]
         const ex: Exercise = {
           id: `${slug}/${key}/${q.number}`,
@@ -334,9 +415,11 @@ export function buildContent(opts: BuildOptions): BuildReport {
           kind: ov.kind || key,
           hasHint: false,
           hasCheck: !!ov.check,
+          hasChoices: ov.check?.type === 'choice',
           set: key,
           title: plainText(q.prompt, 140),
           prompt: md(q.prompt, planFile, q.line),
+          hints: hintLadder(ov.kind || key, ov.hint, q.answer, planFile, q.line),
           solution: md(q.answer, planFile, q.line),
           check: ov.check,
           source: 'bank',
@@ -347,7 +430,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       outputs.push({ path: `courses/${slug}/set-${key}.json`, data: set })
       sets.push({ slug: key, title: raw.title.replace(/^[^\p{L}]+/u, ''), count: exercises.length })
       for (const ex of exercises) {
-        const { prompt: _p, hint: _h, solution: _s, check: _c, source: _src, ...summary } = ex
+        const { prompt: _p, hints: _h, solution: _s, check: _c, quiz: _q, source: _src, ...summary } = ex
         allSummaries.push(summary)
         search.push({ id: ex.id, type: 'exercise', course: slug, title: `${set.title.replace(/^[^\p{L}]+/u, '')} ${ex.number}`, text: ex.title, href: `/kursus/${slug}/saet/${key}#q-${ex.number}` })
       }
@@ -400,6 +483,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       sets,
       glossary,
       counts: { weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing },
+      tryIt,
     }
     outputs.push({ path: `courses/${slug}.json`, data: courseData })
     metas.push(meta)
@@ -421,7 +505,8 @@ export function buildContent(opts: BuildOptions): BuildReport {
       mkdirSync(join(p, '..'), { recursive: true })
       writeFileSync(p, JSON.stringify(o.data))
     }
-    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries }
+    for (const [id, m] of interactiveMeta) allInteractives.push({ id, title: m.title, intro: m.intro, course: m.course })
+    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries, interactives: allInteractives }
     writeFileSync(join(opts.out, 'index.json'), JSON.stringify(index))
     writeFileSync(join(opts.out, 'search.json'), JSON.stringify(search))
   }

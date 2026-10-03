@@ -1,76 +1,85 @@
 import { useState } from 'react'
-import { interactiveIds } from '@/lib/interactives'
-import { generators } from '@/lib/generators'
-import { randomSeed } from '@/lib/rng'
-import { miniMarkdown } from '@/lib/mini-md'
-import { Html } from '@/components/Html'
-import { STARS } from '@/components/ExerciseCard'
 import { Link } from 'react-router-dom'
+import { loadCourse, loadIndex } from '@/lib/data'
+import { useAsync } from '@/lib/useAsync'
+import { generators } from '@/lib/generators'
+import { Html } from '@/components/Html'
+import { CourseDot, ErrorBox, Loading } from '@/components/ui'
+import { miniMarkdown } from '@/lib/mini-md'
 
+/** "Prøv selv": every interactive tool, grouped by course, with where it appears in the notes. */
 export default function InteractivesPage() {
+  const { data, error } = useAsync(async () => {
+    const idx = await loadIndex()
+    const courses = await Promise.all(idx.courses.map((c) => loadCourse(c.slug)))
+    return { idx, courses }
+  }, [])
   const [open, setOpen] = useState<string | null>(null)
-  const [sample, setSample] = useState<{ id: string; seed: number; d: 1 | 2 | 3 } | null>(null)
-  const byCourse = new Map<string, typeof generators>()
-  for (const g of generators) byCourse.set(g.course, [...(byCourse.get(g.course) || []), g])
-  const g = sample && generators.find((x) => x.id === sample.id)
-  const ex = g && sample ? g.generate(sample.seed, sample.d) : null
+  if (error) return <ErrorBox error={error} />
+  if (!data) return <Loading what="værktøjer" />
+
   return (
-    <div className="space-y-6">
+    <div className="mx-auto max-w-3xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Interaktive værktøjer og generatorer</h1>
-        <p className="muted">
-          {interactiveIds.length} interaktive komponenter (de står også i noterne, hvor de hører til) og {generators.length} opgavegeneratorer til <Link className="link" to="/traen">træningen</Link>.
-        </p>
+        <h1 className="page-title">Prøv selv</h1>
+        <p className="muted">Små værktøjer, du kan lege med for at få en fornemmelse for begreberne. De står også i ugernes kernebegreber, hvor de hører til.</p>
       </div>
-      <section className="space-y-3">
-        <h2 className="text-lg font-bold">Interaktive komponenter</h2>
-        <div className="flex flex-wrap gap-2">
-          {interactiveIds.map((id) => (
-            <button key={id} className="btn" aria-pressed={open === id} style={open === id ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : undefined} onClick={() => setOpen(open === id ? null : id)}>
-              {id}
-            </button>
-          ))}
-        </div>
-        {open && <Html key={open} html={`<div class="interactive" data-interactive="${open}" data-props="{}"></div>`} />}
-      </section>
-      <section className="space-y-3">
-        <h2 className="text-lg font-bold">Opgavegeneratorer</h2>
-        {[...byCourse.entries()].map(([course, list]) => (
-          <div key={course} className="card">
-            <h3 className="mb-2 font-semibold">{course}</h3>
-            <ul className="grid gap-1.5 text-sm sm:grid-cols-2">
-              {list.map((x) => (
-                <li key={x.id} className="flex items-center gap-2">
-                  <button className="link text-left" onClick={() => setSample({ id: x.id, seed: randomSeed(), d: x.difficulties[Math.floor(x.difficulties.length / 2)] })}>
-                    {x.title}
-                  </button>
-                  <span className="muted text-xs">{x.difficulties.map((d) => STARS[d]).join(' ')}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      {data.courses.map((c) => (
+        <section key={c.meta.slug} className="space-y-3">
+          <h2 className="section-title flex items-center gap-2">
+            <CourseDot color={c.meta.color} /> {c.meta.title}
+          </h2>
+          <ul className="space-y-3">
+            {c.tryIt.map((t) => (
+              <li key={t.id} className="card space-y-3">
+                <div className="flex flex-wrap items-start gap-2">
+                  <div className="min-w-0 flex-1">
+                    <div className="font-semibold">{t.title}</div>
+                    {t.intro && <div className="muted text-sm" dangerouslySetInnerHTML={{ __html: t.intro }} />}
+                  </div>
+                  <div className="flex shrink-0 gap-2">
+                    <button className="btn" aria-expanded={open === t.id} onClick={() => setOpen(open === t.id ? null : t.id)}>
+                      {open === t.id ? 'Luk' : 'Prøv her'}
+                    </button>
+                    <Link className="btn" to={`/kursus/${c.meta.slug}/uge/${t.week}?fane=laes&prov=${t.id}`}>
+                      Uge {t.week}
+                    </Link>
+                  </div>
+                </div>
+                {open === t.id && <Html key={t.id} html={`<div class="interactive" data-interactive="${t.id}" data-props="{}"></div>`} />}
+              </li>
+            ))}
+          </ul>
+          <TopicPractice course={c.meta.slug} topics={c.meta.topics} />
+        </section>
+      ))}
+    </div>
+  )
+}
+
+/** Topics with regneopgaver that are made with new numbers every time. */
+function TopicPractice({ course, topics }: { course: string; topics: { id: string; name: string }[] }) {
+  const withGens = topics.filter((t) => generators.some((g) => g.course === course && g.topics.includes(t.id)))
+  const [peek, setPeek] = useState<string | null>(null)
+  if (!withGens.length) return null
+  const g = peek ? generators.find((x) => x.course === course && x.topics.includes(peek)) : undefined
+  const ex = g?.generate(Math.floor(Math.random() * 1e9), g.difficulties[0])
+  return (
+    <div className="card-flat space-y-2" style={{ background: 'var(--surface-2)' }}>
+      <div className="text-sm font-semibold">Øv med nye tal hver gang</div>
+      <div className="flex flex-wrap gap-2">
+        {withGens.map((t) => (
+          <Link key={t.id} className="btn" to={`/traen?kursus=${course}&emne=${t.id}&start=1`}>
+            {t.name}
+          </Link>
         ))}
-        {ex && g && sample && (
-          <div className="card space-y-3" style={{ borderColor: 'var(--accent)' }}>
-            <div className="flex flex-wrap items-center gap-2">
-              <b>{g.title}</b>
-              {g.difficulties.map((d) => (
-                <button key={d} className="btn" aria-pressed={sample.d === d} onClick={() => setSample({ ...sample, d })}>
-                  {STARS[d]}
-                </button>
-              ))}
-              <button className="btn" onClick={() => setSample({ ...sample, seed: randomSeed() })}>
-                Ny variant
-              </button>
-            </div>
-            <Html html={miniMarkdown(ex.prompt)} />
-            <details>
-              <summary className="cursor-pointer font-semibold">Løsning</summary>
-              <Html html={miniMarkdown(ex.solution)} />
-            </details>
-          </div>
-        )}
-      </section>
+      </div>
+      {ex && <Html html={miniMarkdown(ex.prompt)} />}
+      {!peek && (
+        <button className="link text-xs" onClick={() => setPeek(withGens[0].id)}>
+          Se et eksempel
+        </button>
+      )}
     </div>
   )
 }

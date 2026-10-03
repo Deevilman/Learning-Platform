@@ -5,14 +5,20 @@
 import type { AutoCheck, Difficulty } from '@/types/content'
 import type { Rng } from './rng'
 import { makeRng } from './rng'
+import { makeChoices, type Choices } from './choices'
 
 export interface GeneratedExercise {
   /** Mini-Markdown: paragraphs, **bold**, *italic*, lists, $math$, $$math$$, | tables |. */
   prompt: string
-  hint?: string
+  /** First step towards the answer, without giving it away. Required: every exercise has a hint. */
+  hint: string
+  /** Optional further hint steps, shown one at a time after `hint`. */
+  moreHints?: string[]
   /** Explains every step. */
   solution: string
   check: AutoCheck
+  /** Plausible wrong answers (typical mistakes) for the multiple-choice version. */
+  distractors?: (number | string)[]
 }
 
 export interface Generator {
@@ -38,6 +44,11 @@ export const generators: Generator[] = Object.entries(modules)
   .map(([, m]) => m.default)
   .filter(Boolean)
   .sort((a, b) => a.id.localeCompare(b.id))
+
+/** Multiple-choice version of a generated exercise (null if none can be made). */
+export function generatedChoices(ex: GeneratedExercise, seed: number): Choices | null {
+  return makeChoices(ex.check, seed, ex.distractors)
+}
 
 export const generatorById = new Map(generators.map((g) => [g.id, g]))
 
