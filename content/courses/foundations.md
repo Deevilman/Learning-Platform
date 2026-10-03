@@ -982,7 +982,7 @@ Playlisten er god, men den har nogle huller, hvis målet er at forstå hele kæd
 ## Uge 1 — Udsagnslogik
 
 > **Læringsmål:** Du kan opstille og læse sandhedstabeller, forklare præcis hvad implikation betyder (også når forudsætningen er falsk), afgøre logisk ækvivalens og gyldighed af argumenter, og omskrive formler til CNF/DNF.
-> **Tidsforbrug:** ca. 1,5 t video · ca. 5 t øvelser
+> **Tidsforbrug:** ca. 1.5 t video · ca. 5 t øvelser
 > **Forudsætninger:** Ingen ud over gymnasiets matematik. Lidt Python til 💻-opgaverne.
 
 ### 📺 Se
@@ -1347,7 +1347,7 @@ Output:
 None
 ```
 
-Den første formel er opfyldelig (og $x_1$ = F, $x_2$ = S, $x_3$ = F er den eneste løsning: de to sidste klausuler giver $x_3 \to x_2$ og $x_2 \to \neg x_3$, så $x_3$ = F osv.). Den anden er ikke opfyldelig, og derfor er argumentet "$x_1 \to x_2$, $x_2 \to x_3$, $x_1$, altså $x_3$" gyldigt: et argument er gyldigt, netop når præmisserne sammen med den negerede konklusion er uopfyldelige. Ved $n = 50$ er der $2^{50} \approx 1{,}1 \cdot 10^{15}$ tildelinger – ved en milliard pr. sekund tager det ca. 13 dage.
+Den første formel er opfyldelig (og $x_1$ = F, $x_2$ = S, $x_3$ = F er den eneste løsning: de to sidste klausuler giver $x_3 \to x_2$ og $x_2 \to \neg x_3$, så $x_3$ = F osv.). Den anden er ikke opfyldelig, og derfor er argumentet "$x_1 \to x_2$, $x_2 \to x_3$, $x_1$, altså $x_3$" gyldigt: et argument er gyldigt, netop når præmisserne sammen med den negerede konklusion er uopfyldelige. Ved $n = 50$ er der $2^{50} \approx 1.1 \cdot 10^{15}$ tildelinger – ved en milliard pr. sekund tager det ca. 13 dage.
 
 </details>
 
@@ -1745,7 +1745,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 3 — Induktion
 
 > **Læringsmål:** Du kan bevise udsagn om alle naturlige tal med velordningsprincippet, almindelig induktion og stærk induktion, skrive rekursive definitioner og bevise egenskaber ved rekursivt definerede objekter med strukturel induktion.
-> **Tidsforbrug:** ca. 1,5 t video · ca. 6 t øvelser
+> **Tidsforbrug:** ca. 1.5 t video · ca. 6 t øvelser
 > **Forudsætninger:** Uge 1–2 (især bevisskabelonerne og opgave 2.5).
 
 ### 📺 Se
@@ -2097,7 +2097,7 @@ True True
 $$F_{n+2} F_n - F_{n+1}^2 = (F_{n+1} + F_n) F_n - F_{n+1}^2 = F_n^2 - F_{n+1}(F_{n+1} - F_n) = F_n^2 - F_{n+1} F_{n-1} = -(-1)^n = (-1)^{n+1}.$$
 Det er $P(n+1)$. $\blacksquare$
 
-(c) Uden memoisering udløser `fib(n)` i alt $2F_{n+1} - 1$ kald (vis det selv ved stærk induktion) – eksponentielt mange, da $F_n$ vokser som ca. $1{,}618^n$. Med `lru_cache` beregnes hver værdi kun én gang. (Kalder man `fib(5000)` direkte, kan man ramme Pythons rekursionsgrænse; her bygges værdierne op fra små $n$, så det sker ikke.) Uanset hvor mange $n$ vi tjekker, dækker det kun endeligt mange tilfælde – kun induktionsbeviset i (b) dækker dem alle.
+(c) Uden memoisering udløser `fib(n)` i alt $2F_{n+1} - 1$ kald (vis det selv ved stærk induktion) – eksponentielt mange, da $F_n$ vokser som ca. $1.618^n$. Med `lru_cache` beregnes hver værdi kun én gang. (Kalder man `fib(5000)` direkte, kan man ramme Pythons rekursionsgrænse; her bygges værdierne op fra små $n$, så det sker ikke.) Uanset hvor mange $n$ vi tjekker, dækker det kun endeligt mange tilfælde – kun induktionsbeviset i (b) dækker dem alle.
 
 </details>
 
@@ -2132,7 +2132,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 4 — Mængder, relationer og funktioner
 
 > **Læringsmål:** Du kan regne sikkert med mængder (∈, ⊆, ∪, ∩, ∖, potensmængde, kartesisk produkt), bevise mængdeidentiteter, arbejde med ækvivalensrelationer, ækvivalensklasser og partitioner, og afgøre og bevise om en funktion er injektiv, surjektiv eller bijektiv.
-> **Tidsforbrug:** ca. 2,5 t video · ca. 5,5 t øvelser
+> **Tidsforbrug:** ca. 2.5 t video · ca. 5.5 t øvelser
 > **Forudsætninger:** Uge 1–3 (udsagnslogik, kvantorer, bevisteknikker og induktion)
 
 ### 📺 Se
@@ -2342,7 +2342,7 @@ Vi brugte De Morgan og $p \equiv p \wedge p$. Ved ekstensionalitet er mængderne
 
 Refleksiv: $x - x = 0 \in \mathbb{Z}$. Symmetrisk: $x - y = k \in \mathbb{Z} \Rightarrow y - x = -k \in \mathbb{Z}$. Transitiv: $x - y = k$ og $y - z = l$ giver $x - z = k + l \in \mathbb{Z}$.
 
-Klassen er $[x] = \lbrace x + k : k \in \mathbb{Z} \rbrace$ — alle tal, der har samme brøkdel $x - \lfloor x \rfloor$ som $x$ (pas på med negative tal: $-1{,}3$ har brøkdel $0{,}7$, ikke $0{,}3$).
+Klassen er $[x] = \lbrace x + k : k \in \mathbb{Z} \rbrace$ — alle tal, der har samme brøkdel $x - \lfloor x \rfloor$ som $x$ (pas på med negative tal: $-1.3$ har brøkdel $0.7$, ikke $0.3$).
 
 *Eksistens:* sæt $t = x - \lfloor x \rfloor$. Da $\lfloor x \rfloor \leq x < \lfloor x \rfloor + 1$, er $t \in [0,1)$, og $x - t = \lfloor x \rfloor \in \mathbb{Z}$, så $t \in [x]$.
 *Entydighed:* hvis $t, t' \in [0,1)$ begge ligger i $[x]$, er $t \sim t'$, dvs. $t - t' \in \mathbb{Z}$. Men $-1 < t - t' < 1$, og det eneste heltal i det interval er $0$, så $t = t'$.
@@ -2533,7 +2533,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 5 — Konstruktion af de naturlige tal
 
 > **Læringsmål:** Du kan formulere Peano-aksiomerne og forklare hvorfor hvert aksiom er nødvendigt, bygge de naturlige tal som mængder (von Neumann), forklare hvorfor definition ved rekursion kræver en sætning, og bevise regneregler for $+$ og $\cdot$ ved induktion ud fra de rekursive definitioner.
-> **Tidsforbrug:** ca. 1,5 t video · ca. 6,5 t øvelser (heraf ca. 2 t i Lean)
+> **Tidsforbrug:** ca. 1.5 t video · ca. 6.5 t øvelser (heraf ca. 2 t i Lean)
 > **Forudsætninger:** Uge 1–4 (især induktion fra uge 3 og funktioner og relationer fra uge 4)
 
 ### 📺 Se
@@ -3254,7 +3254,7 @@ Output:
 1.4142131805419922 9.5367431640625e-07
 ```
 
-Intervallet har længde $2^{-20} \approx 9{,}5 \cdot 10^{-7}$. Alle endepunkter er rationale tal, og hvert rationalt tal ligger enten i snittet eller udenfor — der er intet rationalt tal "på grænsen", fordi $x^2 = 2$ ingen rationale løsninger har. Løkken kan derfor kun indkredse $\sqrt{2}$, aldrig ramme det. Det reelle tal $\sqrt{2}$ er ikke et endepunkt; det *er* selve prædikatet (snittet). Bemærk at koden aldrig bruger kvadratrødder eller `float` i beregningen — kun $+$, $\cdot$, $/$ og $<$ på rationale tal.
+Intervallet har længde $2^{-20} \approx 9.5 \cdot 10^{-7}$. Alle endepunkter er rationale tal, og hvert rationalt tal ligger enten i snittet eller udenfor — der er intet rationalt tal "på grænsen", fordi $x^2 = 2$ ingen rationale løsninger har. Løkken kan derfor kun indkredse $\sqrt{2}$, aldrig ramme det. Det reelle tal $\sqrt{2}$ er ikke et endepunkt; det *er* selve prædikatet (snittet). Bemærk at koden aldrig bruger kvadratrødder eller `float` i beregningen — kun $+$, $\cdot$, $/$ og $<$ på rationale tal.
 
 </details>
 
@@ -3288,7 +3288,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 7 — Uendelighed: tællelighed og Cantors diagonalargument
 
 > **Læringsmål:** Du kan sammenligne størrelsen af uendelige mængder med injektioner og bijektioner, bevise at $\mathbb{Z}$, $\mathbb{N}\times\mathbb{N}$ og $\mathbb{Q}$ er tællelige, og føre Cantors diagonalargument og Cantors sætning $|A| < |\mathcal{P}(A)|$ helt igennem.
-> **Tidsforbrug:** ca. 1,5 t video · ca. 6 t øvelser
+> **Tidsforbrug:** ca. 1.5 t video · ca. 6 t øvelser
 > **Forudsætninger:** Uge 1–6 (især funktioner, injektiv/surjektiv/bijektiv og potensmængde fra uge 4, induktion fra uge 3 og $\mathbb{N}$ fra uge 5)
 
 ### 📺 Se
@@ -3355,7 +3355,7 @@ nummererer parrene diagonal for diagonal ($d = x + y$). Før diagonal $d$ ligger
 | $s_3$ | 1 | 0 | 1 | **1** |
 | $d$ | 1 | 0 | 1 | 0 |
 
-**$(0,1) \subseteq \mathbb{R}$ er overtællelig.** Her skal man passe på med decimalfremstillinger: $0{,}0999\ldots = 0{,}1000\ldots$. Faktum: hvert $x \in (0,1)$ har mindst én og højst to decimalfremstillinger, og har det to, ender den ene på lutter 9-taller og den anden på lutter 0'er. *Bevis:* Givet en liste $x_0, x_1, \dots$, vælg for hvert $x_n$ en fremstilling $0{,}a_{n0}a_{n1}a_{n2}\ldots$. Sæt $d_n = 5$ hvis $a_{nn} \neq 5$ og $d_n = 4$ hvis $a_{nn} = 5$, og $y = 0{,}d_0d_1d_2\ldots$. Da $y$ kun har cifrene 4 og 5, har $y$ *netop én* fremstilling. Hvis $y = x_n$, måtte $x_n$'s valgte fremstilling være $y$'s — men de er forskellige på plads $n$. Så $y$ er ikke på listen. $\square$
+**$(0,1) \subseteq \mathbb{R}$ er overtællelig.** Her skal man passe på med decimalfremstillinger: $0.0999\ldots = 0.1000\ldots$. Faktum: hvert $x \in (0,1)$ har mindst én og højst to decimalfremstillinger, og har det to, ender den ene på lutter 9-taller og den anden på lutter 0'er. *Bevis:* Givet en liste $x_0, x_1, \dots$, vælg for hvert $x_n$ en fremstilling $0.a_{n0}a_{n1}a_{n2}\ldots$. Sæt $d_n = 5$ hvis $a_{nn} \neq 5$ og $d_n = 4$ hvis $a_{nn} = 5$, og $y = 0.d_0d_1d_2\ldots$. Da $y$ kun har cifrene 4 og 5, har $y$ *netop én* fremstilling. Hvis $y = x_n$, måtte $x_n$'s valgte fremstilling være $y$'s — men de er forskellige på plads $n$. Så $y$ er ikke på listen. $\square$
 
 **Cantors sætning.** For enhver mængde $A$ gælder $|A| < |\mathcal{P}(A)|$.
 
@@ -3380,7 +3380,7 @@ $D \subseteq A$. Antag $D = f(d)$ for et $d \in A$. Da gælder: $d \in D \iff d 
 - At tro at en ægte delmængde altid er "mindre". Det gælder kun for endelige mængder.
 - At vise en injektion $A \to B$ og konkludere $|A| = |B|$. En injektion giver kun $\le$; brug Schröder–Bernstein med en injektion den anden vej.
 - At bruge diagonalargumentet på en liste af rationale tal og "konkludere", at $\mathbb{Q}$ er overtællelig. Diagonaltallet er et reelt tal, men ikke nødvendigvis rationalt — så der er ingen modstrid.
-- At vælge nye cifre 0 eller 9 i beviset for $(0,1)$: så kan diagonaltallet være lig med et tal på listen (fx $0{,}0999\ldots = 0{,}1$).
+- At vælge nye cifre 0 eller 9 i beviset for $(0,1)$: så kan diagonaltallet være lig med et tal på listen (fx $0.0999\ldots = 0.1$).
 - At tro at $D$ i Cantors bevis er en fast mængde. $D$ afhænger af $f$ — beviset viser, at *hver* $f$ misser *sin egen* $D$.
 
 ### ✏️ Øvelser
@@ -3500,9 +3500,9 @@ Diagonalargumentet anvendt på en opremsning $s_0, s_1, \dots$ af *disse* følge
 
 Hint: to injektioner, og undgå cifferfælden fra Kernebegreber.
 
-*Injektion $(0,1) \to \{0,1\}^{\mathbb{N}}$:* hvert $x \in (0,1)$ har en entydig binær fremstilling $0{,}b_0b_1b_2\ldots_2$, som *ikke* ender på lutter 1-taller. Send $x \mapsto (b_0, b_1, \dots)$. Forskellige $x$ giver forskellige følger (følgen bestemmer $x = \sum b_i 2^{-(i+1)}$).
+*Injektion $(0,1) \to \{0,1\}^{\mathbb{N}}$:* hvert $x \in (0,1)$ har en entydig binær fremstilling $0.b_0b_1b_2\ldots_2$, som *ikke* ender på lutter 1-taller. Send $x \mapsto (b_0, b_1, \dots)$. Forskellige $x$ giver forskellige følger (følgen bestemmer $x = \sum b_i 2^{-(i+1)}$).
 
-*Injektion $\{0,1\}^{\mathbb{N}} \to (0,1)$:* send $s$ til decimaltallet $0{,}(4+s_0)(4+s_1)(4+s_2)\ldots$ Det har kun cifrene 4 og 5, så det har en entydig decimalfremstilling, og forskellige følger giver forskellige tal. Tallet ligger mellem $0{,}444\ldots$ og $0{,}555\ldots$, altså i $(0,1)$.
+*Injektion $\{0,1\}^{\mathbb{N}} \to (0,1)$:* send $s$ til decimaltallet $0.(4+s_0)(4+s_1)(4+s_2)\ldots$ Det har kun cifrene 4 og 5, så det har en entydig decimalfremstilling, og forskellige følger giver forskellige tal. Tallet ligger mellem $0.444\ldots$ og $0.555\ldots$, altså i $(0,1)$.
 
 Schröder–Bernstein giver $|(0,1)| = |\{0,1\}^{\mathbb{N}}|$. Med 7.1(c) er $|\mathbb{R}| = |(0,1)|$, og $S \mapsto \chi_S$ er en bijektion $\mathcal{P}(\mathbb{N}) \to \{0,1\}^{\mathbb{N}}$. Altså $|\mathbb{R}| = |(0,1)| = |\{0,1\}^{\mathbb{N}}| = |\mathcal{P}(\mathbb{N})|$. $\square$
 
@@ -3636,7 +3636,7 @@ Et godt svar indeholder:
 - at "samme størrelse" betyder, at der findes en bijektion, og at det er en definition — ikke en optælling;
 - et eksempel på, at en ægte delmængde kan være lige så stor (lige tal, Hilberts hotel);
 - idéen bag at $\mathbb{Q}$ er tællelig: skriv brøkerne i et gitter og gå diagonalerne igennem (eller en injektion $\mathbb{Q} \to \mathbb{N}\times\mathbb{N} \to \mathbb{N}$);
-- diagonalargumentet for $\mathbb{R}$ (eller $(0,1)$): enhver liste misser tallet, der afviger fra tal nr. $n$ i ciffer nr. $n$ — inkl. bemærkningen om $0{,}0999\ldots = 0{,}1$;
+- diagonalargumentet for $\mathbb{R}$ (eller $(0,1)$): enhver liste misser tallet, der afviger fra tal nr. $n$ i ciffer nr. $n$ — inkl. bemærkningen om $0.0999\ldots = 0.1$;
 - forklaringen på, hvorfor argumentet ikke virker for $\mathbb{Q}$: diagonaltallet behøver ikke være rationalt;
 - at "flere" her betyder: injektion $\mathbb{N} \to \mathbb{R}$ findes, men ingen bijektion.
 
@@ -3652,7 +3652,7 @@ Du er klar til næste uge, når du kan:
 - [ ] definere endelig, tælleligt uendelig, tællelig og overtællelig, og angive en eksplicit bijektion $\mathbb{N} \to \mathbb{Z}$;
 - [ ] beregne $\pi(x, y)$ og $\pi^{-1}(n)$ i hånden og bevise, at $\pi$ er en bijektion;
 - [ ] vise at $\mathbb{Q}$ og $\Sigma^*$ er tællelige;
-- [ ] føre diagonalargumentet for $\{0,1\}^{\mathbb{N}}$ og for $(0,1)$, inklusive håndteringen af $0{,}0999\ldots = 0{,}1$;
+- [ ] føre diagonalargumentet for $\{0,1\}^{\mathbb{N}}$ og for $(0,1)$, inklusive håndteringen af $0.0999\ldots = 0.1$;
 - [ ] bevise Cantors sætning $|A| < |\mathcal{P}(A)|$ uden hjælp, og pege på "diagonalen" $D$;
 - [ ] forklare, hvorfor der findes funktioner $\mathbb{N} \to \{0,1\}$, som intet program kan beregne.
 
@@ -3661,7 +3661,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 8 — Aksiomatisk mængdelære (ZFC)
 
 > **Læringsmål:** Du kan udlede Russells paradoks, forklare hvordan ZFC undgår det (og bevise, at der ikke findes en mængde af alle mængder), og for hvert ZFC-aksiom sige hvad det betyder, og hvad vi har brugt det til. Du ved, hvad det betyder, at CH og AC er uafhængige af ZF(C) — intuitivt.
-> **Tidsforbrug:** ca. 1,5 t video · ca. 5 t øvelser
+> **Tidsforbrug:** ca. 1.5 t video · ca. 5 t øvelser
 > **Forudsætninger:** Uge 4 (mængder og funktioner), uge 5–6 (tal som mængder), uge 7 (Cantors sætning og diagonalmønstret)
 
 ### 📺 Se
@@ -4654,7 +4654,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 10 — Beregnelighed: Turing-maskiner og Church–Turing-tesen
 
 > **Læringsmål:** Du kan definere en Turing-maskine formelt, skelne mellem Turing-genkendelige og afgørlige sprog, forklare den universelle Turing-maskine og Church–Turing-tesen og bevise, at der findes sprog, som ingen Turing-maskine genkender.
-> **Tidsforbrug:** ca. 3,5 t video · ca. 4–5 t øvelser
+> **Tidsforbrug:** ca. 3.5 t video · ca. 4–5 t øvelser
 > **Forudsætninger:** Uge 1–6 (logik, bevisteknikker, mængder, funktioner, induktion), uge 7 (tællelighed og Cantors diagonalargument), uge 9 (formelle teorier og beviser)
 
 ### 📺 Se
@@ -5030,7 +5030,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 11 — Uafgørlighed
 
 > **Læringsmål:** Du kan bevise, at $A_{TM}$ og halting-problemet er uafgørlige, sammenligne beviset med Cantor og Russell, bruge afbildningsreduktioner (mapping reductions) til at vise uafgørlighed og forklare Rices sætning og dens konsekvenser for programmer.
-> **Tidsforbrug:** ca. 2,5 t video (+ 1,3 t valgfri) · ca. 5–6 t øvelser
+> **Tidsforbrug:** ca. 2.5 t video (+ 1.3 t valgfri) · ca. 5–6 t øvelser
 > **Forudsætninger:** Uge 10 (Turing-maskiner, genkendelig og afgørlig, den universelle TM), uge 7 (Cantors diagonalargument), uge 8 (Russells paradoks), uge 2 (kontraposition)
 
 ### 📺 Se

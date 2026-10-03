@@ -613,7 +613,7 @@ overrides:
         - 35
         - -22
         - 24.5
-        explain: $(7 \cdot 35 - 50 - 70 - 100)/10 = 25/10 = 2{,}5\,\%$. Kun overleverne giver $+35\,\%$ — det er survivorship bias.
+        explain: $(7 \cdot 35 - 50 - 70 - 100)/10 = 25/10 = 2.5\,\%$. Kun overleverne giver $+35\,\%$ — det er survivorship bias.
     "10.3":
       quiz:
         question: Brutto-merafkast $12\,\%$, volatilitet $10\,\%$, omkostning $8$ bp pr. enhed turnover og turnover $25$ gange om året. Hvad er netto-Sharpe ratio?
@@ -625,10 +625,10 @@ overrides:
         - 1.2
         - 0.8
         - -0.8
-        explain: Omkostning $25 \cdot 0{,}0008 = 2\,\%$, netto-merafkast $10\,\%$, så SR $= 0{,}10/0{,}10 = 1{,}0$.
+        explain: Omkostning $25 \cdot 0.0008 = 2\,\%$, netto-merafkast $10\,\%$, så SR $= 0.10/0.10 = 1.0$.
     "10.5":
       quiz:
-        question: Standardfejlen på en annualiseret Sharpe ratio er ca. $1/\sqrt{Y}$ med $Y$ år. Hvor mange hele år skal der til, før en sand SR på $1{,}0$ forventes at give et 95 %-interval, der udelukker $0$?
+        question: Standardfejlen på en annualiseret Sharpe ratio er ca. $1/\sqrt{Y}$ med $Y$ år. Hvor mange hele år skal der til, før en sand SR på $1.0$ forventes at give et 95 %-interval, der udelukker $0$?
         check:
           type: numeric
           answer: 4
@@ -637,10 +637,10 @@ overrides:
         - 2
         - 16
         - 1
-        explain: Kravet er $1 - 1{,}96/\sqrt{Y} > 0$, dvs. $Y > 1{,}96^2 = 3{,}84$ — altså 4 år.
+        explain: Kravet er $1 - 1.96/\sqrt{Y} > 0$, dvs. $Y > 1.96^2 = 3.84$ — altså 4 år.
     "15.1":
       quiz:
-        question: Bedste bid er $100{,}00$ og bedste ask $100{,}02$. Hvad er spreadet i basispoint af mid (afrundet)?
+        question: Bedste bid er $100.00$ og bedste ask $100.02$. Hvad er spreadet i basispoint af mid (afrundet)?
         check:
           type: numeric
           answer: 2
@@ -650,10 +650,10 @@ overrides:
         - 1
         - 4
         - 20
-        explain: Mid $= 100{,}01$, spread $= 0{,}02$ kr., og $0{,}02/100{,}01 \cdot 10^4 \approx 2$ bp.
+        explain: Mid $= 100.01$, spread $= 0.02$ kr., og $0.02/100.01 \cdot 10^4 \approx 2$ bp.
     "15.2":
       quiz:
-        question: "Roll-modellen: $\\widehat{\\mathrm{Cov}}(\\Delta P_t, \\Delta P_{t-1}) = -0{,}0004$ kr.² for en aktie til ca. $20$ kr. Hvad er det estimerede spread i basispoint?"
+        question: "Roll-modellen: $\\widehat{\\mathrm{Cov}}(\\Delta P_t, \\Delta P_{t-1}) = -0.0004$ kr.² for en aktie til ca. $20$ kr. Hvad er det estimerede spread i basispoint?"
         check:
           type: numeric
           answer: 20
@@ -663,10 +663,10 @@ overrides:
         - 40
         - 10
         - 2
-        explain: $\hat s = 2\sqrt{0{,}0004} = 0{,}04$ kr., og $0{,}04/20 \cdot 10^4 = 20$ bp.
+        explain: $\hat s = 2\sqrt{0.0004} = 0.04$ kr., og $0.04/20 \cdot 10^4 = 20$ bp.
     "15.3":
       quiz:
-        question: "Square-root-loven: impact $= Y \\sigma \\sqrt{Q/V}$ med $Y = 0{,}8$, $\\sigma = 1{,}5\\,\\%$ og $Q/V = 0{,}1$. Hvad er impact i basispoint?"
+        question: "Square-root-loven: impact $= Y \\sigma \\sqrt{Q/V}$ med $Y = 0.8$, $\\sigma = 1.5\\,\\%$ og $Q/V = 0.1$. Hvad er impact i basispoint?"
         check:
           type: numeric
           answer: 37.9
@@ -676,10 +676,10 @@ overrides:
         - 120
         - 12
         - 75.9
-        explain: $0{,}8 \cdot 0{,}015 \cdot \sqrt{0{,}1} = 0{,}003795 \approx 37{,}9$ bp.
+        explain: $0.8 \cdot 0.015 \cdot \sqrt{0.1} = 0.003795 \approx 37.9$ bp.
     "15.4":
       quiz:
-        question: Beslutning om at købe $10.000$ aktier ved $50{,}00$ kr. Der købes $8.000$ til $50{,}12$ kr. (kurtage $0{,}02$ kr. pr. aktie); resten handles ikke, og dagen lukker i $50{,}40$ kr. Hvad er implementation shortfall i alt i kr.?
+        question: Beslutning om at købe $10000$ aktier ved $50.00$ kr. Der købes $8000$ til $50.12$ kr. (kurtage $0.02$ kr. pr. aktie); resten handles ikke, og dagen lukker i $50.40$ kr. Hvad er implementation shortfall i alt i kr.?
         check:
           type: numeric
           answer: 1920
@@ -689,7 +689,7 @@ overrides:
         - 1760
         - 1120
         - 960
-        explain: "Eksekvering $8.000 \\cdot 0{,}12 = 960$, opportunitet $2.000 \\cdot 0{,}40 = 800$ og gebyrer $8.000 \\cdot 0{,}02 = 160$: i alt $1.920$ kr."
+        explain: "Eksekvering $8000 \\cdot 0.12 = 960$, opportunitet $2000 \\cdot 0.40 = 800$ og gebyrer $8000 \\cdot 0.02 = 160$: i alt $1920$ kr."
 forward_refs:
   "1.8":
   - field: prompt
@@ -1127,7 +1127,7 @@ Alle videoer er tjekket (titel og kanal). Den fulde liste med URL'er står i `Qu
 ## Uge 1 — Markeder, instrumenter og kvant-roller
 
 > **Læringsmål:** Kende de vigtigste aktivklasser og deres payoffs, forstå hvordan en børs matcher ordrer, og regne sikkert med nutidsværdi og rentes rente (diskret og kontinuert). Kunne forklare alpha vs. beta, de tre former for markedseffektivitet og hvorfor de fleste strategier fejler.
-> **Tidsforbrug:** ca. 4 t video (+ 1,3 t valgfri) · ca. 5 t øvelser
+> **Tidsforbrug:** ca. 4 t video (+ 1.3 t valgfri) · ca. 5 t øvelser
 > **Forudsætninger:** HTX Matematik A (eksponential- og logaritmefunktioner, geometriske summer); Foundations-planen (beviser, grænseværdier) til de teoretiske øvelser.
 
 ### 📺 Se
@@ -1163,7 +1163,7 @@ Short-salg (short selling): man låner et aktiv, sælger det og køber det tilba
 
 **2. Børsen og ordrebogen (order book).**
 
-- *Limitordre (limit order):* "køb 100 stk. til en pris på højst 50,00". Den hviler i bogen, hvis den ikke kan handles med det samme.
+- *Limitordre (limit order):* "køb 100 stk. til en pris på højst 50.00". Den hviler i bogen, hvis den ikke kan handles med det samme.
 - *Markedsordre (market order):* "køb 100 stk. nu til bedste pris". Den handles straks mod de hvilende ordrer og "går gennem bogen" (walks the book), hvis den er større end det, der ligger på bedste pris.
 - *Bid* = højeste købspris i bogen, *ask* = laveste salgspris. Spread $s = \text{ask} - \text{bid}$, midtpris $m = (\text{bid}+\text{ask})/2$, relativ spread $s/m$.
 - *Pris-tid-prioritet (price-time priority):* bedste pris handles først; ved samme pris handles den ældste ordre først. Handlen sker til den **hvilende** ordres pris. Den, der hviler, leverer likviditet (maker); den, der rammer bogen, tager likviditet (taker). At lægge ordrer, man ikke har til hensigt at få handlet, for at give et falsk billede af udbud og efterspørgsel (spoofing/layering) er markedsmanipulation og ulovligt efter MAR.
@@ -1203,7 +1203,7 @@ Den effektive årlige rente er $r_{\text{eff}} = (1+r/m)^m - 1$, kontinuert $e^r
 $$
 \text{annuitet: } C\,\frac{1-(1+r)^{-n}}{r}, \qquad \text{evig rente (perpetuity): } \frac{C}{r}, \qquad \text{Gordons vækstmodel: } \frac{C}{r-g}\ (g<r).
 $$
-*Regneeksempel:* 10.000 kr. til 4 % i 10 år giver $10.000\cdot 1{,}04^{10} = 14.802{,}44$ kr. ved årlig tilskrivning, $10.000\,(1+0{,}04/12)^{120} = 14.908{,}33$ kr. ved månedlig og $10.000\,e^{0{,}4} = 14.918{,}25$ kr. ved kontinuert forrentning. Bemærk $\ln(FV/PV) = rT$ ved kontinuert forrentning — det er præcis log-afkastet fra uge 2.
+*Regneeksempel:* 10,000 kr. til 4 % i 10 år giver $10000\cdot 1.04^{10} = 14802.44$ kr. ved årlig tilskrivning, $10000\,(1+0.04/12)^{120} = 14908.33$ kr. ved månedlig og $10000\,e^{0.4} = 14918.25$ kr. ved kontinuert forrentning. Bemærk $\ln(FV/PV) = rT$ ved kontinuert forrentning — det er præcis log-afkastet fra uge 2.
 
 **6. Effektive markeder (EMH).** Et marked er effektivt med hensyn til et informationssæt, hvis priserne fuldt afspejler den information, så den ikke kan bruges til at opnå risikojusteret merafkast *efter omkostninger*.
 
@@ -1221,7 +1221,7 @@ En rationel prognose svinger altså *mindre* end det, den forudsiger. Shiller fa
 
 **7. Hvorfor de fleste strategier fejler.**
 
-- *Omkostninger:* 0,3 % pr. round trip lyder lidt, men handler man én gang om dagen, er $(1-0{,}003)^{252} \approx 0{,}469$: man har tabt over halvdelen af kapitalen til omkostninger alene på et år.
+- *Omkostninger:* 0.3 % pr. round trip lyder lidt, men handler man én gang om dagen, er $(1-0.003)^{252} \approx 0.469$: man har tabt over halvdelen af kapitalen til omkostninger alene på et år.
 - *Konkurrence:* før omkostninger er aktiv forvaltning et nulsumsspil i forhold til markedet (øvelse 1.13). Dit signal skal være bedre end dem, der handler mod dig.
 - *Overfitting:* med nok forsøg finder man altid noget, der "virkede" historisk (uge 5 og 10).
 - *Crowding og regimeskift:* når mange handler samme strategi, kan den bryde sammen samtidig (Khandani & Lo, *What Happened to the Quants in August 2007?*).
@@ -1238,21 +1238,21 @@ En rationel prognose svinger altså *mindre* end det, den forudsiger. Shiller fa
 
 ### ✏️ Øvelser
 
-**1.1** ★ — Du sætter 10.000 kr. ind til en nominel rente på 4 % p.a. i 10 år. Beregn slutbeløbet ved (a) årlig, (b) månedlig og (c) kontinuert tilskrivning, og (d) den effektive årlige rente i (b) og (c).
+**1.1** ★ — Du sætter 10,000 kr. ind til en nominel rente på 4 % p.a. i 10 år. Beregn slutbeløbet ved (a) årlig, (b) månedlig og (c) kontinuert tilskrivning, og (d) den effektive årlige rente i (b) og (c).
 
-**1.2** ★ — En obligation betaler kupon 50 kr. om året i 3 år og 1.000 kr. i hovedstol ved udløb (sammen med sidste kupon). Beregn kursen (nutidsværdien), når markedsrenten er 6 %, og når den er 5 %. Forklar, hvorfor kursen er under 1.000 i det første tilfælde.
+**1.2** ★ — En obligation betaler kupon 50 kr. om året i 3 år og 1,000 kr. i hovedstol ved udløb (sammen med sidste kupon). Beregn kursen (nutidsværdien), når markedsrenten er 6 %, og når den er 5 %. Forklar, hvorfor kursen er under 1,000 i det første tilfælde.
 
-**1.3** ★ — En aktie har bid 99,90 og ask 100,10. Du køber 200 stk. og sælger dem straks igen; kurtagen er 0,05 % af handelsbeløbet på hver handel. (a) Hvad er dit samlede tab i kr. og i procent af handelsbeløbet målt i midtpris? (b) Hvad er der tilbage af 1 kr. efter et år, hvis du laver én sådan round trip hver handelsdag (252 dage) og strategien ellers giver 0 i afkast?
+**1.3** ★ — En aktie har bid 99.90 og ask 100.10. Du køber 200 stk. og sælger dem straks igen; kurtagen er 0.05 % af handelsbeløbet på hver handel. (a) Hvad er dit samlede tab i kr. og i procent af handelsbeløbet målt i midtpris? (b) Hvad er der tilbage af 1 kr. efter et år, hvis du laver én sådan round trip hver handelsdag (252 dage) og strategien ellers giver 0 i afkast?
 
 **1.4** ★ — Lav en profit-tabel for $S_T \in \{80, 90, 100, 110, 120\}$ for: (a) en long future med $F=100$; (b) en long call med $K=100$ og præmie 5; (c) en short put med $K=95$ og præmie 2; (d) positionen (b)+(c). Sammenlign (d) med (a). (Put-call-paritet i uge 14.)
 
-**1.5** ★★ — En ordrebog ser sådan ud (ordrer nævnt i ankomstrækkefølge ved hver pris). Ask: 100,30: S3 (300 stk.); 100,20: S1 (200), S2 (100). Bid: 100,00: B1 (400); 99,90: B2 (200), B3 (300). Der ankommer i rækkefølge: (a) markedsordre køb 250; (b) limitordre sælg 500 til 99,95; (c) limitordre køb 150 til 100,25. Angiv for hver ordre handlerne (pris, antal, modpart), og bestem bid, ask og spread efter hvert trin. Hvad blev gennemsnitsprisen i (c)?
+**1.5** ★★ — En ordrebog ser sådan ud (ordrer nævnt i ankomstrækkefølge ved hver pris). Ask: 100.30: S3 (300 stk.); 100.20: S1 (200), S2 (100). Bid: 100.00: B1 (400); 99.90: B2 (200), B3 (300). Der ankommer i rækkefølge: (a) markedsordre køb 250; (b) limitordre sælg 500 til 99.95; (c) limitordre køb 150 til 100.25. Angiv for hver ordre handlerne (pris, antal, modpart), og bestem bid, ask og spread efter hvert trin. Hvad blev gennemsnitsprisen i (c)?
 
 **1.6** ★★ — (a) Udled annuitetsformlen $PV = C\,\frac{1-(1+r)^{-n}}{r}$ ud fra den geometriske sum, og find grænsen for $n\to\infty$. (b) Vis, at en betalingsstrøm $C, C(1+g), C(1+g)^2,\dots$ (første betaling om ét år) har nutidsværdien $C/(r-g)$ for $g<r$. (c) En aktie forventes at betale udbytte 10 kr. om et år med vækst $g = 2\,\%$. Find prisen for $r = 6\,\%$, $7\,\%$ og $8\,\%$, og kommentér følsomheden. (Pointen bruges i 1.10.)
 
 **1.7** ★★ — Hvilken form for EMH (svag, halvstærk, stærk) ville hver påstand være i strid med, hvis den holdt *efter omkostninger og risikojustering*? (a) Aktier, der er steget mest de seneste 12 måneder, stiger i gennemsnit mere end andre de næste måneder. (b) Kurser reagerer først fuldt på en overraskende regnskabsmeddelelse over flere uger. (c) Direktører, der køber aktier i egen virksomhed, opnår i gennemsnit merafkast. (d) Billige "value"-aktier har historisk haft højere gennemsnitsafkast end dyre vækstaktier. Diskutér især (d) i lyset af joint hypothesis-problemet.
 
-**1.8** ★★ — Den risikofri rente er 2 % og markedsafkastet 10 % i et år. Fond A gav 12 % med $\beta = 1{,}3$; fond B gav 8 % med $\beta = 0{,}5$; fond C er en 2× gearet indeksfond, der gav 18 % (antag $\beta = 2$). Beregn alpha for hver fond (antag $\varepsilon = 0$), og forklar, hvorfor den fond med størst afkast ikke er den bedste. (Bruges i uge 7.)
+**1.8** ★★ — Den risikofri rente er 2 % og markedsafkastet 10 % i et år. Fond A gav 12 % med $\beta = 1.3$; fond B gav 8 % med $\beta = 0.5$; fond C er en 2× gearet indeksfond, der gav 18 % (antag $\beta = 2$). Beregn alpha for hver fond (antag $\varepsilon = 0$), og forklar, hvorfor den fond med størst afkast ikke er den bedste. (Bruges i uge 7.)
 
 **1.9** ★★★ — Lad $a_m = (1+r/m)^m$ for $r>0$. (a) Vis med AM–GM-uligheden, at $a_m \le a_{m+1}$. Hint: se på de $m+1$ tal $1+r/m$ ($m$ gange) og $1$. (b) Vis, at $a_m \to e^r$. (c) Fortolk: hvorfor giver hyppigere tilskrivning altid mindst lige så meget, men aldrig mere end $e^r$?
 
@@ -1269,10 +1269,10 @@ En rationel prognose svinger altså *mindre* end det, den forudsiger. Shiller fa
 <details>
 <summary>Løsning 1.1</summary>
 
-(a) $10.000\cdot 1{,}04^{10} = 14.802{,}44$ kr.
-(b) $10.000\,(1+0{,}04/12)^{120} = 14.908{,}33$ kr.
-(c) $10.000\,e^{0{,}04\cdot 10} = 10.000\,e^{0{,}4} = 14.918{,}25$ kr.
-(d) Månedlig: $(1+0{,}04/12)^{12} - 1 = 4{,}0742\,\%$. Kontinuert: $e^{0{,}04}-1 = 4{,}0811\,\%$.
+(a) $10000\cdot 1.04^{10} = 14802.44$ kr.
+(b) $10000\,(1+0.04/12)^{120} = 14908.33$ kr.
+(c) $10000\,e^{0.04\cdot 10} = 10000\,e^{0.4} = 14918.25$ kr.
+(d) Månedlig: $(1+0.04/12)^{12} - 1 = 4.0742\,\%$. Kontinuert: $e^{0.04}-1 = 4.0811\,\%$.
 
 Forskellen mellem månedlig og kontinuert tilskrivning er lille (ca. 10 kr.), forskellen mellem årlig og månedlig er større (ca. 106 kr.) — se 1.9.
 
@@ -1283,20 +1283,20 @@ Forskellen mellem månedlig og kontinuert tilskrivning er lille (ca. 10 kr.), fo
 
 Ved 6 %:
 $$
-PV = \frac{50}{1{,}06} + \frac{50}{1{,}06^2} + \frac{1050}{1{,}06^3} = 47{,}17 + 44{,}50 + 881{,}60 = 973{,}27 .
+PV = \frac{50}{1.06} + \frac{50}{1.06^2} + \frac{1050}{1.06^3} = 47.17 + 44.50 + 881.60 = 973.27 .
 $$
-Ved 5 %: $PV = 1000{,}00$ præcis (kuponrenten er lig markedsrenten, så obligationen handler til pari).
+Ved 5 %: $PV = 1000.00$ præcis (kuponrenten er lig markedsrenten, så obligationen handler til pari).
 
-Ved 6 % kræver markedet mere i afkast, end kuponen giver (5 % af 1.000). Køberen kompenseres ved at betale mindre end 1.000 i dag og få kursgevinsten op til 1.000 ved udløb. Generelt: højere rente → lavere obligationskurs.
+Ved 6 % kræver markedet mere i afkast, end kuponen giver (5 % af 1,000). Køberen kompenseres ved at betale mindre end 1,000 i dag og få kursgevinsten op til 1,000 ved udløb. Generelt: højere rente → lavere obligationskurs.
 
 </details>
 
 <details>
 <summary>Løsning 1.3</summary>
 
-(a) Køb: $200\cdot 100{,}10 = 20.020$ kr. plus kurtage $0{,}0005\cdot 20.020 = 10{,}01$ kr. Salg: $200\cdot 99{,}90 = 19.980$ kr. minus kurtage $9{,}99$ kr. Tab: $40 + 10{,}01 + 9{,}99 = 60$ kr. I procent af $200\cdot 100{,}00 = 20.000$ kr. (midtpris): $0{,}30\,\%$. Det stemmer med $s/m + 2c = 0{,}20/100 + 2\cdot 0{,}05\,\% = 0{,}30\,\%$.
+(a) Køb: $200\cdot 100.10 = 20020$ kr. plus kurtage $0.0005\cdot 20.020 = 10.01$ kr. Salg: $200\cdot 99.90 = 19980$ kr. minus kurtage $9.99$ kr. Tab: $40 + 10.01 + 9.99 = 60$ kr. I procent af $200\cdot 100.00 = 20000$ kr. (midtpris): $0.30\,\%$. Det stemmer med $s/m + 2c = 0.20/100 + 2\cdot 0.05\,\% = 0.30\,\%$.
 
-(b) $(1-0{,}003)^{252} = 0{,}469$. Der er ca. 47 øre tilbage af hver krone — et tab på 53 % alene fra omkostninger. Høj omsætning (turnover) kræver en meget stærk fordel (edge), før strategien overhovedet går i nul efter omkostninger.
+(b) $(1-0.003)^{252} = 0.469$. Der er ca. 47 øre tilbage af hver krone — et tab på 53 % alene fra omkostninger. Høj omsætning (turnover) kræver en meget stærk fordel (edge), før strategien overhovedet går i nul efter omkostninger.
 
 </details>
 
@@ -1319,13 +1319,13 @@ Udregning: (b) $\max(S_T-100,0) - 5$; (c) $-\max(95-S_T,0) + 2$.
 <details>
 <summary>Løsning 1.5</summary>
 
-Start: bid 100,00, ask 100,20, spread 0,20.
+Start: bid 100.00, ask 100.20, spread 0.20.
 
-(a) Markedskøb 250: handler 200 @ 100,20 mod S1 og 50 @ 100,20 mod S2 (S1 er ældst). Tilbage: S2 med 50 @ 100,20. Bid 100,00, ask 100,20, spread 0,20.
+(a) Markedskøb 250: handler 200 @ 100.20 mod S1 og 50 @ 100.20 mod S2 (S1 er ældst). Tilbage: S2 med 50 @ 100.20. Bid 100.00, ask 100.20, spread 0.20.
 
-(b) Limitsalg 500 @ 99,95: den bedste bid 100,00 ≥ 99,95, så der handles 400 @ 100,00 mod B1. Den næste bid (99,90) er under limitten, så de resterende 100 stk. hviler som ask @ 99,95. Nu er bid 99,90 og ask 99,95, spread 0,05.
+(b) Limitsalg 500 @ 99.95: den bedste bid 100.00 ≥ 99.95, så der handles 400 @ 100.00 mod B1. Den næste bid (99,90) er under limitten, så de resterende 100 stk. hviler som ask @ 99.95. Nu er bid 99.90 og ask 99.95, spread 0.05.
 
-(c) Limitkøb 150 @ 100,25: handler 100 @ 99,95 mod L1 (den hvilende rest fra b) og derefter 50 @ 100,20 mod S2. Gennemsnitspris $(100\cdot 99{,}95 + 50\cdot 100{,}20)/150 = 15.005/150 = 100{,}033$. Intet hviler. Slutbog: ask 100,30 (S3, 300); bid 99,90 (B2 200, B3 300). Spread 0,40.
+(c) Limitkøb 150 @ 100.25: handler 100 @ 99.95 mod L1 (den hvilende rest fra b) og derefter 50 @ 100.20 mod S2. Gennemsnitspris $(100\cdot 99.95 + 50\cdot 100.20)/150 = 15.005/150 = 100.033$. Intet hviler. Slutbog: ask 100.30 (S3, 300); bid 99.90 (B2 200, B3 300). Spread 0.40.
 
 Pointe: handlerne sker til den *hvilende* ordres pris, så køberen i (c) fik en bedre pris end sin limit.
 
@@ -1342,7 +1342,7 @@ da $v/(1-v) = 1/r$. For $n\to\infty$ går $(1+r)^{-n}\to 0$ (når $r>0$), så $P
 
 (b) $\sum_{k\ge 1} C(1+g)^{k-1}(1+r)^{-k} = \frac{C}{1+r}\sum_{j\ge 0}\left(\frac{1+g}{1+r}\right)^j = \frac{C}{1+r}\cdot\frac{1}{1-\frac{1+g}{1+r}} = \frac{C}{r-g}$. Rækken konvergerer netop fordi $(1+g)/(1+r) < 1$.
 
-(c) $r=6\,\%$: $10/0{,}04 = 250$; $r=7\,\%$: $10/0{,}05 = 200$; $r=8\,\%$: $10/0{,}06 = 166{,}67$. Et fald i diskonteringsrenten på ét procentpoint hæver prisen med 25 %. En stigning på ét procentpoint sænker den med 16,7 %. Små ændringer i den krævede forrentning giver altså store kursudsving — selv når udbytterne er uændrede.
+(c) $r=6\,\%$: $10/0.04 = 250$; $r=7\,\%$: $10/0.05 = 200$; $r=8\,\%$: $10/0.06 = 166.67$. Et fald i diskonteringsrenten på ét procentpoint hæver prisen med 25 %. En stigning på ét procentpoint sænker den med 16.7 %. Små ændringer i den krævede forrentning giver altså store kursudsving — selv når udbytterne er uændrede.
 
 </details>
 
@@ -1360,8 +1360,8 @@ da $v/(1-v) = 1/r$. For $n\to\infty$ går $(1+r)^{-n}\to 0$ (når $r>0$), så $P
 <summary>Løsning 1.8</summary>
 
 $\alpha = (R - r_f) - \beta(R_m - r_f)$, hvor $R_m - r_f = 8\,\%$:
-- A: $10 - 1{,}3\cdot 8 = 10 - 10{,}4 = -0{,}4\,\%$.
-- B: $6 - 0{,}5\cdot 8 = 6 - 4 = +2{,}0\,\%$.
+- A: $10 - 1.3\cdot 8 = 10 - 10.4 = -0.4\,\%$.
+- B: $6 - 0.5\cdot 8 = 6 - 4 = +2.0\,\%$.
 - C: $16 - 2\cdot 8 = 0\,\%$.
 
 C har størst afkast, men det er ren gearet markedseksponering, som enhver kan skabe billigt. A har *tabt* i forhold til en tilsvarende gearet indeksposition. Kun B har skabt værdi ud over beta. Et estimat for ét år er dog meget usikkert (uge 5): et års tal siger næsten intet om, hvorvidt alpha er ægte.
@@ -1541,7 +1541,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 2 — Afkast, risiko og Python
 
 > **Læringsmål:** Regne sikkert med simple afkast og log-afkast, annualisere middelværdi og volatilitet og beregne Sharpe ratio, max drawdown, skævhed og korrelation. Forstå forskellen på aritmetisk og geometrisk middel (volatility drag) og de klassiske datafejl: justerede priser, udbytter, splits og overlevelsesbias.
-> **Tidsforbrug:** ca. 1,5 t video (+ 2,5 t valgfri) · ca. 7 t øvelser
+> **Tidsforbrug:** ca. 1.5 t video (+ 2.5 t valgfri) · ca. 7 t øvelser
 > **Forudsætninger:** Uge 1 (rentes rente, kontinuert forrentning); HTX-statistik (middelværdi, spredning); grundlæggende Python.
 
 ### 📺 Se
@@ -1565,7 +1565,7 @@ Du er klar til næste uge, når du kan:
 $$
 R_t = \frac{P_t}{P_{t-1}} - 1 \quad\text{(simpelt afkast, simple return)}, \qquad r_t = \ln\frac{P_t}{P_{t-1}} = \ln(1+R_t) \quad\text{(log-afkast, log return)} .
 $$
-Taylorudviklingen af $\ln(1+R)$ giver $r = R - R^2/2 + R^3/3 - \dots$, så for små afkast er $r\approx R$, men $r < R$ altid (for $R\ne 0$). Eksempel: $R = +10\,\%$ giver $r = 9{,}53\,\%$; $R = -10\,\%$ giver $r = -10{,}54\,\%$.
+Taylorudviklingen af $\ln(1+R)$ giver $r = R - R^2/2 + R^3/3 - \dots$, så for små afkast er $r\approx R$, men $r < R$ altid (for $R\ne 0$). Eksempel: $R = +10\,\%$ giver $r = 9.53\,\%$; $R = -10\,\%$ giver $r = -10.54\,\%$.
 
 - *Over tid er log-afkast additive:* $1 + R_{0\to T} = \prod_{t=1}^T (1+R_t)$ og dermed $r_{0\to T} = \ln(P_T/P_0) = \sum_{t=1}^T r_t$. Summer er meget lettere at analysere statistisk end produkter (centralgrænsesætningen i uge 4, Brownsk bevægelse i uge 13).
 - *På tværs af aktiver er simple afkast additive:* holder du vægtene $w_i$ ($\sum_i w_i = 1$) ved periodens start, er porteføljens afkast $R_p = \sum_i w_i R_i$. For log-afkast gælder kun $r_p = \ln\big(\sum_i w_i e^{r_i}\big) \ne \sum_i w_i r_i$.
@@ -1593,13 +1593,13 @@ Ifølge AM–GM-uligheden anvendt på tallene $1+R_t$ er $G \le A$, med lighed k
 $$
 \ln(1+G) = \frac1T\sum_t \ln(1+R_t) \approx A - \tfrac12(\hat\sigma^2 + A^2), \qquad\text{og dermed}\qquad G \approx A - \frac{\hat\sigma^2}{2}
 $$
-(brug $e^L - 1\approx L + L^2/2$; leddene med $A^2/2$ går ud). Eksempel: $+50\,\%$ og derefter $-50\,\%$ giver $A = 0$, men $G = \sqrt{1{,}5\cdot 0{,}5} - 1 = -13{,}4\,\%$. $A$ er det forventede afkast i én periode; $G$ er den vækstrate, formuen faktisk realiserer over mange perioder. Gearing øger $\sigma^2$ kvadratisk, men $A$ kun lineært — derfor kan for meget gearing gøre $G$ negativ (uge 3 og 16).
+(brug $e^L - 1\approx L + L^2/2$; leddene med $A^2/2$ går ud). Eksempel: $+50\,\%$ og derefter $-50\,\%$ giver $A = 0$, men $G = \sqrt{1.5\cdot 0.5} - 1 = -13.4\,\%$. $A$ er det forventede afkast i én periode; $G$ er den vækstrate, formuen faktisk realiserer over mange perioder. Gearing øger $\sigma^2$ kvadratisk, men $A$ kun lineært — derfor kan for meget gearing gøre $G$ negativ (uge 3 og 16).
 
 **5. Volatilitet og annualisering.** Volatiliteten er standardafvigelsen af afkast, estimeret med stikprøvespredningen $s = \sqrt{\frac{1}{n-1}\sum_t (R_t - \bar R)^2}$. Antag, at de daglige log-afkast er uafhængige og identisk fordelte (iid) med middelværdi $\mu_d$ og varians $\sigma_d^2$. Så har årsafkastet $\sum_{t=1}^{252} r_t$ middelværdien $252\,\mu_d$ og variansen $252\,\sigma_d^2$ (variansen af en sum af uafhængige variable er summen af varianserne, uge 3–4), dvs.
 $$
-\mu_{\text{ann}} = 252\,\mu_d, \qquad \sigma_{\text{ann}} = \sigma_d\sqrt{252} \approx 15{,}87\,\sigma_d .
+\mu_{\text{ann}} = 252\,\mu_d, \qquad \sigma_{\text{ann}} = \sigma_d\sqrt{252} \approx 15.87\,\sigma_d .
 $$
-Daglig volatilitet på 1 % svarer altså til ca. 15,9 % p.a. Er afkastene autokorrelerede, er $\sqrt{252}$-reglen forkert (øvelse 2.9, uge 9).
+Daglig volatilitet på 1 % svarer altså til ca. 15.9 % p.a. Er afkastene autokorrelerede, er $\sqrt{252}$-reglen forkert (øvelse 2.9, uge 9).
 
 **6. Sharpe ratio.** For en given periode (dag, måned, år) er
 $$
@@ -1632,11 +1632,11 @@ Jo lavere $\rho$, jo mere diversifikation (uge 4 og 7). Pas på: korrelationer s
 
 ### ✏️ Øvelser
 
-**2.1** ★ — Priserne er $100, 110, 99, 108{,}9$. Beregn (a) de tre simple afkast og log-afkast, (b) det samlede afkast på begge måder og kontrollér, at summen af log-afkastene er $\ln(108{,}9/100)$, (c) det aritmetiske og det geometriske middel af de simple afkast.
+**2.1** ★ — Priserne er $100, 110, 99, 108.9$. Beregn (a) de tre simple afkast og log-afkast, (b) det samlede afkast på begge måder og kontrollér, at summen af log-afkastene er $\ln(108.9/100)$, (c) det aritmetiske og det geometriske middel af de simple afkast.
 
 **2.2** ★ — En portefølje har 60 % i aktiv A og 40 % i aktiv B. I en periode giver A $+10\,\%$ og B $-5\,\%$. Beregn porteføljens simple afkast og log-afkast, og sammenlign med det vægtede gennemsnit af de to log-afkast. Hvilken regel fra Kernebegreber illustrerer det?
 
-**2.3** ★ — En strategi har dagligt gennemsnitsafkast 0,05 % og daglig spredning 1,2 %. Den risikofri rente er 2 % p.a. Beregn annualiseret middelafkast, annualiseret volatilitet og annualiseret Sharpe ratio — både ved at annualisere først og ved at beregne den daglige Sharpe ratio og gange med $\sqrt{252}$. Hvilken antagelse bruger du?
+**2.3** ★ — En strategi har dagligt gennemsnitsafkast 0.05 % og daglig spredning 1.2 %. Den risikofri rente er 2 % p.a. Beregn annualiseret middelafkast, annualiseret volatilitet og annualiseret Sharpe ratio — både ved at annualisere først og ved at beregne den daglige Sharpe ratio og gange med $\sqrt{252}$. Hvilken antagelse bruger du?
 
 **2.4** ★ — En aktie lukker i 200 kr. på dag 1. Dag 2 er ex-dato for et udbytte på 4 kr., og aktien lukker i 198. Før åbningen på dag 3 gennemføres et split 2:1, og aktien lukker i 101. (a) Beregn de "naive" afkast af de rå lukkekurser. (b) Beregn de korrekte totalafkast for dag 2 og dag 3. (c) Hvad er det samlede afkast over de to dage, hvis udbyttet geninvesteres i aktien til lukkekursen på dag 2?
 
@@ -1644,13 +1644,13 @@ Jo lavere $\rho$, jo mere diversifikation (uge 4 og 7). Pas på: korrelationer s
 
 **2.6** ★★ — (a) Et aktiv skifter mellem $+20\,\%$ og $-20\,\%$. Find $A$ og $G$, og sammenlign $A - G$ med $\hat\sigma^2/2$. (b) Bevis, at $G\le A$ for vilkårlige afkast $R_t > -1$. (c) Et indeks skifter dag for dag mellem $+2\,\%$ og $-2\,\%$ i 252 dage. Et produkt giver dagligt *det dobbelte* af indeksets afkast (2× daglig gearing). Hvad er hver af dem værd efter ét år pr. investeret krone? Forklar forskellen med volatility drag.
 
-**2.7** ★★ — To aktiver har $\sigma_1 = 20\,\%$ og $\sigma_2 = 30\,\%$. (a) Beregn volatiliteten af en 50/50-portefølje for $\rho = 1$; $0{,}3$; $0$ og $-1$. (b) Find for $\rho = -1$ den vægt $w_1$, der giver en risikofri portefølje. (c) Vis, at $\sigma_p \le w_1\sigma_1 + w_2\sigma_2$ for $w_1,w_2\ge 0$. (Bruges i uge 7.)
+**2.7** ★★ — To aktiver har $\sigma_1 = 20\,\%$ og $\sigma_2 = 30\,\%$. (a) Beregn volatiliteten af en 50/50-portefølje for $\rho = 1$; $0.3$; $0$ og $-1$. (b) Find for $\rho = -1$ den vægt $w_1$, der giver en risikofri portefølje. (c) Vis, at $\sigma_p \le w_1\sigma_1 + w_2\sigma_2$ for $w_1,w_2\ge 0$. (Bruges i uge 7.)
 
-**2.8** ★★ — En strategi (fx salg af optioner langt ude af pengene, out of the money) giver hver måned $+1\,\%$ med sandsynlighed 0,99 og $-20\,\%$ med sandsynlighed 0,01, uafhængigt af andre måneder. (a) Beregn middelværdi, spredning, skævhed og kurtosis for månedsafkastet. (b) Beregn den månedlige og den annualiserede Sharpe ratio (antag $r_f = 0$ og iid). (c) Hvad er sandsynligheden for, at en 3-årig track record slet ikke indeholder en tabsmåned? Og for mindst én $-20\,\%$-måned på 5 år? Kommentér.
+**2.8** ★★ — En strategi (fx salg af optioner langt ude af pengene, out of the money) giver hver måned $+1\,\%$ med sandsynlighed 0.99 og $-20\,\%$ med sandsynlighed 0.01, uafhængigt af andre måneder. (a) Beregn middelværdi, spredning, skævhed og kurtosis for månedsafkastet. (b) Beregn den månedlige og den annualiserede Sharpe ratio (antag $r_f = 0$ og iid). (c) Hvad er sandsynligheden for, at en 3-årig track record slet ikke indeholder en tabsmåned? Og for mindst én $-20\,\%$-måned på 5 år? Kommentér.
 
-**2.9** ★★ — (a) Vis, at hvis daglige log-afkast er iid, gælder $SR_T = \sqrt{T}\,SR_1$ for $T$-dages-afkast. (b) Antag i stedet, at de daglige afkast har samme varians $\sigma^2$, korrelation $\rho$ mellem naboer og korrelation 0 ellers. Vis, at $\operatorname{Var}\big(\sum_{t=1}^T r_t\big) = \sigma^2\big(T + 2(T-1)\rho\big)$. (c) Med $\rho = 0{,}1$: hvor meget overvurderer $\sqrt{252}$-reglen den årlige Sharpe ratio? (Bruges i uge 9.)
+**2.9** ★★ — (a) Vis, at hvis daglige log-afkast er iid, gælder $SR_T = \sqrt{T}\,SR_1$ for $T$-dages-afkast. (b) Antag i stedet, at de daglige afkast har samme varians $\sigma^2$, korrelation $\rho$ mellem naboer og korrelation 0 ellers. Vis, at $\operatorname{Var}\big(\sum_{t=1}^T r_t\big) = \sigma^2\big(T + 2(T-1)\rho\big)$. (c) Med $\rho = 0.1$: hvor meget overvurderer $\sqrt{252}$-reglen den årlige Sharpe ratio? (Bruges i uge 9.)
 
-**2.10** ★★★ — (Shannons dæmon, volatility harvesting.) Et aktiv skifter deterministisk mellem at blive ganget med $u = 2$ og med $1/u = 0{,}5$, så dets geometriske afkast er 0. Kontanter giver 0 % i rente. (a) Du holder hele tiden andelen $f\in[0,1]$ af formuen i aktivet og rebalancerer efter hver periode. Find vækstfaktoren over to perioder, $g(f)$, og vis, at den maksimeres af $f^* = 1/2$ for *ethvert* $u>1$. (b) Beregn den geometriske vækstrate pr. periode for $f=1/2$, $u=2$, og sammenlign med approksimationen $A - \hat\sigma^2/2$. (c) Forklar, hvorfor dette ikke er en "gratis pengemaskine" i rigtige markeder. (Forsmag på Kelly-kriteriet i uge 3 og 16.)
+**2.10** ★★★ — (Shannons dæmon, volatility harvesting.) Et aktiv skifter deterministisk mellem at blive ganget med $u = 2$ og med $1/u = 0.5$, så dets geometriske afkast er 0. Kontanter giver 0 % i rente. (a) Du holder hele tiden andelen $f\in[0,1]$ af formuen i aktivet og rebalancerer efter hver periode. Find vækstfaktoren over to perioder, $g(f)$, og vis, at den maksimeres af $f^* = 1/2$ for *ethvert* $u>1$. (b) Beregn den geometriske vækstrate pr. periode for $f=1/2$, $u=2$, og sammenlign med approksimationen $A - \hat\sigma^2/2$. (c) Forklar, hvorfor dette ikke er en "gratis pengemaskine" i rigtige markeder. (Forsmag på Kelly-kriteriet i uge 3 og 16.)
 
 **2.11** ★★ 💻 — Skriv funktionerne `simple_returns`, `log_returns`, `ann_vol`, `sharpe`, `max_drawdown` og `skew_kurt` med kun standardbiblioteket. Simulér en GBM-lignende prissti over 5 år med `random.seed(42)`, $\mu = 8\,\%$ og $\sigma = 20\,\%$ p.a. via
 $$
@@ -1658,7 +1658,7 @@ P_t = P_{t-1}\exp\!\Big(\big(\mu - \tfrac{\sigma^2}{2}\big)\Delta t + \sigma\sqr
 $$
 og udskriv nøgletallene. Sammenlign aritmetisk og geometrisk middel. Hvad siger resultatet om, hvor svært det er at estimere $\mu$ i forhold til $\sigma$? (Funktionerne genbruges i uge 10.)
 
-**2.12** ★★ 💻 — (Overlevelsesbias.) Simulér 1000 fonde *uden* evner: hver måned i 5 år er afkastet normalfordelt med middelværdi 0,5 % og spredning 4 % for alle fonde. En fond, der på noget tidspunkt er under 80 % af startværdien, lukkes og forsvinder fra databasen. Sammenlign det gennemsnitlige årlige (geometriske) afkast for alle fonde med det for de overlevende. Brug `random.seed(7)`.
+**2.12** ★★ 💻 — (Overlevelsesbias.) Simulér 1000 fonde *uden* evner: hver måned i 5 år er afkastet normalfordelt med middelværdi 0.5 % og spredning 4 % for alle fonde. En fond, der på noget tidspunkt er under 80 % af startværdien, lukkes og forsvinder fra databasen. Sammenlign det gennemsnitlige årlige (geometriske) afkast for alle fonde med det for de overlevende. Brug `random.seed(7)`.
 
 **2.13** ★★ 🗣️ — En ven viser dig en backtest: "Jeg købte de 20 aktier i det nuværende C25-indeks med det højeste udbytte, rebalancerede årligt fra 2005 til i dag og slog indekset med 4 % om året." Skriv 10–15 linjer om, hvilke datafejl og bias der kan ligge i resultatet, og hvad du ville gøre for at teste det ordentligt.
 
@@ -1667,20 +1667,20 @@ og udskriv nøgletallene. Sammenlign aritmetisk og geometrisk middel. Hvad siger
 <details>
 <summary>Løsning 2.1</summary>
 
-(a) $R_1 = 110/100 - 1 = 10\,\%$, $R_2 = 99/110 - 1 = -10\,\%$, $R_3 = 108{,}9/99 - 1 = 10\,\%$. Log-afkast: $r_1 = \ln 1{,}1 = 0{,}09531$, $r_2 = \ln 0{,}9 = -0{,}10536$, $r_3 = 0{,}09531$.
+(a) $R_1 = 110/100 - 1 = 10\,\%$, $R_2 = 99/110 - 1 = -10\,\%$, $R_3 = 108.9/99 - 1 = 10\,\%$. Log-afkast: $r_1 = \ln 1.1 = 0.09531$, $r_2 = \ln 0.9 = -0.10536$, $r_3 = 0.09531$.
 
-(b) Simpelt: $1{,}1\cdot 0{,}9\cdot 1{,}1 - 1 = 0{,}089 = 8{,}9\,\%$. Log: $0{,}09531 - 0{,}10536 + 0{,}09531 = 0{,}08526 = \ln 1{,}089$. ✓ Summen af de simple afkast ville give $10\,\%$, hvilket er forkert.
+(b) Simpelt: $1.1\cdot 0.9\cdot 1.1 - 1 = 0.089 = 8.9\,\%$. Log: $0.09531 - 0.10536 + 0.09531 = 0.08526 = \ln 1.089$. ✓ Summen af de simple afkast ville give $10\,\%$, hvilket er forkert.
 
-(c) $A = (0{,}10 - 0{,}10 + 0{,}10)/3 = 3{,}33\,\%$ og $G = 1{,}089^{1/3} - 1 = 2{,}88\,\%$. $G < A$ som forventet.
+(c) $A = (0.10 - 0.10 + 0.10)/3 = 3.33\,\%$ og $G = 1.089^{1/3} - 1 = 2.88\,\%$. $G < A$ som forventet.
 
 </details>
 
 <details>
 <summary>Løsning 2.2</summary>
 
-$R_p = 0{,}6\cdot 0{,}10 + 0{,}4\cdot(-0{,}05) = 0{,}04 = 4\,\%$, så $r_p = \ln 1{,}04 = 0{,}03922$.
+$R_p = 0.6\cdot 0.10 + 0.4\cdot(-0.05) = 0.04 = 4\,\%$, så $r_p = \ln 1.04 = 0.03922$.
 
-Vægtet gennemsnit af log-afkastene: $0{,}6\ln 1{,}1 + 0{,}4\ln 0{,}95 = 0{,}6\cdot 0{,}09531 + 0{,}4\cdot(-0{,}05129) = 0{,}03667 \ne 0{,}03922$.
+Vægtet gennemsnit af log-afkastene: $0.6\ln 1.1 + 0.4\ln 0.95 = 0.6\cdot 0.09531 + 0.4\cdot(-0.05129) = 0.03667 \ne 0.03922$.
 
 Simple afkast er additive på tværs af aktiver, log-afkast er ikke. Afvigelsen skyldes, at $\ln$ er konkav: $\sum_i w_i\ln(1+R_i) \le \ln\big(\sum_i w_i(1+R_i)\big)$ (Jensens ulighed, uge 4).
 
@@ -1689,10 +1689,10 @@ Simple afkast er additive på tværs af aktiver, log-afkast er ikke. Afvigelsen 
 <details>
 <summary>Løsning 2.3</summary>
 
-Annualiseret middel: $252\cdot 0{,}0005 = 12{,}6\,\%$. Annualiseret volatilitet: $0{,}012\sqrt{252} = 0{,}012\cdot 15{,}875 = 19{,}05\,\%$.
+Annualiseret middel: $252\cdot 0.0005 = 12.6\,\%$. Annualiseret volatilitet: $0.012\sqrt{252} = 0.012\cdot 15.875 = 19.05\,\%$.
 
-Metode 1: $SR = (0{,}126 - 0{,}02)/0{,}1905 = 0{,}556$.
-Metode 2: daglig $r_f = 0{,}02/252 = 0{,}0000794$, så $SR_{\text{dag}} = (0{,}0005 - 0{,}0000794)/0{,}012 = 0{,}03505$ og $SR_{\text{ann}} = 0{,}03505\cdot\sqrt{252} = 0{,}556$.
+Metode 1: $SR = (0.126 - 0.02)/0.1905 = 0.556$.
+Metode 2: daglig $r_f = 0.02/252 = 0.0000794$, så $SR_{\text{dag}} = (0.0005 - 0.0000794)/0.012 = 0.03505$ og $SR_{\text{ann}} = 0.03505\cdot\sqrt{252} = 0.556$.
 
 De to metoder giver præcis det samme. Antagelsen er, at de daglige afkast er iid (ingen autokorrelation, konstant fordeling), så middelværdien skalerer med 252 og variansen med 252.
 
@@ -1701,11 +1701,11 @@ De to metoder giver præcis det samme. Antagelsen er, at de daglige afkast er ii
 <details>
 <summary>Løsning 2.4</summary>
 
-(a) Naivt: dag 2: $198/200 - 1 = -1{,}00\,\%$; dag 3: $101/198 - 1 = -48{,}99\,\%$. Det ligner et krak.
+(a) Naivt: dag 2: $198/200 - 1 = -1.00\,\%$; dag 3: $101/198 - 1 = -48.99\,\%$. Det ligner et krak.
 
-(b) Dag 2: $(198 + 4)/200 - 1 = +1{,}00\,\%$. Dag 3: én gammel aktie er blevet til to nye, så værdien af én gammel aktie er $2\cdot 101 = 202$, og afkastet er $202/198 - 1 = +2{,}02\,\%$.
+(b) Dag 2: $(198 + 4)/200 - 1 = +1.00\,\%$. Dag 3: én gammel aktie er blevet til to nye, så værdien af én gammel aktie er $2\cdot 101 = 202$, og afkastet er $202/198 - 1 = +2.02\,\%$.
 
-(c) Efter dag 2 har du 1 aktie (198 kr.) og 4 kr. kontant; geninvesteret giver det $202/198 = 1{,}0202$ aktier. Efter splittet er det $2{,}0404$ aktier à 101 kr. $= 206{,}08$ kr. Samlet afkast: $206{,}08/200 - 1 = 3{,}04\,\%$, præcis lig $1{,}01\cdot 1{,}0202 - 1$. Uden geninvestering ville man have $202 + 4 = 206$ kr., dvs. $3{,}00\,\%$.
+(c) Efter dag 2 har du 1 aktie (198 kr.) og 4 kr. kontant; geninvesteret giver det $202/198 = 1.0202$ aktier. Efter splittet er det $2.0404$ aktier à 101 kr. $= 206.08$ kr. Samlet afkast: $206.08/200 - 1 = 3.04\,\%$, præcis lig $1.01\cdot 1.0202 - 1$. Uden geninvestering ville man have $202 + 4 = 206$ kr., dvs. $3.00\,\%$.
 
 </details>
 
@@ -1718,16 +1718,16 @@ De to metoder giver præcis det samme. Antagelsen er, at de daglige afkast er ii
 |---|---|---|---|
 | 0 | 100 | 100 | 0 |
 | 1 | 120 | 120 | 0 |
-| 2 | 90 | 120 | 25,0 % |
-| 3 | 110 | 120 | 8,3 % |
+| 2 | 90 | 120 | 25.0 % |
+| 3 | 110 | 120 | 8.3 % |
 | 4 | 130 | 130 | 0 |
-| 5 | 80 | 130 | 38,5 % |
-| 6 | 100 | 130 | 23,1 % |
+| 5 | 80 | 130 | 38.5 % |
+| 6 | 100 | 130 | 23.1 % |
 | 7 | 140 | 140 | 0 |
 
-$MDD = 1 - 80/130 = 38{,}46\,\%$ (fra toppen 130 til bunden 80). Bemærk, at det *ikke* er afstanden mellem den globale top (140) og den globale bund (80), fordi bunden kom før toppen.
+$MDD = 1 - 80/130 = 38.46\,\%$ (fra toppen 130 til bunden 80). Bemærk, at det *ikke* er afstanden mellem den globale top (140) og den globale bund (80), fordi bunden kom før toppen.
 
-(b) $130/80 - 1 = 62{,}5\,\%$.
+(b) $130/80 - 1 = 62.5\,\%$.
 
 (c) Efter tabet er formuen $1-L$. Vi skal finde $x$ med $(1-L)(1+x) = 1$, dvs. $x = \frac{1}{1-L} - 1 = \frac{L}{1-L}$. Funktionen er konveks og går mod uendelig for $L\to 1$: $-20\,\%$ kræver $+25\,\%$, $-50\,\%$ kræver $+100\,\%$, $-90\,\%$ kræver $+900\,\%$. Med gearing ganges tabene op, og en tilstrækkelig stor drawdown udløser margin calls eller tvangslukning, før man når at komme tilbage.
 
@@ -1736,27 +1736,27 @@ $MDD = 1 - 80/130 = 38{,}46\,\%$ (fra toppen 130 til bunden 80). Bemærk, at det
 <details>
 <summary>Løsning 2.6</summary>
 
-(a) $A = 0$ og $G = \sqrt{1{,}2\cdot 0{,}8} - 1 = \sqrt{0{,}96} - 1 = -2{,}02\,\%$. Med $\hat\sigma = 0{,}20$ er $\hat\sigma^2/2 = 0{,}02$, så $A - G = 2{,}02\,\% \approx 2\,\%$. ✓
+(a) $A = 0$ og $G = \sqrt{1.2\cdot 0.8} - 1 = \sqrt{0.96} - 1 = -2.02\,\%$. Med $\hat\sigma = 0.20$ er $\hat\sigma^2/2 = 0.02$, så $A - G = 2.02\,\% \approx 2\,\%$. ✓
 
 (b) Tallene $x_t = 1 + R_t$ er positive. AM–GM giver $\big(\prod_t x_t\big)^{1/T} \le \frac1T\sum_t x_t$, dvs. $1+G \le 1+A$. Lighed gælder, netop når alle $x_t$ er ens.
 
-(c) Indekset: hvert par af dage giver faktoren $1{,}02\cdot 0{,}98 = 0{,}9996$; efter 126 par: $0{,}9996^{126} = 0{,}9508$, et tab på 4,9 %. Det gearede produkt: $1{,}04\cdot 0{,}96 = 0{,}9984$ pr. par og $0{,}9984^{126} = 0{,}8173$, et tab på 18,3 % — næsten fire gange indeksets tab, ikke to gange. Forklaring: dagligt er $A = 0$ for begge, men drag $\approx \sigma^2/2$ vokser med kvadratet af gearingen ($0{,}02^2/2 = 0{,}0002$ mod $0{,}04^2/2 = 0{,}0008$ pr. dag). Produkter med daglig gearing er derfor dårligt egnede til at holde længe i volatile markeder — en konkret gearingsrisiko.
+(c) Indekset: hvert par af dage giver faktoren $1.02\cdot 0.98 = 0.9996$; efter 126 par: $0.9996^{126} = 0.9508$, et tab på 4.9 %. Det gearede produkt: $1.04\cdot 0.96 = 0.9984$ pr. par og $0.9984^{126} = 0.8173$, et tab på 18.3 % — næsten fire gange indeksets tab, ikke to gange. Forklaring: dagligt er $A = 0$ for begge, men drag $\approx \sigma^2/2$ vokser med kvadratet af gearingen ($0.02^2/2 = 0.0002$ mod $0.04^2/2 = 0.0008$ pr. dag). Produkter med daglig gearing er derfor dårligt egnede til at holde længe i volatile markeder — en konkret gearingsrisiko.
 
 </details>
 
 <details>
 <summary>Løsning 2.7</summary>
 
-(a) $\sigma_p^2 = 0{,}25\cdot 0{,}04 + 0{,}25\cdot 0{,}09 + 2\cdot 0{,}25\cdot\rho\cdot 0{,}2\cdot 0{,}3 = 0{,}0325 + 0{,}03\rho$.
+(a) $\sigma_p^2 = 0.25\cdot 0.04 + 0.25\cdot 0.09 + 2\cdot 0.25\cdot\rho\cdot 0.2\cdot 0.3 = 0.0325 + 0.03\rho$.
 
 | $\rho$ | $\sigma_p^2$ | $\sigma_p$ |
 |---|---|---|
-| 1 | 0,0625 | 25,0 % |
-| 0,3 | 0,0415 | 20,4 % |
-| 0 | 0,0325 | 18,0 % |
-| −1 | 0,0025 | 5,0 % |
+| 1 | 0.0625 | 25.0 % |
+| 0.3 | 0.0415 | 20.4 % |
+| 0 | 0.0325 | 18.0 % |
+| −1 | 0.0025 | 5.0 % |
 
-(b) For $\rho = -1$ er $\sigma_p^2 = (w_1\sigma_1 - w_2\sigma_2)^2$, som er 0, når $0{,}2\,w_1 = 0{,}3\,(1-w_1)$, dvs. $w_1 = 0{,}3/0{,}5 = 0{,}6$.
+(b) For $\rho = -1$ er $\sigma_p^2 = (w_1\sigma_1 - w_2\sigma_2)^2$, som er 0, når $0.2\,w_1 = 0.3\,(1-w_1)$, dvs. $w_1 = 0.3/0.5 = 0.6$.
 
 (c) Da $\rho\le 1$ og $w_1w_2\sigma_1\sigma_2\ge 0$, er $\sigma_p^2 \le w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_1\sigma_2 = (w_1\sigma_1 + w_2\sigma_2)^2$. Tag kvadratrod. Porteføljens risiko er altså aldrig større end det vægtede gennemsnit af risiciene — og strengt mindre, når $\rho<1$ og begge vægte er positive. Det er diversifikationsgevinsten.
 
@@ -1765,13 +1765,13 @@ $MDD = 1 - 80/130 = 38{,}46\,\%$ (fra toppen 130 til bunden 80). Bemærk, at det
 <details>
 <summary>Løsning 2.8</summary>
 
-(a) $\mu = 0{,}99\cdot 0{,}01 + 0{,}01\cdot(-0{,}20) = 0{,}0079$. Afvigelserne fra middelværdien er $0{,}0021$ og $-0{,}2079$.
-$\sigma^2 = 0{,}99\cdot 0{,}0021^2 + 0{,}01\cdot 0{,}2079^2 = 0{,}00043659$, så $\sigma = 2{,}089\,\%$.
-Skævhed: $\big(0{,}99\cdot 0{,}0021^3 + 0{,}01\cdot(-0{,}2079)^3\big)/\sigma^3 = -9{,}85$. Kurtosis: $\big(0{,}99\cdot 0{,}0021^4 + 0{,}01\cdot 0{,}2079^4\big)/\sigma^4 = 98{,}0$ (overskudskurtosis 95,0). Til sammenligning har normalfordelingen 0 og 3.
+(a) $\mu = 0.99\cdot 0.01 + 0.01\cdot(-0.20) = 0.0079$. Afvigelserne fra middelværdien er $0.0021$ og $-0.2079$.
+$\sigma^2 = 0.99\cdot 0.0021^2 + 0.01\cdot 0.2079^2 = 0.00043659$, så $\sigma = 2.089\,\%$.
+Skævhed: $\big(0.99\cdot 0.0021^3 + 0.01\cdot(-0.2079)^3\big)/\sigma^3 = -9.85$. Kurtosis: $\big(0.99\cdot 0.0021^4 + 0.01\cdot 0.2079^4\big)/\sigma^4 = 98.0$ (overskudskurtosis 95.0). Til sammenligning har normalfordelingen 0 og 3.
 
-(b) $SR_{\text{md}} = 0{,}0079/0{,}02089 = 0{,}378$ og $SR_{\text{ann}} = 0{,}378\sqrt{12} = 1{,}31$ — det ser flot ud.
+(b) $SR_{\text{md}} = 0.0079/0.02089 = 0.378$ og $SR_{\text{ann}} = 0.378\sqrt{12} = 1.31$ — det ser flot ud.
 
-(c) $P(\text{ingen tabsmåned på 36 md.}) = 0{,}99^{36} = 0{,}696$. I 70 % af tilfældene viser en 3-årig track record kun $+1\,\%$-måneder: spredning 0 og en "uendelig" Sharpe ratio. $P(\text{mindst ét krak på 60 md.}) = 1 - 0{,}99^{60} = 45{,}3\,\%$. Pointen: Sharpe ratio og en kort historik fanger slet ikke hale-risikoen. Bruger man desuden gearing, kan én krakmåned udslette kontoen. Man skal også se på skævhed, værste udfald og stresstests (uge 16).
+(c) $P(\text{ingen tabsmåned på 36 md.}) = 0.99^{36} = 0.696$. I 70 % af tilfældene viser en 3-årig track record kun $+1\,\%$-måneder: spredning 0 og en "uendelig" Sharpe ratio. $P(\text{mindst ét krak på 60 md.}) = 1 - 0.99^{60} = 45.3\,\%$. Pointen: Sharpe ratio og en kort historik fanger slet ikke hale-risikoen. Bruger man desuden gearing, kan én krakmåned udslette kontoen. Man skal også se på skævhed, værste udfald og stresstests (uge 16).
 
 </details>
 
@@ -1782,7 +1782,7 @@ Skævhed: $\big(0{,}99\cdot 0{,}0021^3 + 0{,}01\cdot(-0{,}2079)^3\big)/\sigma^3 
 
 (b) $\operatorname{Var}\big(\sum_t r_t\big) = \sum_t\sum_s\operatorname{Cov}(r_t,r_s)$. Der er $T$ diagonalled med værdien $\sigma^2$ og $2(T-1)$ ordnede nabopar $(t, t\pm 1)$ med værdien $\rho\sigma^2$. Alle andre led er 0. I alt $\sigma^2\big(T + 2(T-1)\rho\big)$.
 
-(c) $252 + 2\cdot 251\cdot 0{,}1 = 302{,}2$, så den sande årlige spredning er $\sigma\sqrt{302{,}2} = 17{,}38\,\sigma$ i stedet for $15{,}87\,\sigma$. Middelværdien er uændret, så $\sqrt{252}$-reglen overvurderer Sharpe ratio med faktoren $17{,}38/15{,}87 = 1{,}095$, dvs. ca. 9,5 %. Positiv autokorrelation (fx fra illikvide aktiver med "udglattede" priser) får altså en strategi til at se bedre ud, end den er.
+(c) $252 + 2\cdot 251\cdot 0.1 = 302.2$, så den sande årlige spredning er $\sigma\sqrt{302.2} = 17.38\,\sigma$ i stedet for $15.87\,\sigma$. Middelværdien er uændret, så $\sqrt{252}$-reglen overvurderer Sharpe ratio med faktoren $17.38/15.87 = 1.095$, dvs. ca. 9.5 %. Positiv autokorrelation (fx fra illikvide aktiver med "udglattede" priser) får altså en strategi til at se bedre ud, end den er.
 
 </details>
 
@@ -1795,7 +1795,7 @@ g(f) = \big(1 + fa\big)\Big(1 - \frac{fa}{u}\Big), \qquad a = u - 1 > 0 .
 $$
 $g'(f) = a\big(1 - \frac{fa}{u}\big) - \frac au(1 + fa) = a - \frac au - \frac{2fa^2}{u}$. Sæt $g'(f) = 0$: $\frac{2fa^2}{u} = \frac{a(u-1)}{u} = \frac{a^2}{u}$, så $f^* = 1/2$. Da $g''(f) = -2a^2/u < 0$, er det et maksimum, og det afhænger ikke af $u$.
 
-(b) Med $u=2$, $f = 1/2$: op giver $1 + 0{,}5 = 1{,}5$, ned giver $1 - 0{,}25 = 0{,}75$. $g = 1{,}125$, og vækstraten pr. periode er $\sqrt{1{,}125} - 1 = 6{,}07\,\%$, selvom aktivet selv ikke vokser! Porteføljens afkast er $+50\,\%$ og $-25\,\%$: $A = 12{,}5\,\%$ og $\hat\sigma = 37{,}5\,\%$, så $A - \hat\sigma^2/2 = 0{,}125 - 0{,}0703 = 5{,}47\,\%$. Approksimationen er rimelig, men ikke præcis, fordi afkastene er store (restleddet i Taylorudviklingen er ikke lille).
+(b) Med $u=2$, $f = 1/2$: op giver $1 + 0.5 = 1.5$, ned giver $1 - 0.25 = 0.75$. $g = 1.125$, og vækstraten pr. periode er $\sqrt{1.125} - 1 = 6.07\,\%$, selvom aktivet selv ikke vokser! Porteføljens afkast er $+50\,\%$ og $-25\,\%$: $A = 12.5\,\%$ og $\hat\sigma = 37.5\,\%$, så $A - \hat\sigma^2/2 = 0.125 - 0.0703 = 5.47\,\%$. Approksimationen er rimelig, men ikke præcis, fordi afkastene er store (restleddet i Taylorudviklingen er ikke lille).
 
 (c) Rebalancering sælger efter stigninger og køber efter fald. Det reducerer porteføljens varians og dermed dens drag. Men gevinsten opstår her kun, fordi aktivet har *perfekt mean reversion* og der ingen omkostninger er. Rigtige priser kan trende længe (så rebalancering koster vækst), hver rebalancering koster spread og kurtage (uge 1), og man kender ikke $u$. $f^*$ er et eksempel på at maksimere den forventede log-vækst — Kelly-kriteriet (uge 3 og 16).
 
@@ -1874,8 +1874,8 @@ skævhed, ex.kurt.  0.080 0.037
 ```
 
 Fortolkning:
-- Forskellen mellem aritmetisk middel og log-middel er $0{,}0200 = \hat\sigma^2/2$ — volatility drag præcis som forudsagt. (Det geometriske middel er $e^{\text{log-middel}} - 1$.)
-- Volatiliteten rammes næsten præcist (0,1999 mod den sande 0,20), men middelafkastet er *negativt*, selvom det sande $\mu$ er 8 %! Standardfejlen på et årligt middel estimeret over 5 år er ca. $0{,}20/\sqrt5 = 8{,}9\,\%$. Middelværdier er meget svære at estimere, volatilitet er let — en central lektie for hele planen (uge 5 og 10).
+- Forskellen mellem aritmetisk middel og log-middel er $0.0200 = \hat\sigma^2/2$ — volatility drag præcis som forudsagt. (Det geometriske middel er $e^{\text{log-middel}} - 1$.)
+- Volatiliteten rammes næsten præcist (0.1999 mod den sande 0.20), men middelafkastet er *negativt*, selvom det sande $\mu$ er 8 %! Standardfejlen på et årligt middel estimeret over 5 år er ca. $0.20/\sqrt5 = 8.9\,\%$. Middelværdier er meget svære at estimere, volatilitet er let — en central lektie for hele planen (uge 5 og 10).
 - En max drawdown på 56 % i en aktie med positiv forventning viser, hvor hårde de enkelte stier kan være.
 - Skævhed og overskudskurtosis er tæt på 0, fordi vi har simuleret normalfordelte log-afkast. Rigtige data har fede haler.
 
@@ -1927,7 +1927,7 @@ andel med negativt afkast, alle:        0.188
 andel med negativt afkast, overlevende: 0.087
 ```
 
-Alle fonde er identiske og uden evner, men databasen med de overlevende viser ca. 1,5 procentpoint mere i årligt afkast og under halvt så mange tabere. (For at kunne sammenligne lader simulationen de lukkede fondes stier fortsætte "i skyggen".) I rigtige fondsdatabaser forsvinder dårlige fonde netop sådan — og en backtest på dagens aktieunivers har samme problem.
+Alle fonde er identiske og uden evner, men databasen med de overlevende viser ca. 1.5 procentpoint mere i årligt afkast og under halvt så mange tabere. (For at kunne sammenligne lader simulationen de lukkede fondes stier fortsætte "i skyggen".) I rigtige fondsdatabaser forsvinder dårlige fonde netop sådan — og en backtest på dagens aktieunivers har samme problem.
 
 </details>
 
@@ -1964,7 +1964,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 3 — Sandsynlighed I
 
 > **Læringsmål:** Arbejde præcist med sandsynlighedsrum, betinget sandsynlighed, Bayes' regel og uafhængighed — og undgå base rate-fejlen. Kende Bernoulli-, binomial- og geometrisk fordeling, regne forventning (med linearitet og indikatortricket) og varians, og bruge first-step-analyse på gambler's ruin og klassiske interviewopgaver.
-> **Tidsforbrug:** ca. 2,5 t video (+ 1,7 t valgfri) · ca. 6 t øvelser
+> **Tidsforbrug:** ca. 2.5 t video (+ 1.7 t valgfri) · ca. 6 t øvelser
 > **Forudsætninger:** Foundations (mængder, funktioner, induktion); uge 2 (volatility drag); HTX-sandsynlighed (binomialfordelingen).
 
 ### 📺 Se
@@ -2009,9 +2009,9 @@ P(B_j\mid A) = \frac{P(A\mid B_j)\,P(B_j)}{\sum_k P(A\mid B_k)\,P(B_k)} .
 $$
 I *odds-form*: $\dfrac{P(B\mid A)}{P(B^c\mid A)} = \dfrac{P(A\mid B)}{P(A\mid B^c)}\cdot\dfrac{P(B)}{P(B^c)}$, dvs. posterior-odds = likelihood ratio × prior-odds. Odds-formen er praktisk, når der kommer flere uafhængige beviser: man ganger blot med en likelihood ratio for hvert.
 
-*Regneeksempel (base rate):* 10 % af aktierne i et univers ender med at slå markedet med mere end 20 procentpoint næste år ("vindere"). En model markerer 70 % af vinderne, men også 30 % af de andre. Så er $P(\text{markeret}) = 0{,}7\cdot 0{,}1 + 0{,}3\cdot 0{,}9 = 0{,}34$, og
+*Regneeksempel (base rate):* 10 % af aktierne i et univers ender med at slå markedet med mere end 20 procentpoint næste år ("vindere"). En model markerer 70 % af vinderne, men også 30 % af de andre. Så er $P(\text{markeret}) = 0.7\cdot 0.1 + 0.3\cdot 0.9 = 0.34$, og
 $$
-P(\text{vinder}\mid\text{markeret}) = \frac{0{,}07}{0{,}34} = 20{,}6\,\% .
+P(\text{vinder}\mid\text{markeret}) = \frac{0.07}{0.34} = 20.6\,\% .
 $$
 Selvom modellen "fanger 70 %", er fire ud af fem markerede aktier ikke vindere. Det lave grundniveau (base rate) dominerer. At overse det kaldes *base rate-fejlen* (base rate fallacy).
 
@@ -2032,7 +2032,7 @@ Pas på: bøger bruger forskellige konventioner for den geometriske fordeling (B
 
 *First-step-analyse:* for $X\sim\text{FS}(p)$ betinger man på første forsøg: med sandsynlighed $p$ er man færdig efter 1 forsøg, ellers er man tilbage ved start med ét forsøg brugt. Så $E[X] = 1 + q\,E[X]$, dvs. $E[X] = 1/p$.
 
-**6. Varians.** $\operatorname{Var}(X) = E[(X-\mu)^2] = E[X^2] - (E[X])^2$ og $\operatorname{Var}(aX+b) = a^2\operatorname{Var}(X)$. For *uafhængige* $X,Y$ er $\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y)$ (generelt kommer $2\operatorname{Cov}(X,Y)$ til, uge 4). Derfor er $\operatorname{Var}(\text{Bin}(n,p)) = npq$. *Eksempel:* ved 252 uafhængige handler, der hver giver gevinst med sandsynlighed 0,53, er antallet af vindende handler i gennemsnit $133{,}6$ med spredning $\sqrt{252\cdot 0{,}53\cdot 0{,}47} = 7{,}9$.
+**6. Varians.** $\operatorname{Var}(X) = E[(X-\mu)^2] = E[X^2] - (E[X])^2$ og $\operatorname{Var}(aX+b) = a^2\operatorname{Var}(X)$. For *uafhængige* $X,Y$ er $\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y)$ (generelt kommer $2\operatorname{Cov}(X,Y)$ til, uge 4). Derfor er $\operatorname{Var}(\text{Bin}(n,p)) = npq$. *Eksempel:* ved 252 uafhængige handler, der hver giver gevinst med sandsynlighed 0.53, er antallet af vindende handler i gennemsnit $133.6$ med spredning $\sqrt{252\cdot 0.53\cdot 0.47} = 7.9$.
 
 **7. Gambler's ruin.** En spiller har $i$ enheder og vinder eller taber 1 enhed pr. runde med sandsynlighed $p$ hhv. $q$. Spillet stopper ved 0 (ruin) eller $N$. Lad $p_i = P(\text{nå } N \text{ før } 0)$. First-step-analyse giver
 $$
@@ -2044,7 +2044,7 @@ p_i = \frac{1 - \varrho^{\,i}}{1 - \varrho^{\,N}} \quad (p\ne q), \qquad p_i = \
 $$
 Lader man $N\to\infty$ (modparten — kasinoet eller markedet — har ubegrænset kapital), bliver ruinsandsynligheden $1$ for $p\le\tfrac12$ og $\varrho^{\,i}$ for $p>\tfrac12$.
 
-*Fortolkning som risiko for ruin (risk of ruin):* $i$ er din kapital målt i positionsstørrelser. Med en reel fordel $p = 0{,}51$ og en kapital på 10 positioner er ruinsandsynligheden $(0{,}49/0{,}51)^{10} = 67\,\%$; med 100 positioner kun $1{,}8\,\%$. Positionsstørrelsen i forhold til kapitalen betyder mere end selve fordelen. Modellen er stærkt forenklet (faste indsatser, uafhængige handler, ingen omkostninger), men pointen holder: selv en strategi med positiv forventning kan ruinere en for stor position.
+*Fortolkning som risiko for ruin (risk of ruin):* $i$ er din kapital målt i positionsstørrelser. Med en reel fordel $p = 0.51$ og en kapital på 10 positioner er ruinsandsynligheden $(0.49/0.51)^{10} = 67\,\%$; med 100 positioner kun $1.8\,\%$. Positionsstørrelsen i forhold til kapitalen betyder mere end selve fordelen. Modellen er stærkt forenklet (faste indsatser, uafhængige handler, ingen omkostninger), men pointen holder: selv en strategi med positiv forventning kan ruinere en for stor position.
 
 **8. Interviewopgaver: ventetid på mønstre.** Kast en fair mønt (H = krone, T = plat), til mønstret HH (to gange krone i træk) optræder. Tilstande: "start" og "har lige set H". Med $e_0$ og $e_H$ som forventet antal resterende kast:
 $$
@@ -2067,29 +2067,29 @@ For HT er svaret 4: man venter på et H ($E = 2$) og derefter på et T ($E = 2$)
 
 **3.2** ★ — Et krak indtræffer i en given måned med sandsynlighed 2 %. En indikator giver alarm i 90 % af krakmånederne og i 10 % af de øvrige måneder. (a) Find $P(\text{alarm})$ og $P(\text{krak}\mid\text{alarm})$. (b) Hvor mange falske alarmer er der i gennemsnit pr. ægte alarm? (c) En anden indikator med samme egenskaber, betinget uafhængig af den første givet krak/ikke-krak, giver også alarm. Find $P(\text{krak}\mid\text{begge alarmer})$ med odds-formen.
 
-**3.3** ★ — En strategi rammer rigtigt i hver handel med sandsynlighed $0{,}55$, uafhængigt af andre handler. (a) Find forventning og varians af antallet af vindere $X$ i 10 handler. (b) Find $P(X\ge 7)$. (c) Find $P(X\ge 7)$, hvis strategien i virkeligheden er et møntkast ($p = 0{,}5$). Hvad siger det om at vurdere en strategi ud fra 10 handler?
+**3.3** ★ — En strategi rammer rigtigt i hver handel med sandsynlighed $0.55$, uafhængigt af andre handler. (a) Find forventning og varians af antallet af vindere $X$ i 10 handler. (b) Find $P(X\ge 7)$. (c) Find $P(X\ge 7)$, hvis strategien i virkeligheden er et møntkast ($p = 0.5$). Hvad siger det om at vurdere en strategi ud fra 10 handler?
 
-**3.4** ★★ — ("Han forudsagde de sidste 3 krak.") 1000 analytikere uden evner forudsiger hvert år uafhængigt et krak med sandsynlighed 0,2. I en 20-årig periode var der 3 krak. (a) Hvad er sandsynligheden for, at en bestemt analytiker forudsagde alle 3? Hvor mange af de 1000 forventer man har gjort det, og hvad er sandsynligheden for, at mindst én har? (b) Hvor mange falske alarmer har en sådan analytiker i gennemsnit haft i de 17 andre år? (c) Antag, at 1 % af analytikerne har ægte evner og forudsiger et krak med sandsynlighed 0,9 i krakår. Find $P(\text{evner}\mid\text{forudsagde alle 3})$ (se kun på krakårene). (d) Hvad mangler i analysen i (c), og hvad har det med overlevelsesbias (uge 2) at gøre?
+**3.4** ★★ — ("Han forudsagde de sidste 3 krak.") 1000 analytikere uden evner forudsiger hvert år uafhængigt et krak med sandsynlighed 0.2. I en 20-årig periode var der 3 krak. (a) Hvad er sandsynligheden for, at en bestemt analytiker forudsagde alle 3? Hvor mange af de 1000 forventer man har gjort det, og hvad er sandsynligheden for, at mindst én har? (b) Hvor mange falske alarmer har en sådan analytiker i gennemsnit haft i de 17 andre år? (c) Antag, at 1 % af analytikerne har ægte evner og forudsiger et krak med sandsynlighed 0.9 i krakår. Find $P(\text{evner}\mid\text{forudsagde alle 3})$ (se kun på krakårene). (d) Hvad mangler i analysen i (c), og hvad har det med overlevelsesbias (uge 2) at gøre?
 
-**3.5** ★★ — (Indikatortricket.) (a) $n$ personer har hver en hat, og hattene fordeles tilfældigt (uniform tilfældig permutation). Find det forventede antal personer, der får deres egen hat. (b) $X_1,\dots,X_n$ er iid kontinuerte dagsafkast (ingen sammenfald). Dag $k$ er en "rekorddag", hvis $X_k > X_j$ for alle $j<k$ (dag 1 er altid rekord). Vis, at $P(\text{dag } k \text{ er rekord}) = 1/k$, og find det forventede antal rekorddage på et år med 252 dage. (c) Vis med indikatorer, at $\operatorname{Var}(\text{Bin}(n,p)) = np(1-p)$, og beregn middelværdi og spredning af antallet af vindere i 252 uafhængige handler med $p = 0{,}53$.
+**3.5** ★★ — (Indikatortricket.) (a) $n$ personer har hver en hat, og hattene fordeles tilfældigt (uniform tilfældig permutation). Find det forventede antal personer, der får deres egen hat. (b) $X_1,\dots,X_n$ er iid kontinuerte dagsafkast (ingen sammenfald). Dag $k$ er en "rekorddag", hvis $X_k > X_j$ for alle $j<k$ (dag 1 er altid rekord). Vis, at $P(\text{dag } k \text{ er rekord}) = 1/k$, og find det forventede antal rekorddage på et år med 252 dage. (c) Vis med indikatorer, at $\operatorname{Var}(\text{Bin}(n,p)) = np(1-p)$, og beregn middelværdi og spredning af antallet af vindere i 252 uafhængige handler med $p = 0.53$.
 
-**3.6** ★★ — (Gambler's ruin.) (a) Udled formlen for $p_i$: vis ud fra $p_i = p\,p_{i+1} + q\,p_{i-1}$, at $p_{i+1} - p_i = \varrho\,(p_i - p_{i-1})$ med $\varrho = q/p$, og teleskopér. (b) Beregn $p_{10}$ for $N = 20$ og $p\in\{0{,}49;\ 0{,}50;\ 0{,}51\}$. (c) En kasinospiller med $p = 0{,}49$ starter med 10 og stopper ved 100. Hvad er hans gevinstsandsynlighed? (d) Find ruinsandsynligheden for $N\to\infty$ med $p = 0{,}51$ og $i = 10$ hhv. $i = 100$.
+**3.6** ★★ — (Gambler's ruin.) (a) Udled formlen for $p_i$: vis ud fra $p_i = p\,p_{i+1} + q\,p_{i-1}$, at $p_{i+1} - p_i = \varrho\,(p_i - p_{i-1})$ med $\varrho = q/p$, og teleskopér. (b) Beregn $p_{10}$ for $N = 20$ og $p\in\{0.49;\ 0.50;\ 0.51\}$. (c) En kasinospiller med $p = 0.49$ starter med 10 og stopper ved 100. Hvad er hans gevinstsandsynlighed? (d) Find ruinsandsynligheden for $N\to\infty$ med $p = 0.51$ og $i = 10$ hhv. $i = 100$.
 
-**3.7** ★★ — (Positionsstørrelse og risiko for ruin.) En trader har 100.000 kr. og en strategi, hvor hver handel uafhængigt vinder eller taber det samme beløb $b$ med $p = 0{,}53$. Der er intet mål ($N = \infty$). (a) Find ruinsandsynligheden for $b = 10.000$, $5.000$ og $2.000$ kr. (b) Find den forventede gevinst pr. handel i hvert tilfælde. (c) Diskutér afvejningen, og nævn mindst to måder, modellen er urealistisk på. (Bruges i uge 16.)
+**3.7** ★★ — (Positionsstørrelse og risiko for ruin.) En trader har 100,000 kr. og en strategi, hvor hver handel uafhængigt vinder eller taber det samme beløb $b$ med $p = 0.53$. Der er intet mål ($N = \infty$). (a) Find ruinsandsynligheden for $b = 10000$, $5000$ og $2000$ kr. (b) Find den forventede gevinst pr. handel i hvert tilfælde. (c) Diskutér afvejningen, og nævn mindst to måder, modellen er urealistisk på. (Bruges i uge 16.)
 
-**3.8** ★★ — (Mønt-mønstre.) En mønt viser krone (H) med sandsynlighed $p$. (a) Vis med first-step-analyse, at det forventede antal kast til første HH er $(1+p)/p^2$, og til første HT er $1/(pq)$. Kontrollér for $p = 1/2$. (b) Beregn begge for $p = 0{,}6$. (c) For en fair mønt: hvad er sandsynligheden for, at HH optræder før TH? (Hint: hvad skal de to første kast være?)
+**3.8** ★★ — (Mønt-mønstre.) En mønt viser krone (H) med sandsynlighed $p$. (a) Vis med first-step-analyse, at det forventede antal kast til første HH er $(1+p)/p^2$, og til første HT er $1/(pq)$. Kontrollér for $p = 1/2$. (b) Beregn begge for $p = 0.6$. (c) For en fair mønt: hvad er sandsynligheden for, at HH optræder før TH? (Hint: hvad skal de to første kast være?)
 
 **3.9** ★★★ — (Spillets varighed.) Lad $D_i$ være det forventede antal runder i gambler's ruin fra $i$ (stop ved 0 eller $N$). (a) Begrund, at $D_i = 1 + p\,D_{i+1} + q\,D_{i-1}$ med $D_0 = D_N = 0$. (b) Vis, at $D_i = i(N-i)$ for $p = 1/2$. (c) Vis for $p\ne q$, at
 $$
 D_i = \frac{i}{q-p} - \frac{N}{q-p}\cdot\frac{1-\varrho^{\,i}}{1-\varrho^{\,N}}, \qquad \varrho = q/p .
 $$
-(d) Beregn $D_{10}$ for $N = 20$ og $p\in\{0{,}49;\ 0{,}5\}$. Hvad sker der med $D_i$ for $p = 1/2$, når $N\to\infty$ — selvom ruin er sikker?
+(d) Beregn $D_{10}$ for $N = 20$ og $p\in\{0.49;\ 0.5\}$. Hvad sker der med $D_i$ for $p = 1/2$, når $N\to\infty$ — selvom ruin er sikker?
 
-**3.10** ★★★ — (Kelly-kriteriet, første møde.) Du kan gentagne gange satse en brøkdel $f\in[0,1)$ af din formue på et væddemål, der med sandsynlighed $p$ giver $+f$ og ellers $-f$ (dvs. $W_{k} = W_{k-1}(1 + fX_k)$ med $X_k = \pm 1$). (a) Vis, at $\frac1n\ln(W_n/W_0)$ er et gennemsnit af iid variable med middelværdi $g(f) = p\ln(1+f) + q\ln(1-f)$. (Ifølge store tals lov, uge 4, går gennemsnittet mod $g(f)$.) (b) Vis, at $g$ maksimeres af $f^* = p - q$, og vis $g(f)\approx f(p-q) - f^2/2$. Sammenlign med $A - \sigma^2/2$ fra uge 2. (c) For $p = 0{,}53$: beregn $g$ for $f = 0{,}03;\ 0{,}06;\ 0{,}12;\ 0{,}20$ og den typiske (median-)formue efter 1000 væddemål, $W_0e^{1000\,g(f)}$. (d) Hvorfor bør man i praksis satse *mindre* end $f^*$? (Uddybes i uge 16.)
+**3.10** ★★★ — (Kelly-kriteriet, første møde.) Du kan gentagne gange satse en brøkdel $f\in[0,1)$ af din formue på et væddemål, der med sandsynlighed $p$ giver $+f$ og ellers $-f$ (dvs. $W_{k} = W_{k-1}(1 + fX_k)$ med $X_k = \pm 1$). (a) Vis, at $\frac1n\ln(W_n/W_0)$ er et gennemsnit af iid variable med middelværdi $g(f) = p\ln(1+f) + q\ln(1-f)$. (Ifølge store tals lov, uge 4, går gennemsnittet mod $g(f)$.) (b) Vis, at $g$ maksimeres af $f^* = p - q$, og vis $g(f)\approx f(p-q) - f^2/2$. Sammenlign med $A - \sigma^2/2$ fra uge 2. (c) For $p = 0.53$: beregn $g$ for $f = 0.03;\ 0.06;\ 0.12;\ 0.20$ og den typiske (median-)formue efter 1000 væddemål, $W_0e^{1000\,g(f)}$. (d) Hvorfor bør man i praksis satse *mindre* end $f^*$? (Uddybes i uge 16.)
 
-**3.11** ★★ 💻 — Skriv en Monte Carlo-simulation af gambler's ruin og sammenlign den estimerede gevinstsandsynlighed med den eksakte formel for $(p,i,N)\in\{(0{,}5;10;20), (0{,}49;10;20), (0{,}51;10;20), (0{,}51;10;50), (0{,}45;5;10)\}$. Brug 20.000 simulationer pr. tilfælde, `random.seed(2024)`, og angiv to standardfejl $2\sqrt{\hat p(1-\hat p)/n}$.
+**3.11** ★★ 💻 — Skriv en Monte Carlo-simulation af gambler's ruin og sammenlign den estimerede gevinstsandsynlighed med den eksakte formel for $(p,i,N)\in\{(0.5;10;20), (0.49;10;20), (0.51;10;20), (0.51;10;50), (0.45;5;10)\}$. Brug 20,000 simulationer pr. tilfælde, `random.seed(2024)`, og angiv to standardfejl $2\sqrt{\hat p(1-\hat p)/n}$.
 
-**3.12** ★★ 💻 — Simulér ventetiden på HH og på HT med en fair mønt (100.000 gentagelser, `random.seed(11)`), og udskriv gennemsnit og spredning. Estimér også $P(\text{HH før TH})$. Sammenlign med 3.8.
+**3.12** ★★ 💻 — Simulér ventetiden på HH og på HT med en fair mønt (100,000 gentagelser, `random.seed(11)`), og udskriv gennemsnit og spredning. Estimér også $P(\text{HH før TH})$. Sammenlign med 3.8.
 
 **3.13** ★★ 🗣️ — Et nyhedsbrev reklamerer: "Vores model forudsagde de sidste 3 krak — tilmeld dig nu!" Forklar på 10–15 linjer, med begreberne fra denne uge, hvorfor det er svagt bevis. Forklar også, hvorfor det samme problem opstår, når en kvant-forsker afprøver 1000 strategier og kun viser den bedste backtest.
 
@@ -2100,9 +2100,9 @@ $$
 
 (a) $\Omega$ har 36 lige sandsynlige udfald. Sum 7: $(1,6),(2,5),\dots,(6,1)$, dvs. 6 udfald, så $P = 6/36 = 1/6$. Mindst én sekser: $1 - (5/6)^2 = 11/36$. Fællesmængden er $\{(1,6),(6,1)\}$, så
 $$
-P(\text{sum}=7\mid\text{mindst én sekser}) = \frac{2/36}{11/36} = \frac{2}{11} \approx 0{,}182 .
+P(\text{sum}=7\mid\text{mindst én sekser}) = \frac{2/36}{11/36} = \frac{2}{11} \approx 0.182 .
 $$
-Betingelsen *ændrer* sandsynligheden (fra $1/6\approx 0{,}167$), så hændelserne er afhængige.
+Betingelsen *ændrer* sandsynligheden (fra $1/6\approx 0.167$), så hændelserne er afhængige.
 
 (b) $P(\text{to esser}) = \frac{4}{52}\cdot\frac{3}{51} = \frac{1}{221}$. $P(\text{2. es}\mid\text{1. ikke es}) = 4/51$. Total sandsynlighed:
 $$
@@ -2115,25 +2115,25 @@ præcis som for 1. kort — af symmetri.
 <details>
 <summary>Løsning 3.2</summary>
 
-(a) $P(\text{alarm}) = 0{,}9\cdot 0{,}02 + 0{,}1\cdot 0{,}98 = 0{,}018 + 0{,}098 = 0{,}116$ og
+(a) $P(\text{alarm}) = 0.9\cdot 0.02 + 0.1\cdot 0.98 = 0.018 + 0.098 = 0.116$ og
 $$
-P(\text{krak}\mid\text{alarm}) = \frac{0{,}018}{0{,}116} = 15{,}5\,\% .
+P(\text{krak}\mid\text{alarm}) = \frac{0.018}{0.116} = 15.5\,\% .
 $$
-(b) $0{,}098/0{,}018 = 5{,}4$ falske alarmer pr. ægte.
+(b) $0.098/0.018 = 5.4$ falske alarmer pr. ægte.
 
-(c) Prior-odds: $0{,}02/0{,}98 = 0{,}0204$. Likelihood ratio for én alarm: $0{,}9/0{,}1 = 9$. Med to betinget uafhængige alarmer: posterior-odds $= 0{,}0204\cdot 9\cdot 9 = 1{,}653$, så $P = 1{,}653/2{,}653 = 62{,}3\,\%$. Bemærk: i praksis er indikatorer sjældent betinget uafhængige (de bygger ofte på de samme data), og så er gevinsten ved den anden alarm meget mindre.
+(c) Prior-odds: $0.02/0.98 = 0.0204$. Likelihood ratio for én alarm: $0.9/0.1 = 9$. Med to betinget uafhængige alarmer: posterior-odds $= 0.0204\cdot 9\cdot 9 = 1.653$, så $P = 1.653/2.653 = 62.3\,\%$. Bemærk: i praksis er indikatorer sjældent betinget uafhængige (de bygger ofte på de samme data), og så er gevinsten ved den anden alarm meget mindre.
 
 </details>
 
 <details>
 <summary>Løsning 3.3</summary>
 
-(a) $X\sim\text{Bin}(10;0{,}55)$: $E[X] = 5{,}5$ og $\operatorname{Var}(X) = 10\cdot 0{,}55\cdot 0{,}45 = 2{,}475$ (spredning 1,57).
+(a) $X\sim\text{Bin}(10;0.55)$: $E[X] = 5.5$ og $\operatorname{Var}(X) = 10\cdot 0.55\cdot 0.45 = 2.475$ (spredning 1.57).
 
-(b) $P(X = k) = \binom{10}{k}0{,}55^k 0{,}45^{10-k}$:
-$k=7$: $0{,}1665$; $k=8$: $0{,}0763$; $k=9$: $0{,}0207$; $k=10$: $0{,}0025$. I alt $P(X\ge 7) = 0{,}2660$.
+(b) $P(X = k) = \binom{10}{k}0.55^k 0.45^{10-k}$:
+$k=7$: $0.1665$; $k=8$: $0.0763$; $k=9$: $0.0207$; $k=10$: $0.0025$. I alt $P(X\ge 7) = 0.2660$.
 
-(c) $P(X\ge 7) = \big(\binom{10}{7}+\binom{10}{8}+\binom{10}{9}+\binom{10}{10}\big)/2^{10} = (120+45+10+1)/1024 = 0{,}1719$.
+(c) $P(X\ge 7) = \big(\binom{10}{7}+\binom{10}{8}+\binom{10}{9}+\binom{10}{10}\big)/2^{10} = (120+45+10+1)/1024 = 0.1719$.
 
 Et rent møntkast giver 7+ rigtige ud af 10 i 17 % af tilfældene; en ægte 55 %-strategi gør det kun i 27 %. Ti handler kan næsten ikke skelne de to — man skal bruge hundredvis eller tusindvis af uafhængige observationer (uge 5).
 
@@ -2142,17 +2142,17 @@ Et rent møntkast giver 7+ rigtige ud af 10 i 17 % af tilfældene; en ægte 55 %
 <details>
 <summary>Løsning 3.4</summary>
 
-(a) $P = 0{,}2^3 = 0{,}008$. Forventet antal: $1000\cdot 0{,}008 = 8$. $P(\text{mindst én}) = 1 - 0{,}992^{1000} = 0{,}9997$. Det er praktisk talt sikkert, at *nogen* "forudsagde de sidste 3 krak" ved rent held.
+(a) $P = 0.2^3 = 0.008$. Forventet antal: $1000\cdot 0.008 = 8$. $P(\text{mindst én}) = 1 - 0.992^{1000} = 0.9997$. Det er praktisk talt sikkert, at *nogen* "forudsagde de sidste 3 krak" ved rent held.
 
-(b) $17\cdot 0{,}2 = 3{,}4$ falske alarmer i gennemsnit.
+(b) $17\cdot 0.2 = 3.4$ falske alarmer i gennemsnit.
 
 (c) Bayes:
 $$
-P(\text{evner}\mid\text{3 af 3}) = \frac{0{,}01\cdot 0{,}9^3}{0{,}01\cdot 0{,}729 + 0{,}99\cdot 0{,}008} = \frac{0{,}00729}{0{,}00729 + 0{,}00792} = 47{,}9\,\% .
+P(\text{evner}\mid\text{3 af 3}) = \frac{0.01\cdot 0.9^3}{0.01\cdot 0.729 + 0.99\cdot 0.008} = \frac{0.00729}{0.00729 + 0.00792} = 47.9\,\% .
 $$
 Selv efter tre ud af tre er det omtrent lige så sandsynligt, at personen er heldig, som at personen har evner.
 
-(d) Analysen ignorerer de falske alarmer: hvis en "dygtig" analytiker også sjældnere giver falske alarmer, bør år uden krak også indgå i likelihood'en, og de 3,4 falske alarmer pr. heldig analytiker tæller imod. Desuden ser vi kun de analytikere, der ramte (dem, der tog fejl, skriver ingen nyhedsbreve) — en udvælgelse præcis som overlevelsesbias.
+(d) Analysen ignorerer de falske alarmer: hvis en "dygtig" analytiker også sjældnere giver falske alarmer, bør år uden krak også indgå i likelihood'en, og de 3.4 falske alarmer pr. heldig analytiker tæller imod. Desuden ser vi kun de analytikere, der ramte (dem, der tog fejl, skriver ingen nyhedsbreve) — en udvælgelse præcis som overlevelsesbias.
 
 </details>
 
@@ -2161,9 +2161,9 @@ Selv efter tre ud af tre er det omtrent lige så sandsynligt, at personen er hel
 
 (a) Lad $I_j$ være indikator for, at person $j$ får sin egen hat. $P(I_j = 1) = 1/n$, så $E[\sum_j I_j] = n\cdot\frac1n = 1$ — uanset $n$, og selvom indikatorerne er afhængige.
 
-(b) Af symmetri er hver af de $k$ første værdier lige sandsynligt den største (der er ingen sammenfald), så $P(\text{dag }k\text{ er rekord}) = 1/k$. Forventet antal rekorder: $\sum_{k=1}^{252} 1/k = H_{252} \approx 6{,}11$ (approksimativt $\ln 252 + 0{,}5772$). Pointe: "rekorddage" er ikke sjældne i ren støj — der kommer i gennemsnit 6 på et år.
+(b) Af symmetri er hver af de $k$ første værdier lige sandsynligt den største (der er ingen sammenfald), så $P(\text{dag }k\text{ er rekord}) = 1/k$. Forventet antal rekorder: $\sum_{k=1}^{252} 1/k = H_{252} \approx 6.11$ (approksimativt $\ln 252 + 0.5772$). Pointe: "rekorddage" er ikke sjældne i ren støj — der kommer i gennemsnit 6 på et år.
 
-(c) $X = \sum_{j=1}^n I_j$ med uafhængige $I_j\sim\text{Bernoulli}(p)$. $\operatorname{Var}(I_j) = E[I_j^2] - p^2 = p - p^2 = p(1-p)$, da $I_j^2 = I_j$. Uafhængighed giver $\operatorname{Var}(X) = np(1-p)$. Med $n = 252$, $p = 0{,}53$: $E[X] = 133{,}56$, $\operatorname{Var}(X) = 62{,}77$, spredning $7{,}92$.
+(c) $X = \sum_{j=1}^n I_j$ med uafhængige $I_j\sim\text{Bernoulli}(p)$. $\operatorname{Var}(I_j) = E[I_j^2] - p^2 = p - p^2 = p(1-p)$, da $I_j^2 = I_j$. Uafhængighed giver $\operatorname{Var}(X) = np(1-p)$. Med $n = 252$, $p = 0.53$: $E[X] = 133.56$, $\operatorname{Var}(X) = 62.77$, spredning $7.92$.
 
 </details>
 
@@ -2176,23 +2176,23 @@ p_i = \sum_{k=0}^{i-1} d_k = p_1\sum_{k=0}^{i-1}\varrho^{\,k} = p_1\,\frac{1-\va
 $$
 Betingelsen $p_N = 1$ giver $p_1 = (1-\varrho)/(1-\varrho^{\,N})$, så $p_i = (1-\varrho^{\,i})/(1-\varrho^{\,N})$. For $\varrho = 1$ er $p_i = i\,p_1$ og $p_1 = 1/N$, så $p_i = i/N$.
 
-(b) $p = 0{,}49$: $p_{10} = 0{,}4013$; $p = 0{,}50$: $0{,}5$; $p = 0{,}51$: $0{,}5987$. To procentpoint fordel i hver runde giver ca. 20 procentpoint i det samlede spil.
+(b) $p = 0.49$: $p_{10} = 0.4013$; $p = 0.50$: $0.5$; $p = 0.51$: $0.5987$. To procentpoint fordel i hver runde giver ca. 20 procentpoint i det samlede spil.
 
-(c) $\varrho = 0{,}51/0{,}49$: $p_{10} = (1 - \varrho^{10})/(1 - \varrho^{100}) = 0{,}0092$. Under 1 % — kasinoets lille fordel bliver knusende over mange runder.
+(c) $\varrho = 0.51/0.49$: $p_{10} = (1 - \varrho^{10})/(1 - \varrho^{100}) = 0.0092$. Under 1 % — kasinoets lille fordel bliver knusende over mange runder.
 
-(d) $\varrho = 0{,}49/0{,}51 = 0{,}9608$: ruinsandsynligheden er $\varrho^{10} = 0{,}670$ for $i = 10$ og $\varrho^{100} = 0{,}0183$ for $i = 100$ (jf. Kernebegreber afsnit 7).
+(d) $\varrho = 0.49/0.51 = 0.9608$: ruinsandsynligheden er $\varrho^{10} = 0.670$ for $i = 10$ og $\varrho^{100} = 0.0183$ for $i = 100$ (jf. Kernebegreber afsnit 7).
 
 </details>
 
 <details>
 <summary>Løsning 3.7</summary>
 
-(a) Kapitalen målt i enheder er $i = 100.000/b$, og $\varrho = 0{,}47/0{,}53 = 0{,}8868$. Ruinsandsynlighed $\varrho^{\,i}$:
-- $b = 10.000$ ($i = 10$): $0{,}301$
-- $b = 5.000$ ($i = 20$): $0{,}0905$
-- $b = 2.000$ ($i = 50$): $0{,}0025$
+(a) Kapitalen målt i enheder er $i = 100000/b$, og $\varrho = 0.47/0.53 = 0.8868$. Ruinsandsynlighed $\varrho^{\,i}$:
+- $b = 10000$ ($i = 10$): $0.301$
+- $b = 5000$ ($i = 20$): $0.0905$
+- $b = 2000$ ($i = 50$): $0.0025$
 
-(b) $E[\text{gevinst}] = (p - q)\,b = 0{,}06\,b$: henholdsvis 600, 300 og 120 kr. pr. handel.
+(b) $E[\text{gevinst}] = (p - q)\,b = 0.06\,b$: henholdsvis 600, 300 og 120 kr. pr. handel.
 
 (c) Store positioner giver højere forventet gevinst pr. handel, men 30 % risiko for at miste alt; små positioner giver næsten ingen ruinrisiko, men kræver mange flere handler for samme forventede gevinst — og hver handel koster spread og kurtage (uge 1), som kan æde hele fordelen på 6 %. Urealistiske antagelser: $p$ er ikke kendt (den er estimeret og ofte overvurderet), handler er ikke uafhængige (de taber ofte samtidig), gevinst og tab er ikke lige store og faste, der er omkostninger, og professionelle skalerer positionen med kapitalen (som i 3.10) — så "ruin" bliver en dyb drawdown i stedet for præcis 0.
 
@@ -2201,11 +2201,11 @@ Betingelsen $p_N = 1$ giver $p_1 = (1-\varrho)/(1-\varrho^{\,N})$, så $p_i = (1
 <details>
 <summary>Løsning 3.8</summary>
 
-(a) HH: tilstande 0 (intet fremskridt) og H. $e_0 = 1 + p\,e_H + q\,e_0$ og $e_H = 1 + q\,e_0$. Indsæt: $e_0 = 1 + p + pq\,e_0 + q\,e_0$, så $e_0(1 - q - pq) = 1+p$. Da $1 - q - pq = p - pq = p^2$, er $e_0 = (1+p)/p^2$. For $p = 1/2$: $1{,}5/0{,}25 = 6$. ✓
+(a) HH: tilstande 0 (intet fremskridt) og H. $e_0 = 1 + p\,e_H + q\,e_0$ og $e_H = 1 + q\,e_0$. Indsæt: $e_0 = 1 + p + pq\,e_0 + q\,e_0$, så $e_0(1 - q - pq) = 1+p$. Da $1 - q - pq = p - pq = p^2$, er $e_0 = (1+p)/p^2$. For $p = 1/2$: $1.5/0.25 = 6$. ✓
 
 HT: vent på første H (FS($p$), forventet $1/p$), derefter på første T (FS($q$), forventet $1/q$); ekstra H'er ændrer ikke tilstanden. I alt $1/p + 1/q = (p+q)/(pq) = 1/(pq)$. For $p = 1/2$: 4. ✓
 
-(b) $p = 0{,}6$: HH: $1{,}6/0{,}36 = 4{,}44$; HT: $1/0{,}24 = 4{,}17$.
+(b) $p = 0.6$: HH: $1.6/0.36 = 4.44$; HT: $1/0.24 = 4.17$.
 
 (c) Hvis de to første kast er HH, vinder HH. Ellers forekommer der et T, før HH optræder første gang: lad HH første gang stå på plads $k-1, k$ med $k\ge 3$. Så må plads $k-2$ være T (ellers var HH kommet før), og dermed stod TH på plads $k-2, k-1$ — før HH. Altså $P(\text{HH før TH}) = P(\text{de to første er HH}) = 1/4$.
 
@@ -2220,7 +2220,7 @@ HT: vent på første H (FS($p$), forventet $1/p$), derefter på første T (FS($q
 
 (c) En partikulær løsning er $D_i = i/(q-p)$: $1 + p\frac{i+1}{q-p} + q\frac{i-1}{q-p} = 1 + \frac{i + p - q}{q-p} = \frac{i}{q-p}$. ✓ Den homogene ligning har løsningerne $A + B\varrho^{\,i}$ (som i 3.6). $D_0 = 0$ giver $A = -B$, og $D_N = 0$ giver $B = \frac{N}{(q-p)(1-\varrho^{\,N})}$, hvilket giver formlen.
 
-(d) $p = 0{,}5$: $D_{10} = 10\cdot 10 = 100$ runder. $p = 0{,}49$: $D_{10} = 98{,}70$ (samme værdi for $p = 0{,}51$ af symmetri). For $p = 1/2$ og $N\to\infty$ går $D_i = i(N-i)\to\infty$: ruin er sikker, men det forventede antal runder til ruin er uendeligt. "Sikkert på langt sigt" og "hurtigt" er to forskellige ting.
+(d) $p = 0.5$: $D_{10} = 10\cdot 10 = 100$ runder. $p = 0.49$: $D_{10} = 98.70$ (samme værdi for $p = 0.51$ af symmetri). For $p = 1/2$ og $N\to\infty$ går $D_i = i(N-i)\to\infty$: ruin er sikker, men det forventede antal runder til ruin er uendeligt. "Sikkert på langt sigt" og "hurtigt" er to forskellige ting.
 
 </details>
 
@@ -2231,16 +2231,16 @@ HT: vent på første H (FS($p$), forventet $1/p$), derefter på første T (FS($q
 
 (b) $g'(f) = \frac{p}{1+f} - \frac{q}{1-f} = 0 \iff p(1-f) = q(1+f) \iff f = p - q$. Da $g''(f) = -\frac{p}{(1+f)^2} - \frac{q}{(1-f)^2} < 0$, er det et maksimum. Med $\ln(1\pm f)\approx \pm f - f^2/2$ er $g(f)\approx f(p - q) - f^2/2$. Afkastet pr. væddemål, $fX_k$, har middelværdi $f(p-q)$ og varians $f^2(1-(p-q)^2)\approx f^2$, så det er præcis $A - \sigma^2/2$ fra uge 2: volatility drag straffer for store indsatser. Den tilnærmede maksimering giver $f = p-q$ og $g(f^*)\approx (p-q)^2/2$.
 
-(c) $p = 0{,}53$, $f^* = 0{,}06$:
+(c) $p = 0.53$, $f^* = 0.06$:
 
 | $f$ | $g(f)$ | $e^{1000\,g(f)}$ |
 |---|---|---|
-| 0,03 (halv Kelly) | 0,001350 | 3,86 |
-| 0,06 (Kelly) | 0,001801 | 6,06 |
-| 0,12 (dobbelt Kelly) | −0,000017 | 0,98 |
-| 0,20 | −0,008247 | 0,00026 |
+| 0.03 (halv Kelly) | 0.001350 | 3.86 |
+| 0.06 (Kelly) | 0.001801 | 6.06 |
+| 0.12 (dobbelt Kelly) | −0.000017 | 0.98 |
+| 0.20 | −0.008247 | 0.00026 |
 
-Dobbelt Kelly giver nul vækst, og $f = 0{,}20$ udsletter næsten formuen — selvom hver eneste indsats har positiv forventning. Halv Kelly giver 75 % af væksten med halv volatilitet.
+Dobbelt Kelly giver nul vækst, og $f = 0.20$ udsletter næsten formuen — selvom hver eneste indsats har positiv forventning. Halv Kelly giver 75 % af væksten med halv volatilitet.
 
 (d) I praksis kender man ikke $p$; man estimerer den, og estimatet er typisk for optimistisk (uge 5 og 10). Da overindsats er meget værre end underindsats (kurven falder stejlt til højre for $f^*$), bruger professionelle en brøkdel af Kelly. Dertil kommer omkostninger, fede haler og korrelerede tab. Bemærk: dette er en matematisk model af væddemål med kendte sandsynligheder, ikke en opskrift på at tjene penge i markedet.
 
@@ -2289,7 +2289,7 @@ Forventet output:
 0.45   5  10   0.2683  0.2609    0.0062
 ```
 
-Fire af fem estimater ligger inden for to standardfejl af den eksakte værdi. Det sidste afviger med ca. 2,4 standardfejl. Det er ikke en fejl i koden: et 95 %-interval rammer forbi i ca. 1 ud af 20 tilfælde, så blandt fem sammenligninger er en enkelt "overraskelse" ikke usædvanlig. Det er multipel testning i miniformat (uge 5). Med flere simulationer skrumper standardfejlen som $1/\sqrt n$.
+Fire af fem estimater ligger inden for to standardfejl af den eksakte værdi. Det sidste afviger med ca. 2.4 standardfejl. Det er ikke en fejl i koden: et 95 %-interval rammer forbi i ca. 1 ud af 20 tilfælde, så blandt fem sammenligninger er en enkelt "overraskelse" ikke usædvanlig. Det er multipel testning i miniformat (uge 5). Med flere simulationer skrumper standardfejlen som $1/\sqrt n$.
 
 </details>
 
@@ -2333,7 +2333,7 @@ HT 3.988 sd 1.993
 P(HH før TH) ~ 0.2479
 ```
 
-Simulationen bekræfter $E = 6$ og $4$ samt $P(\text{HH før TH}) = 1/4$ fra 3.8. De teoretiske spredninger er $\sqrt{22}\approx 4{,}69$ for HH og $\sqrt{2+2} = 2$ for HT (summen af to uafhængige FS($\tfrac12$)-variable, hver med varians $q/p^2 = 2$). Bemærk den store spredning for HH: lange ventetider er almindelige.
+Simulationen bekræfter $E = 6$ og $4$ samt $P(\text{HH før TH}) = 1/4$ fra 3.8. De teoretiske spredninger er $\sqrt{22}\approx 4.69$ for HH og $\sqrt{2+2} = 2$ for HT (summen af to uafhængige FS($\tfrac12$)-variable, hver med varians $q/p^2 = 2$). Bemærk den store spredning for HH: lange ventetider er almindelige.
 
 </details>
 
@@ -2370,7 +2370,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 4 — Sandsynlighed II
 
 > **Læringsmål:** Regne sikkert med kontinuerte fordelinger (normal, lognormal, Student-t), forstå fede haler (fat tails) og kurtosis, og bruge kovarians og korrelation til at forklare diversifikation matematisk. Kende store tals lov (law of large numbers, LLN) og den centrale grænseværdisætning (central limit theorem, CLT) — og hvorfor CLT virker langsomt for finansdata — samt random walks og Markovkæder med to regimer.
-> **Tidsforbrug:** ca. 2,5 t video (+ ca. 3 t valgfri) · ca. 6 t øvelser
+> **Tidsforbrug:** ca. 2.5 t video (+ ca. 3 t valgfri) · ca. 6 t øvelser
 > **Forudsætninger:** Uge 2 (afkast, log-afkast, $\sqrt{252}$-skalering) og uge 3 (stokastiske variable, forventning, varians, linearitet). Integralregning fra HTX Matematik A.
 
 ### 📺 Se
@@ -2401,7 +2401,7 @@ $$
 E[X]=\int x f(x)\,dx,\qquad E[g(X)]=\int g(x)f(x)\,dx\ \text{(LOTUS)},\qquad \operatorname{Var}(X)=E[X^2]-E[X]^2 .
 $$
 
-**2. Normalfordelingen.** $X\sim N(\mu,\sigma^2)$ har tæthed $f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/(2\sigma^2)}$. Standardisering: $Z=(X-\mu)/\sigma\sim N(0,1)$ med CDF $\Phi$. Vigtige tal: $P(\lvert Z\rvert\le 1)\approx 0{,}683$, $P(\lvert Z\rvert\le 2)\approx 0{,}954$, $P(\lvert Z\rvert\le 3)\approx 0{,}997$; ensidede fraktiler $z_{0{,}95}=1{,}645$, $z_{0{,}975}=1{,}960$, $z_{0{,}99}=2{,}326$, $z_{0{,}995}=2{,}576$. Uafhængige normalfordelte variable summerer til en normalfordelt variabel: $aX+bY\sim N(a\mu_X+b\mu_Y,\ a^2\sigma_X^2+b^2\sigma_Y^2)$.
+**2. Normalfordelingen.** $X\sim N(\mu,\sigma^2)$ har tæthed $f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/(2\sigma^2)}$. Standardisering: $Z=(X-\mu)/\sigma\sim N(0,1)$ med CDF $\Phi$. Vigtige tal: $P(\lvert Z\rvert\le 1)\approx 0.683$, $P(\lvert Z\rvert\le 2)\approx 0.954$, $P(\lvert Z\rvert\le 3)\approx 0.997$; ensidede fraktiler $z_{0.95}=1.645$, $z_{0.975}=1.960$, $z_{0.99}=2.326$, $z_{0.995}=2.576$. Uafhængige normalfordelte variable summerer til en normalfordelt variabel: $aX+bY\sim N(a\mu_X+b\mu_Y,\ a^2\sigma_X^2+b^2\sigma_Y^2)$.
 
 Den momentgenererende funktion (MGF) fås ved at kvadratkomplettere: $tz-\tfrac{z^2}{2}=\tfrac{t^2}{2}-\tfrac{(z-t)^2}{2}$, så
 $$
@@ -2414,7 +2414,7 @@ $$
 $$
 *Priser:* $P_T=P_0\exp\big(\sum_{t=1}^T r_t\big)$. Er log-afkastene $r_t$ iid $N(\mu,\sigma^2)$, er $\ln(P_T/P_0)\sim N(T\mu,\,T\sigma^2)$, og prisen er lognormal — altid positiv, ligesom en aktie med begrænset hæftelse. Middelværdien ligger over medianen, fordi fordelingen er højreskæv: få meget store gevinster trækker gennemsnittet op. Det forventede simple afkast er derfor større end det mediane $e^{T\mu}-1$: målt på log-skala er $\ln E[P_T/P_0]-E[\ln(P_T/P_0)]=T\sigma^2/2$. Forskellen $\sigma^2/2$ pr. periode kaldes ofte volatilitets-træk (volatility drag) og dukker op igen i Itô-calculus (uge 13) og Black–Scholes (uge 14).
 
-*Regneeksempel.* Daglige log-afkast med $\mu=0{,}0004$ og $\sigma=0{,}01$ i 252 dage: $\ln(P_{252}/P_0)\sim N(0{,}1008;\ 0{,}1587^2)$, da $0{,}01\sqrt{252}=0{,}1587$. Medianen af $P_{252}/P_0$ er $e^{0{,}1008}=1{,}1061$, mens middelværdien er $e^{0{,}1008+0{,}0126}=e^{0{,}1134}=1{,}1201$.
+*Regneeksempel.* Daglige log-afkast med $\mu=0.0004$ og $\sigma=0.01$ i 252 dage: $\ln(P_{252}/P_0)\sim N(0.1008;\ 0.1587^2)$, da $0.01\sqrt{252}=0.1587$. Medianen af $P_{252}/P_0$ er $e^{0.1008}=1.1061$, mens middelværdien er $e^{0.1008+0.0126}=e^{0.1134}=1.1201$.
 
 **4. Fede haler (fat tails) og Student-t.** Skævhed (skewness) og kurtosis:
 $$
@@ -2424,12 +2424,12 @@ Normalfordelingen har $\gamma=0$, $\kappa=3$. Daglige aktieafkast har typisk $\k
 
 | $k$ | Normal | t, $\nu=5$ | t, $\nu=4$ | t, $\nu=3$ |
 |---|---|---|---|---|
-| 3 | $1{,}35\cdot10^{-3}$ | $5{,}86\cdot10^{-3}$ | $6{,}62\cdot10^{-3}$ | $6{,}92\cdot10^{-3}$ |
-| 4 | $3{,}17\cdot10^{-5}$ | $1{,}79\cdot10^{-3}$ | $2{,}41\cdot10^{-3}$ | $3{,}08\cdot10^{-3}$ |
-| 5 | $2{,}87\cdot10^{-7}$ | $6{,}64\cdot10^{-4}$ | $1{,}06\cdot10^{-3}$ | $1{,}62\cdot10^{-3}$ |
-| 10 | $7{,}6\cdot10^{-24}$ | $2{,}48\cdot10^{-5}$ | $7{,}26\cdot10^{-5}$ | $2{,}10\cdot10^{-4}$ |
+| 3 | $1.35\cdot10^{-3}$ | $5.86\cdot10^{-3}$ | $6.62\cdot10^{-3}$ | $6.92\cdot10^{-3}$ |
+| 4 | $3.17\cdot10^{-5}$ | $1.79\cdot10^{-3}$ | $2.41\cdot10^{-3}$ | $3.08\cdot10^{-3}$ |
+| 5 | $2.87\cdot10^{-7}$ | $6.64\cdot10^{-4}$ | $1.06\cdot10^{-3}$ | $1.62\cdot10^{-3}$ |
+| 10 | $7.6\cdot10^{-24}$ | $2.48\cdot10^{-5}$ | $7.26\cdot10^{-5}$ | $2.10\cdot10^{-4}$ |
 
-Ved 5 standardafvigelser er forskellen en faktor 2.000–6.000. Den 19. oktober 1987 (Black Monday) faldt S&P 500 ca. 20,5 % på én dag — med en typisk daglig volatilitet på omkring 1 % er det et "20-sigma-udfald", som normalfordelingen giver sandsynligheden $\Phi(-20)\approx 3\cdot10^{-89}$. Konklusionen er ikke, at det var uheld, men at modellen er forkert i halerne. En vigtig kilde til fede haler er, at volatiliteten skifter over tid (en *blanding* af rolige og urolige perioder, se 4.9, 4.13 og GARCH i uge 9).
+Ved 5 standardafvigelser er forskellen en faktor 2,000–6,000. Den 19. oktober 1987 (Black Monday) faldt S&P 500 ca. 20.5 % på én dag — med en typisk daglig volatilitet på omkring 1 % er det et "20-sigma-udfald", som normalfordelingen giver sandsynligheden $\Phi(-20)\approx 3\cdot10^{-89}$. Konklusionen er ikke, at det var uheld, men at modellen er forkert i halerne. En vigtig kilde til fede haler er, at volatiliteten skifter over tid (en *blanding* af rolige og urolige perioder, se 4.9, 4.13 og GARCH i uge 9).
 
 **5. Simultane fordelinger (joint distributions), kovarians og korrelation.** For $(X,Y)$ med simultan tæthed $f(x,y)$ er marginalen $f_X(x)=\int f(x,y)\,dy$, den betingede tæthed $f(y\mid x)=f(x,y)/f_X(x)$, og $X,Y$ er uafhængige, netop når $f(x,y)=f_X(x)f_Y(y)$. Kovarians og korrelation:
 $$
@@ -2447,21 +2447,21 @@ $$
 $$
 Den idiosynkratiske risiko (idiosyncratic risk) $\sigma^2/n$ forsvinder, mens den systematiske risiko (systematic risk) $\rho\sigma^2$ bliver. Med $\sigma=30\,\%$:
 
-| $n$ | $\rho=0$ | $\rho=0{,}3$ | $\rho=0{,}6$ |
+| $n$ | $\rho=0$ | $\rho=0.3$ | $\rho=0.6$ |
 |---|---|---|---|
-| 1 | 30,0 % | 30,0 % | 30,0 % |
-| 5 | 13,4 % | 19,9 % | 24,7 % |
-| 20 | 6,7 % | 17,4 % | 23,6 % |
-| 100 | 3,0 % | 16,6 % | 23,3 % |
-| $\infty$ | 0 % | 16,4 % | 23,2 % |
+| 1 | 30.0 % | 30.0 % | 30.0 % |
+| 5 | 13.4 % | 19.9 % | 24.7 % |
+| 20 | 6.7 % | 17.4 % | 23.6 % |
+| 100 | 3.0 % | 16.6 % | 23.3 % |
+| $\infty$ | 0 % | 16.4 % | 23.2 % |
 
-Efter 20 aktier er næsten al gevinst ved diversifikation høstet, når $\rho=0{,}3$. Det er grundlaget for CAPM og faktormodeller (uge 7–8): kun den risiko, der ikke kan diversificeres bort, bør belønnes.
+Efter 20 aktier er næsten al gevinst ved diversifikation høstet, når $\rho=0.3$. Det er grundlaget for CAPM og faktormodeller (uge 7–8): kun den risiko, der ikke kan diversificeres bort, bør belønnes.
 
 **7. Store tals lov og den centrale grænseværdisætning.** Lad $X_1,X_2,\dots$ være iid med middelværdi $\mu$ og varians $\sigma^2<\infty$, og $\bar X_n=\frac1n\sum X_i$. Så er $E[\bar X_n]=\mu$ og $\operatorname{Var}(\bar X_n)=\sigma^2/n$, og Chebyshevs ulighed giver den svage LLN:
 $$
 P(\lvert\bar X_n-\mu\rvert\ge\varepsilon)\le\frac{\sigma^2}{n\varepsilon^2}\to 0 .
 $$
-CLT: $\sqrt n(\bar X_n-\mu)/\sigma\to N(0,1)$ i fordeling. Hvor *hurtigt*? For en sum $S_n$ af $n$ iid led er skævheden $\gamma/\sqrt n$ og den overskydende kurtosis $(\kappa-3)/n$ (4.9). Berry–Esseen-sætningen giver $\sup_x\lvert P(\text{standardiseret }S_n\le x)-\Phi(x)\rvert\le C\,E\lvert X-\mu\rvert^3/(\sigma^3\sqrt n)$ med $C<0{,}48$. Skæve og fedhalede fordelinger konvergerer altså langsomt, og har $X$ uendelig varians (fx Student-t med $\nu\le 2$), gælder den sædvanlige CLT slet ikke. For finansdata kommer det oveni, at afkastene ikke er uafhængige (volatilitets-klumper, volatility clustering), hvilket gør konvergensen endnu langsommere: månedsafkast er tættere på normalfordelte end dagsafkast, men krakhalerne forsvinder ikke.
+CLT: $\sqrt n(\bar X_n-\mu)/\sigma\to N(0,1)$ i fordeling. Hvor *hurtigt*? For en sum $S_n$ af $n$ iid led er skævheden $\gamma/\sqrt n$ og den overskydende kurtosis $(\kappa-3)/n$ (4.9). Berry–Esseen-sætningen giver $\sup_x\lvert P(\text{standardiseret }S_n\le x)-\Phi(x)\rvert\le C\,E\lvert X-\mu\rvert^3/(\sigma^3\sqrt n)$ med $C<0.48$. Skæve og fedhalede fordelinger konvergerer altså langsomt, og har $X$ uendelig varians (fx Student-t med $\nu\le 2$), gælder den sædvanlige CLT slet ikke. For finansdata kommer det oveni, at afkastene ikke er uafhængige (volatilitets-klumper, volatility clustering), hvilket gør konvergensen endnu langsommere: månedsafkast er tættere på normalfordelte end dagsafkast, men krakhalerne forsvinder ikke.
 
 **8. Random walk.** $S_n=S_0+\sum_{i=1}^n X_i$ med iid skridt. Log-prisen $p_t=\ln P_t$ som random walk med drift: $p_t=p_{t-1}+r_t$. Så er $E[p_T-p_0]=T\mu$ og $\operatorname{sd}(p_T-p_0)=\sigma\sqrt T$ — det er begrundelsen for $\sigma_{\text{ann}}=\sigma_{\text{daily}}\sqrt{252}$, og den forudsætter ukorrelerede skridt. Forholdet drift/støj vokser som $\sqrt T$, så over korte horisonter dominerer støjen fuldstændigt. Hypotesen om, at log-priser er en random walk, hænger sammen med svag markedseffektivitet (uge 1) og testes i uge 9.
 
@@ -2469,7 +2469,7 @@ CLT: $\sqrt n(\bar X_n-\mu)/\sigma\to N(0,1)$ i fordeling. Hvor *hurtigt*? For e
 
 *To-regime-eksempel.* Tilstand 1 = rolig, 2 = stress, med
 $$
-P=\begin{pmatrix}1-a & a\\ b & 1-b\end{pmatrix}=\begin{pmatrix}0{,}98 & 0{,}02\\ 0{,}05 & 0{,}95\end{pmatrix},\qquad \boldsymbol\pi=\Big(\frac{b}{a+b},\ \frac{a}{a+b}\Big)=\Big(\frac57,\ \frac27\Big)\approx(0{,}714;\ 0{,}286).
+P=\begin{pmatrix}1-a & a\\ b & 1-b\end{pmatrix}=\begin{pmatrix}0.98 & 0.02\\ 0.05 & 0.95\end{pmatrix},\qquad \boldsymbol\pi=\Big(\frac{b}{a+b},\ \frac{a}{a+b}\Big)=\Big(\frac57,\ \frac27\Big)\approx(0.714;\ 0.286).
 $$
 Opholdstiden i en tilstand er geometrisk fordelt: i gennemsnit $1/a=50$ dage rolig og $1/b=20$ dage i stress. Kombineret med forskellig volatilitet i hvert regime giver det fede haler og volatilitets-klumper (4.13). Skjulte Markov-modeller (hidden Markov models), hvor regimet ikke kan observeres direkte, bygger på denne idé.
 
@@ -2483,42 +2483,42 @@ Opholdstiden i en tilstand er geometrisk fordelt: i gennemsnit $1/a=50$ dage rol
 
 ### ✏️ Øvelser
 
-**4.1** ★ — Årets log-afkast for en aktie modelleres som normalfordelt med $\mu=0{,}06$ og $\sigma=0{,}20$, og kursen i dag er $P_0=100$ kr. (a) Bestem medianen og middelværdien af $P_1=P_0e^{r}$. (b) Find $P(P_1<P_0)$. (c) Find et interval, som $P_1$ ligger i med 90 % sandsynlighed (symmetrisk i $r$). (d) Forklar, hvorfor middelværdien er større end medianen.
+**4.1** ★ — Årets log-afkast for en aktie modelleres som normalfordelt med $\mu=0.06$ og $\sigma=0.20$, og kursen i dag er $P_0=100$ kr. (a) Bestem medianen og middelværdien af $P_1=P_0e^{r}$. (b) Find $P(P_1<P_0)$. (c) Find et interval, som $P_1$ ligger i med 90 % sandsynlighed (symmetrisk i $r$). (d) Forklar, hvorfor middelværdien er større end medianen.
 
-**4.2** ★ — Aktie A har $\sigma_A=20\,\%$, aktie B har $\sigma_B=30\,\%$, og $\rho_{AB}=0{,}25$. Du investerer 60 % i A og 40 % i B. (a) Beregn porteføljens volatilitet. (b) Gentag for $\rho=0$, $\rho=+1$ og $\rho=-1$. (c) Forklar resultatet for $\rho=-1$. Er det realistisk for to aktier?
+**4.2** ★ — Aktie A har $\sigma_A=20\,\%$, aktie B har $\sigma_B=30\,\%$, og $\rho_{AB}=0.25$. Du investerer 60 % i A og 40 % i B. (a) Beregn porteføljens volatilitet. (b) Gentag for $\rho=0$, $\rho=+1$ og $\rho=-1$. (c) Forklar resultatet for $\rho=-1$. Er det realistisk for to aktier?
 
 **4.3** ★ 🗣️ — Brug tabellen i afsnit 4 og antag en daglig volatilitet på 1 % og middelværdi 0, så et fald på $k$ % er et udfald på $k$ standardafvigelser. (a) Hvad er sandsynligheden for et dagsfald på over 5 % under normalfordelingen, og hvor mange år går der i gennemsnit mellem sådanne dage (252 handelsdage pr. år, uafhængige dage)? (b) Samme spørgsmål under en standardiseret t-fordeling med $\nu=4$. (c) Gentag (a) og (b) for et fald på over 4 %. (d) Hvor mange standardafvigelser var Black Monday 1987, og hvad siger normalfordelingen om det? (e) Skriv 5–8 linjer: Hvorfor undervurderer normalfordelingen krak, og hvad betyder det for risikostyring? (Bruges i uge 16 om VaR.)
 
-**4.4** ★ — En simpel markedsmodel har to tilstande, bull (B) og bear (D), med $P(B\to B)=0{,}9$ og $P(D\to D)=0{,}7$. (a) I dag er der bull. Hvad er sandsynligheden for bear om to dage? (b) Find den stationære fordeling ved at løse $\boldsymbol\pi=\boldsymbol\pi P$. (c) Hvor længe varer en bear-periode i gennemsnit? (d) Forventet dagligt afkast er $+0{,}10\,\%$ i bull og $-0{,}20\,\%$ i bear. Hvad er det langsigtede forventede daglige afkast?
+**4.4** ★ — En simpel markedsmodel har to tilstande, bull (B) og bear (D), med $P(B\to B)=0.9$ og $P(D\to D)=0.7$. (a) I dag er der bull. Hvad er sandsynligheden for bear om to dage? (b) Find den stationære fordeling ved at løse $\boldsymbol\pi=\boldsymbol\pi P$. (c) Hvor længe varer en bear-periode i gennemsnit? (d) Forventet dagligt afkast er $+0.10\,\%$ i bull og $-0.20\,\%$ i bear. Hvad er det langsigtede forventede daglige afkast?
 
-**4.5** ★★ — (a) Udled formlen $\sigma_p^2=\sigma^2/n+(1-1/n)\rho\sigma^2$ for en ligevægtet portefølje af $n$ aktiver med fælles $\sigma$ og $\rho$. (b) Find grænsen for $n\to\infty$, og forklar forskellen på systematisk og idiosynkratisk risiko. (c) Med $\sigma=30\,\%$ og $\rho=0{,}3$: find det mindste $n$, så $\sigma_p$ højst er 10 % over grænseværdien. (d) Vis, at $\rho\ge -1/(n-1)$ altid må gælde. Hvorfor kan 10 aktiver ikke alle have parvis korrelation $-0{,}5$? (Bruges i uge 6 og 7.)
+**4.5** ★★ — (a) Udled formlen $\sigma_p^2=\sigma^2/n+(1-1/n)\rho\sigma^2$ for en ligevægtet portefølje af $n$ aktiver med fælles $\sigma$ og $\rho$. (b) Find grænsen for $n\to\infty$, og forklar forskellen på systematisk og idiosynkratisk risiko. (c) Med $\sigma=30\,\%$ og $\rho=0.3$: find det mindste $n$, så $\sigma_p$ højst er 10 % over grænseværdien. (d) Vis, at $\rho\ge -1/(n-1)$ altid må gælde. Hvorfor kan 10 aktiver ikke alle have parvis korrelation $-0.5$? (Bruges i uge 6 og 7.)
 
-**4.6** ★★ — (a) Vis ved kvadratkomplettering, at $E[e^X]=e^{\mu+\sigma^2/2}$ for $X\sim N(\mu,\sigma^2)$. (b) Udled $\operatorname{Var}(e^X)$. (c) En aktie har årligt log-afkast med $\mu=0$ og $\sigma=0{,}30$. Find det forventede og det mediane simple afkast samt sandsynligheden for tab. (d) Vis, at hvis man ønsker $E[P_T]=P_0e^{mT}$ (forventet vækstrate $m$ pr. år) med log-afkast $N(\mu T,\sigma^2T)$, så skal $\mu=m-\sigma^2/2$. Find $\mu$ for $m=8\,\%$ og $\sigma=30\,\%$. (Udtrykket $\mu-\sigma^2/2$ dukker op igen i uge 13–14.)
+**4.6** ★★ — (a) Vis ved kvadratkomplettering, at $E[e^X]=e^{\mu+\sigma^2/2}$ for $X\sim N(\mu,\sigma^2)$. (b) Udled $\operatorname{Var}(e^X)$. (c) En aktie har årligt log-afkast med $\mu=0$ og $\sigma=0.30$. Find det forventede og det mediane simple afkast samt sandsynligheden for tab. (d) Vis, at hvis man ønsker $E[P_T]=P_0e^{mT}$ (forventet vækstrate $m$ pr. år) med log-afkast $N(\mu T,\sigma^2T)$, så skal $\mu=m-\sigma^2/2$. Find $\mu$ for $m=8\,\%$ og $\sigma=30\,\%$. (Udtrykket $\mu-\sigma^2/2$ dukker op igen i uge 13–14.)
 
-**4.7** ★★ — Daglige log-afkast er iid med middelværdi $0{,}03\,\%$ og standardafvigelse $1{,}2\,\%$ (ikke nødvendigvis normalfordelte). (a) Brug CLT til at angive den tilnærmede fordeling af log-afkastet over 1 år (252 dage). (b) Find den tilnærmede sandsynlighed for et negativt år. (c) Gentag for 10 år. (d) Vis generelt, at forholdet mellem forventning og standardafvigelse for $T$-dages-summen er $(\mu/\sigma)\sqrt T$. Hvilke antagelser bruger du? Betyder et faldende $P(\text{tab})$, at aktier er "sikre på lang sigt"?
+**4.7** ★★ — Daglige log-afkast er iid med middelværdi $0.03\,\%$ og standardafvigelse $1.2\,\%$ (ikke nødvendigvis normalfordelte). (a) Brug CLT til at angive den tilnærmede fordeling af log-afkastet over 1 år (252 dage). (b) Find den tilnærmede sandsynlighed for et negativt år. (c) Gentag for 10 år. (d) Vis generelt, at forholdet mellem forventning og standardafvigelse for $T$-dages-summen er $(\mu/\sigma)\sqrt T$. Hvilke antagelser bruger du? Betyder et faldende $P(\text{tab})$, at aktier er "sikre på lang sigt"?
 
 **4.8** ★★ — (a) Vis $\operatorname{Cov}(aX+b,\ cY+d)=ac\operatorname{Cov}(X,Y)$, og at korrelationen er uændret, når $ac>0$. (b) Bevis $\lvert\rho\rvert\le 1$ ved at se på $\operatorname{Var}(X/\sigma_X\pm Y/\sigma_Y)\ge 0$. Hvornår gælder lighedstegnet? (c) Lad $X\sim N(0,1)$ og $Y=X^2$. Vis, at $\operatorname{Cov}(X,Y)=0$, selvom $Y$ er en funktion af $X$. (d) Daglige afkast $r_t$ er næsten ukorrelerede med $r_{t-1}$, men $r_t^2$ er klart korreleret med $r_{t-1}^2$. Er det en modstrid? (Forbindelse til uge 9.)
 
-**4.9** ★★★ — (Fede haler fra regimer, og hvorfor CLT er langsom.) (a) Lad $V$ være en tilfældig varians, der er $\sigma_2^2$ med sandsynlighed $p$ og ellers $\sigma_1^2$, og lad $X$ givet $V$ være $N(0,V)$. Vis $\operatorname{Var}(X)=E[V]$, $E[X^4]=3E[V^2]$ og dermed $\kappa=3E[V^2]/E[V]^2\ge 3$, med lighed kun hvis $V$ er konstant. (b) Beregn standardafvigelse og kurtosis for $p=2/7$, $\sigma_1=0{,}8\,\%$, $\sigma_2=2{,}5\,\%$. Sammenlign med 4.13. (c) Lad $X_1,\dots,X_n$ være iid med middelværdi 0, varians $\sigma^2$ og kurtosis $\kappa$. Vis, at $S_n=\sum X_i$ har kurtosis $3+(\kappa-3)/n$. (d) Daglige afkast har $\kappa=8$. Hvor mange dage skal summeres, før den overskydende kurtosis er under 0,1 under iid-antagelsen? Hvorfor er virkeligheden værre?
+**4.9** ★★★ — (Fede haler fra regimer, og hvorfor CLT er langsom.) (a) Lad $V$ være en tilfældig varians, der er $\sigma_2^2$ med sandsynlighed $p$ og ellers $\sigma_1^2$, og lad $X$ givet $V$ være $N(0,V)$. Vis $\operatorname{Var}(X)=E[V]$, $E[X^4]=3E[V^2]$ og dermed $\kappa=3E[V^2]/E[V]^2\ge 3$, med lighed kun hvis $V$ er konstant. (b) Beregn standardafvigelse og kurtosis for $p=2/7$, $\sigma_1=0.8\,\%$, $\sigma_2=2.5\,\%$. Sammenlign med 4.13. (c) Lad $X_1,\dots,X_n$ være iid med middelværdi 0, varians $\sigma^2$ og kurtosis $\kappa$. Vis, at $S_n=\sum X_i$ har kurtosis $3+(\kappa-3)/n$. (d) Daglige afkast har $\kappa=8$. Hvor mange dage skal summeres, før den overskydende kurtosis er under 0.1 under iid-antagelsen? Hvorfor er virkeligheden værre?
 
-**4.10** ★★★ — Betragt den generelle to-tilstands-kæde $P=\begin{pmatrix}1-a & a\\ b & 1-b\end{pmatrix}$ med $0<a,b\le 1$. (a) Vis, at $\boldsymbol\pi=\big(b/(a+b),\ a/(a+b)\big)$ er den eneste stationære fordeling. (b) Lad $s_t=P(X_t=2)$. Vis $s_{t+1}-s^*=(1-a-b)(s_t-s^*)$ med $s^*=a/(a+b)$, og find dermed en lukket formel for $s_t$. (c) Med $a=0{,}02$, $b=0{,}05$ og $s_0=0$: beregn $s_{10}$ og $s_{50}$ og sammenlign med udskriften i 4.13. (d) Hvad sker der, når $a=b=1$? (e) Vis, at opholdstiden i tilstand 2 er geometrisk fordelt med middelværdi $1/b$.
+**4.10** ★★★ — Betragt den generelle to-tilstands-kæde $P=\begin{pmatrix}1-a & a\\ b & 1-b\end{pmatrix}$ med $0<a,b\le 1$. (a) Vis, at $\boldsymbol\pi=\big(b/(a+b),\ a/(a+b)\big)$ er den eneste stationære fordeling. (b) Lad $s_t=P(X_t=2)$. Vis $s_{t+1}-s^*=(1-a-b)(s_t-s^*)$ med $s^*=a/(a+b)$, og find dermed en lukket formel for $s_t$. (c) Med $a=0.02$, $b=0.05$ og $s_0=0$: beregn $s_{10}$ og $s_{50}$ og sammenlign med udskriften i 4.13. (d) Hvad sker der, når $a=b=1$? (e) Vis, at opholdstiden i tilstand 2 er geometrisk fordelt med middelværdi $1/b$.
 
-**4.11** ★★ 💻 — (Monte Carlo-diversifikation.) Simulér afkast for $n$ aktiver med fælles $\sigma=30\,\%$ og parvis korrelation $\rho$ ved hjælp af en fælles faktor: $X_i=\sigma\big(\sqrt\rho\,M+\sqrt{1-\rho}\,\varepsilon_i\big)$, hvor $M,\varepsilon_1,\dots,\varepsilon_n$ er uafhængige $N(0,1)$. Vis først på papir, at $\operatorname{Corr}(X_i,X_j)=\rho$. Estimér derefter den ligevægtede porteføljes standardafvigelse for $n\in\{1,5,20,100\}$ og $\rho\in\{0;\ 0{,}3;\ 0{,}6\}$ (5000 perioder hver), og sammenlign med formlen fra 4.5. Brug `random.seed(4)`.
+**4.11** ★★ 💻 — (Monte Carlo-diversifikation.) Simulér afkast for $n$ aktiver med fælles $\sigma=30\,\%$ og parvis korrelation $\rho$ ved hjælp af en fælles faktor: $X_i=\sigma\big(\sqrt\rho\,M+\sqrt{1-\rho}\,\varepsilon_i\big)$, hvor $M,\varepsilon_1,\dots,\varepsilon_n$ er uafhængige $N(0,1)$. Vis først på papir, at $\operatorname{Corr}(X_i,X_j)=\rho$. Estimér derefter den ligevægtede porteføljes standardafvigelse for $n\in\{1,5,20,100\}$ og $\rho\in\{0;\ 0.3;\ 0.6\}$ (5000 perioder hver), og sammenlign med formlen fra 4.5. Brug `random.seed(4)`.
 
-**4.12** ★★ 💻 — (CLT for skæve variable.) Lad $X_i=E_i-1$, hvor $E_i$ er eksponentialfordelt med rate 1 (middelværdi 0, varians 1, skævhed 2). For $n\in\{1,5,30,200\}$: simulér 20.000 værdier af $Z_n=\sum_{i=1}^n X_i/\sqrt n$, og beregn stikprøveskævheden samt $P(Z_n<-1{,}645)$ og $P(Z_n>1{,}645)$. Sammenlign med den teoretiske skævhed $2/\sqrt n$ og med normalfordelingens 5 % i hver hale. Brug `random.seed(12)`.
+**4.12** ★★ 💻 — (CLT for skæve variable.) Lad $X_i=E_i-1$, hvor $E_i$ er eksponentialfordelt med rate 1 (middelværdi 0, varians 1, skævhed 2). For $n\in\{1,5,30,200\}$: simulér 20,000 værdier af $Z_n=\sum_{i=1}^n X_i/\sqrt n$, og beregn stikprøveskævheden samt $P(Z_n<-1.645)$ og $P(Z_n>1.645)$. Sammenlign med den teoretiske skævhed $2/\sqrt n$ og med normalfordelingens 5 % i hver hale. Brug `random.seed(12)`.
 
-**4.13** ★★ 💻 — (Regime-simulation.) Brug kæden fra afsnit 9 ($a=0{,}02$, $b=0{,}05$). (a) Find den stationære fordeling ved iteration $\boldsymbol\pi_{k+1}=\boldsymbol\pi_kP$ fra $\boldsymbol\pi_0=(1,0)$, og udskriv for $k=0,10,50,200$. (b) Simulér 100.000 dage. I rolig tilstand er dagsafkastet $N(0{,}05\,\%;\ (0{,}8\,\%)^2)$, i stress $N(-0{,}1\,\%;\ (2{,}5\,\%)^2)$. Udskriv andelen af stressdage, daglig og årlig volatilitet, kurtosis og antallet af dage med $\lvert R-\bar R\rvert>4$ standardafvigelser, og sammenlign med normalfordelingen. Brug `random.seed(13)`.
+**4.13** ★★ 💻 — (Regime-simulation.) Brug kæden fra afsnit 9 ($a=0.02$, $b=0.05$). (a) Find den stationære fordeling ved iteration $\boldsymbol\pi_{k+1}=\boldsymbol\pi_kP$ fra $\boldsymbol\pi_0=(1,0)$, og udskriv for $k=0,10,50,200$. (b) Simulér 100,000 dage. I rolig tilstand er dagsafkastet $N(0.05\,\%;\ (0.8\,\%)^2)$, i stress $N(-0.1\,\%;\ (2.5\,\%)^2)$. Udskriv andelen af stressdage, daglig og årlig volatilitet, kurtosis og antallet af dage med $\lvert R-\bar R\rvert>4$ standardafvigelser, og sammenlign med normalfordelingen. Brug `random.seed(13)`.
 
 ### ✅ Løsninger
 
 <details>
 <summary>Løsning 4.1</summary>
 
-(a) Medianen af $r$ er 0,06, og $e^x$ er voksende, så $\text{median}(P_1)=100e^{0{,}06}=106{,}18$ kr. Middelværdien er $E[P_1]=100e^{0{,}06+0{,}20^2/2}=100e^{0{,}08}=108{,}33$ kr.
+(a) Medianen af $r$ er 0.06, og $e^x$ er voksende, så $\text{median}(P_1)=100e^{0.06}=106.18$ kr. Middelværdien er $E[P_1]=100e^{0.06+0.20^2/2}=100e^{0.08}=108.33$ kr.
 
-(b) $P(P_1<P_0)=P(r<0)=\Phi\big((0-0{,}06)/0{,}20\big)=\Phi(-0{,}3)=0{,}382$.
+(b) $P(P_1<P_0)=P(r<0)=\Phi\big((0-0.06)/0.20\big)=\Phi(-0.3)=0.382$.
 
-(c) $r\in[0{,}06-1{,}645\cdot0{,}20;\ 0{,}06+1{,}645\cdot0{,}20]=[-0{,}269;\ 0{,}389]$ med 90 % sandsynlighed, så $P_1\in[100e^{-0{,}269};\ 100e^{0{,}389}]=[76{,}41;\ 147{,}55]$ kr. Intervallet er ikke symmetrisk omkring 100: nedsiden er $-23{,}6$ kr., opsiden $+47{,}6$ kr.
+(c) $r\in[0.06-1.645\cdot0.20;\ 0.06+1.645\cdot0.20]=[-0.269;\ 0.389]$ med 90 % sandsynlighed, så $P_1\in[100e^{-0.269};\ 100e^{0.389}]=[76.41;\ 147.55]$ kr. Intervallet er ikke symmetrisk omkring 100: nedsiden er $-23.6$ kr., opsiden $+47.6$ kr.
 
 (d) $e^x$ er konveks, så Jensens ulighed giver $E[e^r]>e^{E[r]}$. Fordelingen af $P_1$ er højreskæv: store gevinster er mulige, mens tabet er begrænset til 100 kr. Den lange højre hale trækker middelværdien op over medianen.
 
@@ -2527,9 +2527,9 @@ Opholdstiden i en tilstand er geometrisk fordelt: i gennemsnit $1/a=50$ dage rol
 <details>
 <summary>Løsning 4.2</summary>
 
-(a) $\sigma_p^2=0{,}6^2\cdot0{,}04+0{,}4^2\cdot0{,}09+2\cdot0{,}6\cdot0{,}4\cdot0{,}25\cdot0{,}20\cdot0{,}30=0{,}0144+0{,}0144+0{,}0072=0{,}0360$, så $\sigma_p=18{,}97\,\%$. Det er under det 60/40-vægtede gennemsnit af volatiliteterne, $0{,}6\cdot20\,\%+0{,}4\cdot30\,\%=24\,\%$ — og endda under A's egne 20 %.
+(a) $\sigma_p^2=0.6^2\cdot0.04+0.4^2\cdot0.09+2\cdot0.6\cdot0.4\cdot0.25\cdot0.20\cdot0.30=0.0144+0.0144+0.0072=0.0360$, så $\sigma_p=18.97\,\%$. Det er under det 60/40-vægtede gennemsnit af volatiliteterne, $0.6\cdot20\,\%+0.4\cdot30\,\%=24\,\%$ — og endda under A's egne 20 %.
 
-(b) $\rho=0$: $\sigma_p^2=0{,}0288$, $\sigma_p=16{,}97\,\%$. $\rho=+1$: $\sigma_p=0{,}6\cdot0{,}20+0{,}4\cdot0{,}30=24\,\%$ (ingen diversifikation, kun et vægtet gennemsnit). $\rho=-1$: $\sigma_p=\lvert0{,}6\cdot0{,}20-0{,}4\cdot0{,}30\rvert=\lvert0{,}12-0{,}12\rvert=0$.
+(b) $\rho=0$: $\sigma_p^2=0.0288$, $\sigma_p=16.97\,\%$. $\rho=+1$: $\sigma_p=0.6\cdot0.20+0.4\cdot0.30=24\,\%$ (ingen diversifikation, kun et vægtet gennemsnit). $\rho=-1$: $\sigma_p=\lvert0.6\cdot0.20-0.4\cdot0.30\rvert=\lvert0.12-0.12\rvert=0$.
 
 (c) Med $\rho=-1$ er $R_B$ en eksakt aftagende lineær funktion af $R_A$, og vægtene 60/40 er netop dem, der udligner udsvingene: porteføljen er risikofri. For to aktier er det urealistisk. Perfekt negativ korrelation findes kun for konstruerede par, fx en aktie og en short-position i samme aktie. Et aktiv og en option på det er kun *tilnærmet* og lokalt perfekt (negativt) korreleret, fordi optionens værdi er en ikke-lineær funktion af aktivets kurs (delta-hedging, uge 14). Selv de bedste hedges har basisrisiko.
 
@@ -2538,13 +2538,13 @@ Opholdstiden i en tilstand er geometrisk fordelt: i gennemsnit $1/a=50$ dage rol
 <details>
 <summary>Løsning 4.3</summary>
 
-(a) Et fald på over 5 % er 5 standardafvigelser: $p=\Phi(-5)=2{,}87\cdot10^{-7}$. Ventetiden til første sådan dag er geometrisk fordelt med middelværdi $1/p$ dage, dvs. $1/(2{,}87\cdot10^{-7}\cdot252)\approx 13.800$ år.
+(a) Et fald på over 5 % er 5 standardafvigelser: $p=\Phi(-5)=2.87\cdot10^{-7}$. Ventetiden til første sådan dag er geometrisk fordelt med middelværdi $1/p$ dage, dvs. $1/(2.87\cdot10^{-7}\cdot252)\approx 13800$ år.
 
-(b) $p=1{,}06\cdot10^{-3}$ (symmetri: venstre hale = højre hale), så ventetiden er $1/(1{,}06\cdot10^{-3}\cdot252)\approx 3{,}7$ år.
+(b) $p=1.06\cdot10^{-3}$ (symmetri: venstre hale = højre hale), så ventetiden er $1/(1.06\cdot10^{-3}\cdot252)\approx 3.7$ år.
 
-(c) 4 %: normal $p=3{,}17\cdot10^{-5}$ giver ca. 125 år; t med $\nu=4$ giver $p=2{,}41\cdot10^{-3}$, dvs. ca. 1,6 år.
+(c) 4 %: normal $p=3.17\cdot10^{-5}$ giver ca. 125 år; t med $\nu=4$ giver $p=2.41\cdot10^{-3}$, dvs. ca. 1.6 år.
 
-(d) Ca. $20{,}5/1\approx 20$ standardafvigelser. Normalfordelingen giver $\Phi(-20)\approx 3\cdot10^{-89}$, altså i praksis umuligt i universets levetid. Udfaldet viser, at modellen er forkert, ikke at markedet var "uheldigt".
+(d) Ca. $20.5/1\approx 20$ standardafvigelser. Normalfordelingen giver $\Phi(-20)\approx 3\cdot10^{-89}$, altså i praksis umuligt i universets levetid. Udfaldet viser, at modellen er forkert, ikke at markedet var "uheldigt".
 
 (e) Et godt svar indeholder:
 - Normalhaler aftager som $e^{-x^2/2}$, mens empiriske afkast har potens-haler (Student-t med lavt $\nu$ passer bedre), så sandsynligheden for store tab undervurderes med flere størrelsesordener.
@@ -2557,15 +2557,15 @@ Opholdstiden i en tilstand er geometrisk fordelt: i gennemsnit $1/a=50$ dage rol
 <details>
 <summary>Løsning 4.4</summary>
 
-$P=\begin{pmatrix}0{,}9 & 0{,}1\\ 0{,}3 & 0{,}7\end{pmatrix}$ med rækkefølgen (B, D).
+$P=\begin{pmatrix}0.9 & 0.1\\ 0.3 & 0.7\end{pmatrix}$ med rækkefølgen (B, D).
 
-(a) $P(\text{D om 2 dage}\mid B)=(P^2)_{BD}=0{,}9\cdot0{,}1+0{,}1\cdot0{,}7=0{,}16$.
+(a) $P(\text{D om 2 dage}\mid B)=(P^2)_{BD}=0.9\cdot0.1+0.1\cdot0.7=0.16$.
 
-(b) $\pi_B=0{,}9\pi_B+0{,}3\pi_D\Rightarrow 0{,}1\pi_B=0{,}3\pi_D\Rightarrow\pi_B=3\pi_D$. Med $\pi_B+\pi_D=1$ fås $\boldsymbol\pi=(0{,}75;\ 0{,}25)$. Kontrol med formlen $b/(a+b)=0{,}3/0{,}4=0{,}75$.
+(b) $\pi_B=0.9\pi_B+0.3\pi_D\Rightarrow 0.1\pi_B=0.3\pi_D\Rightarrow\pi_B=3\pi_D$. Med $\pi_B+\pi_D=1$ fås $\boldsymbol\pi=(0.75;\ 0.25)$. Kontrol med formlen $b/(a+b)=0.3/0.4=0.75$.
 
-(c) Hver dag i bear slutter perioden med sandsynlighed 0,3, så længden er geometrisk med middelværdi $1/0{,}3\approx 3{,}3$ dage.
+(c) Hver dag i bear slutter perioden med sandsynlighed 0.3, så længden er geometrisk med middelværdi $1/0.3\approx 3.3$ dage.
 
-(d) $0{,}75\cdot0{,}10\,\%+0{,}25\cdot(-0{,}20\,\%)=0{,}075\,\%-0{,}05\,\%=0{,}025\,\%$ pr. dag. Det er forventningen under den stationære fordeling (loven om total forventning fra uge 3).
+(d) $0.75\cdot0.10\,\%+0.25\cdot(-0.20\,\%)=0.075\,\%-0.05\,\%=0.025\,\%$ pr. dag. Det er forventningen under den stationære fordeling (loven om total forventning fra uge 3).
 
 </details>
 
@@ -2579,9 +2579,9 @@ $$
 
 (b) $\sigma_p^2\to\rho\sigma^2$. Leddet $\sigma^2/n$ er den idiosynkratiske (selskabsspecifikke) risiko, som forsvinder ved diversifikation. $\rho\sigma^2$ er den systematiske risiko, som alle aktiverne deler, og som ikke kan diversificeres bort.
 
-(c) Grænsen er $\sqrt{0{,}3}\cdot0{,}30=16{,}43\,\%$; 10 % over giver $18{,}07\,\%$, dvs. varians $\le 1{,}21\cdot0{,}027=0{,}03267$. Kravet $0{,}027+0{,}063/n\le0{,}03267$ giver $n\ge 0{,}063/0{,}00567=11{,}1$, så $n=12$ ($\sigma_p=17{,}96\,\%$; for $n=11$ er $\sigma_p=18{,}09\,\%$).
+(c) Grænsen er $\sqrt{0.3}\cdot0.30=16.43\,\%$; 10 % over giver $18.07\,\%$, dvs. varians $\le 1.21\cdot0.027=0.03267$. Kravet $0.027+0.063/n\le0.03267$ giver $n\ge 0.063/0.00567=11.1$, så $n=12$ ($\sigma_p=17.96\,\%$; for $n=11$ er $\sigma_p=18.09\,\%$).
 
-(d) Variansen er ikke-negativ: $\frac{\sigma^2}{n}\big(1+(n-1)\rho\big)\ge 0\Rightarrow\rho\ge-1/(n-1)$. For $n=10$ kræves $\rho\ge-1/9\approx-0{,}111$, så $-0{,}5$ er umuligt: den ligevægtede portefølje ville få negativ varians. Intuition: hvis A og B bevæger sig modsat, og A og C bevæger sig modsat, må B og C bevæge sig i samme retning. Vi ser det igen som positiv semidefinithed i uge 6.
+(d) Variansen er ikke-negativ: $\frac{\sigma^2}{n}\big(1+(n-1)\rho\big)\ge 0\Rightarrow\rho\ge-1/(n-1)$. For $n=10$ kræves $\rho\ge-1/9\approx-0.111$, så $-0.5$ er umuligt: den ligevægtede portefølje ville få negativ varians. Intuition: hvis A og B bevæger sig modsat, og A og C bevæger sig modsat, må B og C bevæge sig i samme retning. Vi ser det igen som positiv semidefinithed i uge 6.
 
 </details>
 
@@ -2596,20 +2596,20 @@ fordi det sidste integral er tætheden for $N(\sigma,1)$ integreret, altså 1. D
 
 (b) $2X\sim N(2\mu,4\sigma^2)$, så $E[e^{2X}]=e^{2\mu+2\sigma^2}$, og $\operatorname{Var}(e^X)=e^{2\mu+2\sigma^2}-e^{2\mu+\sigma^2}=e^{2\mu+\sigma^2}(e^{\sigma^2}-1)$.
 
-(c) Forventet simpelt afkast $e^{0+0{,}09/2}-1=e^{0{,}045}-1=4{,}60\,\%$. Median $e^0-1=0\,\%$. $P(\text{tab})=P(r<0)=0{,}5$. Investoren "forventer" altså 4,6 %, men taber halvdelen af tiden.
+(c) Forventet simpelt afkast $e^{0+0.09/2}-1=e^{0.045}-1=4.60\,\%$. Median $e^0-1=0\,\%$. $P(\text{tab})=P(r<0)=0.5$. Investoren "forventer" altså 4.6 %, men taber halvdelen af tiden.
 
-(d) $E[P_T]=P_0e^{\mu T+\sigma^2T/2}=P_0e^{mT}\iff\mu=m-\sigma^2/2$. Med $m=0{,}08$, $\sigma=0{,}30$: $\mu=0{,}08-0{,}045=0{,}035$. Den typiske (mediane) vækst er altså kun 3,5 % pr. år, selvom den forventede er 8 %. Jo højere volatilitet, jo større forskel.
+(d) $E[P_T]=P_0e^{\mu T+\sigma^2T/2}=P_0e^{mT}\iff\mu=m-\sigma^2/2$. Med $m=0.08$, $\sigma=0.30$: $\mu=0.08-0.045=0.035$. Den typiske (mediane) vækst er altså kun 3.5 % pr. år, selvom den forventede er 8 %. Jo højere volatilitet, jo større forskel.
 
 </details>
 
 <details>
 <summary>Løsning 4.7</summary>
 
-(a) Summen af 252 iid led har middelværdi $252\cdot0{,}0003=0{,}0756$ og standardafvigelse $0{,}012\sqrt{252}=0{,}1905$. CLT giver tilnærmet $N(0{,}0756;\ 0{,}1905^2)$.
+(a) Summen af 252 iid led har middelværdi $252\cdot0.0003=0.0756$ og standardafvigelse $0.012\sqrt{252}=0.1905$. CLT giver tilnærmet $N(0.0756;\ 0.1905^2)$.
 
-(b) $P(\text{negativ})\approx\Phi(-0{,}0756/0{,}1905)=\Phi(-0{,}397)=0{,}346$.
+(b) $P(\text{negativ})\approx\Phi(-0.0756/0.1905)=\Phi(-0.397)=0.346$.
 
-(c) 10 år $=2520$ dage: middel $0{,}756$, standardafvigelse $0{,}012\sqrt{2520}=0{,}602$, $P\approx\Phi(-1{,}255)=0{,}105$.
+(c) 10 år $=2520$ dage: middel $0.756$, standardafvigelse $0.012\sqrt{2520}=0.602$, $P\approx\Phi(-1.255)=0.105$.
 
 (d) $E[S_T]/\operatorname{sd}(S_T)=T\mu/(\sigma\sqrt T)=(\mu/\sigma)\sqrt T$. Antagelser: uafhængige (mindst ukorrelerede) og identisk fordelte dagsafkast med endelig varians, og $T$ stor nok til CLT. Daglige afkast behøver *ikke* være normalfordelte, men tilnærmelsen er dårligst i halerne. Et faldende $P(\text{tab})$ betyder ikke "sikkert": standardafvigelsen på slutformuen vokser stadig med $\sqrt T$, så de dårlige scenarier bliver større i kroner. Desuden kan parametrene ændre sig over tid, og vi kender ikke $\mu$ præcist (uge 5). En 10 % sandsynlighed for et negativt 10-årsafkast er ikke lille.
 
@@ -2633,14 +2633,14 @@ fordi det sidste integral er tætheden for $N(\sigma,1)$ integreret, altså 1. D
 
 (a) Givet $V$ er $E[X\mid V]=0$, $E[X^2\mid V]=V$ og $E[X^4\mid V]=3V^2$ (normalfordelingens fjerde moment). Loven om total forventning giver $E[X]=0$, $\operatorname{Var}(X)=E[V]$ og $E[X^4]=3E[V^2]$, så $\kappa=3E[V^2]/E[V]^2$. Da $E[V^2]-E[V]^2=\operatorname{Var}(V)\ge0$, er $\kappa\ge3$, med lighed præcis når $\operatorname{Var}(V)=0$.
 
-(b) $E[V]=\frac27\cdot0{,}025^2+\frac57\cdot0{,}008^2=0{,}0001786+0{,}0000457=0{,}0002243$, så $\operatorname{sd}=1{,}50\,\%$ (årligt $1{,}50\,\%\cdot\sqrt{252}=23{,}8\,\%$). $E[V^2]=\frac27\cdot0{,}025^4+\frac57\cdot0{,}008^4=1{,}146\cdot10^{-7}$, og $\kappa=3\cdot1{,}146\cdot10^{-7}/(2{,}243\cdot10^{-4})^2=6{,}83$. Simulationen i 4.13 giver 6,84 og 1,51 %: den marginale fordeling afhænger kun af den stationære andel af stressdage, ikke af at regimerne varer længe.
+(b) $E[V]=\frac27\cdot0.025^2+\frac57\cdot0.008^2=0.0001786+0.0000457=0.0002243$, så $\operatorname{sd}=1.50\,\%$ (årligt $1.50\,\%\cdot\sqrt{252}=23.8\,\%$). $E[V^2]=\frac27\cdot0.025^4+\frac57\cdot0.008^4=1.146\cdot10^{-7}$, og $\kappa=3\cdot1.146\cdot10^{-7}/(2.243\cdot10^{-4})^2=6.83$. Simulationen i 4.13 giver 6.84 og 1.51 %: den marginale fordeling afhænger kun af den stationære andel af stressdage, ikke af at regimerne varer længe.
 
 (c) $E[S_n^2]=n\sigma^2$. I $E[S_n^4]=\sum_{i,j,k,l}E[X_iX_jX_kX_l]$ forsvinder alle led, hvor et indeks optræder præcis én gang (uafhængighed og middel 0). Tilbage er $n$ led $E[X_i^4]=\kappa\sigma^4$ og led af typen $X_i^2X_j^2$ med $i\ne j$: for hvert af de $n(n-1)/2$ uordnede par er der $\binom42=6$ placeringer, i alt $3n(n-1)\sigma^4$. Derfor
 $$
 \kappa(S_n)=\frac{n\kappa\sigma^4+3n(n-1)\sigma^4}{n^2\sigma^4}=3+\frac{\kappa-3}{n}.
 $$
 
-(d) $(8-3)/n\le0{,}1\iff n\ge50$ dage. I virkeligheden er dagsafkast ikke uafhængige: regimer og volatilitets-klumper varer uger til måneder, så nabodage har samme høje eller lave varians. Summen "ser" derfor færre uafhængige stykker, og den overskydende kurtosis aftager langsommere end $1/n$.
+(d) $(8-3)/n\le0.1\iff n\ge50$ dage. I virkeligheden er dagsafkast ikke uafhængige: regimer og volatilitets-klumper varer uger til måneder, så nabodage har samme høje eller lave varians. Summen "ser" derfor færre uafhængige stykker, og den overskydende kurtosis aftager langsommere end $1/n$.
 
 </details>
 
@@ -2651,7 +2651,7 @@ $$
 
 (b) $s_{t+1}=(1-s_t)a+s_t(1-b)=a+(1-a-b)s_t$. Fikspunktet opfylder $s^*=a+(1-a-b)s^*$, dvs. $s^*=a/(a+b)$. Træk ligningerne fra hinanden: $s_{t+1}-s^*=(1-a-b)(s_t-s^*)$. Ved induktion er $s_t=s^*+(1-a-b)^t(s_0-s^*)$. Når $0<a+b<2$, er $\lvert1-a-b\rvert<1$, og $s_t\to s^*$ geometrisk.
 
-(c) $1-a-b=0{,}93$, $s^*=2/7$, $s_0=0$: $s_t=\frac27(1-0{,}93^t)$. $s_{10}=\frac27(1-0{,}4840)=0{,}1474$ og $s_{50}=\frac27(1-0{,}0266)=0{,}2781$, præcis som iterationen i 4.13.
+(c) $1-a-b=0.93$, $s^*=2/7$, $s_0=0$: $s_t=\frac27(1-0.93^t)$. $s_{10}=\frac27(1-0.4840)=0.1474$ og $s_{50}=\frac27(1-0.0266)=0.2781$, præcis som iterationen i 4.13.
 
 (d) $a=b=1$: kæden skifter tilstand hver dag, $1-a-b=-1$, og $s_t$ veksler mellem 0 og 1 uden at konvergere. Kæden er periodisk (periode 2), selvom $\boldsymbol\pi=(\frac12,\frac12)$ stadig er stationær.
 
@@ -2751,7 +2751,7 @@ Forventet output:
 Normalfordeling: skew 0, begge haler 0.0500
 ```
 
-Fortolkning: skævheden falder som $2/\sqrt n$. For $n=1$ er $Z=E_1-1\ge-1$, så $Z$ kan slet ikke komme under $-1{,}645$. Selv ved $n=30$ (den klassiske tommelfingerregel) er venstre hale 3,4 % i stedet for 5 % og højre hale 5,9 %. Halerne er det sidste, der bliver normale, og det er netop halerne, risikostyring handler om. (Ved $n=200$ ligger den simulerede skævhed lidt over teorien; stikprøveskævhed er selv ret usikker.)
+Fortolkning: skævheden falder som $2/\sqrt n$. For $n=1$ er $Z=E_1-1\ge-1$, så $Z$ kan slet ikke komme under $-1.645$. Selv ved $n=30$ (den klassiske tommelfingerregel) er venstre hale 3.4 % i stedet for 5 % og højre hale 5.9 %. Halerne er det sidste, der bliver normale, og det er netop halerne, risikostyring handler om. (Ved $n=200$ ligger den simulerede skævhed lidt over teorien; stikprøveskævhed er selv ret usikker.)
 
 </details>
 
@@ -2805,7 +2805,7 @@ Kurtosis: 6.84 (normal: 3)
 Dage med |R - m| > 4 sd: 480 (normal ville give ca. 6)
 ```
 
-Fortolkning: iterationen konvergerer som $0{,}93^k$ (4.10). Hvert regime er normalfordelt, men blandingen har kurtosis 6,8 (teori 6,83, se 4.9), og der er ca. 75 gange så mange 4-sigma-dage, som en normalfordeling med samme volatilitet ville give ($P(\lvert Z\rvert>4)=6{,}3\cdot10^{-5}$). Desuden klumper de store dage sig i stressperioderne — volatilitets-klumper med (næsten) ingen autokorrelation i selve afkastene. (Den lille forskel i middelafkast mellem regimerne giver en ubetydelig positiv autokorrelation, ca. 0,002.)
+Fortolkning: iterationen konvergerer som $0.93^k$ (4.10). Hvert regime er normalfordelt, men blandingen har kurtosis 6.8 (teori 6.83, se 4.9), og der er ca. 75 gange så mange 4-sigma-dage, som en normalfordeling med samme volatilitet ville give ($P(\lvert Z\rvert>4)=6.3\cdot10^{-5}$). Desuden klumper de store dage sig i stressperioderne — volatilitets-klumper med (næsten) ingen autokorrelation i selve afkastene. (Den lille forskel i middelafkast mellem regimerne giver en ubetydelig positiv autokorrelation, ca. 0.002.)
 
 </details>
 
@@ -2828,7 +2828,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 5 — Statistik og inferens
 
 > **Læringsmål:** Forstå estimatorer (bias, varians, MSE), udlede maximum likelihood-estimatorer, konstruere konfidensintervaller og udføre t-tests — og se, at en t-test af middelafkastet *er* en test af Sharpe ratio. Kunne beregne standardfejlen på en Sharpe ratio, forstå p-værdier korrekt og korrigere for mange test (Bonferroni, Holm, Benjamini–Hochberg) samt bruge bootstrap.
-> **Tidsforbrug:** ca. 3,5 t video (+ ca. 1,3 t valgfri) · ca. 5,5 t øvelser
+> **Tidsforbrug:** ca. 3.5 t video (+ ca. 1.3 t valgfri) · ca. 5.5 t øvelser
 > **Forudsætninger:** Uge 2 (Sharpe ratio, annualisering) og uge 4 (normalfordeling, LLN, CLT). Differentialregning fra HTX Matematik A.
 
 ### 📺 Se
@@ -2856,7 +2856,7 @@ $$
 
 **2. Middelværdi og varians.** $\bar X$ er central med $\operatorname{Var}(\bar X)=\sigma^2/n$, så $\operatorname{SE}(\bar X)=s/\sqrt n$. Stikprøvevariansen $s^2=\frac{1}{n-1}\sum(X_i-\bar X)^2$ er central: af identiteten $\sum(X_i-\bar X)^2=\sum(X_i-\mu)^2-n(\bar X-\mu)^2$ følger $E[\cdot]=n\sigma^2-\sigma^2=(n-1)\sigma^2$.
 
-*Finanspointe.* Med daglig $\sigma=1\,\%$ og $\mu=0{,}04\,\%$ er SE for middelafkastet efter ét år $1\,\%/\sqrt{252}=0{,}063\,\%$, altså *større* end selve $\mu$. Volatiliteten estimeres derimod præcist: for normalfordelte data er $\operatorname{SE}(\hat\sigma)\approx\sigma/\sqrt{2n}=0{,}045\,\%$, ca. 4,5 % af $\sigma$ (fede haler gør den noget større, men stadig lille). Forventede afkast er svære at estimere, risiko er (relativt) let. Det præger hele porteføljeteorien (uge 7).
+*Finanspointe.* Med daglig $\sigma=1\,\%$ og $\mu=0.04\,\%$ er SE for middelafkastet efter ét år $1\,\%/\sqrt{252}=0.063\,\%$, altså *større* end selve $\mu$. Volatiliteten estimeres derimod præcist: for normalfordelte data er $\operatorname{SE}(\hat\sigma)\approx\sigma/\sqrt{2n}=0.045\,\%$, ca. 4.5 % af $\sigma$ (fede haler gør den noget større, men stadig lille). Forventede afkast er svære at estimere, risiko er (relativt) let. Det præger hele porteføljeteorien (uge 7).
 
 **3. Maximum likelihood (MLE).** Likelihood $L(\theta)=\prod_i f(x_i;\theta)$ og log-likelihood $\ell(\theta)=\sum_i\ln f(x_i;\theta)$. MLE er $\hat\theta=\arg\max\ell(\theta)$.
 - *Normal:* $\ell(\mu,\sigma^2)=-\frac n2\ln(2\pi\sigma^2)-\frac{1}{2\sigma^2}\sum(x_i-\mu)^2$. Sæt partielle afledte lig 0: $\hat\mu=\bar x$ og $\hat\sigma^2=\frac1n\sum(x_i-\bar x)^2$ (skæv med faktor $(n-1)/n$).
@@ -2866,7 +2866,7 @@ Under passende regularitetsbetingelser er MLE konsistent og asymptotisk normal: 
 
 **4. Konfidensintervaller.** For normale data er $(\bar X-\mu)/(s/\sqrt n)$ t-fordelt med $n-1$ frihedsgrader, og et 95 %-konfidensinterval er
 $$
-\bar x\pm t_{n-1;\,0{,}975}\cdot\frac{s}{\sqrt n}\qquad(t_{n-1;\,0{,}975}\approx1{,}96\ \text{for stort }n).
+\bar x\pm t_{n-1;\,0.975}\cdot\frac{s}{\sqrt n}\qquad(t_{n-1;\,0.975}\approx1.96\ \text{for stort }n).
 $$
 Fortolkning: *proceduren* rammer $\mu$ i 95 % af gentagne stikprøver. Det er ikke "95 % sandsynlighed for, at $\mu$ ligger i netop dette interval" — $\mu$ er en fast størrelse i den frekventistiske ramme.
 
@@ -2881,24 +2881,24 @@ Fortolkning: *proceduren* rammer $\mu$ i 95 % af gentagne stikprøver. Det er ik
 $$
 t=\frac{\bar x}{s/\sqrt T}=\widehat{SR}_{\text{periode}}\sqrt T=\widehat{SR}_{\text{ann}}\sqrt{\text{antal år}},
 $$
-hvor det sidste bruger $SR_{\text{ann}}=SR_{\text{dag}}\sqrt{252}$ og dermed iid-antagelsen. Antal år, der kræves for $t=2$, er $(2/SR_{\text{ann}})^2$: 16 år ved $SR=0{,}5$, 4 år ved $SR=1$, 1 år ved $SR=2$. Under $H_1$ er $t$ tilnærmet $N(SR_{\text{ann}}\sqrt{\text{år}},\,1)$, hvilket giver styrken.
+hvor det sidste bruger $SR_{\text{ann}}=SR_{\text{dag}}\sqrt{252}$ og dermed iid-antagelsen. Antal år, der kræves for $t=2$, er $(2/SR_{\text{ann}})^2$: 16 år ved $SR=0.5$, 4 år ved $SR=1$, 1 år ved $SR=2$. Under $H_1$ er $t$ tilnærmet $N(SR_{\text{ann}}\sqrt{\text{år}},\,1)$, hvilket giver styrken.
 
-*Regneeksempel.* 4 års daglige data med $\widehat{SR}_{\text{ann}}=0{,}8$: $t=0{,}8\cdot\sqrt4=1{,}6$, tosidet $p=2(1-\Phi(1{,}6))=0{,}11$. Ikke signifikant på 5 %, selvom en Sharpe ratio på 0,8 er respektabel.
+*Regneeksempel.* 4 års daglige data med $\widehat{SR}_{\text{ann}}=0.8$: $t=0.8\cdot\sqrt4=1.6$, tosidet $p=2(1-\Phi(1.6))=0.11$. Ikke signifikant på 5 %, selvom en Sharpe ratio på 0.8 er respektabel.
 
 **6. p-værdier gjort rigtigt.**
 - $p$ er *ikke* $P(H_0\text{ sand}\mid\text{data})$, og $1-p$ er ikke sandsynligheden for, at strategien virker.
 - $p$ måler ikke effektens størrelse: et lille, økonomisk uinteressant afkast kan være "signifikant" med nok data.
-- $p>0{,}05$ beviser ikke, at der ingen effekt er — måske er styrken bare lav.
-- Under $H_0$ er $p$ uniformt fordelt på $[0,1]$: 5 % af rene støj-strategier får $p<0{,}05$.
+- $p>0.05$ beviser ikke, at der ingen effekt er — måske er styrken bare lav.
+- Under $H_0$ er $p$ uniformt fordelt på $[0,1]$: 5 % af rene støj-strategier får $p<0.05$.
 - p-værdien gælder kun for *én* test, der er valgt på forhånd. Valg af den bedste blandt mange gør den ugyldig.
 
 **7. Standardfejl på Sharpe ratio (Lo 2002).** For iid normale afkast giver deltametoden (5.10)
 $$
 \operatorname{SE}(\widehat{SR})\approx\sqrt{\frac{1+\tfrac12 SR^2}{T}},
 $$
-med $SR$ og $T$ målt i samme periode. Annualiseret: $\operatorname{SE}_{\text{ann}}=\operatorname{SE}_{\text{periode}}\cdot\sqrt{\text{perioder pr. år}}$, og med daglige data gælder groft $\operatorname{SE}_{\text{ann}}\approx1/\sqrt{\text{år}}$. Eksempel: $\widehat{SR}_{\text{ann}}=1$ estimeret på 3 års daglige data har $\operatorname{SE}_{\text{ann}}\approx0{,}58$ og et 95 %-interval på ca. $[-0{,}13;\ 2{,}13]$ (5.4). Fede haler, negativ skævhed og positiv autokorrelation øger typisk usikkerheden, og autokorrelation gør desuden $\sqrt{252}$-annualiseringen forkert (Lo 2002).
+med $SR$ og $T$ målt i samme periode. Annualiseret: $\operatorname{SE}_{\text{ann}}=\operatorname{SE}_{\text{periode}}\cdot\sqrt{\text{perioder pr. år}}$, og med daglige data gælder groft $\operatorname{SE}_{\text{ann}}\approx1/\sqrt{\text{år}}$. Eksempel: $\widehat{SR}_{\text{ann}}=1$ estimeret på 3 års daglige data har $\operatorname{SE}_{\text{ann}}\approx0.58$ og et 95 %-interval på ca. $[-0.13;\ 2.13]$ (5.4). Fede haler, negativ skævhed og positiv autokorrelation øger typisk usikkerheden, og autokorrelation gør desuden $\sqrt{252}$-annualiseringen forkert (Lo 2002).
 
-**8. Mange test (multiple testing).** Tester man $m$ uafhængige støj-strategier på niveau $\alpha$, er $P(\text{mindst ét falsk fund})=1-(1-\alpha)^m$; for $m=100$ og $\alpha=5\,\%$ er det 99,4 %, og man forventer 5 falske fund. Den største af $N$ uafhængige støj-t-værdier vokser kun langsomt med $N$, asymptotisk som $\sqrt{2\ln N}$. Formlen overvurderer for moderat $N$ ($\sqrt{2\ln200}=3{,}26$); den sande gennemsnitlige maksimumsværdi for $N=200$ er ca. 2,75 (simulationen i 5.11 giver 2,79). To fejlbegreber:
+**8. Mange test (multiple testing).** Tester man $m$ uafhængige støj-strategier på niveau $\alpha$, er $P(\text{mindst ét falsk fund})=1-(1-\alpha)^m$; for $m=100$ og $\alpha=5\,\%$ er det 99.4 %, og man forventer 5 falske fund. Den største af $N$ uafhængige støj-t-værdier vokser kun langsomt med $N$, asymptotisk som $\sqrt{2\ln N}$. Formlen overvurderer for moderat $N$ ($\sqrt{2\ln200}=3.26$); den sande gennemsnitlige maksimumsværdi for $N=200$ er ca. 2.75 (simulationen i 5.11 giver 2.79). To fejlbegreber:
 - *FWER* (family-wise error rate) $=P(\text{mindst én falsk forkastelse})$.
   *Bonferroni:* forkast $H_i$ hvis $p_i\le\alpha/m$.
   *Holm (step-down):* sortér $p_{(1)}\le\dots\le p_{(m)}$; forkast $H_{(1)},H_{(2)},\dots$ så længe $p_{(k)}\le\alpha/(m-k+1)$, og stop ved første brud. Holm kontrollerer FWER som Bonferroni, men forkaster altid mindst lige så mange.
@@ -2907,11 +2907,11 @@ med $SR$ og $T$ målt i samme periode. Annualiseret: $\operatorname{SE}_{\text{a
 
 Harvey, Liu og Zhu (2016) argumenterer for, at nye faktorer bør kræve $t>3$ i stedet for $t>2$, fordi feltet samlet har testet hundredvis af ideer. Det svarer til ca. 9 års data ved $SR_{\text{ann}}=1$. I uge 10 kommer den deflaterede Sharpe ratio, der korrigerer for antal forsøg direkte.
 
-**9. Bootstrap.** Ukendt fordeling? Brug den empiriske fordeling som stedfortræder. Træk $B$ stikprøver af størrelse $T$ *med tilbagelægning* fra data, beregn statistikken på hver, og brug deres spredning som SE og deres 2,5 %- og 97,5 %-fraktiler som et percentil-konfidensinterval. Fordel: ingen normalitetsantagelse, virker for komplicerede statistikker som Sharpe ratio og drawdown. Begrænsning: den simple bootstrap antager iid; for tidsrækker med afhængighed bruges block bootstrap (træk sammenhængende blokke).
+**9. Bootstrap.** Ukendt fordeling? Brug den empiriske fordeling som stedfortræder. Træk $B$ stikprøver af størrelse $T$ *med tilbagelægning* fra data, beregn statistikken på hver, og brug deres spredning som SE og deres 2.5 %- og 97.5 %-fraktiler som et percentil-konfidensinterval. Fordel: ingen normalitetsantagelse, virker for komplicerede statistikker som Sharpe ratio og drawdown. Begrænsning: den simple bootstrap antager iid; for tidsrækker med afhængighed bruges block bootstrap (træk sammenhængende blokke).
 
 **Typiske fejl**
 - At tro, at $\hat\sigma^2$ med $1/n$ er "forkert": det er MLE, bare skæv. Vælg bevidst.
-- At tolke $p=0{,}03$ som "97 % sikker på, at strategien virker".
+- At tolke $p=0.03$ som "97 % sikker på, at strategien virker".
 - At rapportere den bedste af mange backtests med dens naive p-værdi (p-hacking).
 - At glemme, at $t=SR\sqrt{\text{år}}$ forudsætter iid-afkast, og at en Sharpe ratio uden standardfejl er næsten meningsløs.
 - At bruge simpel bootstrap på autokorrelerede data.
@@ -2919,44 +2919,44 @@ Harvey, Liu og Zhu (2016) argumenterer for, at nye faktorer bør kræve $t>3$ i 
 
 ### ✏️ Øvelser
 
-**5.1** ★ — Fem månedlige afkast (i %): $2,\ -1,\ 3,\ 0,\ 1$. (a) Beregn $\bar x$, $s^2$ (med $n-1$) og MLE-variansen $\hat\sigma^2$ (med $n$). (b) Beregn $\operatorname{SE}(\bar x)$. (c) Opstil et 95 %-konfidensinterval for $\mu$ med $t_{4;\,0{,}975}=2{,}776$. (d) Test $H_0:\mu=0$ tosidet på 5 %-niveau. (e) Hvad kan du konkludere?
+**5.1** ★ — Fem månedlige afkast (i %): $2,\ -1,\ 3,\ 0,\ 1$. (a) Beregn $\bar x$, $s^2$ (med $n-1$) og MLE-variansen $\hat\sigma^2$ (med $n$). (b) Beregn $\operatorname{SE}(\bar x)$. (c) Opstil et 95 %-konfidensinterval for $\mu$ med $t_{4;\,0.975}=2.776$. (d) Test $H_0:\mu=0$ tosidet på 5 %-niveau. (e) Hvad kan du konkludere?
 
-**5.2** ★ — En strategi har over 5 år (1260 handelsdage) et gennemsnitligt dagligt overskudsafkast på $0{,}04\,\%$ og en daglig standardafvigelse på $1{,}2\,\%$. (a) Beregn t-værdien for $H_0:\mu=0$. (b) Beregn den annualiserede Sharpe ratio, og tjek $t=SR_{\text{ann}}\sqrt{\text{år}}$. (c) Find den tosidede p-værdi (normal-approksimation). (d) Hvor mange års data skulle der til for $t=2$, hvis Sharpe ratioen er uændret?
+**5.2** ★ — En strategi har over 5 år (1260 handelsdage) et gennemsnitligt dagligt overskudsafkast på $0.04\,\%$ og en daglig standardafvigelse på $1.2\,\%$. (a) Beregn t-værdien for $H_0:\mu=0$. (b) Beregn den annualiserede Sharpe ratio, og tjek $t=SR_{\text{ann}}\sqrt{\text{år}}$. (c) Find den tosidede p-værdi (normal-approksimation). (d) Hvor mange års data skulle der til for $t=2$, hvis Sharpe ratioen er uændret?
 
-**5.3** ★ — En strategi har en sand $SR_{\text{ann}}=0{,}5$. Du tester $H_0:SR=0$ mod $H_1:SR>0$ ensidet på 5 %-niveau (kritisk værdi 1,645) med 10 års daglige data. (a) Hvad er den tilnærmede fordeling af $t$ under $H_1$? (b) Beregn styrken og sandsynligheden for en type II-fejl. (c) Hvor mange år kræves for en styrke på 80 % ($z_{0{,}8}=0{,}842$)? (d) Kommentér.
+**5.3** ★ — En strategi har en sand $SR_{\text{ann}}=0.5$. Du tester $H_0:SR=0$ mod $H_1:SR>0$ ensidet på 5 %-niveau (kritisk værdi 1,645) med 10 års daglige data. (a) Hvad er den tilnærmede fordeling af $t$ under $H_1$? (b) Beregn styrken og sandsynligheden for en type II-fejl. (c) Hvor mange år kræves for en styrke på 80 % ($z_{0.8}=0.842$)? (d) Kommentér.
 
-**5.4** ★ — En backtest viser $\widehat{SR}_{\text{ann}}=1{,}0$ over 3 år. (a) Beregn Lo-standardfejlen med daglige data ($T=756$) og et tilnærmet 95 %-interval for $SR_{\text{ann}}$. (b) Gentag med månedlige data ($T=36$). (c) Hvor mange år med daglige data kræves, før den nedre grænse af 95 %-intervallet er over 0, hvis $\widehat{SR}_{\text{ann}}=1$?
+**5.4** ★ — En backtest viser $\widehat{SR}_{\text{ann}}=1.0$ over 3 år. (a) Beregn Lo-standardfejlen med daglige data ($T=756$) og et tilnærmet 95 %-interval for $SR_{\text{ann}}$. (b) Gentag med månedlige data ($T=36$). (c) Hvor mange år med daglige data kræves, før den nedre grænse af 95 %-intervallet er over 0, hvis $\widehat{SR}_{\text{ann}}=1$?
 
 **5.5** ★★ — (a) Udled MLE for $\mu$ og $\sigma^2$ for iid $N(\mu,\sigma^2)$-data, og tjek, at det er et maksimum. (b) Vis $E[\hat\sigma^2]=\frac{n-1}{n}\sigma^2$, og at $s^2$ derfor er central. (c) Er $s=\sqrt{s^2}$ en central estimator for $\sigma$? (Hint: Jensen.)
 
-**5.6** ★★ — Ventetider i sekunder mellem handler i en aktie: $0{,}5;\ 2{,}0;\ 1{,}2;\ 0{,}3;\ 3{,}0;\ 0{,}8;\ 1{,}7;\ 0{,}5$. Antag eksponentialfordeling med rate $\lambda$. (a) Find MLE $\hat\lambda$. (b) Beregn Fisher-informationen $I(\lambda)$, den asymptotiske SE og et tilnærmet 95 %-interval. (c) Find MLE af middelventetiden og af $P(\text{ventetid}>2\text{ s})$. (d) Er $\hat\lambda$ central? Brug, at $S=\sum X_i$ er Gamma$(n,\lambda)$-fordelt med $E[1/S]=\lambda/(n-1)$. (Ordreankomster som Poisson-proces bruges i uge 15.)
+**5.6** ★★ — Ventetider i sekunder mellem handler i en aktie: $0.5;\ 2.0;\ 1.2;\ 0.3;\ 3.0;\ 0.8;\ 1.7;\ 0.5$. Antag eksponentialfordeling med rate $\lambda$. (a) Find MLE $\hat\lambda$. (b) Beregn Fisher-informationen $I(\lambda)$, den asymptotiske SE og et tilnærmet 95 %-interval. (c) Find MLE af middelventetiden og af $P(\text{ventetid}>2\text{ s})$. (d) Er $\hat\lambda$ central? Brug, at $S=\sum X_i$ er Gamma$(n,\lambda)$-fordelt med $E[1/S]=\lambda/(n-1)$. (Ordreankomster som Poisson-proces bruges i uge 15.)
 
-**5.7** ★★ — (Krympning, shrinkage.) Estimér $\mu$ med $\hat\mu_c=c\bar X$, $0\le c\le1$. (a) Vis $\operatorname{MSE}(\hat\mu_c)=(1-c)^2\mu^2+c^2\sigma^2/n$. (b) Find det optimale $c^*$ og den minimale MSE. (c) Daglige afkast med $\mu=0{,}04\,\%$, $\sigma=1\,\%$, $n=252$: beregn $c^*$ og forholdet mellem MSE for $c^*$ og for $c=1$. (d) Hvorfor kan man ikke bruge $c^*$ direkte i praksis, og hvad er pointen så? (Bruges i uge 7, hvor Markowitz-optimering er meget følsom over for $\hat\mu$.)
+**5.7** ★★ — (Krympning, shrinkage.) Estimér $\mu$ med $\hat\mu_c=c\bar X$, $0\le c\le1$. (a) Vis $\operatorname{MSE}(\hat\mu_c)=(1-c)^2\mu^2+c^2\sigma^2/n$. (b) Find det optimale $c^*$ og den minimale MSE. (c) Daglige afkast med $\mu=0.04\,\%$, $\sigma=1\,\%$, $n=252$: beregn $c^*$ og forholdet mellem MSE for $c^*$ og for $c=1$. (d) Hvorfor kan man ikke bruge $c^*$ direkte i praksis, og hvad er pointen så? (Bruges i uge 7, hvor Markowitz-optimering er meget følsom over for $\hat\mu$.)
 
-**5.8** ★★ — Ti strategier har p-værdierne $0{,}001;\ 0{,}004;\ 0{,}006;\ 0{,}012;\ 0{,}020;\ 0{,}035;\ 0{,}041;\ 0{,}20;\ 0{,}45;\ 0{,}80$. Med $\alpha=0{,}05$: hvor mange forkastes (a) uden korrektion, (b) med Bonferroni, (c) med Holm, (d) med Benjamini–Hochberg? Vis tabellen over tærskler. (e) Hvad lover hver metode?
+**5.8** ★★ — Ti strategier har p-værdierne $0.001;\ 0.004;\ 0.006;\ 0.012;\ 0.020;\ 0.035;\ 0.041;\ 0.20;\ 0.45;\ 0.80$. Med $\alpha=0.05$: hvor mange forkastes (a) uden korrektion, (b) med Bonferroni, (c) med Holm, (d) med Benjamini–Hochberg? Vis tabellen over tærskler. (e) Hvad lover hver metode?
 
-**5.9** ★★ 🗣️ — (a) Du tester 100 uafhængige strategier uden edge, tosidet på 5 %-niveau. Hvor mange "signifikante" forventer du, og hvad er sandsynligheden for mindst én? (b) Hvilken $\lvert t\rvert$-grænse kræver Bonferroni for $m=100$ ved FWER 5 %? (c) Hvor mange års data kræves ved $SR_{\text{ann}}=1$ for at nå $t=3$, og for at nå Bonferroni-grænsen? (d) En ven skriver: "Jeg har prøvet 50 varianter af min moving average-strategi. Den bedste har $t=2{,}3$ og $p=0{,}02$ — den er bevist!" Skriv et svar på 6–10 linjer, der forklarer, hvad p-værdien betyder og ikke betyder, og hvad vennen bør gøre.
+**5.9** ★★ 🗣️ — (a) Du tester 100 uafhængige strategier uden edge, tosidet på 5 %-niveau. Hvor mange "signifikante" forventer du, og hvad er sandsynligheden for mindst én? (b) Hvilken $\lvert t\rvert$-grænse kræver Bonferroni for $m=100$ ved FWER 5 %? (c) Hvor mange års data kræves ved $SR_{\text{ann}}=1$ for at nå $t=3$, og for at nå Bonferroni-grænsen? (d) En ven skriver: "Jeg har prøvet 50 varianter af min moving average-strategi. Den bedste har $t=2.3$ og $p=0.02$ — den er bevist!" Skriv et svar på 6–10 linjer, der forklarer, hvad p-værdien betyder og ikke betyder, og hvad vennen bør gøre.
 
 **5.10** ★★★ — (Lo's formel via deltametoden.) Lad $X_1,\dots,X_T$ være iid $N(\mu,\sigma^2)$ og $SR=\mu/\sigma$. Brug uden bevis, at $\bar X$ og $s^2$ er uafhængige, og at $\operatorname{Var}(s^2)=2\sigma^4/(T-1)\approx2\sigma^4/T$. (a) Formulér deltametoden (første ordens Taylor): $\operatorname{Var}(g(\hat\theta))\approx g'(\theta)^2\operatorname{Var}(\hat\theta)$, og for to uafhængige estimatorer en tilsvarende sum. (b) Vis $\operatorname{Var}(s)\approx\sigma^2/(2T)$. (c) Vis $\operatorname{Var}(\widehat{SR})\approx(1+SR^2/2)/T$. (d) Fortolk de to led. Hvorfor er $\operatorname{SE}_{\text{ann}}\approx1/\sqrt{\text{år}}$ med daglige data?
 
-**5.11** ★★ 💻 — (200 støj-strategier.) Simulér 200 strategier med hver 504 daglige afkast fra $N(0;\ (1\,\%)^2)$ — ingen har edge. (a) Find den højeste t-værdi, dens annualiserede Sharpe ratio og dens naive ensidede p-værdi. (b) Gentag hele forsøget i 50 "verdener", og find andelen af verdener, hvor den bedste t-værdi er over 1,96 og over 3, samt gennemsnittet af den bedste t-værdi. (c) Sammenlign med teorien $1-(1-q)^{200}$, hvor $q$ er halesandsynligheden. Brug `random.seed(511)`.
+**5.11** ★★ 💻 — (200 støj-strategier.) Simulér 200 strategier med hver 504 daglige afkast fra $N(0;\ (1\,\%)^2)$ — ingen har edge. (a) Find den højeste t-værdi, dens annualiserede Sharpe ratio og dens naive ensidede p-værdi. (b) Gentag hele forsøget i 50 "verdener", og find andelen af verdener, hvor den bedste t-værdi er over 1.96 og over 3, samt gennemsnittet af den bedste t-værdi. (c) Sammenlign med teorien $1-(1-q)^{200}$, hvor $q$ er halesandsynligheden. Brug `random.seed(511)`.
 
 **5.12** ★★ 💻 — (Holm og BH.) Implementér `holm(p, alpha)` og `bh(p, alpha)`, der returnerer mængden af indekser, der forkastes. Tjek dem på p-værdierne fra 5.8. Simulér derefter 190 støj-strategier og 10 strategier med ægte $SR_{\text{ann}}=1$, hver med 10 års daglige data ($T=2520$, daglig $\sigma=1\,\%$). Beregn tosidede p-værdier (normal-approksimation), og sammenlign antal fund, ægte fund og falske fund for naiv 5 %, Bonferroni, Holm og BH. Brug `random.seed(512)`.
 
-**5.13** ★★ 💻 — (Bootstrap af Sharpe ratio.) Simulér 3 års daglige afkast ($T=756$) fra $N(0{,}05\,\%;\ (1\,\%)^2)$ med `random.seed(1)` og $r_f=0$. Beregn $\widehat{SR}_{\text{ann}}$, et percentil-bootstrap-95 %-interval med $B=2000$ og bootstrap-SE, og sammenlign med Lo-formlen. Hvad er den sande $SR_{\text{ann}}$, og ligger den i intervallet?
+**5.13** ★★ 💻 — (Bootstrap af Sharpe ratio.) Simulér 3 års daglige afkast ($T=756$) fra $N(0.05\,\%;\ (1\,\%)^2)$ med `random.seed(1)` og $r_f=0$. Beregn $\widehat{SR}_{\text{ann}}$, et percentil-bootstrap-95 %-interval med $B=2000$ og bootstrap-SE, og sammenlign med Lo-formlen. Hvad er den sande $SR_{\text{ann}}$, og ligger den i intervallet?
 
 ### ✅ Løsninger
 
 <details>
 <summary>Løsning 5.1</summary>
 
-(a) $\bar x=(2-1+3+0+1)/5=1$. Afvigelser $1,-2,2,-1,0$, kvadratsum $1+4+4+1+0=10$. $s^2=10/4=2{,}5$ (så $s=1{,}581$) og $\hat\sigma^2=10/5=2{,}0$.
+(a) $\bar x=(2-1+3+0+1)/5=1$. Afvigelser $1,-2,2,-1,0$, kvadratsum $1+4+4+1+0=10$. $s^2=10/4=2.5$ (så $s=1.581$) og $\hat\sigma^2=10/5=2.0$.
 
-(b) $\operatorname{SE}(\bar x)=1{,}581/\sqrt5=0{,}707$ procentpoint.
+(b) $\operatorname{SE}(\bar x)=1.581/\sqrt5=0.707$ procentpoint.
 
-(c) $1\pm2{,}776\cdot0{,}707=1\pm1{,}963$, dvs. $[-0{,}96;\ 2{,}96]$ %.
+(c) $1\pm2.776\cdot0.707=1\pm1.963$, dvs. $[-0.96;\ 2.96]$ %.
 
-(d) $t=1/0{,}707=1{,}41<2{,}776$: $H_0$ forkastes ikke. (Svarer til, at 0 ligger i intervallet.)
+(d) $t=1/0.707=1.41<2.776$: $H_0$ forkastes ikke. (Svarer til, at 0 ligger i intervallet.)
 
 (e) Intet om, hvorvidt der er en edge: med 5 observationer er intervallet næsten 4 procentpoint bredt. "Ikke signifikant" betyder her primært "for lidt data", ikke "ingen effekt".
 
@@ -2965,37 +2965,37 @@ Harvey, Liu og Zhu (2016) argumenterer for, at nye faktorer bør kræve $t>3$ i 
 <details>
 <summary>Løsning 5.2</summary>
 
-(a) $t=\dfrac{0{,}0004}{0{,}012/\sqrt{1260}}=0{,}03333\cdot35{,}50=1{,}18$.
+(a) $t=\dfrac{0.0004}{0.012/\sqrt{1260}}=0.03333\cdot35.50=1.18$.
 
-(b) $SR_{\text{dag}}=0{,}0004/0{,}012=0{,}0333$, $SR_{\text{ann}}=0{,}0333\cdot\sqrt{252}=0{,}529$, og $0{,}529\cdot\sqrt5=1{,}18$ ✓.
+(b) $SR_{\text{dag}}=0.0004/0.012=0.0333$, $SR_{\text{ann}}=0.0333\cdot\sqrt{252}=0.529$, og $0.529\cdot\sqrt5=1.18$ ✓.
 
-(c) $p=2(1-\Phi(1{,}18))\approx0{,}24$.
+(c) $p=2(1-\Phi(1.18))\approx0.24$.
 
-(d) $(2/0{,}529)^2=14{,}3$ år — og det forudsætter, at strategien virker uændret i 14 år.
+(d) $(2/0.529)^2=14.3$ år — og det forudsætter, at strategien virker uændret i 14 år.
 
 </details>
 
 <details>
 <summary>Løsning 5.3</summary>
 
-(a) $t\approx N(0{,}5\sqrt{10};\ 1)=N(1{,}581;\ 1)$.
+(a) $t\approx N(0.5\sqrt{10};\ 1)=N(1.581;\ 1)$.
 
-(b) Styrke $=P(t>1{,}645)=P(Z>1{,}645-1{,}581)=P(Z>0{,}064)=0{,}475$. Type II-fejl: $\beta=0{,}525$.
+(b) Styrke $=P(t>1.645)=P(Z>1.645-1.581)=P(Z>0.064)=0.475$. Type II-fejl: $\beta=0.525$.
 
-(c) Kræv $0{,}5\sqrt Y-1{,}645\ge0{,}842$, dvs. $\sqrt Y\ge2{,}487/0{,}5=4{,}97$ og $Y\ge24{,}7$ år.
+(c) Kræv $0.5\sqrt Y-1.645\ge0.842$, dvs. $\sqrt Y\ge2.487/0.5=4.97$ og $Y\ge24.7$ år.
 
-(d) En god strategi med $SR=0{,}5$ bliver oftere *overset* end fundet med 10 års data, og 25 år er længere end de fleste markedsregimer varer. Statistisk test af strategier med moderat Sharpe ratio har lav styrke. Derfor er økonomisk begrundelse, out-of-sample-test og flere uafhængige markeder vigtige (uge 10).
+(d) En god strategi med $SR=0.5$ bliver oftere *overset* end fundet med 10 års data, og 25 år er længere end de fleste markedsregimer varer. Statistisk test af strategier med moderat Sharpe ratio har lav styrke. Derfor er økonomisk begrundelse, out-of-sample-test og flere uafhængige markeder vigtige (uge 10).
 
 </details>
 
 <details>
 <summary>Løsning 5.4</summary>
 
-(a) $SR_{\text{dag}}=1/\sqrt{252}=0{,}0630$. $\operatorname{SE}_{\text{dag}}=\sqrt{(1+0{,}0630^2/2)/756}=\sqrt{1{,}00198/756}=0{,}03641$. $\operatorname{SE}_{\text{ann}}=0{,}03641\cdot\sqrt{252}=0{,}578$. 95 %-interval: $1\pm1{,}96\cdot0{,}578=[-0{,}13;\ 2{,}13]$.
+(a) $SR_{\text{dag}}=1/\sqrt{252}=0.0630$. $\operatorname{SE}_{\text{dag}}=\sqrt{(1+0.0630^2/2)/756}=\sqrt{1.00198/756}=0.03641$. $\operatorname{SE}_{\text{ann}}=0.03641\cdot\sqrt{252}=0.578$. 95 %-interval: $1\pm1.96\cdot0.578=[-0.13;\ 2.13]$.
 
-(b) $SR_{\text{md}}=1/\sqrt{12}=0{,}2887$. $\operatorname{SE}_{\text{md}}=\sqrt{(1+0{,}2887^2/2)/36}=\sqrt{1{,}0417/36}=0{,}1701$, $\operatorname{SE}_{\text{ann}}=0{,}1701\cdot\sqrt{12}=0{,}589$. Næsten det samme: det er antallet af *år*, ikke antal observationer, der bestemmer præcisionen af Sharpe ratioen (fordi $SR^2/2$-leddet er lille).
+(b) $SR_{\text{md}}=1/\sqrt{12}=0.2887$. $\operatorname{SE}_{\text{md}}=\sqrt{(1+0.2887^2/2)/36}=\sqrt{1.0417/36}=0.1701$, $\operatorname{SE}_{\text{ann}}=0.1701\cdot\sqrt{12}=0.589$. Næsten det samme: det er antallet af *år*, ikke antal observationer, der bestemmer præcisionen af Sharpe ratioen (fordi $SR^2/2$-leddet er lille).
 
-(c) $\operatorname{SE}_{\text{ann}}=\sqrt{(1+SR_{\text{dag}}^2/2)/Y}$. Kræv $1{,}96\cdot\operatorname{SE}_{\text{ann}}<1$: $Y>1{,}96^2\cdot1{,}00198=3{,}85$ år.
+(c) $\operatorname{SE}_{\text{ann}}=\sqrt{(1+SR_{\text{dag}}^2/2)/Y}$. Kræv $1.96\cdot\operatorname{SE}_{\text{ann}}<1$: $Y>1.96^2\cdot1.00198=3.85$ år.
 
 </details>
 
@@ -3016,13 +3016,13 @@ Maksimum: for fast $v$ er $\ell$ en nedadvendt parabel i $\mu$. Indsat $\hat\mu$
 <details>
 <summary>Løsning 5.6</summary>
 
-(a) $\sum x_i=10{,}0$, $n=8$, $\bar x=1{,}25$ s, $\hat\lambda=1/1{,}25=0{,}8$ handler pr. sekund.
+(a) $\sum x_i=10.0$, $n=8$, $\bar x=1.25$ s, $\hat\lambda=1/1.25=0.8$ handler pr. sekund.
 
-(b) $\ln f=\ln\lambda-\lambda x$, $\partial^2/\partial\lambda^2=-1/\lambda^2$, så $I(\lambda)=1/\lambda^2$. Asymptotisk $\operatorname{Var}(\hat\lambda)\approx\lambda^2/n$, $\operatorname{SE}\approx\hat\lambda/\sqrt n=0{,}8/\sqrt8=0{,}283$. Interval: $0{,}8\pm1{,}96\cdot0{,}283=[0{,}25;\ 1{,}35]$. (Med $n=8$ er normal-approksimationen grov.)
+(b) $\ln f=\ln\lambda-\lambda x$, $\partial^2/\partial\lambda^2=-1/\lambda^2$, så $I(\lambda)=1/\lambda^2$. Asymptotisk $\operatorname{Var}(\hat\lambda)\approx\lambda^2/n$, $\operatorname{SE}\approx\hat\lambda/\sqrt n=0.8/\sqrt8=0.283$. Interval: $0.8\pm1.96\cdot0.283=[0.25;\ 1.35]$. (Med $n=8$ er normal-approksimationen grov.)
 
-(c) Invarians: middelventetid $1/\hat\lambda=1{,}25$ s, og $\widehat P(X>2)=e^{-2\hat\lambda}=e^{-1{,}6}=0{,}202$.
+(c) Invarians: middelventetid $1/\hat\lambda=1.25$ s, og $\widehat P(X>2)=e^{-2\hat\lambda}=e^{-1.6}=0.202$.
 
-(d) $E[\hat\lambda]=E[n/S]=n\lambda/(n-1)$, så $\hat\lambda$ overvurderer med faktoren $8/7$ her. $(n-1)/S=\frac{n-1}{n}\hat\lambda=0{,}7$ er central. MLE er konsistent, men ikke nødvendigvis central i små stikprøver.
+(d) $E[\hat\lambda]=E[n/S]=n\lambda/(n-1)$, så $\hat\lambda$ overvurderer med faktoren $8/7$ her. $(n-1)/S=\frac{n-1}{n}\hat\lambda=0.7$ er central. MLE er konsistent, men ikke nødvendigvis central i små stikprøver.
 
 </details>
 
@@ -3033,7 +3033,7 @@ Maksimum: for fast $v$ er $\ell$ en nedadvendt parabel i $\mu$. Indsat $\hat\mu$
 
 (b) $\frac{d}{dc}$: $-2(1-c)\mu^2+2c\sigma^2/n=0\Rightarrow c^*=\dfrac{\mu^2}{\mu^2+\sigma^2/n}$. Indsat: $\operatorname{MSE}^*=\dfrac{\mu^2\,\sigma^2/n}{\mu^2+\sigma^2/n}=c^*\cdot\sigma^2/n$.
 
-(c) $\mu^2=1{,}6\cdot10^{-7}$, $\sigma^2/n=10^{-4}/252=3{,}97\cdot10^{-7}$. $c^*=1{,}6/(1{,}6+3{,}97)=0{,}287$. Forholdet $\operatorname{MSE}^*/\operatorname{MSE}(1)=c^*=0{,}287$: krympning mod 0 reducerer MSE med over 70 %.
+(c) $\mu^2=1.6\cdot10^{-7}$, $\sigma^2/n=10^{-4}/252=3.97\cdot10^{-7}$. $c^*=1.6/(1.6+3.97)=0.287$. Forholdet $\operatorname{MSE}^*/\operatorname{MSE}(1)=c^*=0.287$: krympning mod 0 reducerer MSE med over 70 %.
 
 (d) $c^*$ afhænger af det ukendte $\mu$. Pointen er princippet: når signal/støj er lavt ($\mu^2\ll\sigma^2/n$), betaler det sig at krympe estimater mod et fornuftigt udgangspunkt (0, et gennemsnit på tværs af aktiver, eller CAPM-forventninger). Det er idéen bag James–Stein, Black–Litterman og regularisering i ML.
 
@@ -3044,18 +3044,18 @@ Maksimum: for fast $v$ er $\ell$ en nedadvendt parabel i $\mu$. Indsat $\hat\mu$
 
 $m=10$, p-værdierne er allerede sorteret.
 
-| $k$ | $p_{(k)}$ | Bonferroni $0{,}005$ | Holm $0{,}05/(11-k)$ | BH $0{,}005k$ |
+| $k$ | $p_{(k)}$ | Bonferroni $0.005$ | Holm $0.05/(11-k)$ | BH $0.005k$ |
 |---|---|---|---|---|
-| 1 | 0,001 | ja | 0,00500 ja | 0,005 ja |
-| 2 | 0,004 | ja | 0,00556 ja | 0,010 ja |
-| 3 | 0,006 | nej | 0,00625 ja | 0,015 ja |
-| 4 | 0,012 | nej | 0,00714 **nej → stop** | 0,020 ja |
-| 5 | 0,020 | nej | – | 0,025 ja |
-| 6 | 0,035 | nej | – | 0,030 nej |
-| 7 | 0,041 | nej | – | 0,035 nej |
-| 8–10 | 0,20; 0,45; 0,80 | nej | – | 0,040; 0,045; 0,050 nej |
+| 1 | 0.001 | ja | 0.00500 ja | 0.005 ja |
+| 2 | 0.004 | ja | 0.00556 ja | 0.010 ja |
+| 3 | 0.006 | nej | 0.00625 ja | 0.015 ja |
+| 4 | 0.012 | nej | 0.00714 **nej → stop** | 0.020 ja |
+| 5 | 0.020 | nej | – | 0.025 ja |
+| 6 | 0.035 | nej | – | 0.030 nej |
+| 7 | 0.041 | nej | – | 0.035 nej |
+| 8–10 | 0.20; 0.45; 0.80 | nej | – | 0.040; 0.045; 0.050 nej |
 
-(a) Uden korrektion: 7 ($p\le0{,}05$). (b) Bonferroni: 2. (c) Holm: 3. (d) BH: det største $k$ med $p_{(k)}\le0{,}005k$ er $k=5$, så 5 forkastes.
+(a) Uden korrektion: 7 ($p\le0.05$). (b) Bonferroni: 2. (c) Holm: 3. (d) BH: det største $k$ med $p_{(k)}\le0.005k$ er $k=5$, så 5 forkastes.
 
 (e) Bonferroni og Holm: sandsynligheden for *mindst ét* falsk fund er højst 5 %. BH: i gennemsnit er højst 5 % af fundene falske (under uafhængighed). Ingen korrektion: hver enkelt test har 5 % falsk-positiv-risiko, så blandt mange test er falske fund næsten sikre.
 
@@ -3064,16 +3064,16 @@ $m=10$, p-værdierne er allerede sorteret.
 <details>
 <summary>Løsning 5.9</summary>
 
-(a) Forventet antal: $100\cdot0{,}05=5$. $P(\ge1)=1-0{,}95^{100}=0{,}994$.
+(a) Forventet antal: $100\cdot0.05=5$. $P(\ge1)=1-0.95^{100}=0.994$.
 
-(b) Tosidet med $\alpha/m=0{,}0005$: $\lvert t\rvert>z_{1-0{,}00025}=3{,}48$.
+(b) Tosidet med $\alpha/m=0.0005$: $\lvert t\rvert>z_{1-0.00025}=3.48$.
 
-(c) $t=SR\sqrt{\text{år}}$: $t=3$ kræver 9 år, $t=3{,}48$ kræver $3{,}48^2=12{,}1$ år.
+(c) $t=SR\sqrt{\text{år}}$: $t=3$ kræver 9 år, $t=3.48$ kræver $3.48^2=12.1$ år.
 
 (d) Et godt svar indeholder:
-- $p=0{,}02$ betyder: *hvis* strategien ingen edge havde, og *hvis* det var den eneste test, ville en så høj t-værdi forekomme i 2 % af tilfældene. Det er ikke sandsynligheden for, at strategien er nytteløs.
-- Med 50 varianter er den bedste t-værdi forventeligt omkring 2,2–2,3 selv for ren støj ($P(\max\ge2{,}3)\approx1-(1-0{,}011)^{50}\approx0{,}42$ ensidet, hvis varianterne var uafhængige; de er korrelerede, men problemet består).
-- Korriger for antallet af forsøg (Bonferroni: $p\le0{,}001$ kræves), eller hellere: rapportér alle 50, brug en hold-out-periode, test på andre markeder og inkludér transaktionsomkostninger.
+- $p=0.02$ betyder: *hvis* strategien ingen edge havde, og *hvis* det var den eneste test, ville en så høj t-værdi forekomme i 2 % af tilfældene. Det er ikke sandsynligheden for, at strategien er nytteløs.
+- Med 50 varianter er den bedste t-værdi forventeligt omkring 2.2–2.3 selv for ren støj ($P(\max\ge2.3)\approx1-(1-0.011)^{50}\approx0.42$ ensidet, hvis varianterne var uafhængige; de er korrelerede, men problemet består).
+- Korriger for antallet af forsøg (Bonferroni: $p\le0.001$ kræves), eller hellere: rapportér alle 50, brug en hold-out-periode, test på andre markeder og inkludér transaktionsomkostninger.
 - Spørg efter en økonomisk begrundelse og effektens størrelse efter omkostninger, ikke kun signifikans.
 - Paper trading før rigtige penge; selv en ægte edge kan forsvinde.
 
@@ -3091,7 +3091,7 @@ $$
 \operatorname{Var}(\widehat{SR})\approx\frac{1}{\sigma^2}\cdot\frac{\sigma^2}{T}+\frac{\mu^2}{\sigma^4}\cdot\frac{\sigma^2}{2T}=\frac{1}{T}\Big(1+\frac{SR^2}{2}\Big).
 $$
 
-(d) "1" kommer fra usikkerheden på middelafkastet (det samme som i t-testen); "$SR^2/2$" fra usikkerheden på volatiliteten. Med daglige data er $SR_{\text{dag}}\approx0{,}03$–$0{,}13$, så andet led er ubetydeligt, og $\operatorname{SE}_{\text{dag}}\approx1/\sqrt T$. Annualiseret: $\operatorname{SE}_{\text{ann}}\approx\sqrt{252/T}=1/\sqrt{\text{år}}$. Ved ikke-normale data kommer skævhed og kurtosis ind i formlen og øger typisk SE.
+(d) "1" kommer fra usikkerheden på middelafkastet (det samme som i t-testen); "$SR^2/2$" fra usikkerheden på volatiliteten. Med daglige data er $SR_{\text{dag}}\approx0.03$–$0.13$, så andet led er ubetydeligt, og $\operatorname{SE}_{\text{dag}}\approx1/\sqrt T$. Annualiseret: $\operatorname{SE}_{\text{ann}}\approx\sqrt{252/T}=1/\sqrt{\text{år}}$. Ved ikke-normale data kommer skævhed og kurtosis ind i formlen og øger typisk SE.
 
 </details>
 
@@ -3133,7 +3133,7 @@ Andel verdener med bedste t > 3.00: 0.28
 Gennemsnitlig bedste t: 2.79
 ```
 
-(c) Teori: $1-0{,}975^{200}=0{,}994$ for $t>1{,}96$ og $1-(1-0{,}00135)^{200}=0{,}237$ for $t>3$; simulationen (0,98 og 0,28 over kun 50 verdener) stemmer inden for usikkerheden. Fortolkning: den bedste af 200 støj-strategier har typisk en annualiseret Sharpe ratio omkring 2 og en naiv p-værdi under 1 % — helt uden edge. Selv $t>3$ er ikke nok, når man har prøvet 200 ting; Bonferroni ville kræve $t>z_{1-0{,}05/200}=3{,}48$ (ensidet).
+(c) Teori: $1-0.975^{200}=0.994$ for $t>1.96$ og $1-(1-0.00135)^{200}=0.237$ for $t>3$; simulationen (0.98 og 0.28 over kun 50 verdener) stemmer inden for usikkerheden. Fortolkning: den bedste af 200 støj-strategier har typisk en annualiseret Sharpe ratio omkring 2 og en naiv p-værdi under 1 % — helt uden edge. Selv $t>3$ er ikke nok, når man har prøvet 200 ting; Bonferroni ville kræve $t>z_{1-0.05/200}=3.48$ (ensidet).
 
 </details>
 
@@ -3194,7 +3194,7 @@ Holm         forkastet:   6  heraf edge:  6  falske:  0
 BH (FDR 5%)  forkastet:   7  heraf edge:  7  falske:  0
 ```
 
-Fortolkning: uden korrektion er 8 af 18 fund falske (44 %). Bonferroni og Holm fjerner de falske fund, men taber 4 af de 10 ægte strategier (med $SR=1$ og 10 år er $t\approx3{,}2$ i gennemsnit, tæt på grænsen). BH er mindre konservativ og finder én ægte mere. Valget afhænger af, hvad en falsk positiv koster: at handle på en falsk strategi koster penge, så i kvantforskning foretrækkes ofte strenge krav.
+Fortolkning: uden korrektion er 8 af 18 fund falske (44 %). Bonferroni og Holm fjerner de falske fund, men taber 4 af de 10 ægte strategier (med $SR=1$ og 10 år er $t\approx3.2$ i gennemsnit, tæt på grænsen). BH er mindre konservativ og finder én ægte mere. Valget afhænger af, hvad en falsk positiv koster: at handle på en falsk strategi koster penge, så i kvantforskning foretrækkes ofte strenge krav.
 
 </details>
 
@@ -3233,7 +3233,7 @@ Lo-approks. 95%-CI: [-0.225, 2.040]
 Bootstrap SE: 0.574   Lo SE: 0.578
 ```
 
-Den sande værdi er $0{,}0005/0{,}01\cdot\sqrt{252}=0{,}794$, som ligger i intervallet. Bootstrap og Lo-formlen er næsten enige, fordi data her *er* iid normale. Med rigtige afkast (fede haler, volatilitets-klumper) vil de typisk afvige, og så bør man bruge block bootstrap. Bemærk: 3 år med en god strategi er ikke nok til at udelukke $SR=0$.
+Den sande værdi er $0.0005/0.01\cdot\sqrt{252}=0.794$, som ligger i intervallet. Bootstrap og Lo-formlen er næsten enige, fordi data her *er* iid normale. Med rigtige afkast (fede haler, volatilitets-klumper) vil de typisk afvige, og så bør man bruge block bootstrap. Bemærk: 3 år med en god strategi er ikke nok til at udelukke $SR=0$.
 
 </details>
 
@@ -3257,7 +3257,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 6 — Lineær algebra, regression og PCA
 
 > **Læringsmål:** Regne med matricer (produkt, transponering, invers af 2×2 og 3×3), skrive porteføljevarians som $\mathbf w^\top\Sigma\mathbf w$ og forstå positiv semidefinithed. Udlede mindste kvadraters metode som en projektion, estimere alpha og beta med OLS inkl. $R^2$ og t-værdier, kende faldgruberne, og forstå egenværdier, PCA og power iteration.
-> **Tidsforbrug:** ca. 3,3 t video (+ ca. 3 t valgfri) · ca. 5,5 t øvelser
+> **Tidsforbrug:** ca. 3.3 t video (+ ca. 3 t valgfri) · ca. 5.5 t øvelser
 > **Forudsætninger:** Vektorer fra HTX Matematik A; uge 4 (kovarians, diversifikation) og uge 5 (SE, t-test). Foundations-planen (beviser, lineære afbildninger som funktioner).
 
 ### 📺 Se
@@ -3297,7 +3297,7 @@ Den er symmetrisk med varianserne på diagonalen, og $\Sigma=DCD$, hvor $D=\oper
 $$
 E[R_p]=\mathbf w^\top\boldsymbol\mu,\qquad\operatorname{Var}(R_p)=\mathbf w^\top\Sigma\mathbf w=\sum_i\sum_jw_iw_j\Sigma_{ij},\qquad\operatorname{Cov}(\mathbf a^\top\mathbf R,\mathbf b^\top\mathbf R)=\mathbf a^\top\Sigma\mathbf b .
 $$
-*Eksempel (tallene fra 4.2):* $\Sigma=\begin{pmatrix}0{,}04&0{,}015\\0{,}015&0{,}09\end{pmatrix}$, $\mathbf w=(0{,}6;\ 0{,}4)^\top$ giver $\Sigma\mathbf w=(0{,}030;\ 0{,}045)^\top$ og $\mathbf w^\top\Sigma\mathbf w=0{,}018+0{,}018=0{,}036$. Leddene $w_i(\Sigma\mathbf w)_i/\sigma_p^2$ er aktivernes *risikobidrag* (risk contributions) og summerer til 1 (her 50 % hver, selvom vægtene er 60/40).
+*Eksempel (tallene fra 4.2):* $\Sigma=\begin{pmatrix}0.04&0.015\\0.015&0.09\end{pmatrix}$, $\mathbf w=(0.6;\ 0.4)^\top$ giver $\Sigma\mathbf w=(0.030;\ 0.045)^\top$ og $\mathbf w^\top\Sigma\mathbf w=0.018+0.018=0.036$. Leddene $w_i(\Sigma\mathbf w)_i/\sigma_p^2$ er aktivernes *risikobidrag* (risk contributions) og summerer til 1 (her 50 % hver, selvom vægtene er 60/40).
 
 *Positiv semidefinit (PSD):* $\mathbf w^\top\Sigma\mathbf w\ge0$ for alle $\mathbf w$, fordi det er en varians. Positiv definit (PD), hvis $>0$ for alle $\mathbf w\ne\mathbf 0$: ingen kombination af aktiverne er risikofri. En stikprøve-kovariansmatrix fra $T$ observationer af $n\ge T$ aktiver har rang højst $T-1<n$ og er derfor *ikke* PD — et praktisk problem i uge 7–8. En matrix sat sammen af parvise skøn kan endda være ugyldig (6.6).
 
@@ -3317,13 +3317,13 @@ $$
 $$
 Residualerne summerer til 0 og er ortogonale på $\mathbf x$. Determinationskoefficienten $R^2=1-\text{SSE}/\text{SST}$, med $\text{SSE}=\sum e_t^2$ og $\text{SST}=\sum(y_t-\bar y)^2$, er andelen af variansen, som markedet forklarer; i simpel regression er $R^2=\hat\rho_{xy}^2$. $\beta$ er den systematiske eksponering, $\alpha$ det gennemsnitlige merafkast, som markedet ikke forklarer (CAPM i uge 7 siger $\alpha=0$).
 
-*Regneeksempel.* $\mathbf x=(-1,0,1,2)$, $\mathbf y=(-1;\ 0{,}5;\ 1;\ 3{,}5)$ (i %). $\bar x=0{,}5$, $\bar y=1$, $S_{xx}=5$, $S_{xy}=1{,}5\cdot2+0{,}5\cdot0{,}5+0+1{,}5\cdot2{,}5=7$. Så $\hat\beta=1{,}4$ og $\hat\alpha=1-1{,}4\cdot0{,}5=0{,}3$. Residualer $(0{,}1;\ 0{,}2;\ -0{,}7;\ 0{,}4)$, sum 0 ✓. $\text{SSE}=0{,}70$, $\text{SST}=10{,}5$, $R^2=0{,}933$.
+*Regneeksempel.* $\mathbf x=(-1,0,1,2)$, $\mathbf y=(-1;\ 0.5;\ 1;\ 3.5)$ (i %). $\bar x=0.5$, $\bar y=1$, $S_{xx}=5$, $S_{xy}=1.5\cdot2+0.5\cdot0.5+0+1.5\cdot2.5=7$. Så $\hat\beta=1.4$ og $\hat\alpha=1-1.4\cdot0.5=0.3$. Residualer $(0.1;\ 0.2;\ -0.7;\ 0.4)$, sum 0 ✓. $\text{SSE}=0.70$, $\text{SST}=10.5$, $R^2=0.933$.
 
 **5. Inferens for koefficienterne.** Under antagelserne (i) linearitet, (ii) $E[\varepsilon_t\mid X]=0$, (iii) homoskedasticitet $\operatorname{Var}(\varepsilon_t\mid X)=\sigma^2$, (iv) ingen autokorrelation i $\varepsilon$ — samt fuld rang af $X$ (afsnit 3) — er $\hat{\boldsymbol\beta}$ central (det kræver kun (i), (ii) og fuld rang) med
 $$
 \operatorname{Var}(\hat{\boldsymbol\beta}\mid X)=\sigma^2(X^\top X)^{-1},\qquad s^2=\frac{\text{SSE}}{T-k},\qquad\operatorname{SE}(\hat\beta)=\frac{s}{\sqrt{S_{xx}}}\ \text{(simpel regression)} .
 $$
-Gauss–Markov-sætningen: under (i)–(iv) har OLS den mindste varians blandt alle lineære centrale estimatorer (BLUE, best linear unbiased estimator). t-værdien for $H_0:\beta=\beta_0$ er $(\hat\beta-\beta_0)/\operatorname{SE}(\hat\beta)$, t-fordelt med $T-k$ frihedsgrader under normale fejl (ellers asymptotisk normal). I eksemplet: $s^2=0{,}70/2=0{,}35$, $\operatorname{SE}(\hat\beta)=\sqrt{0{,}35/5}=0{,}265$, $t=1{,}4/0{,}265=5{,}29$ for $\beta=0$ og $t=0{,}4/0{,}265=1{,}51$ for $\beta=1$. Bemærk, at $\operatorname{SE}(\hat\alpha)=s\sqrt{1/T+\bar x^2/S_{xx}}\approx s/\sqrt T$ (når $\bar x\approx0$) typisk er stor i forhold til $\alpha$: alpha er meget sværere at påvise end beta (6.8).
+Gauss–Markov-sætningen: under (i)–(iv) har OLS den mindste varians blandt alle lineære centrale estimatorer (BLUE, best linear unbiased estimator). t-værdien for $H_0:\beta=\beta_0$ er $(\hat\beta-\beta_0)/\operatorname{SE}(\hat\beta)$, t-fordelt med $T-k$ frihedsgrader under normale fejl (ellers asymptotisk normal). I eksemplet: $s^2=0.70/2=0.35$, $\operatorname{SE}(\hat\beta)=\sqrt{0.35/5}=0.265$, $t=1.4/0.265=5.29$ for $\beta=0$ og $t=0.4/0.265=1.51$ for $\beta=1$. Bemærk, at $\operatorname{SE}(\hat\alpha)=s\sqrt{1/T+\bar x^2/S_{xx}}\approx s/\sqrt T$ (når $\bar x\approx0$) typisk er stor i forhold til $\alpha$: alpha er meget sværere at påvise end beta (6.8).
 
 **6. Faldgruber med finansdata.**
 - *Heteroskedasticitet:* volatiliteten svinger (uge 4, 9), så (iii) brydes. Koefficienterne er stadig centrale, men standardfejlene er forkerte. Brug robuste (White/HC) standardfejl.
@@ -3357,27 +3357,27 @@ Spektralsætningen (spectral theorem): en symmetrisk $\Sigma$ kan skrives $\Sigm
 
 **6.2** ★ — Lad $B=\begin{pmatrix}2&0&1\\1&1&0\\0&1&1\end{pmatrix}$. (a) Beregn $\det B$. (b) Find $B^{-1}$ med Gauss–Jordan-elimination. (c) Løs $B\mathbf x=(3,2,2)^\top$.
 
-**6.3** ★ — Tre aktiver har kovariansmatrix (årlig) $\Sigma=\begin{pmatrix}0{,}04&0{,}012&0{,}006\\0{,}012&0{,}09&0{,}009\\0{,}006&0{,}009&0{,}0225\end{pmatrix}$ og vægte $\mathbf w=(0{,}5;\ 0{,}3;\ 0{,}2)^\top$. (a) Find volatiliteterne og korrelationerne. (b) Beregn $\Sigma\mathbf w$, $\mathbf w^\top\Sigma\mathbf w$ og $\sigma_p$. (c) Beregn risikobidragene $w_i(\Sigma\mathbf w)_i/\sigma_p^2$, og sammenlign med vægtene. (d) Sammenlign $\sigma_p$ med det vægtede gennemsnit af volatiliteterne.
+**6.3** ★ — Tre aktiver har kovariansmatrix (årlig) $\Sigma=\begin{pmatrix}0.04&0.012&0.006\\0.012&0.09&0.009\\0.006&0.009&0.0225\end{pmatrix}$ og vægte $\mathbf w=(0.5;\ 0.3;\ 0.2)^\top$. (a) Find volatiliteterne og korrelationerne. (b) Beregn $\Sigma\mathbf w$, $\mathbf w^\top\Sigma\mathbf w$ og $\sigma_p$. (c) Beregn risikobidragene $w_i(\Sigma\mathbf w)_i/\sigma_p^2$, og sammenlign med vægtene. (d) Sammenlign $\sigma_p$ med det vægtede gennemsnit af volatiliteterne.
 
-**6.4** ★ — Månedlige overskudsafkast (%) for markedet $x$ og en aktie $y$: $x=(-2,-1,0,1,2,3)$, $y=(-2{,}5;\ -1{,}5;\ 0{,}5;\ 1{,}0;\ 2{,}5;\ 3{,}5)$. (a) Beregn $\hat\beta$ og $\hat\alpha$. (b) Beregn residualerne, og tjek at de summerer til 0 og er ortogonale på $x$. (c) Beregn $R^2$. (d) Beregn $\operatorname{SE}(\hat\beta)$ og t-værdien for $\beta=0$.
+**6.4** ★ — Månedlige overskudsafkast (%) for markedet $x$ og en aktie $y$: $x=(-2,-1,0,1,2,3)$, $y=(-2.5;\ -1.5;\ 0.5;\ 1.0;\ 2.5;\ 3.5)$. (a) Beregn $\hat\beta$ og $\hat\alpha$. (b) Beregn residualerne, og tjek at de summerer til 0 og er ortogonale på $x$. (c) Beregn $R^2$. (d) Beregn $\operatorname{SE}(\hat\beta)$ og t-værdien for $\beta=0$.
 
 **6.5** ★★ — (a) Udled normalligningerne ved at sætte gradienten af $f(\boldsymbol\beta)=(\mathbf y-X\boldsymbol\beta)^\top(\mathbf y-X\boldsymbol\beta)$ lig nul. (Hint: udvid og brug $\nabla_{\boldsymbol\beta}(\mathbf c^\top\boldsymbol\beta)=\mathbf c$ og $\nabla_{\boldsymbol\beta}(\boldsymbol\beta^\top A\boldsymbol\beta)=2A\boldsymbol\beta$ for symmetrisk $A$.) (b) Vis, at med $X=[\mathbf 1\ \ \mathbf x]$ giver normalligningerne $\hat\beta=S_{xy}/S_{xx}$ og $\hat\alpha=\bar y-\hat\beta\bar x$. (c) Vis, at $P=X(X^\top X)^{-1}X^\top$ er symmetrisk og idempotent, og at $P\mathbf e=\mathbf 0$. (d) Vis $\text{SST}=\text{SSR}+\text{SSE}$, hvor $\text{SSR}=\sum(\hat y_t-\bar y)^2$, når der er en konstant i modellen.
 
-**6.6** ★★ — (a) Bevis, at enhver kovariansmatrix er PSD. (b) En analytiker har estimeret parvise korrelationer fra forskellige perioder og fået $C=\begin{pmatrix}1&0{,}9&0{,}9\\0{,}9&1&0{,}2\\0{,}9&0{,}2&1\end{pmatrix}$. Vis, at $C$ ikke kan være en korrelationsmatrix, ved at finde $\mathbf w$ med $\mathbf w^\top C\mathbf w<0$. Beregn også $\det C$. (c) Forklar intuitivt, hvorfor korrelationerne er inkonsistente. (d) Hvad kan der ske, hvis sådan en matrix bruges i en porteføljeoptimering (uge 7)?
+**6.6** ★★ — (a) Bevis, at enhver kovariansmatrix er PSD. (b) En analytiker har estimeret parvise korrelationer fra forskellige perioder og fået $C=\begin{pmatrix}1&0.9&0.9\\0.9&1&0.2\\0.9&0.2&1\end{pmatrix}$. Vis, at $C$ ikke kan være en korrelationsmatrix, ved at finde $\mathbf w$ med $\mathbf w^\top C\mathbf w<0$. Beregn også $\det C$. (c) Forklar intuitivt, hvorfor korrelationerne er inkonsistente. (d) Hvad kan der ske, hvis sådan en matrix bruges i en porteføljeoptimering (uge 7)?
 
-**6.7** ★★ — (a) Find egenværdier og normerede egenvektorer for $\Sigma=\begin{pmatrix}0{,}05&0{,}02\\0{,}02&0{,}08\end{pmatrix}$. Hvor stor en andel af variansen forklarer første principalkomponent? Tjek spor og determinant. (b) Lad $C=(1-\rho)I+\rho\mathbf 1\mathbf 1^\top$ være $n\times n$-korrelationsmatricen med fælles $\rho$. Vis, at $\mathbf 1$ er egenvektor med $\lambda_1=1+(n-1)\rho$, og at enhver $\mathbf u\perp\mathbf 1$ er egenvektor med $\lambda=1-\rho$. (c) Udled heraf igen $\rho\ge-1/(n-1)$, og vis at variansen af den ligevægtede portefølje (af standardiserede aktiver) er $\lambda_1/n$. Sammenlign med uge 4.
+**6.7** ★★ — (a) Find egenværdier og normerede egenvektorer for $\Sigma=\begin{pmatrix}0.05&0.02\\0.02&0.08\end{pmatrix}$. Hvor stor en andel af variansen forklarer første principalkomponent? Tjek spor og determinant. (b) Lad $C=(1-\rho)I+\rho\mathbf 1\mathbf 1^\top$ være $n\times n$-korrelationsmatricen med fælles $\rho$. Vis, at $\mathbf 1$ er egenvektor med $\lambda_1=1+(n-1)\rho$, og at enhver $\mathbf u\perp\mathbf 1$ er egenvektor med $\lambda=1-\rho$. (c) Udled heraf igen $\rho\ge-1/(n-1)$, og vis at variansen af den ligevægtede portefølje (af standardiserede aktiver) er $\lambda_1/n$. Sammenlign med uge 4.
 
-**6.8** ★★ — En regression af en fonds månedlige overskudsafkast på markedets over $T=60$ måneder giver $\hat\beta=1{,}2$ og $\hat\alpha=0{,}3\,\%$ pr. måned. Markedets overskudsafkast har stikprøvestandardafvigelse $s_x=4\,\%$ og middelværdi tæt på 0, og residualernes standardafvigelse er $s=5\,\%$. (a) Beregn $\operatorname{SE}(\hat\beta)$, og test $\beta=0$ og $\beta=1$. (b) Beregn tilnærmet $\operatorname{SE}(\hat\alpha)\approx s/\sqrt T$ og t-værdien for $\alpha=0$. (c) Beregn tilnærmet $R^2$. (d) Hvor mange måneders data kræves for $t(\hat\alpha)=2$, hvis det sande $\alpha$ er $0{,}3\,\%$ og alt andet er uændret? Kommentér.
+**6.8** ★★ — En regression af en fonds månedlige overskudsafkast på markedets over $T=60$ måneder giver $\hat\beta=1.2$ og $\hat\alpha=0.3\,\%$ pr. måned. Markedets overskudsafkast har stikprøvestandardafvigelse $s_x=4\,\%$ og middelværdi tæt på 0, og residualernes standardafvigelse er $s=5\,\%$. (a) Beregn $\operatorname{SE}(\hat\beta)$, og test $\beta=0$ og $\beta=1$. (b) Beregn tilnærmet $\operatorname{SE}(\hat\alpha)\approx s/\sqrt T$ og t-værdien for $\alpha=0$. (c) Beregn tilnærmet $R^2$. (d) Hvor mange måneders data kræves for $t(\hat\alpha)=2$, hvis det sande $\alpha$ er $0.3\,\%$ og alt andet er uændret? Kommentér.
 
 **6.9** ★★ — Tilføj en krakmåned $(x,y)=(-10,-6)$ til data i 6.4. (a) Beregn $\hat\beta$, $\hat\alpha$ og $R^2$ igen. (b) Hvor stor en andel af $S_{xx}$ står det nye punkt for? (c) Hvilken beta er "den rigtige" for en risikomanager, og hvad bør man gøre med sådanne punkter?
 
-**6.10** ★★★ — (Én-faktor-kovarians og power iteration.) Lad $\mathbf R=\mathbf b\,M+\boldsymbol\varepsilon$, hvor $\operatorname{Var}(M)=\sigma_m^2$, $\boldsymbol\varepsilon$ har kovarians $\sigma_\varepsilon^2I$ og er ukorreleret med $M$. (a) Vis $\Sigma=\sigma_m^2\mathbf b\mathbf b^\top+\sigma_\varepsilon^2I$. (b) Vis, at $\mathbf b$ er egenvektor med $\lambda_1=\sigma_m^2\lVert\mathbf b\rVert^2+\sigma_\varepsilon^2$, og at alle $\mathbf u\perp\mathbf b$ har $\lambda=\sigma_\varepsilon^2$. (c) Med $\mathbf b=(0{,}8;\ 1{,}0;\ 1{,}2;\ 0{,}9;\ 1{,}1)$ og $\sigma_m=\sigma_\varepsilon=1\,\%$ dagligt: beregn $\lambda_1$ og andelen af den samlede varians. (d) Bevis, at power iteration konvergerer mod $\pm\mathbf q_1$ med fejl af orden $(\lvert\lambda_2\rvert/\lambda_1)^k$ for en symmetrisk matrix med $\lambda_1>\lvert\lambda_2\rvert\ge\dots$, når startvektoren har $c_1\ne0$. Hvor mange iterationer kræves ca. i (c) for en fejl under $10^{-8}$?
+**6.10** ★★★ — (Én-faktor-kovarians og power iteration.) Lad $\mathbf R=\mathbf b\,M+\boldsymbol\varepsilon$, hvor $\operatorname{Var}(M)=\sigma_m^2$, $\boldsymbol\varepsilon$ har kovarians $\sigma_\varepsilon^2I$ og er ukorreleret med $M$. (a) Vis $\Sigma=\sigma_m^2\mathbf b\mathbf b^\top+\sigma_\varepsilon^2I$. (b) Vis, at $\mathbf b$ er egenvektor med $\lambda_1=\sigma_m^2\lVert\mathbf b\rVert^2+\sigma_\varepsilon^2$, og at alle $\mathbf u\perp\mathbf b$ har $\lambda=\sigma_\varepsilon^2$. (c) Med $\mathbf b=(0.8;\ 1.0;\ 1.2;\ 0.9;\ 1.1)$ og $\sigma_m=\sigma_\varepsilon=1\,\%$ dagligt: beregn $\lambda_1$ og andelen af den samlede varians. (d) Bevis, at power iteration konvergerer mod $\pm\mathbf q_1$ med fejl af orden $(\lvert\lambda_2\rvert/\lambda_1)^k$ for en symmetrisk matrix med $\lambda_1>\lvert\lambda_2\rvert\ge\dots$, når startvektoren har $c_1\ne0$. Hvor mange iterationer kræves ca. i (c) for en fejl under $10^{-8}$?
 
-**6.11** ★★ 💻 — (OLS fra bunden.) Implementér (i) `solve(A, b)`, der løser $A\mathbf x=\mathbf b$ med Gauss-elimination med delvis pivotering, og (ii) `ols(X, y)`, der løser normalligningerne og returnerer $\hat{\boldsymbol\beta}$, standardfejl og $R^2$. Simulér $T=1000$ dage med `random.seed(611)`: markedsafkast $m_t\sim N(0{,}04\,\%;\ (1\,\%)^2)$, en sektorfaktor $s_t=0{,}5\,m_t+N(0;\ (0{,}8\,\%)^2)$ og aktieafkast $y_t=0{,}02\,\%+1{,}0\,m_t+0{,}6\,s_t+N(0;\ (1{,}5\,\%)^2)$. Estimér (a) den simple beta med den lukkede formel, (b) modellen med kun markedet, (c) modellen med marked og sektor. (d) Forklar, hvorfor beta i (b) er ca. 1,3 og ikke 1,0.
+**6.11** ★★ 💻 — (OLS fra bunden.) Implementér (i) `solve(A, b)`, der løser $A\mathbf x=\mathbf b$ med Gauss-elimination med delvis pivotering, og (ii) `ols(X, y)`, der løser normalligningerne og returnerer $\hat{\boldsymbol\beta}$, standardfejl og $R^2$. Simulér $T=1000$ dage med `random.seed(611)`: markedsafkast $m_t\sim N(0.04\,\%;\ (1\,\%)^2)$, en sektorfaktor $s_t=0.5\,m_t+N(0;\ (0.8\,\%)^2)$ og aktieafkast $y_t=0.02\,\%+1.0\,m_t+0.6\,s_t+N(0;\ (1.5\,\%)^2)$. Estimér (a) den simple beta med den lukkede formel, (b) modellen med kun markedet, (c) modellen med marked og sektor. (d) Forklar, hvorfor beta i (b) er ca. 1.3 og ikke 1.0.
 
 **6.12** ★★ 💻 — (Power iteration og "markedet".) Simulér $T=2000$ dages afkast for 5 aktier fra én-faktor-modellen i 6.10 med `random.seed(612)`. Beregn stikprøve-kovariansmatricen, find topegenvektoren med 100 trin power iteration fra $(1,0,0,0,0)$, egenværdien via Rayleigh-kvotienten og andelen af den samlede varians. Sammenlign med den normerede beta-vektor og med teorien fra 6.10.
 
-**6.13** ★★ 🗣️ — Skriv ca. 10–15 linjer: Du har estimeret en aktiepulje med markedsmodellen på 10 års daglige data og fundet $\hat\alpha=4\,\%$ om året med $t=2{,}1$. Gennemgå OLS-antagelserne én ad gangen, og forklar for hver, hvordan den kan være brudt for finansdata, hvilken retning det typisk påvirker konklusionen, og hvad du ville gøre. Afslut med, hvorfor resultatet ikke i sig selv er grundlag for at investere.
+**6.13** ★★ 🗣️ — Skriv ca. 10–15 linjer: Du har estimeret en aktiepulje med markedsmodellen på 10 års daglige data og fundet $\hat\alpha=4\,\%$ om året med $t=2.1$. Gennemgå OLS-antagelserne én ad gangen, og forklar for hver, hvordan den kan være brudt for finansdata, hvilken retning det typisk påvirker konklusionen, og hvad du ville gøre. Afslut med, hvorfor resultatet ikke i sig selv er grundlag for at investere.
 
 ### ✅ Løsninger
 
@@ -3388,9 +3388,9 @@ Spektralsætningen (spectral theorem): en symmetrisk $\Sigma$ kan skrives $\Sigm
 
 (b) $(AB)^\top=\begin{pmatrix}2&4\\1&3\end{pmatrix}$. $B^\top A^\top=B\begin{pmatrix}1&3\\2&4\end{pmatrix}=\begin{pmatrix}2&4\\1&3\end{pmatrix}$ ✓.
 
-(c) $\det A=4-6=-2$, $A^{-1}=-\frac12\begin{pmatrix}4&-2\\-3&1\end{pmatrix}=\begin{pmatrix}-2&1\\1{,}5&-0{,}5\end{pmatrix}$. Kontrol: $\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}-2&1\\1{,}5&-0{,}5\end{pmatrix}=\begin{pmatrix}-2+3&1-1\\-6+6&3-2\end{pmatrix}=I$ ✓.
+(c) $\det A=4-6=-2$, $A^{-1}=-\frac12\begin{pmatrix}4&-2\\-3&1\end{pmatrix}=\begin{pmatrix}-2&1\\1.5&-0.5\end{pmatrix}$. Kontrol: $\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}-2&1\\1.5&-0.5\end{pmatrix}=\begin{pmatrix}-2+3&1-1\\-6+6&3-2\end{pmatrix}=I$ ✓.
 
-(d) $\mathbf x=A^{-1}(5,6)^\top=(-10+6;\ 7{,}5-3)=(-4;\ 4{,}5)$. Kontrol: $-4+9=5$, $-12+18=6$ ✓.
+(d) $\mathbf x=A^{-1}(5,6)^\top=(-10+6;\ 7.5-3)=(-4;\ 4.5)$. Kontrol: $-4+9=5$, $-12+18=6$ ✓.
 
 </details>
 
@@ -3422,26 +3422,26 @@ Altså $B^{-1}=\frac13\begin{pmatrix}1&1&-1\\-1&2&1\\1&-2&2\end{pmatrix}$. Kontr
 <details>
 <summary>Løsning 6.3</summary>
 
-(a) $\sigma=(\sqrt{0{,}04},\sqrt{0{,}09},\sqrt{0{,}0225})=(20\,\%,\ 30\,\%,\ 15\,\%)$. $\rho_{12}=0{,}012/(0{,}2\cdot0{,}3)=0{,}2$, $\rho_{13}=0{,}006/(0{,}2\cdot0{,}15)=0{,}2$, $\rho_{23}=0{,}009/(0{,}3\cdot0{,}15)=0{,}2$.
+(a) $\sigma=(\sqrt{0.04},\sqrt{0.09},\sqrt{0.0225})=(20\,\%,\ 30\,\%,\ 15\,\%)$. $\rho_{12}=0.012/(0.2\cdot0.3)=0.2$, $\rho_{13}=0.006/(0.2\cdot0.15)=0.2$, $\rho_{23}=0.009/(0.3\cdot0.15)=0.2$.
 
-(b) $\Sigma\mathbf w$: række 1: $0{,}02+0{,}0036+0{,}0012=0{,}0248$; række 2: $0{,}006+0{,}027+0{,}0018=0{,}0348$; række 3: $0{,}003+0{,}0027+0{,}0045=0{,}0102$. $\mathbf w^\top\Sigma\mathbf w=0{,}5\cdot0{,}0248+0{,}3\cdot0{,}0348+0{,}2\cdot0{,}0102=0{,}0124+0{,}01044+0{,}00204=0{,}02488$, så $\sigma_p=15{,}77\,\%$.
+(b) $\Sigma\mathbf w$: række 1: $0.02+0.0036+0.0012=0.0248$; række 2: $0.006+0.027+0.0018=0.0348$; række 3: $0.003+0.0027+0.0045=0.0102$. $\mathbf w^\top\Sigma\mathbf w=0.5\cdot0.0248+0.3\cdot0.0348+0.2\cdot0.0102=0.0124+0.01044+0.00204=0.02488$, så $\sigma_p=15.77\,\%$.
 
-(c) Risikobidrag: $0{,}0124/0{,}02488=49{,}8\,\%$, $0{,}01044/0{,}02488=42{,}0\,\%$, $0{,}00204/0{,}02488=8{,}2\,\%$. Aktiv 2 har 30 % af kapitalen, men 42 % af risikoen; aktiv 3 har 20 % af kapitalen, men kun 8 % af risikoen. (Risk parity i uge 12 vælger vægte, så bidragene er ens.)
+(c) Risikobidrag: $0.0124/0.02488=49.8\,\%$, $0.01044/0.02488=42.0\,\%$, $0.00204/0.02488=8.2\,\%$. Aktiv 2 har 30 % af kapitalen, men 42 % af risikoen; aktiv 3 har 20 % af kapitalen, men kun 8 % af risikoen. (Risk parity i uge 12 vælger vægte, så bidragene er ens.)
 
-(d) Vægtet gennemsnit: $0{,}5\cdot20+0{,}3\cdot30+0{,}2\cdot15=22\,\%$. Diversifikation sænker risikoen fra 22 % til 15,8 %.
+(d) Vægtet gennemsnit: $0.5\cdot20+0.3\cdot30+0.2\cdot15=22\,\%$. Diversifikation sænker risikoen fra 22 % til 15.8 %.
 
 </details>
 
 <details>
 <summary>Løsning 6.4</summary>
 
-(a) $\bar x=0{,}5$, $\bar y=3{,}5/6=0{,}5833$. $x-\bar x=(-2{,}5;-1{,}5;-0{,}5;0{,}5;1{,}5;2{,}5)$, $S_{xx}=17{,}5$. $S_{xy}=\sum(x_t-\bar x)y_t=6{,}25+2{,}25-0{,}25+0{,}5+3{,}75+8{,}75=21{,}25$. (Man må gerne bruge $y_t$ i stedet for $y_t-\bar y$, da $\sum(x_t-\bar x)=0$.) $\hat\beta=21{,}25/17{,}5=1{,}2143$, $\hat\alpha=0{,}5833-1{,}2143\cdot0{,}5=-0{,}0238$ (%).
+(a) $\bar x=0.5$, $\bar y=3.5/6=0.5833$. $x-\bar x=(-2.5;-1.5;-0.5;0.5;1.5;2.5)$, $S_{xx}=17.5$. $S_{xy}=\sum(x_t-\bar x)y_t=6.25+2.25-0.25+0.5+3.75+8.75=21.25$. (Man må gerne bruge $y_t$ i stedet for $y_t-\bar y$, da $\sum(x_t-\bar x)=0$.) $\hat\beta=21.25/17.5=1.2143$, $\hat\alpha=0.5833-1.2143\cdot0.5=-0.0238$ (%).
 
-(b) $e_t=y_t-\hat\alpha-\hat\beta x_t$: $(-0{,}048;\ -0{,}262;\ 0{,}524;\ -0{,}190;\ 0{,}095;\ -0{,}119)$. Sum: 0 ✓. $\sum x_te_t=0{,}095+0{,}262+0-0{,}190+0{,}190-0{,}357=0{,}000$ ✓ (op til afrunding).
+(b) $e_t=y_t-\hat\alpha-\hat\beta x_t$: $(-0.048;\ -0.262;\ 0.524;\ -0.190;\ 0.095;\ -0.119)$. Sum: 0 ✓. $\sum x_te_t=0.095+0.262+0-0.190+0.190-0.357=0.000$ ✓ (op til afrunding).
 
-(c) $\text{SSE}=0{,}4048$, $\text{SST}=\sum(y_t-\bar y)^2=26{,}208$, $R^2=1-0{,}4048/26{,}208=0{,}985$.
+(c) $\text{SSE}=0.4048$, $\text{SST}=\sum(y_t-\bar y)^2=26.208$, $R^2=1-0.4048/26.208=0.985$.
 
-(d) $s^2=0{,}4048/4=0{,}1012$, $\operatorname{SE}(\hat\beta)=\sqrt{0{,}1012/17{,}5}=0{,}0760$, $t=1{,}2143/0{,}0760=16{,}0$.
+(d) $s^2=0.4048/4=0.1012$, $\operatorname{SE}(\hat\beta)=\sqrt{0.1012/17.5}=0.0760$, $t=1.2143/0.0760=16.0$.
 
 </details>
 
@@ -3463,9 +3463,9 @@ Altså $B^{-1}=\frac13\begin{pmatrix}1&1&-1\\-1&2&1\\1&-2&2\end{pmatrix}$. Kontr
 
 (a) For enhver $\mathbf w$ er $\mathbf w^\top\Sigma\mathbf w=\operatorname{Var}(\mathbf w^\top\mathbf R)\ge0$. Det samme gælder stikprøve-kovariansmatricen: $\mathbf w^\top S\mathbf w$ er stikprøvevariansen af $\mathbf w^\top\mathbf R_t$.
 
-(b) $\mathbf w=(1,-1,-1)$: $\mathbf w^\top C\mathbf w=3+2\big(1\cdot(-1)\cdot0{,}9+1\cdot(-1)\cdot0{,}9+(-1)(-1)\cdot0{,}2\big)=3+2(-1{,}6)=-0{,}2<0$. En "portefølje" med negativ varians er umulig, så $C$ er ikke en korrelationsmatrix. $\det C=1+2\cdot0{,}9\cdot0{,}9\cdot0{,}2-0{,}81-0{,}81-0{,}04=-0{,}336<0$; da determinanten er produktet af egenværdierne, er mindst én negativ.
+(b) $\mathbf w=(1,-1,-1)$: $\mathbf w^\top C\mathbf w=3+2\big(1\cdot(-1)\cdot0.9+1\cdot(-1)\cdot0.9+(-1)(-1)\cdot0.2\big)=3+2(-1.6)=-0.2<0$. En "portefølje" med negativ varians er umulig, så $C$ er ikke en korrelationsmatrix. $\det C=1+2\cdot0.9\cdot0.9\cdot0.2-0.81-0.81-0.04=-0.336<0$; da determinanten er produktet af egenværdierne, er mindst én negativ.
 
-(c) Hvis aktiv 1 er stærkt korreleret med både 2 og 3 (0,9), må 2 og 3 også være ret stærkt korrelerede. Man kan vise $\rho_{23}\ge\rho_{12}\rho_{13}-\sqrt{(1-\rho_{12}^2)(1-\rho_{13}^2)}=0{,}81-0{,}19=0{,}62$. 0,2 er inkonsistent.
+(c) Hvis aktiv 1 er stærkt korreleret med både 2 og 3 (0,9), må 2 og 3 også være ret stærkt korrelerede. Man kan vise $\rho_{23}\ge\rho_{12}\rho_{13}-\sqrt{(1-\rho_{12}^2)(1-\rho_{13}^2)}=0.81-0.19=0.62$. 0.2 er inkonsistent.
 
 (d) En optimeringsalgoritme (optimizer), der minimerer $\mathbf w^\top C\mathbf w$, vil udnytte retningen med negativ egenværdi og finde en "risikofri" (eller negativ-risiko) portefølje med store long/short-positioner — skaleret op giver det absurde, voldsomt gearede positioner. Løsning: projicér til nærmeste PSD-matrix, krymp mod en struktureret matrix, eller estimér alle korrelationer på samme periode.
 
@@ -3474,7 +3474,7 @@ Altså $B^{-1}=\frac13\begin{pmatrix}1&1&-1\\-1&2&1\\1&-2&2\end{pmatrix}$. Kontr
 <details>
 <summary>Løsning 6.7</summary>
 
-(a) $\frac{a+c}{2}=0{,}065$, $\sqrt{0{,}015^2+0{,}02^2}=\sqrt{0{,}000625}=0{,}025$, så $\lambda_1=0{,}09$ og $\lambda_2=0{,}04$. For $\lambda_1$: $(0{,}05-0{,}09)v_1+0{,}02v_2=0\Rightarrow v_2=2v_1$, $\mathbf q_1=(1,2)/\sqrt5=(0{,}447;\ 0{,}894)$. For $\lambda_2$: $\mathbf q_2=(2,-1)/\sqrt5$ (ortogonal ✓). Andel: $0{,}09/0{,}13=69{,}2\,\%$. Spor: $0{,}05+0{,}08=0{,}13=0{,}09+0{,}04$ ✓. Determinant: $0{,}004-0{,}0004=0{,}0036=0{,}09\cdot0{,}04$ ✓. Første komponent vægter det mest volatile aktiv tungest.
+(a) $\frac{a+c}{2}=0.065$, $\sqrt{0.015^2+0.02^2}=\sqrt{0.000625}=0.025$, så $\lambda_1=0.09$ og $\lambda_2=0.04$. For $\lambda_1$: $(0.05-0.09)v_1+0.02v_2=0\Rightarrow v_2=2v_1$, $\mathbf q_1=(1,2)/\sqrt5=(0.447;\ 0.894)$. For $\lambda_2$: $\mathbf q_2=(2,-1)/\sqrt5$ (ortogonal ✓). Andel: $0.09/0.13=69.2\,\%$. Spor: $0.05+0.08=0.13=0.09+0.04$ ✓. Determinant: $0.004-0.0004=0.0036=0.09\cdot0.04$ ✓. Første komponent vægter det mest volatile aktiv tungest.
 
 (b) $C\mathbf 1=(1-\rho)\mathbf 1+\rho\mathbf 1(\mathbf 1^\top\mathbf 1)=(1-\rho+n\rho)\mathbf 1=(1+(n-1)\rho)\mathbf 1$. For $\mathbf u\perp\mathbf 1$ er $\mathbf 1^\top\mathbf u=0$, så $C\mathbf u=(1-\rho)\mathbf u$. Rummet af sådanne $\mathbf u$ har dimension $n-1$.
 
@@ -3485,24 +3485,24 @@ Altså $B^{-1}=\frac13\begin{pmatrix}1&1&-1\\-1&2&1\\1&-2&2\end{pmatrix}$. Kontr
 <details>
 <summary>Løsning 6.8</summary>
 
-(a) $S_{xx}=(T-1)s_x^2=59\cdot0{,}0016=0{,}0944$. $\operatorname{SE}(\hat\beta)=s/\sqrt{S_{xx}}=0{,}05/(0{,}04\sqrt{59})=0{,}163$. $t(\beta=0)=1{,}2/0{,}163=7{,}4$: klart signifikant. $t(\beta=1)=0{,}2/0{,}163=1{,}23$: kan ikke afvise, at fonden blot har markedsrisiko med beta 1.
+(a) $S_{xx}=(T-1)s_x^2=59\cdot0.0016=0.0944$. $\operatorname{SE}(\hat\beta)=s/\sqrt{S_{xx}}=0.05/(0.04\sqrt{59})=0.163$. $t(\beta=0)=1.2/0.163=7.4$: klart signifikant. $t(\beta=1)=0.2/0.163=1.23$: kan ikke afvise, at fonden blot har markedsrisiko med beta 1.
 
-(b) $\operatorname{SE}(\hat\alpha)\approx0{,}05/\sqrt{60}=0{,}645\,\%$, $t=0{,}3/0{,}645=0{,}46$. Et alpha på 3,6 % om året er langt fra signifikant.
+(b) $\operatorname{SE}(\hat\alpha)\approx0.05/\sqrt{60}=0.645\,\%$, $t=0.3/0.645=0.46$. Et alpha på 3.6 % om året er langt fra signifikant.
 
-(c) Forklaret varians $\hat\beta^2s_x^2=1{,}44\cdot0{,}0016=0{,}00230$, residualvarians $0{,}0025$: $R^2\approx0{,}00230/0{,}00480=0{,}48$.
+(c) Forklaret varians $\hat\beta^2s_x^2=1.44\cdot0.0016=0.00230$, residualvarians $0.0025$: $R^2\approx0.00230/0.00480=0.48$.
 
-(d) $t=\alpha\sqrt T/s=2\Rightarrow T=(2\cdot0{,}05/0{,}003)^2=1111$ måneder $\approx93$ år. Beta kan estimeres præcist på 5 år, men alpha af realistisk størrelse kan i praksis ikke påvises statistisk ud fra én fonds afkast. Derfor kræver alpha-påstande en økonomisk begrundelse og bred evidens (mange aktiver, mange markeder).
+(d) $t=\alpha\sqrt T/s=2\Rightarrow T=(2\cdot0.05/0.003)^2=1111$ måneder $\approx93$ år. Beta kan estimeres præcist på 5 år, men alpha af realistisk størrelse kan i praksis ikke påvises statistisk ud fra én fonds afkast. Derfor kræver alpha-påstande en økonomisk begrundelse og bred evidens (mange aktiver, mange markeder).
 
 </details>
 
 <details>
 <summary>Løsning 6.9</summary>
 
-(a) Nu er $T=7$, $\bar x=-1$, $\bar y=-2{,}5/7=-0{,}357$. $S_{xx}=\sum x_t^2-7\bar x^2=(19+100)-7=112$. Med $\sum x_ty_t=5+1{,}5+0+1+5+10{,}5+60=83$ er $S_{xy}=\sum x_ty_t-7\bar x\bar y=83-7\cdot(-1)(-0{,}357)=83-2{,}5=80{,}5$. $\hat\beta=80{,}5/112=0{,}719$ (før: 1,214), $\hat\alpha=-0{,}357+0{,}719=0{,}362$ (før: $-0{,}024$). $\text{SSE}=5{,}50$, $\text{SST}=63{,}36$, $R^2=0{,}913$.
+(a) Nu er $T=7$, $\bar x=-1$, $\bar y=-2.5/7=-0.357$. $S_{xx}=\sum x_t^2-7\bar x^2=(19+100)-7=112$. Med $\sum x_ty_t=5+1.5+0+1+5+10.5+60=83$ er $S_{xy}=\sum x_ty_t-7\bar x\bar y=83-7\cdot(-1)(-0.357)=83-2.5=80.5$. $\hat\beta=80.5/112=0.719$ (før: 1,214), $\hat\alpha=-0.357+0.719=0.362$ (før: $-0.024$). $\text{SSE}=5.50$, $\text{SST}=63.36$, $R^2=0.913$.
 
 (b) Punktets bidrag til $S_{xx}$ er $(x-\bar x)^2=(-10+1)^2=81$ af 112, altså 72 %. Ét punkt bestemmer i praksis hældningen (høj leverage).
 
-(c) Begge tal fortæller noget: 1,21 er følsomheden i normale måneder, 0,72 er (mest) opførslen i ét krak. For en risikomanager er krakopførslen vigtig, men én observation er et meget usikkert grundlag. God praksis: plot data, rapportér resultater med og uden punktet, overvej robust regression eller winsorisering (winsorizing: værdier uden for fx 1 %- og 99 %-fraktilen erstattes af selve fraktilen) *til estimation*, men slet aldrig krakdage fra risikoanalysen. Bemærk, at $R^2$ forblev høj, så $R^2$ alene afslører ikke problemet.
+(c) Begge tal fortæller noget: 1.21 er følsomheden i normale måneder, 0.72 er (mest) opførslen i ét krak. For en risikomanager er krakopførslen vigtig, men én observation er et meget usikkert grundlag. God praksis: plot data, rapportér resultater med og uden punktet, overvej robust regression eller winsorisering (winsorizing: værdier uden for fx 1 %- og 99 %-fraktilen erstattes af selve fraktilen) *til estimation*, men slet aldrig krakdage fra risikoanalysen. Bemærk, at $R^2$ forblev høj, så $R^2$ alene afslører ikke problemet.
 
 </details>
 
@@ -3513,9 +3513,9 @@ Altså $B^{-1}=\frac13\begin{pmatrix}1&1&-1\\-1&2&1\\1&-2&2\end{pmatrix}$. Kontr
 
 (b) $\Sigma\mathbf b=\sigma_m^2\mathbf b(\mathbf b^\top\mathbf b)+\sigma_\varepsilon^2\mathbf b=(\sigma_m^2\lVert\mathbf b\rVert^2+\sigma_\varepsilon^2)\mathbf b$. For $\mathbf u\perp\mathbf b$: $\Sigma\mathbf u=\sigma_m^2\mathbf b(\mathbf b^\top\mathbf u)+\sigma_\varepsilon^2\mathbf u=\sigma_\varepsilon^2\mathbf u$.
 
-(c) $\lVert\mathbf b\rVert^2=0{,}64+1+1{,}44+0{,}81+1{,}21=5{,}1$. $\lambda_1=10^{-4}\cdot5{,}1+10^{-4}=6{,}1\cdot10^{-4}$. Spor $=10^{-4}\cdot5{,}1+5\cdot10^{-4}=10{,}1\cdot10^{-4}$. Andel: $6{,}1/10{,}1=60{,}4\,\%$. Første principalkomponent $\propto\mathbf b$: "markedet" med beta-vægte.
+(c) $\lVert\mathbf b\rVert^2=0.64+1+1.44+0.81+1.21=5.1$. $\lambda_1=10^{-4}\cdot5.1+10^{-4}=6.1\cdot10^{-4}$. Spor $=10^{-4}\cdot5.1+5\cdot10^{-4}=10.1\cdot10^{-4}$. Andel: $6.1/10.1=60.4\,\%$. Første principalkomponent $\propto\mathbf b$: "markedet" med beta-vægte.
 
-(d) Skriv $\mathbf v_0=\sum c_i\mathbf q_i$ i den ortonormale egenbasis. Så er $\Sigma^k\mathbf v_0=\sum c_i\lambda_i^k\mathbf q_i=c_1\lambda_1^k\big(\mathbf q_1+\sum_{i\ge2}\frac{c_i}{c_1}(\lambda_i/\lambda_1)^k\mathbf q_i\big)$. Normeringen i hvert trin ændrer kun skalaen, så $\mathbf v_k$ er den normerede version af dette. Parentesens restled har norm $\le\frac{\lVert\mathbf v_0\rVert}{\lvert c_1\rvert}(\lvert\lambda_2\rvert/\lambda_1)^k\to0$, så $\mathbf v_k\to\operatorname{sign}(c_1)\mathbf q_1$ med fejl $O\big((\lvert\lambda_2\rvert/\lambda_1)^k\big)$. I (c) er $\lambda_2/\lambda_1=1/6{,}1=0{,}164$, og $0{,}164^{10}\approx1{,}4\cdot10^{-8}$, så ca. 10–11 iterationer er nok. (Er $\lambda_1\approx\lambda_2$, går det meget langsomt.)
+(d) Skriv $\mathbf v_0=\sum c_i\mathbf q_i$ i den ortonormale egenbasis. Så er $\Sigma^k\mathbf v_0=\sum c_i\lambda_i^k\mathbf q_i=c_1\lambda_1^k\big(\mathbf q_1+\sum_{i\ge2}\frac{c_i}{c_1}(\lambda_i/\lambda_1)^k\mathbf q_i\big)$. Normeringen i hvert trin ændrer kun skalaen, så $\mathbf v_k$ er den normerede version af dette. Parentesens restled har norm $\le\frac{\lVert\mathbf v_0\rVert}{\lvert c_1\rvert}(\lvert\lambda_2\rvert/\lambda_1)^k\to0$, så $\mathbf v_k\to\operatorname{sign}(c_1)\mathbf q_1$ med fejl $O\big((\lvert\lambda_2\rvert/\lambda_1)^k\big)$. I (c) er $\lambda_2/\lambda_1=1/6.1=0.164$, og $0.164^{10}\approx1.4\cdot10^{-8}$, så ca. 10–11 iterationer er nok. (Er $\lambda_1\approx\lambda_2$, går det meget langsomt.)
 
 </details>
 
@@ -3582,7 +3582,7 @@ Kun marked: 0.0001 (t=0.3), 1.3543 (t=27.0), R2 = 0.423
 Marked + sektor: -0.0001 (t=-0.2), 1.0741 (t=19.4), 0.5847 (t=9.9), R2 = 0.475
 ```
 
-(d) Udeladt variabel: når sektoren mangler, er $y=0{,}0002+1{,}0\,m+0{,}6(0{,}5\,m+u)+\varepsilon=0{,}0002+1{,}3\,m+(0{,}6u+\varepsilon)$, så den "sande" simple beta er $1+0{,}6\cdot0{,}5=1{,}3$. Generelt er $\hat\beta_{\text{simpel}}\to\beta_m+\beta_s\operatorname{Cov}(s,m)/\operatorname{Var}(m)$. Estimaterne 1,354 (SE ca. 0,05) og 1,074/0,585 ligger inden for ca. 1–1,5 SE af 1,3 og 1,0/0,6. Bemærk, at alpha (sandt 0,02 % pr. dag $\approx$ 5 % om året) slet ikke kan påvises på 4 år (t = 0,3) — jf. 6.8. Funktionen `solve` genbruges i uge 7 til porteføljeoptimering.
+(d) Udeladt variabel: når sektoren mangler, er $y=0.0002+1.0\,m+0.6(0.5\,m+u)+\varepsilon=0.0002+1.3\,m+(0.6u+\varepsilon)$, så den "sande" simple beta er $1+0.6\cdot0.5=1.3$. Generelt er $\hat\beta_{\text{simpel}}\to\beta_m+\beta_s\operatorname{Cov}(s,m)/\operatorname{Var}(m)$. Estimaterne 1,354 (SE ca. 0.05) og 1,074/0.585 ligger inden for ca. 1–1.5 SE af 1.3 og 1.0/0.6. Bemærk, at alpha (sandt 0.02 % pr. dag $\approx$ 5 % om året) slet ikke kan påvises på 4 år (t = 0.3) — jf. 6.8. Funktionen `solve` genbruges i uge 7 til porteføljeoptimering.
 
 *Valgfri variant med numpy (kræver pakken numpy, som ikke er en del af standardbiblioteket; fortsætter koden ovenfor og bruger dens `T`, `m`, `s` og `y`):*
 
@@ -3634,7 +3634,7 @@ Betas normeret:    [0.354, 0.443, 0.531, 0.399, 0.487]
 lambda_1 = 0.000598, andel af total varians = 0.593
 ```
 
-Fortolkning: topegenvektoren er tæt på de normerede betas, og $\lambda_1=5{,}98\cdot10^{-4}$ og andelen 59,3 % ligger tæt på teoriens $6{,}1\cdot10^{-4}$ og 60,4 % (6.10). Afvigelserne er stikprøvefejl i $S$ efter 2000 dage. Med rigtige aktieafkast får man på samme måde en første komponent med samme fortegn på alle aktier — et statistisk estimat af "markedet" (uge 8).
+Fortolkning: topegenvektoren er tæt på de normerede betas, og $\lambda_1=5.98\cdot10^{-4}$ og andelen 59.3 % ligger tæt på teoriens $6.1\cdot10^{-4}$ og 60.4 % (6.10). Afvigelserne er stikprøvefejl i $S$ efter 2000 dage. Med rigtige aktieafkast får man på samme måde en første komponent med samme fortegn på alle aktier — et statistisk estimat af "markedet" (uge 8).
 
 *Valgfri variant med numpy (kræver pakken numpy og `import numpy as np`):* `lam, Q = np.linalg.eigh(np.array(S)); print(lam[-1], Q[:, -1])` — `eigh` sorterer egenværdierne stigende, og egenvektoren kan have modsat fortegn.
 
@@ -3649,7 +3649,7 @@ Et godt svar indeholder:
 - *Homoskedasticitet:* brudt (volatilitets-klumper). Brug robuste standardfejl; t-værdien falder typisk.
 - *Ingen autokorrelation:* daglige data er næsten ukorrelerede, men illikvide aktier giver forsinkede priser (brug Dimson-beta med flere forsinkede markedsafkast, lags). Brug Newey–West-standardfejl.
 - *Normalitet/outliers:* fede haler; få dage kan drive resultatet. Tjek robusthed uden ekstreme dage.
-- *Data snooping:* hvor mange puljer/perioder blev afprøvet? $t=2{,}1$ overlever næppe en multiple-testing-korrektion (uge 5) og er under grænsen $t>3$ fra Harvey, Liu og Zhu.
+- *Data snooping:* hvor mange puljer/perioder blev afprøvet? $t=2.1$ overlever næppe en multiple-testing-korrektion (uge 5) og er under grænsen $t>3$ fra Harvey, Liu og Zhu.
 - *Omkostninger og implementerbarhed:* alpha før handelsomkostninger, short-begrænsninger og skat er ikke alpha.
 - Afslutning: resultatet er et svagt, ikke-robust statistisk fund på historiske data. Det er ingen garanti for fremtidige afkast; næste skridt er out-of-sample-test og en økonomisk forklaring, ikke at investere.
 
@@ -3675,7 +3675,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 7 — Porteføljeteori og CAPM
 
 > **Læringsmål:** Kunne opstille og løse Markowitz' middelværdi-varians-problem (to aktiver i hånden, $n$ aktiver med matricer), finde minimum-varians- og tangensporteføljen og forklare kapitalmarkedslinjen og to-fonds-separation. Kunne udlede CAPM-relationen, fortolke beta og Jensens alpha og forklare, hvorfor naiv optimering er ustabil, og hvad 1/N og risikoparitet gør bedre.
-> **Tidsforbrug:** ca. 2,7 t video (+ ca. 2,7 t valgfri) · ca. 6 t øvelser
+> **Tidsforbrug:** ca. 2.7 t video (+ ca. 2.7 t valgfri) · ca. 6 t øvelser
 > **Forudsætninger:** Uge 2 (afkast, volatilitet, Sharpe ratio), uge 4 (kovarians og korrelation), uge 5 (standardfejl, t-test), uge 6 (matricer, invers, regression, positiv definithed).
 
 ### 📺 Se
@@ -3757,7 +3757,7 @@ $$
 
 I en ligevægtet portefølje af $N$ aktier med ukorrelerede $\varepsilon_i$ og samme $\sigma_\varepsilon^2$ er den idiosynkratiske varians $\sigma_\varepsilon^2/N\to 0$. Idiosynkratisk risiko kan diversificeres væk og belønnes derfor ikke i CAPM; kun beta-risiko giver risikopræmie. *Jensens alpha* $\alpha_i=E[R_i]-r_f-\beta_i(E[R_M]-r_f)$ er den lodrette afstand til SML; i CAPM-ligevægt er alle $\alpha_i=0$. I praksis estimeres $\alpha$ og $\beta$ med OLS (uge 6), og $\hat\alpha$ er næsten altid meget usikker (øvelse 7.8).
 
-**8. Estimationsfejl — hvorfor naiv Markowitz er ustabil.** Formlerne bruger de *sande* $\boldsymbol{\mu},\boldsymbol{\Sigma}$, men vi kender kun estimater. Standardfejlen på et gennemsnitligt årsafkast er $\sigma/\sqrt{T_{\text{år}}}$: med $\sigma=20\,\%$ og 10 års data er den ca. $6{,}3$ procentpoint — større end de præmier, vi prøver at måle. Hyppigere data hjælper ikke på middelværdien (øvelse 7.7), men hjælper på kovariansen. Optimeringen overvægter systematisk de aktiver, hvis $\hat\mu$ tilfældigvis er for høj, og vægtene afhænger af $\boldsymbol{\Sigma}^{-1}$, som er ekstremt følsom, når aktiver er stærkt korrelerede (næsten singulær matrix, små egenværdier, uge 6). Michaud (1989) kaldte derfor Markowitz-optimering en "fejlmaksimerer" (error maximizer). DeMiguel, Garlappi & Uppal (2009) fandt, at ingen af de 14 optimeringsmodeller, de testede, konsekvent slog 1/N-porteføljen uden for stikprøven (out-of-sample).
+**8. Estimationsfejl — hvorfor naiv Markowitz er ustabil.** Formlerne bruger de *sande* $\boldsymbol{\mu},\boldsymbol{\Sigma}$, men vi kender kun estimater. Standardfejlen på et gennemsnitligt årsafkast er $\sigma/\sqrt{T_{\text{år}}}$: med $\sigma=20\,\%$ og 10 års data er den ca. $6.3$ procentpoint — større end de præmier, vi prøver at måle. Hyppigere data hjælper ikke på middelværdien (øvelse 7.7), men hjælper på kovariansen. Optimeringen overvægter systematisk de aktiver, hvis $\hat\mu$ tilfældigvis er for høj, og vægtene afhænger af $\boldsymbol{\Sigma}^{-1}$, som er ekstremt følsom, når aktiver er stærkt korrelerede (næsten singulær matrix, små egenværdier, uge 6). Michaud (1989) kaldte derfor Markowitz-optimering en "fejlmaksimerer" (error maximizer). DeMiguel, Garlappi & Uppal (2009) fandt, at ingen af de 14 optimeringsmodeller, de testede, konsekvent slog 1/N-porteføljen uden for stikprøven (out-of-sample).
 
 *Robuste alternativer:*
 - **1/N:** $w_i=1/n$. Ingen estimation, ingen fejl — men ignorerer risikoforskelle.
@@ -3765,9 +3765,9 @@ I en ligevægtet portefølje af $N$ aktier med ukorrelerede $\varepsilon_i$ og s
 - **Lige risikobidrag (equal risk contribution, ERC):** risikobidraget $RC_i=w_i(\boldsymbol{\Sigma}\mathbf{w})_i/\sigma_p$ opfylder $\sum_i RC_i=\sigma_p$ (Eulers sætning, da $\sigma_p$ er homogen af grad 1). ERC vælger $\mathbf{w}$ så alle $RC_i$ er ens. For to aktiver er ERC lig inverse volatility (øvelse 7.9).
 - Andre: bibetingelser (constraints, fx ingen short-salg), krympning (shrinkage) af $\hat{\boldsymbol\mu}$ og $\hat{\boldsymbol\Sigma}$ mod enkle mål, GMV (bruger ikke $\boldsymbol\mu$).
 
-**9. Regneeksempel.** To aktiver: $\mu_1=5\,\%$, $\mu_2=9\,\%$, $\sigma_1=10\,\%$, $\sigma_2=20\,\%$, $\rho=0{,}25$, $r_f=1\,\%$. Så $\operatorname{Cov}=0{,}25\cdot0{,}1\cdot0{,}2=0{,}005$.
-- GMV: $w^*=(0{,}04-0{,}005)/(0{,}01+0{,}04-0{,}01)=0{,}875$. $\sigma^2=0{,}875^2\cdot0{,}01+0{,}125^2\cdot0{,}04+2\cdot0{,}875\cdot0{,}125\cdot0{,}005=0{,}009375$, $\sigma=9{,}68\,\%$ (lavere end begge aktiver!), $\mu=5{,}5\,\%$.
-- Tangens: $\mathbf{e}=(0{,}04;\,0{,}08)$. $\boldsymbol\Sigma^{-1}\propto\begin{pmatrix}0{,}04&-0{,}005\\-0{,}005&0{,}01\end{pmatrix}$, så $\boldsymbol\Sigma^{-1}\mathbf{e}\propto(0{,}0012;\,0{,}0006)$, dvs. $\mathbf{w}_T=(2/3;\,1/3)$. $\mu_T=6{,}33\,\%$, $\sigma_T^2=0{,}01111$, $\sigma_T=10{,}54\,\%$, $SR_T=5{,}33/10{,}54=0{,}506$ (årlig).
+**9. Regneeksempel.** To aktiver: $\mu_1=5\,\%$, $\mu_2=9\,\%$, $\sigma_1=10\,\%$, $\sigma_2=20\,\%$, $\rho=0.25$, $r_f=1\,\%$. Så $\operatorname{Cov}=0.25\cdot0.1\cdot0.2=0.005$.
+- GMV: $w^*=(0.04-0.005)/(0.01+0.04-0.01)=0.875$. $\sigma^2=0.875^2\cdot0.01+0.125^2\cdot0.04+2\cdot0.875\cdot0.125\cdot0.005=0.009375$, $\sigma=9.68\,\%$ (lavere end begge aktiver!), $\mu=5.5\,\%$.
+- Tangens: $\mathbf{e}=(0.04;\,0.08)$. $\boldsymbol\Sigma^{-1}\propto\begin{pmatrix}0.04&-0.005\\-0.005&0.01\end{pmatrix}$, så $\boldsymbol\Sigma^{-1}\mathbf{e}\propto(0.0012;\,0.0006)$, dvs. $\mathbf{w}_T=(2/3;\,1/3)$. $\mu_T=6.33\,\%$, $\sigma_T^2=0.01111$, $\sigma_T=10.54\,\%$, $SR_T=5.33/10.54=0.506$ (årlig).
 
 **Typiske fejl**
 - At glemme kovariansleddet $2w_1w_2\operatorname{Cov}$ — eller at bruge $\rho$ i stedet for $\rho\sigma_1\sigma_2$.
@@ -3778,13 +3778,13 @@ I en ligevægtet portefølje af $N$ aktier med ukorrelerede $\varepsilon_i$ og s
 
 ### ✏️ Øvelser
 
-**7.1** ★ — To aktiver har $\sigma_1=15\,\%$ og $\sigma_2=25\,\%$ (årlig) og korrelation $\rho=0{,}2$. Du placerer 60 % i aktiv 1 og 40 % i aktiv 2. (a) Beregn porteføljens volatilitet. (b) Gentag for $\rho=1$, $\rho=0$ og $\rho=-1$. (c) Hvor stor er diversifikationsgevinsten i (a) målt i procentpoint i forhold til det vægtede gennemsnit af volatiliteterne?
+**7.1** ★ — To aktiver har $\sigma_1=15\,\%$ og $\sigma_2=25\,\%$ (årlig) og korrelation $\rho=0.2$. Du placerer 60 % i aktiv 1 og 40 % i aktiv 2. (a) Beregn porteføljens volatilitet. (b) Gentag for $\rho=1$, $\rho=0$ og $\rho=-1$. (c) Hvor stor er diversifikationsgevinsten i (a) målt i procentpoint i forhold til det vægtede gennemsnit af volatiliteterne?
 
-**7.2** ★ — Samme to aktiver som i 7.1 ($\rho=0{,}2$) med $\mu_1=8\,\%$ og $\mu_2=12\,\%$. Find minimum-varians-vægten $w^*$ og porteføljens forventede afkast og volatilitet. For hvilke værdier af $\rho$ ville $w^*>1$ (short i aktiv 2)?
+**7.2** ★ — Samme to aktiver som i 7.1 ($\rho=0.2$) med $\mu_1=8\,\%$ og $\mu_2=12\,\%$. Find minimum-varians-vægten $w^*$ og porteføljens forventede afkast og volatilitet. For hvilke værdier af $\rho$ ville $w^*>1$ (short i aktiv 2)?
 
-**7.3** ★ — $r_f=2\,\%$ og $E[R_M]=7\,\%$. (a) Hvad er det CAPM-forventede afkast for en aktie med $\beta=1{,}3$? (b) En analytiker forventer 10 % for aktien. Hvad er dens alpha, og ligger den over eller under SML? (c) En portefølje består af 50 % i aktien, 30 % i en aktie med $\beta=0{,}8$ og 20 % i kontanter (risikofrit). Hvad er porteføljens beta og CAPM-forventede afkast?
+**7.3** ★ — $r_f=2\,\%$ og $E[R_M]=7\,\%$. (a) Hvad er det CAPM-forventede afkast for en aktie med $\beta=1.3$? (b) En analytiker forventer 10 % for aktien. Hvad er dens alpha, og ligger den over eller under SML? (c) En portefølje består af 50 % i aktien, 30 % i en aktie med $\beta=0.8$ og 20 % i kontanter (risikofrit). Hvad er porteføljens beta og CAPM-forventede afkast?
 
-**7.4** ★ — En aktie har $\beta=1{,}2$ og total volatilitet $35\,\%$; markedets volatilitet er $16\,\%$. (a) Opdel variansen i systematisk og idiosynkratisk del. Hvor stor en andel er systematisk (= $R^2$ i markedsregressionen)? (b) Du køber en ligevægtet portefølje af 50 aktier af samme type (samme beta, ukorrelerede $\varepsilon$). Hvad er porteføljens volatilitet, og hvor stor en andel af variansen er nu systematisk?
+**7.4** ★ — En aktie har $\beta=1.2$ og total volatilitet $35\,\%$; markedets volatilitet er $16\,\%$. (a) Opdel variansen i systematisk og idiosynkratisk del. Hvor stor en andel er systematisk (= $R^2$ i markedsregressionen)? (b) Du køber en ligevægtet portefølje af 50 aktier af samme type (samme beta, ukorrelerede $\varepsilon$). Hvad er porteføljens volatilitet, og hvor stor en andel af variansen er nu systematisk?
 
 **7.5** ★★ — Brug aktiverne fra 7.2 og $r_f=2\,\%$. (a) Find tangensporteføljen $\mathbf{w}_T$, $\mu_T$, $\sigma_T$ og $SR_T$. (b) Kontrollér, at $SR_T^2=\mathbf{e}^\top\boldsymbol\Sigma^{-1}\mathbf{e}$. (c) En investor har nytte $E[R]-\tfrac{\gamma}{2}\sigma^2$ med $\gamma=4$. Hvor stor en andel placerer hun i $T$, og hvad bliver hendes forventede afkast og volatilitet?
 
@@ -3792,15 +3792,15 @@ I en ligevægtet portefølje af $N$ aktier med ukorrelerede $\varepsilon_i$ og s
 
 **7.7** ★★ — Et aktiv har sand årlig volatilitet $20\,\%$. (a) Hvad er standardfejlen på det gennemsnitlige årsafkast estimeret over 10 år, og hvad er et 95 %-konfidensinterval for $\mu$? (b) Hvor mange års data skal der til, for at standardfejlen kommer ned på 1 procentpoint? (c) Vis, at det ikke hjælper at bruge daglige data i stedet: med $252T$ uafhængige dagsafkast med varians $\sigma^2/252$ er standardfejlen på det *annualiserede* gennemsnit stadig $\sigma/\sqrt{T}$.
 
-**7.8** ★★ — Over 60 måneder har en fond gennemsnitligt merafkast $0{,}90\,\%$ pr. måned og markedet $0{,}70\,\%$. Stikprøvevariansen af markedets merafkast er $0{,}0016$ (dvs. standardafvigelse $4\,\%$ pr. md.), og kovariansen mellem fondens og markedets merafkast er $0{,}00192$. Residualernes standardafvigelse er $2\,\%$ pr. md. (a) Estimér $\beta$ og Jensens $\alpha$ (pr. måned og ca. pr. år). (b) Beregn standardfejlen $SE(\hat\alpha)=s_\varepsilon\sqrt{1/T+\bar x^2/S_{xx}}$ med $S_{xx}=\sum(x_t-\bar x)^2$, og $t$-værdien. Er alphaen signifikant? (c) Hvad lærer du om at bedømme forvaltere på 5 års data?
+**7.8** ★★ — Over 60 måneder har en fond gennemsnitligt merafkast $0.90\,\%$ pr. måned og markedet $0.70\,\%$. Stikprøvevariansen af markedets merafkast er $0.0016$ (dvs. standardafvigelse $4\,\%$ pr. md.), og kovariansen mellem fondens og markedets merafkast er $0.00192$. Residualernes standardafvigelse er $2\,\%$ pr. md. (a) Estimér $\beta$ og Jensens $\alpha$ (pr. måned og ca. pr. år). (b) Beregn standardfejlen $SE(\hat\alpha)=s_\varepsilon\sqrt{1/T+\bar x^2/S_{xx}}$ med $S_{xx}=\sum(x_t-\bar x)^2$, og $t$-værdien. Er alphaen signifikant? (c) Hvad lærer du om at bedømme forvaltere på 5 års data?
 
-**7.9** ★★★ — Risikoparitet. (a) Vis, at for to aktiver med positive vægte og vilkårlig korrelation $\rho>-1$ har porteføljen lige risikobidrag ($RC_1=RC_2$), hvis og kun hvis $w_1\sigma_1=w_2\sigma_2$, dvs. $w_i\propto 1/\sigma_i$. (b) Aktier: $\sigma_A=16\,\%$, obligationer: $\sigma_O=6\,\%$, $\rho=0{,}2$. Find risikoparitetsvægtene, porteføljens volatilitet og hvert aktivs risikobidrag. (c) Hvor stor en andel af risikoen i en klassisk 60/40-portefølje kommer fra aktierne? (d) Hvilken gearing skal risikoparitetsporteføljen have for at ramme $10\,\%$ volatilitet, og hvilke risici følger med?
+**7.9** ★★★ — Risikoparitet. (a) Vis, at for to aktiver med positive vægte og vilkårlig korrelation $\rho>-1$ har porteføljen lige risikobidrag ($RC_1=RC_2$), hvis og kun hvis $w_1\sigma_1=w_2\sigma_2$, dvs. $w_i\propto 1/\sigma_i$. (b) Aktier: $\sigma_A=16\,\%$, obligationer: $\sigma_O=6\,\%$, $\rho=0.2$. Find risikoparitetsvægtene, porteføljens volatilitet og hvert aktivs risikobidrag. (c) Hvor stor en andel af risikoen i en klassisk 60/40-portefølje kommer fra aktierne? (d) Hvilken gearing skal risikoparitetsporteføljen have for at ramme $10\,\%$ volatilitet, og hvilke risici følger med?
 
 **7.10** ★★★ — Den effektive rand. (a) Løs $\min\tfrac12\mathbf{w}^\top\boldsymbol\Sigma\mathbf{w}$ under $\mathbf{1}^\top\mathbf{w}=1$ og $\boldsymbol\mu^\top\mathbf{w}=m$ med Lagrange-multiplikatorer, og vis $\sigma^2(m)=(Am^2-2Bm+C)/D$. (b) Vis, at minimum er i $m=B/A$ med $\sigma^2=1/A$. (c) Vis, at $D>0$, medmindre $\boldsymbol\mu$ er proportional med $\mathbf{1}$ (hint: Cauchy–Schwarz for det indre produkt $\langle\mathbf{x},\mathbf{y}\rangle=\mathbf{x}^\top\boldsymbol\Sigma^{-1}\mathbf{y}$). (d) Vis, at alle porteføljer på randen er kombinationer af to faste porteføljer (to-fonds-sætningen uden risikofrit aktiv).
 
-**7.11** ★★ 💻 — Tre aktiver: $\boldsymbol\mu=(6\,\%,8\,\%,11\,\%)$, $\boldsymbol\sigma=(12\,\%,18\,\%,25\,\%)$, korrelationer $\rho_{12}=0{,}3$, $\rho_{13}=0{,}2$, $\rho_{23}=0{,}5$, $r_f=2\,\%$. Skriv et program (kun standardbiblioteket, egen $3\times3$-invers via kofaktorer) der finder minimum-varians- og tangensporteføljen med $\mu$, $\sigma$ og Sharpe ratio, og som udskriver den effektive rand $\sigma(m)$ og CML for $m=5\,\%,\dots,14\,\%$. Tjek, at CML for hvert $m$ kræver *mindre* $\sigma$ end randen (dvs. ligger over/til venstre for randen i $(\sigma,\mu)$-planen), med lighed kun i tangenspunktet. (Funktionerne genbruges i uge 12.)
+**7.11** ★★ 💻 — Tre aktiver: $\boldsymbol\mu=(6\,\%,8\,\%,11\,\%)$, $\boldsymbol\sigma=(12\,\%,18\,\%,25\,\%)$, korrelationer $\rho_{12}=0.3$, $\rho_{13}=0.2$, $\rho_{23}=0.5$, $r_f=2\,\%$. Skriv et program (kun standardbiblioteket, egen $3\times3$-invers via kofaktorer) der finder minimum-varians- og tangensporteføljen med $\mu$, $\sigma$ og Sharpe ratio, og som udskriver den effektive rand $\sigma(m)$ og CML for $m=5\,\%,\dots,14\,\%$. Tjek, at CML for hvert $m$ kræver *mindre* $\sigma$ end randen (dvs. ligger over/til venstre for randen i $(\sigma,\mu)$-planen), med lighed kun i tangenspunktet. (Funktionerne genbruges i uge 12.)
 
-**7.12** ★★ 💻 — Følsomhed. Brug opsætningen fra 7.11 og beregn tangensvægtene, når (i) $\mu_2$ hæves 1 procentpoint og (ii) $\mu_3$ sænkes 1 procentpoint. Gentag med $\rho_{23}=0{,}9$. Evaluér hver portefølje med de *sande* $\boldsymbol\mu$ (Sharpe ratio) og sammenlign med 1/N. Hvad viser tallene om vægtenes stabilitet — og om hvor meget Sharpe ratio det koster?
+**7.12** ★★ 💻 — Følsomhed. Brug opsætningen fra 7.11 og beregn tangensvægtene, når (i) $\mu_2$ hæves 1 procentpoint og (ii) $\mu_3$ sænkes 1 procentpoint. Gentag med $\rho_{23}=0.9$. Evaluér hver portefølje med de *sande* $\boldsymbol\mu$ (Sharpe ratio) og sammenlign med 1/N. Hvad viser tallene om vægtenes stabilitet — og om hvor meget Sharpe ratio det koster?
 
 **7.13** ★ 🗣️ — Skriv 10–15 linjer: Hvorfor kan en "dum" 1/N-portefølje slå en Markowitz-optimeret portefølje i praksis, selvom Markowitz per definition er optimal? Inddrag estimationsfejl, antallet af parametre og hvad backtests af optimerede porteføljer typisk overvurderer.
 
@@ -3809,57 +3809,57 @@ I en ligevægtet portefølje af $N$ aktier med ukorrelerede $\varepsilon_i$ og s
 <details>
 <summary>Løsning 7.1</summary>
 
-$\operatorname{Cov}=\rho\sigma_1\sigma_2$, og $\sigma_p^2=0{,}36\cdot0{,}0225+0{,}16\cdot0{,}0625+2\cdot0{,}6\cdot0{,}4\cdot\operatorname{Cov}=0{,}0081+0{,}01+0{,}48\,\operatorname{Cov}$.
+$\operatorname{Cov}=\rho\sigma_1\sigma_2$, og $\sigma_p^2=0.36\cdot0.0225+0.16\cdot0.0625+2\cdot0.6\cdot0.4\cdot\operatorname{Cov}=0.0081+0.01+0.48\,\operatorname{Cov}$.
 
-(a) $\rho=0{,}2$: $\operatorname{Cov}=0{,}0075$, $\sigma_p^2=0{,}0181+0{,}0036=0{,}0217$, $\sigma_p=14{,}73\,\%$.
+(a) $\rho=0.2$: $\operatorname{Cov}=0.0075$, $\sigma_p^2=0.0181+0.0036=0.0217$, $\sigma_p=14.73\,\%$.
 
-(b) $\rho=1$: $\sigma_p^2=0{,}0361$, $\sigma_p=19{,}00\,\%$ (præcis det vægtede gennemsnit $0{,}6\cdot15+0{,}4\cdot25$). $\rho=0$: $\sigma_p^2=0{,}0181$, $\sigma_p=13{,}45\,\%$. $\rho=-1$: $\sigma_p=\lvert 0{,}6\cdot15-0{,}4\cdot25\rvert=1{,}00\,\%$.
+(b) $\rho=1$: $\sigma_p^2=0.0361$, $\sigma_p=19.00\,\%$ (præcis det vægtede gennemsnit $0.6\cdot15+0.4\cdot25$). $\rho=0$: $\sigma_p^2=0.0181$, $\sigma_p=13.45\,\%$. $\rho=-1$: $\sigma_p=\lvert 0.6\cdot15-0.4\cdot25\rvert=1.00\,\%$.
 
-(c) $19{,}00-14{,}73=4{,}27$ procentpoint lavere volatilitet uden at ændre det forventede afkast.
+(c) $19.00-14.73=4.27$ procentpoint lavere volatilitet uden at ændre det forventede afkast.
 
 </details>
 
 <details>
 <summary>Løsning 7.2</summary>
 
-$w^*=\dfrac{0{,}0625-0{,}0075}{0{,}0225+0{,}0625-0{,}015}=\dfrac{0{,}055}{0{,}07}=0{,}7857$.
+$w^*=\dfrac{0.0625-0.0075}{0.0225+0.0625-0.015}=\dfrac{0.055}{0.07}=0.7857$.
 
-$\mu=0{,}7857\cdot8+0{,}2143\cdot12=8{,}86\,\%$. $\sigma^2=0{,}7857^2\cdot0{,}0225+0{,}2143^2\cdot0{,}0625+2\cdot0{,}7857\cdot0{,}2143\cdot0{,}0075=0{,}019286$, så $\sigma=13{,}89\,\%$ — lavere end aktiv 1 alene (15 %).
+$\mu=0.7857\cdot8+0.2143\cdot12=8.86\,\%$. $\sigma^2=0.7857^2\cdot0.0225+0.2143^2\cdot0.0625+2\cdot0.7857\cdot0.2143\cdot0.0075=0.019286$, så $\sigma=13.89\,\%$ — lavere end aktiv 1 alene (15 %).
 
-$w^*>1\iff \sigma_2^2-\rho\sigma_1\sigma_2>\sigma_1^2+\sigma_2^2-2\rho\sigma_1\sigma_2\iff \rho\sigma_1\sigma_2>\sigma_1^2\iff\rho>\sigma_1/\sigma_2=0{,}6$. (Nævneren er positiv for $\rho<1$.) Ved høj korrelation kan man reducere risikoen ved at shorte det mest volatile aktiv.
+$w^*>1\iff \sigma_2^2-\rho\sigma_1\sigma_2>\sigma_1^2+\sigma_2^2-2\rho\sigma_1\sigma_2\iff \rho\sigma_1\sigma_2>\sigma_1^2\iff\rho>\sigma_1/\sigma_2=0.6$. (Nævneren er positiv for $\rho<1$.) Ved høj korrelation kan man reducere risikoen ved at shorte det mest volatile aktiv.
 
 </details>
 
 <details>
 <summary>Løsning 7.3</summary>
 
-(a) $2+1{,}3\cdot(7-2)=8{,}5\,\%$.
+(a) $2+1.3\cdot(7-2)=8.5\,\%$.
 
-(b) $\alpha=10-8{,}5=1{,}5$ procentpoint. Aktien ligger *over* SML (den er "billig" ifølge analytikeren — men kun hvis analytikerens forventning er rigtig, og det er netop det store spørgsmål).
+(b) $\alpha=10-8.5=1.5$ procentpoint. Aktien ligger *over* SML (den er "billig" ifølge analytikeren — men kun hvis analytikerens forventning er rigtig, og det er netop det store spørgsmål).
 
-(c) $\beta_p=0{,}5\cdot1{,}3+0{,}3\cdot0{,}8+0{,}2\cdot0=0{,}89$. $E[R_p]=2+0{,}89\cdot5=6{,}45\,\%$.
+(c) $\beta_p=0.5\cdot1.3+0.3\cdot0.8+0.2\cdot0=0.89$. $E[R_p]=2+0.89\cdot5=6.45\,\%$.
 
 </details>
 
 <details>
 <summary>Løsning 7.4</summary>
 
-(a) Systematisk: $\beta^2\sigma_M^2=1{,}44\cdot0{,}0256=0{,}036864$. Total: $0{,}35^2=0{,}1225$. Idiosynkratisk: $0{,}1225-0{,}036864=0{,}085636$, dvs. $\sigma_\varepsilon=29{,}26\,\%$. Systematisk andel $=0{,}036864/0{,}1225=30{,}1\,\%$ ($R^2=0{,}30$).
+(a) Systematisk: $\beta^2\sigma_M^2=1.44\cdot0.0256=0.036864$. Total: $0.35^2=0.1225$. Idiosynkratisk: $0.1225-0.036864=0.085636$, dvs. $\sigma_\varepsilon=29.26\,\%$. Systematisk andel $=0.036864/0.1225=30.1\,\%$ ($R^2=0.30$).
 
-(b) Beta er stadig $1{,}2$, men den idiosynkratiske varians bliver $0{,}085636/50=0{,}001713$. Total varians $0{,}036864+0{,}001713=0{,}038577$, $\sigma_p=19{,}64\,\%$. Systematisk andel: $95{,}6\,\%$. Næsten al risiko, der er tilbage, er markedsrisiko — og det er den, CAPM siger, der betales for.
+(b) Beta er stadig $1.2$, men den idiosynkratiske varians bliver $0.085636/50=0.001713$. Total varians $0.036864+0.001713=0.038577$, $\sigma_p=19.64\,\%$. Systematisk andel: $95.6\,\%$. Næsten al risiko, der er tilbage, er markedsrisiko — og det er den, CAPM siger, der betales for.
 
 </details>
 
 <details>
 <summary>Løsning 7.5</summary>
 
-(a) $\mathbf{e}=(0{,}06;\,0{,}10)$, $\boldsymbol\Sigma=\begin{pmatrix}0{,}0225&0{,}0075\\0{,}0075&0{,}0625\end{pmatrix}$, $\det\boldsymbol\Sigma=0{,}00135$, $\boldsymbol\Sigma^{-1}=\frac{1}{0{,}00135}\begin{pmatrix}0{,}0625&-0{,}0075\\-0{,}0075&0{,}0225\end{pmatrix}$.
-$\boldsymbol\Sigma^{-1}\mathbf{e}\propto(0{,}00375-0{,}00075;\ -0{,}00045+0{,}00225)=(0{,}0030;\,0{,}0018)$. Normaliseret: $\mathbf{w}_T=(0{,}625;\,0{,}375)$.
-$\mu_T=0{,}625\cdot8+0{,}375\cdot12=9{,}5\,\%$. $\sigma_T^2=0{,}625^2\cdot0{,}0225+0{,}375^2\cdot0{,}0625+2\cdot0{,}625\cdot0{,}375\cdot0{,}0075=0{,}021094$, $\sigma_T=14{,}52\,\%$. $SR_T=7{,}5/14{,}52=0{,}516$.
+(a) $\mathbf{e}=(0.06;\,0.10)$, $\boldsymbol\Sigma=\begin{pmatrix}0.0225&0.0075\\0.0075&0.0625\end{pmatrix}$, $\det\boldsymbol\Sigma=0.00135$, $\boldsymbol\Sigma^{-1}=\frac{1}{0.00135}\begin{pmatrix}0.0625&-0.0075\\-0.0075&0.0225\end{pmatrix}$.
+$\boldsymbol\Sigma^{-1}\mathbf{e}\propto(0.00375-0.00075;\ -0.00045+0.00225)=(0.0030;\,0.0018)$. Normaliseret: $\mathbf{w}_T=(0.625;\,0.375)$.
+$\mu_T=0.625\cdot8+0.375\cdot12=9.5\,\%$. $\sigma_T^2=0.625^2\cdot0.0225+0.375^2\cdot0.0625+2\cdot0.625\cdot0.375\cdot0.0075=0.021094$, $\sigma_T=14.52\,\%$. $SR_T=7.5/14.52=0.516$.
 
-(b) $\mathbf{e}^\top\boldsymbol\Sigma^{-1}\mathbf{e}=(0{,}06\cdot0{,}0030+0{,}10\cdot0{,}0018)/0{,}00135=0{,}00036/0{,}00135=0{,}2667$, og $\sqrt{0{,}2667}=0{,}516$. ✓
+(b) $\mathbf{e}^\top\boldsymbol\Sigma^{-1}\mathbf{e}=(0.06\cdot0.0030+0.10\cdot0.0018)/0.00135=0.00036/0.00135=0.2667$, og $\sqrt{0.2667}=0.516$. ✓
 
-(c) $x^*=0{,}075/(4\cdot0{,}021094)=0{,}889$. Hun har 88,9 % i $T$ og 11,1 % risikofrit: $E[R]=2+0{,}889\cdot7{,}5=8{,}67\,\%$, $\sigma=0{,}889\cdot14{,}52=12{,}91\,\%$. Bemærk at fordelingen *mellem* de to risikable aktiver (62,5/37,5) er uafhængig af $\gamma$ — det er to-fonds-separation.
+(c) $x^*=0.075/(4\cdot0.021094)=0.889$. Hun har 88.9 % i $T$ og 11.1 % risikofrit: $E[R]=2+0.889\cdot7.5=8.67\,\%$, $\sigma=0.889\cdot14.52=12.91\,\%$. Bemærk at fordelingen *mellem* de to risikable aktiver (62.5/37.5) er uafhængig af $\gamma$ — det er to-fonds-separation.
 
 </details>
 
@@ -3877,9 +3877,9 @@ Fortolkning: et aktiv med positiv alpha i forhold til din nuværende portefølje
 <details>
 <summary>Løsning 7.7</summary>
 
-(a) $SE=0{,}20/\sqrt{10}=6{,}32$ procentpoint. 95 %-interval: $\hat\mu\pm1{,}96\cdot6{,}32=\hat\mu\pm12{,}4$ procentpoint. Et estimat på 8 % er altså foreneligt med alt fra ca. $-4\,\%$ til $20\,\%$.
+(a) $SE=0.20/\sqrt{10}=6.32$ procentpoint. 95 %-interval: $\hat\mu\pm1.96\cdot6.32=\hat\mu\pm12.4$ procentpoint. Et estimat på 8 % er altså foreneligt med alt fra ca. $-4\,\%$ til $20\,\%$.
 
-(b) $0{,}20/\sqrt{T}=0{,}01\Rightarrow T=400$ år.
+(b) $0.20/\sqrt{T}=0.01\Rightarrow T=400$ år.
 
 (c) Daglig middelværdi estimeres med $\bar r_d$, $\operatorname{Var}(\bar r_d)=(\sigma^2/252)/(252T)$. Det annualiserede gennemsnit er $252\bar r_d$ med varians $252^2\cdot\sigma^2/(252^2T)=\sigma^2/T$. Standardfejlen er $\sigma/\sqrt T$ — uændret. Middelværdien afhænger kun af den samlede tidsperiode (start- og slutpris), ikke af hvor tit man måler — for log-afkast helt præcist, da summen af dagslog-afkast er $\ln(P_{\text{slut}}/P_{\text{start}})$. (Varians og kovarians estimeres derimod bedre med hyppigere data.)
 
@@ -3888,11 +3888,11 @@ Fortolkning: et aktiv med positiv alpha i forhold til din nuværende portefølje
 <details>
 <summary>Løsning 7.8</summary>
 
-(a) $\hat\beta=0{,}00192/0{,}0016=1{,}2$. $\hat\alpha=0{,}90-1{,}2\cdot0{,}70=0{,}06\,\%$ pr. måned, ca. $0{,}72\,\%$ pr. år.
+(a) $\hat\beta=0.00192/0.0016=1.2$. $\hat\alpha=0.90-1.2\cdot0.70=0.06\,\%$ pr. måned, ca. $0.72\,\%$ pr. år.
 
-(b) $S_{xx}=60\cdot0{,}0016=0{,}096$ (med $1/T$-varians; med $1/(T-1)$ fås $0{,}0944$ og stort set samme resultat). $\bar x^2/S_{xx}=0{,}000049/0{,}096=0{,}00051$, $1/T=0{,}016667$. $SE(\hat\alpha)=0{,}02\sqrt{0{,}017177}=0{,}00262=0{,}262\,\%$ pr. md. $t=0{,}06/0{,}262=0{,}23$. Langt fra signifikant ($\lvert t\rvert<1{,}96$).
+(b) $S_{xx}=60\cdot0.0016=0.096$ (med $1/T$-varians; med $1/(T-1)$ fås $0.0944$ og stort set samme resultat). $\bar x^2/S_{xx}=0.000049/0.096=0.00051$, $1/T=0.016667$. $SE(\hat\alpha)=0.02\sqrt{0.017177}=0.00262=0.262\,\%$ pr. md. $t=0.06/0.262=0.23$. Langt fra signifikant ($\lvert t\rvert<1.96$).
 
-(c) Med 5 års data kan man ikke skelne en alpha på 0,7 % om året fra nul — man skulle bruge ca. $(1{,}96/0{,}229)^2\cdot5\approx370$ år for at gøre den signifikant med samme støj. Forvaltere bedømt på korte perioder er overvejende bedømt på held. Dertil kommer overlevelsesbias (lukkede fonde forsvinder fra databaserne).
+(c) Med 5 års data kan man ikke skelne en alpha på 0.7 % om året fra nul — man skulle bruge ca. $(1.96/0.229)^2\cdot5\approx370$ år for at gøre den signifikant med samme støj. Forvaltere bedømt på korte perioder er overvejende bedømt på held. Dertil kommer overlevelsesbias (lukkede fonde forsvinder fra databaserne).
 
 </details>
 
@@ -3901,11 +3901,11 @@ Fortolkning: et aktiv med positiv alpha i forhold til din nuværende portefølje
 
 (a) $(\boldsymbol\Sigma\mathbf{w})_1=w_1\sigma_1^2+w_2\rho\sigma_1\sigma_2$ og $(\boldsymbol\Sigma\mathbf{w})_2=w_2\sigma_2^2+w_1\rho\sigma_1\sigma_2$. Så $RC_1\sigma_p=w_1^2\sigma_1^2+w_1w_2\rho\sigma_1\sigma_2$ og $RC_2\sigma_p=w_2^2\sigma_2^2+w_1w_2\rho\sigma_1\sigma_2$. Krydsleddene er ens, så $RC_1=RC_2\iff w_1^2\sigma_1^2=w_2^2\sigma_2^2\iff w_1\sigma_1=w_2\sigma_2$ (positive vægte). Korrelationen falder ud. ($\rho>-1$ sikrer $\sigma_p>0$, så $RC_i$ er defineret.) ∎ (For tre eller flere aktiver er ERC generelt *ikke* lig inverse volatility; det gælder fx, når alle parvise korrelationer er ens.)
 
-(b) $w_A=\frac{1/16}{1/16+1/6}=\frac{6}{22}=27{,}3\,\%$, $w_O=72{,}7\,\%$. $\sigma_p^2=0{,}2727^2\cdot0{,}0256+0{,}7273^2\cdot0{,}0036+2\cdot0{,}2727\cdot0{,}7273\cdot0{,}2\cdot0{,}16\cdot0{,}06=0{,}004570$, $\sigma_p=6{,}76\,\%$. $RC_A=RC_O=3{,}38$ procentpoint (halvdelen hver).
+(b) $w_A=\frac{1/16}{1/16+1/6}=\frac{6}{22}=27.3\,\%$, $w_O=72.7\,\%$. $\sigma_p^2=0.2727^2\cdot0.0256+0.7273^2\cdot0.0036+2\cdot0.2727\cdot0.7273\cdot0.2\cdot0.16\cdot0.06=0.004570$, $\sigma_p=6.76\,\%$. $RC_A=RC_O=3.38$ procentpoint (halvdelen hver).
 
-(c) 60/40: $\sigma_p^2=0{,}36\cdot0{,}0256+0{,}16\cdot0{,}0036+2\cdot0{,}24\cdot0{,}00192=0{,}010714$, $\sigma_p=10{,}35\,\%$. Aktiernes andel: $0{,}6(0{,}6\cdot0{,}0256+0{,}4\cdot0{,}00192)/0{,}010714=90{,}3\,\%$. "Balanceret" i kroner, men 90 % aktierisiko.
+(c) 60/40: $\sigma_p^2=0.36\cdot0.0256+0.16\cdot0.0036+2\cdot0.24\cdot0.00192=0.010714$, $\sigma_p=10.35\,\%$. Aktiernes andel: $0.6(0.6\cdot0.0256+0.4\cdot0.00192)/0.010714=90.3\,\%$. "Balanceret" i kroner, men 90 % aktierisiko.
 
-(d) Gearing $L=10/6{,}76=1{,}48$. Risici: lånerente over $r_f$, margin calls i stressperioder, korrelationer der stiger i kriser (fx samtidigt fald i aktier og obligationer ved rentestigninger), og at tab forstørres med samme faktor som afkast.
+(d) Gearing $L=10/6.76=1.48$. Risici: lånerente over $r_f$, margin calls i stressperioder, korrelationer der stiger i kriser (fx samtidigt fald i aktier og obligationer ved rentestigninger), og at tab forstørres med samme faktor som afkast.
 
 </details>
 
@@ -3993,7 +3993,7 @@ mu_p  sigma_front  sigma_CML
 0.14  0.3894       0.2591
 ```
 
-CML-kolonnen er overalt mindre end randen; de to er næsten ens omkring $m\approx0{,}077$ (tangenspunktet). Under $m=0{,}0667$ (GMV) er randen den *ineffektive* gren. Alle vægte er positive her, men det er ikke garanteret (se 7.12).
+CML-kolonnen er overalt mindre end randen; de to er næsten ens omkring $m\approx0.077$ (tangenspunktet). Under $m=0.0667$ (GMV) er randen den *ineffektive* gren. Alle vægte er positive her, men det er ikke garanteret (se 7.12).
 
 *Valgfri variant med numpy (kræver, at numpy er installeret; ikke nødvendig for opgaven):*
 
@@ -4068,9 +4068,9 @@ rho23=0.9
 ```
 
 Fortolkning:
-- Med $\rho_{23}=0{,}5$ flytter en ændring på 1 procentpoint i *ét* forventet afkast vægten i aktiv 2 med 4–10 procentpoint.
-- Med $\rho_{23}=0{,}9$ (to næsten ens aktiver, $\boldsymbol\Sigma$ tæt på singulær) svinger vægten i aktiv 2 fra $-22\,\%$ (short) til $+28\,\%$ — et sving på 50 procentpoint fra en ændring, der er langt mindre end standardfejlen på et estimeret middelafkast (7.7).
-- Tabet i *sand* Sharpe ratio er lille her, fordi fejlen kun er 1 procentpoint i ét aktiv. Med realistiske estimationsfejl (flere procentpoint i alle aktiver) bliver tabet langt større, og 1/N (0,449 og 0,410) bliver svær at slå. Pointen: vægtene er ustabile, og ustabile vægte giver også høj omsætning og dermed handelsomkostninger.
+- Med $\rho_{23}=0.5$ flytter en ændring på 1 procentpoint i *ét* forventet afkast vægten i aktiv 2 med 4–10 procentpoint.
+- Med $\rho_{23}=0.9$ (to næsten ens aktiver, $\boldsymbol\Sigma$ tæt på singulær) svinger vægten i aktiv 2 fra $-22\,\%$ (short) til $+28\,\%$ — et sving på 50 procentpoint fra en ændring, der er langt mindre end standardfejlen på et estimeret middelafkast (7.7).
+- Tabet i *sand* Sharpe ratio er lille her, fordi fejlen kun er 1 procentpoint i ét aktiv. Med realistiske estimationsfejl (flere procentpoint i alle aktiver) bliver tabet langt større, og 1/N (0.449 og 0.410) bliver svær at slå. Pointen: vægtene er ustabile, og ustabile vægte giver også høj omsætning og dermed handelsomkostninger.
 
 </details>
 
@@ -4107,7 +4107,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 8 — Faktormodeller
 
 > **Læringsmål:** Kunne opstille en lineær faktormodel, udlede kovariansstrukturen $\boldsymbol\Sigma=\mathbf B\boldsymbol\Sigma_F\mathbf B^\top+\mathbf D$ og bruge den til risikodekomponering. Kende APT, Fama–French- og Carhart-faktorerne, forklare hvad en faktorpræmie er (risiko- vs. adfærdsforklaringer), skelne alpha, beta og smart beta og estimere faktoreksponeringer med regression. Forstå statistiske faktorer (PCA) og hvorfor "faktorzooen" er et multipel-test-problem.
-> **Tidsforbrug:** ca. 2 t video (+ ca. 2,7 t valgfri) · ca. 7 t øvelser
+> **Tidsforbrug:** ca. 2 t video (+ ca. 2.7 t valgfri) · ca. 7 t øvelser
 > **Forudsætninger:** Uge 5 (t-test, p-hacking, multiple sammenligninger), uge 6 (multipel regression, egenværdier, PCA-idéen), uge 7 (CAPM, beta, alpha, systematisk/idiosynkratisk risiko).
 
 ### 📺 Se
@@ -4142,9 +4142,9 @@ $$
 \boldsymbol\Sigma=\operatorname{Cov}(\mathbf R)=\mathbf B\boldsymbol\Sigma_F\mathbf B^\top+\mathbf D,\qquad \mathbf D=\operatorname{diag}(\sigma^2_{\varepsilon,1},\dots,\sigma^2_{\varepsilon,n}).
 $$
 
-Al korrelation mellem aktiver går gennem faktorerne. Gevinsten er færre parametre: for $n=500$, $K=5$ har en fri $\boldsymbol\Sigma$ $n(n+1)/2=125.250$ parametre, faktormodellen kun $nK+K(K+1)/2+n=3015$. Det er derfor, de fleste professionelle (kommercielle) risikomodeller er faktormodeller.
+Al korrelation mellem aktiver går gennem faktorerne. Gevinsten er færre parametre: for $n=500$, $K=5$ har en fri $\boldsymbol\Sigma$ $n(n+1)/2=125250$ parametre, faktormodellen kun $nK+K(K+1)/2+n=3015$. Det er derfor, de fleste professionelle (kommercielle) risikomodeller er faktormodeller.
 
-*Lille eksempel (én faktor):* $\beta=(0{,}8;\,1{,}2)$, $\sigma_F=15\,\%$, $\sigma_\varepsilon=(20\,\%;\,25\,\%)$. Så $\Sigma_{11}=0{,}64\cdot0{,}0225+0{,}04=0{,}0544$, $\Sigma_{22}=1{,}44\cdot0{,}0225+0{,}0625=0{,}0949$, $\Sigma_{12}=0{,}8\cdot1{,}2\cdot0{,}0225=0{,}0216$, og korrelationen er $0{,}0216/\sqrt{0{,}0544\cdot0{,}0949}=0{,}30$ — bestemt af faktoren alene.
+*Lille eksempel (én faktor):* $\beta=(0.8;\,1.2)$, $\sigma_F=15\,\%$, $\sigma_\varepsilon=(20\,\%;\,25\,\%)$. Så $\Sigma_{11}=0.64\cdot0.0225+0.04=0.0544$, $\Sigma_{22}=1.44\cdot0.0225+0.0625=0.0949$, $\Sigma_{12}=0.8\cdot1.2\cdot0.0225=0.0216$, og korrelationen er $0.0216/\sqrt{0.0544\cdot0.0949}=0.30$ — bestemt af faktoren alene.
 
 **2. Risikodekomponering.** For en aktie: $\operatorname{Var}(R_i)=\boldsymbol\beta_i^\top\boldsymbol\Sigma_F\boldsymbol\beta_i+\sigma^2_{\varepsilon,i}$. For en portefølje $\mathbf w$ er eksponeringen $\boldsymbol\beta_p=\mathbf B^\top\mathbf w$ (vægtet gennemsnit af betaer), og
 
@@ -4197,23 +4197,23 @@ Lasse Heje Pedersens "Efficiently Inefficient" beskriver markeder som "effektivt
 
 **8.1** ★ — Et univers har $n=1000$ aktier. (a) Hvor mange frie parametre har en fuld kovariansmatrix? (b) Hvor mange har en streng 3-faktormodel (betaer, faktorkovarians, idiosynkratiske varianser)? (c) Du har 10 års månedsdata. Hvorfor kan stikprøvekovariansmatricen ikke inverteres, og hvad betyder det for Markowitz-optimering (uge 7)?
 
-**8.2** ★ — En aktie har eksponering $\boldsymbol\beta=(1{,}1;\,0{,}4)$ mod to faktorer med $\sigma_{F_1}=16\,\%$, $\sigma_{F_2}=10\,\%$ og faktorkorrelation $-0{,}2$; den idiosynkratiske volatilitet er $20\,\%$. Beregn faktorvariansen, den totale volatilitet og faktorandelen af variansen.
+**8.2** ★ — En aktie har eksponering $\boldsymbol\beta=(1.1;\,0.4)$ mod to faktorer med $\sigma_{F_1}=16\,\%$, $\sigma_{F_2}=10\,\%$ og faktorkorrelation $-0.2$; den idiosynkratiske volatilitet er $20\,\%$. Beregn faktorvariansen, den totale volatilitet og faktorandelen af variansen.
 
-**8.3** ★ — En aktiv fond har haft gennemsnitligt merafkast $8\,\%$ om året *før* gebyrer (illustrative tal). Markedspræmien var $6\,\%$, SMB-præmien $2\,\%$ og HML-præmien $3\,\%$. (a) Med CAPM-beta $1{,}0$: hvad er CAPM-alpha? (b) En FF3-regression giver eksponeringerne $0{,}95$ (MKT), $0{,}3$ (SMB), $0{,}5$ (HML). Hvad er FF3-alpha? (c) Fonden tager 1,5 % i årligt gebyr, mens en faktor-ETF med samme eksponeringer koster 0,25 %. Diskutér kort.
+**8.3** ★ — En aktiv fond har haft gennemsnitligt merafkast $8\,\%$ om året *før* gebyrer (illustrative tal). Markedspræmien var $6\,\%$, SMB-præmien $2\,\%$ og HML-præmien $3\,\%$. (a) Med CAPM-beta $1.0$: hvad er CAPM-alpha? (b) En FF3-regression giver eksponeringerne $0.95$ (MKT), $0.3$ (SMB), $0.5$ (HML). Hvad er FF3-alpha? (c) Fonden tager 1.5 % i årligt gebyr, mens en faktor-ETF med samme eksponeringer koster 0.25 %. Diskutér kort.
 
-**8.4** ★ — En portefølje har vægte $(0{,}5;\,0{,}3;\,0{,}2)$ i tre aktier med markedsbetaer $(1{,}2;\,0{,}8;\,1{,}0)$, HML-betaer $(-0{,}3;\,0{,}6;\,0{,}2)$ og idiosynkratiske volatiliteter $(25\,\%;\,20\,\%;\,30\,\%)$. Faktorerne er ukorrelerede med $\sigma_{\text{MKT}}=16\,\%$ og $\sigma_{\text{HML}}=10\,\%$. Find $\boldsymbol\beta_p$, faktorvarians, specifik varians, total volatilitet og faktorandel.
+**8.4** ★ — En portefølje har vægte $(0.5;\,0.3;\,0.2)$ i tre aktier med markedsbetaer $(1.2;\,0.8;\,1.0)$, HML-betaer $(-0.3;\,0.6;\,0.2)$ og idiosynkratiske volatiliteter $(25\,\%;\,20\,\%;\,30\,\%)$. Faktorerne er ukorrelerede med $\sigma_{\text{MKT}}=16\,\%$ og $\sigma_{\text{HML}}=10\,\%$. Find $\boldsymbol\beta_p$, faktorvarians, specifik varians, total volatilitet og faktorandel.
 
 **8.5** ★★ — Bevis under antagelserne for en streng faktormodel, at $\boldsymbol\Sigma=\mathbf B\boldsymbol\Sigma_F\mathbf B^\top+\mathbf D$. Vis specielt, at $\operatorname{Cov}(R_i,R_j)=\boldsymbol\beta_i^\top\boldsymbol\Sigma_F\boldsymbol\beta_j$ for $i\neq j$. Hvilken antagelse brydes, hvis to aktier fra samme branche har korrelerede residualer, og hvad gør man så i praksis?
 
-**8.6** ★★ — Én-faktormodel uden idiosynkratisk risiko (veldiversificerede porteføljer): $R_A=10\,\%+1{,}5\tilde F$ og $R_B=7\,\%+0{,}75\tilde F$, hvor $\tilde F$ er faktorens uventede del ($E[\tilde F]=0$), og $r_f=3\,\%$. (a) Vis, at $A$ og $B$ ikke kan opfylde APT med samme $\lambda$. (b) Konstruér en portefølje med nul investering og nul faktoreksponering, og find dens (sikre) afkast pr. 1 kr. shortet i $A$. (c) Hvorfor er virkelig "statistisk arbitrage" ikke risikofri?
+**8.6** ★★ — Én-faktormodel uden idiosynkratisk risiko (veldiversificerede porteføljer): $R_A=10\,\%+1.5\tilde F$ og $R_B=7\,\%+0.75\tilde F$, hvor $\tilde F$ er faktorens uventede del ($E[\tilde F]=0$), og $r_f=3\,\%$. (a) Vis, at $A$ og $B$ ikke kan opfylde APT med samme $\lambda$. (b) Konstruér en portefølje med nul investering og nul faktoreksponering, og find dens (sikre) afkast pr. 1 kr. shortet i $A$. (c) Hvorfor er virkelig "statistisk arbitrage" ikke risikofri?
 
-**8.7** ★★ — $n$ aktier har alle variansen $\sigma^2$ og parvis korrelation $\rho\in[0,1)$, så $\boldsymbol\Sigma=\sigma^2[(1-\rho)\mathbf I+\rho\mathbf 1\mathbf 1^\top]$. (a) Vis, at $\mathbf1$ er egenvektor med egenværdi $\sigma^2(1+(n-1)\rho)$, og at enhver vektor ortogonal på $\mathbf1$ er egenvektor med egenværdi $\sigma^2(1-\rho)$. (b) Hvor stor en andel af variansen forklarer første hovedkomponent for $n=100$, $\rho=0{,}3$? Hvad går andelen mod for $n\to\infty$? (c) Fortolk første hovedkomponent som portefølje.
+**8.7** ★★ — $n$ aktier har alle variansen $\sigma^2$ og parvis korrelation $\rho\in[0,1)$, så $\boldsymbol\Sigma=\sigma^2[(1-\rho)\mathbf I+\rho\mathbf 1\mathbf 1^\top]$. (a) Vis, at $\mathbf1$ er egenvektor med egenværdi $\sigma^2(1+(n-1)\rho)$, og at enhver vektor ortogonal på $\mathbf1$ er egenvektor med egenværdi $\sigma^2(1-\rho)$. (b) Hvor stor en andel af variansen forklarer første hovedkomponent for $n=100$, $\rho=0.3$? Hvad går andelen mod for $n\to\infty$? (c) Fortolk første hovedkomponent som portefølje.
 
-**8.8** ★★ — (a) Du tester 200 kandidatfaktorer, som alle i virkeligheden har nul præmie, med tosidet test på 5 %-niveau (antag uafhængige tests). Hvad er det forventede antal falske opdagelser, og hvad er sandsynligheden for mindst én? (b) Hvilken $\lvert t\rvert$-grænse giver Bonferroni-korrektion? (c) En faktor har gennemsnit $0{,}4\,\%$ og standardafvigelse $3\,\%$ pr. måned over 20 år. Beregn $t$-værdien. Består den 5 %-testen, Harvey–Liu–Zhu-grænsen $t>3$ og Bonferroni?
+**8.8** ★★ — (a) Du tester 200 kandidatfaktorer, som alle i virkeligheden har nul præmie, med tosidet test på 5 %-niveau (antag uafhængige tests). Hvad er det forventede antal falske opdagelser, og hvad er sandsynligheden for mindst én? (b) Hvilken $\lvert t\rvert$-grænse giver Bonferroni-korrektion? (c) En faktor har gennemsnit $0.4\,\%$ og standardafvigelse $3\,\%$ pr. måned over 20 år. Beregn $t$-værdien. Består den 5 %-testen, Harvey–Liu–Zhu-grænsen $t>3$ og Bonferroni?
 
-**8.9** ★★★ — Analytisk forudsigelse af 8.11. Hver måned har $N=200$ aktier afkast $R_i=\beta_im+p\,c_i+\varepsilon_i$, hvor $c_i\sim N(0,1)$ er en kendt karakteristik, $\beta_i\sim U(0{,}5;\,1{,}5)$, $m$ er markedsafkastet ($E[m]=0{,}6\,\%$, $\sigma_m=4{,}5\,\%$), $\varepsilon_i\sim N(0;\,0{,}08^2)$, alt uafhængigt, og $p=0{,}3\,\%$. Long-short-porteføljen er ligevægtet long i de 40 aktier med højest $c_i$ og short i de 40 laveste. (a) Brug $E[Z\mid Z>z_{0,8}]=\varphi(z_{0,8})/0{,}2$ for $Z\sim N(0,1)$ til at finde den forventede månedlige præmie. (b) Approksimér månedlig standardafvigelse (idiosynkratisk del plus beta-ubalance-del) og den annualiserede Sharpe ratio. (c) Hvorfor er porteføljen næsten markedsneutral, selvom den ikke er konstrueret til at være det?
+**8.9** ★★★ — Analytisk forudsigelse af 8.11. Hver måned har $N=200$ aktier afkast $R_i=\beta_im+p\,c_i+\varepsilon_i$, hvor $c_i\sim N(0,1)$ er en kendt karakteristik, $\beta_i\sim U(0.5;\,1.5)$, $m$ er markedsafkastet ($E[m]=0.6\,\%$, $\sigma_m=4.5\,\%$), $\varepsilon_i\sim N(0;\,0.08^2)$, alt uafhængigt, og $p=0.3\,\%$. Long-short-porteføljen er ligevægtet long i de 40 aktier med højest $c_i$ og short i de 40 laveste. (a) Brug $E[Z\mid Z>z_{0,8}]=\varphi(z_{0,8})/0.2$ for $Z\sim N(0,1)$ til at finde den forventede månedlige præmie. (b) Approksimér månedlig standardafvigelse (idiosynkratisk del plus beta-ubalance-del) og den annualiserede Sharpe ratio. (c) Hvorfor er porteføljen næsten markedsneutral, selvom den ikke er konstrueret til at være det?
 
-**8.10** ★★ 💻 — Simulér 240 måneder af to korrelerede faktorer: $F_1\sim N(0{,}6\,\%;\,4{,}5\,\%^2)$ ("marked") og $F_2=0{,}1(F_1-0{,}006)+N(0{,}3\,\%;\,3\,\%^2)$ ("value"). Tre aktier har $(\beta_1,\beta_2,\sigma_\varepsilon)$ = A: $(1{,}0;\,0{,}5;\,5\,\%)$, B: $(1{,}3;\,-0{,}4;\,8\,\%)$, C: $(0{,}7;\,0{,}9;\,4\,\%)$ og sand alpha 0. Estimér $\alpha,\beta_1,\beta_2$ med OLS (løs 2×2-normalligningerne på centrerede data selv) og sammenlign den estimerede faktorandel af variansen med den sande $\boldsymbol\beta^\top\boldsymbol\Sigma_F\boldsymbol\beta/(\boldsymbol\beta^\top\boldsymbol\Sigma_F\boldsymbol\beta+\sigma_\varepsilon^2)$. Brug `random.seed(3)`.
+**8.10** ★★ 💻 — Simulér 240 måneder af to korrelerede faktorer: $F_1\sim N(0.6\,\%;\,4.5\,\%^2)$ ("marked") og $F_2=0.1(F_1-0.006)+N(0.3\,\%;\,3\,\%^2)$ ("value"). Tre aktier har $(\beta_1,\beta_2,\sigma_\varepsilon)$ = A: $(1.0;\,0.5;\,5\,\%)$, B: $(1.3;\,-0.4;\,8\,\%)$, C: $(0.7;\,0.9;\,4\,\%)$ og sand alpha 0. Estimér $\alpha,\beta_1,\beta_2$ med OLS (løs 2×2-normalligningerne på centrerede data selv) og sammenlign den estimerede faktorandel af variansen med den sande $\boldsymbol\beta^\top\boldsymbol\Sigma_F\boldsymbol\beta/(\boldsymbol\beta^\top\boldsymbol\Sigma_F\boldsymbol\beta+\sigma_\varepsilon^2)$. Brug `random.seed(3)`.
 
 **8.11** ★★ 💻 — Byg en faktor. Simulér modellen fra 8.9 i 120 måneder (`random.seed(11)`), byg long-short-porteføljen hver måned, og rapportér gennemsnit, standardafvigelse, annualiseret Sharpe ratio, $t$-værdi og korrelation med markedet. Træk derefter omkostninger fra (fuld udskiftning af begge ben hver måned, 10 bp pr. handel). Kør til sidst en *placebo* med $p=0$. Sammenlign med 8.9. (Byggestenen genbruges i uge 11 og 12.)
 
@@ -4224,7 +4224,7 @@ Lasse Heje Pedersens "Efficiently Inefficient" beskriver markeder som "effektivt
 <details>
 <summary>Løsning 8.1</summary>
 
-(a) $n(n+1)/2=1000\cdot1001/2=500.500$.
+(a) $n(n+1)/2=1000\cdot1001/2=500500$.
 
 (b) $\mathbf B$: $1000\cdot3=3000$; $\boldsymbol\Sigma_F$: $3\cdot4/2=6$; $\mathbf D$: $1000$. I alt $4006$ — over 100 gange færre.
 
@@ -4235,30 +4235,30 @@ Lasse Heje Pedersens "Efficiently Inefficient" beskriver markeder som "effektivt
 <details>
 <summary>Løsning 8.2</summary>
 
-$\operatorname{Cov}(F_1,F_2)=-0{,}2\cdot0{,}16\cdot0{,}10=-0{,}0032$.
-Faktorvarians: $1{,}1^2\cdot0{,}0256+0{,}4^2\cdot0{,}01+2\cdot1{,}1\cdot0{,}4\cdot(-0{,}0032)=0{,}030976+0{,}0016-0{,}002816=0{,}02976$.
-Total varians: $0{,}02976+0{,}04=0{,}06976$, volatilitet $26{,}41\,\%$. Faktorandel: $0{,}02976/0{,}06976=42{,}7\,\%$. (Uden kovariansleddet ville man have fået $0{,}03258$ og overvurderet faktorrisikoen.)
+$\operatorname{Cov}(F_1,F_2)=-0.2\cdot0.16\cdot0.10=-0.0032$.
+Faktorvarians: $1.1^2\cdot0.0256+0.4^2\cdot0.01+2\cdot1.1\cdot0.4\cdot(-0.0032)=0.030976+0.0016-0.002816=0.02976$.
+Total varians: $0.02976+0.04=0.06976$, volatilitet $26.41\,\%$. Faktorandel: $0.02976/0.06976=42.7\,\%$. (Uden kovariansleddet ville man have fået $0.03258$ og overvurderet faktorrisikoen.)
 
 </details>
 
 <details>
 <summary>Løsning 8.3</summary>
 
-(a) $8-1{,}0\cdot6=2\,\%$.
+(a) $8-1.0\cdot6=2\,\%$.
 
-(b) Forklaret: $0{,}95\cdot6+0{,}3\cdot2+0{,}5\cdot3=5{,}7+0{,}6+1{,}5=7{,}8\,\%$. FF3-alpha $=8-7{,}8=0{,}2\,\%$.
+(b) Forklaret: $0.95\cdot6+0.3\cdot2+0.5\cdot3=5.7+0.6+1.5=7.8\,\%$. FF3-alpha $=8-7.8=0.2\,\%$.
 
-(c) Næsten al CAPM-"alpha" var value- og size-eksponering, som kan købes regelbaseret (smart beta). Fondens 1,5 % gebyr betaler altså for ca. 0,2 % ægte merværdi før gebyr; efter gebyr er FF3-alphaen $0{,}2-1{,}5=-1{,}3\,\%$. Desuden er 0,2 % ikke signifikant forskellig fra nul med realistiske standardfejl (jf. 7.8). Netto: fonden $8-1{,}5=6{,}5\,\%$ mod $7{,}8-0{,}25=7{,}55\,\%$ for en faktor-ETF med samme eksponeringer — *hvis* ETF'en faktisk høster papirfaktorernes præmier, hvilket den sjældent gør fuldt ud (handelsomkostninger, ingen short-ben i mange produkter). (Faktorpræmier er historiske gennemsnit; de er hverken garanterede eller stabile.)
+(c) Næsten al CAPM-"alpha" var value- og size-eksponering, som kan købes regelbaseret (smart beta). Fondens 1.5 % gebyr betaler altså for ca. 0.2 % ægte merværdi før gebyr; efter gebyr er FF3-alphaen $0.2-1.5=-1.3\,\%$. Desuden er 0.2 % ikke signifikant forskellig fra nul med realistiske standardfejl (jf. 7.8). Netto: fonden $8-1.5=6.5\,\%$ mod $7.8-0.25=7.55\,\%$ for en faktor-ETF med samme eksponeringer — *hvis* ETF'en faktisk høster papirfaktorernes præmier, hvilket den sjældent gør fuldt ud (handelsomkostninger, ingen short-ben i mange produkter). (Faktorpræmier er historiske gennemsnit; de er hverken garanterede eller stabile.)
 
 </details>
 
 <details>
 <summary>Løsning 8.4</summary>
 
-$\boldsymbol\beta_p=(0{,}5\cdot1{,}2+0{,}3\cdot0{,}8+0{,}2\cdot1{,}0;\ 0{,}5\cdot(-0{,}3)+0{,}3\cdot0{,}6+0{,}2\cdot0{,}2)=(1{,}04;\ 0{,}07)$.
-Faktorvarians: $1{,}04^2\cdot0{,}0256+0{,}07^2\cdot0{,}01=0{,}027689+0{,}000049=0{,}027738$.
-Specifik varians: $0{,}25\cdot0{,}0625+0{,}09\cdot0{,}04+0{,}04\cdot0{,}09=0{,}015625+0{,}0036+0{,}0036=0{,}022825$.
-Total: $0{,}050563$, volatilitet $22{,}49\,\%$. Faktorandel $54{,}9\,\%$. Med kun tre aktier er næsten halvdelen af risikoen stadig specifik.
+$\boldsymbol\beta_p=(0.5\cdot1.2+0.3\cdot0.8+0.2\cdot1.0;\ 0.5\cdot(-0.3)+0.3\cdot0.6+0.2\cdot0.2)=(1.04;\ 0.07)$.
+Faktorvarians: $1.04^2\cdot0.0256+0.07^2\cdot0.01=0.027689+0.000049=0.027738$.
+Specifik varians: $0.25\cdot0.0625+0.09\cdot0.04+0.04\cdot0.09=0.015625+0.0036+0.0036=0.022825$.
+Total: $0.050563$, volatilitet $22.49\,\%$. Faktorandel $54.9\,\%$. Med kun tre aktier er næsten halvdelen af risikoen stadig specifik.
 
 </details>
 
@@ -4276,9 +4276,9 @@ Korrelerede residualer i samme branche bryder antagelsen om diagonal $\mathbf D$
 <details>
 <summary>Løsning 8.6</summary>
 
-(a) APT kræver $E[R]-r_f=\beta\lambda$. $A$: $\lambda=(10-3)/1{,}5=4{,}67\,\%$. $B$: $\lambda=(7-3)/0{,}75=5{,}33\,\%$. Forskellige, så $B$ er "for billig" i forhold til $A$.
+(a) APT kræver $E[R]-r_f=\beta\lambda$. $A$: $\lambda=(10-3)/1.5=4.67\,\%$. $B$: $\lambda=(7-3)/0.75=5.33\,\%$. Forskellige, så $B$ er "for billig" i forhold til $A$.
 
-(b) Køb 2 kr. $B$ (beta $2\cdot0{,}75=1{,}5$), short 1 kr. $A$ (beta $-1{,}5$), og lån 1 kr. til $r_f$. Nettoinvestering: $2-1-1=0$. Afkast: $2(0{,}07+0{,}75\tilde F)-(0{,}10+1{,}5\tilde F)-0{,}03=0{,}01$. Faktorleddet går ud, så gevinsten er sikkert 1 øre pr. krone shortet — arbitrage, som ifølge APT ikke kan bestå (handlen ville presse $B$'s pris op og $A$'s ned).
+(b) Køb 2 kr. $B$ (beta $2\cdot0.75=1.5$), short 1 kr. $A$ (beta $-1.5$), og lån 1 kr. til $r_f$. Nettoinvestering: $2-1-1=0$. Afkast: $2(0.07+0.75\tilde F)-(0.10+1.5\tilde F)-0.03=0.01$. Faktorleddet går ud, så gevinsten er sikkert 1 øre pr. krone shortet — arbitrage, som ifølge APT ikke kan bestå (handlen ville presse $B$'s pris op og $A$'s ned).
 
 (c) I virkeligheden er der idiosynkratisk risiko (porteføljer er ikke uendeligt diversificerede), betaerne er estimerede og ustabile, modellen kan mangle faktorer, og der er handels- og short-omkostninger, finansieringsrisiko og risiko for, at prisforskellen vokser, før den lukker (jf. Khandani & Lo om kvant-krakket i august 2007). Det er derfor "statistisk" arbitrage — med reel risiko for tab.
 
@@ -4289,7 +4289,7 @@ Korrelerede residualer i samme branche bryder antagelsen om diagonal $\mathbf D$
 
 (a) $\boldsymbol\Sigma\mathbf1=\sigma^2[(1-\rho)\mathbf1+\rho\mathbf1(\mathbf1^\top\mathbf1)]=\sigma^2[(1-\rho)+n\rho]\mathbf1=\sigma^2(1+(n-1)\rho)\mathbf1$. For $\mathbf v\perp\mathbf1$ er $\mathbf1^\top\mathbf v=0$, så $\boldsymbol\Sigma\mathbf v=\sigma^2(1-\rho)\mathbf v$. Det ortogonale komplement har dimension $n-1$, så vi har alle $n$ egenværdier.
 
-(b) Total varians $=\operatorname{tr}\boldsymbol\Sigma=n\sigma^2$. Andel: $(1+(n-1)\rho)/n=(1+99\cdot0{,}3)/100=30{,}7\,\%$. For $n\to\infty$ går andelen mod $\rho$.
+(b) Total varians $=\operatorname{tr}\boldsymbol\Sigma=n\sigma^2$. Andel: $(1+(n-1)\rho)/n=(1+99\cdot0.3)/100=30.7\,\%$. For $n\to\infty$ går andelen mod $\rho$.
 
 (c) Den normerede egenvektor er $\mathbf1/\sqrt n$: lige store vægte i alle aktier — en ligevægtet markedsportefølje. Det forklarer, hvorfor første hovedkomponent i rigtige aktiedata ligner markedet.
 
@@ -4298,24 +4298,24 @@ Korrelerede residualer i samme branche bryder antagelsen om diagonal $\mathbf D$
 <details>
 <summary>Løsning 8.8</summary>
 
-(a) Forventet antal: $200\cdot0{,}05=10$. $P(\text{mindst én})=1-0{,}95^{200}=0{,}99996$ — praktisk talt sikkert.
+(a) Forventet antal: $200\cdot0.05=10$. $P(\text{mindst én})=1-0.95^{200}=0.99996$ — praktisk talt sikkert.
 
-(b) Bonferroni: hver test på niveau $0{,}05/200=0{,}00025$ tosidet, dvs. $\lvert t\rvert>z_{1-0{,}000125}\approx3{,}66$.
+(b) Bonferroni: hver test på niveau $0.05/200=0.00025$ tosidet, dvs. $\lvert t\rvert>z_{1-0.000125}\approx3.66$.
 
-(c) $t=0{,}004/(0{,}03/\sqrt{240})=0{,}004/0{,}001936=2{,}07$. Består 5 %-testen ($>1{,}96$), men hverken $t>3$ eller Bonferroni. Hvis faktoren blev fundet blandt mange forsøg, er den ikke overbevisende.
+(c) $t=0.004/(0.03/\sqrt{240})=0.004/0.001936=2.07$. Består 5 %-testen ($>1.96$), men hverken $t>3$ eller Bonferroni. Hvis faktoren blev fundet blandt mange forsøg, er den ikke overbevisende.
 
 </details>
 
 <details>
 <summary>Løsning 8.9</summary>
 
-(a) $z_{0,8}=0{,}8416$, $\varphi(0{,}8416)=0{,}2800$, så $E[c\mid\text{top }20\,\%]\approx0{,}2800/0{,}2=1{,}40$ og symmetrisk $-1{,}40$ i bunden. Forventet præmie: $p\cdot2{,}80=0{,}003\cdot2{,}80=0{,}84\,\%$ pr. måned. (Med 40 ud af 200 er "top 20 %" defineret ved stikprøvens ordensstørrelser; approksimationen er god.)
+(a) $z_{0,8}=0.8416$, $\varphi(0.8416)=0.2800$, så $E[c\mid\text{top }20\,\%]\approx0.2800/0.2=1.40$ og symmetrisk $-1.40$ i bunden. Forventet præmie: $p\cdot2.80=0.003\cdot2.80=0.84\,\%$ pr. måned. (Med 40 ud af 200 er "top 20 %" defineret ved stikprøvens ordensstørrelser; approksimationen er god.)
 
-(b) Idiosynkratisk: gennemsnit af 40 uafhængige $\varepsilon$ har varians $0{,}0064/40$; forskellen mellem to ben: $0{,}0064\cdot2/40=0{,}00032$. Beta-ubalance: $\operatorname{Var}(\beta)=1/12$ for $U(0{,}5;1{,}5)$; forskellen mellem to gennemsnit af 40: $2/(12\cdot40)=1/240$; ganget med $E[m^2]=\sigma_m^2+E[m]^2=0{,}045^2+0{,}006^2=0{,}002061$: $8{,}6\cdot10^{-6}$. I alt $0{,}000329$, sd $\approx1{,}81\,\%$. (Variationen i $c$-spændet bidrager med en ubetydelig smule.) $SR_{\text{ann}}\approx(0{,}84/1{,}81)\sqrt{12}=1{,}61$ (skalering med $\sqrt{12}$ forudsætter iid månedsafkast, hvilket holder i simulationen).
+(b) Idiosynkratisk: gennemsnit af 40 uafhængige $\varepsilon$ har varians $0.0064/40$; forskellen mellem to ben: $0.0064\cdot2/40=0.00032$. Beta-ubalance: $\operatorname{Var}(\beta)=1/12$ for $U(0.5;1.5)$; forskellen mellem to gennemsnit af 40: $2/(12\cdot40)=1/240$; ganget med $E[m^2]=\sigma_m^2+E[m]^2=0.045^2+0.006^2=0.002061$: $8.6\cdot10^{-6}$. I alt $0.000329$, sd $\approx1.81\,\%$. (Variationen i $c$-spændet bidrager med en ubetydelig smule.) $SR_{\text{ann}}\approx(0.84/1.81)\sqrt{12}=1.61$ (skalering med $\sqrt{12}$ forudsætter iid månedsafkast, hvilket holder i simulationen).
 
 (c) $c_i$ er uafhængig af $\beta_i$, så gennemsnitsbetaen er den samme i begge ben ($E[\bar\beta_{\text{top}}-\bar\beta_{\text{bund}}]=0$). Markedet går ud. Med rigtige data er karakteristika ofte korrelerede med beta, og så skal man beta-neutralisere eksplicit.
 
-Bemærk: en Sharpe ratio på 1,6 kommer af, at vi har *bygget* en stor præmie ind i simulationen. Historiske akademiske faktorer har typisk haft langt lavere Sharpe ratios før omkostninger.
+Bemærk: en Sharpe ratio på 1.6 kommer af, at vi har *bygget* en stor præmie ind i simulationen. Historiske akademiske faktorer har typisk haft langt lavere Sharpe ratios før omkostninger.
 
 </details>
 
@@ -4366,8 +4366,8 @@ aktie  b1    b1_hat   b2    b2_hat   alpha_hat  faktorandel(est/sand)
 ```
 
 Kommentarer:
-- Betaerne genfindes inden for ca. én standardfejl; fx er $SE(\hat\beta_2)\approx\sigma_\varepsilon/(\sigma_{F_2}\sqrt T)=0{,}05/(0{,}030\cdot15{,}5)\approx0{,}11$ for A, så $0{,}432$ mod $0{,}5$ er helt normalt.
-- Den sande alpha er 0, men $\hat\alpha_B=0{,}34\,\%$ pr. måned (ca. 4 % om året!). Dens standardfejl er ca. $0{,}08/\sqrt{240}\approx0{,}52\,\%$, så $t\approx0{,}65$. Endnu et eksempel på, at estimeret alpha er støj, indtil det modsatte er bevist.
+- Betaerne genfindes inden for ca. én standardfejl; fx er $SE(\hat\beta_2)\approx\sigma_\varepsilon/(\sigma_{F_2}\sqrt T)=0.05/(0.030\cdot15.5)\approx0.11$ for A, så $0.432$ mod $0.5$ er helt normalt.
+- Den sande alpha er 0, men $\hat\alpha_B=0.34\,\%$ pr. måned (ca. 4 % om året!). Dens standardfejl er ca. $0.08/\sqrt{240}\approx0.52\,\%$, så $t\approx0.65$. Endnu et eksempel på, at estimeret alpha er støj, indtil det modsatte er bevist.
 - Faktorandelen er stikprøvens $R^2$; den svinger omkring den sande værdi.
 
 *Valgfri variant med numpy (kræver numpy; ikke nødvendig for opgaven):* `X = np.column_stack([np.ones(T), F1, F2]); coef, *_ = np.linalg.lstsq(X, R, rcond=None)` giver $(\hat\alpha,\hat\beta_1,\hat\beta_2)$ direkte.
@@ -4412,7 +4412,7 @@ premie=0.0: gns=-0.0637%/md  sd=1.8419%  SR_ann=-0.12  t=-0.38  corr(LS,marked)=
 ```
 
 Fortolkning:
-- Gennemsnittet $0{,}77\,\%$ ligger inden for en halv standardfejl ($1{,}85/\sqrt{120}=0{,}17$ procentpoint) af forudsigelsen $0{,}84\,\%$ fra 8.9; sd $1{,}85\,\%$ mod forudsagt $1{,}81\,\%$. Korrelationen med markedet er ca. 0, som forudsagt.
+- Gennemsnittet $0.77\,\%$ ligger inden for en halv standardfejl ($1.85/\sqrt{120}=0.17$ procentpoint) af forudsigelsen $0.84\,\%$ fra 8.9; sd $1.85\,\%$ mod forudsagt $1.81\,\%$. Korrelationen med markedet er ca. 0, som forudsagt.
 - Omkostninger halverer Sharpe ratio: fuld månedlig udskiftning er dyrt. I virkeligheden ændrer karakteristika sig langsomt (fx book-to-market), så omsætningen er lavere — men short-lån, market impact og spreads kommer oveni.
 - Placeboen viser, at metoden ikke selv skaber afkast; efter omkostninger taber den penge. Det er det, en strategi uden ægte signal gør.
 
@@ -4450,7 +4450,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 9 — Tidsrækker
 
 > **Læringsmål:** Kunne definere (svag) stationaritet, autokovarians, ACF og PACF og genkende hvid støj, random walk, AR(1), MA(1) og ARMA. Kunne udlede AR(1)'s momenter, estimere $\phi$ med OLS og forklare Dickey–Fuller-testen. Kunne modellere volatilitetsklynger med ARCH/GARCH(1,1) og lave volatilitetsprognoser, samt forklare integration, spurious regression og kointegration (Engle–Granger).
-> **Tidsforbrug:** ca. 3,3 t video (+ ca. 1,3 t valgfri) · ca. 5,5 t øvelser
+> **Tidsforbrug:** ca. 3.3 t video (+ ca. 1.3 t valgfri) · ca. 5.5 t øvelser
 > **Forudsætninger:** Uge 2 (log-afkast), uge 4 (kovarians, korrelation, CLT), uge 5 (MLE, hypotesetest), uge 6 (OLS og dens standardfejl).
 
 ### 📺 Se
@@ -4463,7 +4463,7 @@ Du er klar til næste uge, når du kan:
   Pause og tænk: Hvis $X_t$ kun afhænger direkte af $X_{t-1}$, hvorfor er korrelationen mellem $X_t$ og $X_{t-2}$ så ikke nul?
 - [ ] **Q9.3** Time Series Talk : Autoregressive Model (ritvikmath)
   Fokus: AR(p)-modellen og hvordan den genkendes på PACF.
-  Pause og tænk: Hvad sker der med en AR(1)-proces, hvis $\phi=1$? Hvis $\phi=1{,}05$?
+  Pause og tænk: Hvad sker der med en AR(1)-proces, hvis $\phi=1$? Hvis $\phi=1.05$?
 - [ ] **Q9.4** Time Series Talk : Moving Average Model (ritvikmath)
   Fokus: MA(q)-modellen — hukommelse af tidligere *stød* i stedet for tidligere *værdier* — og at dens ACF er nul efter lag $q$.
   Pause og tænk: Hvorfor er en MA(1)-proces altid stationær, uanset $\theta$?
@@ -4493,7 +4493,7 @@ Du er klar til næste uge, når du kan:
 2. $\operatorname{Var}(X_t)=\gamma(0)<\infty$ er konstant,
 3. $\operatorname{Cov}(X_t,X_{t-k})=\gamma(k)$ kun afhænger af lag $k$, ikke af $t$.
 
-$\gamma(k)$ er autokovariansfunktionen, og autokorrelationsfunktionen (ACF) er $\rho(k)=\gamma(k)/\gamma(0)$. Stikprøve-ACF: $\hat\rho(k)=\sum_{t=k+1}^{T}(x_t-\bar x)(x_{t-k}-\bar x)/\sum_{t=1}^T(x_t-\bar x)^2$. For iid data er $\hat\rho(k)\approx N(0,1/T)$, så $\pm1{,}96/\sqrt T$ er et 95 %-bånd (husk: med 20 lags vil ca. én af dem krydse båndet ved et tilfælde). *Partiel autokorrelation* (PACF) $\phi_{kk}$ er den sidste koefficient i regressionen af $X_t$ på $X_{t-1},\dots,X_{t-k}$ — korrelationen med lag $k$ efter at have fjernet effekten af lag $1,\dots,k-1$.
+$\gamma(k)$ er autokovariansfunktionen, og autokorrelationsfunktionen (ACF) er $\rho(k)=\gamma(k)/\gamma(0)$. Stikprøve-ACF: $\hat\rho(k)=\sum_{t=k+1}^{T}(x_t-\bar x)(x_{t-k}-\bar x)/\sum_{t=1}^T(x_t-\bar x)^2$. For iid data er $\hat\rho(k)\approx N(0,1/T)$, så $\pm1.96/\sqrt T$ er et 95 %-bånd (husk: med 20 lags vil ca. én af dem krydse båndet ved et tilfælde). *Partiel autokorrelation* (PACF) $\phi_{kk}$ er den sidste koefficient i regressionen af $X_t$ på $X_{t-1},\dots,X_{t-k}$ — korrelationen med lag $k$ efter at have fjernet effekten af lag $1,\dots,k-1$.
 
 **2. Hvid støj og random walk.** *Hvid støj* (white noise): $E[\varepsilon_t]=0$, $\operatorname{Var}(\varepsilon_t)=\sigma^2$, $\operatorname{Cov}(\varepsilon_t,\varepsilon_s)=0$ for $t\ne s$ (ukorreleret; iid er stærkere). *Random walk:* $P_t=P_{t-1}+\varepsilon_t$, så $P_t=P_0+\sum_{s=1}^t\varepsilon_s$ og $\operatorname{Var}(P_t)=t\sigma^2$ — variansen vokser, så processen er *ikke* stationær. Differensen $\Delta P_t=\varepsilon_t$ er stationær. Log-kurser ligner tilnærmelsesvis random walks (med drift), og log-afkast ligner tilnærmelsesvis hvid støj. Derfor modellerer man afkast, ikke kurser.
 
@@ -4509,7 +4509,7 @@ $$
 \operatorname{Var}(X_t)=\frac{\sigma^2}{1-\phi^2},\qquad \rho(k)=\phi^{k}.
 $$
 
-AR(1) er stationær hvis og kun hvis $\lvert\phi\rvert<1$ (for en proces bygget op af fortidens stød, dvs. $X_{t-1}$ ukorreleret med $\varepsilon_t$ — den eneste fortolkning, vi bruger); $\phi=1$ er en random walk (*enhedsrod*, unit root), $\lvert\phi\rvert>1$ eksploderer. ACF aftager geometrisk i absolut værdi (og skifter fortegn hvert lag, hvis $\phi<0$); PACF er $\phi$ ved lag 1 og 0 derefter. Prognose: $E_t[X_{t+h}]=\mu+\phi^h(X_t-\mu)$ — afvigelser fra middelværdien halveres efter *halveringstiden* (half-life) $h_{1/2}=\ln(0{,}5)/\ln\phi$ (for $0<\phi<1$). Strategier baseret på tilbagevenden mod middelværdien (mean reversion) i uge 11 bygger netop på det.
+AR(1) er stationær hvis og kun hvis $\lvert\phi\rvert<1$ (for en proces bygget op af fortidens stød, dvs. $X_{t-1}$ ukorreleret med $\varepsilon_t$ — den eneste fortolkning, vi bruger); $\phi=1$ er en random walk (*enhedsrod*, unit root), $\lvert\phi\rvert>1$ eksploderer. ACF aftager geometrisk i absolut værdi (og skifter fortegn hvert lag, hvis $\phi<0$); PACF er $\phi$ ved lag 1 og 0 derefter. Prognose: $E_t[X_{t+h}]=\mu+\phi^h(X_t-\mu)$ — afvigelser fra middelværdien halveres efter *halveringstiden* (half-life) $h_{1/2}=\ln(0.5)/\ln\phi$ (for $0<\phi<1$). Strategier baseret på tilbagevenden mod middelværdien (mean reversion) i uge 11 bygger netop på det.
 
 *Estimation:* regressér $X_t$ på konstant og $X_{t-1}$ med OLS. $\hat\phi$ er konsistent for $\lvert\phi\rvert<1$, men skævt nedad (biased) i små stikprøver: $E[\hat\phi]-\phi\approx-(1+3\phi)/T$ (Kendall-bias).
 
@@ -4524,7 +4524,7 @@ AR(1) er stationær hvis og kun hvis $\lvert\phi\rvert<1$ (for en proces bygget 
 
 I praksis vælges orden også med informationskriterier (AIC/BIC), og residualerne tjekkes for restautokorrelation (Ljung–Box-test).
 
-**5. Dickey–Fuller-testen.** Skriv AR(1) som $\Delta X_t=c+\gamma X_{t-1}+e_t$ med $\gamma=\phi-1$. Test $H_0:\gamma=0$ (enhedsrod) mod $H_1:\gamma<0$ (stationær). Under $H_0$ følger $t$-værdien for $\hat\gamma$ *ikke* en $t$-fordeling, men Dickey–Fuller-fordelingen; asymptotiske 5 %-kritiske værdier: $-1{,}95$ (uden konstant), $-2{,}86$ (med konstant), $-3{,}41$ (med konstant og trend). *Augmented* DF (ADF) tilføjer led $\sum_j\delta_j\Delta X_{t-j}$ for at fange autokorrelation i $e_t$. Testen har lav styrke (power): en stationær proces med $\phi=0{,}98$ er svær at skelne fra en random walk med få års data.
+**5. Dickey–Fuller-testen.** Skriv AR(1) som $\Delta X_t=c+\gamma X_{t-1}+e_t$ med $\gamma=\phi-1$. Test $H_0:\gamma=0$ (enhedsrod) mod $H_1:\gamma<0$ (stationær). Under $H_0$ følger $t$-værdien for $\hat\gamma$ *ikke* en $t$-fordeling, men Dickey–Fuller-fordelingen; asymptotiske 5 %-kritiske værdier: $-1.95$ (uden konstant), $-2.86$ (med konstant), $-3.41$ (med konstant og trend). *Augmented* DF (ADF) tilføjer led $\sum_j\delta_j\Delta X_{t-j}$ for at fange autokorrelation i $e_t$. Testen har lav styrke (power): en stationær proces med $\phi=0.98$ er svær at skelne fra en random walk med få års data.
 
 **6. Volatilitetsklynger og stiliserede fakta.** Daglige afkast har (i) næsten ingen autokorrelation, (ii) stærk positiv autokorrelation i $r_t^2$ og $\lvert r_t\rvert$ — store udsving følges af store udsving (volatility clustering), (iii) fede haler: kurtosis $E[(r-\mu)^4]/\sigma^4>3$, (iv) leverage-effekt: fald øger volatiliteten mere end stigninger. En model med konstant $\sigma$ fanger ingen af dem.
 
@@ -4542,21 +4542,21 @@ $$
 \bar\sigma^2=\frac{\omega}{1-\alpha-\beta},\qquad E_t[\sigma_{t+h}^2]=\bar\sigma^2+(\alpha+\beta)^{h-1}\big(\sigma_{t+1}^2-\bar\sigma^2\big).
 $$
 
-$\alpha+\beta$ kaldes persistensen (typisk 0,95–0,99 for daglige aktieafkast). RiskMetrics' EWMA, $\sigma_t^2=(1-\lambda)\varepsilon_{t-1}^2+\lambda\sigma_{t-1}^2$ med $\lambda=0{,}94$, er grænsetilfældet $\omega=0$, $\alpha+\beta=1$ uden mean reversion. GARCH estimeres med maksimum likelihood (uge 5): med normale $z_t$ maksimeres $\sum_t\big[-\tfrac12\ln(2\pi\sigma_t^2)-\varepsilon_t^2/(2\sigma_t^2)\big]$ numerisk. Selv med normale $z_t$ har $\varepsilon_t$ fede haler (øvelse 9.9).
+$\alpha+\beta$ kaldes persistensen (typisk 0.95–0.99 for daglige aktieafkast). RiskMetrics' EWMA, $\sigma_t^2=(1-\lambda)\varepsilon_{t-1}^2+\lambda\sigma_{t-1}^2$ med $\lambda=0.94$, er grænsetilfældet $\omega=0$, $\alpha+\beta=1$ uden mean reversion. GARCH estimeres med maksimum likelihood (uge 5): med normale $z_t$ maksimeres $\sum_t\big[-\tfrac12\ln(2\pi\sigma_t^2)-\varepsilon_t^2/(2\sigma_t^2)\big]$ numerisk. Selv med normale $z_t$ har $\varepsilon_t$ fede haler (øvelse 9.9).
 
-*Regneeksempel:* $\alpha=0{,}08$, $\beta=0{,}90$, langsigtsvolatilitet $1\,\%$ pr. dag ($15{,}9\,\%$ årligt med $\sqrt{252}$), så $\omega=10^{-4}\cdot0{,}02=2\cdot10^{-6}$. I dag er $\sigma_t=2\,\%$ og $\varepsilon_t=-3\,\%$. Så $\sigma_{t+1}^2=2\cdot10^{-6}+0{,}08\cdot0{,}0009+0{,}90\cdot0{,}0004=4{,}34\cdot10^{-4}$, dvs. $\sigma_{t+1}=2{,}08\,\%$. Om 10 dage: $10^{-4}+0{,}98^{9}(4{,}34-1)\cdot10^{-4}=3{,}785\cdot10^{-4}$, dvs. $1{,}95\,\%$ — volatiliteten vender kun langsomt tilbage mod 1 %.
+*Regneeksempel:* $\alpha=0.08$, $\beta=0.90$, langsigtsvolatilitet $1\,\%$ pr. dag ($15.9\,\%$ årligt med $\sqrt{252}$), så $\omega=10^{-4}\cdot0.02=2\cdot10^{-6}$. I dag er $\sigma_t=2\,\%$ og $\varepsilon_t=-3\,\%$. Så $\sigma_{t+1}^2=2\cdot10^{-6}+0.08\cdot0.0009+0.90\cdot0.0004=4.34\cdot10^{-4}$, dvs. $\sigma_{t+1}=2.08\,\%$. Om 10 dage: $10^{-4}+0.98^{9}(4.34-1)\cdot10^{-4}=3.785\cdot10^{-4}$, dvs. $1.95\,\%$ — volatiliteten vender kun langsomt tilbage mod 1 %.
 
 **8. Integration, spurious regression og kointegration.** En proces er *integreret af orden $d$*, I($d$), hvis den skal differenseres $d$ gange for at blive stationær: log-kurser er typisk I(1), afkast I(0). Regresserer man én I(1)-serie på en anden *uafhængig* I(1)-serie, får man typisk høj $R^2$ og "signifikante" $t$-værdier — *spurious regression* (Granger & Newbold 1974) — fordi residualerne selv er I(1), og OLS-standardfejlene er ugyldige.
 
 To I(1)-serier $X_t,Y_t$ er *kointegrerede*, hvis der findes $\beta$ så $Y_t-\beta X_t$ er I(0). De kan vandre vilkårligt langt væk, men ikke fra hinanden: spreadet $s_t=Y_t-\beta X_t$ er mean-reverting. *Engle–Granger to-trinsmetode:*
 1. Estimér $Y_t=a+bX_t+u_t$ med OLS (superkonsistent ved kointegration).
-2. Test residualerne $\hat u_t$ for enhedsrod med (A)DF, men brug Engle–Granger-kritiske værdier (mere negative, fordi $\hat\beta$ er valgt til at gøre residualerne så stationære som muligt): ca. $-3{,}34$ ved 5 % for to serier med konstant.
+2. Test residualerne $\hat u_t$ for enhedsrod med (A)DF, men brug Engle–Granger-kritiske værdier (mere negative, fordi $\hat\beta$ er valgt til at gøre residualerne så stationære som muligt): ca. $-3.34$ ved 5 % for to serier med konstant.
 
 Kointegrerede systemer har en fejlkorrektionsrepræsentation (error correction model): mindst én af serierne reagerer på gårsdagens spread. Det er det statistiske grundlag for pairs trading (uge 11) — men kointegrationsrelationer kan bryde sammen (fusioner, regnskabsskandaler, regimeskift), så en historisk test er ingen garanti.
 
 **Typiske fejl**
 - At regressere kurser på kurser og tro på $R^2$ og $t$-værdier (spurious regression).
-- At bruge almindelige $t$-kritiske værdier ($-1{,}645$) i en enhedsrodstest.
+- At bruge almindelige $t$-kritiske værdier ($-1.645$) i en enhedsrodstest.
 - At forveksle korrelation mellem afkast med kointegration mellem kurser — de er hverken nødvendige eller tilstrækkelige for hinanden.
 - At konkludere "uforudsigelig" fra en flad ACF for $r_t$ uden at se på ACF for $r_t^2$.
 - At glemme at $\alpha+\beta<1$ er nødvendig for, at GARCH har en endelig langsigtsvarians.
@@ -4564,19 +4564,19 @@ Kointegrerede systemer har en fejlkorrektionsrepræsentation (error correction m
 
 ### ✏️ Øvelser
 
-**9.1** ★ — $X_t=0{,}5+0{,}8X_{t-1}+\varepsilon_t$ med hvid støj, $\sigma_\varepsilon=1$. (a) Find $\mu$, $\operatorname{Var}(X_t)$, $\rho(1)$ og $\rho(3)$. (b) Find halveringstiden. (c) Givet $X_t=5$: find $E_t[X_{t+1}]$, $E_t[X_{t+2}]$ og $E_t[X_{t+10}]$.
+**9.1** ★ — $X_t=0.5+0.8X_{t-1}+\varepsilon_t$ med hvid støj, $\sigma_\varepsilon=1$. (a) Find $\mu$, $\operatorname{Var}(X_t)$, $\rho(1)$ og $\rho(3)$. (b) Find halveringstiden. (c) Givet $X_t=5$: find $E_t[X_{t+1}]$, $E_t[X_{t+2}]$ og $E_t[X_{t+10}]$.
 
-**9.2** ★ — $X_t=\varepsilon_t+0{,}5\varepsilon_{t-1}$ med $\sigma_\varepsilon=2$. (a) Find $\operatorname{Var}(X_t)$, $\rho(1)$ og $\rho(2)$. (b) Vis, at $\lvert\rho(1)\rvert\le\tfrac12$ for enhver MA(1). (c) Vis, at $\theta$ og $1/\theta$ giver samme ACF.
+**9.2** ★ — $X_t=\varepsilon_t+0.5\varepsilon_{t-1}$ med $\sigma_\varepsilon=2$. (a) Find $\operatorname{Var}(X_t)$, $\rho(1)$ og $\rho(2)$. (b) Vis, at $\lvert\rho(1)\rvert\le\tfrac12$ for enhver MA(1). (c) Vis, at $\theta$ og $1/\theta$ giver samme ACF.
 
-**9.3** ★ — Du har $T=400$ observationer. Identificér den mest sandsynlige model ud fra beskrivelsen: (a) ACF: $0{,}62;\,0{,}40;\,0{,}23;\,0{,}15;\dots$, PACF: $0{,}62;\,0{,}03;\,-0{,}04;\dots$ (b) ACF: $-0{,}41;\,0{,}04;\,-0{,}02;\dots$, PACF: $-0{,}41;\,-0{,}19;\,-0{,}10;\dots$ (c) ACF: $0{,}99;\,0{,}98;\,0{,}97;\dots$ (d) alle ACF- og PACF-værdier ligger i $[-0{,}08;\,0{,}08]$. Angiv også 95 %-båndet.
+**9.3** ★ — Du har $T=400$ observationer. Identificér den mest sandsynlige model ud fra beskrivelsen: (a) ACF: $0.62;\,0.40;\,0.23;\,0.15;\dots$, PACF: $0.62;\,0.03;\,-0.04;\dots$ (b) ACF: $-0.41;\,0.04;\,-0.02;\dots$, PACF: $-0.41;\,-0.19;\,-0.10;\dots$ (c) ACF: $0.99;\,0.98;\,0.97;\dots$ (d) alle ACF- og PACF-værdier ligger i $[-0.08;\,0.08]$. Angiv også 95 %-båndet.
 
-**9.4** ★ — En GARCH(1,1) for daglige afkast har $\omega=2\cdot10^{-6}$, $\alpha=0{,}10$, $\beta=0{,}85$. (a) Find langsigtsvolatiliteten pr. dag og annualiseret. (b) I dag var $\sigma_t=1{,}5\,\%$ og $\varepsilon_t=2{,}5\,\%$. Find $\sigma_{t+1}$. (c) Find prognosen for volatiliteten om 20 dage og halveringstiden for afvigelser i variansen.
+**9.4** ★ — En GARCH(1,1) for daglige afkast har $\omega=2\cdot10^{-6}$, $\alpha=0.10$, $\beta=0.85$. (a) Find langsigtsvolatiliteten pr. dag og annualiseret. (b) I dag var $\sigma_t=1.5\,\%$ og $\varepsilon_t=2.5\,\%$. Find $\sigma_{t+1}$. (c) Find prognosen for volatiliteten om 20 dage og halveringstiden for afvigelser i variansen.
 
 **9.5** ★★ — (a) Udled for en stationær AR(1) uden at bruge MA(∞)-formen: $\mu=c/(1-\phi)$, $\gamma(0)=\sigma^2/(1-\phi^2)$ og $\gamma(k)=\phi\gamma(k-1)$, så $\rho(k)=\phi^k$. (Hint: tag forventning, varians og kovarians med $X_{t-k}$ på begge sider og brug stationaritet.) (b) For en random walk med $P_0=0$: vis $\operatorname{Cov}(P_t,P_{t+k})=t\sigma^2$ og $\operatorname{Corr}(P_t,P_{t+k})=\sqrt{t/(t+k)}$. Hvad betyder det for stikprøve-ACF'en af en kursserie?
 
 **9.6** ★★ — (a) Udled langsigtsvariansen for GARCH(1,1) og prognoseformlen $E_t[\sigma^2_{t+h}]=\bar\sigma^2+(\alpha+\beta)^{h-1}(\sigma^2_{t+1}-\bar\sigma^2)$. (b) Hvad bliver prognosen for EWMA ($\omega=0$, $\alpha+\beta=1$)? (c) Vis, at variansen af det samlede afkast over de næste $h$ dage (givet info i dag) er $\sum_{j=1}^hE_t[\sigma^2_{t+j}]$, når afkastene er ukorrelerede. Hvorfor er $\sigma\sqrt h$ en dårlig tilnærmelse lige efter et krak? (Bruges i uge 16 til VaR.)
 
-**9.7** ★★ — En DF-regression med konstant på 500 daglige observationer af et spread giver $\Delta X_t=0{,}02-0{,}035X_{t-1}+e_t$ med $SE(\hat\gamma)=0{,}015$. (a) Beregn testværdien og konkludér på 5 %-niveau. (b) Hvad ville man (fejlagtigt) konkludere med en almindelig ensidet $t$-test? (c) Hvilket $\hat\phi$ og hvilken halveringstid svarer estimatet til? (d) Et andet spread giver $\hat\gamma=-0{,}06$ med samme standardfejl. Konklusion?
+**9.7** ★★ — En DF-regression med konstant på 500 daglige observationer af et spread giver $\Delta X_t=0.02-0.035X_{t-1}+e_t$ med $SE(\hat\gamma)=0.015$. (a) Beregn testværdien og konkludér på 5 %-niveau. (b) Hvad ville man (fejlagtigt) konkludere med en almindelig ensidet $t$-test? (c) Hvilket $\hat\phi$ og hvilken halveringstid svarer estimatet til? (d) Et andet spread giver $\hat\gamma=-0.06$ med samme standardfejl. Konklusion?
 
 **9.8** ★★ — (a) Lad $X_t$ være I(1) og $Y_t=\beta X_t+u_t$ med $u_t$ stationær. Vis, at $Y_t-bX_t$ er I(1) for alle $b\ne\beta$, så kointegrationsvektoren er entydig op til skalering. (b) Forklar præcist, hvorfor en regression af én random walk på en anden uafhængig random walk giver vildledende $t$-værdier, mens en regression af deres *afkast* (differenser) ikke gør det.
 
@@ -4586,13 +4586,13 @@ $$
 \kappa=\frac{E[\varepsilon_t^4]}{(E[\varepsilon_t^2])^2}=\frac{3(1-\alpha^2)}{1-3\alpha^2}\quad\text{for }3\alpha^2<1 .
 $$
 
-(c) Beregn $\kappa$ for $\alpha=0{,}3$ og $\alpha=0{,}5$. Hvad sker der for $\alpha\ge1/\sqrt3$? (d) Forklar, hvorfor betingede normale stød kan give ubetinget fede haler.
+(c) Beregn $\kappa$ for $\alpha=0.3$ og $\alpha=0.5$. Hvad sker der for $\alpha\ge1/\sqrt3$? (d) Forklar, hvorfor betingede normale stød kan give ubetinget fede haler.
 
-**9.10** ★★ 💻 — Simulér en AR(1) med $\phi=0{,}6$, $\sigma_\varepsilon=1$, $T=500$ (200 indsvingningsperioder (burn-in) kasseres, `random.seed(6)`). Estimér $\phi$ med OLS, beregn stikprøve-ACF for lag 1–5 og sammenlign med $0{,}6^k$ og med 95 %-båndet. Gentag derefter estimationen 2000 gange med $T=50$ (seeds $0,\dots,1999$) og sammenlign gennemsnittet af $\hat\phi$ med Kendall-tilnærmelsen. (Bruges i uge 11 til halveringstider.)
+**9.10** ★★ 💻 — Simulér en AR(1) med $\phi=0.6$, $\sigma_\varepsilon=1$, $T=500$ (200 indsvingningsperioder (burn-in) kasseres, `random.seed(6)`). Estimér $\phi$ med OLS, beregn stikprøve-ACF for lag 1–5 og sammenlign med $0.6^k$ og med 95 %-båndet. Gentag derefter estimationen 2000 gange med $T=50$ (seeds $0,\dots,1999$) og sammenlign gennemsnittet af $\hat\phi$ med Kendall-tilnærmelsen. (Bruges i uge 11 til halveringstider.)
 
-**9.11** ★★ 💻 — Simulér 5000 dage af GARCH(1,1) med $\omega=10^{-6}$, $\alpha=0{,}08$, $\beta=0{,}91$ og normale stød (`random.seed(42)`). Rapportér stikprøvens standardafvigelse, min/maks af $\sigma_t$, kurtosis (sammenlign med iid normal), antal dage med $\lvert r\rvert>4$ standardafvigelser (sammenlign med normalfordelingen) og ACF for $r_t$ og $r_t^2$ ved lag 1, 2, 5, 10. Hvad viser tallene om volatilitetsklynger?
+**9.11** ★★ 💻 — Simulér 5000 dage af GARCH(1,1) med $\omega=10^{-6}$, $\alpha=0.08$, $\beta=0.91$ og normale stød (`random.seed(42)`). Rapportér stikprøvens standardafvigelse, min/maks af $\sigma_t$, kurtosis (sammenlign med iid normal), antal dage med $\lvert r\rvert>4$ standardafvigelser (sammenlign med normalfordelingen) og ACF for $r_t$ og $r_t^2$ ved lag 1, 2, 5, 10. Hvad viser tallene om volatilitetsklynger?
 
-**9.12** ★★★ 💻 — Simulér to uafhængige random walks $X_t,Z_t$ og en stationær AR(1) $U_t$ med $\phi=0{,}7$ ($T=500$, `random.seed(6)`), og sæt $Y_t=1+2X_t+U_t$. Implementér Engle–Granger: OLS af $Y$ på $X$ (med $t$-værdi og $R^2$), derefter DF-regression uden konstant på residualerne, $\Delta\hat u_t=\gamma\hat u_{t-1}+\eta_t$, og sammenlign med $-3{,}34$. Gør det samme for $Z$ på $X$. Kør til sidst 500 Monte Carlo-par af uafhængige random walks ($T=200$) og mål, hvor ofte $\lvert t(\hat b)\rvert>1{,}96$. (Grundlaget for pairs trading i uge 11.)
+**9.12** ★★★ 💻 — Simulér to uafhængige random walks $X_t,Z_t$ og en stationær AR(1) $U_t$ med $\phi=0.7$ ($T=500$, `random.seed(6)`), og sæt $Y_t=1+2X_t+U_t$. Implementér Engle–Granger: OLS af $Y$ på $X$ (med $t$-værdi og $R^2$), derefter DF-regression uden konstant på residualerne, $\Delta\hat u_t=\gamma\hat u_{t-1}+\eta_t$, og sammenlign med $-3.34$. Gør det samme for $Z$ på $X$. Kør til sidst 500 Monte Carlo-par af uafhængige random walks ($T=200$) og mål, hvor ofte $\lvert t(\hat b)\rvert>1.96$. (Grundlaget for pairs trading i uge 11.)
 
 **9.13** ★ 🗣️ — Skriv 10–15 linjer til en medstuderende: Hvad er stationaritet, og hvorfor modellerer man afkast i stedet for kurser? Hvad betyder det, at to aktier er kointegrerede, og hvorfor er en historisk signifikant kointegrationstest ikke en garanteret pengemaskine?
 
@@ -4601,20 +4601,20 @@ $$
 <details>
 <summary>Løsning 9.1</summary>
 
-(a) $\mu=0{,}5/(1-0{,}8)=2{,}5$. $\operatorname{Var}=1/(1-0{,}64)=2{,}778$ (sd $1{,}667$). $\rho(1)=0{,}8$, $\rho(3)=0{,}8^3=0{,}512$.
+(a) $\mu=0.5/(1-0.8)=2.5$. $\operatorname{Var}=1/(1-0.64)=2.778$ (sd $1.667$). $\rho(1)=0.8$, $\rho(3)=0.8^3=0.512$.
 
-(b) $h_{1/2}=\ln0{,}5/\ln0{,}8=3{,}11$ perioder.
+(b) $h_{1/2}=\ln0.5/\ln0.8=3.11$ perioder.
 
-(c) $E_t[X_{t+h}]=2{,}5+0{,}8^h(5-2{,}5)$: $h=1$: $4{,}5$; $h=2$: $4{,}1$; $h=10$: $2{,}5+0{,}1074\cdot2{,}5=2{,}77$.
+(c) $E_t[X_{t+h}]=2.5+0.8^h(5-2.5)$: $h=1$: $4.5$; $h=2$: $4.1$; $h=10$: $2.5+0.1074\cdot2.5=2.77$.
 
 </details>
 
 <details>
 <summary>Løsning 9.2</summary>
 
-(a) $\operatorname{Var}=\sigma^2(1+\theta^2)=4\cdot1{,}25=5$. $\rho(1)=\theta/(1+\theta^2)=0{,}5/1{,}25=0{,}4$. $\rho(2)=0$ ($X_t$ og $X_{t-2}$ deler intet stød).
+(a) $\operatorname{Var}=\sigma^2(1+\theta^2)=4\cdot1.25=5$. $\rho(1)=\theta/(1+\theta^2)=0.5/1.25=0.4$. $\rho(2)=0$ ($X_t$ og $X_{t-2}$ deler intet stød).
 
-(b) $(1-\lvert\theta\rvert)^2\ge0\Rightarrow1+\theta^2\ge2\lvert\theta\rvert\Rightarrow\lvert\theta\rvert/(1+\theta^2)\le\tfrac12$, med lighed for $\theta=\pm1$. En stikprøve-ACF med $\hat\rho(1)=0{,}7$ og nul derefter kan altså ikke være MA(1).
+(b) $(1-\lvert\theta\rvert)^2\ge0\Rightarrow1+\theta^2\ge2\lvert\theta\rvert\Rightarrow\lvert\theta\rvert/(1+\theta^2)\le\tfrac12$, med lighed for $\theta=\pm1$. En stikprøve-ACF med $\hat\rho(1)=0.7$ og nul derefter kan altså ikke være MA(1).
 
 (c) $\dfrac{1/\theta}{1+1/\theta^2}=\dfrac{\theta}{\theta^2+1}$. Samme ACF; man vælger konventionelt den *invertible* version $\lvert\theta\rvert<1$.
 
@@ -4623,11 +4623,11 @@ $$
 <details>
 <summary>Løsning 9.3</summary>
 
-95 %-bånd: $\pm1{,}96/\sqrt{400}=\pm0{,}098$.
+95 %-bånd: $\pm1.96/\sqrt{400}=\pm0.098$.
 
-(a) ACF aftager gradvist (ca. $0{,}62^k$), PACF afskåret efter lag 1 → AR(1) med $\phi\approx0{,}62$.
+(a) ACF aftager gradvist (ca. $0.62^k$), PACF afskåret efter lag 1 → AR(1) med $\phi\approx0.62$.
 
-(b) ACF afskåret efter lag 1, PACF aftager → MA(1); $\rho(1)=-0{,}41$ giver $\theta\approx-0{,}52$ (løs $\theta/(1+\theta^2)=-0{,}41$: $0{,}41\theta^2+\theta+0{,}41=0$ har rødderne $-0{,}52$ og $-1{,}92$; den invertible er $\theta\approx-0{,}52$). Negativ lag-1-autokorrelation ses fx i afkast med bid-ask bounce (uge 15).
+(b) ACF afskåret efter lag 1, PACF aftager → MA(1); $\rho(1)=-0.41$ giver $\theta\approx-0.52$ (løs $\theta/(1+\theta^2)=-0.41$: $0.41\theta^2+\theta+0.41=0$ har rødderne $-0.52$ og $-1.92$; den invertible er $\theta\approx-0.52$). Negativ lag-1-autokorrelation ses fx i afkast med bid-ask bounce (uge 15).
 
 (c) Ekstremt langsom aftagen fra næsten 1 → ikke-stationær (enhedsrod), fx en kursserie. Differensér serien (fx fra kurser til afkast), og analysér igen.
 
@@ -4638,11 +4638,11 @@ $$
 <details>
 <summary>Løsning 9.4</summary>
 
-(a) $\bar\sigma^2=2\cdot10^{-6}/(1-0{,}95)=4\cdot10^{-5}$, dvs. $0{,}632\,\%$ pr. dag og $0{,}632\cdot\sqrt{252}=10{,}04\,\%$ årligt.
+(a) $\bar\sigma^2=2\cdot10^{-6}/(1-0.95)=4\cdot10^{-5}$, dvs. $0.632\,\%$ pr. dag og $0.632\cdot\sqrt{252}=10.04\,\%$ årligt.
 
-(b) $\sigma_{t+1}^2=2\cdot10^{-6}+0{,}10\cdot0{,}000625+0{,}85\cdot0{,}000225=0{,}000002+0{,}0000625+0{,}00019125=2{,}5575\cdot10^{-4}$, så $\sigma_{t+1}=1{,}60\,\%$.
+(b) $\sigma_{t+1}^2=2\cdot10^{-6}+0.10\cdot0.000625+0.85\cdot0.000225=0.000002+0.0000625+0.00019125=2.5575\cdot10^{-4}$, så $\sigma_{t+1}=1.60\,\%$.
 
-(c) $E_t[\sigma^2_{t+20}]=4\cdot10^{-5}+0{,}95^{19}(2{,}5575-0{,}4)\cdot10^{-4}=4\cdot10^{-5}+0{,}3774\cdot2{,}1575\cdot10^{-4}=1{,}214\cdot10^{-4}$, dvs. $1{,}10\,\%$ (kvadratroden af variansprognosen; strengt taget er $E_t[\sigma_{t+20}]$ lidt mindre pga. Jensens ulighed). Halveringstid: $\ln0{,}5/\ln0{,}95=13{,}5$ dage.
+(c) $E_t[\sigma^2_{t+20}]=4\cdot10^{-5}+0.95^{19}(2.5575-0.4)\cdot10^{-4}=4\cdot10^{-5}+0.3774\cdot2.1575\cdot10^{-4}=1.214\cdot10^{-4}$, dvs. $1.10\,\%$ (kvadratroden af variansprognosen; strengt taget er $E_t[\sigma_{t+20}]$ lidt mindre pga. Jensens ulighed). Halveringstid: $\ln0.5/\ln0.95=13.5$ dage.
 
 </details>
 
@@ -4669,13 +4669,13 @@ $$
 <details>
 <summary>Løsning 9.7</summary>
 
-(a) $t=-0{,}035/0{,}015=-2{,}33$. DF-kritisk værdi med konstant ved 5 %: $-2{,}86$. Da $-2{,}33>-2{,}86$, kan enhedsroden ikke forkastes.
+(a) $t=-0.035/0.015=-2.33$. DF-kritisk værdi med konstant ved 5 %: $-2.86$. Da $-2.33>-2.86$, kan enhedsroden ikke forkastes.
 
-(b) En almindelig ensidet $t$-test (kritisk værdi $-1{,}645$) ville forkaste og fejlagtigt erklære spreadet stationært — en klassisk vej til falske mean reversion-strategier.
+(b) En almindelig ensidet $t$-test (kritisk værdi $-1.645$) ville forkaste og fejlagtigt erklære spreadet stationært — en klassisk vej til falske mean reversion-strategier.
 
-(c) $\hat\phi=1+\hat\gamma=0{,}965$; halveringstid $\ln0{,}5/\ln0{,}965=19{,}5$ dage. (Og Kendall-biasen gør, at den sande $\phi$ snarere er større.) "Ikke forkastet" betyder ikke "bevist random walk": testen har lav styrke for $\phi$ tæt på 1.
+(c) $\hat\phi=1+\hat\gamma=0.965$; halveringstid $\ln0.5/\ln0.965=19.5$ dage. (Og Kendall-biasen gør, at den sande $\phi$ snarere er større.) "Ikke forkastet" betyder ikke "bevist random walk": testen har lav styrke for $\phi$ tæt på 1.
 
-(d) $t=-0{,}06/0{,}015=-4{,}0<-2{,}86$: forkast enhedsrod på 5 %-niveau. Men hvis spreadet er dannet med et estimeret $\hat\beta$ (Engle–Granger), skal man bruge $-3{,}34$; $-4{,}0$ består også den.
+(d) $t=-0.06/0.015=-4.0<-2.86$: forkast enhedsrod på 5 %-niveau. Men hvis spreadet er dannet med et estimeret $\hat\beta$ (Engle–Granger), skal man bruge $-3.34$; $-4.0$ består også den.
 
 </details>
 
@@ -4696,7 +4696,7 @@ $$
 (b) $E[z^4]=3$ for $N(0,1)$, og $z_t$ er uafhængig af $\sigma_t$: $m_4:=E[\varepsilon_t^4]=3E[\sigma_t^4]=3E[(\omega+\alpha\varepsilon_{t-1}^2)^2]=3(\omega^2+2\alpha\omega v+\alpha^2m_4)$. Løs: $m_4(1-3\alpha^2)=3\omega(\omega+2\alpha v)=3\omega^2\big(1+\tfrac{2\alpha}{1-\alpha}\big)=3\omega^2\tfrac{1+\alpha}{1-\alpha}$. Så $m_4=\dfrac{3\omega^2(1+\alpha)}{(1-\alpha)(1-3\alpha^2)}$ (positiv og endelig kun for $3\alpha^2<1$), og
 $\kappa=m_4/v^2=\dfrac{3\omega^2(1+\alpha)}{(1-\alpha)(1-3\alpha^2)}\cdot\dfrac{(1-\alpha)^2}{\omega^2}=\dfrac{3(1-\alpha^2)}{1-3\alpha^2}$. ∎
 
-(c) $\alpha=0{,}3$: $3\cdot0{,}91/0{,}73=3{,}74$. $\alpha=0{,}5$: $3\cdot0{,}75/0{,}25=9$. For $\alpha\ge1/\sqrt3\approx0{,}577$ er fjerde moment uendeligt (kurtosis uendelig), selvom variansen er endelig så længe $\alpha<1$.
+(c) $\alpha=0.3$: $3\cdot0.91/0.73=3.74$. $\alpha=0.5$: $3\cdot0.75/0.25=9$. For $\alpha\ge1/\sqrt3\approx0.577$ er fjerde moment uendeligt (kurtosis uendelig), selvom variansen er endelig så længe $\alpha<1$.
 
 (d) Afkast er en *blanding* af normalfordelinger med forskellige varianser: rolige perioder giver mange små afkast, urolige perioder enkelte meget store. En blanding af normalfordelinger med samme middelværdi har altid kurtosis $\ge3$ (fordi $E[\sigma^4]-(E[\sigma^2])^2=\operatorname{Var}(\sigma^2)\ge0$, så $\kappa=3E[\sigma^4]/(E[\sigma^2])^2\ge3$).
 
@@ -4751,7 +4751,7 @@ lag 5: ACF =  0.122   teori 0.6^k = 0.078
 T=50: gns. phi_hat over 2000 sim. = 0.539  (tilnærmelse 0.6-(1+3*0.6)/50 = 0.544)
 ```
 
-Kommentarer: $\hat\phi$ rammer fint med $T=500$. Stikprøve-ACF'en ved højere lags afviger mere fra teorien (standardfejlen for $\hat\rho(k)$ er større end $1/\sqrt T$ for en autokorreleret proces — båndet $\pm0{,}088$ gælder kun under hvid støj). Med $T=50$ er $\hat\phi$ i gennemsnit $0{,}539$ i stedet for $0{,}6$: Kendall-biasen er reel og betyder, at halveringstider estimeret på korte dataserier er for korte (for optimistiske for en mean reversion-strategi).
+Kommentarer: $\hat\phi$ rammer fint med $T=500$. Stikprøve-ACF'en ved højere lags afviger mere fra teorien (standardfejlen for $\hat\rho(k)$ er større end $1/\sqrt T$ for en autokorreleret proces — båndet $\pm0.088$ gælder kun under hvid støj). Med $T=50$ er $\hat\phi$ i gennemsnit $0.539$ i stedet for $0.6$: Kendall-biasen er reel og betyder, at halveringstider estimeret på korte dataserier er for korte (for optimistiske for en mean reversion-strategi).
 
 </details>
 
@@ -4802,10 +4802,10 @@ lag 10: ACF(r) =  0.035   ACF(r^2) =  0.266
 ```
 
 Fortolkning:
-- Dagsvolatiliteten svinger mellem $0{,}44\,\%$ og $3{,}61\,\%$ — en faktor 8 — selvom parametrene er konstante.
-- $r_t$ er praktisk talt ukorreleret (ACF omkring $\pm1{,}96/\sqrt{5000}=\pm0{,}028$; lag 10 ligger lidt uden for, hvilket ikke er overraskende — under GARCH er båndet desuden for smalt, fordi det forudsætter iid data), men $r_t^2$ har stor og *langsomt aftagende* autokorrelation: volatilitetsklynger. Uforudsigeligt fortegn, forudsigelig størrelse.
-- Kurtosis $6{,}35>3$ og 18 dage ud over 4 sd mod ca. $0{,}3$ forventet under normalfordelingen: fede haler, selvom hvert enkelt stød er normalt (jf. 9.9). Den teoretiske GARCH-kurtosis er $3(1-0{,}99^2)/(1-0{,}99^2-2\cdot0{,}08^2)=8{,}4$; stikprøvekurtosis konvergerer langsomt og undervurderer typisk ved fede haler.
-- $\operatorname{sd}(r)=1{,}10\,\%$ mod teoretisk $1\,\%$: med persistens $0{,}99$ er selv 5000 dage (ca. 20 år) en kort stikprøve for variansen.
+- Dagsvolatiliteten svinger mellem $0.44\,\%$ og $3.61\,\%$ — en faktor 8 — selvom parametrene er konstante.
+- $r_t$ er praktisk talt ukorreleret (ACF omkring $\pm1.96/\sqrt{5000}=\pm0.028$; lag 10 ligger lidt uden for, hvilket ikke er overraskende — under GARCH er båndet desuden for smalt, fordi det forudsætter iid data), men $r_t^2$ har stor og *langsomt aftagende* autokorrelation: volatilitetsklynger. Uforudsigeligt fortegn, forudsigelig størrelse.
+- Kurtosis $6.35>3$ og 18 dage ud over 4 sd mod ca. $0.3$ forventet under normalfordelingen: fede haler, selvom hvert enkelt stød er normalt (jf. 9.9). Den teoretiske GARCH-kurtosis er $3(1-0.99^2)/(1-0.99^2-2\cdot0.08^2)=8.4$; stikprøvekurtosis konvergerer langsomt og undervurderer typisk ved fede haler.
+- $\operatorname{sd}(r)=1.10\,\%$ mod teoretisk $1\,\%$: med persistens $0.99$ er selv 5000 dage (ca. 20 år) en kort stikprøve for variansen.
 
 </details>
 
@@ -4869,8 +4869,8 @@ Andel af 500 uafh. par med |t(b)| > 1.96: 85%  (burde være 5 %)
 ```
 
 Fortolkning:
-- Kointegreret par: $\hat b=1{,}985$ (sand 2), residualerne er klart stationære ($t=-10{,}7\ll-3{,}34$), og $\hat\gamma=-0{,}376$ er i samme størrelsesorden som $\phi-1=-0{,}3$ for spreadet $U$ (residualerne er ikke helt lig $U$, og $\hat\gamma$ har stikprøvevariation).
-- Uafhængige random walks: $t(\hat b)=-23{,}6$ og $R^2=0{,}53$ ser imponerende ud, men er ren spurious regression. DF-testen på residualerne afslører det ($t=-2{,}32>-3{,}34$).
+- Kointegreret par: $\hat b=1.985$ (sand 2), residualerne er klart stationære ($t=-10.7\ll-3.34$), og $\hat\gamma=-0.376$ er i samme størrelsesorden som $\phi-1=-0.3$ for spreadet $U$ (residualerne er ikke helt lig $U$, og $\hat\gamma$ har stikprøvevariation).
+- Uafhængige random walks: $t(\hat b)=-23.6$ og $R^2=0.53$ ser imponerende ud, men er ren spurious regression. DF-testen på residualerne afslører det ($t=-2.32>-3.34$).
 - Monte Carlo: 85 % af *uafhængige* par får "signifikant" hældning ved 5 %-niveau. Regressioner af kurser på kurser er meningsløse uden en kointegrationstest.
 - Bemærk til uge 10–11: hvis man tester tusindvis af aktiepar for kointegration, finder man mange falske par (multiple tests igen), og ægte par kan holde op med at være kointegrerede.
 
@@ -4906,7 +4906,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 10 — Backtesting og forskningsmetode
 
 > **Læringsmål:** Kende forskningspipelinen fra hypotese til robusthedstest og de klassiske fejl (look-ahead, survivorship, data snooping, overfitting). Kunne lave lækagefri validering i tidsrækker (walk-forward, purging og embargo) og korrigere en Sharpe ratio for antallet af forsøg (Deflated Sharpe Ratio).
-> **Tidsforbrug:** ca. 2,5 t video (+ ca. 1,5 t valgfri) · ca. 6 t øvelser
+> **Tidsforbrug:** ca. 2.5 t video (+ ca. 1.5 t valgfri) · ca. 6 t øvelser
 > **Forudsætninger:** Uge 2 (afkast, Sharpe ratio, $\sqrt{252}$-reglen), uge 4 (normalfordeling, CLT), uge 5 (hypotesetest, p-værdier, multiple comparisons), uge 9 (autokorrelation). Fra Foundations: præcise definitioner og bevisførelse.
 
 ### 📺 Se
@@ -4962,7 +4962,7 @@ Den årlige omkostningsbelastning er $c \cdot \text{turnover pr. år}$, hvor tur
 
 *Eksempel:* dagsdata, label = 10-dages fremtidigt afkast, så $[t_{i,0}, t_{i,1}] = [i, i+10]$. Test = dag 200–299 giver $[T_0, T_1] = [200, 309]$. Purging fjerner dag 190–199 (deres labels rækker ind i testen) og dag 300–309. Med embargo $h = 5$ fjernes også dag 310–314.
 
-**5. Multipel testning og den maksimale Sharpe ratio.** For iid-normalfordelte afkast med kendt $\sigma$ er $\widehat{SR} = \hat\mu/\sigma$ (pr. periode) normalfordelt med varians $1/T$; når $\sigma$ også estimeres (stadig iid normal), giver Lo (2002) asymptotisk $\operatorname{Var}(\widehat{SR}) \approx (1 + \tfrac12 SR^2)/T$. Annualiseret (under iid-antagelsen) er standardfejlen derfor ca. $\sqrt{252/T} = 1/\sqrt{\text{antal år}}$. Fem års data giver $\sigma_{SR} \approx 0{,}45$ annualiseret. En annualiseret SR på 0,5 er altså *ikke* signifikant med fem års data.
+**5. Multipel testning og den maksimale Sharpe ratio.** For iid-normalfordelte afkast med kendt $\sigma$ er $\widehat{SR} = \hat\mu/\sigma$ (pr. periode) normalfordelt med varians $1/T$; når $\sigma$ også estimeres (stadig iid normal), giver Lo (2002) asymptotisk $\operatorname{Var}(\widehat{SR}) \approx (1 + \tfrac12 SR^2)/T$. Annualiseret (under iid-antagelsen) er standardfejlen derfor ca. $\sqrt{252/T} = 1/\sqrt{\text{antal år}}$. Fem års data giver $\sigma_{SR} \approx 0.45$ annualiseret. En annualiseret SR på 0.5 er altså *ikke* signifikant med fem års data.
 
 *Multipel testning igen (uge 5).* t-værdien for "middelafkast $= 0$" er ca. $SR_{\text{ann}}\sqrt{Y}$ ($Y$ = antal år). Med $N$ uafhængige tests på niveau $\alpha$ forventes $N\alpha$ falske fund, og Bonferroni kræver niveau $\alpha/N$ pr. test. Harvey, Liu & Zhu (2016) argumenterer på den baggrund for at kræve $t > 3$ (ikke 2) for nye faktorer. Ekstremværdi-tilgangen nedenfor siger det samme i Sharpe-enheder.
 
@@ -4970,15 +4970,15 @@ Antag nu $N$ uafhængige forsøg, alle med sand SR $= 0$, og estimater $\widehat
 
 $$E\Big[\max_{n \le N} \widehat{SR}_n\Big] \approx \sigma_{SR}\left( (1-\gamma)\,\Phi^{-1}\!\left(1 - \frac{1}{N}\right) + \gamma\,\Phi^{-1}\!\left(1 - \frac{1}{N e}\right) \right),$$
 
-hvor $\gamma \approx 0{,}5772$ er Euler–Mascheroni-konstanten og $\Phi^{-1}$ standardnormalfordelingens kvantilfunktion. Formlen er asymptotisk (stor $N$), antager uafhængige forsøg og er et *forventet* maksimum, ikke en grænse. Med $\sigma_{SR} = 1$ giver den 1,575 / 2,531 / 3,255 for $N = 10 / 100 / 1000$ (den eksakte værdi af $E[\max]$ for uafhængige standardnormale, fundet ved numerisk integration eller Monte Carlo: 1,539 / 2,508 / 3,241; approksimationen ligger altså lidt for højt for små $N$). Fem års data og 100 forsøg: $0{,}45 \cdot 2{,}53 \approx 1{,}13$. **En annualiseret SR på 1,1 fremkommer altså af ren støj**, hvis man har prøvet 100 ting.
+hvor $\gamma \approx 0.5772$ er Euler–Mascheroni-konstanten og $\Phi^{-1}$ standardnormalfordelingens kvantilfunktion. Formlen er asymptotisk (stor $N$), antager uafhængige forsøg og er et *forventet* maksimum, ikke en grænse. Med $\sigma_{SR} = 1$ giver den 1,575 / 2,531 / 3,255 for $N = 10 / 100 / 1000$ (den eksakte værdi af $E[\max]$ for uafhængige standardnormale, fundet ved numerisk integration eller Monte Carlo: 1,539 / 2,508 / 3,241; approksimationen ligger altså lidt for højt for små $N$). Fem års data og 100 forsøg: $0.45 \cdot 2.53 \approx 1.13$. **En annualiseret SR på 1.1 fremkommer altså af ren støj**, hvis man har prøvet 100 ting.
 
 **6. PSR og Deflated Sharpe Ratio.** Probabilistic Sharpe Ratio (Bailey & López de Prado) for en benchmark $SR^*$, med SR pr. periode, $T$ observationer, skævhed $\hat\gamma_3$ og kurtosis $\hat\gamma_4$ (ikke excess; normalfordeling har 3):
 
 $$\widehat{PSR}(SR^*) = \Phi\!\left( \frac{(\widehat{SR} - SR^*)\sqrt{T-1}}{\sqrt{1 - \hat\gamma_3 \widehat{SR} + \frac{\hat\gamma_4 - 1}{4}\widehat{SR}^2}} \right).$$
 
-**Deflated Sharpe Ratio** er $DSR = \widehat{PSR}(SR_0)$, hvor $SR_0$ er den forventede maksimale SR fra afsnit 5, med $N$ = antal forsøg og $\sigma_{SR}$ = standardafvigelsen af SR-estimaterne på tværs af forsøgene. DSR fortolkes (som hos Bailey & López de Prado) som sandsynligheden for, at den sande SR overstiger, hvad held alene kunne give; formelt er $\widehat{PSR}(SR^*)$ én minus den asymptotiske p-værdi for testen $H_0: SR \le SR^*$ (uge 5). Kræv typisk $DSR \ge 0{,}95$. Negativ skævhed og fede haler sænker DSR. Bemærk: $N$ kendes kun, hvis du har **logget alle forsøg**.
+**Deflated Sharpe Ratio** er $DSR = \widehat{PSR}(SR_0)$, hvor $SR_0$ er den forventede maksimale SR fra afsnit 5, med $N$ = antal forsøg og $\sigma_{SR}$ = standardafvigelsen af SR-estimaterne på tværs af forsøgene. DSR fortolkes (som hos Bailey & López de Prado) som sandsynligheden for, at den sande SR overstiger, hvad held alene kunne give; formelt er $\widehat{PSR}(SR^*)$ én minus den asymptotiske p-værdi for testen $H_0: SR \le SR^*$ (uge 5). Kræv typisk $DSR \ge 0.95$. Negativ skævhed og fede haler sænker DSR. Bemærk: $N$ kendes kun, hvis du har **logget alle forsøg**.
 
-**7. Probability of Backtest Overfitting (PBO), idé.** Del data i $S$ blokke. For hver måde at vælge $S/2$ blokke som IS (resten OOS): vælg den konfiguration, der er bedst IS, og find dens relative rang $\omega \in (0,1)$ OOS (rang/$(N+1)$, hvor rang 1 er dårligst). Logit $\lambda = \ln(\omega/(1-\omega))$. PBO $=$ andelen af opdelinger med $\lambda \le 0$, dvs. at "IS-vinderen" havner i den dårlige halvdel OOS. PBO nær 0,5 eller derover betyder, at udvælgelsen ikke virker. Metoden hedder Combinatorially Symmetric Cross-Validation (CSCV).
+**7. Probability of Backtest Overfitting (PBO), idé.** Del data i $S$ blokke. For hver måde at vælge $S/2$ blokke som IS (resten OOS): vælg den konfiguration, der er bedst IS, og find dens relative rang $\omega \in (0,1)$ OOS (rang/$(N+1)$, hvor rang 1 er dårligst). Logit $\lambda = \ln(\omega/(1-\omega))$. PBO $=$ andelen af opdelinger med $\lambda \le 0$, dvs. at "IS-vinderen" havner i den dårlige halvdel OOS. PBO nær 0.5 eller derover betyder, at udvælgelsen ikke virker. Metoden hedder Combinatorially Symmetric Cross-Validation (CSCV).
 
 **8. López de Prados "7 reasons" (Q10.1), i hovedtræk.**
 1. *Sisyphus-paradigmet:* isolerede "stjerne-forskere" i stedet for en samlebåndsproces med specialister (data, features, modeller, backtest, eksekvering).
@@ -5005,32 +5005,32 @@ $$\widehat{PSR}(SR^*) = \Phi\!\left( \frac{(\widehat{SR} - SR^*)\sqrt{T-1}}{\sqr
 
 **10.2** ★ — Et ligevægtet univers på 10 aktier følges i 10 år. 7 aktier overlever med et gennemsnitligt samlet afkast på $+35\,\%$. 3 afnoteres undervejs med samlede afkast $-50\,\%$, $-70\,\%$ og $-100\,\%$. (a) Hvad viser en backtest på et overlevelsesbiased datasæt? (b) Hvad er det korrekte gennemsnitlige afkast (køb-og-hold, ligevægtet ved start)? (c) Hvorfor rammer biasen især strategier, der køber "billige" eller "faldne" aktier?
 
-**10.3** ★ — En strategi har brutto-merafkast $12\,\%$ om året og volatilitet $10\,\%$, dvs. brutto-SR 1,2. Omkostninger er $8$ bp pr. enhed turnover. (a) Find netto-SR ved turnover 25 gange om året. (b) Samme signal handles hurtigere med turnover 250 gange om året. Find netto-SR. (c) Find break-even-omkostningen pr. enhed ved turnover 250.
+**10.3** ★ — En strategi har brutto-merafkast $12\,\%$ om året og volatilitet $10\,\%$, dvs. brutto-SR 1.2. Omkostninger er $8$ bp pr. enhed turnover. (a) Find netto-SR ved turnover 25 gange om året. (b) Samme signal handles hurtigere med turnover 250 gange om året. Find netto-SR. (c) Find break-even-omkostningen pr. enhed ved turnover 250.
 
-**10.4** ★ — Brug formlen for den forventede maksimale SR med fem års daglige data (så $\sigma_{SR} \approx 1/\sqrt{5}$ annualiseret). (a) Beregn den forventede maksimale annualiserede SR for $N = 10, 100, 1000$ værdiløse forsøg. Brug `statistics.NormalDist().inv_cdf`. (b) En kollega fremviser SR $= 1{,}1$ efter "en del forsøg". Hvilke spørgsmål stiller du?
+**10.4** ★ — Brug formlen for den forventede maksimale SR med fem års daglige data (så $\sigma_{SR} \approx 1/\sqrt{5}$ annualiseret). (a) Beregn den forventede maksimale annualiserede SR for $N = 10, 100, 1000$ værdiløse forsøg. Brug `statistics.NormalDist().inv_cdf`. (b) En kollega fremviser SR $= 1.1$ efter "en del forsøg". Hvilke spørgsmål stiller du?
 
-**10.5** ★★ — (a) Lad $R_1, \dots, R_T$ være iid $N(\mu, \sigma^2)$ med kendt $\sigma$, og $\widehat{SR} = \bar R/\sigma$. Vis, at $\widehat{SR} \sim N(SR, 1/T)$ med $SR = \mu/\sigma$. (b) Vis, at den annualiserede standardfejl (iid, 252 dage) er $1/\sqrt{Y}$, hvor $Y$ er antal år. (c) Hvor mange års data kræves, før et 95 %-konfidensinterval for en sand annualiseret SR på 0,5 forventes at udelukke 0? Og for SR $= 1{,}0$? (d) Kommentér korrektionsfaktoren $\sqrt{1 + \tfrac12 SR^2}$ fra Lo (2002) for daglige data.
+**10.5** ★★ — (a) Lad $R_1, \dots, R_T$ være iid $N(\mu, \sigma^2)$ med kendt $\sigma$, og $\widehat{SR} = \bar R/\sigma$. Vis, at $\widehat{SR} \sim N(SR, 1/T)$ med $SR = \mu/\sigma$. (b) Vis, at den annualiserede standardfejl (iid, 252 dage) er $1/\sqrt{Y}$, hvor $Y$ er antal år. (c) Hvor mange års data kræves, før et 95 %-konfidensinterval for en sand annualiseret SR på 0.5 forventes at udelukke 0? Og for SR $= 1.0$? (d) Kommentér korrektionsfaktoren $\sqrt{1 + \tfrac12 SR^2}$ fra Lo (2002) for daglige data.
 
 **10.6** ★★ — 100 daglige observationer (indeks 0–99) med label = 5-dages fremtidigt afkast, så observation $i$ har informationsinterval $[i, i+5]$ (antag at kurserne findes). Der bruges 5-fold CV med blokke à 20. (a) Testblokken er observation 40–59. Hvilke træningsobservationer skal purges? (b) Tilføj en embargo på $2\,\%$ af stikprøven. Hvor mange træningsobservationer er der tilbage? (c) Gentag for testblokken 80–99. (d) Forklar, hvorfor naiv k-fold CV giver for optimistiske resultater, og hvorfor embargoen kun lægges *efter* testblokken.
 
-**10.7** ★★ — En backtest over 5 år ($T = 1260$ dage) har annualiseret SR 1,5, skævhed $-0{,}5$ og kurtosis 6. Forskeren har logget $N = 50$ forsøg, og standardafvigelsen af de *daglige* SR-estimater på tværs af forsøgene er $0{,}028$. (a) Find den daglige SR (iid-antagelse). (b) Beregn $\widehat{PSR}(0)$. (c) Beregn $SR_0$ (dagligt og annualiseret) og $DSR$. (d) Fortolk. Består strategien på niveau 0,95?
+**10.7** ★★ — En backtest over 5 år ($T = 1260$ dage) har annualiseret SR 1.5, skævhed $-0.5$ og kurtosis 6. Forskeren har logget $N = 50$ forsøg, og standardafvigelsen af de *daglige* SR-estimater på tværs af forsøgene er $0.028$. (a) Find den daglige SR (iid-antagelse). (b) Beregn $\widehat{PSR}(0)$. (c) Beregn $SR_0$ (dagligt og annualiseret) og $DSR$. (d) Fortolk. Består strategien på niveau 0.95?
 
 **10.8** ★★ — Fire strategikonfigurationer A–D er evalueret i fire tidsblokke (SR pr. blok):
 
 | Konfiguration | Blok 1 | Blok 2 | Blok 3 | Blok 4 |
 |---|---|---|---|---|
-| A | 2,0 | 1,5 | −0,5 | −1,0 |
-| B | −0,9 | 1,8 | 1,2 | −0,6 |
-| C | 0,3 | 0,2 | 0,4 | 0,1 |
-| D | −1,2 | −0,4 | 1,6 | 2,1 |
+| A | 2.0 | 1.5 | −0.5 | −1.0 |
+| B | −0.9 | 1.8 | 1.2 | −0.6 |
+| C | 0.3 | 0.2 | 0.4 | 0.1 |
+| D | −1.2 | −0.4 | 1.6 | 2.1 |
 
 Udfør CSCV med $S = 4$: for hver af de $\binom{4}{2} = 6$ måder at vælge to IS-blokke, find IS-vinderen (højeste gennemsnit), dens OOS-rang (1 = dårligst af 4), $\omega = \text{rang}/5$ og $\lambda$. Beregn PBO og fortolk. Hvilken konfiguration ville du stole mest på?
 
-**10.9** ★★★ — Lad $Z_1, \dots, Z_N$ være standardnormalfordelte og $M = \max_n Z_n$. (a) Vis uden antagelse om uafhængighed, at $E[M] \le \sqrt{2 \ln N}$. Hint: Jensen på $e^{tM}$ og $E[e^{tZ}] = e^{t^2/2}$. (b) Antag uafhængighed. Vis $P(M \le x) = \Phi(x)^N$ og find medianen af $M$ for $N = 100$. (c) Forklar, hvorfor $\Phi^{-1}(1 - 1/N)$ er en naturlig "typisk størrelse" af $M$ (forventet antal overskridelser). (d) Sammenlign for $N = 100$: øvre grænse, median, Gumbel-approksimationen (2,531) og Monte Carlo (ca. 2,51). (e) Hvad sker der med det forventede maksimum, hvis forsøgene er stærkt positivt korrelerede? Hvad betyder det for "$N$" i DSR?
+**10.9** ★★★ — Lad $Z_1, \dots, Z_N$ være standardnormalfordelte og $M = \max_n Z_n$. (a) Vis uden antagelse om uafhængighed, at $E[M] \le \sqrt{2 \ln N}$. Hint: Jensen på $e^{tM}$ og $E[e^{tZ}] = e^{t^2/2}$. (b) Antag uafhængighed. Vis $P(M \le x) = \Phi(x)^N$ og find medianen af $M$ for $N = 100$. (c) Forklar, hvorfor $\Phi^{-1}(1 - 1/N)$ er en naturlig "typisk størrelse" af $M$ (forventet antal overskridelser). (d) Sammenlign for $N = 100$: øvre grænse, median, Gumbel-approksimationen (2,531) og Monte Carlo (ca. 2.51). (e) Hvad sker der med det forventede maksimum, hvis forsøgene er stærkt positivt korrelerede? Hvad betyder det for "$N$" i DSR?
 
-**10.10** ★★ 💻 — Skriv en hændelsesdrevet (event-driven) backtester i ren Python, der behandler én dag ad gangen: (1) P&L på gårsdagens position, (2) udfør ordren besluttet i går til dagens lukkekurs med proportional omkostning $c$, (3) beregn nyt signal med data *til og med i dag*. Test den på 10 års simulerede priser (`random.seed(10)`, daglige log-afkast $N(0{,}0002;\ 0{,}01^2)$) med køb-og-hold og en MA(50)-regel (long over gennemsnittet, short under), med $c = 0$ og $c = 10$ bp. Rapportér CAGR, SR, max drawdown og turnover pr. år. Indbyg en automatisk look-ahead-test.
+**10.10** ★★ 💻 — Skriv en hændelsesdrevet (event-driven) backtester i ren Python, der behandler én dag ad gangen: (1) P&L på gårsdagens position, (2) udfør ordren besluttet i går til dagens lukkekurs med proportional omkostning $c$, (3) beregn nyt signal med data *til og med i dag*. Test den på 10 års simulerede priser (`random.seed(10)`, daglige log-afkast $N(0.0002;\ 0.01^2)$) med køb-og-hold og en MA(50)-regel (long over gennemsnittet, short under), med $c = 0$ og $c = 10$ bp. Rapportér CAGR, SR, max drawdown og turnover pr. år. Indbyg en automatisk look-ahead-test.
 
-**10.11** ★★★ 💻 — Overfitting på ren støj. Simulér 20 uafhængige prisserier uden drift (`random.seed(s)`, $s = 0, \dots, 19$; daglige log-afkast $N(0;\ 0{,}01^2)$; 2 år IS + 2 år OOS). For hver serie: optimér MA-vinduet $w \in \{2, \dots, 150\}$ for en long/short-MA-regel (signal $t$, handel $t+1$, 5 bp omkostning) på IS-SR, og evaluér det valgte $w$ OOS. Rapportér gennemsnitlig bedste IS-SR, gennemsnitlig OOS-SR og andelen med OOS-SR $< 0$. Sammenlign med formlen for det forventede maksimum med $N = 149$ og forklar forskellen.
+**10.11** ★★★ 💻 — Overfitting på ren støj. Simulér 20 uafhængige prisserier uden drift (`random.seed(s)`, $s = 0, \dots, 19$; daglige log-afkast $N(0;\ 0.01^2)$; 2 år IS + 2 år OOS). For hver serie: optimér MA-vinduet $w \in \{2, \dots, 150\}$ for en long/short-MA-regel (signal $t$, handel $t+1$, 5 bp omkostning) på IS-SR, og evaluér det valgte $w$ OOS. Rapportér gennemsnitlig bedste IS-SR, gennemsnitlig OOS-SR og andelen med OOS-SR $< 0$. Sammenlign med formlen for det forventede maksimum med $N = 149$ og forklar forskellen.
 
 **10.12** ★★ 🗣️ — Skriv en præregistrering (ca. en halv side) for en hypotetisk trendstrategi på et aktieindeks: hypotese og økonomisk begrundelse, data, signal, eksekveringsantagelser, omkostninger, evalueringsmål, antal tilladte varianter, IS/OOS-opdeling og stopkriterier. Forklar til sidst med egne ord, hvordan præregistrering og en forsøgslog adresserer mindst tre af López de Prados pointer.
 
@@ -5059,8 +5059,8 @@ Udfør CSCV med $S = 4$: for hver af de $\binom{4}{2} = 6$ måder at vælge to I
 (a) Det biasede datasæt indeholder kun de 7 overlevere: gennemsnit $+35\,\%$.
 
 (b) Ligevægtet ved start (køb-og-hold) er porteføljens samlede afkast gennemsnittet af de 10 afkast:
-$$\frac{7 \cdot 35 + (-50) + (-70) + (-100)}{10} = \frac{245 - 220}{10} = 2{,}5\,\%.$$
-Biasen er altså $32{,}5$ procentpoint.
+$$\frac{7 \cdot 35 + (-50) + (-70) + (-100)}{10} = \frac{245 - 220}{10} = 2.5\,\%.$$
+Biasen er altså $32.5$ procentpoint.
 
 (c) "Billige" og "faldne" aktier er netop dem med størst risiko for konkurs og afnotering. Survivorship-data udelader de værste udfald i den gruppe, så value- og kontrastrategier (contrarian) ser kunstigt gode ud.
 
@@ -5069,28 +5069,28 @@ Biasen er altså $32{,}5$ procentpoint.
 <details>
 <summary>Løsning 10.3</summary>
 
-(a) Omkostning $= 25 \cdot 0{,}0008 = 2\,\%$ om året. Netto-merafkast $= 10\,\%$, volatiliteten er (næsten) uændret, så netto-SR $= 0{,}10/0{,}10 = 1{,}0$.
+(a) Omkostning $= 25 \cdot 0.0008 = 2\,\%$ om året. Netto-merafkast $= 10\,\%$, volatiliteten er (næsten) uændret, så netto-SR $= 0.10/0.10 = 1.0$.
 
-(b) Omkostning $= 250 \cdot 0{,}0008 = 20\,\%$. Netto $= 12\,\% - 20\,\% = -8\,\%$, SR $= -0{,}8$.
+(b) Omkostning $= 250 \cdot 0.0008 = 20\,\%$. Netto $= 12\,\% - 20\,\% = -8\,\%$, SR $= -0.8$.
 
-(c) Break-even: $c^* = 0{,}12/250 = 0{,}00048 = 4{,}8$ bp pr. enhed. Lektionen er, at omkostninger skalerer lineært med turnover, mens bruttoafkastet sjældent gør.
+(c) Break-even: $c^* = 0.12/250 = 0.00048 = 4.8$ bp pr. enhed. Lektionen er, at omkostninger skalerer lineært med turnover, mens bruttoafkastet sjældent gør.
 
 </details>
 
 <details>
 <summary>Løsning 10.4</summary>
 
-(a) $\sigma_{SR} = 1/\sqrt 5 = 0{,}4472$. Med $\gamma = 0{,}5772$:
+(a) $\sigma_{SR} = 1/\sqrt 5 = 0.4472$. Med $\gamma = 0.5772$:
 
 | $N$ | $\Phi^{-1}(1-1/N)$ | $\Phi^{-1}(1-1/(Ne))$ | Faktor | $E[\max]$ annualiseret |
 |---|---|---|---|---|
-| 10 | 1,2816 | 1,7892 | 1,5746 | 0,70 |
-| 100 | 2,3263 | 2,6802 | 2,5306 | 1,13 |
-| 1000 | 3,0902 | 3,3759 | 3,2551 | 1,46 |
+| 10 | 1.2816 | 1.7892 | 1.5746 | 0.70 |
+| 100 | 2.3263 | 2.6802 | 2.5306 | 1.13 |
+| 1000 | 3.0902 | 3.3759 | 3.2551 | 1.46 |
 
-(Faktoren er $(1-\gamma)\Phi^{-1}(1-1/N) + \gamma\Phi^{-1}(1-1/(Ne))$, fx $0{,}4228 \cdot 2{,}3263 + 0{,}5772 \cdot 2{,}6802 = 2{,}5306$.)
+(Faktoren er $(1-\gamma)\Phi^{-1}(1-1/N) + \gamma\Phi^{-1}(1-1/(Ne))$, fx $0.4228 \cdot 2.3263 + 0.5772 \cdot 2.6802 = 2.5306$.)
 
-(b) Hvor mange forsøg præcis (inkl. dem, der blev kasseret)? Hvor lang er perioden? Er SR brutto eller netto efter omkostninger? Hvordan er afkastfordelingen (skævhed, haler)? Findes en ægte OOS-periode eller papirhandel? Hvad er den økonomiske begrundelse? Med 100 forsøg på 5 år er 1,1 netop, hvad held giver.
+(b) Hvor mange forsøg præcis (inkl. dem, der blev kasseret)? Hvor lang er perioden? Er SR brutto eller netto efter omkostninger? Hvordan er afkastfordelingen (skævhed, haler)? Findes en ægte OOS-periode eller papirhandel? Hvad er den økonomiske begrundelse? Med 100 forsøg på 5 år er 1.1 netop, hvad held giver.
 
 </details>
 
@@ -5101,9 +5101,9 @@ Biasen er altså $32{,}5$ procentpoint.
 
 (b) Under iid er annualiseret SR $= \sqrt{252}\cdot$ daglig SR, så standardfejlen bliver $\sqrt{252}\cdot\sqrt{1/T} = \sqrt{252/T} = 1/\sqrt{Y}$ med $T = 252Y$.
 
-(c) Forventet nedre grænse $SR - 1{,}96/\sqrt{Y} > 0 \iff Y > (1{,}96/SR)^2$. SR $= 0{,}5$: $Y > 15{,}4$ år. SR $= 1{,}0$: $Y > 3{,}84$ år. Selv en god strategi kræver mange år for at kunne skelnes fra støj.
+(c) Forventet nedre grænse $SR - 1.96/\sqrt{Y} > 0 \iff Y > (1.96/SR)^2$. SR $= 0.5$: $Y > 15.4$ år. SR $= 1.0$: $Y > 3.84$ år. Selv en god strategi kræver mange år for at kunne skelnes fra støj.
 
-(d) Den daglige SR er lille (fx $1/\sqrt{252} \approx 0{,}063$ for annualiseret 1,0), så $\sqrt{1 + \tfrac12 \cdot 0{,}063^2} \approx 1{,}001$, dvs. ubetydeligt. Korrektionen betyder noget for månedlige eller årlige data og især ved ikke-normale afkast, hvor skævhed og kurtosis indgår (se PSR-formlen).
+(d) Den daglige SR er lille (fx $1/\sqrt{252} \approx 0.063$ for annualiseret 1.0), så $\sqrt{1 + \tfrac12 \cdot 0.063^2} \approx 1.001$, dvs. ubetydeligt. Korrektionen betyder noget for månedlige eller årlige data og især ved ikke-normale afkast, hvor skævhed og kurtosis indgår (se PSR-formlen).
 
 </details>
 
@@ -5112,7 +5112,7 @@ Biasen er altså $32{,}5$ procentpoint.
 
 (a) Testintervallet er $[T_0, T_1] = [40, 59 + 5] = [40, 64]$. Træningsobservation $j$ purges, hvis $j + 5 \ge 40$ og $j \le 64$, dvs. $j \in [35, 64]$. Uden for testblokken betyder det **35–39** og **60–64** (10 observationer).
 
-(b) Embargo $h = 0{,}02 \cdot 100 = 2$: fjern også **65–66**. Tilbage: 0–34 (35 obs.) og 67–99 (33 obs.), i alt **68**.
+(b) Embargo $h = 0.02 \cdot 100 = 2$: fjern også **65–66**. Tilbage: 0–34 (35 obs.) og 67–99 (33 obs.), i alt **68**.
 
 (c) Test 80–99: $[T_0, T_1] = [80, 104]$. Purge $j \in [75, 79]$. Der er ingen observationer efter testen, så embargo er irrelevant. Træning: 0–74, i alt 75.
 
@@ -5123,15 +5123,15 @@ Biasen er altså $32{,}5$ procentpoint.
 <details>
 <summary>Løsning 10.7</summary>
 
-(a) $\widehat{SR} = 1{,}5/\sqrt{252} = 0{,}09449$ pr. dag.
+(a) $\widehat{SR} = 1.5/\sqrt{252} = 0.09449$ pr. dag.
 
-(b) Nævner: $\sqrt{1 - (-0{,}5)(0{,}09449) + \tfrac{6-1}{4}(0{,}09449)^2} = \sqrt{1 + 0{,}04725 + 0{,}01116} = 1{,}02879$.
-$z = 0{,}09449 \cdot \sqrt{1259} / 1{,}02879 = 0{,}09449 \cdot 35{,}483/1{,}02879 = 3{,}259$, så $\widehat{PSR}(0) = \Phi(3{,}259) = 0{,}9994$.
+(b) Nævner: $\sqrt{1 - (-0.5)(0.09449) + \tfrac{6-1}{4}(0.09449)^2} = \sqrt{1 + 0.04725 + 0.01116} = 1.02879$.
+$z = 0.09449 \cdot \sqrt{1259} / 1.02879 = 0.09449 \cdot 35.483/1.02879 = 3.259$, så $\widehat{PSR}(0) = \Phi(3.259) = 0.9994$.
 
-(c) Faktoren for $N = 50$ er $(1-\gamma)\Phi^{-1}(0{,}98) + \gamma\Phi^{-1}(1 - 1/(50e))$, og $SR_0 = 0{,}028 \cdot 2{,}276 = 0{,}0637$ dagligt, dvs. $0{,}0637\sqrt{252} = 1{,}01$ annualiseret.
-$z = (0{,}09449 - 0{,}06374)\cdot 35{,}483/1{,}02879 = 1{,}061$, så $DSR = \Phi(1{,}061) = 0{,}856$.
+(c) Faktoren for $N = 50$ er $(1-\gamma)\Phi^{-1}(0.98) + \gamma\Phi^{-1}(1 - 1/(50e))$, og $SR_0 = 0.028 \cdot 2.276 = 0.0637$ dagligt, dvs. $0.0637\sqrt{252} = 1.01$ annualiseret.
+$z = (0.09449 - 0.06374)\cdot 35.483/1.02879 = 1.061$, så $DSR = \Phi(1.061) = 0.856$.
 
-(d) Uden korrektion ser strategien overbevisende ud ($99{,}9\,\%$). Men 50 forsøg giver i forventning en bedste SR omkring 1,0 af ren støj, og så er sandsynligheden for, at den sande SR overstiger det niveau, kun $86\,\%$. Strategien består **ikke** på 0,95. Bemærk, at $\sigma_{SR} = 0{,}028 \approx 1/\sqrt{1260}$, præcis hvad iid-støj ville give.
+(d) Uden korrektion ser strategien overbevisende ud ($99.9\,\%$). Men 50 forsøg giver i forventning en bedste SR omkring 1.0 af ren støj, og så er sandsynligheden for, at den sande SR overstiger det niveau, kun $86\,\%$. Strategien består **ikke** på 0.95. Bemærk, at $\sigma_{SR} = 0.028 \approx 1/\sqrt{1260}$, præcis hvad iid-støj ville give.
 
 </details>
 
@@ -5142,14 +5142,14 @@ IS-gennemsnit, IS-vinder, OOS-gennemsnit og rang (1 = dårligst):
 
 | IS-blokke | IS-vinder (gns.) | OOS: A, B, C, D | Rang | $\omega$ | $\lambda$ |
 |---|---|---|---|---|---|
-| 1,2 | A (1,75) | −0,75; 0,30; 0,25; 1,85 | 1 | 0,2 | −1,386 |
-| 1,3 | A (0,75) | 0,25; 0,60; 0,15; 0,85 | 2 | 0,4 | −0,405 |
-| 1,4 | A (0,50) | 0,50; 1,50; 0,30; 0,60 | 2 | 0,4 | −0,405 |
-| 2,3 | B (1,50) | 0,50; −0,75; 0,20; 0,45 | 1 | 0,2 | −1,386 |
-| 2,4 | D (0,85) | 0,75; 0,15; 0,35; 0,20 | 2 | 0,4 | −0,405 |
-| 3,4 | D (1,85) | 1,75; 0,45; 0,25; −0,80 | 1 | 0,2 | −1,386 |
+| 1.2 | A (1,75) | −0.75; 0.30; 0.25; 1.85 | 1 | 0.2 | −1,386 |
+| 1.3 | A (0,75) | 0.25; 0.60; 0.15; 0.85 | 2 | 0.4 | −0.405 |
+| 1.4 | A (0,50) | 0.50; 1.50; 0.30; 0.60 | 2 | 0.4 | −0.405 |
+| 2.3 | B (1,50) | 0.50; −0.75; 0.20; 0.45 | 1 | 0.2 | −1,386 |
+| 2.4 | D (0,85) | 0.75; 0.15; 0.35; 0.20 | 2 | 0.4 | −0.405 |
+| 3.4 | D (1,85) | 1.75; 0.45; 0.25; −0.80 | 1 | 0.2 | −1,386 |
 
-Fx IS-blokke 1,2: A har $(2{,}0+1{,}5)/2 = 1{,}75$, B $0{,}45$, C $0{,}25$, D $-0{,}8$, så A vinder. OOS (blok 3,4): A $-0{,}75$ er lavest, rang 1, $\omega = 1/5$, $\lambda = \ln(0{,}2/0{,}8) = -1{,}386$.
+Fx IS-blokke 1.2: A har $(2.0+1.5)/2 = 1.75$, B $0.45$, C $0.25$, D $-0.8$, så A vinder. OOS (blok 3.4): A $-0.75$ er lavest, rang 1, $\omega = 1/5$, $\lambda = \ln(0.2/0.8) = -1.386$.
 
 Alle 6 opdelinger har $\lambda \le 0$, så **PBO $= 6/6 = 1$**. At vælge efter IS-performance er her værre end at slå plat og krone: A, B og D er "regime-strategier", hvis gode perioder ikke gentager sig. C er aldrig IS-vinder, men er den eneste, der er positiv i alle blokke. Den er den mest troværdige (beskeden, stabil).
 
@@ -5160,11 +5160,11 @@ Alle 6 opdelinger har $\lambda \le 0$, så **PBO $= 6/6 = 1$**. At vælge efter 
 
 (a) For $t > 0$: $e^{tE[M]} \le E[e^{tM}]$ (Jensen, $\exp$ konveks) $= E[\max_n e^{tZ_n}] \le \sum_n E[e^{tZ_n}] = N e^{t^2/2}$. Tag logaritmen: $E[M] \le \frac{\ln N}{t} + \frac{t}{2}$. Højresiden minimeres i $t = \sqrt{2\ln N}$, hvilket giver $E[M] \le \sqrt{2\ln N}$. Der blev ikke brugt uafhængighed.
 
-(b) $\{M \le x\} = \bigcap_n \{Z_n \le x\}$, så ved uafhængighed er $P(M \le x) = \Phi(x)^N$. Medianen løser $\Phi(x)^N = \tfrac12$, dvs. $x = \Phi^{-1}(2^{-1/N})$. For $N = 100$: $\Phi^{-1}(0{,}99309) = 2{,}462$.
+(b) $\{M \le x\} = \bigcap_n \{Z_n \le x\}$, så ved uafhængighed er $P(M \le x) = \Phi(x)^N$. Medianen løser $\Phi(x)^N = \tfrac12$, dvs. $x = \Phi^{-1}(2^{-1/N})$. For $N = 100$: $\Phi^{-1}(0.99309) = 2.462$.
 
 (c) Antallet af $Z_n > x$ har forventning $N(1 - \Phi(x))$. Det er 1, netop når $x = \Phi^{-1}(1-1/N)$: det niveau, hvor man "forventer én overskridelse". Maksimum ligger typisk omkring dette niveau, og Gumbel-korrektionen med $\gamma$ og $Ne$ justerer for fordelingens højreskævhed.
 
-(d) $N = 100$: øvre grænse $\sqrt{2\ln 100} = 3{,}035$; median $2{,}462$; Gumbel $2{,}531$; Monte Carlo ca. $2{,}51$. Grænsen er grov, approksimationen god. Middelværdien ligger over medianen, fordi maksimum er højreskævt.
+(d) $N = 100$: øvre grænse $\sqrt{2\ln 100} = 3.035$; median $2.462$; Gumbel $2.531$; Monte Carlo ca. $2.51$. Grænsen er grov, approksimationen god. Middelværdien ligger over medianen, fordi maksimum er højreskævt.
 
 (e) Ved korrelation $\rho \to 1$ er alle forsøg ens, og $E[M] \to E[Z] = 0$. Korrelerede forsøg svarer til et mindre *effektivt* antal uafhængige forsøg. I DSR bør $N$ derfor være antallet af effektivt uafhængige forsøg (fx estimeret ved at klynge korrelerede strategier). Det er et vigtigt, men usikkert, input.
 
@@ -5239,7 +5239,7 @@ MA(50)      10 bp: CAGR=-10.80% SR=-0.65 maxDD=72.92% turnover/år=43.1
 Ingen look-ahead (signaler og equity t.o.m. dag 1000 uændrede): True
 ```
 
-Kommentarer: Rækkefølgen 1)–2)–3) i løkken *er* look-ahead-beskyttelsen. Signalet fra dag $t$ kan tidligst handles til $P_{t+1}$ og tjener først fra $t+1$ til $t+2$. På en random walk har MA-reglen ingen kant. Turnover på 43 gange om året koster ca. $43 \cdot 10\text{ bp} \approx 4{,}3\,\%$ om året (log-skala), hvilket passer med faldet i CAGR. Bemærk også drawdowns på 47–73 % i en helt "normal" simuleret verden. Look-ahead-testen ændrer alle priser efter dag 1000 og verificerer, at både signalerne og hele backtestens equity-kurve op til dag 1000 er uændrede. Testen af equity-kurven fanger også fejl i selve løkken (fx hvis `prices[:t + 2]` ved en fejl blev sendt til signalfunktionen).
+Kommentarer: Rækkefølgen 1)–2)–3) i løkken *er* look-ahead-beskyttelsen. Signalet fra dag $t$ kan tidligst handles til $P_{t+1}$ og tjener først fra $t+1$ til $t+2$. På en random walk har MA-reglen ingen kant. Turnover på 43 gange om året koster ca. $43 \cdot 10\text{ bp} \approx 4.3\,\%$ om året (log-skala), hvilket passer med faldet i CAGR. Bemærk også drawdowns på 47–73 % i en helt "normal" simuleret verden. Look-ahead-testen ændrer alle priser efter dag 1000 og verificerer, at både signalerne og hele backtestens equity-kurve op til dag 1000 er uændrede. Testen af equity-kurven fanger også fejl i selve løkken (fx hvis `prices[:t + 2]` ved en fejl blev sendt til signalfunktionen).
 
 *Valgfri variant med numpy/pandas (kræver, at begge pakker er installeret; de er ikke en del af standardbiblioteket):* samme timing vektoriseret. `shift(1)` er look-ahead-beskyttelsen.
 
@@ -5310,7 +5310,7 @@ Gns. OOS SR       : -0.24
 Andel OOS SR < 0  : 70%
 ```
 
-Fortolkning: Den optimerede IS-SR er i gennemsnit $0{,}74$, OOS-SR $-0{,}24$. Den sande brutto-SR er 0, og omkostningerne gør netto-SR negativ. Optimeringen har kun fundet støj. Formlen med $\sigma_{SR} = \sqrt{252/504} = 0{,}707$ og $N = 149$ forudsiger $0{,}707 \cdot 2{,}668 = 1{,}89$, altså langt mere end observeret. To grunde: (1) nabovinduer ($w$ og $w+1$) giver næsten samme signal, så de 149 forsøg svarer til langt færre uafhængige forsøg (øvelse 10.9e); (2) omkostningerne trækker alle SR'er ned, især for korte vinduer med høj turnover (seed 0 viser, at selv den bedste kan være negativ). Pointen står fast: *IS-maksimum har en opadrettet bias, og OOS afslører det.*
+Fortolkning: Den optimerede IS-SR er i gennemsnit $0.74$, OOS-SR $-0.24$. Den sande brutto-SR er 0, og omkostningerne gør netto-SR negativ. Optimeringen har kun fundet støj. Formlen med $\sigma_{SR} = \sqrt{252/504} = 0.707$ og $N = 149$ forudsiger $0.707 \cdot 2.668 = 1.89$, altså langt mere end observeret. To grunde: (1) nabovinduer ($w$ og $w+1$) giver næsten samme signal, så de 149 forsøg svarer til langt færre uafhængige forsøg (øvelse 10.9e); (2) omkostningerne trækker alle SR'er ned, især for korte vinduer med høj turnover (seed 0 viser, at selv den bedste kan være negativ). Pointen står fast: *IS-maksimum har en opadrettet bias, og OOS afslører det.*
 
 </details>
 
@@ -5321,7 +5321,7 @@ Et godt svar indeholder:
 - En klar, falsificerbar hypotese med økonomisk begrundelse (fx langsom informationsspredning/risikopræmie, jf. uge 11) og et forventet fortegn.
 - Præcist datasæt (kilde, periode, punkt-i-tid, håndtering af rul i futures/udbytter) og en IS/OOS-opdeling *fastlagt på forhånd*, med en holdout, der kun bruges én gang.
 - Signaldefinition og eksekvering: signal ved luk $t$, handel ved $t+1$; omkostningsantagelse i bp pr. handel, slippage og evt. kapacitetsgrænse.
-- Evalueringsmål: netto-SR (med periode og standardfejl), max drawdown, turnover, og hvad der tæller som "succes" (fx $DSR \ge 0{,}95$).
+- Evalueringsmål: netto-SR (med periode og standardfejl), max drawdown, turnover, og hvad der tæller som "succes" (fx $DSR \ge 0.95$).
 - Et loft over antal varianter (fx 3 vindueslængder) og en forsøgslog, der giver $N$ til DSR.
 - Stopkriterier: hvornår idéen forkastes. Papirhandel før evt. rigtig kapital, og en erkendelse af, at backtest-afkast overvurderer fremtiden.
 - Kobling til mindst tre pointer: fx "forskning via backtesting" (præregistrering tvinger hypotesen først), "backtest overfitting" (log + DSR), "CV-lækage/ikke-iid" (purging, embargo), "Sisyphus" (dokumentation gør forskningen reproducerbar for et team).
@@ -5347,7 +5347,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 11 — Momentum, mean reversion og statistisk arbitrage
 
 > **Læringsmål:** Definere og implementere time-series momentum (TSMOM), cross-sectional momentum og short-term reversal, og forklare mulige årsager og crash-risiko. Modellere mean reversion med AR(1)/Ornstein–Uhlenbeck, beregne halveringstid og bygge en pairs-trading-strategi med hedge ratio, kointegrationstest og z-score-regler.
-> **Tidsforbrug:** ca. 1,5 t video (+ ca. 2 t valgfri) · ca. 6,5 t øvelser
+> **Tidsforbrug:** ca. 1.5 t video (+ ca. 2 t valgfri) · ca. 6.5 t øvelser
 > **Forudsætninger:** Uge 4 (bivariat normalfordeling, kovarians, Markov-kæder), uge 6 (OLS), uge 9 (AR(1), stationaritet, Dickey–Fuller, kointegration), uge 10 (backtest-timing, omkostninger, multipel testning).
 
 ### 📺 Se
@@ -5360,7 +5360,7 @@ Du er klar til næste uge, når du kan:
   Pause og tænk: Kan en cross-sectional momentum-strategi tjene penge i et marked, hvor alle aktiver falder?
 - [ ] **Q11.3** Introduction to Pairs Trading (Quantopian)
   Fokus: hedge ratio, spread, z-score og forskellen på korrelation og kointegration.
-  Pause og tænk: To aktier har korrelation 0,9 i daglige afkast. Garanterer det, at deres prisforskel vender tilbage?
+  Pause og tænk: To aktier har korrelation 0.9 i daglige afkast. Garanterer det, at deres prisforskel vender tilbage?
 - [ ] **Q11.4** Mean Reversion Strategy with Ernest Chan | Cointegration, Stationarity & Bollinger Bands Explained (Quantra) — (valgfri)
   Fokus: Bollinger-bånd som z-score-regel og praktiske faldgruber.
   Pause og tænk: Hvordan vælger man vindueslængden for middelværdi og spredning uden at overfitte?
@@ -5380,7 +5380,7 @@ hvor $\hat\sigma_{i,t}$ er en ex ante-volatilitet (fx EWMA af daglige afkast, ug
 
 $$E[\operatorname{sign}(X)\,Y] = E\big[\operatorname{sign}(X)\,E[Y\mid X]\big] = \rho\frac{\sigma_Y}{\sigma_X}E\lvert X\rvert = \rho\,\sigma_Y\sqrt{2/\pi}.$$
 
-Fortegnsreglen tjener altså præcis, når afkast er positivt autokorrelerede over den valgte horisont. Med $\rho = 0{,}05$ er gevinsten lille pr. aktiv, og derfor handler man mange ukorrelerede markeder (uge 12: $\sqrt N$).
+Fortegnsreglen tjener altså præcis, når afkast er positivt autokorrelerede over den valgte horisont. Med $\rho = 0.05$ er gevinsten lille pr. aktiv, og derfor handler man mange ukorrelerede markeder (uge 12: $\sqrt N$).
 
 **2. Cross-sectional momentum (XSMOM).** Rangér $N$ aktier efter afkastet fra måned $t-12$ til $t-1$ ("12-1": den seneste måned springes over pga. short-term reversal). Køb top-decilen (winners), short bund-decilen (losers): **WML** (winners minus losers) er dollar-neutral (Jegadeesh & Titman 1993; Kenneth French Data Library har en momentumfaktor). XSMOM tjener på *relativ* styrke og kan derfor tjene penge, selv når alle aktier falder. Lo & MacKinlay (1990) analyserede kontrastrategien $w_{i,t} = -\frac1N(R_{i,t} - \bar R_t)$; for momentum-versionen $w_{i,t} = \frac1N(R_{i,t} - \bar R_t)$ (modsat fortegn) giver samme regning, med $\gamma_{ij} = \operatorname{Cov}(R_{i,t}, R_{j,t+1})$:
 
@@ -5405,19 +5405,19 @@ Ved induktion er $E[X_{t+h} - \theta \mid X_t] = \phi^h(X_t - \theta)$. **Halver
 
 $$h = -\frac{\ln 2}{\ln\phi} = \frac{\ln 2}{\kappa\,\Delta t}\ \ (\text{i antal skridt}).$$
 
-Estimering: regressér $\Delta X_t = c + g\,X_{t-1} + e_t$ med OLS, så $\hat\phi = 1 + \hat g$ og $\hat\theta = -\hat c/\hat g$. Eksempel: $\hat\phi = 0{,}95$ giver $h = 0{,}6931/0{,}0513 = 13{,}5$ dage. Stationær spredning: $\sigma_\varepsilon/\sqrt{1-\phi^2}$. **z-score:** $z_t = (X_t - \hat m_t)/\hat s_t$ med estimater, der kun bruger data til og med $t$ (uge 10). Halveringstiden er nyttig til at vælge vindueslængde og en tidsbaseret exit (fx efter $3h$).
+Estimering: regressér $\Delta X_t = c + g\,X_{t-1} + e_t$ med OLS, så $\hat\phi = 1 + \hat g$ og $\hat\theta = -\hat c/\hat g$. Eksempel: $\hat\phi = 0.95$ giver $h = 0.6931/0.0513 = 13.5$ dage. Stationær spredning: $\sigma_\varepsilon/\sqrt{1-\phi^2}$. **z-score:** $z_t = (X_t - \hat m_t)/\hat s_t$ med estimater, der kun bruger data til og med $t$ (uge 10). Halveringstiden er nyttig til at vælge vindueslængde og en tidsbaseret exit (fx efter $3h$).
 
 **6. Pairs trading.** Vælg to økonomisk beslægtede aktiver $A$ og $B$. I en formationsperiode estimeres med OLS på log-priser
 
 $$\ln P^A_t = \alpha + \beta \ln P^B_t + s_t .$$
 
 $\beta$ er **hedge ratio**, og $s_t$ er **spreadet**. *Long spread* betyder: køb $A$ for 1 kr. og short $B$ for $\beta$ kr. Så er P&L $\approx R^A - \beta R^B \approx \Delta s$ pr. krone i $A$-benet.
-- **Kointegrationstest (Engle–Granger):** test om $s_t$ er stationær med en Dickey–Fuller-regression $\Delta s_t = c + g\,s_{t-1} + e_t$ (evt. med lags). Fordi OLS vælger $\beta$, så residualerne bliver så små som muligt, ser spreadet mere stationært ud, end det er. Derfor skal t-værdien sammenlignes med Engle–Granger-kritiske værdier (ca. $-3{,}34$ på 5 % for to serier med konstant), ikke med den almindelige DF-værdi (ca. $-2{,}86$).
-- **Regler (eksempel):** åbn short spread ved $z > 2$, long ved $z < -2$; luk ved $\lvert z\rvert < 0{,}5$; stop-loss ved $\lvert z\rvert > 4$ eller efter en maksimal holdetid.
+- **Kointegrationstest (Engle–Granger):** test om $s_t$ er stationær med en Dickey–Fuller-regression $\Delta s_t = c + g\,s_{t-1} + e_t$ (evt. med lags). Fordi OLS vælger $\beta$, så residualerne bliver så små som muligt, ser spreadet mere stationært ud, end det er. Derfor skal t-værdien sammenlignes med Engle–Granger-kritiske værdier (ca. $-3.34$ på 5 % for to serier med konstant), ikke med den almindelige DF-værdi (ca. $-2.86$).
+- **Regler (eksempel):** åbn short spread ved $z > 2$, long ved $z < -2$; luk ved $\lvert z\rvert < 0.5$; stop-loss ved $\lvert z\rvert > 4$ eller efter en maksimal holdetid.
 - **Korrelation $\ne$ kointegration:** korrelation handler om korte afkast, kointegration om at *niveauerne* hænger sammen på lang sigt.
 - **Risici:** relationen bryder sammen (opkøb, ny regulering, ændret forretning), $\beta$ ændrer sig, short-salg kan blive dyrt eller tilbagekaldt, to ben skal eksekveres samtidig, og *data mining*: screener man 500 par på 5 %-niveau, forventes 25 falske "kointegrerede" par.
 
-**7. Statistisk arbitrage på porteføljeniveau.** Avellaneda & Lee ("Statistical Arbitrage in the US Equities Market") generaliserer pairs trading: hver akties afkast regresseres på faktorer (PCA-faktorer eller sektor-ETF'er, uge 8), og den kumulerede residual modelleres som en OU-proces. Man handler på en "s-score" (residualens z-score) med åbning omkring $\lvert s\rvert > 1{,}25$ og lukning tættere på 0. Resultatet er en markedsneutral portefølje af hundredvis af små, nogenlunde uafhængige væddemål. Risikoen er, at mange fonde ejer de samme positioner: i august 2007 tabte kvantitative markedsneutrale aktiefonde meget på få dage, sandsynligvis pga. tvangssalg i en stor, lignende portefølje (Khandani & Lo, "What Happened to the Quants in August 2007?").
+**7. Statistisk arbitrage på porteføljeniveau.** Avellaneda & Lee ("Statistical Arbitrage in the US Equities Market") generaliserer pairs trading: hver akties afkast regresseres på faktorer (PCA-faktorer eller sektor-ETF'er, uge 8), og den kumulerede residual modelleres som en OU-proces. Man handler på en "s-score" (residualens z-score) med åbning omkring $\lvert s\rvert > 1.25$ og lukning tættere på 0. Resultatet er en markedsneutral portefølje af hundredvis af små, nogenlunde uafhængige væddemål. Risikoen er, at mange fonde ejer de samme positioner: i august 2007 tabte kvantitative markedsneutrale aktiefonde meget på få dage, sandsynligvis pga. tvangssalg i en stor, lignende portefølje (Khandani & Lo, "What Happened to the Quants in August 2007?").
 
 **Jura.** Strategier, der *reagerer* på kursbevægelser, er lovlige. At forsøge at *skabe* bevægelser (fx "momentum ignition" med vildledende ordrer, eller spoofing) er markedsmanipulation og ulovligt under EU's markedsmisbrugsforordning (MAR).
 
@@ -5433,25 +5433,25 @@ $\beta$ er **hedge ratio**, og $s_t$ er **spreadet**. *Long spread* betyder: kø
 
 **11.1** ★ — Fire (illustrative) futures har 12-måneders afkast: aktieindeks $+8\,\%$, obligation $-3\,\%$, guld $+15\,\%$, olie $-20\,\%$, og ex ante-volatiliteter $16\,\%$, $6\,\%$, $15\,\%$, $35\,\%$. (a) Beregn TSMOM-positionerne (notionel som andel af kapitalen) med $\sigma_{\text{tgt}} = 10\,\%$ pr. aktiv. (b) Næste måneds afkast er $+2\,\%$, $+1\,\%$, $-1\,\%$, $-4\,\%$. Find hvert bens bidrag og summen. (c) Hvad er bruttogearingen $\sum\lvert w_i\rvert$, og hvilken risiko følger med?
 
-**11.2** ★ — (a) Beregn halveringstiden for $\phi = 0{,}90$; $0{,}95$; $0{,}99$. (b) En regression på et dagligt spread giver $\Delta X_t = 0{,}01 - 0{,}04\,X_{t-1} + e_t$. Find $\hat\phi$, $\hat\theta$ og halveringstiden. (c) Med $\sigma_\varepsilon = 0{,}02$: find den stationære spredning for $\phi = 0{,}90$ og $\phi = 0{,}96$.
+**11.2** ★ — (a) Beregn halveringstiden for $\phi = 0.90$; $0.95$; $0.99$. (b) En regression på et dagligt spread giver $\Delta X_t = 0.01 - 0.04\,X_{t-1} + e_t$. Find $\hat\phi$, $\hat\theta$ og halveringstiden. (c) Med $\sigma_\varepsilon = 0.02$: find den stationære spredning for $\phi = 0.90$ og $\phi = 0.96$.
 
-**11.3** ★ — Et spread har (fra formationsperioden) $m = 0$ og $s = 1$, så $z_t = s_t$. Dag 1–10: $0{,}4;\ 1{,}5;\ 2{,}4;\ 1{,}7;\ 1{,}0;\ 0{,}2;\ 0{,}6;\ -0{,}8;\ -2{,}3;\ -1{,}0$. Regel: åbn short ved $z > 2$, long ved $z < -2$, luk ved $\lvert z\rvert < 0{,}5$. P&L pr. dag er position $\times$ ændring i spread. (a) Antag (optimistisk), at du handler til lukkekursen samme dag som signalet. Find positionerne, brutto-P&L og netto-P&L med omkostning $0{,}1$ pr. handlet enhed. (b) Gentag med én dags forsinkelse (signal $t$, handel $t+1$). (c) Hvad lærer du om eksekveringsforsinkelse i strategier med kort halveringstid?
+**11.3** ★ — Et spread har (fra formationsperioden) $m = 0$ og $s = 1$, så $z_t = s_t$. Dag 1–10: $0.4;\ 1.5;\ 2.4;\ 1.7;\ 1.0;\ 0.2;\ 0.6;\ -0.8;\ -2.3;\ -1.0$. Regel: åbn short ved $z > 2$, long ved $z < -2$, luk ved $\lvert z\rvert < 0.5$. P&L pr. dag er position $\times$ ændring i spread. (a) Antag (optimistisk), at du handler til lukkekursen samme dag som signalet. Find positionerne, brutto-P&L og netto-P&L med omkostning $0.1$ pr. handlet enhed. (b) Gentag med én dags forsinkelse (signal $t$, handel $t+1$). (c) Hvad lærer du om eksekveringsforsinkelse i strategier med kort halveringstid?
 
-**11.4** ★ — OLS på log-priser giver hedge ratio $\beta = 1{,}3$. Du går long spread med $100\,000$ kr. i $A$. (a) Hvor mange kroner skal du shorte i $B$? (b) Find P&L, hvis $A$ stiger $2\,\%$ og $B$ stiger $1\,\%$, og hvis $A$ falder $3\,\%$ og $B$ falder $1\,\%$. (c) Vis, at et fælles stød, hvor $B$ stiger $10\,\%$ og $A$ stiger $13\,\%$, giver P&L $0$. (d) Hvad er bruttoeksponeringen, og hvad koster et lånegebyr på $1\,\%$ om året på short-benet?
+**11.4** ★ — OLS på log-priser giver hedge ratio $\beta = 1.3$. Du går long spread med $100\,000$ kr. i $A$. (a) Hvor mange kroner skal du shorte i $B$? (b) Find P&L, hvis $A$ stiger $2\,\%$ og $B$ stiger $1\,\%$, og hvis $A$ falder $3\,\%$ og $B$ falder $1\,\%$. (c) Vis, at et fælles stød, hvor $B$ stiger $10\,\%$ og $A$ stiger $13\,\%$, giver P&L $0$. (d) Hvad er bruttoeksponeringen, og hvad koster et lånegebyr på $1\,\%$ om året på short-benet?
 
-**11.5** ★★ — (a) Bevis $E[\operatorname{sign}(X)\,Y] = \rho\,\sigma_Y\sqrt{2/\pi}$ for $(X, Y)$ bivariat normal med middelværdi 0. Brug $E[Y\mid X] = \rho\frac{\sigma_Y}{\sigma_X}X$, og vis selv $E\lvert X\rvert = \sigma_X\sqrt{2/\pi}$. (b) Lad $X$ være et markeds 12-måneders afkast og $Y$ næste måneds afkast med $\sigma_Y = 4\,\%$ og $\rho = 0{,}05$. Find den forventede månedlige gevinst. (c) Vis, at $\operatorname{Var}(\operatorname{sign}(X)Y) = \sigma_Y^2(1 - 2\rho^2/\pi)$, og find den månedlige og annualiserede SR (iid over måneder). (d) Hvad bliver SR med 25 ukorrelerede markeder af samme slags? (bruges i uge 12)
+**11.5** ★★ — (a) Bevis $E[\operatorname{sign}(X)\,Y] = \rho\,\sigma_Y\sqrt{2/\pi}$ for $(X, Y)$ bivariat normal med middelværdi 0. Brug $E[Y\mid X] = \rho\frac{\sigma_Y}{\sigma_X}X$, og vis selv $E\lvert X\rvert = \sigma_X\sqrt{2/\pi}$. (b) Lad $X$ være et markeds 12-måneders afkast og $Y$ næste måneds afkast med $\sigma_Y = 4\,\%$ og $\rho = 0.05$. Find den forventede månedlige gevinst. (c) Vis, at $\operatorname{Var}(\operatorname{sign}(X)Y) = \sigma_Y^2(1 - 2\rho^2/\pi)$, og find den månedlige og annualiserede SR (iid over måneder). (d) Hvad bliver SR med 25 ukorrelerede markeder af samme slags? (bruges i uge 12)
 
-**11.6** ★★ — Lad $X_{t+1} - \theta = \phi(X_t - \theta) + \varepsilon_{t+1}$ med $\lvert\phi\rvert < 1$ og iid $\varepsilon$ med middelværdi 0 og varians $\sigma_\varepsilon^2$. (a) Vis ved induktion $E[X_{t+h} - \theta \mid X_t] = \phi^h(X_t - \theta)$. (b) Vis, at den stationære varians er $\sigma_\varepsilon^2/(1-\phi^2)$. (c) En OU-proces har $\kappa = 5$ pr. år. Find $\phi$ for daglige data, halveringstiden i handelsdage og den stationære spredning, når $\sigma_\varepsilon = 0{,}01$. (d) Et dagligt spread har $\hat\phi = 0{,}98$. Find $\hat\kappa$ pr. år og halveringstiden. (e) Du åbner ved $z = 2$. Hvad er den forventede z-score efter $h$ og $2h$ dage? (sammenlign med uge 13)
+**11.6** ★★ — Lad $X_{t+1} - \theta = \phi(X_t - \theta) + \varepsilon_{t+1}$ med $\lvert\phi\rvert < 1$ og iid $\varepsilon$ med middelværdi 0 og varians $\sigma_\varepsilon^2$. (a) Vis ved induktion $E[X_{t+h} - \theta \mid X_t] = \phi^h(X_t - \theta)$. (b) Vis, at den stationære varians er $\sigma_\varepsilon^2/(1-\phi^2)$. (c) En OU-proces har $\kappa = 5$ pr. år. Find $\phi$ for daglige data, halveringstiden i handelsdage og den stationære spredning, når $\sigma_\varepsilon = 0.01$. (d) Et dagligt spread har $\hat\phi = 0.98$. Find $\hat\kappa$ pr. år og halveringstiden. (e) Du åbner ved $z = 2$. Hvad er den forventede z-score efter $h$ og $2h$ dage? (sammenlign med uge 13)
 
-**11.7** ★★ — Efter et langt markedsfald har loser-porteføljen beta $1{,}6$, og winner-porteføljen beta $0{,}6$. (a) Hvad er WML's beta? (b) Markedet stiger $25\,\%$ på to måneder. Hvad er WML's forventede afkast fra beta alene? (c) WML's realiserede volatilitet er steget til $50\,\%$ årligt, og en forvalter skalerer til $15\,\%$. Hvad bliver tabet nu? (d) Forklar, hvorfor WML's udbetaling ligner en solgt call-option på markedet, og hvorfor det er en risiko, ikke en "fejl".
+**11.7** ★★ — Efter et langt markedsfald har loser-porteføljen beta $1.6$, og winner-porteføljen beta $0.6$. (a) Hvad er WML's beta? (b) Markedet stiger $25\,\%$ på to måneder. Hvad er WML's forventede afkast fra beta alene? (c) WML's realiserede volatilitet er steget til $50\,\%$ årligt, og en forvalter skalerer til $15\,\%$. Hvad bliver tabet nu? (d) Forklar, hvorfor WML's udbetaling ligner en solgt call-option på markedet, og hvorfor det er en risiko, ikke en "fejl".
 
-**11.8** ★★ — Tre kandidatpar har Dickey–Fuller-t-værdier på residualerne: $-3{,}10$, $-3{,}72$ og $-2{,}50$. (a) For hvilke par forkastes nulhypotesen "ingen kointegration" på 5 % med almindelige DF-værdier ($-2{,}86$), og for hvilke med Engle–Granger-værdier ($-3{,}34$)? (b) Forklar, hvorfor Engle–Granger-værdierne er mere negative. (c) Du screener 500 par, hvor ingen i virkeligheden er kointegrerede. Hvor mange falske fund forventer du på 5 %? Hvilket niveau pr. test kræver Bonferroni for en samlet fejlrate på 5 %? (d) Nævn to måder at mindske problemet på uden blot at sænke niveauet.
+**11.8** ★★ — Tre kandidatpar har Dickey–Fuller-t-værdier på residualerne: $-3.10$, $-3.72$ og $-2.50$. (a) For hvilke par forkastes nulhypotesen "ingen kointegration" på 5 % med almindelige DF-værdier ($-2.86$), og for hvilke med Engle–Granger-værdier ($-3.34$)? (b) Forklar, hvorfor Engle–Granger-værdierne er mere negative. (c) Du screener 500 par, hvor ingen i virkeligheden er kointegrerede. Hvor mange falske fund forventer du på 5 %? Hvilket niveau pr. test kræver Bonferroni for en samlet fejlrate på 5 %? (d) Nævn to måder at mindske problemet på uden blot at sænke niveauet.
 
-**11.9** ★★★ — (a) Udled Lo–MacKinlay-formlen for $E[\pi_{t+1}]$ i afsnit 2, hvor $\pi_{t+1} = \sum_i w_{i,t}R_{i,t+1}$, $w_{i,t} = \frac1N(R_{i,t} - \bar R_t)$, afkastene er kovariansstationære med middelværdier $\mu_i$, og $\gamma_{ij} = \operatorname{Cov}(R_{i,t}, R_{j,t+1})$. Vis også, at $\sum_i w_{i,t} = 0$. (b) $N = 3$ aktier med månedlige $\mu = (0{,}5\,\%;\ 1{,}0\,\%;\ 1{,}5\,\%)$, $\gamma_{ii} = -0{,}0002$ og $\gamma_{ij} = 0{,}0001$ for $i \ne j$. Beregn $E[\pi]$ og fortolk de tre led. Tjener momentum- eller kontrastrategien?
+**11.9** ★★★ — (a) Udled Lo–MacKinlay-formlen for $E[\pi_{t+1}]$ i afsnit 2, hvor $\pi_{t+1} = \sum_i w_{i,t}R_{i,t+1}$, $w_{i,t} = \frac1N(R_{i,t} - \bar R_t)$, afkastene er kovariansstationære med middelværdier $\mu_i$, og $\gamma_{ij} = \operatorname{Cov}(R_{i,t}, R_{j,t+1})$. Vis også, at $\sum_i w_{i,t} = 0$. (b) $N = 3$ aktier med månedlige $\mu = (0.5\,\%;\ 1.0\,\%;\ 1.5\,\%)$, $\gamma_{ii} = -0.0002$ og $\gamma_{ij} = 0.0001$ for $i \ne j$. Beregn $E[\pi]$ og fortolk de tre led. Tjener momentum- eller kontrastrategien?
 
-**11.10** ★★ 💻 — Simulér 20 års daglige afkast (`random.seed(11)`) fra en regimemodel: driften er $\pm 0{,}06\,\%$ pr. dag og skifter fortegn med sandsynlighed $1/150$ pr. dag (en Markov-kæde, uge 4), plus støj $N(0;\ 0{,}01^2)$. Implementér TSMOM med lookback $L \in \{20, 60, 120, 252\}$, positionsstørrelse $0{,}10/\hat\sigma$ ($\hat\sigma$ = annualiseret standardafvigelse over 60 dage, loft 3), signal ved $t$, handel ved $t+1$ og 5 bp i omkostning. Rapportér årligt afkast, volatilitet, SR, max drawdown, brutto-SR og turnover samt en kontrol på ren støj (drift 0). Diskutér resultatet i lyset af uge 10.
+**11.10** ★★ 💻 — Simulér 20 års daglige afkast (`random.seed(11)`) fra en regimemodel: driften er $\pm 0.06\,\%$ pr. dag og skifter fortegn med sandsynlighed $1/150$ pr. dag (en Markov-kæde, uge 4), plus støj $N(0;\ 0.01^2)$. Implementér TSMOM med lookback $L \in \{20, 60, 120, 252\}$, positionsstørrelse $0.10/\hat\sigma$ ($\hat\sigma$ = annualiseret standardafvigelse over 60 dage, loft 3), signal ved $t$, handel ved $t+1$ og 5 bp i omkostning. Rapportér årligt afkast, volatilitet, SR, max drawdown, brutto-SR og turnover samt en kontrol på ren støj (drift 0). Diskutér resultatet i lyset af uge 10.
 
-**11.11** ★★ 💻 — Simulér et kointegreret par (`random.seed(6)`): $\ln P^B$ er en random walk med daglig spredning $1\,\%$, og $\ln P^A = 0{,}2 + 1{,}3\ln P^B + u_t$ med $u_t = 0{,}95u_{t-1} + N(0;\ 0{,}01^2)$, 1000 dage. Brug dag 0–499 til at estimere $\beta$, spreadets middelværdi og spredning, en DF-t-værdi og halveringstiden. Handl dag 500–999 med reglerne fra afsnit 6 (åbn ved $\lvert z\rvert > 2$, luk ved $\lvert z\rvert < 0{,}5$, stop ved $\lvert z\rvert > 4$), signal $t$ og handel $t+1$, 5 bp pr. ben. Rapportér P&L, SR, max drawdown og antal handler. Gentag med et brud: fra dag 650 bliver $u_t$ en random walk.
+**11.11** ★★ 💻 — Simulér et kointegreret par (`random.seed(6)`): $\ln P^B$ er en random walk med daglig spredning $1\,\%$, og $\ln P^A = 0.2 + 1.3\ln P^B + u_t$ med $u_t = 0.95u_{t-1} + N(0;\ 0.01^2)$, 1000 dage. Brug dag 0–499 til at estimere $\beta$, spreadets middelværdi og spredning, en DF-t-værdi og halveringstiden. Handl dag 500–999 med reglerne fra afsnit 6 (åbn ved $\lvert z\rvert > 2$, luk ved $\lvert z\rvert < 0.5$, stop ved $\lvert z\rvert > 4$), signal $t$ og handel $t+1$, 5 bp pr. ben. Rapportér P&L, SR, max drawdown og antal handler. Gentag med et brud: fra dag 650 bliver $u_t$ en random walk.
 
 **11.12** ★★ 🗣️ — Forklar for en klassekammerat (ca. en halv side): Hvordan kan der både være momentum og mean reversion i de samme markeder? Inddrag horisonter (dage, måneder, år), typen af aktiver/spreads, mulige mekanismer, momentum crashes, og hvorfor "crowding" (august 2007) er en særlig risiko for statistisk arbitrage.
 
@@ -5460,35 +5460,35 @@ $\beta$ er **hedge ratio**, og $s_t$ er **spreadet**. *Long spread* betyder: kø
 <details>
 <summary>Løsning 11.1</summary>
 
-(a) $w = \operatorname{sign}\cdot 0{,}10/\hat\sigma$: aktieindeks $+0{,}10/0{,}16 = +0{,}625$; obligation $-0{,}10/0{,}06 = -1{,}667$; guld $+0{,}667$; olie $-0{,}286$.
+(a) $w = \operatorname{sign}\cdot 0.10/\hat\sigma$: aktieindeks $+0.10/0.16 = +0.625$; obligation $-0.10/0.06 = -1.667$; guld $+0.667$; olie $-0.286$.
 
-(b) Bidrag $w_i R_i$: $0{,}625 \cdot 2\,\% = +1{,}250\,\%$; $-1{,}667 \cdot 1\,\% = -1{,}667\,\%$; $0{,}667 \cdot (-1\,\%) = -0{,}667\,\%$; $-0{,}286 \cdot (-4\,\%) = +1{,}143\,\%$. Sum $\approx +0{,}06\,\%$. Hvert ben har samme ex ante-risiko (ca. $10\,\%/\sqrt{12} \approx 2{,}9\,\%$ pr. måned), så bidragene er af samme størrelsesorden, uanset aktivets volatilitet.
+(b) Bidrag $w_i R_i$: $0.625 \cdot 2\,\% = +1.250\,\%$; $-1.667 \cdot 1\,\% = -1.667\,\%$; $0.667 \cdot (-1\,\%) = -0.667\,\%$; $-0.286 \cdot (-4\,\%) = +1.143\,\%$. Sum $\approx +0.06\,\%$. Hvert ben har samme ex ante-risiko (ca. $10\,\%/\sqrt{12} \approx 2.9\,\%$ pr. måned), så bidragene er af samme størrelsesorden, uanset aktivets volatilitet.
 
-(c) $\sum\lvert w_i\rvert = 3{,}24$, dvs. notionel eksponering på 3,24 gange kapitalen, mest fra obligationen. Risici: volatiliteten kan springe op, før estimatet når at reagere (fx et pludseligt renteskift), margin calls og tvungen lukning af positioner. Gearing forstørrer tab lige så meget som gevinster.
+(c) $\sum\lvert w_i\rvert = 3.24$, dvs. notionel eksponering på 3.24 gange kapitalen, mest fra obligationen. Risici: volatiliteten kan springe op, før estimatet når at reagere (fx et pludseligt renteskift), margin calls og tvungen lukning af positioner. Gearing forstørrer tab lige så meget som gevinster.
 
 </details>
 
 <details>
 <summary>Løsning 11.2</summary>
 
-(a) $h = -\ln 2/\ln\phi$: $\phi = 0{,}90$: $0{,}6931/0{,}1054 = 6{,}58$ dage; $\phi = 0{,}95$: $13{,}51$ dage; $\phi = 0{,}99$: $68{,}97$ dage. Bemærk, hvor følsom $h$ er nær $\phi = 1$.
+(a) $h = -\ln 2/\ln\phi$: $\phi = 0.90$: $0.6931/0.1054 = 6.58$ dage; $\phi = 0.95$: $13.51$ dage; $\phi = 0.99$: $68.97$ dage. Bemærk, hvor følsom $h$ er nær $\phi = 1$.
 
-(b) $\hat g = -0{,}04$, så $\hat\phi = 0{,}96$ og $h = -\ln 2/\ln 0{,}96 = 16{,}98$ dage. Ligevægt: $\Delta X = 0 \iff X = -\hat c/\hat g = 0{,}01/0{,}04 = 0{,}25$.
+(b) $\hat g = -0.04$, så $\hat\phi = 0.96$ og $h = -\ln 2/\ln 0.96 = 16.98$ dage. Ligevægt: $\Delta X = 0 \iff X = -\hat c/\hat g = 0.01/0.04 = 0.25$.
 
-(c) $\phi = 0{,}90$: $0{,}02/\sqrt{1 - 0{,}81} = 0{,}02/0{,}4359 = 0{,}0459$. $\phi = 0{,}96$: $0{,}02/\sqrt{0{,}0784} = 0{,}02/0{,}28 = 0{,}0714$. Langsommere mean reversion giver større udsving.
+(c) $\phi = 0.90$: $0.02/\sqrt{1 - 0.81} = 0.02/0.4359 = 0.0459$. $\phi = 0.96$: $0.02/\sqrt{0.0784} = 0.02/0.28 = 0.0714$. Langsommere mean reversion giver større udsving.
 
 </details>
 
 <details>
 <summary>Løsning 11.3</summary>
 
-(a) Positioner efter lukning (samme dag): dag 1–2: 0; dag 3 ($z = 2{,}4$): $-1$; dag 4–5: $-1$; dag 6 ($0{,}2$): 0; dag 7–8: 0 ($-0{,}8$ er ikke under $-2$); dag 9 ($-2{,}3$): $+1$; dag 10 ($\lvert -1{,}0\rvert$ er ikke under $0{,}5$): $+1$.
-P&L: dag 3→4: $-1\cdot(1{,}7 - 2{,}4) = 0{,}7$; 4→5: $0{,}7$; 5→6: $0{,}8$; 9→10: $+1\cdot(-1{,}0 + 2{,}3) = 1{,}3$. Brutto $= 3{,}5$. Handlede enheder: dag 3, 6 og 9, i alt 3, omkostning $0{,}3$. Netto $= 3{,}2$ (long-positionen er stadig åben).
+(a) Positioner efter lukning (samme dag): dag 1–2: 0; dag 3 ($z = 2.4$): $-1$; dag 4–5: $-1$; dag 6 ($0.2$): 0; dag 7–8: 0 ($-0.8$ er ikke under $-2$); dag 9 ($-2.3$): $+1$; dag 10 ($\lvert -1.0\rvert$ er ikke under $0.5$): $+1$.
+P&L: dag 3→4: $-1\cdot(1.7 - 2.4) = 0.7$; 4→5: $0.7$; 5→6: $0.8$; 9→10: $+1\cdot(-1.0 + 2.3) = 1.3$. Brutto $= 3.5$. Handlede enheder: dag 3, 6 og 9, i alt 3, omkostning $0.3$. Netto $= 3.2$ (long-positionen er stadig åben).
 
 (b) Med forsinkelse gælder positionen fra dag $t+1$: $-1$ på dag 4, 5, 6; 0 på dag 7–9; $+1$ fra dag 10.
-P&L: 4→5: $0{,}7$; 5→6: $0{,}8$; 6→7: $-1\cdot(0{,}6 - 0{,}2) = -0{,}4$. Brutto $= 1{,}1$, tre handlede enheder (dag 4, 7 og 10), netto $0{,}8$.
+P&L: 4→5: $0.7$; 5→6: $0.8$; 6→7: $-1\cdot(0.6 - 0.2) = -0.4$. Brutto $= 1.1$, tre handlede enheder (dag 4, 7 og 10), netto $0.8$.
 
-(c) I mean reversion sker en stor del af gevinsten i de første dage efter et ekstremt udsving (her 0,7 og 1,3), og exit'en kan komme lige før et nyt udsving (−0,4). Jo kortere halveringstid, jo dyrere er forsinkelse. Derfor er realistisk timing (uge 10) afgørende, og samme-dags-antagelsen overvurderer typisk resultatet kraftigt.
+(c) I mean reversion sker en stor del af gevinsten i de første dage efter et ekstremt udsving (her 0.7 og 1.3), og exit'en kan komme lige før et nyt udsving (−0.4). Jo kortere halveringstid, jo dyrere er forsinkelse. Derfor er realistisk timing (uge 10) afgørende, og samme-dags-antagelsen overvurderer typisk resultatet kraftigt.
 
 </details>
 
@@ -5499,9 +5499,9 @@ P&L: 4→5: $0{,}7$; 5→6: $0{,}8$; 6→7: $-1\cdot(0{,}6 - 0{,}2) = -0{,}4$. B
 
 (b) $A$ $+2\,\%$, $B$ $+1\,\%$: $2\,000 - 1\,300 = +700$ kr. $A$ $-3\,\%$, $B$ $-1\,\%$: $-3\,000 + 1\,300 = -1\,700$ kr.
 
-(c) $+13\,000 - 0{,}10 \cdot 130\,000 = 13\,000 - 13\,000 = 0$. Hedge ratio'en neutraliserer netop de fælles bevægelser, hvor $A$ bevæger sig $\beta$ gange så meget som $B$. En dollar-neutral position ($100\,000$ mod $100\,000$) ville her have tjent $3\,000$ kr. på et rent markedsstød, altså ikke været hedget.
+(c) $+13\,000 - 0.10 \cdot 130\,000 = 13\,000 - 13\,000 = 0$. Hedge ratio'en neutraliserer netop de fælles bevægelser, hvor $A$ bevæger sig $\beta$ gange så meget som $B$. En dollar-neutral position ($100\,000$ mod $100\,000$) ville her have tjent $3\,000$ kr. på et rent markedsstød, altså ikke været hedget.
 
-(d) Brutto $= 230\,000$ kr. Lånegebyr: $0{,}01 \cdot 130\,000 = 1\,300$ kr. om året, svarende til $1{,}3\,\%$ af $A$-benet. Det skal med i backtesten.
+(d) Brutto $= 230\,000$ kr. Lånegebyr: $0.01 \cdot 130\,000 = 1\,300$ kr. om året, svarende til $1.3\,\%$ af $A$-benet. Det skal med i backtesten.
 
 </details>
 
@@ -5511,11 +5511,11 @@ P&L: 4→5: $0{,}7$; 5→6: $0{,}8$; 6→7: $-1\cdot(0{,}6 - 0{,}2) = -0{,}4$. B
 (a) $E\lvert X\rvert = 2\int_0^\infty x\frac{1}{\sigma_X\sqrt{2\pi}}e^{-x^2/(2\sigma_X^2)}dx = \frac{2}{\sigma_X\sqrt{2\pi}}\Big[-\sigma_X^2 e^{-x^2/(2\sigma_X^2)}\Big]_0^\infty = \frac{2\sigma_X}{\sqrt{2\pi}} = \sigma_X\sqrt{2/\pi}$.
 Tårnreglen: $E[\operatorname{sign}(X)Y] = E[\operatorname{sign}(X)E[Y\mid X]] = \rho\frac{\sigma_Y}{\sigma_X}E[\operatorname{sign}(X)X] = \rho\frac{\sigma_Y}{\sigma_X}E\lvert X\rvert = \rho\sigma_Y\sqrt{2/\pi}$.
 
-(b) $0{,}05 \cdot 0{,}04 \cdot 0{,}7979 = 0{,}0016 = 0{,}16\,\%$ pr. måned (ca. $1{,}9\,\%$ om året).
+(b) $0.05 \cdot 0.04 \cdot 0.7979 = 0.0016 = 0.16\,\%$ pr. måned (ca. $1.9\,\%$ om året).
 
-(c) $(\operatorname{sign}X)^2 = 1$ (med sandsynlighed 1), så $E[(\operatorname{sign}(X)Y)^2] = E[Y^2] = \sigma_Y^2$, og $\operatorname{Var} = \sigma_Y^2 - \rho^2\sigma_Y^2\cdot 2/\pi = \sigma_Y^2(1 - 2\rho^2/\pi)$. Månedlig SR $= \rho\sqrt{2/\pi}/\sqrt{1 - 2\rho^2/\pi} = 0{,}0399/0{,}9992 = 0{,}0399$. Annualiseret: $0{,}0399\sqrt{12} = 0{,}138$.
+(c) $(\operatorname{sign}X)^2 = 1$ (med sandsynlighed 1), så $E[(\operatorname{sign}(X)Y)^2] = E[Y^2] = \sigma_Y^2$, og $\operatorname{Var} = \sigma_Y^2 - \rho^2\sigma_Y^2\cdot 2/\pi = \sigma_Y^2(1 - 2\rho^2/\pi)$. Månedlig SR $= \rho\sqrt{2/\pi}/\sqrt{1 - 2\rho^2/\pi} = 0.0399/0.9992 = 0.0399$. Annualiseret: $0.0399\sqrt{12} = 0.138$.
 
-(d) $N$ ukorrelerede strategier med samme SR og samme risiko: SR $\cdot\sqrt N = 0{,}138 \cdot 5 = 0{,}69$. En svag kant pr. marked kan blive brugbar ved diversifikation, *hvis* markederne virkelig er ukorrelerede.
+(d) $N$ ukorrelerede strategier med samme SR og samme risiko: SR $\cdot\sqrt N = 0.138 \cdot 5 = 0.69$. En svag kant pr. marked kan blive brugbar ved diversifikation, *hvis* markederne virkelig er ukorrelerede.
 
 </details>
 
@@ -5526,22 +5526,22 @@ Tårnreglen: $E[\operatorname{sign}(X)Y] = E[\operatorname{sign}(X)E[Y\mid X]] =
 
 (b) Ved stationaritet er $V = \operatorname{Var}(X_t) = \operatorname{Var}(X_{t+1}) = \phi^2 V + \sigma_\varepsilon^2$ (da $\varepsilon_{t+1}$ er uafhængig af $X_t$), så $V = \sigma_\varepsilon^2/(1-\phi^2)$.
 
-(c) $\phi = e^{-5/252} = 0{,}98035$. $h = \ln 2/(5/252) = 34{,}9$ handelsdage. Stationær spredning: $0{,}01/\sqrt{1 - e^{-10/252}} = 0{,}0507$.
+(c) $\phi = e^{-5/252} = 0.98035$. $h = \ln 2/(5/252) = 34.9$ handelsdage. Stationær spredning: $0.01/\sqrt{1 - e^{-10/252}} = 0.0507$.
 
-(d) $\hat\kappa = -252\ln 0{,}98 = 5{,}09$ pr. år; $h = -\ln 2/\ln 0{,}98 = 34{,}3$ dage.
+(d) $\hat\kappa = -252\ln 0.98 = 5.09$ pr. år; $h = -\ln 2/\ln 0.98 = 34.3$ dage.
 
-(e) Forventet z-score: $2\phi^h = 1$ efter $h$ dage og $0{,}5$ efter $2h$ dage. Med exit ved $\lvert z\rvert < 0{,}5$ er den typiske holdetid altså i størrelsesordenen $2h$, men spredningen omkring forventningen er stor.
+(e) Forventet z-score: $2\phi^h = 1$ efter $h$ dage og $0.5$ efter $2h$ dage. Med exit ved $\lvert z\rvert < 0.5$ er den typiske holdetid altså i størrelsesordenen $2h$, men spredningen omkring forventningen er stor.
 
 </details>
 
 <details>
 <summary>Løsning 11.7</summary>
 
-(a) $\beta_{WML} = 0{,}6 - 1{,}6 = -1{,}0$.
+(a) $\beta_{WML} = 0.6 - 1.6 = -1.0$.
 
-(b) $-1{,}0 \cdot 25\,\% = -25\,\%$ fra markedseksponeringen alene.
+(b) $-1.0 \cdot 25\,\% = -25\,\%$ fra markedseksponeringen alene.
 
-(c) Skaleringsfaktor $0{,}15/0{,}50 = 0{,}3$, tab ca. $-7{,}5\,\%$. Volatilitetsskalering reducerer eksponeringen netop, når crash-risikoen er høj (efter turbulente perioder).
+(c) Skaleringsfaktor $0.15/0.50 = 0.3$, tab ca. $-7.5\,\%$. Volatilitetsskalering reducerer eksponeringen netop, når crash-risikoen er høj (efter turbulente perioder).
 
 (d) Når markedet fortsætter ned, tjener WML (short high-beta losers); når det vender kraftigt op, taber WML meget. Efter fald er udbetalingen altså asymmetrisk som en solgt call: små gevinster i "normale" udfald, store tab ved en kraftig opgang. Crash-risikoen kan netop være en del af grunden til, at momentum historisk har givet en præmie. Det er en risiko, man bliver betalt for at bære, ikke en gratis gevinst.
 
@@ -5550,11 +5550,11 @@ Tårnreglen: $E[\operatorname{sign}(X)Y] = E[\operatorname{sign}(X)E[Y\mid X]] =
 <details>
 <summary>Løsning 11.8</summary>
 
-(a) Almindelig DF: $-3{,}10$ og $-3{,}72$ forkaster enhedsrod ("kointegreret"), $-2{,}50$ gør ikke. Engle–Granger: kun $-3{,}72$ forkaster. Par 1 er altså kun "kointegreret" med den forkerte tabel.
+(a) Almindelig DF: $-3.10$ og $-3.72$ forkaster enhedsrod ("kointegreret"), $-2.50$ gør ikke. Engle–Granger: kun $-3.72$ forkaster. Par 1 er altså kun "kointegreret" med den forkerte tabel.
 
 (b) $\hat\beta$ vælges ved OLS, så residualvariansen minimeres. Selv for to uafhængige random walks finder OLS den kombination, der *ser* mest stationær ud. Fordelingen af t-værdien under nulhypotesen er derfor forskudt mod negative værdier, og den kritiske værdi skal være mere negativ.
 
-(c) $500 \cdot 0{,}05 = 25$ falske fund. Bonferroni: $0{,}05/500 = 0{,}0001$ pr. test.
+(c) $500 \cdot 0.05 = 25$ falske fund. Bonferroni: $0.05/500 = 0.0001$ pr. test.
 
 (d) Kræv en økonomisk begrundelse før testen (samme branche, samme råvare, to aktieklasser i samme selskab); test kun et lille, præregistreret antal par; kræv stabilitet over flere delperioder; brug en separat OOS-periode til at bekræfte både kointegration og handelsresultat; kontrollér stabiliteten af halveringstid og $\beta$.
 
@@ -5570,8 +5570,8 @@ $$E[\pi_{t+1}] = \frac1N\sum_i\gamma_{ii} + \frac1N\sum_i\mu_i^2 - \frac1{N^2}\s
 Del dobbeltsummen i $i = j$ og $i \ne j$, og brug $\frac1N\sum_i\mu_i^2 - \bar\mu^2 = \sigma_\mu^2$:
 $$E[\pi_{t+1}] = \Big(\frac1N - \frac1{N^2}\Big)\sum_i\gamma_{ii} - \frac1{N^2}\sum_{i\ne j}\gamma_{ij} + \sigma_\mu^2 .$$
 
-(b) $\frac{2}{9}\cdot 3\cdot(-0{,}0002) = -0{,}0001333$; $-\frac19\cdot 6\cdot 0{,}0001 = -0{,}0000667$; $\sigma_\mu^2 = \frac13(0{,}005^2 + 0 + 0{,}005^2) = 0{,}0000167$. Sum: $E[\pi] = -0{,}000183$.
-Fortolkning: egen-reversal ($\gamma_{ii} < 0$) og positiv lead-lag mellem aktierne trækker begge mod en kontrastrategi; spredningen i forventede afkast trækker mod momentum, men er lille. Momentum-strategien taber i forventning, så kontrastrategien ($-w$) tjener $0{,}000183$ (i strategiens enheder, før omkostninger).
+(b) $\frac{2}{9}\cdot 3\cdot(-0.0002) = -0.0001333$; $-\frac19\cdot 6\cdot 0.0001 = -0.0000667$; $\sigma_\mu^2 = \frac13(0.005^2 + 0 + 0.005^2) = 0.0000167$. Sum: $E[\pi] = -0.000183$.
+Fortolkning: egen-reversal ($\gamma_{ii} < 0$) og positiv lead-lag mellem aktierne trækker begge mod en kontrastrategi; spredningen i forventede afkast trækker mod momentum, men er lille. Momentum-strategien taber i forventning, så kontrastrategien ($-w$) tjener $0.000183$ (i strategiens enheder, før omkostninger).
 
 </details>
 
@@ -5637,7 +5637,7 @@ TSMOM L=252          afkast/år= 1.46% vol= 9.95% SR= 0.15 maxDD=41.24%
 Kontrol: støj, L=120 afkast/år=-2.45% vol=10.08% SR=-0.24 maxDD=61.63%
 ```
 
-Diskussion: Regimerne varer i gennemsnit 150 dage. Et lookback på 60–120 dage opdager skiftene hurtigt nok uden at reagere for meget på støj, mens 20 dage handler på støj (høj turnover), og 252 dage reagerer for langsomt. Volatilitetsmålet rammes pænt (ca. $10\,\%$). Omkostningerne koster mest for korte lookbacks. Kontrollen på ren støj viser, at reglen *taber* (omkostninger og tilfældighed), når der ingen trends er. Bemærk: at udpege $L = 120$ efter at have set alle fire er selv en udvælgelse ($N = 4$ forsøg), og med 20 år er standardfejlen på SR ca. $1/\sqrt{20} = 0{,}22$. Forskellen mellem $L = 60$ og $L = 120$ er altså ikke signifikant. Rigtige markeder har ingen garanteret regimestruktur.
+Diskussion: Regimerne varer i gennemsnit 150 dage. Et lookback på 60–120 dage opdager skiftene hurtigt nok uden at reagere for meget på støj, mens 20 dage handler på støj (høj turnover), og 252 dage reagerer for langsomt. Volatilitetsmålet rammes pænt (ca. $10\,\%$). Omkostningerne koster mest for korte lookbacks. Kontrollen på ren støj viser, at reglen *taber* (omkostninger og tilfældighed), når der ingen trends er. Bemærk: at udpege $L = 120$ efter at have set alle fire er selv en udvælgelse ($N = 4$ forsøg), og med 20 år er standardfejlen på SR ca. $1/\sqrt{20} = 0.22$. Forskellen mellem $L = 60$ og $L = 120$ er altså ikke signifikant. Rigtige markeder har ingen garanteret regimestruktur.
 
 </details>
 
@@ -5705,7 +5705,7 @@ beta=1.152 DF-t=-4.49 phi=0.923 half-life=8.6 dage
 P&L=-0.1259 SR=-0.76 maxDD=0.2450 handler=11
 ```
 
-Fortolkning: P&L er summen af log-spread-ændringer, dvs. ca. afkast pr. krone i $A$-benet ($+40\,\%$ over to år, før finansiering og lånegebyrer). DF-t $= -4{,}49$ er under Engle–Granger-værdien $-3{,}34$, så parret består testen (formationsdata er de samme i begge kørsler, da bruddet først kommer dag 650). Bemærk, at $\hat\beta = 1{,}15$ og $\hat\phi = 0{,}923$ afviger fra de sande $1{,}3$ og $0{,}95$: estimationsusikkerhed er reel selv i en perfekt model, og AR-koefficienter er nedadbiased i små stikprøver. SR $= 2{,}2$ er en *idealiseret* værdi, fordi data er konstrueret til at være kointegrerede. Med brud bliver resultatet negativt, max drawdown bliver mere end fire gange så stor, og stop-loss'et bliver ramt. Ét strukturelt brud kan æde mange små gevinster. Det er hovedrisikoen i pairs trading.
+Fortolkning: P&L er summen af log-spread-ændringer, dvs. ca. afkast pr. krone i $A$-benet ($+40\,\%$ over to år, før finansiering og lånegebyrer). DF-t $= -4.49$ er under Engle–Granger-værdien $-3.34$, så parret består testen (formationsdata er de samme i begge kørsler, da bruddet først kommer dag 650). Bemærk, at $\hat\beta = 1.15$ og $\hat\phi = 0.923$ afviger fra de sande $1.3$ og $0.95$: estimationsusikkerhed er reel selv i en perfekt model, og AR-koefficienter er nedadbiased i små stikprøver. SR $= 2.2$ er en *idealiseret* værdi, fordi data er konstrueret til at være kointegrerede. Med brud bliver resultatet negativt, max drawdown bliver mere end fire gange så stor, og stop-loss'et bliver ramt. Ét strukturelt brud kan æde mange små gevinster. Det er hovedrisikoen i pairs trading.
 
 </details>
 
@@ -5741,7 +5741,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 12 — Carry, value, trend og porteføljekonstruktion
 
 > **Læringsmål:** Forklare carry (FX og futures), value på tværs af aktivklasser, trendfølgning og volatilitetsrisikopræmien, inklusive deres crash-risici. Kunne kombinere signaler (z-scores, diversifikation, $\sqrt N$-reglen), styre risiko med volatilitetsmål og risk parity og vurdere kapacitet, crowding og turnover.
-> **Tidsforbrug:** ca. 2,5 t video (+ ca. 2 t valgfri) · ca. 6 t øvelser
+> **Tidsforbrug:** ca. 2.5 t video (+ ca. 2 t valgfri) · ca. 6 t øvelser
 > **Forudsætninger:** Uge 4 (kovarians, korrelation), uge 7 (porteføljevarians, effektiv rand), uge 8 (faktorer), uge 9 (GARCH og volatilitetsklynger), uge 10 (omkostninger, overfitting), uge 11 (TSMOM, XSMOM, volatilitetsskalering).
 
 ### 📺 Se
@@ -5780,7 +5780,7 @@ $$C = \frac{S - F}{F} \quad (\text{pr. periode } \tau).$$
 - råvarer: minus de seneste ~5 års afkast (langsigtet reversal);
 - obligationer: real rente eller terminspræmie.
 
-Value og momentum er historisk *negativt* korrelerede (ca. $-0{,}4$ til $-0{,}6$ på tværs af markeder i Asness, Moskowitz & Pedersen, "Value and Momentum Everywhere"): det, der er steget meget, er ofte blevet dyrt. Derfor er kombinationen mere stabil end hver del (øvelse 12.3d og 12.5). Value kan have meget lange drawdowns. Aktie-value havde en dyb og langvarig drawdown frem til 2020, og Q12.2 diskuterer, hvordan man forholder sig til det.
+Value og momentum er historisk *negativt* korrelerede (ca. $-0.4$ til $-0.6$ på tværs af markeder i Asness, Moskowitz & Pedersen, "Value and Momentum Everywhere"): det, der er steget meget, er ofte blevet dyrt. Derfor er kombinationen mere stabil end hver del (øvelse 12.3d og 12.5). Value kan have meget lange drawdowns. Aktie-value havde en dyb og langvarig drawdown frem til 2020, og Q12.2 diskuterer, hvordan man forholder sig til det.
 
 **3. Trendfølgning og "crisis alpha".** CTA'er (Commodity Trading Advisors, "managed futures") handler TSMOM fra uge 11 på 50–100+ futuresmarkeder med volatilitetsskalering. En langsigtet trendregel har en *konveks* udbetaling: store, vedvarende bevægelser i *begge* retninger giver gevinst, ligesom en long straddle-position (køb af både call og put, uge 14). Derfor har trendfølgning historisk ofte klaret sig godt i langvarige krisemarkeder (fx 2008, hvor mange trendfølgende fonde havde positive afkast, mens aktier faldt kraftigt): "crisis alpha". Det er ikke en garanti. Pludselige V-formede vendinger og lange perioder uden trends giver tab, og konveksiteten gælder kun over horisonter, der er længere end signalets lookback.
 
@@ -5792,17 +5792,17 @@ Value og momentum er historisk *negativt* korrelerede (ca. $-0{,}4$ til $-0{,}6$
 $$SR_{\text{komb}} = s\,\frac{\sqrt N}{\sqrt{1 + (N-1)\rho}}\;\xrightarrow[N\to\infty]{}\; \frac{s}{\sqrt\rho}.$$
 *Bevis:* $E = \mu$ og $\operatorname{Var} = \frac{1}{N^2}\big(N\sigma^2 + N(N-1)\rho\sigma^2\big) = \frac{\sigma^2(1 + (N-1)\rho)}{N}$. Divider. $\square$
 
-For $\rho = 0$ får man $\sqrt N\cdot s$: fire ukorrelerede signaler med SR 0,4 giver 0,8. Med $\rho = 0{,}3$ giver *uendeligt* mange signaler højst $0{,}4/\sqrt{0{,}3} = 0{,}73$. Korrelation er det, der begrænser diversifikation. **Diversifikationsratioen** er
+For $\rho = 0$ får man $\sqrt N\cdot s$: fire ukorrelerede signaler med SR 0.4 giver 0.8. Med $\rho = 0.3$ giver *uendeligt* mange signaler højst $0.4/\sqrt{0.3} = 0.73$. Korrelation er det, der begrænser diversifikation. **Diversifikationsratioen** er
 $$DR = \frac{\sum_i w_i\sigma_i}{\sigma_p} \ge 1 \quad (\text{for } w_i \ge 0,\ \text{da } \sigma_p \le \textstyle\sum_i w_i\sigma_i),$$
 og når alle komponenter har samme SR, gælder $SR_p = s\cdot DR$ (øvelse 12.9). Bemærk, at estimerede SR'er er meget usikre (standardfejl ca. $1/\sqrt{\text{år}}$, uge 10). Praktikere bruger derfor ofte lige risikovægte frem for "optimale" vægte.
 
 **6. Volatilitetsmål (volatility targeting).** Positionen skaleres, så den forventede volatilitet er konstant:
 $$w_t = \min\!\Big(\frac{\sigma_{\text{tgt}}}{\hat\sigma_t\sqrt{252}},\; w_{\max}\Big), \qquad \hat\sigma_t^2 = \lambda\,\hat\sigma_{t-1}^2 + (1-\lambda)\,r_t^2 ,$$
-med daglig EWMA-varians (RiskMetrics: $\lambda = 0{,}94$). Vægten på afkastet for $k$ dage siden er $(1-\lambda)\lambda^k$, så halveringstiden er $\ln\tfrac12/\ln\lambda \approx 11{,}2$ dage. Begrundelse: volatilitet klumper sig sammen (GARCH, uge 9), så nær fremtidig volatilitet kan forudsiges, mens middelafkast næsten ikke kan. Effekt: mere stabil risiko og typisk mindre drawdowns i perioder med høj volatilitet. Hvorvidt det også hæver SR afhænger af sammenhængen mellem volatilitet og forventet afkast og er omdiskuteret. Risici: loftet $w_{\max}$ (gearing i rolige perioder), forsinkelse ved pludselige stød og ekstra turnover.
+med daglig EWMA-varians (RiskMetrics: $\lambda = 0.94$). Vægten på afkastet for $k$ dage siden er $(1-\lambda)\lambda^k$, så halveringstiden er $\ln\tfrac12/\ln\lambda \approx 11.2$ dage. Begrundelse: volatilitet klumper sig sammen (GARCH, uge 9), så nær fremtidig volatilitet kan forudsiges, mens middelafkast næsten ikke kan. Effekt: mere stabil risiko og typisk mindre drawdowns i perioder med høj volatilitet. Hvorvidt det også hæver SR afhænger af sammenhængen mellem volatilitet og forventet afkast og er omdiskuteret. Risici: loftet $w_{\max}$ (gearing i rolige perioder), forsinkelse ved pludselige stød og ekstra turnover.
 
 **7. Risk parity.** Med porteføljevolatilitet $\sigma_p = \sqrt{\mathbf w^\top\Sigma\mathbf w}$ er aktiv $i$'s **risikobidrag**
 $$RC_i = w_i\,\frac{\partial\sigma_p}{\partial w_i} = \frac{w_i(\Sigma\mathbf w)_i}{\sigma_p}, \qquad \sum_i RC_i = \frac{\mathbf w^\top\Sigma\mathbf w}{\sigma_p} = \sigma_p .$$
-*Eksempel:* 60/40 med aktievolatilitet $15\,\%$, obligationer $5\,\%$ og $\rho = 0$: $\sigma_p^2 = 0{,}36\cdot 0{,}0225 + 0{,}16\cdot 0{,}0025 = 0{,}0085$, og aktierne står for $0{,}0081/0{,}0085 = 95\,\%$ af risikoen. **Risk parity** (equal risk contribution) kræver $RC_i = \sigma_p/N$. For to aktiver giver det $w_i \propto 1/\sigma_i$ uanset korrelationen (øvelse 12.9). Porteføljen får lav volatilitet og skal *geares* op for at nå et afkastmål. Det kræver billig finansiering og gør porteføljen sårbar, når aktier og obligationer falder samtidig (som i 2022).
+*Eksempel:* 60/40 med aktievolatilitet $15\,\%$, obligationer $5\,\%$ og $\rho = 0$: $\sigma_p^2 = 0.36\cdot 0.0225 + 0.16\cdot 0.0025 = 0.0085$, og aktierne står for $0.0081/0.0085 = 95\,\%$ af risikoen. **Risk parity** (equal risk contribution) kræver $RC_i = \sigma_p/N$. For to aktiver giver det $w_i \propto 1/\sigma_i$ uanset korrelationen (øvelse 12.9). Porteføljen får lav volatilitet og skal *geares* op for at nå et afkastmål. Det kræver billig finansiering og gør porteføljen sårbar, når aktier og obligationer falder samtidig (som i 2022).
 
 **8. Kapacitet, crowding og turnover.** Markedspåvirkning pr. handlet enhed vokser med handelsstørrelsen (ca. $\propto\sqrt{Q/V}$, uge 15). Med kapital $A$ og en model $r(A) = a - b\sqrt A$ for nettoafkastet maksimeres kronegevinsten $A\,r(A)$ i $\sqrt{A^*} = \frac{2a}{3b}$, hvor nettoafkastet netop er $a/3$ (øvelse 12.8). **Crowding:** handler mange fonde det samme signal, er det deres *samlede* kapital, der bestemmer markedspåvirkningen, og exits sker samtidig (august 2007, uge 11). Turnover sænkes ved at glatte signalet (EWMA af signalet) eller med en buffer (no-trade zone), så små signalændringer ikke handles. En tommelfingerregel fra Carvers "Systematic Trading": brug højst omkring en tredjedel af den forventede brutto-SR på omkostninger.
 
@@ -5818,77 +5818,77 @@ $$RC_i = w_i\,\frac{\partial\sigma_p}{\partial w_i} = \frac{w_i(\Sigma\mathbf w)
 
 ### ✏️ Øvelser
 
-**12.1** ★ — (Illustrative tal.) Den danske 1-årsrente er $2\,\%$, renten i valutaen X er $6\,\%$, og spot er $S = 5{,}00$ kr. pr. X. (a) Find terminskursen $F$ for 1 år efter dækket renteparitet. (b) Du låner $1\,000\,000$ kr., veksler til X og placerer til $6\,\%$. Find gevinsten i kr., hvis spot efter et år er $5{,}00$, og hvis den er $4{,}60$. (c) Find break-even-spotkursen og sammenlign med $F$. Hvad påstår UIP, og hvad viser empirien?
+**12.1** ★ — (Illustrative tal.) Den danske 1-årsrente er $2\,\%$, renten i valutaen X er $6\,\%$, og spot er $S = 5.00$ kr. pr. X. (a) Find terminskursen $F$ for 1 år efter dækket renteparitet. (b) Du låner $1\,000\,000$ kr., veksler til X og placerer til $6\,\%$. Find gevinsten i kr., hvis spot efter et år er $5.00$, og hvis den er $4.60$. (c) Find break-even-spotkursen og sammenlign med $F$. Hvad påstår UIP, og hvad viser empirien?
 
 **12.2** ★ — Råolie handles spot til 80 USD, og 3-måneders-futuren til 78 USD. (a) Er kurven i contango eller backwardation? Find carry for en long-position pr. kvartal og (simpelt) annualiseret. (b) Gentag for en 3-måneders-future til 83 USD. (c) Med $r = 4\,\%$ og $u = 2\,\%$ (kontinuert, årligt): find den convenience yield $y$, der forklarer prisen 78 USD i $F = Se^{(r+u-y)\tau}$.
 
-**12.3** ★ — Fire signaler har hver SR 0,4 (årligt) og samme volatilitet. (a) Find SR for den ligevægtede kombination ved $\rho = 0$; $0{,}3$; $0{,}6$. (b) Hvad er den maksimale SR for uendeligt mange signaler med $\rho = 0{,}3$? (c) Hvad siger (a)–(b) om værdien af "endnu et signal", der ligner de eksisterende? (d) Et value- og et momentumsignal har hver SR 0,4 og korrelation $-0{,}5$. Find SR for 50/50-kombinationen.
+**12.3** ★ — Fire signaler har hver SR 0.4 (årligt) og samme volatilitet. (a) Find SR for den ligevægtede kombination ved $\rho = 0$; $0.3$; $0.6$. (b) Hvad er den maksimale SR for uendeligt mange signaler med $\rho = 0.3$? (c) Hvad siger (a)–(b) om værdien af "endnu et signal", der ligner de eksisterende? (d) Et value- og et momentumsignal har hver SR 0.4 og korrelation $-0.5$. Find SR for 50/50-kombinationen.
 
 **12.4** ★ — Aktier har volatilitet $15\,\%$, obligationer $5\,\%$, korrelation $0$. (a) Find volatiliteten og aktiernes andel af risikoen i en 60/40-portefølje. (b) Find risk parity-vægtene uden gearing og porteføljens volatilitet. (c) Hvor meget gearing skal der til, for at risk parity-porteføljen får samme volatilitet som 60/40? Angiv vægtene og lånet. (d) Hvilke risici har du påtaget dig?
 
-**12.5** ★★ — Fem aktiver har 12-måneders afkast (momentum, i %) $12;\ 4;\ -2;\ -8;\ 9$ og et value-mål (positiv = billig) $-0{,}3;\ 0{,}1;\ 0{,}4;\ 0{,}2;\ -0{,}4$. (a) Beregn cross-sectional z-scores for hvert signal (brug stikprøvespredningen). (b) Kombinér 50/50 og omsæt til dollar-neutrale vægte med bruttoeksponering 2 (100 % long, 100 % short): $w_i = 2c_i/\sum_j\lvert c_j\rvert$. (c) Hvilket aktiv er det største long og short, og hvorfor? (d) Beregn (eller vurdér) korrelationen mellem de to z-score-vektorer og forklar fortegnet.
+**12.5** ★★ — Fem aktiver har 12-måneders afkast (momentum, i %) $12;\ 4;\ -2;\ -8;\ 9$ og et value-mål (positiv = billig) $-0.3;\ 0.1;\ 0.4;\ 0.2;\ -0.4$. (a) Beregn cross-sectional z-scores for hvert signal (brug stikprøvespredningen). (b) Kombinér 50/50 og omsæt til dollar-neutrale vægte med bruttoeksponering 2 (100 % long, 100 % short): $w_i = 2c_i/\sum_j\lvert c_j\rvert$. (c) Hvilket aktiv er det største long og short, og hvorfor? (d) Beregn (eller vurdér) korrelationen mellem de to z-score-vektorer og forklar fortegnet.
 
-**12.6** ★★ — EWMA med $\lambda = 0{,}94$ og startværdi $\hat\sigma_0 = 1\,\%$ dagligt. De næste tre daglige afkast er $+2\,\%$, $-3\,\%$, $+1\,\%$. (a) Beregn $\hat\sigma_1, \hat\sigma_2, \hat\sigma_3$ (dagligt og annualiseret) og positionen $w = 0{,}10/(\hat\sigma\sqrt{252})$ efter hver dag. (b) Vis, at vægtene $(1-\lambda)\lambda^k$ summerer til 1, og find halveringstiden og den gennemsnitlige "alder" $\sum_k k(1-\lambda)\lambda^k$ af informationen. (c) Hvorfor må positionen, der holdes fra $t+1$, bruge $r_t$? Hvad ville være look-ahead?
+**12.6** ★★ — EWMA med $\lambda = 0.94$ og startværdi $\hat\sigma_0 = 1\,\%$ dagligt. De næste tre daglige afkast er $+2\,\%$, $-3\,\%$, $+1\,\%$. (a) Beregn $\hat\sigma_1, \hat\sigma_2, \hat\sigma_3$ (dagligt og annualiseret) og positionen $w = 0.10/(\hat\sigma\sqrt{252})$ efter hver dag. (b) Vis, at vægtene $(1-\lambda)\lambda^k$ summerer til 1, og find halveringstiden og den gennemsnitlige "alder" $\sum_k k(1-\lambda)\lambda^k$ af informationen. (c) Hvorfor må positionen, der holdes fra $t+1$, bruge $r_t$? Hvad ville være look-ahead?
 
-**12.7** ★★ — En variance swap betaler til køberen $N_{\text{var}}(\sigma^2_{\text{real}} - K)$ efter et år. Du *sælger* den med $K = 0{,}20^2$ og $N_{\text{var}} = 1\,000\,000$ kr. (a) Find din gevinst, hvis den realiserede volatilitet bliver $15\,\%$. (b) Find dit tab, hvis den bliver $60\,\%$ (et krakår). (c) Antag kun de to udfald med krak-sandsynlighed $p$ pr. år. Find den $p$, der gør den forventede gevinst nul. (d) Forklar, hvorfor en historisk backtest af denne strategi uden et krak i stikprøven er særligt misvisende, og forbind til PSR (uge 10).
+**12.7** ★★ — En variance swap betaler til køberen $N_{\text{var}}(\sigma^2_{\text{real}} - K)$ efter et år. Du *sælger* den med $K = 0.20^2$ og $N_{\text{var}} = 1\,000\,000$ kr. (a) Find din gevinst, hvis den realiserede volatilitet bliver $15\,\%$. (b) Find dit tab, hvis den bliver $60\,\%$ (et krakår). (c) Antag kun de to udfald med krak-sandsynlighed $p$ pr. år. Find den $p$, der gør den forventede gevinst nul. (d) Forklar, hvorfor en historisk backtest af denne strategi uden et krak i stikprøven er særligt misvisende, og forbind til PSR (uge 10).
 
-**12.8** ★★ — En strategi har brutto-merafkast $4\,\%$ om året og turnover 10 gange kapitalen. Faste omkostninger er 2 bp pr. enhed turnover, og markedspåvirkningen er $0{,}5$ bp $\cdot\sqrt{A}$ pr. enhed turnover, hvor $A$ er kapitalen i mio. kr. (a) Opskriv nettoafkastet $r(A)$, og beregn det for $A = 100$ og $A = 1000$. (b) Find kapaciteten, hvor $r(A) = 0$. (c) Find den kapital $A^*$, der maksimerer den samlede kronegevinst $A\,r(A)$, samt $r(A^*)$ og gevinsten. Vis generelt, at $r(A^*) = a/3$ for $r(A) = a - b\sqrt A$. (d) Hvorfor kan en forvalter, der lever af et gebyr på kapitalen, have en interesse i at vokse ud over $A^*$? Hvordan ændrer crowding regnestykket?
+**12.8** ★★ — En strategi har brutto-merafkast $4\,\%$ om året og turnover 10 gange kapitalen. Faste omkostninger er 2 bp pr. enhed turnover, og markedspåvirkningen er $0.5$ bp $\cdot\sqrt{A}$ pr. enhed turnover, hvor $A$ er kapitalen i mio. kr. (a) Opskriv nettoafkastet $r(A)$, og beregn det for $A = 100$ og $A = 1000$. (b) Find kapaciteten, hvor $r(A) = 0$. (c) Find den kapital $A^*$, der maksimerer den samlede kronegevinst $A\,r(A)$, samt $r(A^*)$ og gevinsten. Vis generelt, at $r(A^*) = a/3$ for $r(A) = a - b\sqrt A$. (d) Hvorfor kan en forvalter, der lever af et gebyr på kapitalen, have en interesse i at vokse ud over $A^*$? Hvordan ændrer crowding regnestykket?
 
-**12.9** ★★★ — Diversifikationens matematik. (a) Vis for to aktiver med volatiliteter $\sigma_1, \sigma_2$, korrelation $\rho > -1$ og positive vægte, at lige risikobidrag holder, netop når $w_1\sigma_1 = w_2\sigma_2$, uanset $\rho$. (b) Antag $\mu_i = s\,\sigma_i$ for alle $i$ (samme SR). Vis, at $SR_p = s\cdot DR$. (c) Udled heraf sætningen i afsnit 5 ved at beregne $DR$ for lige vægte, lige volatiliteter og fælles korrelation $\rho$. (d) For *ukorrelerede* strategier med SR'erne $s_1, \dots, s_N$: vis med Cauchy–Schwarz, at den maksimale $SR_p$ er $\sqrt{\sum_i s_i^2}$, opnået for $w_i \propto s_i/\sigma_i$. (e) Beregn for $s = (0{,}6;\ 0{,}4;\ 0{,}3)$ den optimale SR og SR ved lige risikovægte. Kommentér i lyset af uge 10.
+**12.9** ★★★ — Diversifikationens matematik. (a) Vis for to aktiver med volatiliteter $\sigma_1, \sigma_2$, korrelation $\rho > -1$ og positive vægte, at lige risikobidrag holder, netop når $w_1\sigma_1 = w_2\sigma_2$, uanset $\rho$. (b) Antag $\mu_i = s\,\sigma_i$ for alle $i$ (samme SR). Vis, at $SR_p = s\cdot DR$. (c) Udled heraf sætningen i afsnit 5 ved at beregne $DR$ for lige vægte, lige volatiliteter og fælles korrelation $\rho$. (d) For *ukorrelerede* strategier med SR'erne $s_1, \dots, s_N$: vis med Cauchy–Schwarz, at den maksimale $SR_p$ er $\sqrt{\sum_i s_i^2}$, opnået for $w_i \propto s_i/\sigma_i$. (e) Beregn for $s = (0.6;\ 0.4;\ 0.3)$ den optimale SR og SR ved lige risikovægte. Kommentér i lyset af uge 10.
 
-**12.10** ★★ 💻 — Simulér 20 års daglige afkast for tre signaler (`random.seed(12)`), hver med årlig SR 0,5 og volatilitet $10\,\%$, i tre korrelationsscenarier: "lav/negativ" ($\rho_{12} = 0{,}1$, $\rho_{13} = -0{,}4$, $\rho_{23} = -0{,}1$), "uafhængig" og "høj" (alle $0{,}8$). Generér korrelerede normalfordelte stød med en Cholesky-faktorisering i ren Python (brug de samme stød i alle scenarier). Rapportér SR for hvert signal og for den ligevægtede kombination, og sammenlign med teorien $s\cdot 3/\sqrt{3 + 2\sum_{i<j}\rho_{ij}}$.
+**12.10** ★★ 💻 — Simulér 20 års daglige afkast for tre signaler (`random.seed(12)`), hver med årlig SR 0.5 og volatilitet $10\,\%$, i tre korrelationsscenarier: "lav/negativ" ($\rho_{12} = 0.1$, $\rho_{13} = -0.4$, $\rho_{23} = -0.1$), "uafhængig" og "høj" (alle $0.8$). Generér korrelerede normalfordelte stød med en Cholesky-faktorisering i ren Python (brug de samme stød i alle scenarier). Rapportér SR for hvert signal og for den ligevægtede kombination, og sammenlign med teorien $s\cdot 3/\sqrt{3 + 2\sum_{i<j}\rho_{ij}}$.
 
-**12.11** ★★ 💻 — Simulér 20 års daglige afkast fra en GARCH(1,1)-model (`random.seed(12)`, $\mu = 0{,}03\,\%$ pr. dag, $\alpha = 0{,}08$, $\beta = 0{,}90$, langsigtet daglig volatilitet $1{,}25\,\%$). Implementér et volatilitetsmål på $10\,\%$ med EWMA ($\lambda = 0{,}94$), loft 2, beslutning ved $t$ og handel ved $t+1$ samt 2 bp i omkostning. Sammenlign med køb-og-hold og med køb-og-hold skaleret (ex post, kun til sammenligning) til samme volatilitet: årligt afkast, volatilitet, SR, max drawdown og spændet i årlig realiseret volatilitet.
+**12.11** ★★ 💻 — Simulér 20 års daglige afkast fra en GARCH(1,1)-model (`random.seed(12)`, $\mu = 0.03\,\%$ pr. dag, $\alpha = 0.08$, $\beta = 0.90$, langsigtet daglig volatilitet $1.25\,\%$). Implementér et volatilitetsmål på $10\,\%$ med EWMA ($\lambda = 0.94$), loft 2, beslutning ved $t$ og handel ved $t+1$ samt 2 bp i omkostning. Sammenlign med køb-og-hold og med køb-og-hold skaleret (ex post, kun til sammenligning) til samme volatilitet: årligt afkast, volatilitet, SR, max drawdown og spændet i årlig realiseret volatilitet.
 
-**12.12** ★★ 🗣️ — Du er porteføljeforvalter for fire (simulerede) strategier med backtestede SR'er: trend 0,5, carry 0,4, value 0,3 og short vol 0,6. Skriv et notat (ca. en halv side) med: din fordeling af risikobudgettet og begrundelsen, hvordan porteføljen forventes at opføre sig i et pludseligt aktiekrak, hvilke strategier der er mest udsatte for crowding og kapacitetsgrænser, og dine på forhånd fastlagte kriterier for at skrue ned eller lukke en strategi.
+**12.12** ★★ 🗣️ — Du er porteføljeforvalter for fire (simulerede) strategier med backtestede SR'er: trend 0.5, carry 0.4, value 0.3 og short vol 0.6. Skriv et notat (ca. en halv side) med: din fordeling af risikobudgettet og begrundelsen, hvordan porteføljen forventes at opføre sig i et pludseligt aktiekrak, hvilke strategier der er mest udsatte for crowding og kapacitetsgrænser, og dine på forhånd fastlagte kriterier for at skrue ned eller lukke en strategi.
 
 ### ✅ Løsninger
 
 <details>
 <summary>Løsning 12.1</summary>
 
-(a) $F = 5{,}00\cdot 1{,}02/1{,}06 = 4{,}8113$ kr. pr. X. Valutaen handles "med rabat" på termin, fordi den har den højeste rente.
+(a) $F = 5.00\cdot 1.02/1.06 = 4.8113$ kr. pr. X. Valutaen handles "med rabat" på termin, fordi den har den højeste rente.
 
 (b) $1\,000\,000/5 = 200\,000$ X, som vokser til $212\,000$ X. Gælden er $1\,020\,000$ kr.
-- Spot $5{,}00$: $212\,000\cdot 5{,}00 = 1\,060\,000$ kr., gevinst $+40\,000$ kr. (præcis renteforskellen på $4\,\%$).
-- Spot $4{,}60$ (valutaen er svækket $8\,\%$): $212\,000\cdot 4{,}60 = 975\,200$ kr., tab $-44\,800$ kr.
+- Spot $5.00$: $212\,000\cdot 5.00 = 1\,060\,000$ kr., gevinst $+40\,000$ kr. (præcis renteforskellen på $4\,\%$).
+- Spot $4.60$ (valutaen er svækket $8\,\%$): $212\,000\cdot 4.60 = 975\,200$ kr., tab $-44\,800$ kr.
 
-(c) Break-even: $1\,020\,000/212\,000 = 4{,}8113 = F$. UIP påstår, at den forventede fremtidige spot er netop $F$, så carry-handlen i forventning giver nul. Empirisk har højrentevalutaer i gennemsnit svækket sig mindre end UIP forudsiger (forward premium puzzle), hvilket har givet en positiv gennemsnitlig carry-præmie, men med sjældne, store tab som i (b).
+(c) Break-even: $1\,020\,000/212\,000 = 4.8113 = F$. UIP påstår, at den forventede fremtidige spot er netop $F$, så carry-handlen i forventning giver nul. Empirisk har højrentevalutaer i gennemsnit svækket sig mindre end UIP forudsiger (forward premium puzzle), hvilket har givet en positiv gennemsnitlig carry-præmie, men med sjældne, store tab som i (b).
 
 </details>
 
 <details>
 <summary>Løsning 12.2</summary>
 
-(a) $F < S$: **backwardation**. $C = (80 - 78)/78 = 2{,}56\,\%$ pr. kvartal, ca. $4\cdot 2{,}56\,\% = 10{,}3\,\%$ om året, *hvis* spot og kurvens form er uændrede.
+(a) $F < S$: **backwardation**. $C = (80 - 78)/78 = 2.56\,\%$ pr. kvartal, ca. $4\cdot 2.56\,\% = 10.3\,\%$ om året, *hvis* spot og kurvens form er uændrede.
 
-(b) $F > S$: **contango**. $C = (80 - 83)/83 = -3{,}61\,\%$ pr. kvartal, ca. $-14{,}5\,\%$ om året. En long-investor taber ved at "rulle" futuren, selv om spot står stille.
+(b) $F > S$: **contango**. $C = (80 - 83)/83 = -3.61\,\%$ pr. kvartal, ca. $-14.5\,\%$ om året. En long-investor taber ved at "rulle" futuren, selv om spot står stille.
 
-(c) $\ln(78/80) = (0{,}04 + 0{,}02 - y)\cdot 0{,}25$, så $0{,}06 - y = -0{,}02532/0{,}25 = -0{,}1013$ og $y = 16{,}1\,\%$. En høj convenience yield (fx ved knappe lagre) skaber backwardation.
+(c) $\ln(78/80) = (0.04 + 0.02 - y)\cdot 0.25$, så $0.06 - y = -0.02532/0.25 = -0.1013$ og $y = 16.1\,\%$. En høj convenience yield (fx ved knappe lagre) skaber backwardation.
 
 </details>
 
 <details>
 <summary>Løsning 12.3</summary>
 
-(a) $SR = 0{,}4\cdot\sqrt4/\sqrt{1 + 3\rho}$: $\rho = 0$: $0{,}80$; $\rho = 0{,}3$: $0{,}8/\sqrt{1{,}9} = 0{,}58$; $\rho = 0{,}6$: $0{,}8/\sqrt{2{,}8} = 0{,}48$.
+(a) $SR = 0.4\cdot\sqrt4/\sqrt{1 + 3\rho}$: $\rho = 0$: $0.80$; $\rho = 0.3$: $0.8/\sqrt{1.9} = 0.58$; $\rho = 0.6$: $0.8/\sqrt{2.8} = 0.48$.
 
-(b) $0{,}4/\sqrt{0{,}3} = 0{,}73$.
+(b) $0.4/\sqrt{0.3} = 0.73$.
 
 (c) Et nyt signal, der er stærkt korreleret med de eksisterende, tilføjer næsten intet. Det lønner sig mere at finde signaler med lav korrelation (anden aktivklasse, anden horisont, anden økonomisk mekanisme) end at forfine endnu en variant af det samme. Det er også en kilde til skjult multipel testning (uge 10).
 
-(d) $N = 2$: $SR = 0{,}4\cdot 2/\sqrt{2 + 2\cdot(-0{,}5)} = 0{,}8/\sqrt{1} = 0{,}80$. Negativ korrelation fordobler SR. Det er grunden til, at value og momentum ofte kombineres.
+(d) $N = 2$: $SR = 0.4\cdot 2/\sqrt{2 + 2\cdot(-0.5)} = 0.8/\sqrt{1} = 0.80$. Negativ korrelation fordobler SR. Det er grunden til, at value og momentum ofte kombineres.
 
 </details>
 
 <details>
 <summary>Løsning 12.4</summary>
 
-(a) $\sigma_p = \sqrt{0{,}0081 + 0{,}0004} = \sqrt{0{,}0085} = 9{,}22\,\%$. Aktiernes risikoandel: $0{,}0081/0{,}0085 = 95{,}3\,\%$ (med $\rho = 0$ er $w_i(\Sigma\mathbf w)_i = w_i^2\sigma_i^2$). "60/40" er altså risikomæssigt næsten en ren aktieportefølje.
+(a) $\sigma_p = \sqrt{0.0081 + 0.0004} = \sqrt{0.0085} = 9.22\,\%$. Aktiernes risikoandel: $0.0081/0.0085 = 95.3\,\%$ (med $\rho = 0$ er $w_i(\Sigma\mathbf w)_i = w_i^2\sigma_i^2$). "60/40" er altså risikomæssigt næsten en ren aktieportefølje.
 
-(b) $w_i \propto 1/\sigma_i$: $1/0{,}15 = 6{,}67$ og $1/0{,}05 = 20$, så $w = (25\,\%,\ 75\,\%)$. $\sigma_p = \sqrt{0{,}0625\cdot 0{,}0225 + 0{,}5625\cdot 0{,}0025} = \sqrt{0{,}0028125} = 5{,}30\,\%$. Hvert aktiv bidrager med halvdelen af variansen.
+(b) $w_i \propto 1/\sigma_i$: $1/0.15 = 6.67$ og $1/0.05 = 20$, så $w = (25\,\%,\ 75\,\%)$. $\sigma_p = \sqrt{0.0625\cdot 0.0225 + 0.5625\cdot 0.0025} = \sqrt{0.0028125} = 5.30\,\%$. Hvert aktiv bidrager med halvdelen af variansen.
 
-(c) Gearing $9{,}22/5{,}30 = 1{,}74$: $43{,}5\,\%$ aktier og $130{,}4\,\%$ obligationer, finansieret med et lån på $73{,}8\,\%$ af kapitalen.
+(c) Gearing $9.22/5.30 = 1.74$: $43.5\,\%$ aktier og $130.4\,\%$ obligationer, finansieret med et lån på $73.8\,\%$ af kapitalen.
 
 (d) Finansieringsrisiko (lånerenten kan stige, og gearing koster), margin calls, rente-/obligationsrisiko (den største eksponering), og risikoen for at korrelationen bliver positiv, så begge aktiver falder samtidig (som i 2022). Volatiliteter og korrelationer er estimater, ikke konstanter.
 
@@ -5897,30 +5897,30 @@ $$RC_i = w_i\,\frac{\partial\sigma_p}{\partial w_i} = \frac{w_i(\Sigma\mathbf w)
 <details>
 <summary>Løsning 12.5</summary>
 
-(a) Momentum: gennemsnit $3$, afvigelser $9; 1; -5; -11; 6$, kvadratsum $264$, stikprøvevarians $66$, $s = 8{,}124$. z: $1{,}108;\ 0{,}123;\ -0{,}615;\ -1{,}354;\ 0{,}739$.
-Value: gennemsnit $0$, kvadratsum $0{,}46$, varians $0{,}115$, $s = 0{,}3391$. z: $-0{,}885;\ 0{,}295;\ 1{,}180;\ 0{,}590;\ -1{,}180$.
+(a) Momentum: gennemsnit $3$, afvigelser $9; 1; -5; -11; 6$, kvadratsum $264$, stikprøvevarians $66$, $s = 8.124$. z: $1.108;\ 0.123;\ -0.615;\ -1.354;\ 0.739$.
+Value: gennemsnit $0$, kvadratsum $0.46$, varians $0.115$, $s = 0.3391$. z: $-0.885;\ 0.295;\ 1.180;\ 0.590;\ -1.180$.
 
-(b) $c = \tfrac12(z^{\text{mom}} + z^{\text{val}})$: $0{,}112;\ 0{,}209;\ 0{,}282;\ -0{,}382;\ -0{,}220$ (summen er 0). $\sum\lvert c_j\rvert = 1{,}205$, så $w = 0{,}185;\ 0{,}347;\ 0{,}468;\ -0{,}634;\ -0{,}366$. Long-siden summerer til $1{,}00$ og short-siden til $-1{,}00$.
+(b) $c = \tfrac12(z^{\text{mom}} + z^{\text{val}})$: $0.112;\ 0.209;\ 0.282;\ -0.382;\ -0.220$ (summen er 0). $\sum\lvert c_j\rvert = 1.205$, så $w = 0.185;\ 0.347;\ 0.468;\ -0.634;\ -0.366$. Long-siden summerer til $1.00$ og short-siden til $-1.00$.
 
-(c) Største long: aktiv 3 (billigt, og kun moderat negativ momentum). Største short: aktiv 4 (dårligst momentum, og ikke billigt nok til at opveje det). Aktiv 1 og 5 har stærk momentum, men er dyre. For aktiv 1 udligner signalerne næsten hinanden ($c_1 = 0{,}11$), mens aktiv 5's dyrhed ($z = -1{,}18$) vejer tungere end dets momentum ($z = 0{,}74$), så det ender som næststørste short.
+(c) Største long: aktiv 3 (billigt, og kun moderat negativ momentum). Største short: aktiv 4 (dårligst momentum, og ikke billigt nok til at opveje det). Aktiv 1 og 5 har stærk momentum, men er dyre. For aktiv 1 udligner signalerne næsten hinanden ($c_1 = 0.11$), mens aktiv 5's dyrhed ($z = -1.18$) vejer tungere end dets momentum ($z = 0.74$), så det ender som næststørste short.
 
-(d) Korrelationen er ca. $-0{,}83$. Aktiver, der er steget meget, er typisk blevet dyre, så momentum og value peger ofte i modsat retning. Det er netop den negative korrelation, der gør kombinationen værdifuld (øvelse 12.3d), men her med kun 5 aktiver er tallet meget usikkert.
+(d) Korrelationen er ca. $-0.83$. Aktiver, der er steget meget, er typisk blevet dyre, så momentum og value peger ofte i modsat retning. Det er netop den negative korrelation, der gør kombinationen værdifuld (øvelse 12.3d), men her med kun 5 aktiver er tallet meget usikkert.
 
 </details>
 
 <details>
 <summary>Løsning 12.6</summary>
 
-(a) $\hat\sigma_1^2 = 0{,}94\cdot 0{,}0001 + 0{,}06\cdot 0{,}0004 = 0{,}000118$; $\hat\sigma_2^2 = 0{,}94\cdot 0{,}000118 + 0{,}06\cdot 0{,}0009 = 0{,}00016492$; $\hat\sigma_3^2 = 0{,}94\cdot 0{,}00016492 + 0{,}06\cdot 0{,}0001 = 0{,}00016102$.
+(a) $\hat\sigma_1^2 = 0.94\cdot 0.0001 + 0.06\cdot 0.0004 = 0.000118$; $\hat\sigma_2^2 = 0.94\cdot 0.000118 + 0.06\cdot 0.0009 = 0.00016492$; $\hat\sigma_3^2 = 0.94\cdot 0.00016492 + 0.06\cdot 0.0001 = 0.00016102$.
 
 | Dag | $\hat\sigma$ dagligt | $\hat\sigma$ årligt | $w$ |
 |---|---|---|---|
-| 0 | 1,000 % | 15,87 % | 0,630 |
-| 1 | 1,086 % | 17,24 % | 0,580 |
-| 2 | 1,284 % | 20,39 % | 0,491 |
-| 3 | 1,269 % | 20,14 % | 0,496 |
+| 0 | 1,000 % | 15.87 % | 0.630 |
+| 1 | 1,086 % | 17.24 % | 0.580 |
+| 2 | 1,284 % | 20.39 % | 0.491 |
+| 3 | 1,269 % | 20.14 % | 0.496 |
 
-(b) $\sum_{k\ge0}(1-\lambda)\lambda^k = (1-\lambda)\cdot\frac{1}{1-\lambda} = 1$ (geometrisk række, $0 < \lambda < 1$). Halveringstid: $\lambda^k = \tfrac12 \iff k = \ln 0{,}5/\ln 0{,}94 = 11{,}2$ dage. Gennemsnitlig alder: $\sum_k k(1-\lambda)\lambda^k = \frac{\lambda}{1-\lambda} = 15{,}7$ dage (differentiér den geometriske række: $\sum_k k\lambda^k = \lambda/(1-\lambda)^2$).
+(b) $\sum_{k\ge0}(1-\lambda)\lambda^k = (1-\lambda)\cdot\frac{1}{1-\lambda} = 1$ (geometrisk række, $0 < \lambda < 1$). Halveringstid: $\lambda^k = \tfrac12 \iff k = \ln 0.5/\ln 0.94 = 11.2$ dage. Gennemsnitlig alder: $\sum_k k(1-\lambda)\lambda^k = \frac{\lambda}{1-\lambda} = 15.7$ dage (differentiér den geometriske række: $\sum_k k\lambda^k = \lambda/(1-\lambda)^2$).
 
 (c) $r_t$ er kendt ved lukning på dag $t$, før positionen for $t+1$ fastlægges. Look-ahead ville være at bruge $r_{t+1}$ (eller et volatilitetsestimat fra hele stikprøven) til at bestemme positionen for dag $t+1$. Så ville strategien "vide", hvornår de store udsving kommer.
 
@@ -5929,11 +5929,11 @@ Value: gennemsnit $0$, kvadratsum $0{,}46$, varians $0{,}115$, $s = 0{,}3391$. z
 <details>
 <summary>Løsning 12.7</summary>
 
-(a) $K = 0{,}04$. Sælgeren får $N_{\text{var}}(K - \sigma^2_{\text{real}}) = 1\,000\,000\cdot(0{,}04 - 0{,}0225) = +17\,500$ kr.
+(a) $K = 0.04$. Sælgeren får $N_{\text{var}}(K - \sigma^2_{\text{real}}) = 1\,000\,000\cdot(0.04 - 0.0225) = +17\,500$ kr.
 
-(b) $1\,000\,000\cdot(0{,}04 - 0{,}36) = -320\,000$ kr. Ét krakår koster lige så meget som ca. 18 "normale" år giver.
+(b) $1\,000\,000\cdot(0.04 - 0.36) = -320\,000$ kr. Ét krakår koster lige så meget som ca. 18 "normale" år giver.
 
-(c) $(1-p)\cdot 17\,500 - p\cdot 320\,000 = 0 \iff p = 17\,500/337\,500 = 5{,}2\,\%$, dvs. et krak ca. hvert 19. år. Præmien er altså kun attraktiv, hvis krak er sjældnere end det, og det kan man ikke afgøre sikkert fra få årtiers data.
+(c) $(1-p)\cdot 17\,500 - p\cdot 320\,000 = 0 \iff p = 17\,500/337\,500 = 5.2\,\%$, dvs. et krak ca. hvert 19. år. Præmien er altså kun attraktiv, hvis krak er sjældnere end det, og det kan man ikke afgøre sikkert fra få årtiers data.
 
 (d) En stikprøve uden krak viser kun de små, stabile gevinster: høj SR, lav volatilitet, lille drawdown. Halerisikoen er usynlig, indtil den rammer. Negativ skævhed og høj kurtosis sænker PSR/DSR (uge 10), så rapportér altid skævhed, kurtosis og et stresstest-scenarie, ikke kun SR. Med gearing kan tabet overstige kapitalen.
 
@@ -5942,11 +5942,11 @@ Value: gennemsnit $0$, kvadratsum $0{,}46$, varians $0{,}115$, $s = 0{,}3391$. z
 <details>
 <summary>Løsning 12.8</summary>
 
-(a) $r(A) = 0{,}04 - 10\cdot 0{,}0002 - 10\cdot 0{,}00005\sqrt A = 0{,}038 - 0{,}0005\sqrt A$. $A = 100$: $3{,}80\,\% - 0{,}50\,\% = 3{,}30\,\%$. $A = 1000$: $3{,}80\,\% - 1{,}58\,\% = 2{,}22\,\%$.
+(a) $r(A) = 0.04 - 10\cdot 0.0002 - 10\cdot 0.00005\sqrt A = 0.038 - 0.0005\sqrt A$. $A = 100$: $3.80\,\% - 0.50\,\% = 3.30\,\%$. $A = 1000$: $3.80\,\% - 1.58\,\% = 2.22\,\%$.
 
-(b) $\sqrt A = 0{,}038/0{,}0005 = 76$, så $A = 5\,776$ mio. kr.
+(b) $\sqrt A = 0.038/0.0005 = 76$, så $A = 5\,776$ mio. kr.
 
-(c) Generelt: $f(A) = aA - bA^{3/2}$, $f'(A) = a - \tfrac32 b\sqrt A = 0 \iff \sqrt{A^*} = \frac{2a}{3b}$, og $r(A^*) = a - b\cdot\frac{2a}{3b} = \frac a3$ ($f'' < 0$, så det er et maksimum). Her: $\sqrt{A^*} = 50{,}67$, $A^* = 2\,567$ mio. kr., $r(A^*) = 1{,}27\,\%$ og gevinst $\approx 32{,}5$ mio. kr. om året.
+(c) Generelt: $f(A) = aA - bA^{3/2}$, $f'(A) = a - \tfrac32 b\sqrt A = 0 \iff \sqrt{A^*} = \frac{2a}{3b}$, og $r(A^*) = a - b\cdot\frac{2a}{3b} = \frac a3$ ($f'' < 0$, så det er et maksimum). Her: $\sqrt{A^*} = 50.67$, $A^* = 2\,567$ mio. kr., $r(A^*) = 1.27\,\%$ og gevinst $\approx 32.5$ mio. kr. om året.
 
 (d) Et gebyr på fx $1\,\%$ af kapitalen vokser med $A$, også efter at investorernes nettoafkast er faldet. Interessekonflikten er en grund til, at seriøse fonde lukker for ny kapital. Crowding: hvis andre handler samme signal, er det den *samlede* kapital i strategien, der skal indsættes i $\sqrt{A}$-leddet, og kapaciteten for den enkelte fond bliver mindre end beregnet. Modellen er stiliseret; den reelle impact-funktion skal estimeres (uge 15).
 
@@ -5965,7 +5965,7 @@ Value: gennemsnit $0$, kvadratsum $0{,}46$, varians $0{,}115$, $s = 0{,}3391$. z
 $$SR_p = \frac{\sum_i x_i s_i}{\sqrt{\sum_i x_i^2}} \le \frac{\lVert\mathbf x\rVert\,\lVert\mathbf s\rVert}{\lVert\mathbf x\rVert} = \sqrt{\textstyle\sum_i s_i^2}$$
 ved Cauchy–Schwarz, med lighed netop når $\mathbf x \propto \mathbf s$, dvs. $w_i \propto s_i/\sigma_i$ ($= \mu_i/\sigma_i^2$).
 
-(e) Optimal: $\sqrt{0{,}36 + 0{,}16 + 0{,}09} = \sqrt{0{,}61} = 0{,}781$. Lige risiko ($x_i$ ens): $(0{,}6 + 0{,}4 + 0{,}3)/\sqrt3 = 0{,}751$. Forskellen er kun $0{,}03$, mens standardfejlen på hvert SR-estimat er ca. $1/\sqrt{\text{år}}$ (fx $0{,}22$ for 20 år, uge 10). "Optimale" vægte på estimerede SR'er fitter altså mest støj. Lige risiko er robust og næsten lige så god. Det er samme pointe som i Q12.3.
+(e) Optimal: $\sqrt{0.36 + 0.16 + 0.09} = \sqrt{0.61} = 0.781$. Lige risiko ($x_i$ ens): $(0.6 + 0.4 + 0.3)/\sqrt3 = 0.751$. Forskellen er kun $0.03$, mens standardfejlen på hvert SR-estimat er ca. $1/\sqrt{\text{år}}$ (fx $0.22$ for 20 år, uge 10). "Optimale" vægte på estimerede SR'er fitter altså mest støj. Lige risiko er robust og næsten lige så god. Det er samme pointe som i Q12.3.
 
 </details>
 
@@ -6018,7 +6018,7 @@ uafhængig    enkelte SR:  0.61  0.41  0.65 | kombi SR= 0.98 (teori 0.87)
 høj (0,8)    enkelte SR:  0.61  0.54  0.65 | kombi SR= 0.65 (teori 0.54)
 ```
 
-Fortolkning: Alle enkeltsignaler har sand SR 0,5, men de estimerede ligger mellem 0,41 og 0,65: 20 år giver en standardfejl på ca. $0{,}22$ (uge 10). Kombinationen har sand SR $1{,}01$, $0{,}87$ og $0{,}54$ i de tre scenarier, og simulationen rammer rækkefølgen og størrelsesordenen (alle tre estimater ligger lidt over teorien, fordi de deler de samme tilfældige stød, og signal 1 tilfældigvis har en god stikprøve). Ved høj korrelation giver kombinationen næsten intet ud over gennemsnittet af enkeltsignalerne. Cholesky-faktoriseringen kræver, at korrelationsmatricen er positiv definit (uge 6), ellers fejler `math.sqrt`.
+Fortolkning: Alle enkeltsignaler har sand SR 0.5, men de estimerede ligger mellem 0.41 og 0.65: 20 år giver en standardfejl på ca. $0.22$ (uge 10). Kombinationen har sand SR $1.01$, $0.87$ og $0.54$ i de tre scenarier, og simulationen rammer rækkefølgen og størrelsesordenen (alle tre estimater ligger lidt over teorien, fordi de deler de samme tilfældige stød, og signal 1 tilfældigvis har en god stikprøve). Ved høj korrelation giver kombinationen næsten intet ud over gennemsnittet af enkeltsignalerne. Cholesky-faktoriseringen kræver, at korrelationsmatricen er positiv definit (uge 6), ellers fejler `math.sqrt`.
 
 *Valgfri variant med numpy (kræver, at numpy er installeret; bruger en anden tilfældighedsgenerator, så tallet afviger fra ovenfor):*
 
@@ -6085,7 +6085,7 @@ Køb og hold x 0.55     afkast/år= 2.52% vol=10.30% SR= 0.24 maxDD=36.01% årsv
 Volatilitetsmål 10 %   afkast/år= 3.32% vol=10.30% SR= 0.32 maxDD=33.48% årsvol  9.7%-10.9%
 ```
 
-Fortolkning: Volatilitetsmålet holder den årlige realiserede volatilitet i et smalt bånd ($9{,}7$–$10{,}9\,\%$ mod $7{,}8$–$12{,}8\,\%$ for samme gennemsnitlige risiko uden styring), og max drawdown er lidt mindre. SR stiger fra $0{,}24$ til $0{,}32$, fordi modellen har *konstant* middelafkast: når volatiliteten er høj, er kompensationen pr. risikoenhed lav, og det betaler sig at holde mindre. I rigtige markeder er sammenhængen mellem volatilitet og forventet afkast usikker, så SR-gevinsten er ikke garanteret. Stabil risiko er den robuste fordel. Bemærk, at den skalerede køb-og-hold bruger hele stikprøvens volatilitet (look-ahead) og kun er et sammenligningsgrundlag.
+Fortolkning: Volatilitetsmålet holder den årlige realiserede volatilitet i et smalt bånd ($9.7$–$10.9\,\%$ mod $7.8$–$12.8\,\%$ for samme gennemsnitlige risiko uden styring), og max drawdown er lidt mindre. SR stiger fra $0.24$ til $0.32$, fordi modellen har *konstant* middelafkast: når volatiliteten er høj, er kompensationen pr. risikoenhed lav, og det betaler sig at holde mindre. I rigtige markeder er sammenhængen mellem volatilitet og forventet afkast usikker, så SR-gevinsten er ikke garanteret. Stabil risiko er den robuste fordel. Bemærk, at den skalerede køb-og-hold bruger hele stikprøvens volatilitet (look-ahead) og kun er et sammenligningsgrundlag.
 
 </details>
 
@@ -6122,7 +6122,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 13 — Stokastisk calculus
 
 > **Læringsmål:** Forstå Brownsk bevægelse som grænse for en random walk, regne med kvadratisk variation og Itô-integralet, anvende Itôs lemma og løse de to vigtigste SDE'er i finans: geometrisk Brownsk bevægelse og Ornstein–Uhlenbeck. Simulere dem med Euler–Maruyama.
-> **Tidsforbrug:** ca. 4 t video (+ ca. 1,5 t valgfri) · ca. 5 t øvelser
+> **Tidsforbrug:** ca. 4 t video (+ ca. 1.5 t valgfri) · ca. 5 t øvelser
 > **Forudsætninger:** Uge 2 (log-afkast, $\sqrt{252}$-reglen), uge 3–4 (normalfordeling, kovarians, CLT, betinget forventning), uge 9 (AR(1), stationaritet), uge 11 (mean reversion/pairs). Fra Foundations: grænseværdier og præcise definitioner.
 
 ### 📺 Se
@@ -6210,7 +6210,7 @@ $$S_t = S_0 \exp\!\Big( \big(\mu - \tfrac12 \sigma^2\big) t + \sigma W_t \Big).$
 
 Konsekvenser: $S_t > 0$; log-afkast over $\Delta t$ er iid $N\big((\mu - \tfrac12\sigma^2)\Delta t,\ \sigma^2 \Delta t\big)$ (så $\sigma_{\text{ann}} = \sigma_{\text{daily}}\sqrt{252}$ holder eksakt i modellen); med $E[e^{\sigma W_t}] = e^{\sigma^2 t/2}$ fås $E[S_t] = S_0 e^{\mu t}$, mens medianen er $S_0 e^{(\mu - \sigma^2/2)t}$. Forskellen $\sigma^2/2$ kaldes **volatility drag**: den typiske sti vokser langsommere end middelværdien.
 
-*Taleksempel.* $S_0 = 100$ dollar, $\mu = 0{,}08$, $\sigma = 0{,}20$, $T = 1$: $\ln S_T \sim N(\ln 100 + 0{,}06,\ 0{,}04)$. $E[S_T] = 100e^{0{,}08} = 108{,}33$ dollar, median $= 100 e^{0{,}06} = 106{,}18$ dollar, og $P(S_T < 100) = \Phi(-0{,}06/0{,}20) = \Phi(-0{,}3) = 0{,}382$. Selv med positiv drift ender kursen under startværdien i 38 % af tilfældene efter et år — i modellen. (Illustrative parametre, ikke en prognose.)
+*Taleksempel.* $S_0 = 100$ dollar, $\mu = 0.08$, $\sigma = 0.20$, $T = 1$: $\ln S_T \sim N(\ln 100 + 0.06,\ 0.04)$. $E[S_T] = 100e^{0.08} = 108.33$ dollar, median $= 100 e^{0.06} = 106.18$ dollar, og $P(S_T < 100) = \Phi(-0.06/0.20) = \Phi(-0.3) = 0.382$. Selv med positiv drift ender kursen under startværdien i 38 % af tilfældene efter et år — i modellen. (Illustrative parametre, ikke en prognose.)
 
 **7. Ornstein–Uhlenbeck (OU): mean reversion i kontinuert tid.**
 
@@ -6238,21 +6238,21 @@ Det er Itô-integralets venstre-endepunkts-sum, brugt som algoritme. Under passe
 
 ### ✏️ Øvelser
 
-**13.1** ★ — Lad $S_n$ være den symmetriske random walk og $W^{(n)}_t = S_{\lfloor nt \rfloor}/\sqrt{n}$. (a) Vis $E[S_n] = 0$ og $\operatorname{Var}(S_n) = n$. (b) Beregn $\operatorname{Var}(W^{(n)}_{0{,}5})$ for $n = 100$ og $n = 101$. (c) Approksimér $P(S_{100} \ge 10)$ med CLT, med og uden kontinuitetskorrektion, og sammenlign med den eksakte værdi $0{,}1841$. (d) Hvad går galt, hvis man skalerer med $1/n$ i stedet for $1/\sqrt{n}$?
+**13.1** ★ — Lad $S_n$ være den symmetriske random walk og $W^{(n)}_t = S_{\lfloor nt \rfloor}/\sqrt{n}$. (a) Vis $E[S_n] = 0$ og $\operatorname{Var}(S_n) = n$. (b) Beregn $\operatorname{Var}(W^{(n)}_{0.5})$ for $n = 100$ og $n = 101$. (c) Approksimér $P(S_{100} \ge 10)$ med CLT, med og uden kontinuitetskorrektion, og sammenlign med den eksakte værdi $0.1841$. (d) Hvad går galt, hvis man skalerer med $1/n$ i stedet for $1/\sqrt{n}$?
 
 **13.2** ★ — Lad $W$ være en Brownsk bevægelse. (a) Hvilken fordeling har $W_3 - W_1$? (b) Beregn $\operatorname{Cov}(W_2, W_5)$ og $\operatorname{Corr}(W_2, W_5)$. (c) Beregn $\operatorname{Var}(W_1 + W_3)$. (d) Beregn $P(W_4 > 2)$. (e) Beregn $P(W_2 > 0 \text{ og } W_3 - W_2 > 0)$. (f) Vis, at $X_t = 2 W_{t/4}$ har samme varians og kovariansfunktion som en Brownsk bevægelse.
 
 **13.3** ★ — Brug Itôs lemma. (a) Find $d(W_t^3)$ og $d(W_t^4)$. (b) Tag forventning i den integrerede form af $d(W_t^4)$ og vis $E[W_t^4] = 3t^2$. (c) Find $d(tW_t)$ og udled $\int_0^t s\, dW_s = tW_t - \int_0^t W_s\, ds$. (d) Lad $S$ være en GBM. Find $d(S_t^2)$ og vis, at $S^2$ igen er en GBM; angiv dens drift og volatilitet.
 
-**13.4** ★ — GBM med $S_0 = 100$ dollar, $\mu = 0{,}08$, $\sigma = 0{,}20$. (a) Hvad er den daglige volatilitet af log-afkast? (b) Angiv fordelingen af $\ln S_T$ for $T = 2$, og beregn $E[S_2]$, medianen af $S_2$ og $P(S_2 < 100)$. (c) Et (hypotetisk) aktiv har $\mu = 0{,}10$ og $\sigma = 0{,}45$. Beregn vækstraten for medianen. Hvad siger det om "forventet afkast" som eneste mål? (Knytter an til Kelly-kriteriet og gearing senere i planen.)
+**13.4** ★ — GBM med $S_0 = 100$ dollar, $\mu = 0.08$, $\sigma = 0.20$. (a) Hvad er den daglige volatilitet af log-afkast? (b) Angiv fordelingen af $\ln S_T$ for $T = 2$, og beregn $E[S_2]$, medianen af $S_2$ og $P(S_2 < 100)$. (c) Et (hypotetisk) aktiv har $\mu = 0.10$ og $\sigma = 0.45$. Beregn vækstraten for medianen. Hvad siger det om "forventet afkast" som eneste mål? (Knytter an til Kelly-kriteriet og gearing senere i planen.)
 
 **13.5** ★★ — Lad $s < t$. Vis med uafhængige tilvækster: (a) $E[W_t \mid \mathcal{F}_s] = W_s$. (b) $W_t^2 - t$ er en martingal. (c) $M_t = \exp\big(\sigma W_t - \tfrac12 \sigma^2 t\big)$ er en martingal. (d) Brug (c) til at vise, at $e^{-\mu t} S_t$ er en martingal, når $S$ er en GBM med drift $\mu$. (bruges i uge 14 med $\mu = r$)
 
-**13.6** ★★ — Kvadratisk og total variation. (a) Vis $E[Q_n] = t$ og $\operatorname{Var}(Q_n) = 2t^2/n$. (b) Brug Chebyshev til at give en øvre grænse for $P(\lvert Q_n - t \rvert > 0{,}1)$, når $t = 1$, $n = 10\,000$. (c) Vis, at en funktion $f \in C^1[0,t]$ har $\sum_i (f(t_{i+1}) - f(t_i))^2 \to 0$. (d) Vis $E\big[\sum_i \lvert \Delta W_i \rvert\big] = \sqrt{2nt/\pi}$ (brug $E\lvert Z\rvert = \sqrt{2/\pi}$). (e) Argumentér for, at en kontinuert sti med endelig total variation må have kvadratisk variation 0. Hvad følger for $W$?
+**13.6** ★★ — Kvadratisk og total variation. (a) Vis $E[Q_n] = t$ og $\operatorname{Var}(Q_n) = 2t^2/n$. (b) Brug Chebyshev til at give en øvre grænse for $P(\lvert Q_n - t \rvert > 0.1)$, når $t = 1$, $n = 10\,000$. (c) Vis, at en funktion $f \in C^1[0,t]$ har $\sum_i (f(t_{i+1}) - f(t_i))^2 \to 0$. (d) Vis $E\big[\sum_i \lvert \Delta W_i \rvert\big] = \sqrt{2nt/\pi}$ (brug $E\lvert Z\rvert = \sqrt{2/\pi}$). (e) Argumentér for, at en kontinuert sti med endelig total variation må have kvadratisk variation 0. Hvad følger for $W$?
 
 **13.7** ★★ — Tre Riemann-summer for $\int_0^t W\, dW$. (a) Bevis identiteten $a(b-a) = \tfrac12(b^2 - a^2) - \tfrac12(b-a)^2$ og udled grænsen af venstre-summen $L_n = \sum W_{t_i}\Delta W_i$. (b) Vis, at højre-summen $R_n = \sum W_{t_{i+1}}\Delta W_i$ opfylder $R_n = L_n + Q_n$, og find grænsen. (c) Vis, at trapez-summen $\sum \tfrac12(W_{t_i} + W_{t_{i+1}})\Delta W_i$ er præcis $\tfrac12 W_t^2$. (d) Beregn $E[L_n]$ og $E[R_n]$. Hvilken af summerne kan en trader realisere, og hvorfor?
 
-**13.8** ★★ — Ornstein–Uhlenbeck. (a) Brug Itô på $Y_t = e^{\kappa t} X_t$ til at løse $dX = \kappa(\theta - X)\,dt + \sigma\,dW$. (b) Udled $E[X_t]$ og $\operatorname{Var}(X_t)$ (brug Itô-isometrien) og den stationære fordeling. (c) Med $\kappa = 5$ pr. år, $\theta = 0$, $\sigma = 0{,}10$: find halveringstiden i handelsdage, den stationære standardafvigelse og AR(1)-koefficienten $\phi$ for daglige observationer. (d) På et (simuleret) dagligt spread estimeres $\hat\phi = 0{,}98$. Find $\hat\kappa$ og halveringstiden i dage. (binder tilbage til pairs-trading i uge 11)
+**13.8** ★★ — Ornstein–Uhlenbeck. (a) Brug Itô på $Y_t = e^{\kappa t} X_t$ til at løse $dX = \kappa(\theta - X)\,dt + \sigma\,dW$. (b) Udled $E[X_t]$ og $\operatorname{Var}(X_t)$ (brug Itô-isometrien) og den stationære fordeling. (c) Med $\kappa = 5$ pr. år, $\theta = 0$, $\sigma = 0.10$: find halveringstiden i handelsdage, den stationære standardafvigelse og AR(1)-koefficienten $\phi$ for daglige observationer. (d) På et (simuleret) dagligt spread estimeres $\hat\phi = 0.98$. Find $\hat\kappa$ og halveringstiden i dage. (binder tilbage til pairs-trading i uge 11)
 
 **13.9** ★★★ — Itô-isometrien. (a) Lad $H$ være en simpel tilpasset proces: $H_s = h_i$ for $s \in [t_i, t_{i+1})$, hvor $h_i$ kun afhænger af information til tid $t_i$ og $E[h_i^2] < \infty$. Vis $E\big[\big(\sum_i h_i \Delta W_i\big)^2\big] = \sum_i E[h_i^2]\,\Delta t_i$. (b) Brug isometrien (accepter overgangen til grænsen) til at beregne $\operatorname{Var}\big(\int_0^t W\, dW\big)$. (c) Kontrollér resultatet direkte via $\int_0^t W\,dW = (W_t^2 - t)/2$ og øvelse 13.3. (d) Hvor i (a) brugte du, at $h_i$ er tilpasset? Giv et modeksempel, hvor $h_i$ "kigger ind i fremtiden".
 
@@ -6260,7 +6260,7 @@ Det er Itô-integralets venstre-endepunkts-sum, brugt som algoritme. Under passe
 
 **13.11** ★★ 💻 — Simulér en Brownsk sti på $[0,1]$ på et gitter med $2n$ skridt, $n = 10\,000$ (`random.seed(7)`). Brug de lige indeks som inddelingspunkter og de ulige som midtpunkter. Beregn venstre-, midtpunkts- og højre-summen for $\int_0^1 W\,dW$ og sammenlign med $(W_1^2 - 1)/2$, $W_1^2/2$ og $(W_1^2+1)/2$. Forklar midtpunktsresultatet teoretisk.
 
-**13.12** ★★ 💻 — GBM med $S_0 = 100$, $\mu = 0{,}08$, $\sigma = 0{,}2$, $T = 1$. Simulér 10 000 stier (`random.seed(2026)`) med Euler–Maruyama for $n = 1, 10, 100$ skridt, og beregn på *de samme* Brownske tilvækster den eksakte løsning. Rapportér gennemsnittet af $S_T$ for begge metoder og den gennemsnitlige absolutte forskel. Sammenlign med $E[S_T] = 100e^{0{,}08}$, og forklar forskellen mellem stærk og svag fejl.
+**13.12** ★★ 💻 — GBM med $S_0 = 100$, $\mu = 0.08$, $\sigma = 0.2$, $T = 1$. Simulér 10 000 stier (`random.seed(2026)`) med Euler–Maruyama for $n = 1, 10, 100$ skridt, og beregn på *de samme* Brownske tilvækster den eksakte løsning. Rapportér gennemsnittet af $S_T$ for begge metoder og den gennemsnitlige absolutte forskel. Sammenlign med $E[S_T] = 100e^{0.08}$, og forklar forskellen mellem stærk og svag fejl.
 
 **13.13** ★★ 🗣️ — Skriv ca. en halv side: "Er geometrisk Brownsk bevægelse en god model for aktiekurser?" Diskutér hvad modellen fanger, hvad den overser (brug uge 9), og hvilke konsekvenser det får for optionsprisfastsættelse (uge 14) og risikostyring (uge 16).
 
@@ -6271,9 +6271,9 @@ Det er Itô-integralets venstre-endepunkts-sum, brugt som algoritme. Under passe
 
 (a) Linearitet: $E[S_n] = \sum E[X_i] = 0$. Uafhængighed: $\operatorname{Var}(S_n) = \sum \operatorname{Var}(X_i) = n \cdot (E[X_i^2] - 0) = n$.
 
-(b) $n = 100$: $\lfloor 50 \rfloor = 50$, $\operatorname{Var} = 50/100 = 0{,}5$. $n = 101$: $\lfloor 50{,}5 \rfloor = 50$, $\operatorname{Var} = 50/101 = 0{,}495$. Begge går mod $t = 0{,}5$.
+(b) $n = 100$: $\lfloor 50 \rfloor = 50$, $\operatorname{Var} = 50/100 = 0.5$. $n = 101$: $\lfloor 50.5 \rfloor = 50$, $\operatorname{Var} = 50/101 = 0.495$. Begge går mod $t = 0.5$.
 
-(c) Uden korrektion: $P(S_{100} \ge 10) \approx P(Z \ge 10/\sqrt{100}) = 1 - \Phi(1) = 0{,}1587$. $S_{100}$ tager kun lige værdier, så $\{S_{100} \ge 10\} = \{S_{100} > 8\}$; midtpunktet er 9: $P(Z \ge 0{,}9) = 0{,}1841$. Eksakt: $S_{100} = 2B - 100$ med $B \sim \text{Bin}(100, \tfrac12)$, så $P(B \ge 55) = 0{,}1841$. Korrektionen rammer næsten præcist.
+(c) Uden korrektion: $P(S_{100} \ge 10) \approx P(Z \ge 10/\sqrt{100}) = 1 - \Phi(1) = 0.1587$. $S_{100}$ tager kun lige værdier, så $\{S_{100} \ge 10\} = \{S_{100} > 8\}$; midtpunktet er 9: $P(Z \ge 0.9) = 0.1841$. Eksakt: $S_{100} = 2B - 100$ med $B \sim \text{Bin}(100, \tfrac12)$, så $P(B \ge 55) = 0.1841$. Korrektionen rammer næsten præcist.
 
 (d) Med $1/n$ er $\operatorname{Var}(S_{\lfloor nt\rfloor}/n) \approx t/n \to 0$: grænsen er konstant 0 (store tals lov). Med $n^{-\alpha}$, $\alpha < \tfrac12$, eksploderer variansen. Kun $\alpha = \tfrac12$ giver en ikke-triviel grænse.
 
@@ -6284,11 +6284,11 @@ Det er Itô-integralets venstre-endepunkts-sum, brugt som algoritme. Under passe
 
 (a) $W_3 - W_1 \sim N(0, 2)$.
 
-(b) $\operatorname{Cov}(W_2, W_5) = \min(2,5) = 2$; $\operatorname{Corr} = 2/\sqrt{2 \cdot 5} = 0{,}632$.
+(b) $\operatorname{Cov}(W_2, W_5) = \min(2,5) = 2$; $\operatorname{Corr} = 2/\sqrt{2 \cdot 5} = 0.632$.
 
 (c) $\operatorname{Var}(W_1 + W_3) = 1 + 3 + 2\operatorname{Cov}(W_1, W_3) = 4 + 2 = 6$. (Alternativt: $W_1 + W_3 = 2W_1 + (W_3 - W_1)$ giver $4 + 2 = 6$.)
 
-(d) $W_4 \sim N(0,4)$: $P(W_4 > 2) = P(Z > 1) = 0{,}1587$.
+(d) $W_4 \sim N(0,4)$: $P(W_4 > 2) = P(Z > 1) = 0.1587$.
 
 (e) $W_2$ og $W_3 - W_2$ er uafhængige og symmetriske om 0: $\tfrac12 \cdot \tfrac12 = \tfrac14$.
 
@@ -6313,13 +6313,13 @@ $d(S^2) = 2S\,dS + (dS)^2 = (2\mu + \sigma^2) S^2\,dt + 2\sigma S^2\,dW$. Så $S
 <details>
 <summary>Løsning 13.4</summary>
 
-(a) $\sigma_{\text{daily}} = 0{,}20/\sqrt{252} = 0{,}0126$, dvs. ca. 1,26 % pr. dag.
+(a) $\sigma_{\text{daily}} = 0.20/\sqrt{252} = 0.0126$, dvs. ca. 1.26 % pr. dag.
 
-(b) $\ln S_2 \sim N\big(\ln 100 + (0{,}08 - 0{,}02)\cdot 2,\ 0{,}04 \cdot 2\big) = N(\ln 100 + 0{,}12,\ 0{,}08)$.
-$E[S_2] = 100e^{0{,}16} = 117{,}35$ dollar. Median $= 100e^{0{,}12} = 112{,}75$ dollar.
-$P(S_2 < 100) = \Phi\big(-0{,}12/\sqrt{0{,}08}\big) = \Phi(-0{,}424) = 0{,}336$.
+(b) $\ln S_2 \sim N\big(\ln 100 + (0.08 - 0.02)\cdot 2,\ 0.04 \cdot 2\big) = N(\ln 100 + 0.12,\ 0.08)$.
+$E[S_2] = 100e^{0.16} = 117.35$ dollar. Median $= 100e^{0.12} = 112.75$ dollar.
+$P(S_2 < 100) = \Phi\big(-0.12/\sqrt{0.08}\big) = \Phi(-0.424) = 0.336$.
 
-(c) Medianens vækstrate er $\mu - \sigma^2/2 = 0{,}10 - 0{,}10125 = -0{,}00125$, altså $-0{,}125$ % pr. år. Middelværdien vokser 10 % om året, men den typiske sti står stille eller falder; middelværdien trækkes op af få meget gode stier. Høj volatilitet koster vækst — derfor er gearing farlig (højere $\sigma$), og derfor maksimerer Kelly-kriteriet netop $\mu - \sigma^2/2$-agtige størrelser i stedet for $\mu$.
+(c) Medianens vækstrate er $\mu - \sigma^2/2 = 0.10 - 0.10125 = -0.00125$, altså $-0.125$ % pr. år. Middelværdien vokser 10 % om året, men den typiske sti står stille eller falder; middelværdien trækkes op af få meget gode stier. Høj volatilitet koster vækst — derfor er gearing farlig (højere $\sigma$), og derfor maksimerer Kelly-kriteriet netop $\mu - \sigma^2/2$-agtige størrelser i stedet for $\mu$.
 
 </details>
 
@@ -6343,7 +6343,7 @@ Skriv $W_t = W_s + D$ med $D = W_t - W_s \sim N(0, t-s)$ uafhængig af $\mathcal
 
 (a) $\Delta W_i = \sqrt{\Delta t}\,Z_i$, så $E[Q_n] = n\Delta t = t$ og $\operatorname{Var}(Q_n) = n (\Delta t)^2 \operatorname{Var}(Z^2) = n (t/n)^2 \cdot 2 = 2t^2/n$.
 
-(b) $P(\lvert Q_n - 1\rvert > 0{,}1) \le \dfrac{2/10\,000}{0{,}01} = 0{,}02$.
+(b) $P(\lvert Q_n - 1\rvert > 0.1) \le \dfrac{2/10\,000}{0.01} = 0.02$.
 
 (c) Middelværdisætningen: $\lvert f(t_{i+1}) - f(t_i)\rvert \le M \Delta t$ med $M = \max\lvert f'\rvert$. Summen er højst $n M^2 (\Delta t)^2 = M^2 t^2/n \to 0$.
 
@@ -6375,9 +6375,9 @@ Integrér: $e^{\kappa t}X_t = X_0 + \theta(e^{\kappa t} - 1) + \sigma\int_0^t e^
 
 (b) Itô-integralet har middelværdi 0: $E[X_t] = \theta + (X_0 - \theta)e^{-\kappa t}$. Isometrien: $\operatorname{Var}(X_t) = \sigma^2\int_0^t e^{-2\kappa(t-s)}\,ds = \frac{\sigma^2}{2\kappa}(1 - e^{-2\kappa t})$. Integralet af en deterministisk funktion mod $dW$ er normalfordelt, så for $t \to \infty$: $X_t \to N(\theta, \sigma^2/(2\kappa))$ i fordeling.
 
-(c) Halveringstid $\ln 2/5 = 0{,}1386$ år $= 34{,}9$ handelsdage. Stationær sd $= 0{,}10/\sqrt{10} = 0{,}0316$. $\phi = e^{-5/252} = 0{,}9804$.
+(c) Halveringstid $\ln 2/5 = 0.1386$ år $= 34.9$ handelsdage. Stationær sd $= 0.10/\sqrt{10} = 0.0316$. $\phi = e^{-5/252} = 0.9804$.
 
-(d) $\hat\kappa = -\ln(0{,}98)\cdot 252 = 0{,}02020 \cdot 252 = 5{,}09$ pr. år. Halveringstid i dage: $\ln 2/(-\ln 0{,}98) = 34{,}3$ dage. Bemærk: $\hat\phi$ tæt på 1 har stor estimationsusikkerhed (uge 9: enhedsrods-problemet), så halveringstiden er meget usikker.
+(d) $\hat\kappa = -\ln(0.98)\cdot 252 = 0.02020 \cdot 252 = 5.09$ pr. år. Halveringstid i dage: $\ln 2/(-\ln 0.98) = 34.3$ dage. Bemærk: $\hat\phi$ tæt på 1 har stor estimationsusikkerhed (uge 9: enhedsrods-problemet), så halveringstiden er meget usikker.
 
 </details>
 
@@ -6463,7 +6463,7 @@ midtpunkt-sum    = 0.2107   W_T^2/2       = 0.2118
 hoejre-sum       = 0.6999   (W_T^2 + T)/2 = 0.7118
 ```
 
-Venstre- og højre-summens afvigelser (ca. 0,012) skyldes, at $Q_n = 0{,}976$ på denne sti i stedet for præcis 1; de forsvinder for $n \to \infty$.
+Venstre- og højre-summens afvigelser (ca. 0.012) skyldes, at $Q_n = 0.976$ på denne sti i stedet for præcis 1; de forsvinder for $n \to \infty$.
 
 *Teori for midtpunktet.* Skriv $W_{m_i} = W_{t_i} + A_i$ og $W_{t_{i+1}} = W_{m_i} + B_i$, hvor $A_i, B_i \sim N(0, \Delta t/2)$ er uafhængige. Så er $\sum W_{m_i}\Delta W_i = L_n + \sum A_i(A_i + B_i) = L_n + \sum A_i^2 + \sum A_i B_i$. Her går $\sum A_i^2 \to t/2$ (kvadratisk variation over halvdelen af tiden) og $\sum A_i B_i \to 0$ (middelværdi 0, varians $n(\Delta t/2)^2 \to 0$). Altså $\to \tfrac12(W_t^2 - t) + \tfrac12 t = \tfrac12 W_t^2$.
 
@@ -6505,7 +6505,7 @@ n= 10  E_EM=108.4686  E_eksakt=108.4930  gns|EM-eksakt|=0.7542
 n=100  E_EM=108.5180  E_eksakt=108.5216  gns|EM-eksakt|=0.2465
 ```
 
-*Fortolkning.* Den **stærke fejl** (stifejlen $E\lvert S^{EM}_T - S_T\rvert$) falder med ca. faktor $\sqrt{10} \approx 3{,}2$ for hver tidobling af $n$: orden $\tfrac12$. Den **svage fejl** (fejl i $E[S_T]$) kan regnes eksakt, fordi $E[S^{EM}_T] = 100(1 + \mu\Delta t)^n$: for $n = 1$ er den $100(1{,}08 - e^{0{,}08}) = -0{,}33$. I outputtet ses den som $E_{EM} - E_{\text{eksakt}} = -0{,}31$ ved $n = 1$ (begge metoder bruger samme stier, så Monte Carlo-støjen går næsten ud). Den falder som $1/n$ (teoretisk $-0{,}035$ ved $n = 10$ og $-0{,}004$ ved $n = 100$; i outputtet $-0{,}024$ og $-0{,}004$) og drukner hurtigt i Monte Carlo-støjen. Monte Carlo-standardfejlen er ca. $\operatorname{sd}(S_T)/\sqrt{10\,000} \approx 21{,}9/100 \approx 0{,}22$, hvilket forklarer, at de eksakte gennemsnit afviger op til ca. 0,2 fra 108,33 (hvert $n$ bruger nye tilfældige tal). Til optionsprisfastsættelse er den svage fejl den relevante; til stiafhængige ting som hedging er den stærke vigtigere.
+*Fortolkning.* Den **stærke fejl** (stifejlen $E\lvert S^{EM}_T - S_T\rvert$) falder med ca. faktor $\sqrt{10} \approx 3.2$ for hver tidobling af $n$: orden $\tfrac12$. Den **svage fejl** (fejl i $E[S_T]$) kan regnes eksakt, fordi $E[S^{EM}_T] = 100(1 + \mu\Delta t)^n$: for $n = 1$ er den $100(1.08 - e^{0.08}) = -0.33$. I outputtet ses den som $E_{EM} - E_{\text{eksakt}} = -0.31$ ved $n = 1$ (begge metoder bruger samme stier, så Monte Carlo-støjen går næsten ud). Den falder som $1/n$ (teoretisk $-0.035$ ved $n = 10$ og $-0.004$ ved $n = 100$; i outputtet $-0.024$ og $-0.004$) og drukner hurtigt i Monte Carlo-støjen. Monte Carlo-standardfejlen er ca. $\operatorname{sd}(S_T)/\sqrt{10\,000} \approx 21.9/100 \approx 0.22$, hvilket forklarer, at de eksakte gennemsnit afviger op til ca. 0.2 fra 108.33 (hvert $n$ bruger nye tilfældige tal). Til optionsprisfastsættelse er den svage fejl den relevante; til stiafhængige ting som hedging er den stærke vigtigere.
 
 </details>
 
@@ -6637,7 +6637,7 @@ Black–Scholes-formlen løser PDE'en med $g(S) = (S-K)^+$ (tjekkes numerisk i �
 | Vega | $\partial C/\partial\sigma$ | $S\varphi(d_1)\sqrt\tau$ |
 | Theta $\Theta$ | $\partial C/\partial t$ | $-S\varphi(d_1)\sigma/(2\sqrt\tau) - rKe^{-r\tau}N(d_2)$ |
 
-*Taleksempel* ($S = K = 100$, $r = 0{,}05$, $\sigma = 0{,}20$, $T = 1$): $d_1 = 0{,}35$, $d_2 = 0{,}15$, $N(d_1) = 0{,}6368$, $N(d_2) = 0{,}5596$, $C = 63{,}68 - 95{,}12\cdot 0{,}5596 = 10{,}45$, $P = 5{,}57$. $\Gamma = 0{,}01876$, vega $= 37{,}52$ (dvs. $+0{,}375$ pr. volatilitetspoint), $\Theta = -6{,}41$ pr. år $\approx -0{,}0255$ pr. handelsdag.
+*Taleksempel* ($S = K = 100$, $r = 0.05$, $\sigma = 0.20$, $T = 1$): $d_1 = 0.35$, $d_2 = 0.15$, $N(d_1) = 0.6368$, $N(d_2) = 0.5596$, $C = 63.68 - 95.12\cdot 0.5596 = 10.45$, $P = 5.57$. $\Gamma = 0.01876$, vega $= 37.52$ (dvs. $+0.375$ pr. volatilitetspoint), $\Theta = -6.41$ pr. år $\approx -0.0255$ pr. handelsdag.
 
 **10. Delta-hedging og gamma-P&L.** Køb optionen, sælg $\Delta$ aktier, og finansier resten til $r$. Med Taylor og PDE'en (med den implicitte volatilitet $\sigma_i$, som optionen er købt til) bliver P&L over $dt$ (øvelse 14.8):
 
@@ -6661,31 +6661,31 @@ Den delta-hedgede long-option er altså et væddemål på, at den *realiserede* 
 
 ### ✏️ Øvelser
 
-**14.1** ★ — En aktie uden udbytte koster $S_0 = 100$ dollar, $r = 3\,\%$ (kontinuert), $T = 0{,}5$ år. (a) Find forwardprisen. (b) En modpart kvoterer $F = 103$. Konstruér en arbitrage og find den sikre gevinst ved $T$. (c) Samme spørgsmål for $F = 100$. (d) Find $F$, hvis aktien har et kontinuert udbytteafkast $\delta = 2\,\%$. (e) Nævn to friktioner, der i praksis gør, at forwardprisen kan ligge i et bånd omkring den teoretiske værdi.
+**14.1** ★ — En aktie uden udbytte koster $S_0 = 100$ dollar, $r = 3\,\%$ (kontinuert), $T = 0.5$ år. (a) Find forwardprisen. (b) En modpart kvoterer $F = 103$. Konstruér en arbitrage og find den sikre gevinst ved $T$. (c) Samme spørgsmål for $F = 100$. (d) Find $F$, hvis aktien har et kontinuert udbytteafkast $\delta = 2\,\%$. (e) Nævn to friktioner, der i praksis gør, at forwardprisen kan ligge i et bånd omkring den teoretiske værdi.
 
-**14.2** ★ — $S_0 = K = 100$, $r = 5\,\%$, $T = 1$, og callen koster $C = 10{,}45$. (a) Udfyld payoff og gevinst (ignorér renter på præmien) ved $S_T \in \{80, 100, 120\}$ for long call, short call og long put (med putprisen fra (b)). (b) Find putprisen med put–call-paritet. (c) Putten handles til $6{,}50$. Konstruér en arbitrage, og angiv gevinsten i dag. (d) Hvorfor er en short call langt mere risikabel end en long call, selv om de har "samme" payoff-diagram spejlet?
+**14.2** ★ — $S_0 = K = 100$, $r = 5\,\%$, $T = 1$, og callen koster $C = 10.45$. (a) Udfyld payoff og gevinst (ignorér renter på præmien) ved $S_T \in \{80, 100, 120\}$ for long call, short call og long put (med putprisen fra (b)). (b) Find putprisen med put–call-paritet. (c) Putten handles til $6.50$. Konstruér en arbitrage, og angiv gevinsten i dag. (d) Hvorfor er en short call langt mere risikabel end en long call, selv om de har "samme" payoff-diagram spejlet?
 
-**14.3** ★ — Én periode: $S = 100$, $u = 1{,}2$, $d = 0{,}9$, $r = 5\,\%$ pr. periode (kontinuert), call med $K = 100$. (a) Tjek no-arbitrage-betingelsen. (b) Find den replikerende portefølje $(\Delta, B)$ og callens pris. (c) Find $q$ og bekræft prisen med risikoneutral prisfastsættelse. (d) Prisfastsæt putten med samme strike i træet, og tjek put–call-paritet. (e) Den virkelige sandsynlighed for en op-bevægelse er $p = 0{,}7$. Ændrer det prisen? Hvorfor ikke?
+**14.3** ★ — Én periode: $S = 100$, $u = 1.2$, $d = 0.9$, $r = 5\,\%$ pr. periode (kontinuert), call med $K = 100$. (a) Tjek no-arbitrage-betingelsen. (b) Find den replikerende portefølje $(\Delta, B)$ og callens pris. (c) Find $q$ og bekræft prisen med risikoneutral prisfastsættelse. (d) Prisfastsæt putten med samme strike i træet, og tjek put–call-paritet. (e) Den virkelige sandsynlighed for en op-bevægelse er $p = 0.7$. Ændrer det prisen? Hvorfor ikke?
 
-**14.4** ★ — Black–Scholes med $S = K = 100$, $r = 0{,}05$, $\sigma = 0{,}20$, $T = 1$. (a) Beregn $d_1, d_2$, $C$ og $P$ (begge med formlen) og tjek paritet. (b) Beregn $\Delta, \Gamma$, vega og $\Theta$ for callen. (c) Tjek numerisk, at $\Theta + \tfrac12\sigma^2S^2\Gamma + rS\Delta - rC = 0$. (d) Fortolk: hvor mange aktier skal en market maker, der har solgt 100 calls, holde for at være delta-neutral? Hvad koster én handelsdag i tidsværdi, og hvad giver ét volatilitetspoint?
+**14.4** ★ — Black–Scholes med $S = K = 100$, $r = 0.05$, $\sigma = 0.20$, $T = 1$. (a) Beregn $d_1, d_2$, $C$ og $P$ (begge med formlen) og tjek paritet. (b) Beregn $\Delta, \Gamma$, vega og $\Theta$ for callen. (c) Tjek numerisk, at $\Theta + \tfrac12\sigma^2S^2\Gamma + rS\Delta - rC = 0$. (d) Fortolk: hvor mange aktier skal en market maker, der har solgt 100 calls, holde for at være delta-neutral? Hvad koster én handelsdag i tidsværdi, og hvad giver ét volatilitetspoint?
 
 **14.5** ★★ — Bevis ved no-arbitrage (aktie uden udbytte, $r > 0$): (a) $C \le S_0$. (b) $C \ge S_0 - Ke^{-rT}$, og dermed $C \ge \max(S_0 - Ke^{-rT}, 0)$. (c) Det er aldrig optimalt at udnytte en amerikansk call før tid, så $C_{\text{am}} = C_{\text{eu}}$. (d) Vis $P \ge Ke^{-rT} - S_0$, og forklar intuitivt, hvorfor argumentet i (c) *ikke* virker for en amerikansk put.
 
-**14.6** ★★ — CRR-træ med $n = 2$: $S_0 = K = 100$, $r = 0{,}05$, $\sigma = 0{,}20$, $T = 1$. (a) Beregn $u, d, q$ og alle aktiekurser i træet. (b) Prisfastsæt den europæiske call, og angiv delta i rod-knuden og i op-knuden. (c) Prisfastsæt den europæiske put, og tjek paritet. (d) Prisfastsæt den amerikanske put. I hvilken knude udnyttes den før tid? (e) Sammenlign med Black–Scholes (øvelse 14.4) og kommentér.
+**14.6** ★★ — CRR-træ med $n = 2$: $S_0 = K = 100$, $r = 0.05$, $\sigma = 0.20$, $T = 1$. (a) Beregn $u, d, q$ og alle aktiekurser i træet. (b) Prisfastsæt den europæiske call, og angiv delta i rod-knuden og i op-knuden. (c) Prisfastsæt den europæiske put, og tjek paritet. (d) Prisfastsæt den amerikanske put. I hvilken knude udnyttes den før tid? (e) Sammenlign med Black–Scholes (øvelse 14.4) og kommentér.
 
 **14.7** ★★ — Black–Scholes-PDE'en og martingaler. (a) Vis, at $V(t,S) = S$ og $V(t,S) = Ke^{-r(T-t)}$ begge løser Black–Scholes-PDE'en, og forklar, hvorfor det giver mening økonomisk. (b) Brug linearitet og (a) til at vise, at put–call-paritet også følger af PDE'en. (c) Vis med Itô (uge 13), at $e^{-rt}V(t, S_t)$ har drift $0$ under $Q$ (dvs. når $dS = rS\,dt + \sigma S\,dW^Q$), hvis $V$ løser PDE'en. (d) Hvad betyder (c) for formlen $V_0 = e^{-rT}E^Q[g(S_T)]$?
 
-**14.8** ★★ — Gamma-P&L. Du køber callen fra øvelse 14.4 til implicit volatilitet $\sigma_i = 20\,\%$ og delta-hedger kontinuert. (a) Udled $d\,\text{P\&L} = \tfrac12\Gamma S^2[(dS/S)^2 - \sigma_i^2\,dt]$ for porteføljen "long call, short $\Delta$ aktier, finansieret til $r$" ved Taylor og PDE'en. (b) Antag, at $\Gamma$ og $S$ er konstante. Beregn den forventede P&L pr. handelsdag og over et år, hvis den realiserede volatilitet bliver 25 %, og hvis den bliver 15 %. (c) Sammenlign med $C(\sigma = 0{,}25) - C(0{,}20) = 1{,}885$ og $C(0{,}15) - C(0{,}20) = -1{,}859$, og forklar, hvorfor tallene er af samme størrelsesorden, men ikke ens. (d) Nævn tre grunde til, at dette ikke er en "sikker" strategi i praksis.
+**14.8** ★★ — Gamma-P&L. Du køber callen fra øvelse 14.4 til implicit volatilitet $\sigma_i = 20\,\%$ og delta-hedger kontinuert. (a) Udled $d\,\text{P\&L} = \tfrac12\Gamma S^2[(dS/S)^2 - \sigma_i^2\,dt]$ for porteføljen "long call, short $\Delta$ aktier, finansieret til $r$" ved Taylor og PDE'en. (b) Antag, at $\Gamma$ og $S$ er konstante. Beregn den forventede P&L pr. handelsdag og over et år, hvis den realiserede volatilitet bliver 25 %, og hvis den bliver 15 %. (c) Sammenlign med $C(\sigma = 0.25) - C(0.20) = 1.885$ og $C(0.15) - C(0.20) = -1.859$, og forklar, hvorfor tallene er af samme størrelsesorden, men ikke ens. (d) Nævn tre grunde til, at dette ikke er en "sikker" strategi i praksis.
 
-**14.9** ★★★ — CRR konvergerer mod Black–Scholes. Med $u = e^{\sigma\sqrt{\Delta t}}$, $d = 1/u$, $q = (e^{r\Delta t} - d)/(u-d)$ og $X = \ln(S_{t+\Delta t}/S_t) \in \{\pm\sigma\sqrt{\Delta t}\}$: (a) Vis med Taylor-udvikling, at $q = \tfrac12 + \frac{(r - \sigma^2/2)\sqrt{\Delta t}}{2\sigma} + O(\Delta t)$. (b) Vis $E_q[X] = (r - \tfrac12\sigma^2)\Delta t + o(\Delta t)$ og $\operatorname{Var}_q(X) = \sigma^2\Delta t + o(\Delta t)$. (c) Argumentér for, at $\ln(S_T/S_0)$ i træet konvergerer i fordeling mod $N\big((r - \tfrac12\sigma^2)T, \sigma^2T\big)$, og at træprisen derfor går mod Black–Scholes-prisen (skitse er nok; angiv, hvilken version af CLT der skal bruges). (d) Beregn $q$ for $\Delta t = 0{,}5$ eksakt og med approksimationen fra (a).
+**14.9** ★★★ — CRR konvergerer mod Black–Scholes. Med $u = e^{\sigma\sqrt{\Delta t}}$, $d = 1/u$, $q = (e^{r\Delta t} - d)/(u-d)$ og $X = \ln(S_{t+\Delta t}/S_t) \in \{\pm\sigma\sqrt{\Delta t}\}$: (a) Vis med Taylor-udvikling, at $q = \tfrac12 + \frac{(r - \sigma^2/2)\sqrt{\Delta t}}{2\sigma} + O(\Delta t)$. (b) Vis $E_q[X] = (r - \tfrac12\sigma^2)\Delta t + o(\Delta t)$ og $\operatorname{Var}_q(X) = \sigma^2\Delta t + o(\Delta t)$. (c) Argumentér for, at $\ln(S_T/S_0)$ i træet konvergerer i fordeling mod $N\big((r - \tfrac12\sigma^2)T, \sigma^2T\big)$, og at træprisen derfor går mod Black–Scholes-prisen (skitse er nok; angiv, hvilken version af CLT der skal bruges). (d) Beregn $q$ for $\Delta t = 0.5$ eksakt og med approksimationen fra (a).
 
-**14.10** ★ 💻 — Skriv en CRR-pricer for en europæisk call (baglæns induktion) og en Black–Scholes-funktion med $N(x)$ via `math.erf`. Brug $S = K = 100$, $r = 0{,}05$, $\sigma = 0{,}20$, $T = 1$, og udskriv prisen og fejlen for $n = 1, 2, 3, 10, 11, 50, 51, 100, 500, 1000$. Hvordan aftager fejlen, og hvad sker der mellem lige og ulige $n$?
+**14.10** ★ 💻 — Skriv en CRR-pricer for en europæisk call (baglæns induktion) og en Black–Scholes-funktion med $N(x)$ via `math.erf`. Brug $S = K = 100$, $r = 0.05$, $\sigma = 0.20$, $T = 1$, og udskriv prisen og fejlen for $n = 1, 2, 3, 10, 11, 50, 51, 100, 500, 1000$. Hvordan aftager fejlen, og hvad sker der mellem lige og ulige $n$?
 
-**14.11** ★★ 💻 — Implicit volatilitet ved bisektion. (a) En 1-årig ATM-call ($S = K = 100$, $r = 5\,\%$) handles til $12{,}00$. Find den implicitte volatilitet med bisektion på $[0{,}0001;\ 3]$ og tolerance $10^{-8}$; tæl halveringerne. (b) Fiktive (illustrative) markedspriser på 6-måneders calls med $S = 100$, $r = 3\,\%$: $K = 80{:}\ 22{,}42$; $90{:}\ 13{,}79$; $100{:}\ 6{,}65$; $110{:}\ 2{,}36$; $120{:}\ 0{,}68$. Beregn den implicitte volatilitet for hver strike, og beskriv formen. Hvad antyder den om markedets syn på venstrehalen? (c) Lad koden rejse en fejl (exception), hvis prisen ligger uden for no-arbitrage-grænserne.
+**14.11** ★★ 💻 — Implicit volatilitet ved bisektion. (a) En 1-årig ATM-call ($S = K = 100$, $r = 5\,\%$) handles til $12.00$. Find den implicitte volatilitet med bisektion på $[0.0001;\ 3]$ og tolerance $10^{-8}$; tæl halveringerne. (b) Fiktive (illustrative) markedspriser på 6-måneders calls med $S = 100$, $r = 3\,\%$: $K = 80{:}\ 22.42$; $90{:}\ 13.79$; $100{:}\ 6.65$; $110{:}\ 2.36$; $120{:}\ 0.68$. Beregn den implicitte volatilitet for hver strike, og beskriv formen. Hvad antyder den om markedets syn på venstrehalen? (c) Lad koden rejse en fejl (exception), hvis prisen ligger uden for no-arbitrage-grænserne.
 
 **14.12** ★★ 💻 — Monte Carlo med antitetiske variable (antithetic variates). Prisfastsæt callen fra øvelse 14.4 ved at simulere $S_T$ under $Q$ (`random.seed(14)`). (a) Almindelig MC med $M = 50\,000$ normaltræk. (b) Antitetisk MC: $25\,000$ træk $z$, hvor hvert bidrager med $\tfrac12\big(g(z) + g(-z)\big)$. Rapportér estimat og standardfejl for begge, og variansreduktionen pr. normaltræk. (c) Forklar, hvorfor antitetiske variable virker godt her (hint: er payoff monoton i $z$?).
 
-**14.13** ★★★ 💻 — Diskret delta-hedging. Sælg callen fra øvelse 14.4 til Black–Scholes-prisen, og delta-hedg på et gitter med $n$ lige store tidsskridt i løbet af året ($n = 4, 16, 64, 256$; hedgen sættes op ved start og rebalanceres i de $n - 1$ mellemliggende punkter) på 2000 simulerede GBM-stier med *virkelig* drift $\mu = 0{,}10$ og $\sigma = 0{,}20$ (`random.seed(99)`). Kontantbeholdningen forrentes med $r$. Beregn middelværdi og standardafvigelse af slut-P&L. (a) Vis, at standardafvigelsen falder som $1/\sqrt n$. (b) Forklar, hvorfor middelværdien er tæt på 0, selv om $\mu \ne r$. (c) Hvad ville transaktionsomkostninger gøre ved valget af $n$?
+**14.13** ★★★ 💻 — Diskret delta-hedging. Sælg callen fra øvelse 14.4 til Black–Scholes-prisen, og delta-hedg på et gitter med $n$ lige store tidsskridt i løbet af året ($n = 4, 16, 64, 256$; hedgen sættes op ved start og rebalanceres i de $n - 1$ mellemliggende punkter) på 2000 simulerede GBM-stier med *virkelig* drift $\mu = 0.10$ og $\sigma = 0.20$ (`random.seed(99)`). Kontantbeholdningen forrentes med $r$. Beregn middelværdi og standardafvigelse af slut-P&L. (a) Vis, at standardafvigelsen falder som $1/\sqrt n$. (b) Forklar, hvorfor middelværdien er tæt på 0, selv om $\mu \ne r$. (c) Hvad ville transaktionsomkostninger gøre ved valget af $n$?
 
 **14.14** ★★ 🗣️ — Skriv ca. en halv side: "Hvad fortæller volatilitets-skew'en os, og hvorfor bruger man stadig Black–Scholes?" Inddrag fede haler (uge 9 og 13.13), 1987, implicit volatilitet som kvoteringssprog og risikoen ved systematisk at sælge optioner.
 
@@ -6694,13 +6694,13 @@ Den delta-hedgede long-option er altså et væddemål på, at den *realiserede* 
 <details>
 <summary>Løsning 14.1</summary>
 
-(a) $F = 100e^{0{,}03\cdot 0{,}5} = 100e^{0{,}015} = 101{,}51$ dollar.
+(a) $F = 100e^{0.03\cdot 0.5} = 100e^{0.015} = 101.51$ dollar.
 
-(b) $103 > 101{,}51$: forwarden er for dyr. I dag: lån 100, køb aktien, sælg forwarden (aftal at sælge til 103). Ved $T$: lever aktien, modtag 103, tilbagebetal $101{,}51$. Sikker gevinst $1{,}49$ uden startkapital.
+(b) $103 > 101.51$: forwarden er for dyr. I dag: lån 100, køb aktien, sælg forwarden (aftal at sælge til 103). Ved $T$: lever aktien, modtag 103, tilbagebetal $101.51$. Sikker gevinst $1.49$ uden startkapital.
 
-(c) $100 < 101{,}51$: i dag short-sælg aktien, sæt de 100 i banken, køb forwarden. Ved $T$: banken giver $101{,}51$, betal 100 for aktien via forwarden og returnér den lånte aktie. Gevinst $1{,}51$.
+(c) $100 < 101.51$: i dag short-sælg aktien, sæt de 100 i banken, køb forwarden. Ved $T$: banken giver $101.51$, betal 100 for aktien via forwarden og returnér den lånte aktie. Gevinst $1.51$.
 
-(d) $F = 100e^{(0{,}03 - 0{,}02)\cdot 0{,}5} = 100e^{0{,}005} = 100{,}50$. Udbyttet tilfalder den, der holder aktien, så forwardkøberen "betaler" mindre.
+(d) $F = 100e^{(0.03 - 0.02)\cdot 0.5} = 100e^{0.005} = 100.50$. Udbyttet tilfalder den, der holder aktien, så forwardkøberen "betaler" mindre.
 
 (e) Fx: bid–ask-spænd og kurtage; forskellige lånerenter og udlånsrenter; omkostninger og begrænsninger ved short-salg (lånegebyr, risiko for at aktien kaldes tilbage); kapital- og marginkrav. Inden for båndet er arbitragen ikke rentabel.
 
@@ -6709,17 +6709,17 @@ Den delta-hedgede long-option er altså et væddemål på, at den *realiserede* 
 <details>
 <summary>Løsning 14.2</summary>
 
-(b) $P = C - S_0 + Ke^{-rT} = 10{,}45 - 100 + 95{,}12 = 5{,}57$.
+(b) $P = C - S_0 + Ke^{-rT} = 10.45 - 100 + 95.12 = 5.57$.
 
 (a)
 
 | $S_T$ | Long call: payoff / gevinst | Short call: payoff / gevinst | Long put: payoff / gevinst |
 |---|---|---|---|
-| 80 | 0 / $-10{,}45$ | 0 / $+10{,}45$ | 20 / $+14{,}43$ |
-| 100 | 0 / $-10{,}45$ | 0 / $+10{,}45$ | 0 / $-5{,}57$ |
-| 120 | 20 / $+9{,}55$ | $-20$ / $-9{,}55$ | 0 / $-5{,}57$ |
+| 80 | 0 / $-10.45$ | 0 / $+10.45$ | 20 / $+14.43$ |
+| 100 | 0 / $-10.45$ | 0 / $+10.45$ | 0 / $-5.57$ |
+| 120 | 20 / $+9.55$ | $-20$ / $-9.55$ | 0 / $-5.57$ |
 
-(c) Paritet siger, at putten bør koste $5{,}57$, så til $6{,}50$ er den for dyr. Sælg putten ($+6{,}50$) og byg en syntetisk put: køb callen ($-10{,}45$), short-sælg aktien ($+100$) og læg $Ke^{-rT} = 95{,}12$ i banken. Netto i dag: $6{,}50 - 10{,}45 + 100 - 95{,}12 = +0{,}93$. Ved $T$ betaler den syntetiske put $(K - S_T)^+$ og den solgte put koster $(K - S_T)^+$: netto 0. Gevinsten $0{,}93$ er låst fast i dag (før omkostninger og marginkrav; for amerikanske optioner på enkeltaktier skal man også håndtere tidlig udnyttelse).
+(c) Paritet siger, at putten bør koste $5.57$, så til $6.50$ er den for dyr. Sælg putten ($+6.50$) og byg en syntetisk put: køb callen ($-10.45$), short-sælg aktien ($+100$) og læg $Ke^{-rT} = 95.12$ i banken. Netto i dag: $6.50 - 10.45 + 100 - 95.12 = +0.93$. Ved $T$ betaler den syntetiske put $(K - S_T)^+$ og den solgte put koster $(K - S_T)^+$: netto 0. Gevinsten $0.93$ er låst fast i dag (før omkostninger og marginkrav; for amerikanske optioner på enkeltaktier skal man også håndtere tidlig udnyttelse).
 
 (d) Long call: tabet er begrænset til præmien. Short call: gevinsten er begrænset til præmien, men tabet $S_T - K - C$ er ubegrænset, når kursen stiger. Derudover kræver short-positionen margin, som kan blive kaldt ind (margin call) netop når markedet bevæger sig imod en, så man kan blive tvunget til at lukke med tab.
 
@@ -6728,13 +6728,13 @@ Den delta-hedgede long-option er altså et væddemål på, at den *realiserede* 
 <details>
 <summary>Løsning 14.3</summary>
 
-(a) $e^{0{,}05} = 1{,}0513$ og $0{,}9 < 1{,}0513 < 1{,}2$. ✓
+(a) $e^{0.05} = 1.0513$ og $0.9 < 1.0513 < 1.2$. ✓
 
-(b) $V_u = 20$, $V_d = 0$. $\Delta = 20/(120 - 90) = 2/3$. $B = e^{-0{,}05}(1{,}2\cdot 0 - 0{,}9\cdot 20)/0{,}3 = -60e^{-0{,}05} = -57{,}07$ (lån). $C = \tfrac23\cdot 100 - 57{,}07 = 9{,}59$. Tjek: op: $\tfrac23\cdot 120 - 60 = 20$; ned: $\tfrac23\cdot 90 - 60 = 0$. ✓
+(b) $V_u = 20$, $V_d = 0$. $\Delta = 20/(120 - 90) = 2/3$. $B = e^{-0.05}(1.2\cdot 0 - 0.9\cdot 20)/0.3 = -60e^{-0.05} = -57.07$ (lån). $C = \tfrac23\cdot 100 - 57.07 = 9.59$. Tjek: op: $\tfrac23\cdot 120 - 60 = 20$; ned: $\tfrac23\cdot 90 - 60 = 0$. ✓
 
-(c) $q = (1{,}05127 - 0{,}9)/0{,}3 = 0{,}5042$. $C = e^{-0{,}05}\cdot 0{,}5042\cdot 20 = 9{,}59$. ✓
+(c) $q = (1.05127 - 0.9)/0.3 = 0.5042$. $C = e^{-0.05}\cdot 0.5042\cdot 20 = 9.59$. ✓
 
-(d) $P_u = 0$, $P_d = 10$: $P = e^{-0{,}05}(1 - 0{,}5042)\cdot 10 = 4{,}72$. Paritet: $C - S + Ke^{-0{,}05} = 9{,}59 - 100 + 95{,}12 = 4{,}72$. ✓
+(d) $P_u = 0$, $P_d = 10$: $P = e^{-0.05}(1 - 0.5042)\cdot 10 = 4.72$. Paritet: $C - S + Ke^{-0.05} = 9.59 - 100 + 95.12 = 4.72$. ✓
 
 (e) Nej. Prisen er bestemt af den replikerende portefølje, som giver optionens payoff i *begge* scenarier uanset deres sandsynligheder. Afvigede prisen, kunne man arbitrere mod porteføljen. $p$ påvirker optionens *forventede afkast*, men ikke dens pris givet aktiekursen (informationen om $p$ er allerede indregnet i $S$).
 
@@ -6743,18 +6743,18 @@ Den delta-hedgede long-option er altså et væddemål på, at den *realiserede* 
 <details>
 <summary>Løsning 14.4</summary>
 
-(a) $d_1 = (0 + 0{,}05 + 0{,}02)/0{,}2 = 0{,}35$, $d_2 = 0{,}15$. $N(0{,}35) = 0{,}63683$, $N(0{,}15) = 0{,}55962$, $Ke^{-rT} = 95{,}1229$.
-$C = 100\cdot 0{,}63683 - 95{,}1229\cdot 0{,}55962 = 10{,}4506$.
-$P = 95{,}1229\cdot 0{,}44038 - 100\cdot 0{,}36317 = 5{,}5735$.
-Paritet: $C - P = 4{,}8771 = 100 - 95{,}1229$. ✓
+(a) $d_1 = (0 + 0.05 + 0.02)/0.2 = 0.35$, $d_2 = 0.15$. $N(0.35) = 0.63683$, $N(0.15) = 0.55962$, $Ke^{-rT} = 95.1229$.
+$C = 100\cdot 0.63683 - 95.1229\cdot 0.55962 = 10.4506$.
+$P = 95.1229\cdot 0.44038 - 100\cdot 0.36317 = 5.5735$.
+Paritet: $C - P = 4.8771 = 100 - 95.1229$. ✓
 
-(b) $\varphi(0{,}35) = e^{-0{,}06125}/\sqrt{2\pi} = 0{,}37524$.
-$\Delta = 0{,}6368$; $\Gamma = 0{,}37524/(100\cdot 0{,}2\cdot 1) = 0{,}018762$; vega $= 100\cdot 0{,}37524\cdot 1 = 37{,}524$;
-$\Theta = -100\cdot 0{,}37524\cdot 0{,}2/2 - 0{,}05\cdot 95{,}1229\cdot 0{,}55962 = -3{,}7524 - 2{,}6616 = -6{,}414$ pr. år.
+(b) $\varphi(0.35) = e^{-0.06125}/\sqrt{2\pi} = 0.37524$.
+$\Delta = 0.6368$; $\Gamma = 0.37524/(100\cdot 0.2\cdot 1) = 0.018762$; vega $= 100\cdot 0.37524\cdot 1 = 37.524$;
+$\Theta = -100\cdot 0.37524\cdot 0.2/2 - 0.05\cdot 95.1229\cdot 0.55962 = -3.7524 - 2.6616 = -6.414$ pr. år.
 
-(c) $-6{,}4140 + \tfrac12\cdot 0{,}04\cdot 10\,000\cdot 0{,}018762 + 0{,}05\cdot 100\cdot 0{,}63683 - 0{,}05\cdot 10{,}4506 = -6{,}4140 + 3{,}7524 + 3{,}1842 - 0{,}5225 = 0{,}0001 \approx 0$ (afrundingsfejl; med fulde decimaler er summen 0). ✓
+(c) $-6.4140 + \tfrac12\cdot 0.04\cdot 10\,000\cdot 0.018762 + 0.05\cdot 100\cdot 0.63683 - 0.05\cdot 10.4506 = -6.4140 + 3.7524 + 3.1842 - 0.5225 = 0.0001 \approx 0$ (afrundingsfejl; med fulde decimaler er summen 0). ✓
 
-(d) Solgte 100 calls har delta $-63{,}7$, så market makeren skal *eje* ca. 64 aktier. Én handelsdag: $\Theta/252 = -0{,}0255$ pr. option, dvs. optionens værdi falder ca. $0{,}0255$; market makeren, der er short 100 calls, *tjener* ca. $2{,}55$ pr. handelsdag i tidsværdi (alt andet lige), men er short gamma. Ét volatilitetspoint ($\sigma$: $0{,}20 \to 0{,}21$): optionens værdi stiger ca. $0{,}375$, så market makeren *taber* ca. $37{,}5$ på 100 solgte calls (short vega).
+(d) Solgte 100 calls har delta $-63.7$, så market makeren skal *eje* ca. 64 aktier. Én handelsdag: $\Theta/252 = -0.0255$ pr. option, dvs. optionens værdi falder ca. $0.0255$; market makeren, der er short 100 calls, *tjener* ca. $2.55$ pr. handelsdag i tidsværdi (alt andet lige), men er short gamma. Ét volatilitetspoint ($\sigma$: $0.20 \to 0.21$): optionens værdi stiger ca. $0.375$, så market makeren *taber* ca. $37.5$ på 100 solgte calls (short vega).
 
 </details>
 
@@ -6776,17 +6776,17 @@ Hver del vises ved modstrid: antag uligheden brudt og konstruér en arbitrage.
 <details>
 <summary>Løsning 14.6</summary>
 
-(a) $\Delta t = 0{,}5$: $u = e^{0{,}2\sqrt{0{,}5}} = 1{,}15191$, $d = 0{,}86812$, $e^{r\Delta t} = 1{,}02532$, $q = (1{,}02532 - 0{,}86812)/(1{,}15191 - 0{,}86812) = 0{,}55391$, diskonteringsfaktor $e^{-0{,}025} = 0{,}97531$.
-Kurser: $S_u = 115{,}19$, $S_d = 86{,}81$, $S_{uu} = 132{,}69$, $S_{ud} = 100$, $S_{dd} = 75{,}36$.
+(a) $\Delta t = 0.5$: $u = e^{0.2\sqrt{0.5}} = 1.15191$, $d = 0.86812$, $e^{r\Delta t} = 1.02532$, $q = (1.02532 - 0.86812)/(1.15191 - 0.86812) = 0.55391$, diskonteringsfaktor $e^{-0.025} = 0.97531$.
+Kurser: $S_u = 115.19$, $S_d = 86.81$, $S_{uu} = 132.69$, $S_{ud} = 100$, $S_{dd} = 75.36$.
 
-(b) $C_{uu} = 32{,}69$, $C_{ud} = C_{dd} = 0$. $C_u = 0{,}97531\cdot 0{,}55391\cdot 32{,}69 = 17{,}66$, $C_d = 0$, $C_0 = 0{,}97531\cdot 0{,}55391\cdot 17{,}66 = 9{,}54$.
-$\Delta_0 = (17{,}66 - 0)/(115{,}19 - 86{,}81) = 0{,}622$; $\Delta_u = (32{,}69 - 0)/(132{,}69 - 100) = 1$ (callen er sikkert ITM fra op-knuden).
+(b) $C_{uu} = 32.69$, $C_{ud} = C_{dd} = 0$. $C_u = 0.97531\cdot 0.55391\cdot 32.69 = 17.66$, $C_d = 0$, $C_0 = 0.97531\cdot 0.55391\cdot 17.66 = 9.54$.
+$\Delta_0 = (17.66 - 0)/(115.19 - 86.81) = 0.622$; $\Delta_u = (32.69 - 0)/(132.69 - 100) = 1$ (callen er sikkert ITM fra op-knuden).
 
-(c) $P_{dd} = 24{,}64$, $P_{uu} = P_{ud} = 0$. $P_d = 0{,}97531\cdot 0{,}44609\cdot 24{,}64 = 10{,}72$, $P_u = 0$, $P_0 = 0{,}97531\cdot 0{,}44609\cdot 10{,}72 = 4{,}66$. Paritet: $9{,}54 - 100 + 95{,}12 = 4{,}66$. ✓
+(c) $P_{dd} = 24.64$, $P_{uu} = P_{ud} = 0$. $P_d = 0.97531\cdot 0.44609\cdot 24.64 = 10.72$, $P_u = 0$, $P_0 = 0.97531\cdot 0.44609\cdot 10.72 = 4.66$. Paritet: $9.54 - 100 + 95.12 = 4.66$. ✓
 
-(d) I ned-knuden: udnyttelsesværdi $100 - 86{,}81 = 13{,}19 > 10{,}72$ (fortsættelsesværdi) ⇒ udnyt før tid. $P_0^{\text{am}} = 0{,}97531\cdot 0{,}44609\cdot 13{,}19 = 5{,}74$, som er større end udnyttelsesværdien $0$ i roden, så putten udnyttes ikke i dag. Den tidlige udnyttelsespræmie er $5{,}74 - 4{,}66 = 1{,}07$.
+(d) I ned-knuden: udnyttelsesværdi $100 - 86.81 = 13.19 > 10.72$ (fortsættelsesværdi) ⇒ udnyt før tid. $P_0^{\text{am}} = 0.97531\cdot 0.44609\cdot 13.19 = 5.74$, som er større end udnyttelsesværdien $0$ i roden, så putten udnyttes ikke i dag. Den tidlige udnyttelsespræmie er $5.74 - 4.66 = 1.07$.
 
-(e) Black–Scholes: $C = 10{,}45$, $P = 5{,}57$. Med kun to skridt er træet groft (callen er 0,91 for lav); øvelse 14.10 viser konvergensen.
+(e) Black–Scholes: $C = 10.45$, $P = 5.57$. Med kun to skridt er træet groft (callen er 0.91 for lav); øvelse 14.10 viser konvergensen.
 
 </details>
 
@@ -6812,11 +6812,11 @@ fordi parentesen er 0 ifølge PDE'en.
 $d\text{P\&L} = (V_t - rV + rSV_S)\,dt + \tfrac12\Gamma(dS)^2$. PDE'en med $\sigma_i$ giver $V_t + rSV_S - rV = -\tfrac12\sigma_i^2S^2\Gamma$, så
 $d\text{P\&L} = \tfrac12\Gamma S^2\big[(dS/S)^2 - \sigma_i^2\,dt\big]$.
 
-(b) $\tfrac12\Gamma S^2 = \tfrac12\cdot 0{,}018762\cdot 10\,000 = 93{,}81$.
-25 %: $93{,}81\cdot(0{,}0625 - 0{,}04)/252 = 0{,}00838$ pr. dag, $\approx 2{,}11$ over et år.
-15 %: $93{,}81\cdot(0{,}0225 - 0{,}04)/252 = -0{,}00651$ pr. dag, $\approx -1{,}64$ over et år.
+(b) $\tfrac12\Gamma S^2 = \tfrac12\cdot 0.018762\cdot 10\,000 = 93.81$.
+25 %: $93.81\cdot(0.0625 - 0.04)/252 = 0.00838$ pr. dag, $\approx 2.11$ over et år.
+15 %: $93.81\cdot(0.0225 - 0.04)/252 = -0.00651$ pr. dag, $\approx -1.64$ over et år.
 
-(c) Prisforskellene ved at genprissætte callen er $+1{,}885$ og $-1{,}859$. De er nutidsværdien af den P&L, man ville få (deterministisk), hvis man kendte den realiserede volatilitet og hedgede med delta beregnet ud fra *den*. Tallene i (b) antager konstant $\Gamma$ og $S$, men $\Gamma$ ændrer sig med kursen og tiden (den vokser nær udløb ATM og falder langt fra strike). Den korrekte formel er $\tfrac12\int_0^T e^{-rt}\Gamma_tS_t^2(\sigma_r^2 - \sigma_i^2)\,dt$ med $\sigma_r$ = den realiserede volatilitet, så P&L afhænger af *stien*. Størrelsesordenen (ca. vega gange volatilitetsforskellen, $37{,}5\cdot 0{,}05 = 1{,}88$) stemmer.
+(c) Prisforskellene ved at genprissætte callen er $+1.885$ og $-1.859$. De er nutidsværdien af den P&L, man ville få (deterministisk), hvis man kendte den realiserede volatilitet og hedgede med delta beregnet ud fra *den*. Tallene i (b) antager konstant $\Gamma$ og $S$, men $\Gamma$ ændrer sig med kursen og tiden (den vokser nær udløb ATM og falder langt fra strike). Den korrekte formel er $\tfrac12\int_0^T e^{-rt}\Gamma_tS_t^2(\sigma_r^2 - \sigma_i^2)\,dt$ med $\sigma_r$ = den realiserede volatilitet, så P&L afhænger af *stien*. Størrelsesordenen (ca. vega gange volatilitetsforskellen, $37.5\cdot 0.05 = 1.88$) stemmer.
 
 (d) Fx: den realiserede volatilitet kendes ikke på forhånd og kan blive lavere end den implicitte; diskret hedging giver støj (øvelse 14.13); transaktionsomkostninger ved hyppig rebalancering; spring og gaps kan ikke hedges; modelrisiko (volatiliteten er ikke konstant); og den modsatte position (solgt option) har store halerisici. Backtests af sådanne strategier overvurderer typisk resultatet (uge 10).
 
@@ -6833,11 +6833,11 @@ $q = \dfrac{\sigma h + (r - \frac12\sigma^2)h^2 + O(h^3)}{2\sigma h\,(1 + O(h^2)
 
 (b) $E_q[X] = q\sigma h - (1-q)\sigma h = (2q - 1)\sigma h = (r - \tfrac12\sigma^2)h^2 + O(h^3) = (r - \tfrac12\sigma^2)\Delta t + o(\Delta t)$.
 $E_q[X^2] = \sigma^2h^2$ eksakt, så $\operatorname{Var}_q(X) = \sigma^2\Delta t - (E_q[X])^2 = \sigma^2\Delta t + O(\Delta t^2)$.
-(En finere udvikling viser, at $O(h^2)$-leddet i $q$ faktisk er 0, så fejlen i $E_q[X]$ er $O(\Delta t^2)$; numerisk: $E_q[X]/\Delta t = 0{,}03050$, $0{,}03001$, $0{,}0300001$ for $\Delta t = 0{,}5$; $0{,}01$; $0{,}0001$.)
+(En finere udvikling viser, at $O(h^2)$-leddet i $q$ faktisk er 0, så fejlen i $E_q[X]$ er $O(\Delta t^2)$; numerisk: $E_q[X]/\Delta t = 0.03050$, $0.03001$, $0.0300001$ for $\Delta t = 0.5$; $0.01$; $0.0001$.)
 
 (c) $\ln(S_T/S_0) = \sum_{k=1}^n X_k$ med $X_k$ iid under $q$ (men fordelingen afhænger af $n$ — en *trekantsmatrix*). Middelværdi $n\,E_q[X] = (r - \tfrac12\sigma^2)T + o(1)$, varians $n\operatorname{Var}_q(X) = \sigma^2T + o(1)$. Summanderne er begrænsede af $\sigma\sqrt{\Delta t} \to 0$, så Lindeberg–Fellers CLT giver konvergens i fordeling mod $N\big((r - \tfrac12\sigma^2)T, \sigma^2T\big)$ — præcis fordelingen af $\ln(S_T/S_0)$ under $Q$ i afsnit 6–7. For en put er payoff begrænset og kontinuert, så $E_q[\text{payoff}] \to E^Q[\text{payoff}]$ (svag konvergens); callen følger af put–call-paritet, som gælder eksakt i træet. Altså træpris $\to$ Black–Scholes.
 
-(d) Eksakt (øvelse 14.6): $q = 0{,}55391$. Approksimation: $\tfrac12 + 0{,}03\cdot 0{,}70711/0{,}4 = 0{,}55303$. Allerede tæt på for et groft skridt.
+(d) Eksakt (øvelse 14.6): $q = 0.55391$. Approksimation: $\tfrac12 + 0.03\cdot 0.70711/0.4 = 0.55303$. Allerede tæt på for et groft skridt.
 
 </details>
 
@@ -6889,7 +6889,7 @@ n=  500  CRR=10.446585  fejl=-0.003998
 n= 1000  CRR=10.448584  fejl=-0.001999
 ```
 
-Fejlen aftager som ca. $2/n$ (fra $n = 100$ til $1000$: $-0{,}0200 \to -0{,}0020$), men med skiftende fortegn: for lige $n$ ligger en knude præcis på strike ($S_0u^jd^{n-j} = 100$), og prisen er for lav; for ulige $n$ ligger strike midt mellem to knuder, og prisen er for høj. Gennemsnittet af to nabo-$n$ er derfor langt bedre (fx $(10{,}4107 + 10{,}4850)/2 = 10{,}4479$). Bemærk, at $n = 2$ giver $9{,}5405$ som i øvelse 14.6.
+Fejlen aftager som ca. $2/n$ (fra $n = 100$ til $1000$: $-0.0200 \to -0.0020$), men med skiftende fortegn: for lige $n$ ligger en knude præcis på strike ($S_0u^jd^{n-j} = 100$), og prisen er for lav; for ulige $n$ ligger strike midt mellem to knuder, og prisen er for høj. Gennemsnittet af to nabo-$n$ er derfor langt bedre (fx $(10.4107 + 10.4850)/2 = 10.4479$). Bemærk, at $n = 2$ giver $9.5405$ som i øvelse 14.6.
 
 </details>
 
@@ -6941,9 +6941,9 @@ Forventet output:
 (b) K=120  pris= 0.68  IV=0.1853
 ```
 
-(a) $\sigma_{\text{imp}} = 24{,}11\,\%$. Antal halveringer: $\lceil\log_2(3/10^{-8})\rceil = 29$. Newton fra $\sigma_0 = 0{,}2$ når samme værdi med 8 decimaler på 3 iterationer.
+(a) $\sigma_{\text{imp}} = 24.11\,\%$. Antal halveringer: $\lceil\log_2(3/10^{-8})\rceil = 29$. Newton fra $\sigma_0 = 0.2$ når samme værdi med 8 decimaler på 3 iterationer.
 
-(b) Den implicitte volatilitet falder fra 30 % ved $K = 80$ til ca. 18,5 % ved $K = 120$: en klassisk aktie-**skew**. Lave strikes svarer (via put–call-paritet) til OTM-puts, som altså er dyre i forhold til lognormal-modellen. Markedets risikoneutrale fordeling har en federe venstrehale (og tyndere højrehale) end lognormalfordelingen med én $\sigma$. Bemærk, at det er en *risikoneutral* fordeling: den indeholder også risikopræmien for crash-beskyttelse, ikke kun sandsynligheder.
+(b) Den implicitte volatilitet falder fra 30 % ved $K = 80$ til ca. 18.5 % ved $K = 120$: en klassisk aktie-**skew**. Lave strikes svarer (via put–call-paritet) til OTM-puts, som altså er dyre i forhold til lognormal-modellen. Markedets risikoneutrale fordeling har en federe venstrehale (og tyndere højrehale) end lognormalfordelingen med én $\sigma$. Bemærk, at det er en *risikoneutral* fordeling: den indeholder også risikopræmien for crash-beskyttelse, ikke kun sandsynligheder.
 
 (c) Indbygget i `implied_vol`: da $C_{BS}$ er voksende i $\sigma$, er prisen kun opnåelig, hvis den ligger mellem $C_{BS}(\sigma_{lo})$ og $C_{BS}(\sigma_{hi})$; for $\sigma \to 0$ går $C_{BS}$ mod den nedre no-arbitrage-grænse $\max(S - Ke^{-rT}, 0)$ og for $\sigma \to \infty$ mod $S$.
 
@@ -6993,9 +6993,9 @@ antitetisk MC:   10.4104  (SE 0.0463)
 varians-reduktion pr. traek: 2.03x
 ```
 
-Begge estimater ligger inden for ca. 1 standardfejl af $10{,}4506$. Med det samme antal normaltræk har den antitetiske metode ca. halv varians (SE $0{,}046$ mod $0{,}066$), svarende til at fordoble antallet af simulationer gratis.
+Begge estimater ligger inden for ca. 1 standardfejl af $10.4506$. Med det samme antal normaltræk har den antitetiske metode ca. halv varians (SE $0.046$ mod $0.066$), svarende til at fordoble antallet af simulationer gratis.
 
-(c) Payoff $g(z)$ er voksende i $z$, så $g(z)$ og $g(-z)$ er negativt korrelerede: $\operatorname{Var}\big(\tfrac12(g(Z) + g(-Z))\big) = \tfrac12\operatorname{Var}(g(Z))(1 + \rho)$ med $\rho < 0$. Pr. normaltræk er variansen derfor $(1+\rho)$ gange den almindelige; her er $1 + \rho \approx 0{,}49$. For en symmetrisk payoff (fx en straddle, hvor $g(z) \approx g(-z)$) ville metoden næsten intet hjælpe eller endda øge variansen pr. normaltræk ($\rho > 0$).
+(c) Payoff $g(z)$ er voksende i $z$, så $g(z)$ og $g(-z)$ er negativt korrelerede: $\operatorname{Var}\big(\tfrac12(g(Z) + g(-Z))\big) = \tfrac12\operatorname{Var}(g(Z))(1 + \rho)$ med $\rho < 0$. Pr. normaltræk er variansen derfor $(1+\rho)$ gange den almindelige; her er $1 + \rho \approx 0.49$. For en symmetrisk payoff (fx en straddle, hvor $g(z) \approx g(-z)$) ville metoden næsten intet hjælpe eller endda øge variansen pr. normaltræk ($\rho > 0$).
 
 </details>
 
@@ -7047,7 +7047,7 @@ n=  64  gns. P&L=+0.0308  sd(P&L)=0.8643  sd*sqrt(n)=6.914
 n= 256  gns. P&L=-0.0146  sd(P&L)=0.4233  sd*sqrt(n)=6.773
 ```
 
-(a) $\text{sd}\cdot\sqrt n$ er næsten konstant ($\approx 6{,}7$), dvs. sd $\propto 1/\sqrt n$: fire gange så mange rebalanceringer halverer hedgefejlen. Derman–Kamals tommelfingerregel giver $\sqrt{\pi/4}\cdot 37{,}52\cdot 0{,}20 = 6{,}65$ — tæt på.
+(a) $\text{sd}\cdot\sqrt n$ er næsten konstant ($\approx 6.7$), dvs. sd $\propto 1/\sqrt n$: fire gange så mange rebalanceringer halverer hedgefejlen. Derman–Kamals tommelfingerregel giver $\sqrt{\pi/4}\cdot 37.52\cdot 0.20 = 6.65$ — tæt på.
 
 (b) Pr. interval er hedgefejlen ca. $\tfrac12\Gamma S^2[(\Delta S/S)^2 - \sigma^2\Delta t]$ (øvelse 14.8), hvis forventning er ca. 0, fordi den realiserede volatilitet er lig den volatilitet, optionen er solgt til. Driften $\mu$ indgår kun i højere orden: delta-hedgen fjerner eksponeringen mod kursens *retning*. Gennemsnittene ligger inden for ca. 1–2 standardfejl ($\text{sd}/\sqrt{2000}$) af 0.
 
@@ -7110,17 +7110,17 @@ Du er klar til næste uge, når du kan:
 
 ### 🧠 Kernebegreber
 
-**1. Ordrebogen.** En *limitordre (limit order)* angiver side, mængde og en grænsepris; den hviler i ordrebogen og *leverer* likviditet. En *markedsordre (market order)* handler straks mod de bedste hvilende ordrer og *forbruger* likviditet. Højeste købspris er *bid* $b$, laveste salgspris er *ask* $a$; *midtkursen (mid)* er $m = (a+b)/2$ og *spreadet* $s = a - b$, ofte i basispunkter: $s/m \cdot 10^4$ bp. *Dybde (depth)* er mængden på hvert prisniveau. Prisniveauerne ligger på et gitter med afstand *tick size* (fx $0{,}01$ kr.).
+**1. Ordrebogen.** En *limitordre (limit order)* angiver side, mængde og en grænsepris; den hviler i ordrebogen og *leverer* likviditet. En *markedsordre (market order)* handler straks mod de bedste hvilende ordrer og *forbruger* likviditet. Højeste købspris er *bid* $b$, laveste salgspris er *ask* $a$; *midtkursen (mid)* er $m = (a+b)/2$ og *spreadet* $s = a - b$, ofte i basispunkter: $s/m \cdot 10^4$ bp. *Dybde (depth)* er mængden på hvert prisniveau. Prisniveauerne ligger på et gitter med afstand *tick size* (fx $0.01$ kr.).
 
 **Pris-tid-prioritet (price-time priority):** bedre pris handles først; ved samme pris handles den ældste ordre først. Derfor er kø-position værdifuld, og et for lille tick size giver mange prisniveauer og "kø-hop" (man byder et tick bedre), mens et stort tick size gør spreadet kunstigt bredt (det kan aldrig være under ét tick) og giver lange køer, hvor kø-positionen er meget værd. Mange børser har *maker–taker-gebyrer*: den, der leverer likviditet, får en lille rabat; den, der tager den, betaler.
 
 | Bid (antal) | Bidpris | Askpris | Ask (antal) |
 |---:|---:|---:|---:|
-| 500 | 100,00 | 100,02 | 400 |
-| 800 | 99,99 | 100,03 | 700 |
-| 1 200 | 99,98 | 100,05 | 1 000 |
+| 500 | 100.00 | 100.02 | 400 |
+| 800 | 99.99 | 100.03 | 700 |
+| 1 200 | 99.98 | 100.05 | 1 000 |
 
-Her er $m = 100{,}01$ og $s = 0{,}02$ kr. $\approx 2$ bp. En markedsordre om køb af 1 500 aktier "går gennem bogen": $400 \cdot 100{,}02 + 700 \cdot 100{,}03 + 400 \cdot 100{,}05 = 150\,049$ kr., dvs. gennemsnit $100{,}0327$ kr., $2{,}27$ bp over mid. Store ordrer betaler mere pr. aktie: det er *market impact*.
+Her er $m = 100.01$ og $s = 0.02$ kr. $\approx 2$ bp. En markedsordre om køb af 1 500 aktier "går gennem bogen": $400 \cdot 100.02 + 700 \cdot 100.03 + 400 \cdot 100.05 = 150\,049$ kr., dvs. gennemsnit $100.0327$ kr., $2.27$ bp over mid. Store ordrer betaler mere pr. aktie: det er *market impact*.
 
 **2. Hvorfor findes spreadet?** Tre komponenter:
 - *Ordrebehandling (order processing):* gebyrer, teknologi, kapitalomkostninger.
@@ -7134,7 +7134,7 @@ $$\Delta P_t = u_t + \tfrac{s}{2}(q_t - q_{t-1}), \qquad \operatorname{Cov}(\Del
 **4. Glosten–Milgrom (1985).** Værdien er $V_H$ eller $V_L$ (sandsynlighed $\pi$ og $1 - \pi$). En handlende ankommer: med sandsynlighed $\mu$ er det en informeret, der køber hvis $V = V_H$ og sælger hvis $V = V_L$; ellers en uinformeret, der køber eller sælger med sandsynlighed $\tfrac12$. En market maker i fri konkurrence tjener nul i forventning *på hver handel* og sætter derfor
 $$a = E[V \mid \text{køb}], \qquad b = E[V \mid \text{salg}].$$
 Med Bayes (uge 3): $P(\text{køb} \mid H) = \mu + \tfrac{1-\mu}{2} = \tfrac{1+\mu}{2}$ og $P(\text{køb} \mid L) = \tfrac{1-\mu}{2}$.
-*Eksempel:* $V_L = 95$, $V_H = 105$, $\pi = \tfrac12$, $\mu = 0{,}3$. Så $P(H \mid \text{køb}) = 0{,}65$, $a = 95 + 10 \cdot 0{,}65 = 101{,}5$ og symmetrisk $b = 98{,}5$. Spreadet er $3 = \mu (V_H - V_L)$. Det skyldes *udelukkende* adverse selection; med $\mu = 0$ er spreadet 0. Efter hver handel opdateres $\pi$, så priserne konvergerer mod den sande værdi: handler afslører information.
+*Eksempel:* $V_L = 95$, $V_H = 105$, $\pi = \tfrac12$, $\mu = 0.3$. Så $P(H \mid \text{køb}) = 0.65$, $a = 95 + 10 \cdot 0.65 = 101.5$ og symmetrisk $b = 98.5$. Spreadet er $3 = \mu (V_H - V_L)$. Det skyldes *udelukkende* adverse selection; med $\mu = 0$ er spreadet 0. Efter hver handel opdateres $\pi$, så priserne konvergerer mod den sande værdi: handler afslører information.
 
 **5. Kyle (1985).** $v \sim N(p_0, \Sigma_0)$ kendes af én informeret handlende, der afgiver ordren $x$. Støjhandlere afgiver $u \sim N(0, \sigma_u^2)$, uafhængig af $v$. Market makeren ser kun den samlede ordrestrøm $y = x + u$ og sætter $p = E[v \mid y]$. Søger vi en lineær ligevægt $x = \beta(v - p_0)$, $p = p_0 + \lambda y$, fås (øvelse 15.9)
 $$\lambda = \frac{\sqrt{\Sigma_0}}{2\sigma_u}, \qquad \beta = \frac{\sigma_u}{\sqrt{\Sigma_0}}, \qquad \Delta p = \lambda \cdot (\text{ordrestrøm}).$$
@@ -7159,7 +7159,7 @@ $$C = \tfrac12 \gamma X^2 + \eta \int_0^T v_t^2\,dt - \sigma \int_0^T x_t\,dW_t,
 $$\ddot x_t = \kappa^2 x_t, \quad \kappa = \sqrt{\frac{\phi\sigma^2}{\eta}} \qquad \Longrightarrow \qquad x_t = X\,\frac{\sinh(\kappa(T - t))}{\sinh(\kappa T)}.$$
 - $\kappa \to 0$ (risikoneutral eller ingen volatilitet): $\sinh(z) \approx z$ giver $x_t = X(1 - t/T)$, dvs. **TWAP**.
 - $\kappa T$ stor: $x_t \approx X e^{-\kappa t}$; man sælger det meste tidligt. $1/\kappa$ er en karakteristisk tidsskala ("halveringstid" $\ln 2/\kappa$).
-- *Eksempel:* $\sigma = 0{,}6$ kr./$\sqrt{\text{dag}}$, $\eta = 10^{-6}$ kr.$\cdot$dag/aktie², $\phi = 10^{-6}$ pr. kr. giver $\kappa = 0{,}6$ pr. dag. Med $T = 5$ dage er $\kappa T = 3$, og halvvejs ($t = 2{,}5$) er der kun $\sinh(1{,}5)/\sinh(3) = 21{,}3\,\%$ tilbage mod 50 % ved TWAP.
+- *Eksempel:* $\sigma = 0.6$ kr./$\sqrt{\text{dag}}$, $\eta = 10^{-6}$ kr.$\cdot$dag/aktie², $\phi = 10^{-6}$ pr. kr. giver $\kappa = 0.6$ pr. dag. Med $T = 5$ dage er $\kappa T = 3$, og halvvejs ($t = 2.5$) er der kun $\sinh(1.5)/\sinh(3) = 21.3\,\%$ tilbage mod 50 % ved TWAP.
 
 Varierer man $\phi$, fås en *efficient frontier* af $(\operatorname{Var}, E)$-par, præcis som i porteføljeteorien (uge 7).
 
@@ -7174,29 +7174,29 @@ Varierer man $\phi$, fås en *efficient frontier* af $(\operatorname{Var}, E)$-p
 
 ### ✏️ Øvelser
 
-**15.1** ★ — Brug ordrebogen i Kernebegreber afsnit 1. (a) Beregn mid og spread i kr. og bp. (b) En markedsordre sælger 1 000 aktier. Find gennemsnitsprisen, omkostningen i bp i forhold til mid og den nye bedste bid. Tag i (c) og (d) hver for sig udgangspunkt i den *oprindelige* bog. (c) En ny limitordre "køb 300 til 100,01" ankommer. Hvad sker der med spreadet, og hvor i køen står ordren? (d) En limitordre "sælg 200 til 100,00" ankommer. Bliver den til en handel eller en hvilende ordre?
+**15.1** ★ — Brug ordrebogen i Kernebegreber afsnit 1. (a) Beregn mid og spread i kr. og bp. (b) En markedsordre sælger 1 000 aktier. Find gennemsnitsprisen, omkostningen i bp i forhold til mid og den nye bedste bid. Tag i (c) og (d) hver for sig udgangspunkt i den *oprindelige* bog. (c) En ny limitordre "køb 300 til 100.01" ankommer. Hvad sker der med spreadet, og hvor i køen står ordren? (d) En limitordre "sælg 200 til 100.00" ankommer. Bliver den til en handel eller en hvilende ordre?
 
-**15.2** ★ — For en aktie, der handles omkring 20 kr., estimeres $\widehat{\operatorname{Cov}}(\Delta P_t, \Delta P_{t-1}) = -0{,}0004$ kr.² og $\widehat{\operatorname{Var}}(\Delta P_t) = 0{,}0012$ kr.² ud fra transaktionspriser. (a) Find Roll-estimatet af spreadet i kr. og bp. (b) Estimér $\sigma_u$ ud fra $\operatorname{Var}(\Delta P_t) = \sigma_u^2 + s^2/2$. (c) Hvad er førsteordens-autokorrelationen af $\Delta P_t$? (d) På en anden aktie er kovariansen $+0{,}0001$. Hvad gør du, og hvad kan forklaringen være?
+**15.2** ★ — For en aktie, der handles omkring 20 kr., estimeres $\widehat{\operatorname{Cov}}(\Delta P_t, \Delta P_{t-1}) = -0.0004$ kr.² og $\widehat{\operatorname{Var}}(\Delta P_t) = 0.0012$ kr.² ud fra transaktionspriser. (a) Find Roll-estimatet af spreadet i kr. og bp. (b) Estimér $\sigma_u$ ud fra $\operatorname{Var}(\Delta P_t) = \sigma_u^2 + s^2/2$. (c) Hvad er førsteordens-autokorrelationen af $\Delta P_t$? (d) På en anden aktie er kovariansen $+0.0001$. Hvad gør du, og hvad kan forklaringen være?
 
-**15.3** ★ — En pensionskasse vil købe $Q = 200\,000$ aktier i en aktie til 50 kr. med daglig volumen $V = 2$ mio. aktier og daglig volatilitet $\sigma = 1{,}5\,\%$. Brug square-root-loven med $Y = 0{,}8$. (a) Beregn den forventede impact i bp og den samlede omkostning i kr. (b) Gentag for $Q = 400\,000$. Hvor mange gange større er impact pr. aktie og den samlede omkostning? (c) Hvorfor kan det betale sig at fordele ordren over flere dage, og hvad koster det?
+**15.3** ★ — En pensionskasse vil købe $Q = 200\,000$ aktier i en aktie til 50 kr. med daglig volumen $V = 2$ mio. aktier og daglig volatilitet $\sigma = 1.5\,\%$. Brug square-root-loven med $Y = 0.8$. (a) Beregn den forventede impact i bp og den samlede omkostning i kr. (b) Gentag for $Q = 400\,000$. Hvor mange gange større er impact pr. aktie og den samlede omkostning? (c) Hvorfor kan det betale sig at fordele ordren over flere dage, og hvad koster det?
 
-**15.4** ★ — En porteføljeforvalter (portfolio manager) beslutter at købe 10 000 aktier, da kursen er 50,00 kr. Traderen får købt 8 000 aktier til gennemsnitlig 50,12 kr. (kurtage 0,02 kr. pr. aktie); resten handles ikke, og dagen lukker i 50,40 kr. Markedets VWAP for dagen var 50,15 kr. (a) Beregn implementation shortfall opdelt i eksekvering, opportunitet og gebyrer, i kr. og i bp af papirporteføljens værdi. (b) Slog traderen VWAP? (c) Forklar, hvorfor de to benchmarks giver forskellige konklusioner.
+**15.4** ★ — En porteføljeforvalter (portfolio manager) beslutter at købe 10 000 aktier, da kursen er 50.00 kr. Traderen får købt 8 000 aktier til gennemsnitlig 50.12 kr. (kurtage 0.02 kr. pr. aktie); resten handles ikke, og dagen lukker i 50.40 kr. Markedets VWAP for dagen var 50.15 kr. (a) Beregn implementation shortfall opdelt i eksekvering, opportunitet og gebyrer, i kr. og i bp af papirporteføljens værdi. (b) Slog traderen VWAP? (c) Forklar, hvorfor de to benchmarks giver forskellige konklusioner.
 
 **15.5** ★★ — Udled Roll-modellens resultater. (a) Vis $\operatorname{Cov}(\Delta P_t, \Delta P_{t-1}) = -s^2/4$ og $\operatorname{Var}(\Delta P_t) = \sigma_u^2 + s^2/2$. (b) Vis $\operatorname{Cov}(\Delta P_t, \Delta P_{t-k}) = 0$ for $k \ge 2$. (c) Hvad sker der med autokorrelationen, hvis man i stedet bruger midtkurser $V_t$? (bid–ask-bounce er en klassisk fejlkilde i backtests af kortsigtet mean reversion, uge 10–11)
 
-**15.6** ★★ — Glosten–Milgrom med $V_L = 95$, $V_H = 105$, $\pi = \tfrac12$, $\mu = 0{,}3$. (a) Vis $a = 101{,}5$ og $b = 98{,}5$. (b) Den første handel er et køb. Opdatér $\pi$ og find de nye kurser $a$ og $b$. (c) Vis generelt for $\pi = \tfrac12$, at spreadet er $\mu(V_H - V_L)$. (d) Vis, at market makerens forventede gevinst på en handel på ask er 0, og forklar hvem der betaler de informeredes gevinst.
+**15.6** ★★ — Glosten–Milgrom med $V_L = 95$, $V_H = 105$, $\pi = \tfrac12$, $\mu = 0.3$. (a) Vis $a = 101.5$ og $b = 98.5$. (b) Den første handel er et køb. Opdatér $\pi$ og find de nye kurser $a$ og $b$. (c) Vis generelt for $\pi = \tfrac12$, at spreadet er $\mu(V_H - V_L)$. (d) Vis, at market makerens forventede gevinst på en handel på ask er 0, og forklar hvem der betaler de informeredes gevinst.
 
-**15.7** ★★ — En simpel model for adverse selection: hver handel er med sandsynlighed $1 - \alpha$ en støjhandel og med sandsynlighed $\alpha$ en informeret handel. Market makeren kvoterer mid $\pm h$. Støjhandler handler til den kvoterede kurs, og værdien er uændret. En informeret handlende kender et kommende spring på $\pm J$ med $J > h$ og handler i springets retning. (a) Vis, at den forventede gevinst pr. handel er $h - \alpha J$, og find break-even-halvspreadet $h^*$. (b) Beregn $h^*$ for $\alpha = 0{,}2$, $J = 0{,}30$ kr. (c) Sammenlign med Glosten–Milgrom i 15.6: hvad svarer $J$ og $\alpha$ til? (d) Hvorfor bruger market makers så meget energi på at forudsige *hvem* de handler med?
+**15.7** ★★ — En simpel model for adverse selection: hver handel er med sandsynlighed $1 - \alpha$ en støjhandel og med sandsynlighed $\alpha$ en informeret handel. Market makeren kvoterer mid $\pm h$. Støjhandler handler til den kvoterede kurs, og værdien er uændret. En informeret handlende kender et kommende spring på $\pm J$ med $J > h$ og handler i springets retning. (a) Vis, at den forventede gevinst pr. handel er $h - \alpha J$, og find break-even-halvspreadet $h^*$. (b) Beregn $h^*$ for $\alpha = 0.2$, $J = 0.30$ kr. (c) Sammenlign med Glosten–Milgrom i 15.6: hvad svarer $J$ og $\alpha$ til? (d) Hvorfor bruger market makers så meget energi på at forudsige *hvem* de handler med?
 
-**15.8** ★★ 💻 — Almgren–Chriss. (a) Vis, at $x_t = X\sinh(\kappa(T-t))/\sinh(\kappa T)$ opfylder $\ddot x = \kappa^2 x$, $x_0 = X$, $x_T = 0$. (b) Vis, at $x_t \to X(1 - t/T)$ for $\kappa \to 0$. (c) Skriv et program, der udskriver den resterende beholdning i procent ved $t/T = 0, 0{,}1, \dots, 1$ for $\kappa T = 0, 1, 3, 10$, samt faktorerne for forventet midlertidig omkostning $E/(\eta X^2/T)$ og varians $\operatorname{Var}/(\sigma^2 X^2 T)$. Brug $\int_0^T \cosh^2(\kappa s)\,ds = \tfrac{T}{2} + \tfrac{\sinh(2\kappa T)}{4\kappa}$ og $\int_0^T \sinh^2(\kappa s)\,ds = \tfrac{\sinh(2\kappa T)}{4\kappa} - \tfrac{T}{2}$. (d) Beregn $\kappa$ for eksemplets parametre.
+**15.8** ★★ 💻 — Almgren–Chriss. (a) Vis, at $x_t = X\sinh(\kappa(T-t))/\sinh(\kappa T)$ opfylder $\ddot x = \kappa^2 x$, $x_0 = X$, $x_T = 0$. (b) Vis, at $x_t \to X(1 - t/T)$ for $\kappa \to 0$. (c) Skriv et program, der udskriver den resterende beholdning i procent ved $t/T = 0, 0.1, \dots, 1$ for $\kappa T = 0, 1, 3, 10$, samt faktorerne for forventet midlertidig omkostning $E/(\eta X^2/T)$ og varians $\operatorname{Var}/(\sigma^2 X^2 T)$. Brug $\int_0^T \cosh^2(\kappa s)\,ds = \tfrac{T}{2} + \tfrac{\sinh(2\kappa T)}{4\kappa}$ og $\int_0^T \sinh^2(\kappa s)\,ds = \tfrac{\sinh(2\kappa T)}{4\kappa} - \tfrac{T}{2}$. (d) Beregn $\kappa$ for eksemplets parametre.
 
 **15.9** ★★★ — Kyle-ligevægten. (a) Givet $p = p_0 + \lambda y$: vis at den informerede maksimerer $E[(v - p)x \mid v]$ ved $x = (v - p_0)/(2\lambda)$. (b) Givet $x = \beta(v - p_0)$: vis at den bedste lineære prisfunktion har $\lambda = \operatorname{Cov}(v, y)/\operatorname{Var}(y)$ (uge 6), og at denne er lig $E[v \mid y]$'s hældning, fordi alt er normalfordelt. (c) Løs for $\lambda$ og $\beta$. (d) Vis $\operatorname{Var}(v \mid y) = \Sigma_0/2$ og at den informeredes forventede gevinst er $\tfrac12\sigma_u\sqrt{\Sigma_0}$. Hvem taber det? (e) Tal: $\sqrt{\Sigma_0} = 2$ kr., $\sigma_u = 10\,000$ aktier. Find $\lambda$, $\beta$ og prisændringen, når $v - p_0 = 1$ kr. og $u = -2\,000$.
 
-**15.10** ★★★ — Almgren–Chriss for TWAP versus optimal bane. Sælg $X = 500\,000$ aktier med $\sigma = 0{,}6$, $\eta = 10^{-6}$, $\phi = 10^{-6}$ (enheder som i Kernebegreber; ignorér permanent impact). (a) Vis, at TWAP over $T$ dage har $E = \eta X^2/T$ og $\operatorname{Var} = \sigma^2 X^2 T/3$. (b) Find den horisont $T^*$, der minimerer $E + \phi \operatorname{Var}$ for TWAP, og vis $T^* = \sqrt3/\kappa$. (c) Beregn målfunktionen for TWAP med $T = 5$ og $T = T^*$ og for den optimale AC-bane med $T = 5$ (brug faktorerne fra 15.8). (d) Fortolk: hvorfor er "TWAP over en kortere periode" dårligere end AC-banen?
+**15.10** ★★★ — Almgren–Chriss for TWAP versus optimal bane. Sælg $X = 500\,000$ aktier med $\sigma = 0.6$, $\eta = 10^{-6}$, $\phi = 10^{-6}$ (enheder som i Kernebegreber; ignorér permanent impact). (a) Vis, at TWAP over $T$ dage har $E = \eta X^2/T$ og $\operatorname{Var} = \sigma^2 X^2 T/3$. (b) Find den horisont $T^*$, der minimerer $E + \phi \operatorname{Var}$ for TWAP, og vis $T^* = \sqrt3/\kappa$. (c) Beregn målfunktionen for TWAP med $T = 5$ og $T = T^*$ og for den optimale AC-bane med $T = 5$ (brug faktorerne fra 15.8). (d) Fortolk: hvorfor er "TWAP over en kortere periode" dårligere end AC-banen?
 
-**15.11** ★★ 💻 — Simulér Roll-modellen: $V_t$ random walk med $V_0 = 50$ og $\sigma_u$, handel på $V_t \pm s/2$ med lige sandsynligt køb/salg, $s = 0{,}10$. Beregn Roll-estimatet for $(n, \sigma_u) = (20\,000;\, 0{,}05)$, $(250;\, 0{,}05)$ og $(250;\, 0{,}20)$ med seeds 1–5. Hvad lærer du om estimatorens præcision?
+**15.11** ★★ 💻 — Simulér Roll-modellen: $V_t$ random walk med $V_0 = 50$ og $\sigma_u$, handel på $V_t \pm s/2$ med lige sandsynligt køb/salg, $s = 0.10$. Beregn Roll-estimatet for $(n, \sigma_u) = (20\,000;\, 0.05)$, $(250;\, 0.05)$ og $(250;\, 0.20)$ med seeds 1–5. Hvad lærer du om estimatorens præcision?
 
-**15.12** ★★ 💻 — Simulér en market maker, der i 5 000 skridt kvoterer reservationsprisen $r = m - \text{skew}\cdot q$ $\pm h$ med $h = 0{,}05$. Støjhandlere rammer hver side med sandsynlighed $0{,}5\,e^{-20 \cdot \text{afstand til mid}}$, og mid bevæger sig med $N(0;\, 0{,}02^2)$. Med sandsynlighed $p_{\text{news}}$ kommer i stedet en nyhed: mid springer $\pm 0{,}30$, og en informeret handlende rammer kursen først. Rapportér gennemsnit og standardafvigelse af slut-P&L (mark-to-market) og gennemsnitligt maksimalt $\lvert\text{lager}\rvert$ over 40 seeds (0–39) for skew $\in \{0;\ 0{,}005\}$ og $p_{\text{news}} \in \{0;\ 0{,}02;\ 0{,}10\}$. Sammenlign med 15.7.
+**15.12** ★★ 💻 — Simulér en market maker, der i 5 000 skridt kvoterer reservationsprisen $r = m - \text{skew}\cdot q$ $\pm h$ med $h = 0.05$. Støjhandlere rammer hver side med sandsynlighed $0.5\,e^{-20 \cdot \text{afstand til mid}}$, og mid bevæger sig med $N(0;\, 0.02^2)$. Med sandsynlighed $p_{\text{news}}$ kommer i stedet en nyhed: mid springer $\pm 0.30$, og en informeret handlende rammer kursen først. Rapportér gennemsnit og standardafvigelse af slut-P&L (mark-to-market) og gennemsnitligt maksimalt $\lvert\text{lager}\rvert$ over 40 seeds (0–39) for skew $\in \{0;\ 0.005\}$ og $p_{\text{news}} \in \{0;\ 0.02;\ 0.10\}$. Sammenlign med 15.7.
 
 **15.13** ★★ 🗣️ — Skriv ca. en halv side: "Gør HFT markederne bedre eller værre?" Brug begreberne spread, adverse selection, latency arbitrage og likviditet i stress. Forklar også, hvor grænsen går mellem legitim algoritmisk market making og ulovlig manipulation.
 
@@ -7205,24 +7205,24 @@ Varierer man $\phi$, fås en *efficient frontier* af $(\operatorname{Var}, E)$-p
 <details>
 <summary>Løsning 15.1</summary>
 
-(a) $m = (100{,}00 + 100{,}02)/2 = 100{,}01$ kr., $s = 0{,}02$ kr. $= 0{,}02/100{,}01 \cdot 10^4 \approx 2{,}0$ bp.
+(a) $m = (100.00 + 100.02)/2 = 100.01$ kr., $s = 0.02$ kr. $= 0.02/100.01 \cdot 10^4 \approx 2.0$ bp.
 
-(b) Salget rammer bid-siden: $500 \cdot 100{,}00 + 500 \cdot 99{,}99 = 50\,000 + 49\,995 = 99\,995$ kr., gennemsnit $99{,}995$ kr. Omkostning i forhold til mid: $(100{,}01 - 99{,}995)/100{,}01 \cdot 10^4 \approx 1{,}5$ bp. Niveauet 100,00 er tømt, og 300 aktier er tilbage på 99,99, som nu er bedste bid. Spreadet er $100{,}02 - 99{,}99 = 0{,}03$ kr.
+(b) Salget rammer bid-siden: $500 \cdot 100.00 + 500 \cdot 99.99 = 50\,000 + 49\,995 = 99\,995$ kr., gennemsnit $99.995$ kr. Omkostning i forhold til mid: $(100.01 - 99.995)/100.01 \cdot 10^4 \approx 1.5$ bp. Niveauet 100.00 er tømt, og 300 aktier er tilbage på 99.99, som nu er bedste bid. Spreadet er $100.02 - 99.99 = 0.03$ kr.
 
-(c) (Med den oprindelige bog.) 100,01 er bedre end bedste bid (100,00) og lavere end ask, så ordren bliver ny bedste bid. Spreadet falder til $0{,}01$ kr. = ét tick, det mindst mulige. Ordren er først i køen på sit niveau, fordi den er alene der.
+(c) (Med den oprindelige bog.) 100.01 er bedre end bedste bid (100,00) og lavere end ask, så ordren bliver ny bedste bid. Spreadet falder til $0.01$ kr. = ét tick, det mindst mulige. Ordren er først i køen på sit niveau, fordi den er alene der.
 
-(d) En salgsordre med grænse 100,00 kan handle mod bid på 100,00: den er *marketable* (straks eksekverbar) og handler straks 200 aktier mod de 500 på 100,00. Den ældste ordre på niveauet handles først (pris-tid-prioritet). Ingen hvilende ordre opstår.
+(d) En salgsordre med grænse 100.00 kan handle mod bid på 100.00: den er *marketable* (straks eksekverbar) og handler straks 200 aktier mod de 500 på 100.00. Den ældste ordre på niveauet handles først (pris-tid-prioritet). Ingen hvilende ordre opstår.
 
 </details>
 
 <details>
 <summary>Løsning 15.2</summary>
 
-(a) $\hat s = 2\sqrt{0{,}0004} = 2 \cdot 0{,}02 = 0{,}04$ kr., dvs. $0{,}04/20 \cdot 10^4 = 20$ bp.
+(a) $\hat s = 2\sqrt{0.0004} = 2 \cdot 0.02 = 0.04$ kr., dvs. $0.04/20 \cdot 10^4 = 20$ bp.
 
-(b) $\sigma_u^2 = 0{,}0012 - 0{,}04^2/2 = 0{,}0012 - 0{,}0008 = 0{,}0004$, så $\sigma_u = 0{,}02$ kr. pr. handel.
+(b) $\sigma_u^2 = 0.0012 - 0.04^2/2 = 0.0012 - 0.0008 = 0.0004$, så $\sigma_u = 0.02$ kr. pr. handel.
 
-(c) $\rho_1 = -0{,}0004/0{,}0012 = -1/3$. Stærk negativ autokorrelation, som udelukkende skyldes bounce.
+(c) $\rho_1 = -0.0004/0.0012 = -1/3$. Stærk negativ autokorrelation, som udelukkende skyldes bounce.
 
 (d) Med positiv kovarians er $\sqrt{-\widehat{\operatorname{Cov}}}$ ikke defineret: rapportér "udefineret" (eller brug en anden estimator). Forklaringer: modellens antagelser holder ikke (fx er køb/salg positivt autokorrelerede, fordi store ordrer splittes op, eller værdien har momentum på kort sigt), eller der er blot estimationsstøj i et lille datasæt (se 15.11).
 
@@ -7231,25 +7231,25 @@ Varierer man $\phi$, fås en *efficient frontier* af $(\operatorname{Var}, E)$-p
 <details>
 <summary>Løsning 15.3</summary>
 
-(a) $Q/V = 0{,}1$: impact $= 0{,}8 \cdot 0{,}015 \cdot \sqrt{0{,}1} = 0{,}003795 \approx 37{,}9$ bp, dvs. ca. $0{,}19$ kr. pr. aktie. Samlet: $0{,}003795 \cdot 200\,000 \cdot 50 \approx 37\,947$ kr.
+(a) $Q/V = 0.1$: impact $= 0.8 \cdot 0.015 \cdot \sqrt{0.1} = 0.003795 \approx 37.9$ bp, dvs. ca. $0.19$ kr. pr. aktie. Samlet: $0.003795 \cdot 200\,000 \cdot 50 \approx 37\,947$ kr.
 
-(b) $Q/V = 0{,}2$: $0{,}8 \cdot 0{,}015 \cdot \sqrt{0{,}2} = 0{,}005367 \approx 53{,}7$ bp. Pr. aktie: faktor $\sqrt2 \approx 1{,}41$. Samlet: $0{,}005367 \cdot 20$ mio. $\approx 107\,332$ kr., faktor $2^{3/2} \approx 2{,}83$.
+(b) $Q/V = 0.2$: $0.8 \cdot 0.015 \cdot \sqrt{0.2} = 0.005367 \approx 53.7$ bp. Pr. aktie: faktor $\sqrt2 \approx 1.41$. Samlet: $0.005367 \cdot 20$ mio. $\approx 107\,332$ kr., faktor $2^{3/2} \approx 2.83$.
 
-(c) Fordeles 200 000 aktier over to dage, er $Q/V = 0{,}05$ pr. dag og den samlede impact-omkostning ca. $2 \cdot 0{,}8\cdot0{,}015\cdot\sqrt{0{,}05}\cdot 5$ mio. $\approx 26\,833$ kr. (under antagelse af at impact fra dag 1 er forsvundet). Prisen er timing-risiko: kursen kan løbe fra en, mens man venter. Det er præcis afvejningen i Almgren–Chriss.
+(c) Fordeles 200 000 aktier over to dage, er $Q/V = 0.05$ pr. dag og den samlede impact-omkostning ca. $2 \cdot 0.8\cdot0.015\cdot\sqrt{0.05}\cdot 5$ mio. $\approx 26\,833$ kr. (under antagelse af at impact fra dag 1 er forsvundet). Prisen er timing-risiko: kursen kan løbe fra en, mens man venter. Det er præcis afvejningen i Almgren–Chriss.
 
 </details>
 
 <details>
 <summary>Løsning 15.4</summary>
 
-(a) Papirportefølje: $10\,000 \cdot 50{,}00 = 500\,000$ kr.
-- Eksekvering: $8\,000 \cdot (50{,}12 - 50{,}00) = 960$ kr.
-- Opportunitet: $2\,000 \cdot (50{,}40 - 50{,}00) = 800$ kr.
-- Gebyrer: $8\,000 \cdot 0{,}02 = 160$ kr.
+(a) Papirportefølje: $10\,000 \cdot 50.00 = 500\,000$ kr.
+- Eksekvering: $8\,000 \cdot (50.12 - 50.00) = 960$ kr.
+- Opportunitet: $2\,000 \cdot (50.40 - 50.00) = 800$ kr.
+- Gebyrer: $8\,000 \cdot 0.02 = 160$ kr.
 
-I alt IS $= 1\,920$ kr. $= 1\,920/500\,000 \cdot 10^4 = 38{,}4$ bp.
+I alt IS $= 1\,920$ kr. $= 1\,920/500\,000 \cdot 10^4 = 38.4$ bp.
 
-(b) Ja: 50,12 < 50,15, så traderen købte 3 øre under VWAP.
+(b) Ja: 50.12 < 50.15, så traderen købte 3 øre under VWAP.
 
 (c) VWAP måler kun, om man handlede godt *i forhold til dagens forløb*, og ens egen købsinteresse kan selv have trukket VWAP op. IS måler mod beslutningstidspunktet og medtager det, man *ikke* fik handlet. Her steg kursen, så den manglende eksekvering kostede. IS er det relevante mål for en investor; et VWAP-mål er let at "snyde", fx ved at handle mindre, når kursen løber fra en.
 
@@ -7271,13 +7271,13 @@ fordi alle andre krydsled er kovarianser mellem uafhængige variable ($u_t$ og $
 <details>
 <summary>Løsning 15.6</summary>
 
-(a) $P(\text{køb}) = \tfrac12\cdot\tfrac{1{,}3}{2} + \tfrac12\cdot\tfrac{0{,}7}{2} = \tfrac12$. $P(H \mid \text{køb}) = \dfrac{0{,}5 \cdot 0{,}65}{0{,}5} = 0{,}65$, så $a = 0{,}65 \cdot 105 + 0{,}35 \cdot 95 = 101{,}5$. Symmetrisk $P(H \mid \text{salg}) = 0{,}35$ og $b = 98{,}5$.
+(a) $P(\text{køb}) = \tfrac12\cdot\tfrac{1.3}{2} + \tfrac12\cdot\tfrac{0.7}{2} = \tfrac12$. $P(H \mid \text{køb}) = \dfrac{0.5 \cdot 0.65}{0.5} = 0.65$, så $a = 0.65 \cdot 105 + 0.35 \cdot 95 = 101.5$. Symmetrisk $P(H \mid \text{salg}) = 0.35$ og $b = 98.5$.
 
-(b) Nu er $\pi = 0{,}65$.
-- Ved et nyt køb: $P(H \mid \text{køb}) = \dfrac{0{,}65 \cdot 0{,}65}{0{,}65 \cdot 0{,}65 + 0{,}35 \cdot 0{,}35} = \dfrac{0{,}4225}{0{,}545} = 0{,}7752$, så $a = 95 + 10 \cdot 0{,}7752 = 102{,}75$.
-- Ved et salg: $P(H \mid \text{salg}) = \dfrac{0{,}65 \cdot 0{,}35}{0{,}65\cdot0{,}35 + 0{,}35\cdot0{,}65} = 0{,}5$, så $b = 100$.
+(b) Nu er $\pi = 0.65$.
+- Ved et nyt køb: $P(H \mid \text{køb}) = \dfrac{0.65 \cdot 0.65}{0.65 \cdot 0.65 + 0.35 \cdot 0.35} = \dfrac{0.4225}{0.545} = 0.7752$, så $a = 95 + 10 \cdot 0.7752 = 102.75$.
+- Ved et salg: $P(H \mid \text{salg}) = \dfrac{0.65 \cdot 0.35}{0.65\cdot0.35 + 0.35\cdot0.65} = 0.5$, så $b = 100$.
 
-Kurserne er flyttet op, og spreadet er nu $2{,}75$.
+Kurserne er flyttet op, og spreadet er nu $2.75$.
 
 (c) Med $\pi = \tfrac12$: $P(H \mid \text{køb}) = \tfrac{1+\mu}{2}$, så $a = V_L + \tfrac{1+\mu}{2}(V_H - V_L)$ og $b = V_L + \tfrac{1-\mu}{2}(V_H - V_L)$. Det giver $a - b = \mu(V_H - V_L)$.
 
@@ -7290,9 +7290,9 @@ Kurserne er flyttet op, og spreadet er nu $2{,}75$.
 
 (a) En støjhandel giver gevinsten $h$ (handlet $h$ fra en uændret værdi). En informeret handel giver tabet $J - h$: køber den informerede på $m + h$, og værdien springer til $m + J$, taber market makeren $J - h$. Forventning: $(1-\alpha)h - \alpha(J - h) = h - \alpha J$. Break-even: $h^* = \alpha J$.
 
-(b) $h^* = 0{,}2 \cdot 0{,}30 = 0{,}06$ kr., dvs. et spread på mindst $0{,}12$ kr.
+(b) $h^* = 0.2 \cdot 0.30 = 0.06$ kr., dvs. et spread på mindst $0.12$ kr.
 
-(c) I 15.6 svarer $J$ til afstanden fra forventet værdi til $V_H$, dvs. $5$, og $\alpha$ til $\mu = 0{,}3$: $h^* = 1{,}5$, præcis halvdelen af GM-spreadet på 3. (I GM handler den informerede altid, så andelen af informerede blandt handler er $\mu$.)
+(c) I 15.6 svarer $J$ til afstanden fra forventet værdi til $V_H$, dvs. $5$, og $\alpha$ til $\mu = 0.3$: $h^* = 1.5$, præcis halvdelen af GM-spreadet på 3. (I GM handler den informerede altid, så andelen af informerede blandt handler er $\mu$.)
 
 (d) Fordi $h^*$ er proportional med $\alpha$. Kan man kende en "giftig" ordrestrøm fra en harmløs (fx ved at segmentere kunder eller trække sig ved nyheder), kan man kvotere snævert til støjhandlere og bredt eller slet ikke til informerede. Det er en kernekompetence hos market makers.
 
@@ -7347,7 +7347,7 @@ kT=10  100.0  36.8  13.5   5.0   1.8   0.7   0.2   0.1   0.0   0.0   0.0      5.
 kappa = 0.60 pr. dag, kappa*T = 3.0, halveringstid ln2/kappa = 1.16 dage
 ```
 
-(d) $\kappa = \sqrt{10^{-6}\cdot 0{,}36/10^{-6}} = 0{,}6$ pr. dag. Bemærk: med $\kappa T = 10$ er den forventede omkostning 5 gange TWAP's, men variansen kun 15 %. Større risikoaversion "køber" lavere risiko med højere impact.
+(d) $\kappa = \sqrt{10^{-6}\cdot 0.36/10^{-6}} = 0.6$ pr. dag. Bemærk: med $\kappa T = 10$ er den forventede omkostning 5 gange TWAP's, men variansen kun 15 %. Større risikoaversion "køber" lavere risiko med højere impact.
 
 </details>
 
@@ -7362,7 +7362,7 @@ kappa = 0.60 pr. dag, kappa*T = 3.0, halveringstid ln2/kappa = 1.16 dage
 
 (d) $\operatorname{Var}(v \mid y) = \Sigma_0 - \dfrac{\operatorname{Cov}(v,y)^2}{\operatorname{Var}(y)} = \Sigma_0 - \dfrac{\beta^2\Sigma_0^2}{2\beta^2\Sigma_0} = \dfrac{\Sigma_0}{2}$. Forventet gevinst: $E[(v-p_0)x - \lambda x^2] = \beta\Sigma_0 - \lambda\beta^2\Sigma_0 = \beta\Sigma_0(1 - \lambda\beta) = \tfrac12\beta\Sigma_0 = \tfrac12\sigma_u\sqrt{\Sigma_0}$. Market makeren tjener 0 i forventning, så støjhandlerne taber det samme: $E[(v - p)u] = -\lambda\sigma_u^2 = -\tfrac12\sigma_u\sqrt{\Sigma_0}$.
 
-(e) $\lambda = 2/(2 \cdot 10\,000) = 0{,}0001$ kr. pr. aktie, $\beta = 10\,000/2 = 5\,000$ aktier pr. kr. Den informerede handler $x = 5\,000$; $y = 5\,000 - 2\,000 = 3\,000$; $\Delta p = 0{,}0001 \cdot 3\,000 = 0{,}30$ kr. Forventet gevinst $\tfrac12 \cdot 10\,000 \cdot 2 = 10\,000$ kr.
+(e) $\lambda = 2/(2 \cdot 10\,000) = 0.0001$ kr. pr. aktie, $\beta = 10\,000/2 = 5\,000$ aktier pr. kr. Den informerede handler $x = 5\,000$; $y = 5\,000 - 2\,000 = 3\,000$; $\Delta p = 0.0001 \cdot 3\,000 = 0.30$ kr. Forventet gevinst $\tfrac12 \cdot 10\,000 \cdot 2 = 10\,000$ kr.
 
 </details>
 
@@ -7373,10 +7373,10 @@ kappa = 0.60 pr. dag, kappa*T = 3.0, halveringstid ln2/kappa = 1.16 dage
 
 (b) $f(T) = \eta X^2/T + \phi\sigma^2X^2T/3$; $f'(T) = -\eta X^2/T^2 + \phi\sigma^2X^2/3 = 0$ giver $T^* = \sqrt{3\eta/(\phi\sigma^2)} = \sqrt3/\kappa$. Det er et minimum, fordi $f'' > 0$.
 
-(c) $\kappa = 0{,}6$, så $T^* = \sqrt3/0{,}6 \approx 2{,}89$ dage. $\eta X^2 = 10^{-6}\cdot 2{,}5\cdot10^{11} = 250\,000$ og $\sigma^2X^2 = 0{,}36\cdot2{,}5\cdot10^{11} = 9\cdot10^{10}$.
+(c) $\kappa = 0.6$, så $T^* = \sqrt3/0.6 \approx 2.89$ dage. $\eta X^2 = 10^{-6}\cdot 2.5\cdot10^{11} = 250\,000$ og $\sigma^2X^2 = 0.36\cdot2.5\cdot10^{11} = 9\cdot10^{10}$.
 - TWAP, $T = 5$: $E = 50\,000$, $\phi\operatorname{Var} = 10^{-6}\cdot 9\cdot10^{10}\cdot 5/3 = 150\,000$, i alt $200\,000$ kr.
 - TWAP, $T^*$: $E = \phi\operatorname{Var} = 86\,603$, i alt $173\,205$ kr. (ved optimum er de to led lige store).
-- AC, $T = 5$ ($\kappa T = 3$): $E = 1{,}552 \cdot 50\,000 = 77\,615$, $\phi\operatorname{Var} = 0{,}1625 \cdot 9\cdot10^{10}\cdot 5 \cdot 10^{-6} = 73\,131$, i alt $\approx 150\,745$ kr.
+- AC, $T = 5$ ($\kappa T = 3$): $E = 1.552 \cdot 50\,000 = 77\,615$, $\phi\operatorname{Var} = 0.1625 \cdot 9\cdot10^{10}\cdot 5 \cdot 10^{-6} = 73\,131$, i alt $\approx 150\,745$ kr.
 
 (d) TWAP er bundet til konstant hastighed. AC-banen handler hurtigt i starten, hvor beholdningen (og dermed risikoen) er størst, og langsomt til sidst, hvor lidt er tilbage og impact pr. aktie kan holdes lav. Den udnytter, at variansen afhænger af $x_t^2$ og impact af $\dot x_t^2$, og fordeler hastigheden derefter.
 
@@ -7421,7 +7421,7 @@ n=  250, sigma_u=0.05: estimater ['0.108', '0.085', '0.079', '0.065', '0.102']
 n=  250, sigma_u=0.20: estimater ['0.104', '0.104', '0.040', 'udef.', '0.075']
 ```
 
-Med mange handler er estimatoren præcis (sand værdi 0,10). Med 250 observationer er den meget usikker, og når $\sigma_u$ er stor i forhold til $s$, drukner bounce-signalet i værdistøj: i ét tilfælde bliver kovariansen positiv og estimatet udefineret. Roll-estimatoren er altså nyttig på lange serier eller som gennemsnit over mange aktier, ikke til præcise enkeltestimater.
+Med mange handler er estimatoren præcis (sand værdi 0.10). Med 250 observationer er den meget usikker, og når $\sigma_u$ er stor i forhold til $s$, drukner bounce-signalet i værdistøj: i ét tilfælde bliver kovariansen positiv og estimatet udefineret. Roll-estimatoren er altså nyttig på lange serier eller som gennemsnit over mange aktier, ikke til præcise enkeltestimater.
 
 </details>
 
@@ -7475,7 +7475,7 @@ Forventet output:
 0.005   0.10     -46.8    17.1       8.0
 ```
 
-Kontrol med 15.7: uden skew rammes hver side med sandsynlighed $0{,}5e^{-1} = 0{,}184$ pr. skridt, så forventet spread capture pr. skridt er $2\cdot0{,}184\cdot0{,}05 = 0{,}0184$ og over 5 000 skridt ca. $92$. Hver nyhed koster ca. $J - h = 0{,}25$. Forventet P&L: $p_{\text{news}} = 0{,}02$ giver $5000(0{,}98\cdot0{,}0184 - 0{,}02\cdot0{,}25) \approx 65$; $p_{\text{news}} = 0{,}10$ giver $\approx -42$. Det stemmer med simuleringen inden for usikkerheden.
+Kontrol med 15.7: uden skew rammes hver side med sandsynlighed $0.5e^{-1} = 0.184$ pr. skridt, så forventet spread capture pr. skridt er $2\cdot0.184\cdot0.05 = 0.0184$ og over 5 000 skridt ca. $92$. Hver nyhed koster ca. $J - h = 0.25$. Forventet P&L: $p_{\text{news}} = 0.02$ giver $5000(0.98\cdot0.0184 - 0.02\cdot0.25) \approx 65$; $p_{\text{news}} = 0.10$ giver $\approx -42$. Det stemmer med simuleringen inden for usikkerheden.
 
 Konklusioner: (1) Adverse selection æder spread-indtjeningen; med 10 % nyhedsskridt er strategien tabsgivende uanset lagerstyring, så spreadet skulle udvides (break-even $h^* = \alpha J$). (2) Skew ændrer næsten ikke middelværdien, men reducerer lager og P&L-spredning med en faktor 10 eller mere: uden skew driver lageret som en random walk, og P&L domineres af lager gange prisbevægelse. Det er Avellaneda–Stoikovs pointe. Modellen er stærkt forenklet (ingen kø, ingen gebyrer, ingen latency); den er et tankeeksperiment, ikke en handelsstrategi.
 
@@ -7514,7 +7514,7 @@ Du er klar til næste uge, når du kan:
 ## Uge 16 — Risikostyring, machine learning og karriere
 
 > **Læringsmål:** Beregne og backteste Value at Risk og Expected Shortfall, forstå gearing, margin og drawdown, og udlede Kelly-kriteriet (diskret og kontinuert) samt hvorfor man i praksis bruger brøkdels-Kelly. Kende de særlige faldgruber ved machine learning i finans og vide, hvad kvant-jobsamtaler tester.
-> **Tidsforbrug:** ca. 3,5 t video (+ ca. 2,5 t valgfri) · ca. 5,5 t øvelser
+> **Tidsforbrug:** ca. 3.5 t video (+ ca. 2.5 t valgfri) · ca. 5.5 t øvelser
 > **Forudsætninger:** Uge 2 (afkast, volatilitet, Sharpe ratio), uge 3–5 (fordelinger, CLT, likelihood, hypotesetest), uge 7 (porteføljevarians), uge 10 (overfitting, purged CV, deflated Sharpe), uge 13 (Itô's lemma), uge 15 (likviditet og impact).
 
 ### 📺 Se
@@ -7547,20 +7547,20 @@ Du er klar til næste uge, når du kan:
 $$\operatorname{VaR}_\alpha = \inf\{\ell : P(L \le \ell) \ge \alpha\},$$
 dvs. $\alpha$-fraktilen af tabsfordelingen: "med sandsynlighed $\alpha$ taber vi højst $\operatorname{VaR}_\alpha$". Tre metoder:
 - *Historisk:* sortér de seneste $n$ tab; VaR er det $k$'te største med $k = \lceil n(1-\alpha) \rceil$ (en af flere konventioner). Ingen fordelingsantagelse, men kun det, der allerede er sket, kan ske.
-- *Parametrisk (varians–kovarians):* antag $R \sim N(\mu, \sigma^2)$, hvor $\sigma^2 = \mathbf{w}^\top \Sigma \mathbf{w}$ (uge 7). Så er $\operatorname{VaR}_\alpha = W(z_\alpha \sigma - \mu)$ med $z_{0{,}95} = 1{,}645$, $z_{0{,}99} = 2{,}326$.
+- *Parametrisk (varians–kovarians):* antag $R \sim N(\mu, \sigma^2)$, hvor $\sigma^2 = \mathbf{w}^\top \Sigma \mathbf{w}$ (uge 7). Så er $\operatorname{VaR}_\alpha = W(z_\alpha \sigma - \mu)$ med $z_{0.95} = 1.645$, $z_{0.99} = 2.326$.
 - *Monte Carlo:* simulér mange scenarier fra en model (fx GARCH med t-fordelte innovationer, uge 9), revaluér porteføljen (også optioner, uge 14) og tag fraktilen.
 
-*Eksempel:* $W = 10$ mio. kr., daglig $\sigma = 1{,}2\,\%$, $\mu \approx 0$: 1-dags $\operatorname{VaR}_{0{,}99} = 2{,}3263 \cdot 0{,}012 \cdot 10^7 \approx 279\,162$ kr. "$\sqrt{h}$-reglen" giver 10-dags VaR $\approx 279\,162\sqrt{10} \approx 882\,787$ kr., men *kun* under iid-afkast. Med volatilitetsklynger og fede haler er den upålidelig.
+*Eksempel:* $W = 10$ mio. kr., daglig $\sigma = 1.2\,\%$, $\mu \approx 0$: 1-dags $\operatorname{VaR}_{0.99} = 2.3263 \cdot 0.012 \cdot 10^7 \approx 279\,162$ kr. "$\sqrt{h}$-reglen" giver 10-dags VaR $\approx 279\,162\sqrt{10} \approx 882\,787$ kr., men *kun* under iid-afkast. Med volatilitetsklynger og fede haler er den upålidelig.
 
 **2. Expected Shortfall.** $\operatorname{ES}_\alpha = E[L \mid L \ge \operatorname{VaR}_\alpha]$ (for kontinuerte fordelinger): det gennemsnitlige tab *i de værste* $1-\alpha$ *af tilfældene*. VaR fortæller, hvor halen begynder; ES fortæller, hvor slem den er. For normalfordelingen giver $E[Z \mid Z > z] = \varphi(z)/(1 - \Phi(z))$, at
-$$\operatorname{ES}_\alpha = W\Big(\sigma\,\frac{\varphi(z_\alpha)}{1-\alpha} - \mu\Big), \qquad \text{fx } \operatorname{ES}_{0{,}975} = 2{,}338\,\sigma W \approx \operatorname{VaR}_{0{,}99}.$$
-Derfor skiftede Basel-reglerne (FRTB) fra 99 %-VaR til 97,5 %-ES: samme niveau under normalitet, men ES straffer fede haler.
+$$\operatorname{ES}_\alpha = W\Big(\sigma\,\frac{\varphi(z_\alpha)}{1-\alpha} - \mu\Big), \qquad \text{fx } \operatorname{ES}_{0.975} = 2.338\,\sigma W \approx \operatorname{VaR}_{0.99}.$$
+Derfor skiftede Basel-reglerne (FRTB) fra 99 %-VaR til 97.5 %-ES: samme niveau under normalitet, men ES straffer fede haler.
 
 *Kohærente risikomål (Artzner m.fl. 1999):* $\rho$ er kohærent, hvis den er (i) monoton ($L_1 \le L_2 \Rightarrow \rho(L_1) \le \rho(L_2)$), (ii) translationsinvariant ($\rho(L + c) = \rho(L) + c$), (iii) positivt homogen ($\rho(tL) = t\rho(L)$, $t \ge 0$) og (iv) **subadditiv** ($\rho(L_1 + L_2) \le \rho(L_1) + \rho(L_2)$: diversifikation må ikke straffes). ES er kohærent (præcist: i den generelle definition $\operatorname{ES}_\alpha = \frac{1}{1-\alpha}\int_\alpha^1 \operatorname{VaR}_u\,du$, "gennemsnitstabet i de værste $1-\alpha$ af sandsynlighedsmassen", som falder sammen med $E[L \mid L \ge \operatorname{VaR}_\alpha]$ for kontinuerte fordelinger og bruges i øvelse 16.5); VaR er *ikke* subadditiv i almindelighed (øvelse 16.5). Det er hovedgrunden til, at ES foretrækkes, sammen med at VaR er blind for halens form.
 
 **3. Backtest af VaR.** Lad $I_t = 1$, hvis tabet dag $t$ overstiger VaR (en *overskridelse*). Er modellen korrekt, er $I_t$ iid Bernoulli($p$) med $p = 1 - \alpha$, så antallet $x$ på $T$ dage er $\text{Bin}(T, p)$. **Kupiecs POF-test** (proportion of failures) er en likelihood ratio-test (uge 5):
 $$\text{LR} = -2\ln\frac{(1-p)^{T-x}p^x}{(1-\hat p)^{T-x}\hat p^{\,x}}, \qquad \hat p = x/T, \qquad \text{LR} \approx \chi^2_1 \text{ under } H_0.$$
-Afvis på 5 %-niveau, hvis $\text{LR} > 3{,}84$. Med $T = 250$ og $p = 1\,\%$ forventes 2,5 overskridelser. Overskridelser bør også være uafhængige (Christoffersens test): klynger af overskridelser afslører en model, der reagerer for langsomt på volatilitet. Basels "trafiklys": 0–4 overskridelser grøn, 5–9 gul, 10+ rød.
+Afvis på 5 %-niveau, hvis $\text{LR} > 3.84$. Med $T = 250$ og $p = 1\,\%$ forventes 2.5 overskridelser. Overskridelser bør også være uafhængige (Christoffersens test): klynger af overskridelser afslører en model, der reagerer for langsomt på volatilitet. Basels "trafiklys": 0–4 overskridelser grøn, 5–9 gul, 10+ rød.
 
 **4. Stresstest.** VaR og ES estimeres fra "normale" data. Stresstest spørger: hvad sker der i et bestemt scenarie? *Historiske* scenarier (oktober 1987, efteråret 2008, marts 2020, "quant quake" i august 2007, hvor mange kvantfonde med overlappende positioner tabte samtidig, jf. Khandani & Lo), *hypotetiske* (renter +200 bp, korrelationer går mod 1, likviditeten forsvinder) og *omvendte* stresstest (hvilket scenarie ville udslette os?).
 
@@ -7570,7 +7570,7 @@ Afvis på 5 %-niveau, hvis $\text{LR} > 3{,}84$. Med $T = 250$ og $p = 1\,\%$ fo
 $$g(f) = p\ln(1 + fb) + q\ln(1 - f), \qquad g'(f) = \frac{pb}{1+fb} - \frac{q}{1-f} = 0 \;\Longleftrightarrow\; f^* = p - \frac{q}{b}.$$
 $g$ er strengt konkav ($g'' < 0$), så $f^*$ er det globale maksimum; er $f^* \le 0$ (ingen edge), skal man ikke spille. At maksimere $E[\ln W]$ giver den højeste langsigtede vækst næsten sikkert. At maksimere $E[W]$ ville give $f = 1$ og ruin med sandsynlighed 1.
 
-*Eksempel:* $p = 0{,}55$, $b = 1$: $f^* = 0{,}10$, $g(f^*) = 0{,}00501$ pr. væddemål; $g(0{,}05) = 0{,}00375$ (75 % af væksten); $g(0{,}20) = -0{,}00014 < 0$. Dobbelt Kelly giver *negativ* vækst, selv om hvert væddemål har positiv forventning.
+*Eksempel:* $p = 0.55$, $b = 1$: $f^* = 0.10$, $g(f^*) = 0.00501$ pr. væddemål; $g(0.05) = 0.00375$ (75 % af væksten); $g(0.20) = -0.00014 < 0$. Dobbelt Kelly giver *negativ* vækst, selv om hvert væddemål har positiv forventning.
 
 *Kontinuert version:* investér brøkdelen $f$ i et aktiv med $dS/S = (r + \mu)\,dt + \sigma\,dB$ ($\mu$ = merafkast) og resten risikofrit. Så er $dW/W = (r + f\mu)\,dt + f\sigma\,dB$, og Itô (uge 13) giver
 $$d\ln W = \big(r + f\mu - \tfrac12 f^2\sigma^2\big)dt + f\sigma\,dB, \qquad f^* = \frac{\mu}{\sigma^2}, \qquad g^* = r + \frac{\mu^2}{2\sigma^2} = r + \frac{\text{SR}^2}{2}.$$
@@ -7598,29 +7598,29 @@ Med $f = cf^*$ er mervæksten $(c - c^2/2)\,\text{SR}^2$: halv Kelly giver $\tfr
 
 ### ✏️ Øvelser
 
-**16.1** ★ — En portefølje på 10 mio. kr. har daglig volatilitet $1{,}2\,\%$ og forventet dagligt afkast 0. Antag normalfordeling. Beregn (a) 1-dags $\operatorname{VaR}_{0{,}95}$ og $\operatorname{VaR}_{0{,}99}$, (b) 10-dags $\operatorname{VaR}_{0{,}99}$ med $\sqrt{h}$-reglen, (c) $\operatorname{ES}_{0{,}95}$, $\operatorname{ES}_{0{,}975}$ og $\operatorname{ES}_{0{,}99}$. Brug $\varphi(1{,}645) = 0{,}1031$, $\varphi(1{,}960) = 0{,}0584$, $\varphi(2{,}326) = 0{,}0267$. (d) Hvilken antagelse kræver (b)?
+**16.1** ★ — En portefølje på 10 mio. kr. har daglig volatilitet $1.2\,\%$ og forventet dagligt afkast 0. Antag normalfordeling. Beregn (a) 1-dags $\operatorname{VaR}_{0.95}$ og $\operatorname{VaR}_{0.99}$, (b) 10-dags $\operatorname{VaR}_{0.99}$ med $\sqrt{h}$-reglen, (c) $\operatorname{ES}_{0.95}$, $\operatorname{ES}_{0.975}$ og $\operatorname{ES}_{0.99}$. Brug $\varphi(1.645) = 0.1031$, $\varphi(1.960) = 0.0584$, $\varphi(2.326) = 0.0267$. (d) Hvilken antagelse kræver (b)?
 
-**16.2** ★ — Tyve daglige afkast (i %): $0{,}8;\ -1{,}2;\ 0{,}3;\ -2{,}9;\ 1{,}5;\ -0{,}4;\ 0{,}9;\ -0{,}7;\ 2{,}1;\ -4{,}1;\ 0{,}2;\ -0{,}9;\ 1{,}1;\ -1{,}8;\ 0{,}5;\ -0{,}2;\ 0{,}7;\ -2{,}3;\ 1{,}4;\ -0{,}6$. (a) Beregn historisk VaR og ES ved $\alpha = 0{,}90$ og $\alpha = 0{,}95$ med konventionen $k = \lceil n(1-\alpha)\rceil$. (b) Stikprøvens gennemsnit er $-0{,}28\,\%$ og standardafvigelse $1{,}583\,\%$. Beregn den parametriske (normale) VaR ved de to niveauer. (c) Hvad er problemet med en historisk 95 %-VaR baseret på 20 observationer?
+**16.2** ★ — Tyve daglige afkast (i %): $0.8;\ -1.2;\ 0.3;\ -2.9;\ 1.5;\ -0.4;\ 0.9;\ -0.7;\ 2.1;\ -4.1;\ 0.2;\ -0.9;\ 1.1;\ -1.8;\ 0.5;\ -0.2;\ 0.7;\ -2.3;\ 1.4;\ -0.6$. (a) Beregn historisk VaR og ES ved $\alpha = 0.90$ og $\alpha = 0.95$ med konventionen $k = \lceil n(1-\alpha)\rceil$. (b) Stikprøvens gennemsnit er $-0.28\,\%$ og standardafvigelse $1.583\,\%$. Beregn den parametriske (normale) VaR ved de to niveauer. (c) Hvad er problemet med en historisk 95 %-VaR baseret på 20 observationer?
 
 **16.3** ★ — Du har 100 000 kr. egenkapital og låner 300 000 kr. til en position på 400 000 kr. (ignorér renter). (a) Hvad er gearingen? (b) Aktivet falder 15 %. Hvad er egenkapitalens afkast? (c) Vedligeholdelsesmarginen er 20 % af positionens værdi. Ved hvilket kursfald kommer margin call? (d) Ved hvilket fald er egenkapitalen væk? (e) Hvor stor en gevinst kræves for at indhente tabet i (b), hvis man fortsætter ugearet?
 
-**16.4** ★ — Find Kelly-brøken $f^*$ og vækstraten $g(f^*)$ for (a) $p = 0{,}6$, $b = 1$; (b) $p = 0{,}4$, $b = 2$; (c) $p = 0{,}5$, $b = 1$; (d) $p = 0{,}3$, $b = 2$. (e) I (a): hvad er medianformuen efter 100 væddemål relativt til start?
+**16.4** ★ — Find Kelly-brøken $f^*$ og vækstraten $g(f^*)$ for (a) $p = 0.6$, $b = 1$; (b) $p = 0.4$, $b = 2$; (c) $p = 0.5$, $b = 1$; (d) $p = 0.3$, $b = 2$. (e) I (a): hvad er medianformuen efter 100 væddemål relativt til start?
 
-**16.5** ★★ — To uafhængige obligationer giver hver et tab på 100 med sandsynlighed 4 % og ellers 0. (a) Find $\operatorname{VaR}_{0{,}95}$ for hver obligation og for porteføljen af begge. Er VaR subadditiv her? (b) Find $\operatorname{ES}_{0{,}95}$ for hver og for porteføljen, defineret som gennemsnitstabet i de værste 5 % af sandsynlighedsmassen. Tjek subadditivitet. (c) Hvorfor er det farligt for en risikoafdeling, at VaR kan "belønne" koncentration?
+**16.5** ★★ — To uafhængige obligationer giver hver et tab på 100 med sandsynlighed 4 % og ellers 0. (a) Find $\operatorname{VaR}_{0.95}$ for hver obligation og for porteføljen af begge. Er VaR subadditiv her? (b) Find $\operatorname{ES}_{0.95}$ for hver og for porteføljen, defineret som gennemsnitstabet i de værste 5 % af sandsynlighedsmassen. Tjek subadditivitet. (c) Hvorfor er det farligt for en risikoafdeling, at VaR kan "belønne" koncentration?
 
-**16.6** ★★ — En 99 %-VaR-model backtestes over $T = 250$ dage. (a) Hvad er det forventede antal overskridelser? (b) Beregn Kupiecs LR for $x = 4$ og $x = 7$, og afgør om modellen afvises på 5 %-niveau. (c) Beregn den eksakte $P(X \ge 7)$ under $H_0$ (resultat: $0{,}0137$; vis udtrykket). (d) Hvad giver testen for $x = 0$, og hvorfor bekymrer en tilsynsmyndighed sig mindre om det tilfælde? (e) Hvad tester Kupiec *ikke*?
+**16.6** ★★ — En 99 %-VaR-model backtestes over $T = 250$ dage. (a) Hvad er det forventede antal overskridelser? (b) Beregn Kupiecs LR for $x = 4$ og $x = 7$, og afgør om modellen afvises på 5 %-niveau. (c) Beregn den eksakte $P(X \ge 7)$ under $H_0$ (resultat: $0.0137$; vis udtrykket). (d) Hvad giver testen for $x = 0$, og hvorfor bekymrer en tilsynsmyndighed sig mindre om det tilfælde? (e) Hvad tester Kupiec *ikke*?
 
-**16.7** ★★ — Kelly, diskret. (a) Udled $f^* = p - q/b$ og vis, at $g$ er strengt konkav på $[0, 1)$. (b) For $p = 0{,}55$, $b = 1$: beregn $g(0{,}05)$, $g(0{,}10)$, $g(0{,}20)$, og vis, at $g$ har et nulpunkt lidt under $0{,}2$. (c) Vis, at $E[W_n] = W_0(1 + f(pb - q))^n$, og at den maksimeres ved $f = 1$. Hvad sker der med $W_n$ ved $f = 1$? (d) Forklar forskellen på at maksimere $E[W_n]$ og $E[\ln W_n]$.
+**16.7** ★★ — Kelly, diskret. (a) Udled $f^* = p - q/b$ og vis, at $g$ er strengt konkav på $[0, 1)$. (b) For $p = 0.55$, $b = 1$: beregn $g(0.05)$, $g(0.10)$, $g(0.20)$, og vis, at $g$ har et nulpunkt lidt under $0.2$. (c) Vis, at $E[W_n] = W_0(1 + f(pb - q))^n$, og at den maksimeres ved $f = 1$. Hvad sker der med $W_n$ ved $f = 1$? (d) Forklar forskellen på at maksimere $E[W_n]$ og $E[\ln W_n]$.
 
-**16.8** ★★ — Kelly, kontinuert. (a) Udled $d\ln W$ med Itô's lemma og find $f^*$ og $g^*$. (b) Vis, at $f = cf^*$ giver mervæksten $(c - c^2/2)\text{SR}^2$, og find den for $c = \tfrac12, 1, 2$. (c) Tal: $\mu = 5\,\%$ merafkast, $\sigma = 20\,\%$, $r = 0$. Find $f^*$, $\text{SR}$, $g^*$ og volatiliteten af $\ln W$ under fuld og halv Kelly. (d) Antag, at det *sande* merafkast kun er $2{,}5\,\%$, men du bruger $f = 1{,}25$. Hvad bliver væksten? Og med $f = 0{,}625$? Konklusion om parameterusikkerhed?
+**16.8** ★★ — Kelly, kontinuert. (a) Udled $d\ln W$ med Itô's lemma og find $f^*$ og $g^*$. (b) Vis, at $f = cf^*$ giver mervæksten $(c - c^2/2)\text{SR}^2$, og find den for $c = \tfrac12, 1, 2$. (c) Tal: $\mu = 5\,\%$ merafkast, $\sigma = 20\,\%$, $r = 0$. Find $f^*$, $\text{SR}$, $g^*$ og volatiliteten af $\ln W$ under fuld og halv Kelly. (d) Antag, at det *sande* merafkast kun er $2.5\,\%$, men du bruger $f = 1.25$. Hvad bliver væksten? Og med $f = 0.625$? Konklusion om parameterusikkerhed?
 
 **16.9** ★★★ — Drawdown under Kelly. Lad $r = 0$ og $f = cf^*$, så $Y_t = \ln(W_t/W_0)$ er en Brownsk bevægelse med drift $m = (c - c^2/2)\,\mu^2/\sigma^2$ og volatilitet $s = c\mu/\sigma$. (a) Vis med Itô, at $M_t = e^{-\theta Y_t}$ er en martingal, når $\theta = 2m/s^2$. (b) Brug optional stopping (som i Gambler's Ruin, uge 3) på stoppetiden "første gang $Y$ rammer $-a$ eller $b$", og lad $b \to \infty$ for at vise $P(Y \text{ rammer } -a) = e^{-\theta a}$. (c) Konkludér, at $P(W \text{ falder nogensinde til } xW_0) = x^{2/c - 1}$ for $0 < x < 1$. (d) Beregn sandsynligheden for nogensinde at halvere formuen under halv, fuld og dobbelt Kelly.
 
 **16.10** ★★ — Purged k-fold CV. Du har 1 000 daglige observationer $t = 1, \dots, 1000$. Label $t$ er fortegnet af afkastet over de næste 5 dage, så dens informationsinterval er $[t, t+5]$. Testfolden er $t = 401, \dots, 600$. (a) Hvilke træningsobservationer skal fjernes ved purging? (b) Med en embargo på 10 dage forlænges testfoldens informationsinterval med 10 dage efter slutningen. Hvilke observationer fjernes nu, og hvor mange træningsobservationer er der tilbage? (c) Forklar præcis, hvordan almindelig k-fold CV ville lække information her. (d) Hvorfor er embargoen kun nødvendig *efter* testfolden?
 
-**16.11** ★★ 💻 — Simulér 2 500 daglige afkast fra en Student-t-fordeling med $\nu = 4$ (som $Z/\sqrt{\chi^2_\nu/\nu}$, hvor $\chi^2_\nu$ er en sum af $\nu$ kvadrerede standardnormaler), skaleret til daglig standardafvigelse 1 % (`random.Random(16)`). Beregn historisk og normal-parametrisk VaR og ES for $\alpha = 0{,}95;\ 0{,}975;\ 0{,}99;\ 0{,}999$, og sammenlign med en Monte Carlo-reference baseret på 200 000 nye træk. Hvor fejler normalmodellen, og i hvilken retning?
+**16.11** ★★ 💻 — Simulér 2 500 daglige afkast fra en Student-t-fordeling med $\nu = 4$ (som $Z/\sqrt{\chi^2_\nu/\nu}$, hvor $\chi^2_\nu$ er en sum af $\nu$ kvadrerede standardnormaler), skaleret til daglig standardafvigelse 1 % (`random.Random(16)`). Beregn historisk og normal-parametrisk VaR og ES for $\alpha = 0.95;\ 0.975;\ 0.99;\ 0.999$, og sammenlign med en Monte Carlo-reference baseret på 200 000 nye træk. Hvor fejler normalmodellen, og i hvilken retning?
 
-**16.12** ★★ 💻 — Kelly-simulering: $p = 0{,}55$, $b = 1$, 1 000 væddemål, 2 000 stier (`random.Random(2016)`, samme udfald for alle strategier). Sammenlign halv, fuld og dobbelt Kelly: teoretisk og simuleret vækstrate, medianformue, $P(W_{1000} < W_0)$ og sandsynligheden for på et tidspunkt at være under $\tfrac12 W_0$. Sammenlign med 16.9.
+**16.12** ★★ 💻 — Kelly-simulering: $p = 0.55$, $b = 1$, 1 000 væddemål, 2 000 stier (`random.Random(2016)`, samme udfald for alle strategier). Sammenlign halv, fuld og dobbelt Kelly: teoretisk og simuleret vækstrate, medianformue, $P(W_{1000} < W_0)$ og sandsynligheden for på et tidspunkt at være under $\tfrac12 W_0$. Sammenlign med 16.9.
 
 **16.13** ★★ 🗣️ — En kollega viser dig en gradient boosting-model med 200 features, der forudsiger retningen af næste dags afkast for 50 aktier med 56 % hit rate i en tilfældig (shuffled) 5-fold CV. Skriv ca. en halv side om, hvad du vil undersøge, før du tror på modellen, og hvad der skal til, før den overhovedet kan papirhandles.
 
@@ -7629,13 +7629,13 @@ Med $f = cf^*$ er mervæksten $(c - c^2/2)\,\text{SR}^2$: halv Kelly giver $\tfr
 <details>
 <summary>Løsning 16.1</summary>
 
-$\sigma W = 0{,}012 \cdot 10^7 = 120\,000$ kr.
+$\sigma W = 0.012 \cdot 10^7 = 120\,000$ kr.
 
-(a) $\operatorname{VaR}_{0{,}95} = 1{,}6449 \cdot 120\,000 \approx 197\,382$ kr.; $\operatorname{VaR}_{0{,}99} = 2{,}3263 \cdot 120\,000 \approx 279\,162$ kr. (med eksakte fraktiler; de afrundede 1,645 og 2,326 giver 197 400 og 279 120 kr.).
+(a) $\operatorname{VaR}_{0.95} = 1.6449 \cdot 120\,000 \approx 197\,382$ kr.; $\operatorname{VaR}_{0.99} = 2.3263 \cdot 120\,000 \approx 279\,162$ kr. (med eksakte fraktiler; de afrundede 1,645 og 2,326 giver 197 400 og 279 120 kr.).
 
 (b) $279\,162 \cdot \sqrt{10} \approx 882\,787$ kr.
 
-(c) $\operatorname{ES}_{0{,}95} = 120\,000 \cdot 0{,}1031/0{,}05 \approx 247\,526$ kr.; $\operatorname{ES}_{0{,}975} = 120\,000 \cdot 0{,}0584/0{,}025 \approx 280\,536$ kr.; $\operatorname{ES}_{0{,}99} = 120\,000 \cdot 0{,}0267/0{,}01 \approx 319\,826$ kr. (Tallene bruger eksakte værdier af $\varphi$; de afrundede værdier i opgaven giver ca. 247 440, 280 320 og 320 400 kr.) Bemærk $\operatorname{ES}_{0{,}975} \approx \operatorname{VaR}_{0{,}99}$.
+(c) $\operatorname{ES}_{0.95} = 120\,000 \cdot 0.1031/0.05 \approx 247\,526$ kr.; $\operatorname{ES}_{0.975} = 120\,000 \cdot 0.0584/0.025 \approx 280\,536$ kr.; $\operatorname{ES}_{0.99} = 120\,000 \cdot 0.0267/0.01 \approx 319\,826$ kr. (Tallene bruger eksakte værdier af $\varphi$; de afrundede værdier i opgaven giver ca. 247 440, 280 320 og 320 400 kr.) Bemærk $\operatorname{ES}_{0.975} \approx \operatorname{VaR}_{0.99}$.
 
 (d) Uafhængige og identisk fordelte daglige afkast (så variansen over 10 dage er $10\sigma^2$), konstant position over de 10 dage og (for at fraktilen også skalerer) normalfordeling. Med volatilitetsklynger og fede haler er reglen kun en tommelfingerregel.
 
@@ -7644,11 +7644,11 @@ $\sigma W = 0{,}012 \cdot 10^7 = 120\,000$ kr.
 <details>
 <summary>Løsning 16.2</summary>
 
-(a) Tabene sorteret: $4{,}1;\ 2{,}9;\ 2{,}3;\ 1{,}8;\ 1{,}2;\ \dots$
-- $\alpha = 0{,}90$: $k = \lceil 20 \cdot 0{,}1 \rceil = 2$, så $\operatorname{VaR} = 2{,}9\,\%$ og $\operatorname{ES} = (4{,}1 + 2{,}9)/2 = 3{,}5\,\%$.
-- $\alpha = 0{,}95$: $k = 1$, så $\operatorname{VaR} = \operatorname{ES} = 4{,}1\,\%$.
+(a) Tabene sorteret: $4.1;\ 2.9;\ 2.3;\ 1.8;\ 1.2;\ \dots$
+- $\alpha = 0.90$: $k = \lceil 20 \cdot 0.1 \rceil = 2$, så $\operatorname{VaR} = 2.9\,\%$ og $\operatorname{ES} = (4.1 + 2.9)/2 = 3.5\,\%$.
+- $\alpha = 0.95$: $k = 1$, så $\operatorname{VaR} = \operatorname{ES} = 4.1\,\%$.
 
-(b) $\operatorname{VaR}_{0{,}90} = 1{,}2816 \cdot 1{,}583 + 0{,}28 \approx 2{,}31\,\%$ og $\operatorname{VaR}_{0{,}95} = 1{,}6449 \cdot 1{,}583 + 0{,}28 \approx 2{,}88\,\%$.
+(b) $\operatorname{VaR}_{0.90} = 1.2816 \cdot 1.583 + 0.28 \approx 2.31\,\%$ og $\operatorname{VaR}_{0.95} = 1.6449 \cdot 1.583 + 0.28 \approx 2.88\,\%$.
 
 (c) Den historiske 95 %-VaR er her blot det største enkelttab: et enkelt datapunkt bestemmer estimatet, og standardfejlen er enorm. Der er heller ingen information om tab ud over det værste observerede. I praksis bruges mindst et-to års data (250–500 dage), og selv da er 99 %-fraktilen usikker. Den normale VaR er lavere end den historiske, hvilket *kunne* tyde på fede haler, men med kun 20 observationer er det meget svag evidens; det kræver en lang serie at sige noget om halerne (jf. 16.11).
 
@@ -7661,35 +7661,35 @@ $\sigma W = 0{,}012 \cdot 10^7 = 120\,000$ kr.
 
 (b) Positionen er $340\,000$; gælden $300\,000$; egenkapitalen $40\,000$. Afkast: $-60\,\% = 4 \cdot (-15\,\%)$.
 
-(c) Krav: $400\,000(1 + R) - 300\,000 \ge 0{,}2 \cdot 400\,000(1 + R)$, dvs. $0{,}8 \cdot 400\,000(1+R) \ge 300\,000$, så $1 + R \ge 0{,}9375$. Margin call ved et fald på $6{,}25\,\%$ (position 375 000, egenkapital 75 000 = 20 %).
+(c) Krav: $400\,000(1 + R) - 300\,000 \ge 0.2 \cdot 400\,000(1 + R)$, dvs. $0.8 \cdot 400\,000(1+R) \ge 300\,000$, så $1 + R \ge 0.9375$. Margin call ved et fald på $6.25\,\%$ (position 375 000, egenkapital 75 000 = 20 %).
 
 (d) Egenkapitalen er 0, når $400\,000(1+R) = 300\,000$, dvs. ved $-25\,\% = -1/L$.
 
-(e) Fra 40 000 tilbage til 100 000 kræver $+150\,\%$ ($d/(1-d) = 0{,}6/0{,}4$). Gearing gør tab ikke bare større, men også sværere at indhente.
+(e) Fra 40 000 tilbage til 100 000 kræver $+150\,\%$ ($d/(1-d) = 0.6/0.4$). Gearing gør tab ikke bare større, men også sværere at indhente.
 
 </details>
 
 <details>
 <summary>Løsning 16.4</summary>
 
-(a) $f^* = 0{,}6 - 0{,}4 = 0{,}2$; $g = 0{,}6\ln 1{,}2 + 0{,}4 \ln 0{,}8 = 0{,}10939 - 0{,}08926 = 0{,}02014$.
+(a) $f^* = 0.6 - 0.4 = 0.2$; $g = 0.6\ln 1.2 + 0.4 \ln 0.8 = 0.10939 - 0.08926 = 0.02014$.
 
-(b) $f^* = 0{,}4 - 0{,}6/2 = 0{,}1$; $g = 0{,}4\ln 1{,}2 + 0{,}6\ln 0{,}9 = 0{,}07293 - 0{,}06322 = 0{,}00971$.
+(b) $f^* = 0.4 - 0.6/2 = 0.1$; $g = 0.4\ln 1.2 + 0.6\ln 0.9 = 0.07293 - 0.06322 = 0.00971$.
 
-(c) $f^* = 0{,}5 - 0{,}5 = 0$: ingen edge, intet væddemål, $g = 0$.
+(c) $f^* = 0.5 - 0.5 = 0$: ingen edge, intet væddemål, $g = 0$.
 
-(d) $f^* = 0{,}3 - 0{,}7/2 = -0{,}05 < 0$: forventningen pr. krone er $0{,}3 \cdot 2 - 0{,}7 = -0{,}1$. Spil ikke (i det binære setup kan man ikke tage den anden side).
+(d) $f^* = 0.3 - 0.7/2 = -0.05 < 0$: forventningen pr. krone er $0.3 \cdot 2 - 0.7 = -0.1$. Spil ikke (i det binære setup kan man ikke tage den anden side).
 
-(e) Medianen af $\ln(W_{100}/W_0)$ er ca. $100 \cdot g = 2{,}014$, så medianformuen er ca. $e^{2{,}014} \approx 7{,}5$ gange startformuen. (Medianen og ikke middelværdien, fordi $\ln W$ er en sum af iid led og dermed ca. symmetrisk fordelt.)
+(e) Medianen af $\ln(W_{100}/W_0)$ er ca. $100 \cdot g = 2.014$, så medianformuen er ca. $e^{2.014} \approx 7.5$ gange startformuen. (Medianen og ikke middelværdien, fordi $\ln W$ er en sum af iid led og dermed ca. symmetrisk fordelt.)
 
 </details>
 
 <details>
 <summary>Løsning 16.5</summary>
 
-(a) For én obligation er $P(L = 0) = 0{,}96 \ge 0{,}95$, så $\operatorname{VaR}_{0{,}95} = 0$. For porteføljen: $P(L = 0) = 0{,}96^2 = 0{,}9216 < 0{,}95$, og $P(L \le 100) = 1 - 0{,}04^2 = 0{,}9984$, så $\operatorname{VaR}_{0{,}95} = 100$. Da $100 > 0 + 0$, er VaR ikke subadditiv: den diversificerede portefølje ser mere risikabel ud.
+(a) For én obligation er $P(L = 0) = 0.96 \ge 0.95$, så $\operatorname{VaR}_{0.95} = 0$. For porteføljen: $P(L = 0) = 0.96^2 = 0.9216 < 0.95$, og $P(L \le 100) = 1 - 0.04^2 = 0.9984$, så $\operatorname{VaR}_{0.95} = 100$. Da $100 > 0 + 0$, er VaR ikke subadditiv: den diversificerede portefølje ser mere risikabel ud.
 
-(b) Én obligation: de værste 5 % består af 4 % med tab 100 og 1 % med tab 0: $\operatorname{ES} = (0{,}04 \cdot 100 + 0{,}01 \cdot 0)/0{,}05 = 80$. Porteføljen: $P(L = 200) = 0{,}0016$, $P(L = 100) = 2 \cdot 0{,}04 \cdot 0{,}96 = 0{,}0768$. De værste 5 %: 0,16 % med 200 og 4,84 % med 100: $\operatorname{ES} = (0{,}32 + 4{,}84)/0{,}05 = 103{,}2 \le 80 + 80 = 160$. Subadditiviteten holder.
+(b) Én obligation: de værste 5 % består af 4 % med tab 100 og 1 % med tab 0: $\operatorname{ES} = (0.04 \cdot 100 + 0.01 \cdot 0)/0.05 = 80$. Porteføljen: $P(L = 200) = 0.0016$, $P(L = 100) = 2 \cdot 0.04 \cdot 0.96 = 0.0768$. De værste 5 %: 0.16 % med 200 og 4.84 % med 100: $\operatorname{ES} = (0.32 + 4.84)/0.05 = 103.2 \le 80 + 80 = 160$. Subadditiviteten holder.
 
 (c) En trader med VaR-grænse kan "gemme" risiko i sjældne, store tab under VaR-niveauet (fx ved at sælge dybt out-of-the-money optioner), og en koncentreret position kan se sikrere ud end en spredt. Risikomålet giver så de forkerte incitamenter.
 
@@ -7698,15 +7698,15 @@ $\sigma W = 0{,}012 \cdot 10^7 = 120\,000$ kr.
 <details>
 <summary>Løsning 16.6</summary>
 
-(a) $250 \cdot 0{,}01 = 2{,}5$.
+(a) $250 \cdot 0.01 = 2.5$.
 
 (b) $\text{LR}(x) = -2\big[(T-x)\ln(1-p) + x\ln p\big] + 2\big[(T-x)\ln(1 - x/T) + x\ln(x/T)\big]$.
-- $x = 4$: $\hat p = 0{,}016$; $\text{LR} \approx 0{,}77 < 3{,}84$, modellen afvises ikke.
-- $x = 7$: $\hat p = 0{,}028$; $\text{LR} \approx 5{,}50 > 3{,}84$, modellen afvises (den undervurderer risikoen).
+- $x = 4$: $\hat p = 0.016$; $\text{LR} \approx 0.77 < 3.84$, modellen afvises ikke.
+- $x = 7$: $\hat p = 0.028$; $\text{LR} \approx 5.50 > 3.84$, modellen afvises (den undervurderer risikoen).
 
-(c) $P(X \ge 7) = 1 - \sum_{k=0}^{6}\binom{250}{k}0{,}01^k\,0{,}99^{250-k} \approx 0{,}0137$. Konsistent med afvisningen.
+(c) $P(X \ge 7) = 1 - \sum_{k=0}^{6}\binom{250}{k}0.01^k\,0.99^{250-k} \approx 0.0137$. Konsistent med afvisningen.
 
-(d) $x = 0$: $\text{LR} = -2 \cdot 250\ln 0{,}99 \approx 5{,}03 > 3{,}84$. Statistisk afvises modellen også her, fordi den er *for konservativ*. En tilsynsmyndighed er mest bekymret for undervurdering af risiko (Basels trafiklys straffer kun mange overskridelser), men for banken koster for høj VaR unødig kapital.
+(d) $x = 0$: $\text{LR} = -2 \cdot 250\ln 0.99 \approx 5.03 > 3.84$. Statistisk afvises modellen også her, fordi den er *for konservativ*. En tilsynsmyndighed er mest bekymret for undervurdering af risiko (Basels trafiklys straffer kun mange overskridelser), men for banken koster for høj VaR unødig kapital.
 
 (e) Uafhængighed af overskridelser (klynger), størrelsen af tabene ud over VaR (det tester ES-backtest), og om modellen holder i et andet regime.
 
@@ -7717,7 +7717,7 @@ $\sigma W = 0{,}012 \cdot 10^7 = 120\,000$ kr.
 
 (a) $g'(f) = \dfrac{pb}{1+fb} - \dfrac{q}{1-f} = 0 \iff pb(1-f) = q(1+fb) \iff pb - q = fb(p+q) = fb$, så $f^* = (pb - q)/b = p - q/b$. $g''(f) = -\dfrac{pb^2}{(1+fb)^2} - \dfrac{q}{(1-f)^2} < 0$, så $g$ er strengt konkav, og det stationære punkt er globalt maksimum.
 
-(b) $g(0{,}05) = 0{,}55\ln1{,}05 + 0{,}45\ln0{,}95 = 0{,}003753$; $g(0{,}10) = 0{,}005008$; $g(0{,}20) = 0{,}55\ln1{,}2 + 0{,}45\ln0{,}8 = 0{,}100277 - 0{,}100415 = -0{,}000138$. Da $g(0{,}10) > 0 > g(0{,}20)$ og $g$ er kontinuert, findes et nulpunkt imellem (numerisk $f \approx 0{,}1987$).
+(b) $g(0.05) = 0.55\ln1.05 + 0.45\ln0.95 = 0.003753$; $g(0.10) = 0.005008$; $g(0.20) = 0.55\ln1.2 + 0.45\ln0.8 = 0.100277 - 0.100415 = -0.000138$. Da $g(0.10) > 0 > g(0.20)$ og $g$ er kontinuert, findes et nulpunkt imellem (numerisk $f \approx 0.1987$).
 
 (c) Ét væddemål ganger formuen med $1 + fb$ eller $1 - f$, i forventning $1 + f(pb - q)$; uafhængighed giver $E[W_n] = W_0(1 + f(pb-q))^n$, voksende i $f$ når $pb > q$, altså maksimal ved $f = 1$. Men ved $f = 1$ er $W_n = 0$, så snart ét væddemål tabes: $P(W_n > 0) = p^n \to 0$.
 
@@ -7732,9 +7732,9 @@ $\sigma W = 0{,}012 \cdot 10^7 = 120\,000$ kr.
 
 (b) $f\mu - \tfrac12 f^2\sigma^2$ med $f = c\mu/\sigma^2$ giver $c\mu^2/\sigma^2 - \tfrac12 c^2\mu^2/\sigma^2 = (c - c^2/2)\,\text{SR}^2$, hvor $\text{SR} = \mu/\sigma$. $c = \tfrac12$: $\tfrac38\text{SR}^2$ ($\tfrac34$ af maksimum); $c = 1$: $\tfrac12\text{SR}^2$; $c = 2$: $0$.
 
-(c) $f^* = 0{,}05/0{,}04 = 1{,}25$ (dvs. 25 % gearing), $\text{SR} = 0{,}25$, $g^* = 0{,}0625/2 = 3{,}125\,\%$ pr. år. Volatiliteten af $\ln W$ er $f\sigma$: 25 % under fuld Kelly og 12,5 % under halv Kelly, hvor væksten er $2{,}34\,\%$.
+(c) $f^* = 0.05/0.04 = 1.25$ (dvs. 25 % gearing), $\text{SR} = 0.25$, $g^* = 0.0625/2 = 3.125\,\%$ pr. år. Volatiliteten af $\ln W$ er $f\sigma$: 25 % under fuld Kelly og 12.5 % under halv Kelly, hvor væksten er $2.34\,\%$.
 
-(d) Sand $\mu = 0{,}025$: $g(1{,}25) = 1{,}25\cdot0{,}025 - \tfrac12\cdot1{,}5625\cdot0{,}04 = 0{,}03125 - 0{,}03125 = 0$. $g(0{,}625) = 0{,}015625 - 0{,}0078125 = 0{,}78\,\%$, som er det sande optimum. Halv Kelly med et estimat, der er dobbelt for højt, rammer det sande optimum; fuld Kelly med samme estimat giver nul vækst med 25 % volatilitet. Estimationsfejl i $\mu$ er reglen, ikke undtagelsen (uge 5: standardfejlen på et årligt middelafkast er $\sigma/\sqrt{\text{år}}$).
+(d) Sand $\mu = 0.025$: $g(1.25) = 1.25\cdot0.025 - \tfrac12\cdot1.5625\cdot0.04 = 0.03125 - 0.03125 = 0$. $g(0.625) = 0.015625 - 0.0078125 = 0.78\,\%$, som er det sande optimum. Halv Kelly med et estimat, der er dobbelt for højt, rammer det sande optimum; fuld Kelly med samme estimat giver nul vækst med 25 % volatilitet. Estimationsfejl i $\mu$ er reglen, ikke undtagelsen (uge 5: standardfejlen på et årligt middelafkast er $\sigma/\sqrt{\text{år}}$).
 
 </details>
 
@@ -7747,7 +7747,7 @@ $\sigma W = 0{,}012 \cdot 10^7 = 120\,000$ kr.
 
 (c) $\theta = \dfrac{2m}{s^2} = \dfrac{2(c - c^2/2)\mu^2/\sigma^2}{c^2\mu^2/\sigma^2} = \dfrac{2c - c^2}{c^2} = \dfrac{2}{c} - 1$. At $W$ falder til $xW_0$ svarer til $a = -\ln x$, så $P = e^{(2/c - 1)\ln x} = x^{2/c - 1}$. (For $c \ge 2$ er $m \le 0$, og sandsynligheden er 1.)
 
-(d) $x = \tfrac12$: halv Kelly ($c = \tfrac12$): $(\tfrac12)^3 = 12{,}5\,\%$; fuld Kelly: $50\,\%$; dobbelt Kelly: $100\,\%$. Selv den vækstoptimale strategi halverer altså formuen med 50 % sandsynlighed på et tidspunkt. Det er en væsentlig grund til, at praktikere vælger halv Kelly eller mindre.
+(d) $x = \tfrac12$: halv Kelly ($c = \tfrac12$): $(\tfrac12)^3 = 12.5\,\%$; fuld Kelly: $50\,\%$; dobbelt Kelly: $100\,\%$. Selv den vækstoptimale strategi halverer altså formuen med 50 % sandsynlighed på et tidspunkt. Det er en væsentlig grund til, at praktikere vælger halv Kelly eller mindre.
 
 </details>
 
@@ -7809,7 +7809,7 @@ sd = 0.9955%
 0.999: hist VaR 5.65% ES 7.82% | normal VaR 3.06% ES 3.33% | MC VaR 5.14% ES 7.03%
 ```
 
-Fortolkning: $t_4$ har varians $\nu/(\nu-2) = 2$, derfor skaleringen. Ved 95 % *overvurderer* normalmodellen VaR (en fedhalet fordeling med samme varians har mere masse tæt på 0), men den undervurderer ES allerede her. Ved 99 % og især 99,9 % undervurderer den både VaR og ES kraftigt (3,33 % mod ca. 7 % ES ved 99,9 %). Den historiske metode følger halen bedre, men ved 99,9 % bygger den på kun $\lceil 2{,}5\rceil = 3$ observationer og er meget usikker (5,65 % mod MC's 5,14 %). Lektien: normal-VaR ser fornuftig ud ved moderate niveauer og fejler i halen, der hvor det gælder.
+Fortolkning: $t_4$ har varians $\nu/(\nu-2) = 2$, derfor skaleringen. Ved 95 % *overvurderer* normalmodellen VaR (en fedhalet fordeling med samme varians har mere masse tæt på 0), men den undervurderer ES allerede her. Ved 99 % og især 99.9 % undervurderer den både VaR og ES kraftigt (3.33 % mod ca. 7 % ES ved 99.9 %). Den historiske metode følger halen bedre, men ved 99.9 % bygger den på kun $\lceil 2.5\rceil = 3$ observationer og er meget usikker (5.65 % mod MC's 5.14 %). Lektien: normal-VaR ser fornuftig ud ved moderate niveauer og fejler i halen, der hvor det gælder.
 
 </details>
 
@@ -7854,7 +7854,7 @@ fuld     0.10   0.00501   0.00503    149.66   0.053   0.473
 dobbelt  0.20  -0.00014  -0.00009      0.87   0.510   0.914
 ```
 
-Fuld Kelly har den højeste median ($\approx e^{5{,}01} \approx 150$), men 47 % af stierne har på et tidspunkt været halveret. Halv Kelly har 75 % af vækstraten (median ca. 43), men kun 12,5 % halveringsrisiko og næsten aldrig tab efter 1 000 væddemål. Dobbelt Kelly har *højere* forventet formue end fuld Kelly ($E[W] = 1{,}02^{1000}$), men medianen er under startformuen, og 91 % af stierne er på et tidspunkt halveret. Halveringssandsynlighederne ligger tæt på 16.9's kontinuerte svar ($\tfrac18$, $\tfrac12$, $1$); over en uendelig horisont ville dobbelt Kelly nå 1. Bemærk, at simuleringen *kender* $p$ præcis. I virkeligheden er edgen ukendt, hvilket taler endnu stærkere for brøkdels-Kelly.
+Fuld Kelly har den højeste median ($\approx e^{5.01} \approx 150$), men 47 % af stierne har på et tidspunkt været halveret. Halv Kelly har 75 % af vækstraten (median ca. 43), men kun 12.5 % halveringsrisiko og næsten aldrig tab efter 1 000 væddemål. Dobbelt Kelly har *højere* forventet formue end fuld Kelly ($E[W] = 1.02^{1000}$), men medianen er under startformuen, og 91 % af stierne er på et tidspunkt halveret. Halveringssandsynlighederne ligger tæt på 16.9's kontinuerte svar ($\tfrac18$, $\tfrac12$, $1$); over en uendelig horisont ville dobbelt Kelly nå 1. Bemærk, at simuleringen *kender* $p$ præcis. I virkeligheden er edgen ukendt, hvilket taler endnu stærkere for brøkdels-Kelly.
 
 </details>
 
@@ -7863,7 +7863,7 @@ Fuld Kelly har den højeste median ($\approx e^{5{,}01} \approx 150$), men 47 % 
 
 Et godt svar indeholder:
 - **Lækage i valideringen:** shuffled k-fold på tidsrækker med overlappende eller seriel-korrelerede labels lækker fremtiden. Kræv purged/embargoed CV eller en ren walk-forward-test, og tjek, at features kun bruger data, der var kendt på beslutningstidspunktet (point-in-time, ingen survivorship bias).
-- **Baseline og statistik:** hvad er hit rate for "altid op" (ofte 52–53 % for aktier)? Hvor mange observationer, og hvad er standardfejlen ($\approx\sqrt{0{,}25/n}$)? Hit rate er ikke det samme som profit: størrelsen af gevinster og tab tæller.
+- **Baseline og statistik:** hvad er hit rate for "altid op" (ofte 52–53 % for aktier)? Hvor mange observationer, og hvad er standardfejlen ($\approx\sqrt{0.25/n}$)? Hit rate er ikke det samme som profit: størrelsen af gevinster og tab tæller.
 - **Multiple testing:** hvor mange modeller, feature-sæt og hyperparametre er prøvet? Brug deflated Sharpe ratio (uge 10) og log alle forsøg.
 - **Omkostninger og kapacitet:** daglig omsætning i 50 aktier koster spread og impact (uge 15). Hvad er Sharpe ratio *efter* omkostninger?
 - **Robusthed:** stabilitet over tid og regimer, feature importance (MDA frem for MDI), og om en simpel regulariseret model gør det næsten lige så godt.
@@ -7908,7 +7908,7 @@ Projektet løber parallelt med planen og samler den til ét stykke ærligt forsk
 
 **Krav:**
 1. Beregn log-afkast $r_t = \ln(P_t/P_{t-1})$ og deskriptiv statistik: gennemsnit, annualiseret volatilitet ($\sigma\sqrt{252}$), skævhed, excess kurtosis.
-2. **Fede haler:** sammenlign andelen af observationer med $\lvert z\rvert > 3$ og $\lvert z\rvert > 4$ med normalfordelingens ($0{,}27\,\%$ og $0{,}006\,\%$).
+2. **Fede haler:** sammenlign andelen af observationer med $\lvert z\rvert > 3$ og $\lvert z\rvert > 4$ med normalfordelingens ($0.27\,\%$ og $0.006\,\%$).
 3. **Svag autokorrelation i afkast:** ACF for $r_t$ ved lag 1–20 med båndet $\pm 2/\sqrt{n}$.
 4. **Stærk autokorrelation i $\lvert r_t\rvert$** (volatilitetsklynger): samme ACF for $\lvert r_t\rvert$ (eller $r_t^2$).
 5. Mindst én ekstra: aggregering (kurtosis for månedsafkast er lavere end for dagsafkast), leverage-effekten ($\operatorname{Corr}(r_t, \lvert r_{t+1}\rvert) < 0$) eller rullende 60-dages volatilitet.
@@ -7970,9 +7970,9 @@ lag  ACF(r)  ACF(|r|)   (±2/sqrt(n) = 0.028)
  20   0.008    0.108
 ```
 
-Fortolkning: excess kurtosis på ca. 7 og ca. 90 gange så mange 4-sigma-dage som under normalfordelingen (fede haler); ACF for afkast ligger inden for (eller tæt på) båndet $\pm 0{,}028$, mens ACF for $\lvert r\rvert$ er ca. $0{,}11$–$0{,}16$ og aftager langsomt (volatilitetsklynger). Med rigtige data skal du forvente lignende mønstre. For et aktieindeks typisk også negativ skævhed og en leverage-effekt. Rapportens tekst skal forklare, at "ukorreleret" ikke betyder "uafhængig" (GARCH er netop et eksempel), og at normal-VaR og konstant-volatilitets-modeller (Black–Scholes) derfor undervurderer halerne.
+Fortolkning: excess kurtosis på ca. 7 og ca. 90 gange så mange 4-sigma-dage som under normalfordelingen (fede haler); ACF for afkast ligger inden for (eller tæt på) båndet $\pm 0.028$, mens ACF for $\lvert r\rvert$ er ca. $0.11$–$0.16$ og aftager langsomt (volatilitetsklynger). Med rigtige data skal du forvente lignende mønstre. For et aktieindeks typisk også negativ skævhed og en leverage-effekt. Rapportens tekst skal forklare, at "ukorreleret" ikke betyder "uafhængig" (GARCH er netop et eksempel), og at normal-VaR og konstant-volatilitets-modeller (Black–Scholes) derfor undervurderer halerne.
 
-Bemærk: GARCH-modellen gennemgås først i uge 9; i Del A bruges den blot som "sort boks"-datagenerator. Med netop disse parametre ($a = 0{,}08$, $b = 0{,}90$, $t_5$-innovationer med kurtosis 9) er $b^2 + 2ab + 9a^2 \approx 1{,}01 > 1$, så populationens fjerde moment er faktisk *uendeligt*: kurtosis-estimatet (her 6,82) svinger derfor meget fra seed til seed. Det er et godt eksempel på, at kurtosis er et skrøbeligt mål for fede haler; supplér med halesandsynligheder som $P(\lvert z\rvert > 4)$.
+Bemærk: GARCH-modellen gennemgås først i uge 9; i Del A bruges den blot som "sort boks"-datagenerator. Med netop disse parametre ($a = 0.08$, $b = 0.90$, $t_5$-innovationer med kurtosis 9) er $b^2 + 2ab + 9a^2 \approx 1.01 > 1$, så populationens fjerde moment er faktisk *uendeligt*: kurtosis-estimatet (her 6.82) svinger derfor meget fra seed til seed. Det er et godt eksempel på, at kurtosis er et skrøbeligt mål for fede haler; supplér med halesandsynligheder som $P(\lvert z\rvert > 4)$.
 
 </details>
 
@@ -8062,7 +8062,7 @@ valgt regel (12 mdr.): IS SR -0.08, OOS SR 0.17
 PSR(0) IS 0.354; deflateret (SR* = 0.13 årlig) DSR 0.177
 ```
 
-Fortolkning: strategiens afkast er afkast på futures-lignende positioner og dermed allerede "excess returns", så $r_f$ fratrækkes ikke. Alle Sharpe ratios er annualiseret med $\sqrt{12}$ under iid-antagelse. In-sample er SR negativ, og OOS-værdien 0,17 over ca. 8 år har en standardfejl på ca. $1/\sqrt{8} \approx 0{,}35$: langt fra signifikant. PSR $< 0{,}95$ og DSR endnu lavere; konklusionen er "ingen evidens for tidsseriemomentum i disse data", hvilket er *korrekt*, fordi der ikke er nogen. Anbefalet udvidelse: indbyg en kendt lille edge (fx en svag positiv autokorrelation i månedsafkast) og mål, hvor ofte pipelinen finder den (testens styrke). Med rigtige data: hent mindst 20 års data, og husk rullende futures-kontrakter (roll) eller brug ETF'er med udbytte geninvesteret.
+Fortolkning: strategiens afkast er afkast på futures-lignende positioner og dermed allerede "excess returns", så $r_f$ fratrækkes ikke. Alle Sharpe ratios er annualiseret med $\sqrt{12}$ under iid-antagelse. In-sample er SR negativ, og OOS-værdien 0.17 over ca. 8 år har en standardfejl på ca. $1/\sqrt{8} \approx 0.35$: langt fra signifikant. PSR $< 0.95$ og DSR endnu lavere; konklusionen er "ingen evidens for tidsseriemomentum i disse data", hvilket er *korrekt*, fordi der ikke er nogen. Anbefalet udvidelse: indbyg en kendt lille edge (fx en svag positiv autokorrelation i månedsafkast) og mål, hvor ofte pipelinen finder den (testens styrke). Med rigtige data: hent mindst 20 års data, og husk rullende futures-kontrakter (roll) eller brug ETF'er med udbytte geninvesteret.
 
 </details>
 
@@ -8241,7 +8241,7 @@ Femten klassiske spørgsmål af den type, kvant- og tradingfirmaer stiller. Løs
 <details>
 <summary>Svar</summary>
 
-**4,25 kr.; med to omkast $14/3 \approx 4{,}67$ kr.** Et nyt kast er værd 3,5, så behold 4, 5, 6 og kast om ved 1, 2, 3: $\tfrac12\cdot 5 + \tfrac12\cdot 3{,}5 = 4{,}25$ (gennemsnittet af 4, 5, 6 er 5). Med to omkast er fortsættelsesværdien 4,25, så behold kun 5 og 6: $\tfrac13\cdot 5{,}5 + \tfrac23\cdot 4{,}25 = 14/3$. Princippet (baglæns induktion, optimal stopping): stop, når den nuværende værdi overstiger værdien af at fortsætte.
+**4.25 kr.; med to omkast $14/3 \approx 4.67$ kr.** Et nyt kast er værd 3.5, så behold 4, 5, 6 og kast om ved 1, 2, 3: $\tfrac12\cdot 5 + \tfrac12\cdot 3.5 = 4.25$ (gennemsnittet af 4, 5, 6 er 5). Med to omkast er fortsættelsesværdien 4.25, så behold kun 5 og 6: $\tfrac13\cdot 5.5 + \tfrac23\cdot 4.25 = 14/3$. Princippet (baglæns induktion, optimal stopping): stop, når den nuværende værdi overstiger værdien af at fortsætte.
 
 </details>
 
@@ -8277,7 +8277,7 @@ Femten klassiske spørgsmål af den type, kvant- og tradingfirmaer stiller. Løs
 <details>
 <summary>Svar</summary>
 
-**$161/36 \approx 4{,}47$.** $P(\max \le k) = (k/6)^2$, så $P(\max = k) = (k^2 - (k-1)^2)/36 = (2k-1)/36$. $E = \sum_{k=1}^6 k(2k-1)/36 = (1 + 6 + 15 + 28 + 45 + 66)/36 = 161/36$.
+**$161/36 \approx 4.47$.** $P(\max \le k) = (k/6)^2$, så $P(\max = k) = (k^2 - (k-1)^2)/36 = (2k-1)/36$. $E = \sum_{k=1}^6 k(2k-1)/36 = (1 + 6 + 15 + 28 + 45 + 66)/36 = 161/36$.
 
 </details>
 
@@ -8286,7 +8286,7 @@ Femten klassiske spørgsmål af den type, kvant- og tradingfirmaer stiller. Løs
 <details>
 <summary>Svar</summary>
 
-**$14{,}7$.** Når du har set $k$ forskellige, er ventetiden på et nyt geometrisk fordelt med succes-sandsynlighed $(6-k)/6$ og forventning $6/(6-k)$. Linearitet: $6\big(1 + \tfrac12 + \tfrac13 + \tfrac14 + \tfrac15 + \tfrac16\big) = 6 \cdot 2{,}45 = 14{,}7$ (coupon collector).
+**$14.7$.** Når du har set $k$ forskellige, er ventetiden på et nyt geometrisk fordelt med succes-sandsynlighed $(6-k)/6$ og forventning $6/(6-k)$. Linearitet: $6\big(1 + \tfrac12 + \tfrac13 + \tfrac14 + \tfrac15 + \tfrac16\big) = 6 \cdot 2.45 = 14.7$ (coupon collector).
 
 </details>
 
@@ -8299,12 +8299,12 @@ Femten klassiske spørgsmål af den type, kvant- og tradingfirmaer stiller. Løs
 
 </details>
 
-**10.** $\operatorname{Corr}(X,Y) = \operatorname{Corr}(Y,Z) = 0{,}9$. Hvad er den mindst mulige værdi af $\operatorname{Corr}(X,Z)$?
+**10.** $\operatorname{Corr}(X,Y) = \operatorname{Corr}(Y,Z) = 0.9$. Hvad er den mindst mulige værdi af $\operatorname{Corr}(X,Z)$?
 
 <details>
 <summary>Svar</summary>
 
-**$0{,}62$.** Korrelationsmatricen skal være positiv semidefinit (uge 6). For standardiserede variable giver det $\rho_{XZ} \ge \rho_{XY}\rho_{YZ} - \sqrt{(1-\rho_{XY}^2)(1-\rho_{YZ}^2)} = 0{,}81 - 0{,}19 = 0{,}62$. Geometrisk: vinklen mellem $X$ og $Z$ er højst summen af to vinkler med cosinus $0{,}9$. Relevant for risiko: høje parvise korrelationer begrænser, hvor "diversificerende" en tredje position kan være.
+**$0.62$.** Korrelationsmatricen skal være positiv semidefinit (uge 6). For standardiserede variable giver det $\rho_{XZ} \ge \rho_{XY}\rho_{YZ} - \sqrt{(1-\rho_{XY}^2)(1-\rho_{YZ}^2)} = 0.81 - 0.19 = 0.62$. Geometrisk: vinklen mellem $X$ og $Z$ er højst summen af to vinkler med cosinus $0.9$. Relevant for risiko: høje parvise korrelationer begrænser, hvor "diversificerende" en tredje position kan være.
 
 </details>
 
@@ -8313,7 +8313,7 @@ Femten klassiske spørgsmål af den type, kvant- og tradingfirmaer stiller. Løs
 <details>
 <summary>Svar</summary>
 
-Forventet sum $= 7$, standardafvigelse $\sqrt{2 \cdot 35/12} = \sqrt{35/6} \approx 2{,}42$. Et rimeligt første marked er fx **6,5 bid / 7,5 ask** (centreret om fair værdi, med et spread der beskytter mod, at modparten ved noget). Køber modparten på 7,5, tjener du i forventning 0,5, *hvis* der ikke er skjult information. Overvej altid: hvorfor handler hun? I et spil uden information kan du holde kursen; med mistanke om information flytter du kurserne op (adverse selection, uge 15). Er første terning en 4'er, er fair værdi $4 + 3{,}5 = 7{,}5$ og standardafvigelsen $\sqrt{35/12} \approx 1{,}71$: nyt marked fx **7 / 8**, og spreadet kan gøres smallere, fordi usikkerheden er mindre. Intervieweren tester konsistens (ingen arbitrage i dine kurser), hurtig opdatering og risikostyring (hvor meget vil du handle?).
+Forventet sum $= 7$, standardafvigelse $\sqrt{2 \cdot 35/12} = \sqrt{35/6} \approx 2.42$. Et rimeligt første marked er fx **6.5 bid / 7.5 ask** (centreret om fair værdi, med et spread der beskytter mod, at modparten ved noget). Køber modparten på 7.5, tjener du i forventning 0.5, *hvis* der ikke er skjult information. Overvej altid: hvorfor handler hun? I et spil uden information kan du holde kursen; med mistanke om information flytter du kurserne op (adverse selection, uge 15). Er første terning en 4'er, er fair værdi $4 + 3.5 = 7.5$ og standardafvigelsen $\sqrt{35/12} \approx 1.71$: nyt marked fx **7 / 8**, og spreadet kan gøres smallere, fordi usikkerheden er mindre. Intervieweren tester konsistens (ingen arbitrage i dine kurser), hurtig opdatering og risikostyring (hvor meget vil du handle?).
 
 </details>
 
@@ -8322,16 +8322,16 @@ Forventet sum $= 7$, standardafvigelse $\sqrt{2 \cdot 35/12} = \sqrt{35/6} \appr
 <details>
 <summary>Svar</summary>
 
-**Kelly: $f^* = p - q/b = \tfrac23 - \tfrac13 = \tfrac13$, dvs. ca. 333 kr. i første runde, og derefter en tredjedel af den aktuelle formue.** Vækstraten er $g = \tfrac23\ln\tfrac43 + \tfrac13\ln\tfrac23 \approx 0{,}0566$ pr. runde. Et godt svar nævner, at alt-ind maksimerer forventet formue men giver ruin næsten sikkert, og at man i praksis vil satse mindre (fx halv Kelly, ca. 167 kr.), fordi sandsynligheden sjældent er kendt præcist (uge 16).
+**Kelly: $f^* = p - q/b = \tfrac23 - \tfrac13 = \tfrac13$, dvs. ca. 333 kr. i første runde, og derefter en tredjedel af den aktuelle formue.** Vækstraten er $g = \tfrac23\ln\tfrac43 + \tfrac13\ln\tfrac23 \approx 0.0566$ pr. runde. Et godt svar nævner, at alt-ind maksimerer forventet formue men giver ruin næsten sikkert, og at man i praksis vil satse mindre (fx halv Kelly, ca. 167 kr.), fordi sandsynligheden sjældent er kendt præcist (uge 16).
 
 </details>
 
-**13.** Hovedregning (uden papir, ca. 10 sekunder hver): (a) $17 \cdot 23$; (b) $1{,}05^{10}$; (c) $\sqrt{50}$; (d) $35\,\%$ af 240; (e) $3/7$ som decimaltal.
+**13.** Hovedregning (uden papir, ca. 10 sekunder hver): (a) $17 \cdot 23$; (b) $1.05^{10}$; (c) $\sqrt{50}$; (d) $35\,\%$ af 240; (e) $3/7$ som decimaltal.
 
 <details>
 <summary>Svar</summary>
 
-(a) $(20-3)(20+3) = 400 - 9 = 391$. (b) $\ln 1{,}05 \approx 0{,}0488$, så $1{,}05^{10} \approx e^{0{,}488} \approx 1{,}63$ (eksakt $1{,}6289$); 72-reglen giver fordobling på ca. $72/5 \approx 14$ perioder ved 5 % pr. periode. (c) $\sqrt{49} = 7$ og $\sqrt{50} \approx 7 + \tfrac{1}{14} \approx 7{,}07$ (førsteordens Taylor). (d) $0{,}35 \cdot 240 = 84$. (e) $3/7 = 0{,}428571\ldots$ (gentagende 428571). Tricket er at kende standardværdier ($\ln 2 \approx 0{,}693$, $e^{0{,}5} \approx 1{,}65$, $1/7 \approx 0{,}142857$) og bruge dem til hurtige approksimationer.
+(a) $(20-3)(20+3) = 400 - 9 = 391$. (b) $\ln 1.05 \approx 0.0488$, så $1.05^{10} \approx e^{0.488} \approx 1.63$ (eksakt $1.6289$); 72-reglen giver fordobling på ca. $72/5 \approx 14$ perioder ved 5 % pr. periode. (c) $\sqrt{49} = 7$ og $\sqrt{50} \approx 7 + \tfrac{1}{14} \approx 7.07$ (førsteordens Taylor). (d) $0.35 \cdot 240 = 84$. (e) $3/7 = 0.428571\ldots$ (gentagende 428571). Tricket er at kende standardværdier ($\ln 2 \approx 0.693$, $e^{0.5} \approx 1.65$, $1/7 \approx 0.142857$) og bruge dem til hurtige approksimationer.
 
 </details>
 
@@ -8340,7 +8340,7 @@ Forventet sum $= 7$, standardafvigelse $\sqrt{2 \cdot 35/12} = \sqrt{35/6} \appr
 <details>
 <summary>Svar</summary>
 
-Olympisk bassin: 50 m × 25 m × ca. 2 m dybde $= 2\,500$ m³ $= 2{,}5$ mio. liter. Et badekar rummer ca. 150–200 liter, altså ca. **12 000–17 000 badekar**. Intervieweren bedømmer ikke det præcise tal, men at du (1) opdeler problemet, (2) siger dine antagelser højt, (3) regner rigtigt med størrelsesordener, og (4) sanity-checker resultatet.
+Olympisk bassin: 50 m × 25 m × ca. 2 m dybde $= 2\,500$ m³ $= 2.5$ mio. liter. Et badekar rummer ca. 150–200 liter, altså ca. **12 000–17 000 badekar**. Intervieweren bedømmer ikke det præcise tal, men at du (1) opdeler problemet, (2) siger dine antagelser højt, (3) regner rigtigt med størrelsesordener, og (4) sanity-checker resultatet.
 
 </details>
 
@@ -8395,7 +8395,7 @@ Tyve spørgsmål på tværs af hele planen. Ved sand/falsk-spørgsmål skal du *
 <details>
 <summary>Svar</summary>
 
-**Falsk.** Log-afkast lægges sammen *over tid* for samme aktiv: $\ln(P_T/P_0) = \sum_t r_t$. Porteføljens *simple* afkast er det vægtede gennemsnit af aktivernes simple afkast: $R_p = \sum_i w_i R_i$. Eksempel: 50/50 i to aktier med +50 % og −50 % giver $R_p = 0$, men gennemsnittet af log-afkastene er $(\ln1{,}5 + \ln0{,}5)/2 \approx -0{,}144$, svarende til $-13{,}4\,\%$. Forkert.
+**Falsk.** Log-afkast lægges sammen *over tid* for samme aktiv: $\ln(P_T/P_0) = \sum_t r_t$. Porteføljens *simple* afkast er det vægtede gennemsnit af aktivernes simple afkast: $R_p = \sum_i w_i R_i$. Eksempel: 50/50 i to aktier med +50 % og −50 % giver $R_p = 0$, men gennemsnittet af log-afkastene er $(\ln1.5 + \ln0.5)/2 \approx -0.144$, svarende til $-13.4\,\%$. Forkert.
 
 </details>
 
@@ -8426,12 +8426,12 @@ Tyve spørgsmål på tværs af hele planen. Ved sand/falsk-spørgsmål skal du *
 
 </details>
 
-**6.** En strategi har daglig volatilitet $1{,}2\,\%$ og daglig Sharpe ratio $0{,}05$. Find den annualiserede volatilitet og Sharpe ratio. Hvilken antagelse bruger du?
+**6.** En strategi har daglig volatilitet $1.2\,\%$ og daglig Sharpe ratio $0.05$. Find den annualiserede volatilitet og Sharpe ratio. Hvilken antagelse bruger du?
 
 <details>
 <summary>Svar</summary>
 
-$\sigma_{\text{ann}} = 0{,}012\sqrt{252} \approx 19{,}0\,\%$ og $\text{SR}_{\text{ann}} = 0{,}05\sqrt{252} \approx 0{,}79$. Antagelse: daglige afkast er iid (især ukorrelerede). Med positiv autokorrelation undervurderer $\sqrt{252}$-reglen risikoen; med negativ overvurderer den den.
+$\sigma_{\text{ann}} = 0.012\sqrt{252} \approx 19.0\,\%$ og $\text{SR}_{\text{ann}} = 0.05\sqrt{252} \approx 0.79$. Antagelse: daglige afkast er iid (især ukorrelerede). Med positiv autokorrelation undervurderer $\sqrt{252}$-reglen risikoen; med negativ overvurderer den den.
 
 </details>
 
@@ -8440,11 +8440,11 @@ $\sigma_{\text{ann}} = 0{,}012\sqrt{252} \approx 19{,}0\,\%$ og $\text{SR}_{\tex
 <details>
 <summary>Svar</summary>
 
-Simple afkast: $+10\,\%$ og $-10\,\%$; samlet $99/100 - 1 = -1\,\%$ (ikke 0, fordi simple afkast ganges sammen: $1{,}1 \cdot 0{,}9 = 0{,}99$). Log-afkast: $\ln1{,}1 + \ln0{,}9 = \ln 0{,}99 \approx -0{,}01005$; de lægges sammen over tid (uge 2).
+Simple afkast: $+10\,\%$ og $-10\,\%$; samlet $99/100 - 1 = -1\,\%$ (ikke 0, fordi simple afkast ganges sammen: $1.1 \cdot 0.9 = 0.99$). Log-afkast: $\ln1.1 + \ln0.9 = \ln 0.99 \approx -0.01005$; de lægges sammen over tid (uge 2).
 
 </details>
 
-**8.** Sand eller falsk: "En p-værdi på 0,03 betyder, at der er 3 % sandsynlighed for, at nulhypotesen er sand."
+**8.** Sand eller falsk: "En p-værdi på 0.03 betyder, at der er 3 % sandsynlighed for, at nulhypotesen er sand."
 
 <details>
 <summary>Svar</summary>
@@ -8453,12 +8453,12 @@ Simple afkast: $+10\,\%$ og $-10\,\%$; samlet $99/100 - 1 = -1\,\%$ (ikke 0, for
 
 </details>
 
-**9.** En aktie har $\operatorname{Cov}(R_i, R_m) = 0{,}0006$ og $\operatorname{Var}(R_m) = 0{,}0004$ (månedlige). Find beta. Med $r_f = 2\,\%$ og markedspræmie $5\,\%$ p.a.: hvad er CAPM's forventede afkast?
+**9.** En aktie har $\operatorname{Cov}(R_i, R_m) = 0.0006$ og $\operatorname{Var}(R_m) = 0.0004$ (månedlige). Find beta. Med $r_f = 2\,\%$ og markedspræmie $5\,\%$ p.a.: hvad er CAPM's forventede afkast?
 
 <details>
 <summary>Svar</summary>
 
-$\beta = 0{,}0006/0{,}0004 = 1{,}5$ (OLS-hældningen, uge 6). CAPM: $E[R_i] = 2\,\% + 1{,}5 \cdot 5\,\% = 9{,}5\,\%$ p.a. (uge 7).
+$\beta = 0.0006/0.0004 = 1.5$ (OLS-hældningen, uge 6). CAPM: $E[R_i] = 2\,\% + 1.5 \cdot 5\,\% = 9.5\,\%$ p.a. (uge 7).
 
 </details>
 
@@ -8467,16 +8467,16 @@ $\beta = 0{,}0006/0{,}0004 = 1{,}5$ (OLS-hældningen, uge 6). CAPM: $E[R_i] = 2\
 <details>
 <summary>Svar</summary>
 
-Med $\rho = 0$: $w_1 = \dfrac{\sigma_2^2}{\sigma_1^2 + \sigma_2^2} = \dfrac{0{,}01}{0{,}05} = 0{,}2$ og $w_2 = 0{,}8$. Varians $0{,}04 \cdot 0{,}04 + 0{,}64 \cdot 0{,}01 = 0{,}008$, volatilitet $\approx 8{,}94\,\%$: lavere end det mindst risikable aktiv alene.
+Med $\rho = 0$: $w_1 = \dfrac{\sigma_2^2}{\sigma_1^2 + \sigma_2^2} = \dfrac{0.01}{0.05} = 0.2$ og $w_2 = 0.8$. Varians $0.04 \cdot 0.04 + 0.64 \cdot 0.01 = 0.008$, volatilitet $\approx 8.94\,\%$: lavere end det mindst risikable aktiv alene.
 
 </details>
 
-**11.** En AR(1)-proces har $\phi = 0{,}8$. Er den stationær? Hvad er autokorrelationen ved lag 3 og halveringstiden for et stød?
+**11.** En AR(1)-proces har $\phi = 0.8$. Er den stationær? Hvad er autokorrelationen ved lag 3 og halveringstiden for et stød?
 
 <details>
 <summary>Svar</summary>
 
-Ja, da $\lvert\phi\rvert < 1$. $\rho(3) = 0{,}8^3 = 0{,}512$. Halveringstid: $\ln 0{,}5/\ln 0{,}8 \approx 3{,}1$ perioder (uge 9; bruges til mean reversion og pairs trading i uge 11).
+Ja, da $\lvert\phi\rvert < 1$. $\rho(3) = 0.8^3 = 0.512$. Halveringstid: $\ln 0.5/\ln 0.8 \approx 3.1$ perioder (uge 9; bruges til mean reversion og pairs trading i uge 11).
 
 </details>
 
@@ -8512,7 +8512,7 @@ Ja, da $\lvert\phi\rvert < 1$. $\rho(3) = 0{,}8^3 = 0{,}512$. Halveringstid: $\l
 <details>
 <summary>Svar</summary>
 
-Put–call-paritet: $P = C - S + Ke^{-rT}$. $r = 0$: $P = 8 - 100 + 100 = 8$. $r = 5\,\%$: $P = 8 - 100 + 100e^{-0{,}05} \approx 8 - 100 + 95{,}12 = 3{,}12$.
+Put–call-paritet: $P = C - S + Ke^{-rT}$. $r = 0$: $P = 8 - 100 + 100 = 8$. $r = 5\,\%$: $P = 8 - 100 + 100e^{-0.05} \approx 8 - 100 + 95.12 = 3.12$.
 
 </details>
 
@@ -8521,7 +8521,7 @@ Put–call-paritet: $P = C - S + Ke^{-rT}$. $r = 0$: $P = 8 - 100 + 100 = 8$. $r
 <details>
 <summary>Svar</summary>
 
-Spread $= \mu(V_H - V_L) = 0{,}2 \cdot 20 = 4$: ask $= 100 + 2 = 102$, bid $= 98$. Spreadet vokser lineært med andelen af informerede: det er prisen for adverse selection (uge 15).
+Spread $= \mu(V_H - V_L) = 0.2 \cdot 20 = 4$: ask $= 100 + 2 = 102$, bid $= 98$. Spreadet vokser lineært med andelen af informerede: det er prisen for adverse selection (uge 15).
 
 </details>
 

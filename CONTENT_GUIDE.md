@@ -37,6 +37,8 @@ Et helt kursus kan ligge i **én Markdown-fil**: `content/courses/<slug>.md`, el
    - ` ```problem ` — en programmeringsopgave med test (kodedommeren).
    - ` ```challenge ` — en sikkerhedsudfordring.
 
+**Tal** skrives i amerikansk format: punktum som decimaltegn og komma mellem tusinder (`0.25`, `1,234.5`). I formler skrives tal uden tusindtalsseparator (`$1234.5$`), og `{,}` bruges ikke. Bygget advarer om tal, der ligner dansk format (`0,25`). Planer i `content/source/` konverteres ved `npm run import`, og tvivlstilfælde skrives i `content/NUMBER_FORMAT_REVIEW.md`.
+
 | Felt | Krævet | Betydning |
 |---|---|---|
 | `slug` | ja | Kursets id i adresser og fremskridt: små bogstaver, tal og `-`. Må ikke ændres. |
