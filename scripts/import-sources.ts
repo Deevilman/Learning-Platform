@@ -23,6 +23,9 @@ export interface VideoEntrySource {
   channel?: string
   youtube?: string
   search?: string
+  embed?: false
+  access?: 'steady'
+  url?: string
 }
 
 export interface VideosFile {
