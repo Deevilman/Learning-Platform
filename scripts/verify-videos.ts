@@ -1,12 +1,12 @@
 // npm run verify-videos [-- --strict]
-// Checks every YouTube ID in content/courses/*/videos.yaml against YouTube's
+// Checks every YouTube ID in the course files (content/courses/*.md) against YouTube's
 // oEmbed endpoint (exact title + channel, no consent page) and reports IDs
 // whose title or channel doesn't match. Without network it warns and exits 0
 // (soft), unless --strict is given. Writes reports/videos.json.
 
-import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import YAML from 'yaml'
+import { allCourseVideos } from './lib/pack-file.ts'
 
 const ROOT = join(import.meta.dirname, '..')
 const strict = process.argv.includes('--strict')
@@ -94,12 +94,8 @@ async function oembed(id: string): Promise<{ title: string; author_name: string 
 
 async function main() {
   const rows: Row[] = []
-  const dir = join(ROOT, 'content/courses')
-  for (const course of readdirSync(dir)) {
-    const f = join(dir, course, 'videos.yaml')
-    if (!existsSync(f)) continue
-    const data = YAML.parse(readFileSync(f, 'utf8')) || {}
-    for (const [key, entry] of Object.entries<any>(data.videos || {}))
+  for (const { course, videos } of allCourseVideos(ROOT)) {
+    for (const [key, entry] of Object.entries<any>(videos))
       (entry.sources || []).forEach((s: any, index: number) => {
         if (s.youtube) rows.push({ course, key, index, id: String(s.youtube), expectedTitle: s.title, expectedChannel: s.channel, status: 'ok' })
       })

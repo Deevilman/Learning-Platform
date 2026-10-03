@@ -1,3 +1,801 @@
+---
+slug: foundations
+lang: da
+title: Matematikkens grundlag
+short: Fra logik over mængder til Gödel
+color: "#7c3aed"
+icon: logic
+level: gymnasium → universitet (introducerende)
+estimated_weeks: 14
+track: matematik
+requires: []
+recommended_before: []
+next:
+- quant
+- aktuar
+topics:
+- { id: propositional-logic, name: Udsagnslogik, weeks: [ 1 ] }
+- { id: proofs-quantifiers, name: Kvantorer og bevismetoder, weeks: [ 2 ] }
+- { id: induction, name: Induktion og rekursion, weeks: [ 3 ] }
+- { id: sets-functions, name: "Mængder, relationer og funktioner", weeks: [ 4 ] }
+- { id: naturals, name: De naturlige tal (Peano), weeks: [ 5 ] }
+- { id: number-systems, name: "ℤ, ℚ, ℝ og ℂ", weeks: [ 6 ] }
+- { id: infinity, name: Uendelighed og tællelighed, weeks: [ 7 ] }
+- { id: zfc, name: Aksiomatisk mængdelære (ZFC), weeks: [ 8 ] }
+- { id: formal-systems, name: Formelle systemer, weeks: [ 9 ] }
+- { id: computability, name: Beregnelighed og automater, weeks: [ 10 ] }
+- { id: undecidability, name: Uafgørlighed, weeks: [ 11 ] }
+- { id: godel, name: Gödels ufuldstændighed, weeks: [ 12 ] }
+- { id: type-theory, name: Typeteori og λ-kalkyle, weeks: [ 10, 13 ] }
+- { id: category-theory, name: Kategoriteori, weeks: [ 14 ] }
+videos:
+  "1.1":
+    key: P1
+    sources:
+    - title: Start Learning Logic | Part 1
+      channel: The Bright Side of Mathematics
+      youtube: EXUxMOM03Bo
+  "1.2":
+    key: P1
+    sources:
+    - title: Start Learning Logic | Part 2
+      channel: The Bright Side of Mathematics
+      youtube: AjdIPOXRgoQ
+      embed: false
+  "1.3":
+    key: P1
+    sources:
+    - title: "Start Learning Logic 3: Conditional, Biconditional, Implication and Deduction Rules"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_logic/overview/
+  "1.4":
+    key: P2
+    sources:
+    - title: 1.4.1 Propositional Operators
+      channel: MIT OpenCourseWare
+      youtube: 0exBzsexUoI
+    - title: 1.4.4 Truth Tables
+      channel: MIT OpenCourseWare
+      youtube: _3WDzxt5p8c
+    - title: 1.4.3 Digital Logic
+      channel: MIT OpenCourseWare
+      youtube: eMWG-jTh-GE
+  "2.1":
+    key: P2
+    sources:
+    - title: 1.5.1 Predicate Logic 1
+      channel: MIT OpenCourseWare
+      youtube: UroprmQHTLc
+    - title: 1.5.2 Predicate Logic 2
+      channel: MIT OpenCourseWare
+      youtube: T1AtlGrCoU8
+    - title: 1.5.4 Predicate Logic 3
+      channel: MIT OpenCourseWare
+      youtube: L5uBeAGJV1k
+  "2.2":
+    key: P2
+    sources:
+    - title: "1.1.2 Intro To Proofs: Part 1"
+      channel: MIT OpenCourseWare
+      youtube: GyFVgJZ0hIs
+    - title: "1.1.3 Intro to Proofs: Part 2"
+      channel: MIT OpenCourseWare
+      youtube: wfr4XbR5VP8
+  P3:
+    key: P3
+    sources:
+    - title: "[Discrete Mathematics] Direct Proofs Examples"
+      channel: TrevTutor
+      youtube: uDJfx4bK3Jc
+    - title: Proof by Contraposition - Discrete Mathematics
+      channel: TrevTutor
+      youtube: X-hJ7krLBn0
+    - title: Proof by Contradiction - Discrete Mathematics
+      channel: TrevTutor
+      youtube: sRDwsfNDXak
+  "2.4":
+    key: P2
+    sources:
+    - title: 1.2.1 Proof By Contradiction
+      channel: MIT OpenCourseWare
+      youtube: CpW0ZJ7i0oc
+  "2.5":
+    key: P2
+    sources:
+    - title: 1.2.3 Proof By Cases
+      channel: MIT OpenCourseWare
+      youtube: vzpFQ3uNyPo
+  "3.1":
+    key: P2
+    sources:
+    - title: 1.3.1 Well Ordering Principle 1
+      channel: MIT OpenCourseWare
+      youtube: fV3v6qQ3w4A
+    - title: 1.3.3 Well Ordering Principle 2
+      channel: MIT OpenCourseWare
+      youtube: I1HpgnWQI7I
+    - title: 1.3.5 Well Ordering Principle 3
+      channel: MIT OpenCourseWare
+      youtube: hNrtGiCFPGs
+    - title: 1.10.7 Recursive Functions
+      channel: MIT OpenCourseWare
+      youtube: tOsdeaYDCMk
+  "3.2":
+    key: P2
+    sources:
+    - title: 1.8.1 Induction
+      channel: MIT OpenCourseWare
+      youtube: XnV8GAuAqJM
+    - title: 1.8.6 WOP vs Induction
+      channel: MIT OpenCourseWare
+      youtube: K8ZfzNN1miQ
+    - title: 1.10.1 Recursive Data
+      channel: MIT OpenCourseWare
+      youtube: TXNXT3oBROw
+  "3.3":
+    key: P2
+    sources:
+    - title: 1.8.2 Bogus Induction
+      channel: MIT OpenCourseWare
+      youtube: D3E5CKebKuQ
+    - title: 1.8.4 Strong Induction
+      channel: MIT OpenCourseWare
+      youtube: TUueMeRooBk
+    - title: 1.10.4 Structural Induction
+      channel: MIT OpenCourseWare
+      youtube: VWIDwHCGJDQ
+  "4.1":
+    key: P1
+    sources:
+    - title: Start Learning Sets | Part 1 (Overview and Element Relation)
+      channel: The Bright Side of Mathematics
+      youtube: _TnRs_ijXDA
+      embed: false
+  "4.2":
+    key: P1
+    sources:
+    - title: Start Learning Sets | Part 2 (Predicates, Equality and Subsets)
+      channel: The Bright Side of Mathematics
+      youtube: yIdECC6QExY
+      embed: false
+    - title: "Start Learning Sets 3: Union, Intersection, Differences and Power Set"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_sets/overview/
+  "4.3":
+    key: P1
+    sources:
+    - title: Start Learning Sets | Part 4 (Cartesian Product and Maps)
+      channel: The Bright Side of Mathematics
+      youtube: 6ZSKwJgXLP4
+    - title: Start Learning Sets | Part 5 (Range, Image and Preimage)
+      channel: The Bright Side of Mathematics
+      youtube: kQC-g7Ry-Wo
+      embed: false
+  "4.4":
+    key: P1
+    sources:
+    - title: "Start Learning Sets 6: Injectivity, Surjectivity and Bijectivity"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_sets/overview/
+    - title: Start Learning Sets | Part 7 (Composition of Maps)
+      channel: The Bright Side of Mathematics
+      youtube: NiJ1yWKM9CU
+      embed: false
+  "4.5":
+    key: P2
+    sources:
+    - title: 1.6.1 Sets Definitions
+      channel: MIT OpenCourseWare
+      youtube: KZ7jjLTQ9r4
+    - title: 1.6.2 Sets Operations
+      channel: MIT OpenCourseWare
+      youtube: Mhip1rljvRo
+    - title: 1.7.5 Finite Cardinality
+      channel: MIT OpenCourseWare
+      youtube: fpy5Hsz5t6E
+  "4.6":
+    key: P2
+    sources:
+    - title: 1.7.1 Relations
+      channel: MIT OpenCourseWare
+      youtube: FkfsmwAtDdY
+    - title: 1.7.3 Relational Mappings
+      channel: MIT OpenCourseWare
+      youtube: gFD1Lp6zK3w
+  "5.1":
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 1 (Natural Numbers (in Set Theory))
+      channel: The Bright Side of Mathematics
+      youtube: SpXHqrMGb0Y
+      embed: false
+  "5.2":
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 2 (Natural Numbers (Successor Map and Addition))
+      channel: The Bright Side of Mathematics
+      youtube: C9DLEHu1l-g
+      embed: false
+  "5.3":
+    key: P1
+    sources:
+    - title: "Start Learning Numbers 3: Natural Numbers (Induction and Associativity)"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_numbers/overview/
+  "5.4":
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 4 (Natural Numbers (Ordering))
+      channel: The Bright Side of Mathematics
+      youtube: W1wITJIu0SI
+      embed: false
+  "5.5":
+    key: P1
+    sources:
+    - title: Start Learning Numbers | Part 5 (Natural Numbers (Multiplication))
+      channel: The Bright Side of Mathematics
+      youtube: qHYtMzt1k00
+      embed: false
+  "6.1":
+    key: P1
+    sources:
+    - title: "Start Learning Numbers 6: Integers (Construction)"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_numbers/overview/
+    - title: Start Learning Numbers | Part 7 (Integers (Addition and Inverses))
+      channel: The Bright Side of Mathematics
+      youtube: bGP0wgMlM3M
+      embed: false
+    - title: Start Learning Numbers | Part 8 (Integers (Multiplication))
+      channel: The Bright Side of Mathematics
+      youtube: 6iOH38SiK2Q
+      embed: false
+  "6.2":
+    key: P1
+    sources:
+    - title: "Start Learning Numbers 9: Rational Numbers (Construction)"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_numbers/overview/
+    - title: Start Learning Numbers | Part 10 (Rational Numbers (Addition and Multiplication))
+      channel: The Bright Side of Mathematics
+      youtube: jam6_3trtyI
+      embed: false
+    - title: Start Learning Numbers | Part 11 (Rational Numbers (Ordering))
+      channel: The Bright Side of Mathematics
+      youtube: TTHJmm_vaBE
+      embed: false
+  "6.3":
+    key: P1
+    sources:
+    - title: Start Learning Reals | Part 1 (Cauchy Sequences)
+      channel: The Bright Side of Mathematics
+      youtube: 3olS8tyoQEE
+      embed: false
+    - title: "Start Learning Reals 3: Working With Axioms"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_reals/overview/
+    - title: Start Learning Reals | Part 4 (Construction)
+      channel: The Bright Side of Mathematics
+      youtube: I1fHi9rXAAI
+      embed: false
+  "6.4":
+    key: P1
+    sources:
+    - title: Start Learning Reals | Part 2 (Completeness Axiom)
+      channel: The Bright Side of Mathematics
+      youtube: pR_HD2WaN_k
+      embed: false
+    - title: Start Learning Complex | Part 1 (Introduction)
+      channel: The Bright Side of Mathematics
+      youtube: bZSYcIJBMqE
+      embed: false
+    - title: "Start Learning Complex 2: Definition"
+      channel: The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_complex/overview/
+  "7.1":
+    key: P2
+    sources:
+    - title: 1.11.1 Cardinality
+      channel: MIT OpenCourseWare
+      youtube: QzSCf62kzjE
+    - title: 1.11.3 Countable Sets
+      channel: MIT OpenCourseWare
+      youtube: AipSRi3CyLg
+    - title: 1.11.4 Cantor's Theorem
+      channel: MIT OpenCourseWare
+      youtube: 4dj1ogUwTEM
+  "7.2":
+    key: P2
+    sources:
+    - title: 1.7.1 Relations
+      channel: MIT OpenCourseWare
+      youtube: FkfsmwAtDdY
+    - title: 1.7.3 Relational Mappings
+      channel: MIT OpenCourseWare
+      youtube: gFD1Lp6zK3w
+  "7.4":
+    sources:
+    - title: The Infinite Hotel Paradox - Jeff Dekofsky
+      youtube: Uj3_KqkI9Zo
+      channel: TED-Ed
+  P4:
+    key: P4
+    sources:
+    - title: Set Theory - What is Set Theory and what is it for? Oxford Mathematics 3rd Year Student Lecture
+      channel: Oxford Mathematics
+      youtube: g7zyXk0XJt4
+  P5:
+    key: P5
+    sources:
+    - title: "Set Theory - Russell's Paradox: Oxford Mathematics 3rd Year Student Lecture"
+      channel: Oxford Mathematics
+      youtube: gxm1Ur_Be0s
+  P6:
+    key: P6
+    sources:
+    - title: "Set Theory - The first few axioms: Oxford Mathematics 3rd Year Student Lecture"
+      channel: Oxford Mathematics
+      youtube: qrltuEzDhxI
+  "9.1":
+    sources:
+    - title: "Mathematical Logic, Lecture 1 (First-order logic: languages, structures and formulas)"
+      channel: Artem Chernikov
+      youtube: 0NaRJa8yGEo
+  "9.2":
+    sources:
+    - title: Hofstadter's MU Riddle
+      channel: Wolfram Demonstrations Project
+      youtube: EhN28Fh22kY
+  "9.3":
+    sources:
+    - title: Mathematical Logic - The Completeness Theorem
+      youtube: Ih5i3xlSs5k
+      channel: Jan Reimann
+  "9.4":
+    sources:
+    - title: Mathematical Logic – The Compactness Theorem
+      youtube: fOq9ZeXHkLE
+      channel: Jan Reimann
+  "10.1":
+    key: P7
+    sources:
+    - title: "L1: Introduction, Finite Automata, Regular Expressions"
+      channel: MIT OpenCourseWare
+      youtube: 9syvZr-9xwk
+  "10.2":
+    key: P7
+    sources:
+    - title: "L5: CF Pumping Lemma, Turing Machines"
+      channel: MIT OpenCourseWare
+      youtube: IycOPFmEQk8
+  "10.3":
+    key: P7
+    sources:
+    - title: "L6: TM Variants, Church-Turing Thesis"
+      channel: MIT OpenCourseWare
+      youtube: TTArY7ojshU
+  "10.4":
+    key: P7
+    sources:
+    - title: "L7: Decision Problems for Automata and Grammars"
+      channel: MIT OpenCourseWare
+      youtube: 4MgN6uxd4i4
+  "10.5":
+    sources:
+    - title: Lambda Calculus - Computerphile
+      youtube: eis11j_iGMs
+  "11.1":
+    key: P7
+    sources:
+    - title: "L8: Undecidability"
+      channel: MIT OpenCourseWare
+      youtube: 3PzuSPQPEU4
+  "11.2":
+    key: P7
+    sources:
+    - title: "L9: Reducibility"
+      channel: MIT OpenCourseWare
+      youtube: N28g_YBXY8Y
+  "11.3":
+    key: P7
+    sources:
+    - title: "L10: Computation History Method"
+      channel: MIT OpenCourseWare
+      youtube: MGqoLm2aAgc
+  "12.1":
+    key: P7
+    sources:
+    - title: "L11: Recursion Theorem and Logic"
+      channel: MIT OpenCourseWare
+      youtube: N-_XmLanPYg
+  P8:
+    key: P8
+    sources:
+    - title: Gödel's Incompleteness Theorem - Numberphile
+      channel: Numberphile
+      youtube: O4ndIDcDSGc
+  P9:
+    key: P9
+    sources:
+    - title: Godel's 1st Incompleteness Theorem - Proof by Diagonalization
+      channel: Stable Sort
+      youtube: PpSxqde0af4
+  P10:
+    key: P10
+    sources:
+    - title: The Gödel incompleteness phenomenon
+      channel: Hamkins's own upload, or the hosting institution
+      youtube: Y5trjR5aw0k
+  "13.1":
+    sources:
+    - title: (tilføjet) Computerphile – "Lambda Calculus" (Graham Hutton, 13 min) — spring over, hvis du så den i uge 10.
+      youtube: eis11j_iGMs
+  P11:
+    key: P11
+    sources:
+    - title: "Peter Dybjer: Intuitionistic Type Theory (Lecture I)"
+      channel: Hausdorff Center for Mathematics (Trimester Program "Types, Sets and Constructions")
+      youtube: 5V-qka70DAE
+  P12:
+    key: P12
+    sources:
+    - title: Propositions as Types
+      channel: Strange Loop Conference
+      youtube: IOiZatlZtGU
+  P13:
+    key: P13
+    sources:
+    - title: "HoTT Lecture 1: Dependent types and dependent functions -- HoTTEST Summer School 2022"
+      channel: HoTTEST
+      youtube: HvYYCHMeM-8
+  "14.1":
+    key: P14
+    sources:
+    - title: "Category Theory 1.1: Motivation and Philosophy"
+      channel: Bartosz Milewski
+      youtube: I8LbkfSSR58
+  "14.2":
+    key: P14
+    sources:
+    - title: "Category Theory 1.2: What is a category?"
+      channel: Bartosz Milewski
+      youtube: p54Hd7AmVFU
+  "14.3":
+    key: P14
+    sources:
+    - title: "Category Theory 2.1: Functions, epimorphisms"
+      channel: Bartosz Milewski
+      youtube: O2lZkr-aAqk
+  "14.4":
+    key: P14
+    sources:
+    - title: "Category Theory 2.2: Monomorphisms, simple types"
+      channel: Bartosz Milewski
+      youtube: NcT7CGPICzo
+  "14.5":
+    key: P14
+    sources:
+    - title: "Category Theory 3.1: Examples of categories, orders, monoids"
+      channel: Bartosz Milewski
+      youtube: aZjhqkD6k6w
+  "14.6":
+    key: P14
+    sources:
+    - title: "Category Theory 3.2: Kleisli category"
+      channel: Bartosz Milewski
+      youtube: i9CU4CuHADQ
+  "14.7":
+    sources:
+    - title: "Category Theory 6.1: Functors"
+      youtube: FyoQjkwsy7o
+overrides:
+  inserts:
+  - week: 1
+    before: "**Typiske fejl**"
+    markdown: ::interactive{id="truth-table" formula="(p -> q) <-> (~q -> ~p)"}
+  - week: 4
+    before: "**Potensmængde**"
+    markdown: ::interactive{id="venn" expr="dm"}
+  - week: 7
+    before: "**Cantors sætning.**"
+    markdown: ::interactive{id="cantor-diagonal"}
+  - week: 9
+    before: "#### 4. Et Hilbert-system"
+    markdown: ::interactive{id="miu"}
+  - week: 10
+    before: "**Varianter.**"
+    markdown: ::interactive{id="turing-machine" machine="inc"}
+  - week: 12
+    before: "**Aritmetisering.**"
+    markdown: ::interactive{id="godel-encoder" formula="0=0"}
+  - week: 13
+    before: "**3. Ikke-terminering og rekursion.**"
+    markdown: ::interactive{id="lambda-reducer" term="PLUS 2 3"}
+  exercises:
+    "5.1":
+      quiz:
+        question: Hvilken mængde er von Neumann-tallet $2$?
+        options:
+        - $\{\emptyset, \{\emptyset\}\}$
+        - $\{\{\emptyset\}\}$
+        - $\{\emptyset\}$
+        - $\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}$
+        explain: Med $0 = \emptyset$ og $n + 1 = n \cup \{n\}$ er $2 = \{0, 1\} = \{\emptyset, \{\emptyset\}\}$. Den sidste mulighed er $3$.
+    "5.2":
+      quiz:
+        question: "Med $m + 0 = m$ og $m + S(n) = S(m + n)$: hvor mange gange bruger man reglen $m + S(n) = S(m + n)$, når man regner $2 + 3$ ud?"
+        check:
+          type: numeric
+          answer: 3
+          tolerance: 0
+        distractors:
+        - 2
+        - 5
+        - 1
+        explain: $2 + 3 = 2 + S(2) = S(2 + 2) = S(S(2 + 1)) = S(S(S(2 + 0)))$ — én gang for hvert $S$ i $3 = S(S(S(0)))$.
+    "5.3":
+      quiz:
+        question: Strukturen $\{0, 1, 2\}$ med $S(0) = 1$, $S(1) = 2$ og $S(2) = 0$. Hvilket af Peanos krav er brudt?
+        options:
+        - $0$ må ikke være efterfølger af noget tal
+        - $S$ skal være injektiv
+        - Induktionsaksiomet
+        - Ingen — alle krav holder
+        explain: $S(2) = 0$, så $0$ er en efterfølger. $S$ er en bijektion, og en mængde med $0$, der er lukket under $S$, indeholder både $1$ og $2$.
+    "8.1":
+      quiz:
+        question: "Med $V_0 = \\emptyset$ og $V_{n+1} = \\mathcal{P}(V_n)$: hvor mange elementer har $V_3$?"
+        check:
+          type: numeric
+          answer: 4
+          tolerance: 0
+        distractors:
+        - 3
+        - 8
+        - 16
+        explain: $V_1$ har $1$ element, $V_2 = \mathcal{P}(V_1)$ har $2^1 = 2$, og $V_3 = \mathcal{P}(V_2)$ har $2^2 = 4$.
+    "8.4":
+      quiz:
+        question: Hvad viser Russells argument i ZF?
+        options:
+        - Der findes ingen mængde af alle mængder
+        - ZF er selvmodsigende
+        - Enhver mængde er element i sig selv
+        - Potensmængden af $A$ har færre elementer end $A$
+        explain: "For enhver mængde $A$ er $R_A = \\{x \\in A : x \\notin x\\}$ ikke et element i $A$. Altså kan ingen mængde indeholde alle mængder."
+    "8.5":
+      quiz:
+        question: Hvilket aksiom udelukker, at en mængde er element i sig selv ($x \in x$)?
+        options:
+        - Funderingsaksiomet
+        - Ekstensionalitetsaksiomet
+        - Udvalgsaksiomet
+        - Potensmængdeaksiomet
+        explain: "Fundering: hver ikke-tom mængde har et element, der er disjunkt fra den. Brugt på $\\{x\\}$ giver det $x \\notin x$."
+    "9.2":
+      quiz:
+        question: Hvorfor er MIIIU ikke et teorem i MIU-systemet?
+        options:
+        - Antallet af I'er i et teorem er aldrig deleligt med 3 — og MIIIU har 3
+        - Der må højst stå ét U i et teorem
+        - Alle teoremer slutter på I
+        - Det er for kort til at kunne afledes
+        explain: Startstrengen MI har ét I. Reglerne fordobler antallet eller trækker 3 fra, så antallet bliver aldrig deleligt med 3.
+    "9.3":
+      quiz:
+        question: Hvilken struktur gør sætningen $\forall x\, \exists y\, (y < x)$ falsk?
+        options:
+        - $(\mathbb{N}, <)$
+        - $(\mathbb{Z}, <)$
+        - $(\mathbb{Q}, <)$
+        - Ingen af dem
+        explain: I $\mathbb{N}$ findes intet tal mindre end $0$. I $\mathbb{Z}$ og $\mathbb{Q}$ er $x - 1 < x$.
+    "9.6":
+      quiz:
+        question: Hvad betyder det, at bevissystemet for udsagnslogik er *sundt*?
+        options:
+        - Alt, hvad der kan bevises, er en tautologi
+        - Enhver tautologi kan bevises
+        - Systemet kan afgøre, om en formel er en tautologi
+        - Aksiomerne er uafhængige af hinanden
+        explain: "Sundhed: $\\vdash \\varphi$ medfører $\\vDash \\varphi$. Den anden vej — at enhver tautologi kan bevises — hedder fuldstændighed."
+    "11.2":
+      quiz:
+        question: Er spørgsmålet "standser netop denne maskine på netop dette input?" — én fast maskine og ét fast input — afgørligt?
+        options:
+        - Ja — et problem med én instans er altid afgørligt
+        - Nej, det er halting-problemet
+        - Kun hvis maskinen faktisk standser
+        - Det kan man ikke vide
+        explain: Afgørlighed handler om én algoritme til uendeligt mange instanser. Med én instans svarer et af programmerne "skriv ja" og "skriv nej" rigtigt — vi ved måske bare ikke hvilket.
+    "11.3":
+      quiz:
+        question: Hvis $L$ er genkendeligt, men ikke afgørligt, hvad gælder så for komplementet $\overline{L}$?
+        options:
+        - Det er ikke genkendeligt
+        - Det er afgørligt
+        - Det er også genkendeligt, men ikke afgørligt
+        - Det er tomt
+        explain: Var både $L$ og $\overline{L}$ genkendelige, kunne man køre de to genkendere skiftevis og altid få et svar — så var $L$ afgørligt.
+    "11.5":
+      quiz:
+        question: Hvad viser en afbildningsreduktion $A_{TM} \le_m HALT_{TM}$?
+        options:
+        - $HALT_{TM}$ er uafgørligt, fordi $A_{TM}$ er det
+        - $A_{TM}$ er uafgørligt, fordi $HALT_{TM}$ er det
+        - $HALT_{TM}$ er afgørligt
+        - $A_{TM}$ og $HALT_{TM}$ er det samme sprog
+        explain: Kunne man afgøre $HALT_{TM}$, kunne man afgøre $A_{TM}$ ved først at oversætte med reduktionen. Sværheden flytter fra venstre mod højre.
+    "14.2":
+      quiz:
+        question: "Monoiden $(\\mathbb{N}, +, 0)$ set som en kategori med ét objekt: hvilke morfier er isomorfier?"
+        options:
+        - Kun $0$
+        - Alle morfier
+        - Kun $0$ og $1$
+        - Ingen
+        explain: $m$ har en invers, hvis $m + n = 0$ for et $n \in \mathbb{N}$, og det kræver $m = n = 0$.
+    "14.3":
+      quiz:
+        question: Hvilken mængde er et initialt objekt i kategorien Set?
+        options:
+        - Den tomme mængde $\emptyset$
+        - En mængde med ét element
+        - $\mathbb{N}$
+        - Set har intet initialt objekt
+        explain: Fra $\emptyset$ findes præcis én afbildning til enhver mængde (den tomme). En ét-punktsmængde er derimod terminal.
+    "14.4":
+      quiz:
+        question: I Set er en monomorfi det samme som en …
+        options:
+        - injektiv afbildning
+        - surjektiv afbildning
+        - bijektiv afbildning
+        - konstant afbildning
+        explain: Det er netop opgavens resultat. Tilsvarende er epimorfierne i Set de surjektive afbildninger.
+forward_refs:
+  "1.1":
+  - field: prompt
+    text: "*(Den sidste vender tilbage i Gödel-ugerne.)*"
+    action: remove
+  - field: solution
+    text: (uge 2)
+    action: remove
+  "1.4":
+  - field: prompt
+    text: "*(Forsmag på kvantorerne i uge 2.)*"
+    action: remove
+  "1.5":
+  - field: prompt
+    text: "*(a og b bruges i uge 2 til modstridsbeviser og bevis ved tilfælde.)*"
+    action: remove
+  "1.7":
+  - field: prompt
+    text: "*(Forbereder begrebet konsistens.)*"
+    action: remove
+  "1.10":
+  - field: prompt
+    text: (Et helt stringent bevis for (c) bruger strukturel induktion fra uge 3 – en forsmag; et omhyggeligt argument "led for led" er nok her.)
+    action: replace
+    with: (Et omhyggeligt argument "led for led" er nok her.)
+  - field: solution
+    text: (strukturel induktion, uge 3)
+    action: replace
+    with: (strukturel induktion)
+  "4.8":
+  - field: prompt
+    text: '(Bruges i uge 6: $\mathbb{Z}$ bygges ved at identificere par $(a,b)$, der "burde" give samme differens.)'
+    action: remove
+  - field: solution
+    text: I uge 6 er $f(a,b) = a - b$ den tanke, der ligger bag konstruktionen af $\mathbb{Z}$ — dog uden at vi har lov til at bruge $a - b$, fordi heltallene ikke findes endnu.
+    action: remove
+  "4.9":
+  - field: prompt
+    text: (Bruges i uge 8 om ZFC.)
+    action: remove
+  "5.6":
+  - field: prompt
+    text: (Bruges i uge 6.)
+    action: remove
+  - field: solution
+    text: "Dette bruges i uge 6: (b) til at vise transitivitet for relationen, der definerer $\\mathbb{Z}$, og (d) (overført til $\\mathbb{Z}$) til at vise, at $\\mathbb{Z}$ ikke har nuldivisorer — det skal bruges i konstruktionen af $\\mathbb{Q}$."
+    action: remove
+  "7.6":
+  - field: prompt
+    text: (Bruges i uge 10–12; idéen er en forløber for Gödel-nummerering.)
+    action: remove
+  "9.10":
+  - field: solution
+    text: Den forskel mellem "søge efter beviser" og "bevise at der intet bevis er" vender tilbage i uge 11.
+    action: remove
+  "9.11":
+  - field: prompt
+    text: (bruges i uge 13)
+    action: remove
+  "2.5":
+  - field: prompt
+    text: "*(Bruges i Euklids bevis, opgave 2.10 og uge 3.)*"
+    action: replace
+    with: "*(Bruges i Euklids bevis, opgave 2.10.)*"
+  "2.10":
+  - field: solution
+    text: "(formelt: induktion over antallet af faktorer, uge 3)"
+    action: replace
+    with: "(formelt: induktion over antallet af faktorer)"
+  "3.13":
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "4.10":
+  - field: solution
+    text: " — det møder du i uge 8"
+    action: remove
+  "7.13":
+  - field: prompt
+    text: antyder uge 11.
+    action: replace
+    with: antyder, at nogle spørgsmål om programmer ikke kan afgøres af noget program.
+  - field: solution
+    text: "Uge 11-forbindelsen:"
+    action: replace
+    with: "Forbindelsen til programmer:"
+  - field: solution
+    text: Uge 11 bruger præcis samme trick til at vise, at halting-problemet er uafgørligt.
+    action: remove
+  "8.9":
+  - field: prompt
+    text: (Forløber for Gödel-nummerering i uge 12.)
+    action: remove
+  "8.11":
+  - field: solution
+    text: (uge 12)
+    action: remove
+  "9.4":
+  - field: prompt
+    text: (Samme teknik bruges til at tælle i syntakstræer i uge 10 og 12.)
+    action: remove
+  "9.12":
+  - field: solution
+    text: ", og det bruges afgørende i uge 12"
+    action: remove
+  "9.13":
+  - field: solution
+    text: (uge 12)
+    action: remove
+  "10.6":
+  - field: prompt
+    text: (Idéen "løs et problem ved at omforme det til et andet" hedder en reduktion og er hovedværktøjet i uge 11.)
+    action: replace
+    with: (Idéen "løs et problem ved at omforme det til et andet" hedder en reduktion.)
+  "10.7":
+  - field: prompt
+    text: (Opremsningen giver rækker og søjler i diagonaltabellen i uge 11.)
+    action: remove
+  "10.8":
+  - field: prompt
+    text: (Dette er nøglen til uge 12.)
+    action: remove
+  - field: solution
+    text: (uge 12)
+    action: remove
+  "10.11":
+  - field: solution
+    text: Den forskel er hele emnet for uge 11.
+    action: remove
+  "10.12":
+  - field: solution
+    text: (fx løser halting-problemet, uge 11)
+    action: replace
+    with: (fx løser halting-problemet)
+---
 # Matematikkens grundlag: fra logik over mængder til Gödel
 
 *Læringsplan, noter, øvelser og løsninger til YouTube-playlisten **"Foundations of Mathematics – Logic to Sets to Goedel"***

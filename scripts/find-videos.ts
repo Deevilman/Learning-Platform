@@ -6,9 +6,9 @@
 // for a human — or a later commit — to pick from. Nothing is written to
 // videos.yaml; picked IDs must still pass `npm run verify-videos`.
 
-import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import YAML from 'yaml'
+import { allCourseVideos } from './lib/pack-file.ts'
 
 const ROOT = join(import.meta.dirname, '..')
 const HEADERS = { 'Accept-Language': 'en-US,en;q=0.9', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36' }
@@ -145,14 +145,10 @@ async function main() {
     const lists = (await safe(url, () => channelPlaylists(url))) || []
     for (const l of lists.filter((x) => SERIES.test(x.title))) report.playlists[`${l.title} [${l.id}]`] = (await safe(l.title, () => playlist(l.id))) || []
   }
-  const dir = join(ROOT, 'content/courses')
   const verified = join(ROOT, 'reports/videos.json')
   const notEmbeddable = new Set<string>(existsSync(verified) ? JSON.parse(readFileSync(verified, 'utf8')).rows.filter((r: any) => r.status === 'not-embeddable').map((r: any) => r.id) : [])
-  for (const course of readdirSync(dir)) {
-    const f = join(dir, course, 'videos.yaml')
-    if (!existsSync(f)) continue
-    const data = YAML.parse(readFileSync(f, 'utf8')) || {}
-    for (const [key, entry] of Object.entries<any>(data.videos || {}))
+  for (const { course, videos } of allCourseVideos(ROOT)) {
+    for (const [key, entry] of Object.entries<any>(videos))
       for (const [i, s] of (entry.sources || []).entries()) {
         // A video that can't be embedded may have an embeddable re-upload by the same channel.
         const blocked = s.youtube && notEmbeddable.has(s.youtube)

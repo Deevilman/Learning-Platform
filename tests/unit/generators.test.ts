@@ -43,9 +43,10 @@ describe('generators', () => {
   for (const g of generators) {
     describe(g.id, () => {
       it('belongs to an existing course and topics', () => {
-        const file = join(ROOT, 'content/courses', g.course, 'course.yaml')
+        const file = join(ROOT, 'content/courses', `${g.course}.md`)
         expect(existsSync(file), `course ${g.course}`).toBe(true)
-        const topics = new Set((YAML.parse(readFileSync(file, 'utf8')).topics || []).map((t: { id: string }) => t.id))
+        const fm = readFileSync(file, 'utf8').split('\n---\n')[0].replace(/^---\n/, '')
+        const topics = new Set((YAML.parse(fm).topics || []).map((t: { id: string }) => t.id))
         for (const t of g.topics) expect(topics.has(t), `topic ${t}`).toBe(true)
         expect(g.difficulties.length).toBeGreaterThan(0)
       })

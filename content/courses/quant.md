@@ -1,3 +1,951 @@
+---
+slug: quant
+lang: da
+title: Quant Trading & Research
+short: Fra sandsynlighed til strategier
+color: "#2563eb"
+icon: chart
+level: universitet (introducerende)
+estimated_weeks: 16
+track: finans
+requires:
+- foundations
+recommended_before: []
+next:
+- hedgefund
+disclaimer: Undervisning, ikke investeringsrådgivning.
+topics:
+- { id: markets, name: Markeder og instrumenter, weeks: [ 1 ] }
+- { id: time-value, name: Rentes rente og nutidsværdi, weeks: [ 1 ] }
+- { id: returns-risk, name: Afkast og risiko, weeks: [ 2 ] }
+- { id: probability, name: Sandsynlighed, weeks: [ 3, 4 ] }
+- { id: statistics, name: Statistik og inferens, weeks: [ 5 ] }
+- { id: linalg-regression, name: "Lineær algebra, regression og PCA", weeks: [ 6 ] }
+- { id: portfolio, name: Porteføljeteori og CAPM, weeks: [ 7 ] }
+- { id: factors, name: Faktormodeller, weeks: [ 8 ] }
+- { id: timeseries, name: Tidsrækker, weeks: [ 9 ] }
+- { id: backtesting, name: Backtesting og forskningsmetode, weeks: [ 10 ] }
+- { id: strategies, name: Handelsstrategier, weeks: [ 11, 12 ] }
+- { id: stochastic, name: Stokastisk calculus, weeks: [ 13 ] }
+- { id: derivatives, name: Derivater og Black–Scholes, weeks: [ 14 ] }
+- { id: microstructure, name: Mikrostruktur og eksekvering, weeks: [ 15 ] }
+- { id: risk-ml, name: Risikostyring og machine learning, weeks: [ 16 ] }
+videos:
+  Q1.1:
+    key: Q1.1
+    sources:
+    - title: 1. Introduction, Financial Terms and Concepts
+      channel: MIT OpenCourseWare
+      youtube: wvXDB9dMdEo
+  Q1.2:
+    key: Q1.2
+    sources:
+    - title: 21. Exchanges, Brokers, Dealers, Clearinghouses
+      channel: YaleCourses
+      youtube: kAl8DezwLAE
+  Q1.3:
+    key: Q1.3
+    sources:
+    - title: 6. Efficient Markets vs. Excess Volatility
+      channel: YaleCourses
+      youtube: pXJb29s3nmY
+  Q1.4:
+    key: Q1.4
+    sources:
+    - title: The mathematician who cracked Wall Street | Jim Simons
+      channel: TED
+      youtube: U5kIdtMJGc8
+  Q1.5:
+    key: Q1.5
+    sources:
+    - title: "Ses 2: Present Value Relations I"
+      channel: MIT OpenCourseWare
+      youtube: U03Md5enU-0
+  Q2.1:
+    key: Q2.1
+    sources:
+    - title: "Ses 12: Options III & Risk and Return I"
+      channel: MIT OpenCourseWare
+      youtube: Q2qjnLO3I_M
+  Q2.2:
+    key: Q2.2
+    sources:
+    - title: "Ses 13: Risk and Return II & Portfolio Theory I"
+      channel: MIT OpenCourseWare
+      youtube: tL7Lcl90Sc0
+  Q2.3:
+    key: Q2.3
+    sources:
+    - title: "Quantopian Lecture Series: Introduction to Python"
+      channel: Quantopian
+      youtube: bQUWLkKzpxE
+  Q2.4:
+    key: Q2.4
+    sources:
+    - title: Algorithmic Trading Using Python - Full Course
+      channel: freeCodeCamp.org
+      youtube: xfzGZB4HhEE
+  Q3.1:
+    key: Q3.1
+    sources:
+    - title: "Lecture 4: Conditional Probability | Statistics 110"
+      channel: Harvard University
+      youtube: P7NE4WF8j-Q
+  Q3.2:
+    key: Q3.2
+    sources:
+    - title: "Lecture 5: Conditioning Continued, Law of Total Probability | Statistics 110"
+      channel: Harvard University
+      youtube: JzDvVgNDxo8
+  Q3.3:
+    key: Q3.3
+    sources:
+    - title: "Lecture 7: Gambler's Ruin and Random Variables | Statistics 110"
+      channel: Harvard University
+      youtube: PNrqCdslGi4
+  Q3.4:
+    key: Q3.4
+    sources:
+    - title: "Lecture 8: Random Variables and Their Distributions | Statistics 110"
+      channel: Harvard University
+      youtube: k2BB0p8byGA
+  Q3.5:
+    key: Q3.5
+    sources:
+    - title: "Lecture 9: Expectation, Indicator Random Variables, Linearity | Statistics 110"
+      channel: Harvard University
+      youtube: LX2q356N2rU
+  Q4.1:
+    key: Q4.1
+    sources:
+    - title: "Lecture 13: Normal distribution | Statistics 110"
+      channel: Harvard University
+      youtube: 72QjzHnYvL0
+  Q4.2:
+    key: Q4.2
+    sources:
+    - title: "Lecture 19: Joint, Conditional, and Marginal Distributions | Statistics 110"
+      channel: Harvard University
+      youtube: J70dP_AECzQ
+  Q4.3:
+    key: Q4.3
+    sources:
+    - title: "Lecture 21: Covariance and Correlation | Statistics 110"
+      channel: Harvard University
+      youtube: IujCYxtpszU
+  Q4.4:
+    key: Q4.4
+    sources:
+    - title: "Lecture 29: Law of Large Numbers and Central Limit Theorem | Statistics 110"
+      channel: Harvard University
+      youtube: OprNqnHsVIA
+  Q4.5:
+    key: Q4.5
+    sources:
+    - title: "Lecture 31: Markov Chains | Statistics 110"
+      channel: Harvard University
+      youtube: 8AJPs3gvNlY
+  Q4.6:
+    key: Q4.6
+    sources:
+    - title: 3. Probability Theory
+      channel: MIT OpenCourseWare
+      youtube: f9XFM8YLccg
+  Q5.1:
+    key: Q5.1
+    sources:
+    - title: 4. Parametric Inference (cont.) and Maximum Likelihood Estimation
+      channel: MIT OpenCourseWare
+      youtube: rLlZpnT02ZU
+  Q5.2:
+    key: Q5.2
+    sources:
+    - title: 7. Parametric Hypothesis Testing
+      channel: MIT OpenCourseWare
+      youtube: phbw9r1iUDI
+  Q5.3:
+    key: Q5.3
+    sources:
+    - title: 8. Parametric Hypothesis Testing (cont.)
+      channel: MIT OpenCourseWare
+      youtube: 4HRhg4eUiMo
+  Q5.4:
+    key: Q5.4
+    sources:
+    - title: "Quantopian Lecture Series: p-Hacking and Multiple Comparisons Bias"
+      channel: Quantopian
+      youtube: YiDfbYtgUPc
+  Q6.1:
+    key: Q6.1
+    sources:
+    - title: 15. Projections onto Subspaces
+      channel: MIT OpenCourseWare
+      youtube: Y_Ac6KiQ1t0
+  Q6.2:
+    key: Q6.2
+    sources:
+    - title: 16. Projection Matrices and Least Squares
+      channel: MIT OpenCourseWare
+      youtube: osh80YCg_GM
+  Q6.3:
+    key: Q6.3
+    sources:
+    - title: 13. Regression
+      channel: MIT OpenCourseWare
+      youtube: yP1S37BiEsQ
+  Q6.4:
+    key: Q6.4
+    sources:
+    - title: 21. Eigenvalues and Eigenvectors
+      channel: MIT OpenCourseWare
+      youtube: cdZnhQjJu4I
+  Q6.5:
+    key: Q6.5
+    sources:
+    - title: 25. Symmetric Matrices and Positive Definiteness
+      channel: MIT OpenCourseWare
+      youtube: UCc9q_cAhho
+  Q6.6:
+    key: Q6.6
+    sources:
+    - title: 6. Regression Analysis
+      channel: MIT OpenCourseWare
+      youtube: l1kLCrxL9Hk
+  Q7.1:
+    key: Q7.1
+    sources:
+    - title: "Ses 14: Portfolio Theory II"
+      channel: MIT OpenCourseWare
+      youtube: J7d3vcaS9-o
+  Q7.2:
+    key: Q7.2
+    sources:
+    - title: "Ses 15: Portfolio Theory III & The CAPM and APT I"
+      channel: MIT OpenCourseWare
+      youtube: z2oQe6B1Qa4
+  Q7.3:
+    key: Q7.3
+    sources:
+    - title: "Ses 16: The CAPM and APT II"
+      channel: MIT OpenCourseWare
+      youtube: N8gtnbJuMoo
+  Q7.4:
+    key: Q7.4
+    sources:
+    - title: 14. Portfolio Theory
+      channel: MIT OpenCourseWare
+      youtube: ywl3pq6yc54
+  Q8.1:
+    key: Q8.1
+    sources:
+    - title: Should You Be Factor Investing?
+      channel: Ben Felix
+      youtube: ViTnIebSzj4
+  Q8.2:
+    key: Q8.2
+    sources:
+    - title: "Quantopian Lecture Series: Risk Factor Expsosure *(the typo is in the official title)*"
+      channel: Quantopian
+      youtube: Ep8Y5JfQoRg
+  Q8.3:
+    key: Q8.3
+    sources:
+    - title: "Quantopian Lecture Series: Fundamental Factor Models"
+      channel: Quantopian
+      youtube: P16zDtf0CE0
+  Q8.4:
+    key: Q8.4
+    sources:
+    - title: 19. Principal Component Analysis
+      channel: MIT OpenCourseWare
+      youtube: WW3ZJHPwvyg
+  Q8.5:
+    key: Q8.5
+    sources:
+    - title: 15. Factor Modeling
+      channel: MIT OpenCourseWare
+      youtube: ro07evEWbCE
+  Q9.1:
+    key: Q9.1
+    sources:
+    - title: "Time Series Talk : Stationarity"
+      channel: ritvikmath
+      youtube: oY-j2Wof51c
+  Q9.2:
+    key: Q9.2
+    sources:
+    - title: "Time Series Talk : Autocorrelation and Partial Autocorrelation"
+      channel: ritvikmath
+      youtube: DeORzP0go5I
+  Q9.3:
+    key: Q9.3
+    sources:
+    - title: "Time Series Talk : Autoregressive Model"
+      channel: ritvikmath
+      youtube: 5-2C4eO4cPQ
+  Q9.4:
+    key: Q9.4
+    sources:
+    - title: "Time Series Talk : Moving Average Model"
+      channel: ritvikmath
+      youtube: voryLhxiPzE
+  Q9.5:
+    key: Q9.5
+    sources:
+    - title: 8. Time Series Analysis I
+      channel: MIT OpenCourseWare
+      youtube: uBeM1FUk4Ps
+  Q9.6:
+    key: Q9.6
+    sources:
+    - title: "Time Series Talk : ARCH Model"
+      channel: ritvikmath
+      youtube: Li95a2biFCU
+  Q9.7:
+    key: Q9.7
+    sources:
+    - title: "GARCH Model : Time Series Talk"
+      channel: ritvikmath
+      youtube: inoBpq1UEn4
+  Q9.8:
+    key: Q9.8
+    sources:
+    - title: 9. Volatility Modeling
+      channel: MIT OpenCourseWare
+      youtube: cDlbEQz1PQk
+  Q9.9:
+    key: Q9.9
+    sources:
+    - title: Integration, Cointegration, and Stationarity
+      channel: Quantopian
+      youtube: Pn_RiDbK82M
+  Q9.10:
+    key: Q9.10
+    sources:
+    - title: Cointegration - an introduction
+      channel: Ben Lambert
+      youtube: vvTKjm94Ars
+  Q10.1:
+    key: Q10.1
+    sources:
+    - title: The 7 Reasons Most Machine Learning Funds Fail Marcos Lopez de Prado from QuantCon 2018
+      channel: Quantopian
+      youtube: BRUlSm4gdQ4
+  Q10.2:
+    key: Q10.2
+    sources:
+    - title: "Quantopian Lecture Series: Overfitting"
+      channel: Quantopian
+      youtube: KNCgvjyKrcw
+  Q10.3:
+    key: Q10.3
+    sources:
+    - title: The Deflated Sharpe Ratio
+      channel: Advances in Financial Machine Learning
+      youtube: jPI1oo_Ss5U
+  Q10.4:
+    key: Q10.4
+    sources:
+    - title: Enhancing Statistical Significance of Backtests by Dr. Ernest Chan at QuantCon 2017
+      channel: Quantopian
+      youtube: OxNcA6RO_ZE
+  Q10.5:
+    key: Q10.5
+    sources:
+    - title: "Ses 19: Efficient Markets II"
+      channel: MIT OpenCourseWare
+      youtube: a5PF2PcElV0
+  Q11.1:
+    key: Q11.1
+    sources:
+    - title: AHL Explains - Momentum
+      channel: Man AHL
+      youtube: D_WhInJePC8
+  Q11.2:
+    key: Q11.2
+    sources:
+    - title: AHL Explains - Cross Sectional Momentum
+      channel: Man AHL
+      youtube: tfNI6YwDG_o
+  Q11.3:
+    key: Q11.3
+    sources:
+    - title: Introduction to Pairs Trading
+      channel: Quantopian
+      youtube: JTucMRYMOyY
+  Q11.4:
+    key: Q11.4
+    sources:
+    - title: Mean Reversion Strategy with Ernest Chan | Cointegration, Stationarity & Bollinger Bands Explained
+      channel: Quantra
+      youtube: mopIwlSqkc0
+  Q11.5:
+    key: Q11.5
+    sources:
+    - title: 12. Time Series Analysis III
+      channel: MIT OpenCourseWare
+      youtube: 9G1IDAqrWkg
+  Q12.1:
+    key: Q12.1
+    sources:
+    - title: AHL Explains - Volatility Scaling
+      youtube: ZJXsoZprTn8
+      channel: Man AHL
+    - title: AHL Explains - Signal Diversification
+      channel: Man AHL
+      youtube: xckEWD5daBY
+  Q12.2:
+    key: Q12.2
+    sources:
+    - title: Cliff Asness on Factor Investing and the History of Financial Economics | Capitalism and Freedom
+      channel: Hoover Institution
+      youtube: 2QrPCewZO9E
+  Q12.3:
+    key: Q12.3
+    sources:
+    - title: 16. Portfolio Management
+      channel: MIT OpenCourseWare
+      youtube: 8TJQhQ2GZ0Y
+  Q12.4:
+    key: Q12.4
+    sources:
+    - title: Trading Strategies Deep Dive with Rob Carver and Alan Dunne | Systematic Investor 266
+      channel: Top Traders Unplugged
+      youtube: pVE8sehGzCQ
+  Q12.5:
+    key: Q12.5
+    sources:
+    - title: Causal Factor Investing
+      channel: Advances in Financial Machine Learning
+      youtube: 1J5GKfcedE0
+  Q13.1:
+    key: Q13.1
+    sources:
+    - title: 5. Stochastic Processes I
+      channel: MIT OpenCourseWare
+      youtube: TuTmC8aOQJE
+  Q13.2:
+    key: Q13.2
+    sources:
+    - title: 17. Stochastic Processes II
+      channel: MIT OpenCourseWare
+      youtube: PPl-7_RL0Ko
+  Q13.3:
+    key: Q13.3
+    sources:
+    - title: 18. Itō Calculus
+      channel: MIT OpenCourseWare
+      youtube: Z5yRMMVUC5w
+  Q13.4:
+    key: Q13.4
+    sources:
+    - title: 21. Stochastic Differential Equations
+      channel: MIT OpenCourseWare
+      youtube: qdbkvD4N-us
+  Q14.1:
+    key: Q14.1
+    sources:
+    - title: "Ses 10: Forward and Futures Contracts II & Options I"
+      channel: MIT OpenCourseWare
+      youtube: IwA7nVEwqto
+  Q14.2:
+    key: Q14.2
+    sources:
+    - title: "Ses 11: Options II"
+      channel: MIT OpenCourseWare
+      youtube: rMsu4v-UlkA
+  Q14.3:
+    key: Q14.3
+    sources:
+    - title: Introduction to the Black-Scholes formula | Finance & Capital Markets | Khan Academy
+      channel: Khan Academy
+      youtube: pr-u4LCFYEY
+  Q14.4:
+    key: Q14.4
+    sources:
+    - title: 19. Black-Scholes Formula, Risk-neutral Valuation
+      channel: MIT OpenCourseWare
+      youtube: TnS8kI_KuJc
+  Q14.5:
+    key: Q14.5
+    sources:
+    - title: Implied volatility | Finance & Capital Markets | Khan Academy
+      channel: Khan Academy
+      youtube: VIHldsSmASU
+  Q14.6:
+    key: Q14.6
+    sources:
+    - title: 17. Options Markets
+      channel: YaleCourses
+      youtube: VkUEWUxI6u0
+  Q14.7:
+    key: Q14.7
+    sources:
+    - title: 20. Option Price and Probability Duality
+      channel: MIT OpenCourseWare
+      youtube: eG_aRPy1KVE
+  Q15.1:
+    key: Q15.1
+    sources:
+    - title: "Lecture 1: Concepts and Institutions (Financial Markets Microstructure)"
+      channel: economification
+      youtube: nPqat782ADI
+  Q15.2:
+    key: Q15.2
+    sources:
+    - title: "Lecture 3, part 1: Information and Prices (Financial Markets Microstructure)"
+      channel: economification
+      youtube: P0-92CIfAUo
+  Q15.3:
+    key: Q15.3
+    sources:
+    - title: "Lecture 5, part 1: Depth determinants, Kyle Model (Financial Markets Microstructure)"
+      channel: economification
+      youtube: 0isdYyPNXis
+  Q15.4:
+    key: Q15.4
+    sources:
+    - title: "Lecture 12, part 1: High-Frequency and Algorithmic Trading (Financial Markets Microstructure)"
+      channel: economification
+      youtube: II0tXd4nADo
+  Q15.5:
+    key: Q15.5
+    sources:
+    - title: A Deep Dive into Optimal Trade Execution - Robert Almgren
+      channel: The Wall Street Lab
+      youtube: SczGh4CIlMM
+  Q16.1:
+    key: Q16.1
+    sources:
+    - title: 7. Value At Risk (VAR) Models
+      channel: MIT OpenCourseWare
+      youtube: 92WaNz9mPeY
+  Q16.2:
+    key: Q16.2
+    sources:
+    - title: "Quantopian Lecture Series: Leverage"
+      channel: Quantopian
+      youtube: qBNmIjbBz3s
+  Q16.3:
+    key: Q16.3
+    sources:
+    - title: "Quantopian Lecture Series: Position Concentration Risk"
+      channel: Quantopian
+      youtube: I1z7B2_FarQ
+  Q16.4:
+    key: Q16.4
+    sources:
+    - title: "Cornell University (ORIE 5256): Advances in Financial Machine Learning"
+      channel: Mathematical Investor
+      youtube: UQSWzkqLp0U
+  Q16.5:
+    key: Q16.5
+    sources:
+    - title: Stefan Jansen talks about Machine Learning for Algorithmic Trading
+      channel: algoseek
+      youtube: DC6DevRRSrs
+  Q16.6:
+    key: Q16.6
+    sources:
+    - title: A Jane Street Trading Mock Interview with Graham and Andrea
+      channel: Jane Street
+      youtube: NT_I1MjckaU
+  Q16.7:
+    key: Q16.7
+    sources:
+    - title: Jim Simons (full length interview) - Numberphile
+      channel: Numberphile2
+      youtube: QNznD9hMEh0
+overrides:
+  inserts:
+  - week: 3
+    before: "**3. Uafhængighed.**"
+    markdown: ::interactive{id="bayes" prior="0.01" sens="0.95" spec="0.95"}
+  - week: 4
+    before: "**8. Random walk.**"
+    markdown: ::interactive{id="lln-clt"}
+  - week: 6
+    before: "**5. Inferens for koefficienterne.**"
+    markdown: ::interactive{id="ols-drag"}
+  - week: 7
+    before: "**6. CAPM.**"
+    markdown: ::interactive{id="efficient-frontier"}
+  - week: 9
+    before: "**8. Integration, spurious"
+    markdown: ::interactive{id="ar-garch"}
+  - week: 10
+    before: "**6. PSR og Deflated Sharpe Ratio.**"
+    markdown: ::interactive{id="overfitting"}
+  - week: 13
+    before: "**7. Ornstein–Uhlenbeck"
+    markdown: ::interactive{id="gbm" mu="0.08" sigma="0.2"}
+  - week: 14
+    before: "**6. Risikoneutral prisfastsættelse"
+    markdown: ::interactive{id="binomial-tree"}
+  - week: 14
+    before: "**10. Delta-hedging og gamma-P&L.**"
+    markdown: ::interactive{id="option-payoff"}
+  - week: 15
+    before: "**2. Hvorfor findes spreadet?**"
+    markdown: ::interactive{id="order-book"}
+  - week: 16
+    before: "**7. Machine learning i finans.**"
+    markdown: ::interactive{id="kelly" p="0.55" b="1"}
+  exercises:
+    "10.1":
+      quiz:
+        question: Et z-score-signal bruger middelværdi og standardafvigelse beregnet på hele perioden 2000–2020. Hvilken fejl er det?
+        options:
+        - Look-ahead bias
+        - Survivorship bias
+        - Selection bias
+        - Ingen fejl
+        explain: Statistikken for hele perioden indeholder fremtiden set fra hver dag. Brug rullende eller ekspanderende estimater.
+    "10.2":
+      quiz:
+        question: 10 aktier følges i 10 år. 7 overlever med et samlet afkast på $+35\,\%$ hver; 3 afnoteres med $-50\,\%$, $-70\,\%$ og $-100\,\%$. Hvad er det korrekte ligevægtede gennemsnitsafkast?
+        check:
+          type: numeric
+          answer: 2.5
+          tolerance: 0.05
+          unit: "%"
+        distractors:
+        - 35
+        - -22
+        - 24.5
+        explain: $(7 \cdot 35 - 50 - 70 - 100)/10 = 25/10 = 2{,}5\,\%$. Kun overleverne giver $+35\,\%$ — det er survivorship bias.
+    "10.3":
+      quiz:
+        question: Brutto-merafkast $12\,\%$, volatilitet $10\,\%$, omkostning $8$ bp pr. enhed turnover og turnover $25$ gange om året. Hvad er netto-Sharpe ratio?
+        check:
+          type: numeric
+          answer: 1
+          tolerance: 0.01
+        distractors:
+        - 1.2
+        - 0.8
+        - -0.8
+        explain: Omkostning $25 \cdot 0{,}0008 = 2\,\%$, netto-merafkast $10\,\%$, så SR $= 0{,}10/0{,}10 = 1{,}0$.
+    "10.5":
+      quiz:
+        question: Standardfejlen på en annualiseret Sharpe ratio er ca. $1/\sqrt{Y}$ med $Y$ år. Hvor mange hele år skal der til, før en sand SR på $1{,}0$ forventes at give et 95 %-interval, der udelukker $0$?
+        check:
+          type: numeric
+          answer: 4
+          tolerance: 0
+        distractors:
+        - 2
+        - 16
+        - 1
+        explain: Kravet er $1 - 1{,}96/\sqrt{Y} > 0$, dvs. $Y > 1{,}96^2 = 3{,}84$ — altså 4 år.
+    "15.1":
+      quiz:
+        question: Bedste bid er $100{,}00$ og bedste ask $100{,}02$. Hvad er spreadet i basispoint af mid (afrundet)?
+        check:
+          type: numeric
+          answer: 2
+          tolerance: 0.05
+          unit: bp
+        distractors:
+        - 1
+        - 4
+        - 20
+        explain: Mid $= 100{,}01$, spread $= 0{,}02$ kr., og $0{,}02/100{,}01 \cdot 10^4 \approx 2$ bp.
+    "15.2":
+      quiz:
+        question: "Roll-modellen: $\\widehat{\\mathrm{Cov}}(\\Delta P_t, \\Delta P_{t-1}) = -0{,}0004$ kr.² for en aktie til ca. $20$ kr. Hvad er det estimerede spread i basispoint?"
+        check:
+          type: numeric
+          answer: 20
+          tolerance: 0.5
+          unit: bp
+        distractors:
+        - 40
+        - 10
+        - 2
+        explain: $\hat s = 2\sqrt{0{,}0004} = 0{,}04$ kr., og $0{,}04/20 \cdot 10^4 = 20$ bp.
+    "15.3":
+      quiz:
+        question: "Square-root-loven: impact $= Y \\sigma \\sqrt{Q/V}$ med $Y = 0{,}8$, $\\sigma = 1{,}5\\,\\%$ og $Q/V = 0{,}1$. Hvad er impact i basispoint?"
+        check:
+          type: numeric
+          answer: 37.9
+          tolerance: 0.2
+          unit: bp
+        distractors:
+        - 120
+        - 12
+        - 75.9
+        explain: $0{,}8 \cdot 0{,}015 \cdot \sqrt{0{,}1} = 0{,}003795 \approx 37{,}9$ bp.
+    "15.4":
+      quiz:
+        question: Beslutning om at købe $10.000$ aktier ved $50{,}00$ kr. Der købes $8.000$ til $50{,}12$ kr. (kurtage $0{,}02$ kr. pr. aktie); resten handles ikke, og dagen lukker i $50{,}40$ kr. Hvad er implementation shortfall i alt i kr.?
+        check:
+          type: numeric
+          answer: 1920
+          tolerance: 1
+          unit: kr.
+        distractors:
+        - 1760
+        - 1120
+        - 960
+        explain: "Eksekvering $8.000 \\cdot 0{,}12 = 960$, opportunitet $2.000 \\cdot 0{,}40 = 800$ og gebyrer $8.000 \\cdot 0{,}02 = 160$: i alt $1.920$ kr."
+forward_refs:
+  "1.8":
+  - field: prompt
+    text: (Bruges i uge 7.)
+    action: remove
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "1.11":
+  - field: prompt
+    text: (Motoren genbruges i uge 15.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  "2.7":
+  - field: prompt
+    text: (Bruges i uge 7.)
+    action: remove
+  "2.9":
+  - field: prompt
+    text: (Bruges i uge 9.)
+    action: remove
+  "2.10":
+  - field: prompt
+    text: (Forsmag på Kelly-kriteriet i uge 3 og 16.)
+    action: remove
+  - field: solution
+    text: (uge 3 og 16)
+    action: remove
+  "2.11":
+  - field: prompt
+    text: (Funktionerne genbruges i uge 10.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  - field: solution
+    text: (uge 5 og 10)
+    action: remove
+  "3.7":
+  - field: prompt
+    text: (Bruges i uge 16.)
+    action: remove
+  "4.3":
+  - field: prompt
+    text: (Bruges i uge 16 om VaR.)
+    action: remove
+  - field: solution
+    text: (uge 16)
+    action: remove
+  "4.5":
+  - field: prompt
+    text: (Bruges i uge 6 og 7.)
+    action: remove
+  - field: solution
+    text: Vi ser det igen som positiv semidefinithed i uge 6.
+    action: remove
+  "5.6":
+  - field: prompt
+    text: (Ordreankomster som Poisson-proces bruges i uge 15.)
+    action: remove
+  "5.7":
+  - field: prompt
+    text: (Bruges i uge 7, hvor Markowitz-optimering er meget følsom over for $\hat\mu$.)
+    action: remove
+  "6.11":
+  - field: solution
+    text: Funktionen `solve` genbruges i uge 7 til porteføljeoptimering.
+    action: replace
+    with: Gem funktionen `solve` — du får brug for den igen senere.
+  "7.11":
+  - field: prompt
+    text: (Funktionerne genbruges i uge 12.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  "8.11":
+  - field: prompt
+    text: (Byggestenen genbruges i uge 11 og 12.)
+    action: replace
+    with: (Gem din kode — du får brug for den igen senere.)
+  "9.6":
+  - field: prompt
+    text: (Bruges i uge 16 til VaR.)
+    action: remove
+  "9.10":
+  - field: prompt
+    text: (Bruges i uge 11 til halveringstider.)
+    action: remove
+  "11.5":
+  - field: prompt
+    text: (bruges i uge 12)
+    action: remove
+  "13.5":
+  - field: prompt
+    text: (bruges i uge 14 med $\mu = r$)
+    action: remove
+  - field: solution
+    text: "I uge 14 erstattes $\\mu$ af den risikofri rente $r$: den diskonterede kurs er en martingal under det risikoneutrale mål."
+    action: remove
+  "1.4":
+  - field: prompt
+    text: (Put-call-paritet i uge 14.)
+    action: remove
+  - field: solution
+    text: (put-call-paritet, uge 14)
+    action: replace
+    with: (put-call-paritet)
+  "1.7":
+  - field: solution
+    text: (og emnet i uge 8 og 12)
+    action: remove
+  "1.9":
+  - field: solution
+    text: ", som vi bruger med log-afkast fra uge 2"
+    action: remove
+  "1.10":
+  - field: solution
+    text: (stationaritet, uge 9)
+    action: replace
+    with: (stationaritet)
+  "2.2":
+  - field: solution
+    text: (Jensens ulighed, uge 4)
+    action: replace
+    with: (Jensens ulighed)
+  "2.8":
+  - field: solution
+    text: (uge 16)
+    action: remove
+  "2.13":
+  - field: solution
+    text: (uge 5 og 10)
+    action: remove
+  "3.3":
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "3.9":
+  - field: solution
+    text: (loven om total forventning, uge 4)
+    action: replace
+    with: (loven om total forventning)
+  "3.10":
+  - field: prompt
+    text: (Ifølge store tals lov, uge 4, går gennemsnittet mod $g(f)$.)
+    action: replace
+    with: (Ifølge store tals lov går gennemsnittet mod $g(f)$.)
+  - field: prompt
+    text: (Uddybes i uge 16.)
+    action: remove
+  - field: solution
+    text: (uge 5 og 10)
+    action: remove
+  "3.11":
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "3.13":
+  - field: solution
+    text: (multiple comparisons/p-hacking, uge 5; deflated Sharpe ratio og overfitting, uge 10)
+    action: replace
+    with: (multiple comparisons/p-hacking; deflated Sharpe ratio og overfitting)
+  "4.2":
+  - field: solution
+    text: (delta-hedging, uge 14)
+    action: replace
+    with: (delta-hedging)
+  "4.6":
+  - field: prompt
+    text: (Udtrykket $\mu-\sigma^2/2$ dukker op igen i uge 13–14.)
+    action: remove
+  "4.7":
+  - field: solution
+    text: (uge 5)
+    action: remove
+  "4.8":
+  - field: prompt
+    text: (Forbindelse til uge 9.)
+    action: remove
+  - field: solution
+    text: ", og det modelleres med ARCH/GARCH i uge 9"
+    action: remove
+  "4.11":
+  - field: solution
+    text: (uge 8)
+    action: remove
+  "5.3":
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "6.3":
+  - field: solution
+    text: (Risk parity i uge 12 vælger vægte, så bidragene er ens.)
+    action: remove
+  "6.6":
+  - field: prompt
+    text: (uge 7)
+    action: remove
+  "6.12":
+  - field: solution
+    text: (uge 8)
+    action: remove
+  "6.13":
+  - field: solution
+    text: (size, value, momentum — uge 8)
+    action: replace
+    with: (size, value, momentum)
+  "7.13":
+  - field: solution
+    text: (uge 16)
+    action: remove
+  "9.3":
+  - field: solution
+    text: (uge 15)
+    action: remove
+  "9.12":
+  - field: prompt
+    text: (Grundlaget for pairs trading i uge 11.)
+    action: remove
+  - field: solution
+    text: "Bemærk til uge 10–11:"
+    action: replace
+    with: "Bemærk:"
+  "9.13":
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "10.12":
+  - field: solution
+    text: (fx langsom informationsspredning/risikopræmie, jf. uge 11)
+    action: replace
+    with: (fx langsom informationsspredning/risikopræmie)
+  "11.6":
+  - field: prompt
+    text: (sammenlign med uge 13)
+    action: remove
+  "11.12":
+  - field: solution
+    text: (kapacitet, uge 12)
+    action: replace
+    with: (kapacitet)
+  "12.8":
+  - field: solution
+    text: (uge 15)
+    action: remove
+  "13.13":
+  - field: prompt
+    text: (uge 14)
+    action: remove
+  - field: prompt
+    text: (uge 16)
+    action: remove
+  - field: solution
+    text: (uge 14)
+    action: remove
+  - field: solution
+    text: (uge 16)
+    action: remove
+---
 # Quant Trading & Research: fra sandsynlighed til strategier
 
 *Læringsplan, noter, øvelser og løsninger til YouTube-playlisten **"Quant Trading & Research - Markets to Models to Strategies"***
