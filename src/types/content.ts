@@ -56,6 +56,8 @@ export interface VideoSource {
   youtube?: string // YouTube video ID; missing → the app asks for a URL
   search?: string // YouTube search query used when the ID is unknown
   embed?: false // the uploader has turned off playback on other sites
+  access?: 'steady' // only for the creator's paying supporters: never embedded or linked by ID
+  url?: string // where supporters can watch it (access: steady)
 }
 
 export interface ExerciseSummary {

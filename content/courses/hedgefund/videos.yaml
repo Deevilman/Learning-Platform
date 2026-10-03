@@ -28,10 +28,7 @@ videos:
       youtube: AtSlRK0SZoM
   H2.2:
     key: H2.2
-    sources:
-    - title: One credible explainer of hedge-fund fees and structure (2-and-20, high-water mark, hurdle, prime broker, administrator).
-      channel: Patrick Boyle or a university channel
-      search: Patrick Boyle hedge fund fees high water mark
+    remove: true
   H3.1:
     key: H3.1
     sources:
@@ -202,10 +199,10 @@ videos:
       youtube: yenfxh_arkg
   H9.5:
     key: H9.5
-    sources:
-    - title: Amaranth Advisors 2006, only from an official source, e.g. the 2007 U.S. Senate Permanent Subcommittee on Investigations hearing on C-SPAN, or a Patrick Boyle video.
-      channel: official / Patrick Boyle only
-      search: Amaranth natural gas Senate hearing 2007 C-SPAN
+    title: "Amaranth 2006: det amerikanske Senats rapport (læsning, ingen video)"
+    sources: []
+    links:
+    - https://www.hsgac.senate.gov/imo/media/doc/REPORTExcessiveSpeculationintheNaturalGasMarket.pdf
   H10.1:
     key: H10.1
     sources:
@@ -220,10 +217,7 @@ videos:
       youtube: 3wUJesUik5A
   H10.3:
     key: H10.3
-    sources:
-    - title: An operational or investment due-diligence webinar from CAIA Association or CFA Institute.
-      channel: CAIA / CFA Institute only
-      search: CAIA hedge fund due diligence webinar
+    remove: true
   H11.1:
     key: H11.1
     sources:

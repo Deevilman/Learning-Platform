@@ -156,7 +156,7 @@ async function main() {
       for (const [i, s] of (entry.sources || []).entries()) {
         // A video that can't be embedded may have an embeddable re-upload by the same channel.
         const blocked = s.youtube && notEmbeddable.has(s.youtube)
-        if (s.youtube && !blocked) continue
+        if ((s.youtube && !blocked) || s.access === 'steady' || entry.remove) continue
         const q = blocked ? `${s.title.replace(/\|\s*Part\s*/i, '')} ${s.channel || ''} dark version` : seriesQuery(s.title) || s.search || `${s.title} ${s.channel || ''}`
         report.searches.push({ course, key, index: i, title: s.title, ...(blocked ? { replaces: s.youtube } : {}), query: q, results: (await safe(q, () => search(q))) || [] })
       }

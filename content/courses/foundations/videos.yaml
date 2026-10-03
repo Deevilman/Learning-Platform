@@ -18,9 +18,10 @@ videos:
   '1.3':
     key: P1
     sources:
-    - title: Start Learning Logic | Part 3
+    - title: "Start Learning Logic 3: Conditional, Biconditional, Implication and Deduction Rules"
       channel: The Bright Side of Mathematics
-      search: Start Learning Logic | Part 3 The Bright Side of Mathematics
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_logic/overview/
   '1.4':
     key: P2
     sources:
@@ -30,12 +31,6 @@ videos:
     - title: 1.4.4 Truth Tables
       channel: MIT OpenCourseWare
       youtube: _3WDzxt5p8c
-    - title: 1.4.6 Implies
-      channel: MIT OpenCourseWare
-      search: MIT 6.042J 1.4.6 Implies
-    - title: 1.4.7 Propositional Logic
-      channel: MIT OpenCourseWare
-      search: MIT 6.042J 1.4.7 Propositional Logic
     - title: 1.4.3 Digital Logic
       channel: MIT OpenCourseWare
       youtube: eMWG-jTh-GE
@@ -137,9 +132,10 @@ videos:
       channel: The Bright Side of Mathematics
       youtube: yIdECC6QExY
       embed: false
-    - title: Start Learning Sets | Part 3 (Union, Intersection, Differences and Power Set)
+    - title: "Start Learning Sets 3: Union, Intersection, Differences and Power Set"
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Sets Part 3
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_sets/overview/
   '4.3':
     key: P1
     sources:
@@ -153,9 +149,10 @@ videos:
   '4.4':
     key: P1
     sources:
-    - title: Start Learning Sets | Part 6 (Injectivity, Surjectivity and Bijectivity)
+    - title: "Start Learning Sets 6: Injectivity, Surjectivity and Bijectivity"
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Sets Part 6
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_sets/overview/
     - title: Start Learning Sets | Part 7 (Composition of Maps)
       channel: The Bright Side of Mathematics
       youtube: NiJ1yWKM9CU
@@ -198,9 +195,10 @@ videos:
   '5.3':
     key: P1
     sources:
-    - title: Start Learning Numbers | Part 3 (Natural Numbers (Induction and Associativity))
+    - title: "Start Learning Numbers 3: Natural Numbers (Induction and Associativity)"
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 3
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_numbers/overview/
   '5.4':
     key: P1
     sources:
@@ -218,9 +216,10 @@ videos:
   '6.1':
     key: P1
     sources:
-    - title: Start Learning Numbers | Part 6 (Integers (Construction))
+    - title: "Start Learning Numbers 6: Integers (Construction)"
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 6
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_numbers/overview/
     - title: Start Learning Numbers | Part 7 (Integers (Addition and Inverses))
       channel: The Bright Side of Mathematics
       youtube: bGP0wgMlM3M
@@ -232,9 +231,10 @@ videos:
   '6.2':
     key: P1
     sources:
-    - title: Start Learning Numbers | Part 9 (Rational Numbers (Construction))
+    - title: "Start Learning Numbers 9: Rational Numbers (Construction)"
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Numbers Part 9
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_numbers/overview/
     - title: Start Learning Numbers | Part 10 (Rational Numbers (Addition and Multiplication))
       channel: The Bright Side of Mathematics
       youtube: jam6_3trtyI
@@ -250,9 +250,10 @@ videos:
       channel: The Bright Side of Mathematics
       youtube: 3olS8tyoQEE
       embed: false
-    - title: Start Learning Reals | Part 3 (Working With Axioms)
+    - title: "Start Learning Reals 3: Working With Axioms"
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Reals Part 3
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_reals/overview/
     - title: Start Learning Reals | Part 4 (Construction)
       channel: The Bright Side of Mathematics
       youtube: I1fHi9rXAAI
@@ -268,9 +269,10 @@ videos:
       channel: The Bright Side of Mathematics
       youtube: bZSYcIJBMqE
       embed: false
-    - title: Start Learning Complex | Part 2 (Definition)
+    - title: "Start Learning Complex 2: Definition"
       channel: The Bright Side of Mathematics
-      search: Bright Side of Mathematics Start Learning Complex Part 2
+      access: steady
+      url: https://thebrightsideofmathematics.com/courses/start_learning_complex/overview/
   '7.1':
     key: P2
     sources:
@@ -317,12 +319,14 @@ videos:
       youtube: qrltuEzDhxI
   '9.1':
     sources:
-    - title: first-order logic syntax semantics lecture
-      search: first-order logic syntax semantics lecture
+    - title: "Mathematical Logic, Lecture 1 (First-order logic: languages, structures and formulas)"
+      channel: Artem Chernikov
+      youtube: 0NaRJa8yGEo
   '9.2':
     sources:
-    - title: MU puzzle Hofstadter MIU system
-      search: MU puzzle Hofstadter MIU system
+    - title: Hofstadter's MU Riddle
+      channel: Wolfram Demonstrations Project
+      youtube: EhN28Fh22kY
   '9.3':
     sources:
     - title: Mathematical Logic - The Completeness Theorem

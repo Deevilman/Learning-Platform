@@ -311,25 +311,36 @@ export function buildContent(opts: BuildOptions): BuildReport {
     let vidMissing = 0
 
     for (const w of plan.weeks) {
-      const videos: VideoItem[] = w.videos.map((v, i) => {
+      const videos: VideoItem[] = w.videos.map((v, i): VideoItem | null => {
         const id = `${w.number}.${i + 1}`
-        const entry = videoMap[id] || (v.key ? videoMap[v.key] : undefined)
+        const entry: any = videoMap[id] || (v.key ? videoMap[v.key] : undefined)
         if (videoMap[id]) usedVideoKeys.add(id)
         else if (v.key && videoMap[v.key]) usedVideoKeys.add(v.key)
+        // "remove: true": no suitable video exists and the notes cover it — drop the item (ids of the others stay stable)
+        if (entry?.remove) return null
         const ytFromPlan = v.urls.map((u) => /(?:v=|youtu\.be\/)([\w-]{11})/.exec(u)?.[1]).filter(Boolean) as string[]
-        let sources = (entry?.sources || []).map((s: any) => ({ title: String(s.title || ''), channel: s.channel || undefined, youtube: s.youtube ? String(s.youtube) : undefined, search: s.search || undefined, ...(s.embed === false ? { embed: false as const } : {}) }))
+        let sources = (entry?.sources || []).map((s: any) => ({
+          title: String(s.title || ''),
+          channel: s.channel || undefined,
+          youtube: s.youtube && s.access !== 'steady' ? String(s.youtube) : undefined,
+          search: s.access === 'steady' ? undefined : s.search || undefined,
+          ...(s.embed === false ? { embed: false as const } : {}),
+          ...(s.access === 'steady' ? { access: 'steady' as const, url: String(s.url || '') } : {}),
+        }))
+        for (const s of sources) if (s.access === 'steady' && !/^https:\/\//.test(s.url || '')) err(rel('videos.yaml'), 0, `video ${id}: "access: steady" kræver et https-link i "url"`)
+        const explicit = Array.isArray(entry?.sources) // an explicit (possibly empty) list: no search fallback
         if (!sources.length && ytFromPlan.length) sources = ytFromPlan.map((yt) => ({ title: plainText(v.title, 80), youtube: yt, channel: undefined, search: undefined }))
-        if (!sources.length && v.key) {
+        if (!sources.length && v.key && !explicit) {
           report.warnings.push(`${slug}: video ${id} (${v.key}) står ikke i videos.yaml`)
           sources = [{ title: plainText(v.title, 80), search: plainText(v.title, 80), youtube: undefined, channel: undefined }]
         }
         vidCount += sources.length
         vidMissing += sources.filter((s: any) => !s.youtube && s.search).length
-        const links = v.urls.filter((u) => !/youtu/.test(u))
+        const links = [...v.urls.filter((u) => !/youtu/.test(u)), ...(entry?.links || []).map(String)]
         return {
           id,
           key: v.key,
-          title: inl(v.title.replace(/\s*[—–-]\s*\(valgfri\)\s*$/, ''), planFile, v.line),
+          title: entry?.title ? inl(String(entry.title), planFile, v.line) : inl(v.title.replace(/\s*[—–-]\s*\(valgfri\)\s*$/, ''), planFile, v.line),
           optional: v.optional,
           added: v.added,
           focus: v.focus ? inl(v.focus.replace(/^\*+|\*+$/g, ''), planFile, v.line) : undefined,
@@ -337,7 +348,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
           sources,
           links,
         }
-      })
+      }).filter((v): v is VideoItem => v !== null)
 
       const exercises: Exercise[] = []
       const solByNum = new Map(w.solutions.map((s) => [s.number, s]))

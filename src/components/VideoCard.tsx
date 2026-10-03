@@ -69,6 +69,20 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
   const id = override?.youtube || source.youtube
   const label = `${source.title}${source.channel ? ` · ${source.channel}` : ''}`
 
+  // Paid content for the creator's supporters: never embed or link the video itself.
+  if (source.access === 'steady')
+    return (
+      <div className="min-w-0 space-y-2 rounded-xl p-4 text-sm" style={{ background: 'var(--surface-2)' }}>
+        <div className="font-medium">{source.title}</div>
+        <p className="muted">Denne del er kun for støtter af {source.channel || 'The Bright Side of Mathematics'} (Steady). Indholdet står i noterne herunder.</p>
+        {source.url && (
+          <a className="link" href={source.url} target="_blank" rel="noopener noreferrer">
+            Se kurset hos {source.channel || 'The Bright Side of Mathematics'} ↗
+          </a>
+        )}
+      </div>
+    )
+
   if (id && !editing)
     return (
       <div className="min-w-0 space-y-1">

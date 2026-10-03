@@ -185,11 +185,14 @@ function buildVideos(plan: RawPlan, entries: HandoffEntry[], existing: VideosFil
       if (prev) {
         sources = sources.map((s, j) => {
           const p = prev.sources[j]
-          return p && p.youtube ? p : s
+          return p && (p.youtube || p.access) ? p : s
         })
         if (prev.sources.length > sources.length) sources.push(...prev.sources.slice(sources.length))
       }
-      if (sources.length) file.videos[fileKey] = { key: v.key || undefined, sources }
+      // hand-made decisions (remove the slot, own title, reading links) survive a re-import
+      if (prev && (prev as any).remove) file.videos[fileKey] = prev
+      else if (prev && Array.isArray(prev.sources) && !prev.sources.length) file.videos[fileKey] = prev
+      else if (sources.length) file.videos[fileKey] = { ...(prev ? { title: (prev as any).title, links: (prev as any).links } : {}), key: v.key || undefined, sources }
     })
   }
   return { file, report }
