@@ -7,6 +7,7 @@ import { findWeakTopics } from '@/lib/weakness'
 import { generators } from '@/lib/generators'
 import { nextSteps, reachedWeeks, weekProgress } from '@/lib/progress'
 import { CourseDot, ErrorBox, Loading, Progress, type Position } from '@/components/ui'
+import { BackupReminder } from '@/components/BackupReminder'
 import { DailyGoal } from '@/components/DailyGoal'
 import { dateLocale, useLang, useT, type T } from '@/i18n'
 
@@ -57,6 +58,8 @@ export default function Dashboard() {
         </div>
         <DailyGoal />
       </header>
+
+      <BackupReminder />
 
       {/* 1. Fortsæt */}
       <section className="card space-y-4" aria-labelledby="cont-h">

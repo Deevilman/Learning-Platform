@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSetting, useStore, useTable } from '@/lib/store'
-import { exportAll, importAll, validateExport } from '@/lib/storage/transfer'
+import { importAll, validateExport } from '@/lib/storage/transfer'
+import { BACKUP_LAST_KEY, BACKUP_REMIND_KEY, downloadBackup } from '@/lib/backup'
 import { getSession, lastSync, signIn, signOut, signUp, syncNow } from '@/lib/storage/supabase-sync'
 import { useTheme, type ThemePref } from '@/components/ThemeToggle'
 import { syncCourses } from '@/lib/courses/cloud'
@@ -216,6 +217,9 @@ export function AutoSync() {
 function BackupSection() {
   const store = useStore()
   const t = useT()
+  const [lang] = useLang()
+  const [last] = useSetting<number | null>(BACKUP_LAST_KEY, null)
+  const [remind, setRemind] = useSetting<boolean>(BACKUP_REMIND_KEY, true)
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const fileRef = useRef<HTMLInputElement>(null)
@@ -223,18 +227,15 @@ function BackupSection() {
     <section className="card space-y-3">
       <h2 className="section-title">{t('backup.title')}</h2>
       <p className="muted text-sm">{t('backup.intro')}</p>
+      <p className="text-sm">{last ? t('backup.lastAt', { date: new Date(last).toLocaleDateString(dateLocale(lang), { day: 'numeric', month: 'long', year: 'numeric' }) }) : t('backup.never')}</p>
+      <label className="flex items-center gap-2 text-sm">
+        <input type="checkbox" checked={remind} onChange={(e) => setRemind(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
+        {t('backup.remind')}
+      </label>
       <div className="flex flex-wrap items-center gap-2">
         <button
           className="btn btn-primary"
-          onClick={async () => {
-            const data = await exportAll(store)
-            const blob = new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' })
-            const a = document.createElement('a')
-            a.href = URL.createObjectURL(blob)
-            a.download = `laering-backup-${new Date().toISOString().slice(0, 10)}.json`
-            a.click()
-            setTimeout(() => URL.revokeObjectURL(a.href), 1000)
-          }}
+          onClick={() => downloadBackup(store)}
         >
           {t('backup.save')}
         </button>

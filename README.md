@@ -44,6 +44,12 @@ Engangsopsætning i Supabase-projektet:
 2. **Authentication → Providers → Email:** slå e-mail/adgangskode til. Det er nemmest at slå **Confirm email** fra (du er eneste bruger); ellers skal du sætte **Authentication → URL Configuration → Site URL** til Pages-adressen, så bekræftelseslinket virker.
 3. I appen: **Indstillinger → Opret konto**, og derefter **Log ind** på hver enhed.
 
+**Sikkerhed i Supabase (anbefalet):**
+
+- **Authentication → Policies (eller Password security):** slå *Prevent use of leaked passwords* til. Så afvises adgangskoder, der er kendt fra datalæk (HaveIBeenPwned). Funktionen kræver Supabase Pro; på gratisplanen bør du vælge en lang, unik adgangskode.
+- **Authentication → Sign In / Providers → User Signups:** når du har oprettet din konto, skal du slå *Allow new users to sign up* fra. Så kan ingen andre oprette sig og bruge dommeren eller lagerpladsen. Du kan altid slå det til igen.
+- `schema.sql` sætter `search_path = ''` på trigger-funktionen, bruger `(select auth.uid())` i alle politikker og fjerner adgangen til `rls_auto_enable()` for public, anon og authenticated, hvis funktionen findes.
+
 Projektets URL og anon-nøgle står i [`src/config.ts`](src/config.ts). Anon-nøglen er offentlig af design (den ender i browseren); sikkerheden kommer fra RLS-politikkerne. Brug aldrig `service_role`-nøglen i appen.
 
 **Egne kurser:** et kursus, du tilføjer under *Mere → Tilføj kursus*, gemmes i browseren og — når du er logget ind — som fil i bucketen `courses` (`<dit bruger-id>/<slug>.md`). De andre enheder henter og bygger det ved næste synkronisering.
@@ -69,7 +75,7 @@ Uden opsætningen virker Python-opgaverne stadig på de offentlige tests i brows
 
 Flag tjekkes af Edge Function'en [`supabase/functions/flag`](supabase/functions/flag/index.ts). Den kræver login, tillader 5 gæt i minuttet og 60 om dagen pr. udfordring og sammenligner med en saltet hash. Gennemgangen sendes først, når flaget er godkendt. Opsætning: kør `schema.sql` igen (tabellerne `challenge_flags`, `flag_attempts` og `challenge_solves`), og kør `supabase functions deploy flag`. Har du labs med et flag pr. elev, skal du også køre `supabase secrets set LAB_FLAG_SECRET=<en lang tilfældig tekst>`. Deploy-workflowet lægger flaghashes og gennemgange op sammen med de skjulte tests.
 
-Uden login virker alt stadig. Brug **Indstillinger → Gem sikkerhedskopi** som backup, og **Importér** for at flytte data.
+Uden login virker alt stadig. Brug **Indstillinger → Gem sikkerhedskopi** som backup, og **Importér** for at flytte data. Overblikket minder dig om en sikkerhedskopi én gang om ugen og viser, hvornår du sidst tog en. Påmindelsen kan slås fra.
 
 ## Arkitektur
 

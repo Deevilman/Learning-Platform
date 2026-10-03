@@ -634,5 +634,13 @@
   "ctf.notes": "Mine noter (hvad prøvede jeg, hvad virkede)…",
   "ctf.login": "Log ind under Indstillinger for at tjekke flag.",
   "ctf.unavailable": "Flagtjekket svarer ikke lige nu. Prøv igen om lidt.",
-  "ctf.courseLink": "Udfordringer ({n})"
+  "ctf.courseLink": "Udfordringer ({n})",
+  "backup.lastAt": "Senest gemt {date}.",
+  "backup.never": "Du har ikke gemt en sikkerhedskopi endnu.",
+  "backup.remind": "Mind mig om det en gang om ugen",
+  "backup.reminderTitle": "Tid til en sikkerhedskopi",
+  "backup.reminderText": "Gem dine fremskridt i en fil, så du har dem, selv hvis browseren bliver ryddet.",
+  "backup.reminderLast": "Sidst: {date}",
+  "backup.later": "Ikke nu",
+  "backup.off": "Slå påmindelsen fra"
 }

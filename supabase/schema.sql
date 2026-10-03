@@ -18,7 +18,10 @@ create index if not exists records_user_synced on public.records (user_id, synce
 
 -- Stamp every insert/update with the server's clock, so a device that edited
 -- offline and uploads late is still picked up by the other devices.
-create or replace function public.records_touch() returns trigger language plpgsql as $$
+-- search_path is empty so the function can't be tricked into using another schema's objects.
+create or replace function public.records_touch() returns trigger language plpgsql
+set search_path = ''
+as $$
 begin
   new.synced_at := now();
   return new;
@@ -35,10 +38,21 @@ drop policy if exists "own rows: insert" on public.records;
 drop policy if exists "own rows: update" on public.records;
 drop policy if exists "own rows: delete" on public.records;
 
-create policy "own rows: select" on public.records for select using (auth.uid() = user_id);
-create policy "own rows: insert" on public.records for insert with check (auth.uid() = user_id);
-create policy "own rows: update" on public.records for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own rows: delete" on public.records for delete using (auth.uid() = user_id);
+create policy "own rows: select" on public.records for select using ((select auth.uid()) = user_id);
+create policy "own rows: insert" on public.records for insert with check ((select auth.uid()) = user_id);
+create policy "own rows: update" on public.records for update using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+create policy "own rows: delete" on public.records for delete using ((select auth.uid()) = user_id);
+
+-- (select auth.uid()) is evaluated once per query instead of once per row.
+
+-- Supabase's helper rls_auto_enable() (if the project has it) must not be
+-- callable by visitors or logged-in users.
+do $$
+begin
+  if exists (select 1 from pg_proc p join pg_namespace n on n.oid = p.pronamespace where n.nspname = 'public' and p.proname = 'rls_auto_enable') then
+    execute 'revoke execute on function public.rls_auto_enable() from public, anon, authenticated';
+  end if;
+end $$;
 
 -- ---------------------------------------------------------------------------
 -- Egne kurser ("Tilføj kursus"): én række pr. kursus + selve kursusfilen i
