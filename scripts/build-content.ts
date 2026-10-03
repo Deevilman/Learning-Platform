@@ -123,6 +123,21 @@ export function buildContent(opts: BuildOptions): BuildReport {
   return report
 }
 
+/** For GitHub: a Markdown list of the errors, posted as an issue by the deploy workflow. */
+function writeErrorReport(root: string, report: BuildReport) {
+  const repo = process.env.GITHUB_REPOSITORY
+  const sha = process.env.GITHUB_SHA
+  const link = (f: string, l: number) => (repo && sha ? `[${f}${l ? `:${l}` : ''}](https://github.com/${repo}/blob/${sha}/${f}${l ? `#L${l}` : ''})` : `${f}${l ? `:${l}` : ''}`)
+  const byFile = new Map<string, BuildReport['errors']>()
+  for (const e of report.errors) byFile.set(e.file, [...(byFile.get(e.file) || []), e])
+  const lines = [
+    'Et kursus kunne ikke bygges, så siden er ikke opdateret. Ret fejlene herunder (linjenumrene peger ind i filen), og upload filen igen.',
+    '',
+    ...[...byFile].flatMap(([f, es]) => [`### ${f}`, '', ...es.slice(0, 100).map((e) => `- ${link(e.file, e.line)}: ${e.message}`), ...(es.length > 100 ? [`- … og ${es.length - 100} mere`] : []), '']),
+  ]
+  writeFileSync(join(root, 'content-build-errors.md'), lines.join('\n'))
+}
+
 function main() {
   const root = join(import.meta.dirname, '..')
   const t0 = Date.now()
@@ -131,6 +146,7 @@ function main() {
   if (!report.ok) {
     for (const e of report.errors) console.error(`✗ ${e.file}${e.line ? `:${e.line}` : ''}: ${e.message}`)
     console.error(`\n${report.errors.length} fejl — indholdet blev ikke bygget.`)
+    writeErrorReport(root, report)
     process.exit(1)
   }
   console.log('Kursus        Uger  Øvelser  Løsninger  Videoer (mangler ID)  Selvtest  Interview')
