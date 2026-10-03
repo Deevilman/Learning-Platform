@@ -33,7 +33,7 @@ test('progress survives a reload, and export → import restores it in a clean p
   await page.goto('/#/kursus/quant/uge/3')
   const video = page.getByRole('checkbox', { name: 'Markér som set' }).first()
   await video.check()
-  await page.getByRole('tab', { name: /Øv/ }).click()
+  await page.getByRole('tab', { name: 'Øvelser' }).click()
   const first = page.locator('article').first()
   await first.getByRole('textbox').first().fill('Mit svar til første øvelse')
   await first.getByRole('button', { name: 'Vis løsning' }).click()
@@ -42,9 +42,9 @@ test('progress survives a reload, and export → import restores it in a clean p
   await page.waitForTimeout(600) // debounce of the answer field
 
   await page.reload()
-  await page.getByRole('tab', { name: /Se\b/ }).click()
+  await page.getByRole('tab', { name: 'Video 1' }).click()
   await expect(page.getByRole('checkbox', { name: 'Markér som set' }).first()).toBeChecked()
-  await page.getByRole('tab', { name: /Øv/ }).click()
+  await page.getByRole('tab', { name: 'Øvelser' }).click()
   await expect(page.locator('article').first().getByRole('textbox').first()).toHaveValue('Mit svar til første øvelse')
   await expect(page.locator('article').first().getByText(/1 forsøg/)).toBeVisible()
 
@@ -63,7 +63,7 @@ test('progress survives a reload, and export → import restores it in a clean p
   await expect(p2.getByText(/Sikkerhedskopien er hentet/)).toBeVisible()
   await p2.goto('/#/kursus/quant/uge/3')
   await expect(p2.getByRole('checkbox', { name: 'Markér som set' }).first()).toBeChecked()
-  await p2.getByRole('tab', { name: /Øv/ }).click()
+  await p2.getByRole('tab', { name: 'Øvelser' }).click()
   await expect(p2.locator('article').first().getByRole('textbox').first()).toHaveValue('Mit svar til første øvelse')
   await ctx.close()
 })

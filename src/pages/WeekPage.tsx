@@ -15,15 +15,20 @@ import { ExerciseCard, fromBank, STARS } from '@/components/ExerciseCard'
 import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { QuickQuestion } from '@/components/QuickQuestion'
 import { courseStyle, Crumbs, ErrorBox, Loading, useTrackPosition } from '@/components/ui'
-import type { CourseData, Exercise, Week } from '@/types/content'
+import type { CourseData, Exercise, LessonQuestion, VideoItem, Week } from '@/types/content'
 
-const STEPS = [
-  { id: 'se', label: 'Se', hint: 'Videoer' },
-  { id: 'laes', label: 'Læs', hint: 'Kernebegreber' },
-  { id: 'oev', label: 'Øv', hint: 'Øvelser og ugens test' },
-] as const
-type StepId = (typeof STEPS)[number]['id']
-const OLD_TABS: Record<string, StepId> = { videoer: 'se', noter: 'laes', oevelser: 'oev', checkpoint: 'oev' }
+type Page = { id: string; label: string; kind: 'video' | 'laes' | 'oev' | 'checkpoint'; video?: VideoItem }
+const OLD_TABS: Record<string, string> = { noter: 'laes', oevelser: 'oev', oevelse: 'oev' }
+
+/** The week as a row of pages: one per video, then reading, exercises and the checkpoint. */
+function weekPages(w: Week): Page[] {
+  return [
+    ...w.videos.map((v, i): Page => ({ id: `video-${v.id}`, label: `Video ${i + 1}`, kind: 'video', video: v })),
+    { id: 'laes', label: 'Læs', kind: 'laes' },
+    { id: 'oev', label: 'Øvelser', kind: 'oev' },
+    { id: 'checkpoint', label: 'Checkpoint', kind: 'checkpoint' },
+  ]
+}
 
 export default function WeekPage() {
   const { slug = '', week = '1' } = useParams()
@@ -33,10 +38,9 @@ export default function WeekPage() {
   const store = useStore()
   const checks = useTable('checks')
   const fane = params.get('fane') || ''
-  const tab: StepId = (STEPS.find((s) => s.id === fane)?.id as StepId) || OLD_TABS[fane] || 'se'
-  const setTab = (t: StepId) => {
+  const goTo = (id: string) => {
     const p = new URLSearchParams(params)
-    p.set('fane', t)
+    p.set('fane', id)
     p.delete('prov')
     setParams(p, { replace: true })
     window.scrollTo(0, 0)
@@ -51,10 +55,16 @@ export default function WeekPage() {
   if (error) return <ErrorBox error={error} />
   if (!data) return <Loading what="uge" />
   const { course, week: w } = data
+  const pages = weekPages(w)
+  const wanted = fane === 'se' || fane === 'videoer' || !fane ? pages[0].id : OLD_TABS[fane] || fane
+  const at = Math.max(0, pages.findIndex((p) => p.id === wanted))
+  const page = pages[at]
   const checkMap = new Map((checks || []).map((c) => [c.id, c.value]))
-  const videosDone = w.videos.length > 0 && w.videos.every((v) => videoWatched(checkMap, slug, v))
   const checkpointDone = w.checkpoint.length > 0 && w.checkpoint.every((_, i) => checkMap.get(checkpointId(slug, n, i)))
-  const done: Record<StepId, boolean> = { se: videosDone, laes: !!lesson?.done, oev: checkpointDone || (!!test && test.best >= WEEK_TEST_PASS) }
+  const isDone = (p: Page) =>
+    p.kind === 'video' ? videoWatched(checkMap, slug, p.video!) : p.kind === 'laes' ? !!lesson?.done : p.kind === 'checkpoint' ? checkpointDone || (!!test && test.best >= WEEK_TEST_PASS) : false
+  const prevPage = pages[at - 1]
+  const nextPage = pages[at + 1]
   const prev = n > 1 ? n - 1 : null
   const next = n < course.weeks.length ? n + 1 : null
 
@@ -93,38 +103,57 @@ export default function WeekPage() {
         )}
       </header>
 
-      <nav className="stepper" role="tablist" aria-label="Ugens dele">
-        {STEPS.map((s, i) => (
-          <button key={s.id} role="tab" aria-selected={tab === s.id} className={`step ${tab === s.id ? 'step-on' : ''} ${done[s.id] ? 'step-done' : ''}`} onClick={() => setTab(s.id)}>
-            <span className="step-num" aria-hidden>
-              {done[s.id] ? '✓' : i + 1}
-            </span>
-            <span className="min-w-0 text-left">
-              <span className="block font-semibold">{s.label}</span>
-              <span className="muted block truncate text-xs">{s.id === 'oev' ? `${w.exercises.length} øvelser` : s.hint}</span>
-            </span>
-          </button>
-        ))}
-      </nav>
-
-      {tab === 'se' && (
-        <section className="space-y-4" role="tabpanel" aria-label="Se">
-          {w.videosIntro && <Html html={w.videosIntro} className="card reading" />}
-          {w.videos.map((v) => (
-            <VideoCard key={v.id} course={slug} item={v} />
-          ))}
-          {!w.videos.length && <p className="muted">Ingen videoer i denne uge — gå videre til at læse.</p>}
-          <div className="flex justify-end">
-            <button className="btn btn-primary" onClick={() => setTab('laes')}>
-              Videre: Læs →
+      <div className="space-y-2">
+        <div className="flex items-baseline justify-between gap-2 text-sm">
+          <span className="font-semibold">{page.kind === 'video' ? `${page.label} af ${w.videos.length}` : page.label}</span>
+          <span className="muted">
+            Side {at + 1} af {pages.length}
+          </span>
+        </div>
+        <div className="progress" role="progressbar" aria-label="Hvor langt du er i ugen" aria-valuemin={1} aria-valuemax={pages.length} aria-valuenow={at + 1}>
+          <div style={{ width: `${((at + 1) / pages.length) * 100}%` }} />
+        </div>
+        <nav className="page-dots" role="tablist" aria-label="Ugens sider">
+          {pages.map((p, i) => (
+            <button
+              key={p.id}
+              role="tab"
+              aria-selected={i === at}
+              aria-label={p.label}
+              title={p.label}
+              className={`page-dot ${i === at ? 'page-dot-on' : ''} ${isDone(p) ? 'page-dot-done' : ''} ${p.kind === 'video' ? '' : 'page-dot-wide'}`}
+              onClick={() => goTo(p.id)}
+            >
+              {p.kind === 'video' ? (isDone(p) ? '✓' : i + 1) : p.label}
             </button>
-          </div>
-        </section>
+          ))}
+        </nav>
+      </div>
+
+      {page.kind === 'video' && (
+        <>
+          {at === 0 && w.videosIntro && <Html html={w.videosIntro} className="card reading" />}
+          <VideoPage key={page.id} course={slug} item={page.video!} />
+        </>
       )}
+      {page.kind === 'laes' && <Lesson key={`${slug}/${n}`} course={course} week={w} focus={params.get('prov')} onDone={() => goTo('oev')} />}
+      {page.kind === 'oev' && <Practice course={course} week={w} />}
+      {page.kind === 'checkpoint' && <CheckpointPage course={course} week={w} />}
 
-      {tab === 'laes' && <Lesson key={`${slug}/${n}`} course={course} week={w} focus={params.get('prov')} onDone={() => setTab('oev')} />}
-
-      {tab === 'oev' && <Practice course={course} week={w} />}
+      <nav className="flex justify-between gap-2" aria-label="Forrige og næste side">
+        {prevPage ? (
+          <button className="btn" onClick={() => goTo(prevPage.id)}>
+            ← Forrige
+          </button>
+        ) : (
+          <span />
+        )}
+        {nextPage && (
+          <button className="btn btn-primary" onClick={() => goTo(nextPage.id)}>
+            Næste: {nextPage.label} →
+          </button>
+        )}
+      </nav>
 
       <nav className="flex justify-between gap-2 border-t pt-4" style={{ borderColor: 'var(--border)' }} aria-label="Uge-navigation">
         {prev ? (
@@ -144,6 +173,83 @@ export default function WeekPage() {
           </Link>
         )}
       </nav>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------- one video: learn, watch, sum up, check
+
+function VideoPage({ course, item }: { course: string; item: VideoItem }) {
+  const l = item.lesson
+  return (
+    <section className="space-y-4" role="tabpanel" aria-label={plainTitle(item.title)}>
+      {l?.draft && <p className="muted text-xs">Udkast: denne side er lavet ud fra kursets noter og bliver uddybet senere.</p>}
+      {l && l.goals.length > 0 && (
+        <div className="card space-y-2">
+          <h2 className="section-title">Det skal du lære</h2>
+          <ul className="list-disc space-y-1 pl-5">
+            {l.goals.map((g, i) => (
+              <li key={i} className="prose-content" dangerouslySetInnerHTML={{ __html: g }} />
+            ))}
+          </ul>
+        </div>
+      )}
+      <VideoCard course={course} item={item} bare={!!l} />
+      {l?.summary && (
+        <div className="card space-y-2">
+          <h2 className="section-title">Opsummering</h2>
+          <Html html={l.summary} className="reading" />
+        </div>
+      )}
+      {l && l.questions.length > 0 && (
+        <div className="card space-y-4">
+          <h2 className="section-title">Tjek om du forstår det</h2>
+          {l.questions.map((q, i) => (
+            <LessonQuestionView key={i} q={q} />
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
+const plainTitle = (html: string) => html.replace(/<[^>]+>/g, '').trim()
+
+function LessonQuestionView({ q }: { q: LessonQuestion }) {
+  const [picked, setPicked] = useState<number | null>(null)
+  if (q.options)
+    return (
+      <div className="space-y-2">
+        <div className="prose-content font-medium" dangerouslySetInnerHTML={{ __html: q.prompt }} />
+        <div className="flex flex-wrap gap-2">
+          {q.options.map((o, i) => (
+            <button
+              key={i}
+              className={`seg ${picked === i ? (i === q.correct ? 'seg-ok' : 'seg-bad') : ''}`}
+              aria-pressed={picked === i}
+              onClick={() => setPicked(i)}
+              dangerouslySetInnerHTML={{ __html: o }}
+            />
+          ))}
+        </div>
+        {picked !== null && (
+          <p className="text-sm" role="status">
+            {picked === q.correct ? 'Rigtigt!' : 'Ikke helt — prøv igen, eller se videoen en gang til.'}
+          </p>
+        )}
+      </div>
+    )
+  return (
+    <div className="space-y-1">
+      <div className="prose-content font-medium" dangerouslySetInnerHTML={{ __html: q.prompt }} />
+      {q.answer ? (
+        <details className="text-sm">
+          <summary className="link cursor-pointer">Vis svar</summary>
+          <div className="prose-content mt-1" dangerouslySetInnerHTML={{ __html: q.answer }} />
+        </details>
+      ) : (
+        <p className="muted text-sm">Tænk over det, før du går videre. Svaret kommer i videoen og noterne.</p>
+      )}
     </div>
   )
 }
@@ -349,6 +455,17 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
         </section>
       )}
 
+    </section>
+  )
+}
+
+// ---------------------------------------------------------------- Checkpoint: the week's test and "kan du det her?"
+
+function CheckpointPage({ course, week: w }: { course: CourseData; week: Week }) {
+  const slug = course.meta.slug
+  const n = w.number
+  return (
+    <section className="space-y-4" role="tabpanel" aria-label="Checkpoint">
       <WeekTest course={course} week={w} />
 
       {w.connection && (
