@@ -58,6 +58,25 @@ export interface VideoItem {
   pause?: string // HTML
   sources: VideoSource[] // one item in the plan can cover several YouTube videos
   links: string[] // non-YouTube URLs (PDFs, the Natural Number Game, …)
+  /** The lesson page around this video (from a ```lesson block, or a draft from Fokus/Pause og tænk). */
+  lesson?: Lesson
+}
+
+export interface LessonQuestion {
+  prompt: string // HTML
+  /** Choice question: options (HTML) and the right one. */
+  options?: string[]
+  correct?: number
+  /** Open question with an answer to reveal (HTML). */
+  answer?: string
+}
+
+export interface Lesson {
+  goals: string[] // HTML, "Det skal du lære"
+  summary?: string // HTML, "Opsummering"
+  questions: LessonQuestion[] // "Tjek om du forstår det"; without answer/options = think about it
+  /** Made from the plan's Fokus/Pause og tænk, not written as a lesson yet. */
+  draft?: boolean
 }
 
 export interface VideoSource {
