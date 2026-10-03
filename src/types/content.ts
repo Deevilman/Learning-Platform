@@ -218,4 +218,16 @@ export interface ContentIndex {
   interactives: { id: string; title: string; intro?: string; course?: string }[]
   /** All exercise templates (site and course files), each with its course in `kursus`. */
   templates?: TemplateDef[]
+  /** Courses that are planned but not written yet (content/course-graph.yaml). */
+  planned?: PlannedCourse[]
+}
+
+export interface PlannedCourse {
+  slug: string
+  title: string
+  track?: string
+  requires: string[]
+  recommendedBefore: string[]
+  next: string[]
+  exam?: string
 }

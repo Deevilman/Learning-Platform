@@ -1,0 +1,27 @@
+# Kurser, der er planlagt, men ikke skrevet endnu. De vises på kursuskortet
+# som "Kommer senere", og andre kurser kan pege på dem i requires, next og
+# recommended_before. Når et kursus bliver skrevet (content/courses/<slug>.md),
+# slettes det herfra.
+#
+# Spor (track): matematik, finans, naturvidenskab, programmering, cyber.
+
+planned:
+  - { slug: diskret-matematik, title: Diskret matematik, track: matematik, requires: [foundations], next: [olympiade-matematik] }
+  - { slug: olympiade-matematik, title: Olympiade-matematik, track: matematik, requires: [diskret-matematik], exam: olympiade }
+  - { slug: lineaer-algebra-analyse, title: Lineær algebra og analyse, track: matematik, requires: [foundations], next: [aktuar] }
+  - { slug: sandsynlighed, title: Sandsynlighedsregning, track: matematik, next: [aktuar] }
+  - { slug: aktuar, title: Aktuarmatematik, track: finans, requires: [lineaer-algebra-analyse, sandsynlighed] }
+  - { slug: kemi-a, title: Kemi A, track: naturvidenskab, exam: htx }
+  - { slug: fysik-a, title: Fysik A, track: naturvidenskab, exam: htx }
+  - { slug: linux-shell, title: Linux og kommandolinjen, track: programmering, next: [python, cybersikkerhed] }
+  - { slug: python, title: Python, track: programmering, recommended_before: [linux-shell], next: [algoritmer] }
+  - { slug: algoritmer, title: Algoritmer og datastrukturer, track: programmering, requires: [python], next: [c] }
+  - { slug: c, title: C, track: programmering, requires: [algoritmer], next: [cpp, csharp, computerarkitektur-os] }
+  - { slug: cpp, title: C++, track: programmering, requires: [c] }
+  - { slug: csharp, title: C#, track: programmering, requires: [c] }
+  - { slug: computerarkitektur-os, title: Computerarkitektur og styresystemer, track: programmering, requires: [c], next: [asm] }
+  - { slug: asm, title: Assembly (NASM), track: programmering, requires: [computerarkitektur-os], next: [antivirus-projekt] }
+  - { slug: antivirus-projekt, title: "Projekt: et lille antivirusprogram", track: cyber, requires: [asm] }
+  - { slug: netvaerk, title: Netværk, track: cyber, recommended_before: [linux-shell], next: [cybersikkerhed] }
+  - { slug: kryptografi, title: Kryptografi, track: cyber, next: [cybersikkerhed] }
+  - { slug: cybersikkerhed, title: Cybersikkerhed, track: cyber, requires: [netvaerk, kryptografi], recommended_before: [linux-shell] }
