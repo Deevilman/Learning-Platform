@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const FIXTURE = join(import.meta.dirname, '../fixtures/testkursus.md')
+const CTF = join(import.meta.dirname, '../fixtures/ctf-testkursus.md')
 const SUPABASE = 'https://dttnflehddxlmprrstbf.supabase.co'
 
 /** A tiny stand-in for Supabase (auth session, records, courses table, storage), shared by two "devices". */
@@ -44,6 +45,12 @@ function fakeSupabase() {
         return f === undefined ? json({ error: 'not found' }, 404) : route.fulfill({ status: 200, contentType: 'text/markdown', body: f })
       }
       if (url.pathname === '/storage/v1/object/courses' && req.method() === 'DELETE') return json([])
+      // the flag check (Edge Function): only the right flag passes
+      if (url.pathname === '/functions/v1/flag') {
+        const body = JSON.parse(req.postData() || '{}')
+        const right = body.flag === 'FLAG{brute-force-fra-en-adresse}'
+        return json(right ? { correct: true, writeup: 'Mange mislykkede logins fra én adresse er **brute force**.' } : { correct: false })
+      }
       // the judge (Edge Function), answering like Judge0 would for a correct program
       if (url.pathname === '/functions/v1/judge') {
         const body = JSON.parse(req.postData() || '{}')
@@ -163,5 +170,77 @@ test('a coding problem: run the examples in the browser, then submit to the judg
   await expect(page.getByRole('heading', { name: 'Dine indsendelser' })).toBeVisible()
   await page.goto('/#/kode')
   await expect(page.getByRole('link', { name: /Løst.*Tæl de sande udsagn/ })).toBeVisible()
+  await ctx.close()
+})
+
+test('htx practice exam: timed parts, answers at the end, a grade estimate', async ({ page }) => {
+  await page.goto('/#/kurser/tilfoej')
+  await page.getByLabel('Kursusfil').setInputFiles(FIXTURE)
+  await page.getByLabel('Forhåndsvisning').getByRole('button', { name: 'Tilføj' }).click({ timeout: 60_000 })
+  await page.getByRole('link', { name: 'Gå til kurset →' }).click()
+  await page.getByRole('link', { name: 'Prøveeksamen' }).click()
+  await page.getByRole('button', { name: /Kort øveprøve/ }).click()
+  await expect(page.getByText('Delprøve 1: uden hjælpemidler')).toBeVisible()
+  await expect(page.getByRole('timer')).toContainText(/1[45]:\d\d/)
+  // answer the first question; no right/wrong is shown during the exam
+  const first = page.locator('ol > li').first()
+  const typed = first.getByRole('textbox')
+  if (await typed.count()) await typed.first().fill('42')
+  else await first.locator('label.choice').first().click()
+  await first.getByRole('button', { name: 'Tjek svar' }).click()
+  await expect(first.getByText('Svaret er gemt. Du ser resultatet til sidst.')).toBeVisible()
+  await expect(first.getByText('Rigtigt!')).toHaveCount(0)
+  await page.getByRole('button', { name: /Videre til delprøve 2/ }).click()
+  await expect(page.getByText('Delprøve 2: med hjælpemidler')).toBeVisible()
+  await page.getByRole('button', { name: 'Aflevér' }).click()
+  await expect(page.getByText('Skønnet karakter:')).toBeVisible()
+  await expect(page.getByText(/ikke en rigtig karakter/)).toBeVisible()
+})
+
+test('security challenges: flag checked on the server, sandbox without network, ethics gate before labs', async ({ browser }) => {
+  const cloud = fakeSupabase()
+  const ctx = await browser.newContext({ locale: 'da-DK' })
+  await cloud.attach(ctx)
+  const page = await ctx.newPage()
+  await page.goto('/#/kurser/tilfoej')
+  await page.getByLabel('Kursusfil').setInputFiles(CTF)
+  await page.getByLabel('Forhåndsvisning').getByRole('button', { name: 'Tilføj' }).click({ timeout: 30_000 })
+  await expect(page.getByText('"Testkursus i sikkerhed" er tilføjet')).toBeVisible()
+  await page.goto('/#/udfordringer')
+  await page.getByRole('link', { name: /Hvad skete der i loggen/ }).click()
+  await expect(page.getByText('Gennemgangen låses op, når du har fundet flaget.')).toBeVisible()
+  await page.getByRole('textbox', { name: 'Flag' }).fill('FLAG{forkert}')
+  await page.getByRole('button', { name: 'Tjek flag' }).click()
+  await expect(page.getByText(/Det er ikke flaget/)).toBeVisible()
+  await page.getByRole('textbox', { name: 'Flag' }).fill('FLAG{brute-force-fra-en-adresse}')
+  await page.getByRole('button', { name: 'Tjek flag' }).click()
+  await expect(page.getByText(/Rigtigt! Gennemgangen er låst op/)).toBeVisible()
+  await expect(page.getByText('brute force')).toBeVisible()
+
+  await page.goto('/#/udfordringer')
+  await expect(page.getByRole('link', { name: /Løst.*Hvad skete der i loggen/ })).toBeVisible()
+  await page.getByRole('link', { name: /En fil med mærkelige noter/ }).click()
+  const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /noter\.txt/ }).click()])
+  expect(download.suggestedFilename()).toBe('noter.txt')
+
+  await page.goto('/#/udfordringer')
+  await page.getByRole('link', { name: /Login-siden/ }).click()
+  const frame = page.locator('iframe[title="Siden i en sandkasse"]')
+  await expect(frame).toHaveAttribute('sandbox', 'allow-scripts allow-forms')
+  await expect(page.frameLocator('iframe[title="Siden i en sandkasse"]').getByRole('button', { name: 'Log ind' })).toBeVisible()
+
+  // a course with an external challenge: the ethics gate comes first, once
+  const external = readFileSync(CTF, 'utf8').replace('slug: ctf-testkursus', 'slug: ctf-ekstern').replace(/ctf-testkursus\//g, 'ctf-ekstern/').replace('### 🏁 Checkpoint', '```challenge\nid: ctf-ekstern/bandit\ntitel: Bandit niveau 0–5\nmiljoe: external\nsvaerhed: 1\nemner: [forsvar]\nopgave: Log ind på Bandit og løs de første niveauer.\nhints: [Læs siden for hvert niveau.]\nwriteup: Se OverTheWire.\nekstern: { platform: OverTheWire, url: "https://overthewire.org/wargames/bandit/", niveauer: ["0", "1", "2"] }\n```\n\n### 🏁 Checkpoint')
+  await page.goto('/#/kurser/tilfoej')
+  await page.getByLabel('Kursusfil').setInputFiles({ name: 'ctf-ekstern.md', mimeType: 'text/markdown', buffer: Buffer.from(external) })
+  await page.getByLabel('Forhåndsvisning').getByRole('button', { name: 'Tilføj' }).click({ timeout: 30_000 })
+  await expect(page.getByText(/er tilføjet/)).toBeVisible()
+  await page.goto('/#/udfordringer')
+  await page.getByRole('link', { name: /Bandit niveau/ }).click()
+  await expect(page.getByText(/straffelovens § 263/)).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Fortsæt' })).toBeDisabled()
+  await page.getByLabel('Jeg har læst det og øver kun lovligt.').check()
+  await page.getByRole('button', { name: 'Fortsæt' }).click()
+  await expect(page.getByRole('link', { name: /Åbn OverTheWire/ })).toHaveAttribute('href', 'https://overthewire.org/wargames/bandit/')
   await ctx.close()
 })

@@ -66,6 +66,11 @@ export default function CoursePage() {
           <Link className="btn btn-primary" to={`/kursus/${slug}/uge/${next}`}>
             {fresh && next === 1 ? t('course.start') : t('course.continue', { n: next })}
           </Link>
+          {course.meta.exam && (
+            <Link className="btn" to={`/kursus/${slug}/eksamen`}>
+              {t(course.meta.exam === 'olympiade' ? 'exam.olympiadTitle' : 'exam.courseButton')}
+            </Link>
+          )}
           {course.subtitleHtml && (
             <button className="btn" onClick={() => setShowIntro((s) => !s)} aria-expanded={showIntro}>
               {showIntro ? t('course.hideIntro') : t('course.about')}
@@ -174,6 +179,13 @@ export default function CoursePage() {
               </Link>
             </li>
           ))}
+          {course.challenges?.length ? (
+            <li>
+              <Link className="link" to="/udfordringer">
+                {t('ctf.courseLink', { n: course.challenges.length })}
+              </Link>
+            </li>
+          ) : null}
           {course.problems?.length ? (
             <li>
               <Link className="link" to={`/kode?kursus=${slug}`}>

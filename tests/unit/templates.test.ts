@@ -168,7 +168,8 @@ describe('site templates (content/templates)', async () => {
 
 describe('the examples in CONTENT_GUIDE section 9', () => {
   const guide = readFileSync(join(import.meta.dirname, '../../CONTENT_GUIDE.md'), 'utf8')
-  const section = guide.slice(guide.indexOf('## 9. Opgaveskabeloner'))
+  const from = guide.indexOf('## 9. Opgaveskabeloner')
+  const section = guide.slice(from, guide.indexOf('\n## ', from + 5))
   const blocks = [...section.matchAll(/```yaml\n([\s\S]*?)\n```/g)].map((m) => YAML.parse(m[1]) as TemplateDef)
   it('has five examples', () => expect(blocks).toHaveLength(5))
   for (const def of blocks) it(`${def.id} passes 200 seeds`, () => expect(validateTemplate(def).errors).toEqual([]))

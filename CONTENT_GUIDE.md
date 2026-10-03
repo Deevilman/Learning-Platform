@@ -660,3 +660,66 @@ Flashcards laves automatisk og kommer igen efter samme plan som opgaverne i Træ
 - **Formler:** et afsnit, hvis overskrift starter med "Notation" eller "Formler", med tabellen `| Formel | Betydning | Uge |`. Rækker, hvor første kolonne indeholder `$…$`, bliver til kort (betydning → formel). Formelkort vendes altid; de skal ikke skrives.
 
 Kortenes id afhænger af det danske ord eller betydningen, så fremskridt følger med, selvom rækkefølgen ændres.
+
+## 11. Kodeopgaver (` ```problem `)
+
+```yaml
+id: python/sum-af-to-tal          # stabilt id
+titel: Summen af to tal
+svaerhed: 1
+emner: [input-output]
+sprog: [python, c, cpp, csharp, nasm]   # de sprog, opgaven kan løses i
+tid: 1                            # sekunder (højst 10)
+hukommelse: 64                    # MB (16–256)
+opgave: |
+  Læs to heltal fra én linje, og udskriv summen.
+offentlige_tests:                 # vises som eksempler
+  - { input: "2 3\n", output: "5\n" }
+skjulte_tests:                    # kun hos dommeren — aldrig i browseren
+  - { input: "-7 7\n", output: "0\n" }
+reference:                        # skal bestå alle tests, ellers afvises opgaven
+  sprog: python
+  kode: |
+    a, b = map(int, input().split())
+    print(a + b)
+startkode: { python: "a, b = map(int, input().split())\n" }
+hints: ["Brug split() til at dele linjen."]
+loesning: |
+  Del linjen ved mellemrum, lav begge dele om til tal, og læg dem sammen.
+```
+
+Output sammenlignes uden at tage hensyn til mellemrum sidst på linjen eller tomme linjer til sidst. Bygget kører referenceløsningen på alle tests (python3, gcc, g++, mcs/mono, nasm/ld). Ved upload i appen tjekkes Python-løsninger i browseren.
+
+## 12. Sikkerhedsudfordringer (` ```challenge `)
+
+Udfordringer i CTF-stil. **Læring hoster aldrig sårbare systemer.** Miljøet (`miljoe`) er et af disse:
+
+| miljoe | Hvad eleven får |
+|---|---|
+| `none` | En analyse- eller forsvarsopgave (log, kode, scenarie). |
+| `files` | Harmløse, gennemsete filer at hente (`filer: [{ navn, indhold }]`). |
+| `browser-sandbox` | En lille HTML-side (`sandbox: …`), der kører i en lukket ramme uden netværk. |
+| `local-lab` | Et lab på elevens egen maskine, kun localhost og uden netværk ud: `lab: { start, nulstil, beskrivelse }` med én kommando hver. Med `flag_pr_elev: true` får hver elev sit eget flag; skriv `{FLAG}` i start-kommandoen. |
+| `external` | Et link til OverTheWire, picoCTF, TryHackMe, Hack The Box eller Campfire Security: `ekstern: { platform, url, niveauer }`. Læring sender intet videre og automatiserer intet; eleven kan krydse niveauer af og skrive noter. |
+
+```yaml
+id: sikkerhed/loggen
+titel: Hvad skete der i loggen?
+miljoe: none
+svaerhed: 1
+emner: [forsvar]
+opgave: |
+  …
+hints: ["…", "…"]
+writeup: |                        # vises først, når flaget er fundet
+  …
+flag_hash: sha256:<salt>:<hash>   # lav den med: npm run flag-hash -- "FLAG{…}"
+```
+
+**Skriv aldrig selve flaget i filen**, kun hashen. Flag tjekkes på serveren (Edge Function'en `flag`, med rate limit), og gennemgangen sendes først, når flaget er godkendt. Bygget og CI tjekker, at hverken flag, hashes, gennemgange, skjulte tests eller referenceløsninger kommer med i det, der udgives. Før den første `local-lab`- eller `external`-udfordring skal eleven bekræfte, at der kun øves lovligt (egne systemer eller skriftlig tilladelse, straffelovens § 263, responsible disclosure).
+
+Se `tests/fixtures/ctf-testkursus.md` for et kursus med en udfordring af hver af typerne `none`, `files` og `browser-sandbox`.
+
+## 13. Prøveeksamen
+
+`exam: htx` i front matter giver kurset en prøveeksamen i to dele: først uden og så med hjælpemidler. Der er et ur, og svarene vises først til sidst sammen med point, et groft karakterskøn og emner at træne. Spørgsmålene hentes fra ugernes "Tjek dig selv" og regneopgaver; delprøve 1 tager de lettere. `exam: olympiade` giver bevisopgaver (øvelser af typen bevis) på tid, som eleven selv giver 0–7 point ud fra løsningen.

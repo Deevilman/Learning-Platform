@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "import": "tsx scripts/import-sources.ts",
+    "flag-hash": "tsx scripts/flag-hash.ts",
     "content": "tsx scripts/build-content.ts && tsx scripts/copy-pyodide.ts",
     "dev": "npm run content && vite",
     "build": "npm run content && tsc --noEmit && vite build",

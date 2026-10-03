@@ -12,15 +12,18 @@ import type { Exercise } from '@/types/content'
 import { AnswerInput, fromGenerated } from './ExerciseCard'
 import { Html } from './Html'
 
-export function QuickQuestion({ q, quizById, onAnswered }: { q: PlacementQuestion; quizById: Map<string, Exercise>; onAnswered: (correct: boolean) => void }) {
+/** What a question shows: a week's quiz or a generated exercise. */
+export function questionView(q: PlacementQuestion, quizById: Map<string, Exercise>) {
+  if (q.kind === 'quiz') return { kind: 'quiz' as const, exercise: quizById.get(q.exerciseId)! }
+  const g = generatorById.get(q.generatorId)!
+  const d = g.difficulties.includes(q.difficulty) ? q.difficulty : g.difficulties[0]
+  return { kind: 'generated' as const, ex: fromGenerated(g, q.seed, d) }
+}
+
+export function QuickQuestion({ q, quizById, onAnswered, silent }: { q: PlacementQuestion; quizById: Map<string, Exercise>; onAnswered: (correct: boolean, answer: string) => void; silent?: boolean }) {
   const store = useStore()
   const [pref] = useSetting<AnswerPref>(ANSWER_PREF_KEY, 'blandet')
-  const view = useMemo(() => {
-    if (q.kind === 'quiz') return { kind: 'quiz' as const, exercise: quizById.get(q.exerciseId)! }
-    const g = generatorById.get(q.generatorId)!
-    const d = g.difficulties.includes(q.difficulty) ? q.difficulty : g.difficulties[0]
-    return { kind: 'generated' as const, ex: fromGenerated(g, q.seed, d) }
-  }, [q, quizById])
+  const view = useMemo(() => questionView(q, quizById), [q, quizById])
 
   const save = async (ok: boolean, answer: string) => {
     if (view.kind === 'quiz') {
@@ -30,7 +33,7 @@ export function QuickQuestion({ q, quizById, onAnswered }: { q: PlacementQuestio
       const g = view.ex
       await recordAttempt(store, { exerciseId: g.id, course: g.course, week: q.week, topics: g.topics, difficulty: g.difficulty, source: 'generated', generatorId: g.generatorId, seed: g.seed, score: ok ? 1 : 0, auto: true, answer })
     }
-    onAnswered(ok)
+    onAnswered(ok, answer)
   }
 
   if (view.kind === 'quiz') {
@@ -44,6 +47,7 @@ export function QuickQuestion({ q, quizById, onAnswered }: { q: PlacementQuestio
           format={answerFormat({ choices: !!quiz.choices, typed: !!quiz.check }, pref, view.exercise.id)}
           explainHtml={quiz.explain}
           onChecked={(r, v) => save(r.correct, v)}
+          silent={silent}
         />
       </div>
     )
@@ -57,6 +61,7 @@ export function QuickQuestion({ q, quizById, onAnswered }: { q: PlacementQuestio
         format={answerFormat({ choices: !!view.ex.choices, typed: view.ex.check!.type !== 'choice' }, pref, view.ex.id)}
         explainHtml={view.ex.solutionHtml}
         onChecked={(r, v) => save(r.correct, v)}
+        silent={silent}
       />
     </div>
   )

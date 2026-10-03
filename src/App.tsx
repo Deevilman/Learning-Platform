@@ -25,6 +25,9 @@ const AddCoursePage = lazy(() => import('@/pages/AddCoursePage'))
 const FlashcardsPage = lazy(() => import('@/pages/FlashcardsPage'))
 const ProblemsPage = lazy(() => import('@/pages/ProblemsPage'))
 const ProblemPage = lazy(() => import('@/pages/ProblemPage'))
+const ExamPage = lazy(() => import('@/pages/ExamPage'))
+const ChallengesPage = lazy(() => import('@/pages/ChallengesPage'))
+const ChallengePage = lazy(() => import('@/pages/ChallengesPage').then((m) => ({ default: m.ChallengePage })))
 
 const NAV: { to: string; label: Key; icon: string; end?: boolean }[] = [
   { to: '/', label: 'nav.overview', icon: '⌂', end: true },
@@ -38,6 +41,7 @@ const MORE = [
   { to: '/ordliste', label: 'nav.glossary' },
   { to: '/kort', label: 'nav.flashcards' },
   { to: '/kode', label: 'nav.code' },
+  { to: '/udfordringer', label: 'nav.ctf' },
   { to: '/logbog', label: 'nav.logbook' },
   { to: '/interaktivt', label: 'nav.tryIt' },
   { to: '/kurser/tilfoej', label: 'nav.addCourse' },
@@ -202,6 +206,7 @@ export default function App() {
               <Route path="/kurser/tilfoej" element={<AddCoursePage />} />
               <Route path="/kursus/:slug" element={<CoursePage />} />
               <Route path="/kursus/:slug/test" element={<PlacementPage />} />
+              <Route path="/kursus/:slug/eksamen" element={<ExamPage />} />
               <Route path="/kursus/:slug/uge/:week" element={<WeekPage />} />
               <Route path="/kursus/:slug/uge/:week/opgave/:num" element={<ExercisePage />} />
               <Route path="/kursus/:slug/saet/:set" element={<SetPage />} />
@@ -213,6 +218,8 @@ export default function App() {
               <Route path="/kort" element={<FlashcardsPage />} />
               <Route path="/kode" element={<ProblemsPage />} />
               <Route path="/kode/opgave" element={<ProblemPage />} />
+              <Route path="/udfordringer" element={<ChallengesPage />} />
+              <Route path="/udfordringer/opgave" element={<ChallengePage />} />
               <Route path="/logbog" element={<LogbookPage />} />
               <Route path="/indstillinger" element={<SettingsPage />} />
               <Route path="/interaktivt" element={<InteractivesPage />} />

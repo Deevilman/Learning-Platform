@@ -213,6 +213,30 @@ export interface CodeProblem {
   week?: number
 }
 
+export type ChallengeEnv = 'none' | 'files' | 'browser-sandbox' | 'local-lab' | 'external'
+
+/** A CTF-style challenge as the app sees it: no flag, no hash, no write-up. */
+export interface Challenge {
+  id: string
+  course: string
+  title: string
+  env: ChallengeEnv
+  difficulty: Difficulty
+  topics: string[]
+  statementHtml: string
+  hintsHtml: string[]
+  /** files: harmless, reviewed files to download. */
+  files?: { name: string; content: string }[]
+  /** browser-sandbox: an HTML page run in a sandboxed frame with no network. */
+  sandbox?: string
+  /** local-lab: runs on the learner's own machine (localhost only). */
+  lab?: { start: string; reset: string; description: string }
+  /** external: a platform we only link to (progress and notes are kept here). */
+  external?: { platform: string; url: string; levels?: string[] }
+  /** Whether a flag is checked on the server (not for external). */
+  flagChecked: boolean
+}
+
 /** A flashcard from the glossary or a formula table. Reviewed with the same scheduler as exercises. */
 export interface Flashcard {
   id: string // "fc:<course>:<key>", stable across rebuilds
@@ -242,6 +266,8 @@ export interface CourseData {
   flashcards?: Flashcard[]
   /** Coding problems (```problem blocks). */
   problems?: CodeProblem[]
+  /** CTF-style challenges (```challenge blocks). */
+  challenges?: Challenge[]
 }
 
 export interface SearchDoc {

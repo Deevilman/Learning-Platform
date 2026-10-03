@@ -65,6 +65,10 @@ Engangsopsætning:
 
 Uden opsætningen virker Python-opgaverne stadig på de offentlige tests i browseren. Indsendelser får besked om, at dommeren ikke er sat op.
 
+## Flagtjek til sikkerhedsudfordringer
+
+Flag tjekkes af Edge Function'en [`supabase/functions/flag`](supabase/functions/flag/index.ts). Den kræver login, tillader 5 gæt i minuttet og 60 om dagen pr. udfordring og sammenligner med en saltet hash. Gennemgangen sendes først, når flaget er godkendt. Opsætning: kør `schema.sql` igen (tabellerne `challenge_flags`, `flag_attempts` og `challenge_solves`), og kør `supabase functions deploy flag`. Har du labs med et flag pr. elev, skal du også køre `supabase secrets set LAB_FLAG_SECRET=<en lang tilfældig tekst>`. Deploy-workflowet lægger flaghashes og gennemgange op sammen med de skjulte tests.
+
 Uden login virker alt stadig. Brug **Indstillinger → Gem sikkerhedskopi** som backup, og **Importér** for at flytte data.
 
 ## Arkitektur
