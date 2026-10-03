@@ -25,6 +25,7 @@ const AddCoursePage = lazy(() => import('@/pages/AddCoursePage'))
 const FlashcardsPage = lazy(() => import('@/pages/FlashcardsPage'))
 const ProblemsPage = lazy(() => import('@/pages/ProblemsPage'))
 const ProblemPage = lazy(() => import('@/pages/ProblemPage'))
+const ExamPage = lazy(() => import('@/pages/ExamPage'))
 
 const NAV: { to: string; label: Key; icon: string; end?: boolean }[] = [
   { to: '/', label: 'nav.overview', icon: '⌂', end: true },
@@ -202,6 +203,7 @@ export default function App() {
               <Route path="/kurser/tilfoej" element={<AddCoursePage />} />
               <Route path="/kursus/:slug" element={<CoursePage />} />
               <Route path="/kursus/:slug/test" element={<PlacementPage />} />
+              <Route path="/kursus/:slug/eksamen" element={<ExamPage />} />
               <Route path="/kursus/:slug/uge/:week" element={<WeekPage />} />
               <Route path="/kursus/:slug/uge/:week/opgave/:num" element={<ExercisePage />} />
               <Route path="/kursus/:slug/saet/:set" element={<SetPage />} />

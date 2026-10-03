@@ -11,6 +11,7 @@ track: matematik
 requires: []
 recommended_before: []
 next: []
+exam: htx
 topics:
   - { id: udsagn, name: Udsagn og sandhedsværdier, weeks: [1] }
   - { id: kvantorer, name: Kvantorer, weeks: [2] }

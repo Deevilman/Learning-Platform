@@ -347,12 +347,15 @@ export function AnswerInput({
   format,
   explainHtml,
   onChecked,
+  silent = false,
 }: {
   check: AutoCheck
   choices?: Choices
   format: 'mc' | 'typed'
   explainHtml?: string
   onChecked: (r: CheckResult, value: string) => void
+  /** Exams: save the answer without saying whether it is right. */
+  silent?: boolean
 }) {
   const [value, setValue] = useState('')
   const [result, setResult] = useState<CheckResult | null>(null)
@@ -371,7 +374,11 @@ export function AnswerInput({
     setResult(res)
     onChecked(res, text)
   }
-  const feedback = result && (
+  const feedback = result && silent ? (
+    <p role="status" className="muted text-sm">
+      {t('exam.saved')}
+    </p>
+  ) : result && (
     <div role="status" className="fade-in space-y-2 rounded-xl px-4 py-3 text-sm" style={{ background: result.correct ? 'var(--ok-soft)' : 'var(--warn-soft)' }}>
       <div className="font-medium" style={{ color: result.correct ? 'var(--ok)' : 'var(--text)' }}>
         {result.correct ? '✓ ' : ''}
@@ -393,10 +400,10 @@ export function AnswerInput({
           <legend className="sr-only">{t('answer.pick')}</legend>
           {choices.options.map((o, i) => {
             const picked = value === String(i)
-            const isRight = result && i === choices.correct
+            const isRight = result && !silent && i === choices.correct
             const style: React.CSSProperties = isRight
               ? { borderColor: 'var(--ok)', background: 'var(--ok-soft)' }
-              : result && picked
+              : result && picked && !silent
                 ? { borderColor: 'var(--warn)', background: 'var(--warn-soft)' }
                 : picked
                   ? { borderColor: 'var(--accent)', background: 'var(--accent-soft)' }
