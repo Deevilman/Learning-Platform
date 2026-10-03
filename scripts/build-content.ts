@@ -9,6 +9,7 @@ import { join, relative, basename } from 'node:path'
 import YAML from 'yaml'
 import { buildCourse, type BuildEnv, type CourseSource, type CourseStats } from './lib/course-build.ts'
 import { parseCoursePack } from './lib/course-pack.ts'
+import { plannedFrom, validateGraph, type GraphNode } from './lib/course-graph.ts'
 import { validateTemplate, type TemplateDef } from '../src/lib/templates.ts'
 import type { ContentIndex, CourseMeta, ExerciseSummary, SearchDoc } from '../src/types/content.ts'
 
@@ -148,12 +149,14 @@ export function buildContent(opts: BuildOptions): BuildReport {
     templates.push(def)
   }
 
-  // ---------- course graph
-  const known = new Set(metas.map((m) => m.slug))
-  for (const m of metas) {
-    for (const p of m.prerequisites) if (!known.has(p)) report.errors.push({ file: `content/courses/${m.slug}/course.yaml`, line: 0, message: `forudsætningen "${p}" er ikke et kursus` })
-    for (const n of m.next) if (!known.has(n)) report.warnings.push(`${m.slug}: "next: ${n}" findes ikke endnu (vises som "kommer senere")`)
-  }
+  // ---------- course graph: written courses + planned ones; unknown slugs and cycles fail
+  const graphFile = join(contentDir, 'course-graph.yaml')
+  const graph = plannedFrom(existsSync(graphFile) ? YAML.parse(readFileSync(graphFile, 'utf8')) : {})
+  const fileOf = (slug: string) => (graph.planned.some((p) => p.slug === slug) ? 'content/course-graph.yaml' : `content/courses/${slug}.md`)
+  for (const e of graph.errors) report.errors.push({ file: 'content/course-graph.yaml', line: 0, message: e.message })
+  const nodes: GraphNode[] = [...metas.map((m) => ({ slug: m.slug, title: m.title, track: m.track, requires: m.prerequisites, recommendedBefore: m.recommendedBefore, next: m.next, exam: m.exam })), ...graph.planned]
+  for (const e of validateGraph(nodes)) report.errors.push({ file: fileOf(e.slug), line: 0, message: `${e.slug}: ${e.message}` })
+  const planned = graph.planned.filter((p) => !metas.some((m) => m.slug === p.slug))
 
   report.ok = report.errors.length === 0
   if (report.ok) {
@@ -164,7 +167,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       writeFileSync(p, JSON.stringify(o.data))
     }
     for (const [id, m] of interactiveMeta) allInteractives.push({ id, title: m.title, intro: m.intro, course: m.course })
-    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries, interactives: allInteractives, templates }
+    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries, interactives: allInteractives, templates, planned }
     writeFileSync(join(opts.out, 'index.json'), JSON.stringify(index))
     writeFileSync(join(opts.out, 'search.json'), JSON.stringify(search))
   }

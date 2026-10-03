@@ -7,6 +7,7 @@ import { weekProgress, type WeekProgress } from '@/lib/progress'
 import { computeMastery, masteryLevel, MASTERY_LEVEL_LABEL, MASTERY_LEVELS, type MasteryLevel } from '@/lib/mastery'
 import { placementKey, type PlacementRecord } from '@/lib/placement'
 import { Html } from '@/components/Html'
+import { NextCourses, PrerequisiteNote } from '@/components/CourseNeighbours'
 import { dateLocale, useLang, useT } from '@/i18n'
 import { courseStyle, Crumbs, OnlyInNote, ErrorBox, Loading, type Position, useTrackPosition } from '@/components/ui'
 import type { CourseData } from '@/types/content'
@@ -49,6 +50,8 @@ export default function CoursePage() {
     <div className="course-theme mx-auto max-w-3xl space-y-6" style={courseStyle(course.meta.color)}>
       <Crumbs items={[{ to: '/kurser', label: t('nav.courses') }, { label: course.meta.title }]} />
       <OnlyInNote meta={course.meta} />
+      <PrerequisiteNote slug={slug} />
+      <NextCourses slug={slug} />
       <header className="space-y-3">
         <h1 className="page-title" dangerouslySetInnerHTML={{ __html: course.titleHtml }} />
         <p className="muted">
@@ -171,6 +174,13 @@ export default function CoursePage() {
               </Link>
             </li>
           ))}
+          {course.flashcards?.length ? (
+            <li>
+              <Link className="link" to={`/kort?kursus=${slug}`}>
+                {t('cards.courseLink', { n: course.flashcards.length })}
+              </Link>
+            </li>
+          ) : null}
           <li>
             <Link className="link" to={`/ordliste?kursus=${slug}`}>
               {t('course.glossaryCount', { n: course.glossary.length })}

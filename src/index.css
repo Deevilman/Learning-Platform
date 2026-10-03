@@ -678,3 +678,36 @@ body {
   background: var(--bad-soft);
   color: var(--bad);
 }
+
+/* Course map: layers of courses left to right, arrows between */
+.course-map {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+.course-map-layer {
+  flex: 0 0 15rem;
+}
+.course-map-arrow {
+  align-self: flex-start;
+  margin-top: 4rem;
+  color: var(--muted);
+  font-size: 1.25rem;
+}
+@media (max-width: 640px) {
+  .course-map {
+    flex-direction: column;
+    align-items: stretch;
+    overflow: visible;
+  }
+  .course-map-layer {
+    flex: none;
+  }
+  .course-map-arrow {
+    align-self: center;
+    margin-top: 0;
+    transform: rotate(90deg);
+  }
+}

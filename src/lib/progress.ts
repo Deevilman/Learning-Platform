@@ -130,6 +130,15 @@ export function nextSteps(
     const next = d.weeks.find((w) => !weekProgress(d, w.number, checks, attempts).done)
     if (next) out.push({ kind: 'week', course: slug, week: next.number, title: tr('placement.weekTitle', { n: next.number, title: next.title }), reason: tr('next.week', { title: d.meta.title }) })
   }
+  // courses whose prerequisites are all done now ("klar til start")
+  for (const c of courses) {
+    const d = data.get(c.slug)
+    if (!d || !c.prerequisites.length || complete.get(c.slug) || out.some((o) => o.course === c.slug)) continue
+    if (!c.prerequisites.every((p) => complete.get(p))) continue
+    if (d.weeks.some((w) => checks.get(visitId(c.slug, w.number)))) continue
+    const names = c.prerequisites.map((p) => courses.find((x) => x.slug === p)?.title || p).join(', ')
+    out.push({ kind: 'course', course: c.slug, title: c.title, reason: tr('next.unlocked', { list: names }) })
+  }
   if (!out.length && courses.length) {
     const first = courses.find((c) => !c.prerequisites.length) || courses[0]
     out.push({ kind: 'week', course: first.slug, week: 1, title: tr('next.firstWeek', { title: first.title }), reason: tr('placement.startHere') })

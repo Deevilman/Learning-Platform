@@ -11,8 +11,9 @@ track: matematik
 requires: []
 recommended_before: []
 next:
+- diskret-matematik
+- lineaer-algebra-analyse
 - quant
-- aktuar
 topics:
 - { id: propositional-logic, name: Udsagnslogik, weeks: [ 1 ] }
 - { id: proofs-quantifiers, name: Kvantorer og bevismetoder, weeks: [ 2 ] }

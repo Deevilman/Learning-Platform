@@ -183,6 +183,19 @@ export interface GlossaryEntry {
   da: string
   en: string
   week?: string
+  /** Optional definition (4th column of the glossary table). */
+  def?: string
+}
+
+/** A flashcard from the glossary or a formula table. Reviewed with the same scheduler as exercises. */
+export interface Flashcard {
+  id: string // "fc:<course>:<key>", stable across rebuilds
+  kind: 'da-en' | 'en-da' | 'definition' | 'formula'
+  front: string // HTML
+  back: string // HTML
+  /** Plain answer for "Skriv svaret" (alternatives separated by " / "); none = flip only. */
+  answer?: string
+  week?: number
 }
 
 export interface CourseData {
@@ -199,6 +212,8 @@ export interface CourseData {
   tryIt: { id: string; title: string; intro?: string; week: number }[]
   /** Exercise templates from the course file (become generators at runtime). */
   templates?: TemplateDef[]
+  /** Flashcards from the glossary and the formula tables. */
+  flashcards?: Flashcard[]
 }
 
 export interface SearchDoc {
@@ -218,4 +233,16 @@ export interface ContentIndex {
   interactives: { id: string; title: string; intro?: string; course?: string }[]
   /** All exercise templates (site and course files), each with its course in `kursus`. */
   templates?: TemplateDef[]
+  /** Courses that are planned but not written yet (content/course-graph.yaml). */
+  planned?: PlannedCourse[]
+}
+
+export interface PlannedCourse {
+  slug: string
+  title: string
+  track?: string
+  requires: string[]
+  recommendedBefore: string[]
+  next: string[]
+  exam?: string
 }
