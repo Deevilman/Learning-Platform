@@ -6,6 +6,7 @@ import { useCheck, useSetting, useStore, useTable } from '@/lib/store'
 import { checkpointId, videoWatched, visitId } from '@/lib/progress'
 import { ANSWER_PREF_KEY, ANSWER_PREF_LABEL, filterByAnswerPref, type AnswerPref } from '@/lib/answer-type'
 import { splitLesson, type LessonStep } from '@/lib/lesson'
+import { answeredQuestions, notesForVideo, videoUnavailable } from '@/lib/lesson-notes'
 import { questionsForWeek, WEEK_TEST_PASS, WEEK_TEST_SIZE, weekTestKey, type PlacementQuestion, type WeekTestRecord } from '@/lib/placement'
 import { weekGenerators, weekPool } from '@/lib/week-pool'
 import { randomSeed } from '@/lib/rng'
@@ -134,7 +135,7 @@ export default function WeekPage() {
       {page.kind === 'video' && (
         <>
           {at === 0 && w.videosIntro && <Html html={w.videosIntro} className="card reading" />}
-          <VideoPage key={page.id} course={slug} item={page.video!} />
+          <VideoPage key={page.id} course={slug} item={page.video!} notes={w.notes} />
         </>
       )}
       {page.kind === 'laes' && <Lesson key={`${slug}/${n}`} course={course} week={w} focus={params.get('prov')} onDone={() => goTo('oev')} />}
@@ -180,12 +181,22 @@ export default function WeekPage() {
 
 // ---------------------------------------------------------------- one video: learn, watch, sum up, check
 
-function VideoPage({ course, item }: { course: string; item: VideoItem }) {
+function VideoPage({ course, item, notes }: { course: string; item: VideoItem; notes: string }) {
   const t = useT()
   const l = item.lesson
+  const part = useMemo(() => notesForVideo(notes, item), [notes, item])
+  const unavailable = videoUnavailable(item)
+  const questions = answeredQuestions(l, part)
+  const allNotes = notes.trim() && (
+    <details>
+      <summary className="link cursor-pointer text-sm">{t('lesson.allNotes')}</summary>
+      <Html html={notes} className="reading mt-2" />
+    </details>
+  )
+  // the summary: the lesson's own, else the matching notes (unless they are already shown above)
+  const summary = l?.summary ? <Html html={l.summary} className="reading" /> : unavailable ? null : part ? <Html html={part.html} className="reading" /> : allNotes
   return (
     <section className="space-y-4" role="tabpanel" aria-label={plainTitle(item.title)}>
-      {l?.draft && <p className="muted text-xs">{t('lesson.draft')}</p>}
       {l && l.goals.length > 0 && (
         <div className="card space-y-2">
           <h2 className="section-title">{t('lesson.learn')}</h2>
@@ -197,16 +208,22 @@ function VideoPage({ course, item }: { course: string; item: VideoItem }) {
         </div>
       )}
       <VideoCard course={course} item={item} bare={!!l} />
-      {l?.summary && (
-        <div className="card space-y-2">
-          <h2 className="section-title">{t('lesson.summary')}</h2>
-          <Html html={l.summary} className="reading" />
+      {unavailable && (part || allNotes) && (
+        <div className="card space-y-2" data-testid="lesson-notes">
+          <h2 className="section-title">{t('lesson.mustKnow')}</h2>
+          {part ? <Html html={part.html} className="reading" /> : allNotes}
         </div>
       )}
-      {l && l.questions.length > 0 && (
+      {summary && (
+        <div className="card space-y-2">
+          <h2 className="section-title">{t('lesson.summary')}</h2>
+          {summary}
+        </div>
+      )}
+      {questions.length > 0 && (
         <div className="card space-y-4">
           <h2 className="section-title">{t('lesson.check')}</h2>
-          {l.questions.map((q, i) => (
+          {questions.map((q, i) => (
             <LessonQuestionView key={i} q={q} />
           ))}
         </div>
@@ -245,14 +262,10 @@ function LessonQuestionView({ q }: { q: LessonQuestion }) {
   return (
     <div className="space-y-1">
       <div className="prose-content font-medium" dangerouslySetInnerHTML={{ __html: q.prompt }} />
-      {q.answer ? (
-        <details className="text-sm">
-          <summary className="link cursor-pointer">{t('lesson.showAnswer')}</summary>
-          <div className="prose-content mt-1" dangerouslySetInnerHTML={{ __html: q.answer }} />
-        </details>
-      ) : (
-        <p className="muted text-sm">{t('lesson.think')}</p>
-      )}
+      <details className="text-sm">
+        <summary className="link cursor-pointer">{t('lesson.showAnswer')}</summary>
+        <Html html={q.answer || ''} className="reading mt-1" />
+      </details>
     </div>
   )
 }
