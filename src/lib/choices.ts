@@ -11,6 +11,8 @@ import { evaluate, numericClose } from './check'
 export interface Choices {
   options: string[] // mini-Markdown (may contain $math$)
   correct: number
+  /** Why each wrong option is wrong (shown after a wrong pick). */
+  explanations?: (string | undefined)[]
 }
 
 /** Danish number with a fixed number of decimals (trailing zeros kept for alignment). */
@@ -68,7 +70,7 @@ function numericDistractors(a: number, decimals: number): number[] {
  */
 export function makeChoices(check: AutoCheck, seedKey: string | number, distractors: (number | string)[] = []): Choices | null {
   const seed = typeof seedKey === 'number' ? seedKey : stableHash(seedKey)
-  if (check.type === 'choice') return { options: check.options, correct: check.correct }
+  if (check.type === 'choice') return { options: check.options, correct: check.correct, explanations: check.explanations }
   const unit = check.type === 'numeric' && check.unit ? (check.unit === '%' ? '\u00a0%' : `\u00a0${check.unit}`) : ''
   if (check.type === 'numeric') {
     const d = decimalsFor(check.answer, check.tolerance)
@@ -131,7 +133,7 @@ function shuffle<T>(xs: T[], seed: number): T[] {
 }
 
 /** The choice check that grades a multiple-choice answer (the option index). */
-export const choiceCheck = (c: Choices): AutoCheck => ({ type: 'choice', options: c.options, correct: c.correct })
+export const choiceCheck = (c: Choices): AutoCheck => ({ type: 'choice', options: c.options, correct: c.correct, ...(c.explanations ? { explanations: c.explanations } : {}) })
 
 /** Shuffle hand-written options (first = correct) deterministically per exercise. */
 export function shuffledOptions(correctFirst: string[], seedKey: string): Choices {

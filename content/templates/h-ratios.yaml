@@ -1,0 +1,51 @@
+id: h-ratios
+titel: 'Sharpe, Calmar og Sortino'
+kursus: hedgefund
+emner: [performance]
+type: tal
+niveauer:
+  1:
+    variabler:
+      rfp: { interval: [0, 4] }
+      mup: { interval: [5, 18] }
+      sp: { interval: [6, 25] }
+    beregn: { rf: rfp / 100, mu: mup / 100, sigma: sp / 100, s: (mu - rf) / sigma }
+    opgave: 'En fond: årligt afkast ${mup}\,\%$, volatilitet ${sp}\,\%$, risikofri rente ${rfp}\,\%$. Beregn Sharpe ratio (3 decimaler).'
+    svar: { udtryk: s, decimaler: 3, tolerance: 0.002 }
+    hints: ['$(\mu - r_f)/\sigma$.']
+    loesning: |-
+      $({mu} - {rf})/{sigma} = {s:.3f}$.
+
+      Svar: **{s:.3f}**.
+  2:
+    variabler:
+      mup: { interval: [5, 18] }
+      ddp: { interval: [5, 30] }
+    beregn: { mu: mup / 100, dd: ddp / 100, c: mu / dd }
+    opgave: 'En fond har gennemsnitligt årligt afkast (CAGR) ${mup}\,\%$ og maksimalt drawdown ${ddp}\,\%$. Beregn Calmar ratio (3 decimaler).'
+    svar: { udtryk: c, decimaler: 3, tolerance: 0.002 }
+    hints: ['Calmar = årligt afkast / |max drawdown|.']
+    loesning: |-
+      ${mu}/{dd} = {c:.3f}$.
+
+      Svar: **{c:.3f}**.
+  3:
+    variabler:
+      r1: { interval: [-15, 25] }
+      r2: { interval: [-15, 25] }
+      r3: { interval: [-15, 25] }
+      r4: { interval: [-15, 25] }
+      r5: { interval: [-15, 25] }
+      r6: { interval: [-15, 25] }
+    betingelser: ['min(r1, r2, r3, r4, r5, r6) < 0']
+    beregn:
+      mean: (r1 + r2 + r3 + r4 + r5 + r6) / 6
+      dd: sqrt((min(r1, 0)^2 + min(r2, 0)^2 + min(r3, 0)^2 + min(r4, 0)^2 + min(r5, 0)^2 + min(r6, 0)^2) / 6)
+      so: mean / dd
+    opgave: 'Årlige afkast (%): ${r1}$, ${r2}$, ${r3}$, ${r4}$, ${r5}$, ${r6}$. Beregn Sortino ratio med mål 0 (gennemsnit / downside deviation, hvor $DD = \sqrt{\frac1n \sum \min(r_i, 0)^2}$; 3 decimaler).'
+    svar: { udtryk: so, decimaler: 3, tolerance: 0.003 }
+    hints: ['Kun de negative afkast tæller i nævneren — men divider med alle $n$.']
+    loesning: |-
+      Gennemsnit $= {mean:.4f}$. $DD = \sqrt{\frac16 \sum \min(r_i, 0)^2} = {dd:.4f}$. Sortino $= {mean:.4f}/{dd:.4f} = {so:.3f}$.
+
+      Svar: **{so:.3f}**.

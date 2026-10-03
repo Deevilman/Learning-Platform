@@ -1,0 +1,46 @@
+id: q-compound-interest
+titel: 'Rentes rente: diskret og kontinuert'
+kursus: quant
+emner: [time-value]
+type: tal
+niveauer:
+  1:
+    variabler:
+      P: { vaelg: [1000, 5000, 10000, 25000, 100000] }
+      rp: { interval: [1, 12] }
+      T: { interval: [2, 30] }
+    beregn: { r: rp / 100, g: 1 + r, fv: P * g^T }
+    opgave: 'Du indsætter ${P}$ kr. til ${rp}\,\%$ årlig rente (tilskrevet én gang om året). Hvad står der på kontoen efter ${T}$ år? (Angiv i kr., 2 decimaler.)'
+    svar: { udtryk: fv, decimaler: 2, tolerance: 0.02, enhed: kr. }
+    hints: ['$FV = P(1+r)^T$.']
+    loesning: |-
+      $FV = {P} \cdot {g}^{{T}} = {fv:.2f}$ kr.
+
+      Svar: **{fv:.2f}** kr.
+  2:
+    variabler:
+      P: { vaelg: [1000, 5000, 10000, 25000, 100000] }
+      rp: { interval: [1, 12] }
+      T: { interval: [2, 30] }
+      m: { vaelg: [2, 4, 12, 365] }
+    beregn: { r: rp / 100, mT: m * T, fv: P * (1 + r / m)^mT, ear: ((1 + r / m)^m - 1) * 100 }
+    opgave: 'Nominel rente ${rp}\,\%$ p.a. tilskrives ${m}$ gange om året. Hvad vokser ${P}$ kr. til på ${T}$ år? (2 decimaler)'
+    svar: { udtryk: fv, decimaler: 2, tolerance: 0.05, enhed: kr. }
+    hints: ['$FV = P(1 + r/m)^{mT}$. Den effektive årlige rente er $(1+r/m)^m - 1$.']
+    loesning: |-
+      $FV = {P}\,(1 + {r}/{m})^{{mT}} = {fv:.2f}$ kr. (Effektiv årlig rente: ${ear:.4f}\,\%$.)
+
+      Svar: **{fv:.2f}** kr.
+  3:
+    variabler:
+      rp: { interval: [1, 12] }
+      k: { vaelg: [2, 3, 10] }
+      ord: { vaelg: [fordoblet, tredoblet, tidoblet], vaelg_par_med: k }
+    beregn: { r: rp / 100, lnk: ln(k), t: ln(k) / r }
+    opgave: 'Med kontinuert forrentning $P e^{rt}$ og $r = {rp}\,\%$: hvor mange år tager det for et beløb at blive {ord}? (2 decimaler)'
+    svar: { udtryk: t, decimaler: 2, tolerance: 0.02, enhed: år }
+    hints: ['Løs $e^{rt} = k$, dvs. $t = \ln k / r$. (Tommelfingerregel for fordobling: $69/(100r)$.)']
+    loesning: |-
+      $t = \ln {k} / {r} = {lnk:.4f} / {r} = {t:.2f}$ år.
+
+      Svar: **{t:.2f}** år.

@@ -52,10 +52,20 @@ export function generatedChoices(ex: GeneratedExercise, seed: number): Choices |
 
 export const generatorById = new Map(generators.map((g) => [g.id, g]))
 
+/** Add generators at runtime (exercise templates from course files). Same id replaces. */
+export function registerGenerators(list: Generator[]) {
+  for (const g of list) {
+    const i = generators.findIndex((x) => x.id === g.id)
+    if (i >= 0) generators[i] = g
+    else generators.push(g)
+    generatorById.set(g.id, g)
+  }
+}
+
 export const generatedId = (g: string, seed: number, d: Difficulty) => `gen:${g}:${seed}:${d}`
 
 export function parseGeneratedId(id: string): { generatorId: string; seed: number; difficulty: Difficulty } | null {
-  const m = /^gen:([\w-]+):(\d+):([123])$/.exec(id)
+  const m = /^gen:([\w/-]+):(\d+):([123])$/.exec(id)
   return m ? { generatorId: m[1], seed: Number(m[2]), difficulty: Number(m[3]) as Difficulty } : null
 }
 

@@ -130,7 +130,8 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
   )
 }
 
-export function VideoCard({ course, item }: { course: string; item: VideoItem }) {
+/** `bare`: the lesson page around it shows Fokus/Pause og tænk already. */
+export function VideoCard({ course, item, bare }: { course: string; item: VideoItem; bare?: boolean }) {
   const [primary, legacy] = videoCheckIds(course, item)
   const [watchedNew, setWatchedNew] = useCheck(primary)
   const [watchedOld, setWatchedOld] = useCheck(legacy ?? primary)
@@ -158,13 +159,13 @@ export function VideoCard({ course, item }: { course: string; item: VideoItem })
             {item.optional && <span className="chip mr-2">valgfri</span>}
             <span className="prose-content" dangerouslySetInnerHTML={{ __html: item.title }} />
           </label>
-          {item.focus && (
+          {!bare && item.focus && (
             <p className="mt-1 text-sm">
               <span className="font-semibold">Fokus: </span>
               <span className="prose-content" dangerouslySetInnerHTML={{ __html: item.focus }} />
             </p>
           )}
-          {item.pause && (
+          {!bare && item.pause && (
             <p className="mt-1 rounded-md px-2 py-1 text-sm" style={{ background: 'var(--accent-soft)' }}>
               <span className="font-semibold">Pause og tænk: </span>
               <span className="prose-content" dangerouslySetInnerHTML={{ __html: item.pause }} />

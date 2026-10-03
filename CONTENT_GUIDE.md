@@ -419,7 +419,7 @@ inserts:                              # indsæt Markdown (fx en interaktiv kompo
 
 ## 3. Tilføj en opgavegenerator
 
-Én fil pr. generator i `content/generators/<id>.ts`. Den registreres automatisk.
+Én fil pr. generator i `content/generators/<id>.ts`. Den registreres automatisk. Kan opgaven skrives som en opgaveskabelon (afsnit 9), så gør det i stedet — den kræver ingen kode og kan også ligge i en kursusfil.
 
 ```ts
 import { defineGenerator, da, tex } from '@/lib/generators'
@@ -528,3 +528,124 @@ Bygget stopper, hvis et spørgsmål mangler `check` eller `options`, og en test 
 **Hints**: alle øvelser får en hint-stige: først en strategi for opgavetypen, så planens `Hint:` (eller `hint:` i `overrides.yaml`), ellers første skridt af løsningen uden resultatet. Regneopgaver *skal* returnere `hint` (og kan give `moreHints` og `distractors`).
 
 **Prøv selv**: en interaktiv komponent får sin intro fra `export const meta = { title, course, intro }` i `content/interactives/<id>.tsx`. Bygget sætter "**Prøv selv:** intro" over komponenten og viser den i kursets Prøv selv-oversigt. `intro="…"` på direktivet overskriver.
+
+## 9. Opgaveskabeloner (regneopgaver uden kode)
+
+En opgaveskabelon laver en ny udgave af samme opgave hver gang: nye tal, samme metode. Skriv den i en ` ```opgaveskabelon `-blok i kursusfilen (eller som `content/templates/<id>.yaml` for sitets egne kurser). Den bliver til en almindelig regneopgave: den dukker op i Træn, i ugens Øv mere, i placeringstesten og som multiple choice.
+
+| Felt | Betydning |
+|---|---|
+| `id` | Unikt navn, fx `kemi/stofmaengde`. Skift det aldrig — fremskridt hænger på det. |
+| `emner` | Emne-id'er fra `topics` i front matter. |
+| `svaerhed` | `1`, `2`, `3` eller en liste. Brug `niveauer` i stedet, hvis indholdet skal være forskelligt pr. sværhed. |
+| `type` | `tal`, `multiple-choice`, `tekst` eller `udtryk`. (Kodeopgaver skrives som ` ```problem `.) |
+| `variabler` | `interval: [min, max]` (heltal; `decimaler: 2` eller `trin: 0.5` for kommatal; `ikke: [0]` udelukker værdier), `vaelg: [...]` (tal eller tekst), `vaelg_par_med: x` (samme plads som variablen `x`), `primtal: [min, max]`, `fortegn: true` (+1 eller −1). |
+| `beregn` | Navngivne udregninger i rækkefølge, fx `n: m / M`. |
+| `betingelser` | Udtryk, der skal være sande, fx `a != b`. Ellers trækkes nye tal (op til 200 gange). |
+| `opgave`, `hints`, `loesning` | Tekst med `{navn}` for en værdi og `{navn:.2f}` for 2 decimaler. Matematik i `$…$` som ellers. `_en`-udgaver bruges, når kurset vises på engelsk. |
+| `svar` | `udtryk` (tal-svaret), `tolerance` (`0.01` eller `"0.5%"`), `decimaler`, `enhed`; `tekst` for tekst-svar (`maengde: true` = rækkefølgen er ligegyldig); `variabler: [x]` for typen `udtryk`. |
+| `distraktorer` | Forkerte svar med `udtryk` eller `tekst` og en `forklaring`, som eleven ser efter et forkert valg. |
+
+Udtryk kan bruge `+ - * / ^ %`, sammenligninger, `and`/`or`/`not`, `pi`, `e` og funktionerne `sqrt ln log10 log exp sin cos tan asin acos atan abs floor ceil round(x, d) min max gcd binom fact`. Andet kan ikke køres — skabelonen kan ikke tilgå noget uden for sig selv.
+
+**Kontrol:** bygget (og upload i appen) kører hver skabelon på 200 seeds pr. sværhed og stopper, hvis et tal bliver NaN eller uendeligt, hvis tjekket ikke godkender sit eget svar, hvis løsningen ikke nævner svaret, eller hvis en distraktor er lig med svaret. Fejlen peger på blokkens linje og nævner det seed, der fejlede.
+
+**Pas på kommaer i YAML:** skriv udtryk med komma i anførselstegn, når de står i `{ … }`: `beregn: { n: 'max(a, b)' }`.
+
+### Eksempel 1 — tal, par af værdier og enhed
+
+```yaml
+id: kemi/stofmaengde
+emner: [stofmaengde]
+svaerhed: [1, 2]
+type: tal
+variabler:
+  stof: { vaelg: [H_2O, CO_2, NaCl] }
+  M: { vaelg: [18.02, 44.01, 58.44], vaelg_par_med: stof }
+  m: { interval: [1, 100], decimaler: 1 }
+beregn: { n: m / M }
+betingelser: ['n > 0.05']
+opgave: 'Hvor mange mol er der i {m} g $\ce{{stof}}$?'
+svar: { udtryk: n, tolerance: '1%', enhed: mol, decimaler: 3 }
+hints: ['Brug $n = m/M$.', 'Molmassen er {M} g/mol.']
+loesning: '$n = {m} / {M} = {n:.3f}$ mol'
+distraktorer:
+  - { udtryk: 'm * M', forklaring: 'Du har ganget i stedet for at dividere.' }
+```
+
+### Eksempel 2 — multiple choice med forklaringer
+
+```yaml
+id: matematik/gangetabel
+emner: [regning]
+svaerhed: 1
+type: multiple-choice
+variabler: { a: { interval: [2, 9] }, b: { interval: [2, 9] } }
+betingelser: ['a != b']
+beregn: { p: a * b }
+opgave: 'Hvad er ${a} \cdot {b}$?'
+svar: { udtryk: p }
+hints: ['Gang tallene.']
+loesning: '${a} \cdot {b} = {p}$'
+distraktorer:
+  - { udtryk: 'a + b', forklaring: 'Du har lagt sammen.' }
+  - { udtryk: 'p + a', forklaring: 'Du har talt én gang for meget.' }
+  - { udtryk: 'p - b', forklaring: 'Du har talt én gang for lidt.' }
+```
+
+### Eksempel 3 — tekst-svar (en mængde)
+
+```yaml
+id: logik/maengde
+emner: [maengder]
+svaerhed: 1
+type: tekst
+variabler: { a: { interval: [1, 5] } }
+beregn: { b: a + 1, c: a + 2 }
+opgave: 'Skriv mængden af hele tal fra {a} til {c}.'
+svar: { tekst: '{{a}, {b}, {c}}', maengde: true }
+hints: ['Der er tre tal.']
+loesning: 'Svaret er {{a}, {b}, {c}}. Rækkefølgen er ligegyldig i en mængde.'
+```
+
+### Eksempel 4 — udtryk som svar
+
+```yaml
+id: matematik/differentiation
+emner: [differentialregning]
+svaerhed: 2
+type: udtryk
+variabler: { k: { interval: [2, 9] }, n: { interval: [2, 5] } }
+beregn: { kn: k * n, n1: n - 1 }
+opgave: 'Differentiér $f(x) = {k}x^{n}$.'
+svar: { udtryk: '{kn}*x^{n1}', variabler: [x] }
+hints: ['Potensreglen: $(x^n)'' = n x^{n-1}$.']
+loesning: "$f'(x) = {k} \\cdot {n} x^{n1} = {kn}x^{n1}$"
+```
+
+Eleven kan skrive svaret på enhver måde, der giver det samme (fx `2*3*x^2` eller `6x^2` skrevet som `6*x^2`). Svaret tjekkes ved at sætte tal ind.
+
+### Eksempel 5 — forskelligt indhold pr. sværhed
+
+```yaml
+id: q-present-value
+emner: [time-value]
+type: tal
+niveauer:
+  1:
+    variabler: { C: { vaelg: [100, 500, 1000] }, n: { interval: [2, 6] }, rp: { interval: [3, 10] } }
+    beregn: { r: rp / 100, g: 1 + r, pv: C / g^n }
+    opgave: 'Hvad er nutidsværdien af ${C}$ kr. om ${n}$ år ved ${rp}\,\%$? (2 decimaler)'
+    svar: { udtryk: pv, decimaler: 2, tolerance: 0.02 }
+    hints: ['$PV = C/(1+r)^n$.']
+    loesning: '$PV = {C} / {g}^{{n}} = {pv:.2f}$ kr.'
+  2:
+    variabler: { C: { vaelg: [1000, 5000] }, n: { interval: [5, 30] }, rp: { interval: [3, 10] } }
+    beregn: { r: rp / 100, g: 1 + r, pv: C * (1 - g^(-n)) / r }
+    opgave: 'En annuitet betaler ${C}$ kr. om året i ${n}$ år. Find nutidsværdien ved ${rp}\,\%$. (2 decimaler)'
+    svar: { udtryk: pv, decimaler: 2, tolerance: 0.05 }
+    hints: ['$PV = C\,\frac{1-(1+r)^{-n}}{r}$.']
+    loesning: '$PV = {pv:.2f}$ kr.'
+```
+
+Felter under et niveau erstatter felterne ovenfor for den sværhed. Se flere i `content/templates/`.

@@ -13,7 +13,8 @@ import {
   weekVerdict,
   type WeekPool,
 } from '@/lib/placement'
-import { generators } from '@/lib/generators'
+import { generators, registerGenerators } from '@/lib/generators'
+import { templateToGenerator, type TemplateDef } from '@/lib/templates'
 import type { CourseMeta } from '@/types/content'
 
 const pool = (week: number, quizzes = 2, gens = 1): WeekPool => ({
@@ -83,7 +84,8 @@ describe('placement flow', () => {
 })
 
 describe('placement coverage of the real courses', () => {
-  const idx = JSON.parse(readFileSync(join(import.meta.dirname, '../../public/data/index.json'), 'utf8')) as { courses: CourseMeta[] }
+  const idx = JSON.parse(readFileSync(join(import.meta.dirname, '../../public/data/index.json'), 'utf8')) as { courses: CourseMeta[]; templates?: TemplateDef[] }
+  registerGenerators((idx.templates || []).map((t) => templateToGenerator(t, t.kursus || '')))
   for (const c of idx.courses)
     it(`${c.slug}: every week has at least two auto-checked questions`, () => {
       const course = JSON.parse(readFileSync(join(import.meta.dirname, `../../public/data/courses/${c.slug}.json`), 'utf8'))

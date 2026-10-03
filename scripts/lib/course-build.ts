@@ -6,7 +6,8 @@ import { parsePlan, parseGlossary, type RawPlan, type RawWeek, type RawQA } from
 import { renderMarkdown, renderInline, plainText, type RenderContext } from './markdown.ts'
 import { applyForwardRefs, displayLongMath, firstStep, kindHint, splitSubquestions, type ForwardRefRule } from './exercise-text.ts'
 import { makeChoices, shuffledOptions } from '../../src/lib/choices.ts'
-import type { AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
+import { validateTemplate, type TemplateDef } from '../../src/lib/templates.ts'
+import type { Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
 
 export interface BuildError {
   file: string
@@ -108,6 +109,10 @@ export interface CourseSource {
   overrides?: Overrides
   videos?: Record<string, any>
   forwardRefs?: ForwardRefs
+  /** ```lesson blocks (line = the opening fence). */
+  lessons?: { line: number; data: unknown }[]
+  /** ```opgaveskabelon blocks (line = the opening fence). */
+  templates?: { line: number; data: unknown }[]
   /** Names used in error messages, e.g. "content/courses/quant/plan.md" or the uploaded file's name. */
   files: { meta: string; plan: string; overrides: string; videos: string; forwardRefs: string }
 }
@@ -297,6 +302,55 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     let vidCount = 0
     let vidMissing = 0
 
+    const lessonFor = (id: string, key: string, mapKey: string | undefined, focus: string | undefined, pause: string | undefined, line: number): { lesson?: Lesson } => {
+      const k = [key, mapKey, id].find((x) => x && lessonBlocks.has(x))
+      if (k) {
+        usedLessons.add(k)
+        return { lesson: makeLesson(lessonBlocks.get(k)!) }
+      }
+      // a draft from the plan's own words — nothing invented
+      if (!focus && !pause) return {}
+      const clean = (s: string) => inl(s.replace(/^\*+|\*+$/g, ''), planFile, line)
+      return { lesson: { goals: focus ? [clean(focus)] : [], questions: pause ? [{ prompt: clean(pause) }] : [], draft: true } }
+    }
+    // ---------- lessons (```lesson blocks), matched to videos by key, map key or "<week>.<n>"
+    const lessonBlocks = new Map<string, { line: number; data: any }>()
+    for (const b of src.lessons || []) {
+      const d = b.data as any
+      if (!d || typeof d !== 'object' || !d.video) {
+        err(src.files.plan, b.line, 'En lesson-blok skal have "video:" med videoens nøgle (fx Q1.2) eller nummer (fx 1.2).')
+        continue
+      }
+      if (lessonBlocks.has(String(d.video))) err(src.files.plan, b.line, `Der er to lesson-blokke for videoen "${d.video}".`)
+      lessonBlocks.set(String(d.video), b)
+    }
+    const usedLessons = new Set<string>()
+    const makeLesson = (b: { line: number; data: any }): Lesson => {
+      const d = b.data
+      const at = (m: string) => err(src.files.plan, b.line, `Lektionen for "${d.video}": ${m}`)
+      for (const k of Object.keys(d)) if (!['video', 'maal', 'opsummering', 'spoergsmaal', 'udkast'].includes(k)) at(`ukendt felt "${k}" (brug video, maal, opsummering, spoergsmaal).`)
+      const goals = Array.isArray(d.maal) ? d.maal.map(String) : d.maal ? [String(d.maal)] : []
+      if (!goals.length) at('"maal" mangler (hvad eleven skal lære).')
+      const qs = Array.isArray(d.spoergsmaal) ? d.spoergsmaal : []
+      if (qs.length && (qs.length < 2 || qs.length > 4)) report.warnings.push(`${slug}: lektionen for "${d.video}" har ${qs.length} spørgsmål (2–4 anbefales)`)
+      const questions = qs.map((q: any, i: number) => {
+        if (!q || typeof q !== 'object' || !q.spoergsmaal) {
+          at(`spørgsmål ${i + 1} skal have "spoergsmaal:".`)
+          return { prompt: '' }
+        }
+        const prompt = inl(String(q.spoergsmaal), src.files.plan, b.line)
+        if (Array.isArray(q.muligheder)) {
+          const opts = q.muligheder.map(String)
+          if (q.svar === undefined || !opts.includes(String(q.svar))) at(`spørgsmål ${i + 1}: "svar" skal være en af "muligheder".`)
+          const right = String(q.svar)
+          const shuffled = shuffledOptions([right, ...opts.filter((o: string) => o !== right)], `${slug}/${d.video}/${i}`)
+          return { prompt, options: shuffled.options.map((o) => inl(o, src.files.plan, b.line)), correct: shuffled.correct }
+        }
+        return { prompt, ...(q.svar !== undefined ? { answer: inl(String(q.svar), src.files.plan, b.line) } : {}) }
+      })
+      return { goals: goals.map((g: string) => inl(g, src.files.plan, b.line)), ...(d.opsummering ? { summary: md(String(d.opsummering), src.files.plan, b.line) } : {}), questions, ...(d.udkast ? { draft: true } : {}) }
+    }
+
     for (const w of plan.weeks) {
       const videos: VideoItem[] = w.videos.map((v, i): VideoItem | null => {
         const id = `${w.number}.${i + 1}`
@@ -336,6 +390,7 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
           pause: v.pause ? inl(v.pause.replace(/^\*+|\*+$/g, ''), planFile, v.line) : undefined,
           sources,
           links,
+          ...lessonFor(id, v.key, mapKey, v.focus, v.pause, v.line),
         }
       }).filter((v): v is VideoItem => v !== null)
 
@@ -486,6 +541,21 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
       counts: { weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing },
       tryIt,
     }
+    for (const [k, b] of lessonBlocks) if (!usedLessons.has(k)) err(src.files.plan, b.line, `Lektionen er til videoen "${k}", men den video findes ikke i planen (brug videoens nøgle, fx T1, eller nummer, fx 1.2).`)
+
+    // ---------- exercise templates: each must pass 200 seeds
+    const templates: TemplateDef[] = []
+    for (const t of src.templates || []) {
+      const def = t.data as TemplateDef
+      const r = validateTemplate(def)
+      for (const e of r.errors) err(src.files.plan, t.line, `Opgaveskabelonen "${r.id}": ${e}`)
+      if (r.errors.length) continue
+      const unknown = def.emner.filter((x) => !topicIds.has(x))
+      if (unknown.length) err(src.files.plan, t.line, `Opgaveskabelonen "${r.id}": emnet ${unknown.map((x) => `"${x}"`).join(', ')} står ikke under "topics" i front matter.`)
+      if (templates.some((x) => x.id === def.id)) err(src.files.plan, t.line, `Opgaveskabelonen "${r.id}" findes to gange.`)
+      templates.push({ ...def, kursus: slug })
+    }
+    if (templates.length) courseData.templates = templates
     const stats: CourseStats = ({ slug, weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing, selftest: nSelf, interview: nInt })
     return { meta, course: courseData, weeks, sets: setFiles, summaries: allSummaries, search, stats, ...report }
 }

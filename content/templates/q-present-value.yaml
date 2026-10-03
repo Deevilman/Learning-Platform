@@ -1,0 +1,48 @@
+id: q-present-value
+titel: 'Nutidsværdi: annuitet og voksende perpetuitet'
+kursus: quant
+emner: [time-value]
+type: tal
+niveauer:
+  1:
+    variabler:
+      C: { vaelg: [100, 500, 1000, 2500] }
+      n: { interval: [2, 6] }
+      rp: { interval: [3, 10] }
+    beregn: { r: rp / 100, g: 1 + r, pv: C / g^n }
+    opgave: 'Hvad er nutidsværdien af ${C}$ kr., der udbetales om ${n}$ år, når diskonteringsrenten er ${rp}\,\%$? (2 decimaler)'
+    svar: { udtryk: pv, decimaler: 2, tolerance: 0.02 }
+    hints: ['$PV = C/(1+r)^n$.']
+    loesning: |-
+      $PV = {C} / {g}^{{n}} = {pv:.2f}$ kr.
+
+      Svar: **{pv:.2f}** kr.
+    distraktorer:
+      - { udtryk: 'C * g^n', forklaring: 'Det er fremtidsværdien. Nutidsværdien får du ved at dividere.' }
+  2:
+    variabler:
+      C: { vaelg: [1000, 2000, 5000, 12000] }
+      n: { interval: [5, 30] }
+      rp: { interval: [3, 10] }
+    beregn: { r: rp / 100, g: 1 + r, pv: C * (1 - g^(-n)) / r }
+    opgave: 'En annuitet betaler ${C}$ kr. i slutningen af hvert år i ${n}$ år. Find nutidsværdien ved $r = {rp}\,\%$. (2 decimaler)'
+    svar: { udtryk: pv, decimaler: 2, tolerance: 0.05 }
+    hints: ['$PV = C\,\frac{1-(1+r)^{-n}}{r}$ (geometrisk sum).']
+    loesning: |-
+      $PV = {C} \cdot \frac{1 - {g}^{-{n}}}{{r}} = {pv:.2f}$ kr.
+
+      Svar: **{pv:.2f}** kr.
+  3:
+    variabler:
+      D: { interval: [2, 20] }
+      rp: { interval: [3, 10] }
+      gp: { interval: [0, 9] }
+    betingelser: ['gp < rp']
+    beregn: { r: rp / 100, g: gp / 100, price: D / (r - g) }
+    opgave: 'En aktie forventes at betale udbytte ${D}$ kr. om ét år, og udbyttet vokser derefter med $g = {gp}\,\%$ om året for evigt. Afkastkravet er $r = {rp}\,\%$. Hvad er prisen ifølge Gordons vækstmodel? (2 decimaler)'
+    svar: { udtryk: price, decimaler: 2, tolerance: 0.02 }
+    hints: ['$P_0 = D_1/(r - g)$ for $g < r$.']
+    loesning: |-
+      $P_0 = {D} / ({r} - {g}) = {price:.2f}$ kr. Bemærk følsomheden: nævneren $r - g$ er lille, så små ændringer i $r$ eller $g$ flytter prisen meget.
+
+      Svar: **{price:.2f}** kr.

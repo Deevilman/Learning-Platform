@@ -1,4 +1,5 @@
 // Shared content model: produced by scripts/build-content.ts, consumed by the app.
+import type { TemplateDef } from '../lib/templates'
 
 export type Difficulty = 1 | 2 | 3
 
@@ -14,8 +15,9 @@ export type ExerciseKind =
 export type AutoCheck =
   | { type: 'numeric'; answer: number; tolerance?: number; relative?: boolean; unit?: string }
   | { type: 'numeric-list'; answers: number[]; tolerance?: number; ordered?: boolean }
-  | { type: 'choice'; options: string[]; correct: number }
-  | { type: 'text'; answers: string[]; caseSensitive?: boolean }
+  | { type: 'choice'; options: string[]; correct: number; explanations?: (string | undefined)[] }
+  | { type: 'text'; answers: string[]; caseSensitive?: boolean; set?: boolean }
+  | { type: 'expression'; expected: string; variables: string[]; tolerance?: number }
   | { type: 'output'; expected: string }
 
 export interface Topic {
@@ -56,6 +58,25 @@ export interface VideoItem {
   pause?: string // HTML
   sources: VideoSource[] // one item in the plan can cover several YouTube videos
   links: string[] // non-YouTube URLs (PDFs, the Natural Number Game, …)
+  /** The lesson page around this video (from a ```lesson block, or a draft from Fokus/Pause og tænk). */
+  lesson?: Lesson
+}
+
+export interface LessonQuestion {
+  prompt: string // HTML
+  /** Choice question: options (HTML) and the right one. */
+  options?: string[]
+  correct?: number
+  /** Open question with an answer to reveal (HTML). */
+  answer?: string
+}
+
+export interface Lesson {
+  goals: string[] // HTML, "Det skal du lære"
+  summary?: string // HTML, "Opsummering"
+  questions: LessonQuestion[] // "Tjek om du forstår det"; without answer/options = think about it
+  /** Made from the plan's Fokus/Pause og tænk, not written as a lesson yet. */
+  draft?: boolean
 }
 
 export interface VideoSource {
@@ -174,6 +195,8 @@ export interface CourseData {
   counts: { weeks: number; exercises: number; solutions: number; videos: number; videosMissing: number }
   /** "Prøv selv": the interactive components in this course's notes. */
   tryIt: { id: string; title: string; intro?: string; week: number }[]
+  /** Exercise templates from the course file (become generators at runtime). */
+  templates?: TemplateDef[]
 }
 
 export interface SearchDoc {
@@ -191,4 +214,6 @@ export interface ContentIndex {
   courses: CourseMeta[]
   exercises: ExerciseSummary[]
   interactives: { id: string; title: string; intro?: string; course?: string }[]
+  /** All exercise templates (site and course files), each with its course in `kursus`. */
+  templates?: TemplateDef[]
 }
