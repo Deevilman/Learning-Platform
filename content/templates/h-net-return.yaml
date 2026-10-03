@@ -1,0 +1,47 @@
+id: h-net-return
+titel: 'Brutto- og nettoafkast (uge 1-konventionen)'
+kursus: hedgefund
+emner: [hf-basics, fees-structure]
+type: tal
+niveauer:
+  1:
+    variabler:
+      m: { vaelg: [0.01, 0.015, 0.02] }
+      p: { vaelg: [0.1, 0.2, 0.25, 0.3] }
+      gp: { interval: [3, 30] }
+    beregn: { mp: m * 100, pp: p * 100, g: gp / 100, gm: (g - m) * 100, np: '(g - m - p * max(g - m, 0)) * 100' }
+    opgave: 'En hedgefond tjener ${gp}\,\%$ brutto. Gebyrer: ${mp}\,\%$ af formuen og ${pp}\,\%$ af gevinsten efter forvaltningshonorar (uge 1-konventionen, ingen HWM). Hvad er nettoafkastet (i %, 2 decimaler)?'
+    svar: { udtryk: np, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['$n = g - m - p\max(g - m, 0)$.']
+    loesning: |-
+      $n = {gp} - {mp} - {p} \cdot \max({gm:.1f}, 0) = {np:.2f}\,\%$.
+
+      Svar: **{np:.2f} %**.
+    distraktorer:
+      - { udtryk: 'gp - mp - pp', forklaring: 'Resultathonoraret er en andel af gevinsten, ikke procentpoint af formuen.' }
+  2:
+    variabler:
+      m: { vaelg: [0.01, 0.015, 0.02] }
+      p: { vaelg: [0.1, 0.2, 0.25, 0.3] }
+      gp: { interval: [6, 30] }
+    beregn: { mp: m * 100, pp: p * 100, g: gp / 100, gm: (g - m) * 100, np: '(g - m - p * max(g - m, 0)) * 100', fees: gp - np, share: fees / gp * 100 }
+    opgave: 'En hedgefond tjener ${gp}\,\%$ brutto. Gebyrer: ${mp}\,\%$ af formuen og ${pp}\,\%$ af gevinsten efter forvaltningshonorar (uge 1-konventionen, ingen HWM). Hvor stor en andel af bruttogevinsten (i %, 2 decimaler) går til gebyrer?'
+    svar: { udtryk: share, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['$n = g - m - p\max(g - m, 0)$. Gebyrerne er $g - n$.']
+    loesning: |-
+      $n = {gp} - {mp} - {p} \cdot \max({gm:.1f}, 0) = {np:.2f}\,\%$. Gebyrerne er ${fees:.2f}$ procentpoint, dvs. ${share:.2f}\,\%$ af bruttogevinsten.
+
+      Svar: **{share:.2f} %**.
+  3:
+    variabler:
+      m: { vaelg: [0.01, 0.015, 0.02] }
+      p: { vaelg: [0.1, 0.2, 0.25, 0.3] }
+      np: { interval: [3, 10] }
+    beregn: { mp: m * 100, pp: p * 100, q: 1 - p, gp: (m + np / 100 / q) * 100 }
+    opgave: 'Med forvaltningshonorar $m = {mp}\,\%$ og resultathonorar $p = {pp}\,\%$ (uge 1-konventionen: $n = g - m - p\max(g - m, 0)$): hvilket bruttoafkast $g$ (i %, 3 decimaler) kræves for et nettoafkast på ${np}\,\%$?'
+    svar: { udtryk: gp, decimaler: 3, tolerance: 0.002, enhed: '%' }
+    hints: ['For $g > m$ er $n = (g - m)(1 - p)$. Løs for $g$.']
+    loesning: |-
+      $g = m + n/(1-p) = {mp} + {np}/{q} = {gp:.3f}\,\%$.
+
+      Svar: **{gp:.3f} %**.

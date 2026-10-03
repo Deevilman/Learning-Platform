@@ -25,7 +25,9 @@ export interface TemplateDef {
   titel?: string
   kursus?: string
   emner: string[]
-  svaerhed: number | number[]
+  svaerhed?: number | number[]
+  /** Different content per difficulty: each level overrides the fields above. */
+  niveauer?: Record<string, Partial<Omit<TemplateDef, 'id' | 'niveauer'>>>
   type: TemplateType
   variabler?: Record<string, VariableDef>
   beregn?: Record<string, string | number>
@@ -50,7 +52,8 @@ export interface TemplateDef {
 
 const ID_RE = /^[a-z0-9][a-z0-9/_-]*$/
 const NAME_RE = /^[A-Za-z_][A-Za-z0-9_]*$/
-const KNOWN_KEYS = new Set(['id', 'titel', 'kursus', 'emner', 'svaerhed', 'type', 'variabler', 'beregn', 'betingelser', 'opgave', 'opgave_en', 'svar', 'hints', 'hints_en', 'loesning', 'loesning_en', 'distraktorer'])
+const KNOWN_KEYS = new Set(['id', 'titel', 'kursus', 'emner', 'svaerhed', 'type', 'variabler', 'beregn', 'betingelser', 'opgave', 'opgave_en', 'svar', 'hints', 'hints_en', 'loesning', 'loesning_en', 'distraktorer', 'niveauer'])
+const LEVEL_KEYS = new Set(['variabler', 'beregn', 'betingelser', 'opgave', 'opgave_en', 'svar', 'hints', 'hints_en', 'loesning', 'loesning_en', 'distraktorer', 'type'])
 
 /** A number as it appears in exercise text (one place, so the number format can change later). */
 export function fmtNum(x: number, decimals?: number): string {
@@ -64,10 +67,33 @@ const roundTo = (x: number, d: number) => Math.round((x + Number.EPSILON * Math.
 
 /** Problems with the template's shape, in Danish. Empty when it looks right. */
 export function checkTemplateShape(def: unknown): string[] {
-  const e: string[] = []
   if (!def || typeof def !== 'object' || Array.isArray(def)) return ['Skabelonen skal være en YAML-ordbog (felt: værdi).']
-  const d = def as Record<string, unknown>
-  for (const k of Object.keys(d)) if (!KNOWN_KEYS.has(k)) e.push(`Ukendt felt "${k}".`)
+  const d = def as TemplateDef
+  const unknown = Object.keys(d).filter((k) => !KNOWN_KEYS.has(k)).map((k) => `Ukendt felt "${k}".`)
+  if (d.niveauer === undefined) return [...unknown, ...shapeOf(d)]
+  if (!d.niveauer || typeof d.niveauer !== 'object' || !Object.keys(d.niveauer).length || Object.keys(d.niveauer).some((k) => !['1', '2', '3'].includes(k)))
+    return [...unknown, '"niveauer" skal have nøglerne 1, 2 og/eller 3.']
+  const out = [...unknown]
+  for (const [lvl, o] of Object.entries(d.niveauer)) {
+    for (const k of Object.keys(o || {})) if (!LEVEL_KEYS.has(k)) out.push(`Niveau ${lvl}: feltet "${k}" kan ikke stå under et niveau.`)
+    out.push(...shapeOf(levelDef(d, Number(lvl) as Difficulty)).map((m) => `Niveau ${lvl}: ${m}`))
+  }
+  return [...new Set(out)]
+}
+
+/** The template as it looks at one difficulty (fields under niveauer.<d> win). */
+export function levelDef(def: TemplateDef, d: Difficulty): TemplateDef {
+  if (!def.niveauer) return def
+  let m = levelCache.get(def)
+  if (!m) levelCache.set(def, (m = new Map()))
+  let l = m.get(d)
+  if (!l) m.set(d, (l = { ...def, ...(def.niveauer[d] || {}), svaerhed: d, niveauer: undefined }))
+  return l
+}
+const levelCache = new WeakMap<TemplateDef, Map<Difficulty, TemplateDef>>()
+
+function shapeOf(d: TemplateDef): string[] {
+  const e: string[] = []
   if (typeof d.id !== 'string' || !ID_RE.test(d.id)) e.push('Feltet "id" mangler eller indeholder andet end små bogstaver, tal, "-", "_" og "/".')
   if (!Array.isArray(d.emner) || !d.emner.length || d.emner.some((x) => typeof x !== 'string')) e.push('Feltet "emner" skal være en liste med mindst ét emne.')
   const sv = Array.isArray(d.svaerhed) ? d.svaerhed : [d.svaerhed]
@@ -238,7 +264,16 @@ export interface TemplateExercise extends GeneratedExercise {
   values: Values
 }
 
-export function generateFromTemplate(def: TemplateDef, seed: number, difficulty: Difficulty, lang: 'da' | 'en' = 'da', compiled = compile(def)): TemplateExercise {
+const compiledCache = new WeakMap<TemplateDef, Compiled>()
+function compiledFor(def: TemplateDef): Compiled {
+  let c = compiledCache.get(def)
+  if (!c) compiledCache.set(def, (c = compile(def)))
+  return c
+}
+
+export function generateFromTemplate(template: TemplateDef, seed: number, difficulty: Difficulty, lang: 'da' | 'en' = 'da'): TemplateExercise {
+  const def = levelDef(template, difficulty)
+  const compiled = compiledFor(def)
   const rng = makeRng(seed ^ (difficulty * 0x9e3779b1))
   const v = sample(def, rng, compiled)
   v.nums.svaerhed = difficulty
@@ -268,7 +303,7 @@ export function generateFromTemplate(def: TemplateDef, seed: number, difficulty:
       distractors = wrongValues.length ? wrongValues.map(String) : undefined
       break
     case 'udtryk':
-      check = { type: 'expression', expected: t(String(def.svar.udtryk)), variables: def.svar.variabler || [], ...(tol ? { tolerance: tol.tol } : {}) }
+      check = { type: 'expression', expected: t(String(def.svar.udtryk)).replace(/\{/g, '(').replace(/\}/g, ')'), variables: def.svar.variabler || [], ...(tol ? { tolerance: tol.tol } : {}) }
       break
     case 'multiple-choice': {
       const right = compiled.answer ? dShow(answerNum) : answerText()[0]
@@ -312,25 +347,24 @@ export function validateTemplate(raw: unknown, seeds = 200): TemplateReport {
   const shape = checkTemplateShape(raw)
   if (shape.length) return { id, errors: shape }
   const def = raw as TemplateDef
-  let compiled: Compiled
-  try {
-    compiled = compile(def)
-  } catch (e) {
-    return { id, errors: [(e as Error).message] }
-  }
   const errors: string[] = []
   for (const d of difficultiesOf(def)) {
+    try {
+      compiledFor(levelDef(def, d))
+    } catch (e) {
+      return { id, errors: [(e as Error).message] }
+    }
     for (let i = 1; i <= seeds && !errors.length; i++) {
       const seed = i * 7919
       const at = `Seed ${seed}${difficultiesOf(def).length > 1 ? `, sværhed ${d}` : ''}`
       let ex: TemplateExercise
       try {
-        ex = generateFromTemplate(def, seed, d, 'da', compiled)
+        ex = generateFromTemplate(def, seed, d)
       } catch (e) {
         errors.push(`${at}: ${e instanceof ExprError || e instanceof TemplateError ? e.message : `uventet fejl: ${(e as Error).message}`}`)
         break
       }
-      const err = exerciseProblem(def, ex)
+      const err = exerciseProblem(levelDef(def, d), ex)
       if (err) errors.push(`${at}: ${err}`)
     }
   }
@@ -367,12 +401,12 @@ function exerciseProblem(def: TemplateDef, ex: TemplateExercise): string | null 
   return null
 }
 
-const difficultiesOf = (def: TemplateDef): Difficulty[] => [...new Set((Array.isArray(def.svaerhed) ? def.svaerhed : [def.svaerhed]) as Difficulty[])].sort()
+const difficultiesOf = (def: TemplateDef): Difficulty[] =>
+  def.niveauer ? (Object.keys(def.niveauer).map(Number).sort() as Difficulty[]) : ([...new Set(Array.isArray(def.svaerhed) ? def.svaerhed : [def.svaerhed])].sort() as Difficulty[])
 
 // ---------- as a Generator
 
 export function templateToGenerator(def: TemplateDef, course: string): Generator {
-  const compiled = compile(def)
   return {
     id: def.id,
     title: def.titel || def.id,
@@ -380,7 +414,7 @@ export function templateToGenerator(def: TemplateDef, course: string): Generator
     topics: def.emner,
     difficulties: difficultiesOf(def),
     generate: (seed, d) => {
-      const { values: _v, ...ex } = generateFromTemplate(def, seed, d, 'da', compiled)
+      const { values: _v, ...ex } = generateFromTemplate(def, seed, d)
       return ex
     },
   }

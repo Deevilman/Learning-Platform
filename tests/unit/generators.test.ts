@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import YAML from 'yaml'
 import { generators, da } from '@/lib/generators'
@@ -37,8 +37,10 @@ function renderings(x: number): string[] {
 const BAD = /NaN|undefined|Infinity|\[object|null/
 
 describe('generators', () => {
-  it('has at least 40 generators with unique ids', () => {
-    expect(generators.length).toBeGreaterThanOrEqual(40)
+  it('has at least 40 generators (TypeScript + templates) with unique ids', () => {
+    const templates = readdirSync(join(ROOT, 'content/templates')).map((f) => f.replace(/\.yaml$/, ''))
+    expect(generators.length + templates.length).toBeGreaterThanOrEqual(40)
+    for (const t of templates) expect(generators.some((g) => g.id === t), t).toBe(false)
     expect(new Set(generators.map((g) => g.id)).size).toBe(generators.length)
   })
 

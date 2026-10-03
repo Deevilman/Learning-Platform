@@ -1,0 +1,46 @@
+id: q-capm
+titel: 'CAPM: beta, forventet afkast og alpha'
+kursus: quant
+emner: [portfolio, factors]
+type: tal
+niveauer:
+  1:
+    variabler:
+      rf: { interval: [1, 4] }
+      rm: { interval: [6, 12] }
+      bt: { interval: [3, 20] }
+    beregn: { beta: bt / 10, er: rf + beta * (rm - rf) }
+    opgave: '$r_f = {rf}\,\%$, forventet markedsafkast ${rm}\,\%$ og $\beta = {beta}$. Hvad er det forventede afkast ifølge CAPM (i %, 2 decimaler)?'
+    svar: { udtryk: er, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['$E[R_i] = r_f + \beta_i(E[R_m] - r_f)$.']
+    loesning: |-
+      $E[R] = {rf} + {beta} \cdot ({rm} - {rf}) = {er:.2f}\,\%$.
+
+      Svar: **{er:.2f} %**.
+  2:
+    variabler:
+      smp: { interval: [12, 22] }
+      sip: { interval: [15, 45] }
+      rt: { interval: [2, 9] }
+    beregn: { sm: smp / 100, si: sip / 100, rho: rt / 10, beta: rho * si / sm }
+    opgave: 'En aktie har volatilitet ${sip}\,\%$, markedet ${smp}\,\%$, og korrelationen mellem dem er ${rho}$. Beregn aktiens beta (4 decimaler).'
+    svar: { udtryk: beta, decimaler: 4, tolerance: 0.001 }
+    hints: ['$\beta = \mathrm{Cov}(R_i, R_m)/\mathrm{Var}(R_m) = \rho\,\sigma_i/\sigma_m$.']
+    loesning: |-
+      $\beta = {rho} \cdot {si}/{sm} = {beta:.4f}$.
+
+      Svar: **{beta:.4f}**.
+  3:
+    variabler:
+      rf: { interval: [1, 4] }
+      rm: { interval: [6, 12] }
+      bt: { interval: [5, 18] }
+      real: { interval: [4, 18] }
+    beregn: { beta: bt / 10, req: rf + beta * (rm - rf), prem: rm - rf, alpha: real - req }
+    opgave: 'En fond gav ${real}\,\%$ i et år med markedsafkast ${rm}\,\%$ og $r_f = {rf}\,\%$. Fondens beta er ${beta}$. Hvad er Jensens alpha (i procentpoint, 2 decimaler)?'
+    svar: { udtryk: alpha, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['$\alpha = R_p - [r_f + \beta(R_m - r_f)]$.']
+    loesning: |-
+      Krævet afkast: ${rf} + {beta} \cdot {prem} = {req:.2f}\,\%$. $\alpha = {real} - {req:.2f} = {alpha:.2f}$ procentpoint.
+
+      Svar: **{alpha:.2f}**.
