@@ -4,31 +4,110 @@
   "title": "Læring: kursusfil (front matter)",
   "description": "Front matter i en kursusfil (<slug>.md). Efter front matter følger planen i skabelonen fra CONTENT_GUIDE.md, plus valgfri blokke ```lesson, ```opgaveskabelon, ```problem og ```challenge.",
   "type": "object",
-  "required": ["slug", "lang", "title", "topics"],
+  "required": [
+    "slug",
+    "lang",
+    "title",
+    "topics"
+  ],
   "additionalProperties": false,
   "properties": {
-    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,40}$", "description": "Kursets id i adresser og fremskridt. Ændr det aldrig." },
-    "lang": { "enum": ["da", "en"] },
-    "title": { "type": "string" },
-    "short": { "type": "string", "description": "Én linje på kursuslisten." },
-    "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
-    "icon": { "type": "string" },
-    "level": { "type": "string" },
-    "estimated_weeks": { "type": "integer", "minimum": 1 },
-    "track": { "type": "string", "description": "Gruppe på kursuskortet, fx matematik, finans, programmering." },
-    "requires": { "type": "array", "items": { "type": "string" }, "description": "Kurser, der anbefales først (aldrig låst)." },
-    "recommended_before": { "type": "array", "items": { "type": "string" } },
-    "next": { "type": "array", "items": { "type": "string" } },
-    "exam": { "enum": ["htx", "olympiade"] },
-    "disclaimer": { "type": "string" },
-    "expect": { "type": "object", "description": "Valgfri kontrol af antal (weeks, exercises, solutions, selftest, interview)." },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,40}$",
+      "description": "Kursets id i adresser og fremskridt. Ændr det aldrig."
+    },
+    "lang": {
+      "enum": [
+        "da",
+        "en"
+      ]
+    },
+    "translation_of": {
+      "type": "string",
+      "description": "Slug på kurset, som dette er en udgave af på et andet sprog (skrevet af et menneske, ikke maskinoversat). Vises i stedet for originalen, når appen står på dette sprog."
+    },
+    "title": {
+      "type": "string"
+    },
+    "short": {
+      "type": "string",
+      "description": "Én linje på kursuslisten."
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string"
+    },
+    "estimated_weeks": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "track": {
+      "type": "string",
+      "description": "Gruppe på kursuskortet, fx matematik, finans, programmering."
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Kurser, der anbefales først (aldrig låst)."
+    },
+    "recommended_before": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exam": {
+      "enum": [
+        "htx",
+        "olympiade"
+      ]
+    },
+    "disclaimer": {
+      "type": "string"
+    },
+    "expect": {
+      "type": "object",
+      "description": "Valgfri kontrol af antal (weeks, exercises, solutions, selftest, interview)."
+    },
     "topics": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "name", "weeks"],
-        "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "weeks": { "type": "array", "items": { "type": "integer" } } }
+        "required": [
+          "id",
+          "name",
+          "weeks"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weeks": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
       }
     },
     "videos": {
@@ -38,25 +117,61 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["key"],
+            "required": [
+              "key"
+            ],
             "properties": {
-              "key": { "type": "string" },
-              "youtube": { "type": "string", "pattern": "^[\\w-]{11}$" },
-              "title": { "type": "string" },
-              "channel": { "type": "string" },
-              "embed": { "const": false },
-              "access": { "const": "steady", "description": "Kun for skaberens betalende støtter: vises som et kort med link, aldrig indlejret." },
-              "url": { "type": "string", "pattern": "^https://" },
-              "search": { "type": "string" },
-              "links": { "type": "array", "items": { "type": "string" } },
-              "remove": { "const": true }
+              "key": {
+                "type": "string"
+              },
+              "youtube": {
+                "type": "string",
+                "pattern": "^[\\w-]{11}$"
+              },
+              "title": {
+                "type": "string"
+              },
+              "channel": {
+                "type": "string"
+              },
+              "embed": {
+                "const": false
+              },
+              "access": {
+                "const": "steady",
+                "description": "Kun for skaberens betalende støtter: vises som et kort med link, aldrig indlejret."
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              "search": {
+                "type": "string"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "remove": {
+                "const": true
+              }
             }
           }
         },
-        { "type": "object" }
+        {
+          "type": "object"
+        }
       ]
     },
-    "overrides": { "type": "object", "description": "Samme indhold som overrides.yaml: inserts og exercises (quiz, hint, check …)." },
-    "forward_refs": { "type": "object", "description": "Samme indhold som forward-refs.yaml under exercises." }
+    "overrides": {
+      "type": "object",
+      "description": "Samme indhold som overrides.yaml: inserts og exercises (quiz, hint, check …)."
+    },
+    "forward_refs": {
+      "type": "object",
+      "description": "Samme indhold som forward-refs.yaml under exercises."
+    }
   }
 }

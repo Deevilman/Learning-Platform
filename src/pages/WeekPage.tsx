@@ -14,6 +14,7 @@ import { VideoCard } from '@/components/VideoCard'
 import { ExerciseCard, fromBank, STARS } from '@/components/ExerciseCard'
 import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { QuickQuestion } from '@/components/QuickQuestion'
+import { useT } from '@/i18n'
 import { courseStyle, Crumbs, ErrorBox, Loading, useTrackPosition } from '@/components/ui'
 import type { CourseData, Exercise, LessonQuestion, VideoItem, Week } from '@/types/content'
 
@@ -21,12 +22,12 @@ type Page = { id: string; label: string; kind: 'video' | 'laes' | 'oev' | 'check
 const OLD_TABS: Record<string, string> = { noter: 'laes', oevelser: 'oev', oevelse: 'oev' }
 
 /** The week as a row of pages: one per video, then reading, exercises and the checkpoint. */
-function weekPages(w: Week): Page[] {
+function weekPages(w: Week, t: ReturnType<typeof useT>): Page[] {
   return [
-    ...w.videos.map((v, i): Page => ({ id: `video-${v.id}`, label: `Video ${i + 1}`, kind: 'video', video: v })),
-    { id: 'laes', label: 'Læs', kind: 'laes' },
-    { id: 'oev', label: 'Øvelser', kind: 'oev' },
-    { id: 'checkpoint', label: 'Checkpoint', kind: 'checkpoint' },
+    ...w.videos.map((v, i): Page => ({ id: `video-${v.id}`, label: t('week.video', { n: i + 1 }), kind: 'video', video: v })),
+    { id: 'laes', label: t('week.read'), kind: 'laes' },
+    { id: 'oev', label: t('week.exercises'), kind: 'oev' },
+    { id: 'checkpoint', label: t('week.checkpoint'), kind: 'checkpoint' },
   ]
 }
 
@@ -36,6 +37,7 @@ export default function WeekPage() {
   const n = Number(week)
   const { data, error } = useAsync(async () => ({ course: await loadCourse(slug), week: await loadWeek(slug, n) }), [slug, n])
   const store = useStore()
+  const t = useT()
   const checks = useTable('checks')
   const fane = params.get('fane') || ''
   const goTo = (id: string) => {
@@ -55,7 +57,7 @@ export default function WeekPage() {
   if (error) return <ErrorBox error={error} />
   if (!data) return <Loading what="uge" />
   const { course, week: w } = data
-  const pages = weekPages(w)
+  const pages = weekPages(w, t)
   const wanted = fane === 'se' || fane === 'videoer' || !fane ? pages[0].id : OLD_TABS[fane] || fane
   const at = Math.max(0, pages.findIndex((p) => p.id === wanted))
   const page = pages[at]
@@ -73,28 +75,28 @@ export default function WeekPage() {
       <Crumbs items={[{ to: '/kurser', label: 'Kurser' }, { to: `/kursus/${slug}`, label: course.meta.title }, { label: `Uge ${n}` }]} />
       <header className="space-y-2">
         <div className="text-sm font-semibold" style={{ color: 'var(--accent)' }}>
-          Uge {n} af {course.weeks.length}
+          {t('week.of', { n, total: course.weeks.length })}
         </div>
         <h1 className="page-title">{w.title}</h1>
         {(w.goals || w.time || w.prereq) && (
           <details className="text-sm">
-            <summary className="link cursor-pointer">Ugens mål{w.time ? ' og tid' : ''}</summary>
+            <summary className="link cursor-pointer">{w.time ? t('week.goalsAndTime') : t('week.goals')}</summary>
             <dl className="mt-2 grid gap-2">
               {w.goals && (
                 <div>
-                  <dt className="inline font-semibold">Mål: </dt>
+                  <dt className="inline font-semibold">{t('week.goal')}</dt>
                   <dd className="prose-content inline" dangerouslySetInnerHTML={{ __html: w.goals }} />
                 </div>
               )}
               {w.time && (
                 <div>
-                  <dt className="inline font-semibold">Tid: </dt>
+                  <dt className="inline font-semibold">{t('week.time')}</dt>
                   <dd className="prose-content inline" dangerouslySetInnerHTML={{ __html: w.time }} />
                 </div>
               )}
               {w.prereq && (
                 <div>
-                  <dt className="inline font-semibold">Du skal kunne: </dt>
+                  <dt className="inline font-semibold">{t('week.prereq')}</dt>
                   <dd className="prose-content inline" dangerouslySetInnerHTML={{ __html: w.prereq }} />
                 </div>
               )}
@@ -105,15 +107,13 @@ export default function WeekPage() {
 
       <div className="space-y-2">
         <div className="flex items-baseline justify-between gap-2 text-sm">
-          <span className="font-semibold">{page.kind === 'video' ? `${page.label} af ${w.videos.length}` : page.label}</span>
-          <span className="muted">
-            Side {at + 1} af {pages.length}
-          </span>
+          <span className="font-semibold">{page.kind === 'video' ? t('week.videoOf', { label: page.label, total: w.videos.length }) : page.label}</span>
+          <span className="muted">{t('week.page', { n: at + 1, total: pages.length })}</span>
         </div>
-        <div className="progress" role="progressbar" aria-label="Hvor langt du er i ugen" aria-valuemin={1} aria-valuemax={pages.length} aria-valuenow={at + 1}>
+        <div className="progress" role="progressbar" aria-label={t('week.progress')} aria-valuemin={1} aria-valuemax={pages.length} aria-valuenow={at + 1}>
           <div style={{ width: `${((at + 1) / pages.length) * 100}%` }} />
         </div>
-        <nav className="page-dots" role="tablist" aria-label="Ugens sider">
+        <nav className="page-dots" role="tablist" aria-label={t('week.pages')}>
           {pages.map((p, i) => (
             <button
               key={p.id}
@@ -140,36 +140,36 @@ export default function WeekPage() {
       {page.kind === 'oev' && <Practice course={course} week={w} />}
       {page.kind === 'checkpoint' && <CheckpointPage course={course} week={w} />}
 
-      <nav className="flex justify-between gap-2" aria-label="Forrige og næste side">
+      <nav className="flex justify-between gap-2" aria-label={t('week.prevNext')}>
         {prevPage ? (
           <button className="btn" onClick={() => goTo(prevPage.id)}>
-            ← Forrige
+            {t('week.prev')}
           </button>
         ) : (
           <span />
         )}
         {nextPage && (
           <button className="btn btn-primary" onClick={() => goTo(nextPage.id)}>
-            Næste: {nextPage.label} →
+            {t('week.next', { label: nextPage.label })}
           </button>
         )}
       </nav>
 
-      <nav className="flex justify-between gap-2 border-t pt-4" style={{ borderColor: 'var(--border)' }} aria-label="Uge-navigation">
+      <nav className="flex justify-between gap-2 border-t pt-4" style={{ borderColor: 'var(--border)' }} aria-label={t('week.nav')}>
         {prev ? (
           <Link className="btn" to={`/kursus/${slug}/uge/${prev}`}>
-            ← Uge {prev}
+            {t('week.prevWeek', { n: prev })}
           </Link>
         ) : (
           <span />
         )}
         {next ? (
           <Link className="btn" to={`/kursus/${slug}/uge/${next}`}>
-            Uge {next} →
+            {t('week.nextWeek', { n: next })}
           </Link>
         ) : (
           <Link className="btn" to={course.project ? `/kursus/${slug}/projekt` : `/kursus/${slug}`}>
-            {course.project ? 'Afsluttende projekt →' : 'Tilbage til kurset'}
+            {course.project ? t('week.project') : t('week.backToCourse')}
           </Link>
         )}
       </nav>
@@ -180,13 +180,14 @@ export default function WeekPage() {
 // ---------------------------------------------------------------- one video: learn, watch, sum up, check
 
 function VideoPage({ course, item }: { course: string; item: VideoItem }) {
+  const t = useT()
   const l = item.lesson
   return (
     <section className="space-y-4" role="tabpanel" aria-label={plainTitle(item.title)}>
-      {l?.draft && <p className="muted text-xs">Udkast: denne side er lavet ud fra kursets noter og bliver uddybet senere.</p>}
+      {l?.draft && <p className="muted text-xs">{t('lesson.draft')}</p>}
       {l && l.goals.length > 0 && (
         <div className="card space-y-2">
-          <h2 className="section-title">Det skal du lære</h2>
+          <h2 className="section-title">{t('lesson.learn')}</h2>
           <ul className="list-disc space-y-1 pl-5">
             {l.goals.map((g, i) => (
               <li key={i} className="prose-content" dangerouslySetInnerHTML={{ __html: g }} />
@@ -197,13 +198,13 @@ function VideoPage({ course, item }: { course: string; item: VideoItem }) {
       <VideoCard course={course} item={item} bare={!!l} />
       {l?.summary && (
         <div className="card space-y-2">
-          <h2 className="section-title">Opsummering</h2>
+          <h2 className="section-title">{t('lesson.summary')}</h2>
           <Html html={l.summary} className="reading" />
         </div>
       )}
       {l && l.questions.length > 0 && (
         <div className="card space-y-4">
-          <h2 className="section-title">Tjek om du forstår det</h2>
+          <h2 className="section-title">{t('lesson.check')}</h2>
           {l.questions.map((q, i) => (
             <LessonQuestionView key={i} q={q} />
           ))}
@@ -216,6 +217,7 @@ function VideoPage({ course, item }: { course: string; item: VideoItem }) {
 const plainTitle = (html: string) => html.replace(/<[^>]+>/g, '').trim()
 
 function LessonQuestionView({ q }: { q: LessonQuestion }) {
+  const t = useT()
   const [picked, setPicked] = useState<number | null>(null)
   if (q.options)
     return (
@@ -234,7 +236,7 @@ function LessonQuestionView({ q }: { q: LessonQuestion }) {
         </div>
         {picked !== null && (
           <p className="text-sm" role="status">
-            {picked === q.correct ? 'Rigtigt!' : 'Ikke helt — prøv igen, eller se videoen en gang til.'}
+            {picked === q.correct ? t('lesson.right') : t('lesson.wrong')}
           </p>
         )}
       </div>
@@ -244,11 +246,11 @@ function LessonQuestionView({ q }: { q: LessonQuestion }) {
       <div className="prose-content font-medium" dangerouslySetInnerHTML={{ __html: q.prompt }} />
       {q.answer ? (
         <details className="text-sm">
-          <summary className="link cursor-pointer">Vis svar</summary>
+          <summary className="link cursor-pointer">{t('lesson.showAnswer')}</summary>
           <div className="prose-content mt-1" dangerouslySetInnerHTML={{ __html: q.answer }} />
         </details>
       ) : (
-        <p className="muted text-sm">Tænk over det, før du går videre. Svaret kommer i videoen og noterne.</p>
+        <p className="muted text-sm">{t('lesson.think')}</p>
       )}
     </div>
   )

@@ -1,6 +1,7 @@
 // One exercise: prompt, hints one step at a time, answer (typed, multiple
 // choice or free text you rate yourself), solution, notes and history.
 
+import { useT } from '@/i18n'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { AutoCheck, Difficulty, Exercise, Quiz } from '@/types/content'
 import { Html } from './Html'
@@ -355,6 +356,7 @@ export function AnswerInput({
   const [value, setValue] = useState('')
   const [result, setResult] = useState<CheckResult | null>(null)
   const [ask, setAsk] = useState('')
+  const t = useT()
   const mc = format === 'mc' && choices
   const submit = (v: string) => {
     const r = mc ? evaluate(choiceCheck(choices), v) : evaluate(check, v)
@@ -363,7 +365,7 @@ export function AnswerInput({
     setAsk('')
     const text = mc ? choices.options[Number(v)] : v
     // friendlier wording than the checker's
-    const message = r.correct ? 'Rigtigt!' : mc ? `Ikke helt. Det rigtige svar er ${choices.options[choices.correct]}.` : r.message.replace(/^Forkert\.|^Ikke helt\./, 'Ikke helt.')
+    const message = r.correct ? t('answer.right') : mc ? `${t('answer.notQuite')} ${t('answer.rightIs')} ${choices.options[choices.correct]}.` : r.message.replace(/^Forkert\.|^Ikke helt\./, 'Ikke helt.')
     const res = { ...r, message }
     setResult(res)
     onChecked(res, text)
@@ -374,7 +376,7 @@ export function AnswerInput({
         {result.correct ? '✓ ' : ''}
         {mc && !result.correct ? (
           <>
-            Ikke helt.{choices.explanations?.[Number(value)] ? ` ${choices.explanations[Number(value)]}` : ''} Det rigtige svar er <span dangerouslySetInnerHTML={{ __html: inlineMd(choices.options[choices.correct]) }} />.
+            {t('answer.notQuite')}{choices.explanations?.[Number(value)] ? ` ${choices.explanations[Number(value)]}` : ''} {t('answer.rightIs')} <span dangerouslySetInnerHTML={{ __html: inlineMd(choices.options[choices.correct]) }} />.
           </>
         ) : (
           result.message
@@ -387,7 +389,7 @@ export function AnswerInput({
     return (
       <div className="space-y-2">
         <fieldset className="space-y-2" disabled={!!result}>
-          <legend className="sr-only">Vælg et svar</legend>
+          <legend className="sr-only">{t('answer.pick')}</legend>
           {choices.options.map((o, i) => {
             const picked = value === String(i)
             const isRight = result && i === choices.correct
@@ -408,7 +410,7 @@ export function AnswerInput({
         </fieldset>
         {!result && (
           <button className="btn btn-primary" disabled={value === ''} onClick={() => submit(value)}>
-            Tjek svar
+            {t('answer.check')}
           </button>
         )}
         {feedback}
@@ -424,9 +426,9 @@ export function AnswerInput({
       }}
     >
       <label className="block text-sm font-medium">
-        Dit svar{' '}
+        {t('answer.yours')}{' '}
         <span className="muted font-normal">
-          {check.type === 'numeric' ? `(et tal — fx 0.25, 1/4 eller 25%${check.unit ? `; enhed: ${check.unit}` : ''})` : check.type === 'numeric-list' ? `(${check.answers.length} tal adskilt af semikolon)` : ''}
+          {check.type === 'numeric' ? t('answer.numberHint', { unit: check.unit ? t('answer.unit', { unit: check.unit }) : '' }) : check.type === 'numeric-list' ? t('answer.listHint', { n: check.answers.length }) : ''}
         </span>
       </label>
       <div className="flex flex-col gap-2 sm:flex-row">
@@ -437,7 +439,7 @@ export function AnswerInput({
         )}
         {!result && (
           <button type="submit" className="btn btn-primary shrink-0" disabled={!value.trim()}>
-            Tjek svar
+            {t('answer.check')}
           </button>
         )}
       </div>

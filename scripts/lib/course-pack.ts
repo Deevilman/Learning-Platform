@@ -83,6 +83,8 @@ export function parseCoursePack(text: string, file: string): CoursePack {
   for (const f of REQUIRED_FIELDS) if (fm[f] === undefined) errors.push({ file, line: 1, message: `Front matter mangler "${f}".` })
   if (fm.slug !== undefined && !SLUG_RE.test(String(fm.slug))) errors.push({ file, line: fmLine('slug'), message: `"slug" må kun indeholde små bogstaver, tal og bindestreg (fx "kemi-a"), fandt "${fm.slug}".` })
   if (fm.lang !== undefined && !['da', 'en'].includes(fm.lang)) errors.push({ file, line: fmLine('lang'), message: `"lang" skal være "da" eller "en".` })
+  if (fm.translation_of !== undefined && !SLUG_RE.test(String(fm.translation_of))) errors.push({ file, line: fmLine('translation_of'), message: '"translation_of" skal være slug på kurset, dette er en anden sprogudgave af.' })
+  if (fm.translation_of !== undefined && fm.translation_of === fm.slug) errors.push({ file, line: fmLine('translation_of'), message: '"translation_of" kan ikke pege på kurset selv.' })
   if (fm.color !== undefined && !COLOR_RE.test(String(fm.color))) errors.push({ file, line: fmLine('color'), message: `"color" skal være en farve som "#2563eb".` })
   if (fm.exam !== undefined && !['htx', 'olympiade'].includes(fm.exam)) errors.push({ file, line: fmLine('exam'), message: `"exam" kan være "htx" eller "olympiade".` })
   for (const k of ['requires', 'recommended_before', 'next'])

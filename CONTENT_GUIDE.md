@@ -43,6 +43,7 @@ Et helt kursus kan ligge i **én Markdown-fil**: `content/courses/<slug>.md`, el
 |---|---|---|
 | `slug` | ja | Kursets id i adresser og fremskridt: små bogstaver, tal og `-`. Må ikke ændres. |
 | `lang` | ja | `da` eller `en`. |
+| `translation_of` | nej | Slug på kurset, som dette er en anden sprogudgave af. Skriv udgaven selv (ingen maskinoversættelse). Når appen står på kursets sprog, vises denne udgave i stedet for originalen; fremskridt følger hver udgave for sig. |
 | `title` | ja | Kursets navn. |
 | `topics` | ja | Emner med de uger, de hører til (`{ id, name, weeks }`). |
 | `short`, `color`, `icon`, `level`, `estimated_weeks` | nej | Til kursuslisten og kursets farve. |

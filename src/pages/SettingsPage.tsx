@@ -9,11 +9,13 @@ import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { DailyGoalSettings } from '@/components/DailyGoal'
 import { loadCourse, loadIndex, loadWeek } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
+import { LANGS, useLang, useT } from '@/i18n'
 
 export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      <h1 className="page-title">Indstillinger</h1>
+      <SettingsTitle />
+      <LanguageSection />
       <ThemeSection />
       <section className="card space-y-2">
         <h2 className="section-title">Opgaver</h2>
@@ -29,6 +31,29 @@ export default function SettingsPage() {
       <MissingVideos />
       <DangerSection />
     </div>
+  )
+}
+
+function SettingsTitle() {
+  const t = useT()
+  return <h1 className="page-title">{t('nav.settings')}</h1>
+}
+
+function LanguageSection() {
+  const t = useT()
+  const [lang, setLang] = useLang()
+  return (
+    <section className="card space-y-2">
+      <h2 className="section-title">{t('lang.label')}</h2>
+      <div className="flex gap-2" role="radiogroup" aria-label={t('lang.label')}>
+        {LANGS.map((l) => (
+          <button key={l} role="radio" lang={l} aria-checked={lang === l} className="btn" style={lang === l ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : undefined} onClick={() => setLang(l)}>
+            {t(l === 'da' ? 'lang.da' : 'lang.en')}
+          </button>
+        ))}
+      </div>
+      <p className="muted text-sm">{t('lang.intro')}</p>
+    </section>
   )
 }
 

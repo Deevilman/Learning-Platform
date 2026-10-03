@@ -175,6 +175,7 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
       recommendedBefore: metaRaw.recommended_before || [],
       next: metaRaw.next || [],
       lang: metaRaw.lang === 'en' ? 'en' : 'da',
+      ...(metaRaw.translation_of ? { translationOf: String(metaRaw.translation_of) } : {}),
       track: metaRaw.track || undefined,
       exam: metaRaw.exam || undefined,
       topics: (metaRaw.topics || []).map((t: any) => ({ id: String(t.id), name: String(t.name), weeks: (t.weeks || []).map(Number) })),

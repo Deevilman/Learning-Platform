@@ -4,6 +4,7 @@ import { loadIndex, loadCourse } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 import { useTable } from '@/lib/store'
 import { weekProgress } from '@/lib/progress'
+import { coursesForLang, useLang, useT } from '@/i18n'
 import { CourseDot, ErrorBox, Loading, Progress } from '@/components/ui'
 
 export default function Courses() {
@@ -12,6 +13,8 @@ export default function Courses() {
     const courses = await Promise.all(idx.courses.map((c) => loadCourse(c.slug)))
     return { idx, courses }
   }, [])
+  const t = useT()
+  const [lang] = useLang()
   const checks = useTable('checks')
   const attempts = useTable('attempts')
   const checkMap = useMemo(() => new Map((checks || []).map((c) => [c.id, c.value])), [checks])
@@ -19,7 +22,8 @@ export default function Courses() {
   if (error) return <ErrorBox error={error} />
   if (!data) return <Loading what="kurser" />
   // Topological order of the course graph (prerequisites first).
-  const order = [...data.courses].sort((a, b) => depth(a.meta.slug) - depth(b.meta.slug))
+  const shown = coursesForLang(data.courses, lang)
+  const order = [...shown].sort((a, b) => depth(a.meta.slug) - depth(b.meta.slug))
   function depth(slug: string, seen = new Set<string>()): number {
     const c = data!.courses.find((x) => x.meta.slug === slug)
     if (!c || seen.has(slug)) return 0
@@ -33,11 +37,11 @@ export default function Courses() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-        <h1 className="page-title">Kurser</h1>
-        <p className="muted">Kurserne bygger videre på hinanden — tag dem gerne i rækkefølge.</p>
+        <h1 className="page-title">{t('courses.title')}</h1>
+        <p className="muted">{t('courses.intro')}</p>
         </div>
         <Link className="btn shrink-0" to="/kurser/tilfoej">
-          + Tilføj kursus
+          {t('courses.add')}
         </Link>
       </div>
       <ol className="grid gap-4 md:grid-cols-3">
@@ -47,25 +51,26 @@ export default function Courses() {
             <li key={c.meta.slug} className="relative">
               <Link to={`/kursus/${c.meta.slug}`} className="card block h-full transition-shadow hover:shadow-md" style={{ borderTop: `4px solid ${c.meta.color}` }}>
                 <div className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide muted">
-                  <CourseDot color={c.meta.color} /> Trin {i + 1}
+                  <CourseDot color={c.meta.color} /> {t('courses.step', { n: i + 1 })}
                 </div>
                 <h2 className="text-lg font-bold">{c.meta.title}</h2>
-                {c.meta.uploaded && <span className="chip">Dit kursus</span>}
+                {c.meta.uploaded && <span className="chip">{t('courses.yours')}</span>}
+                {c.meta.lang !== lang && <span className="chip">{t(c.meta.lang === 'en' ? 'courses.onlyEn' : 'courses.onlyDa')}</span>}
                 <p className="muted text-sm">{c.meta.short}</p>
                 <dl className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
                   <div className="stat">
-                    <b>{c.counts.weeks}</b>uger
+                    <b>{c.counts.weeks}</b>{t('courses.weeks')}
                   </div>
                   <div className="stat">
-                    <b>{c.counts.exercises}</b>øvelser
+                    <b>{c.counts.exercises}</b>{t('courses.exercises')}
                   </div>
                   <div className="stat">
-                    <b>{c.counts.videos}</b>videoer
+                    <b>{c.counts.videos}</b>{t('courses.videos')}
                   </div>
                 </dl>
                 <div className="mt-3 space-y-1">
                   <div className="muted flex justify-between text-xs">
-                    <span>Uger gennemført</span>
+                    <span>{t('courses.weeksDone')}</span>
                     <span>
                       {done}/{c.weeks.length}
                     </span>
@@ -74,7 +79,7 @@ export default function Courses() {
                 </div>
                 {c.meta.prerequisites.length > 0 && (
                   <p className="muted mt-3 text-xs">
-                    Bygger på: {c.meta.prerequisites.map((p) => data.courses.find((x) => x.meta.slug === p)?.meta.title || p).join(', ')}
+                    {t('courses.buildsOn', { list: c.meta.prerequisites.map((p) => data.courses.find((x) => x.meta.slug === p)?.meta.title || p).join(', ') })}
                   </p>
                 )}
                 {c.meta.disclaimer && <p className="mt-2 text-xs" style={{ color: 'var(--warn)' }}>⚠️ {c.meta.disclaimer}</p>}
@@ -85,7 +90,7 @@ export default function Courses() {
       </ol>
       {future.length > 0 && (
         <div className="card-flat">
-          <h2 className="section-title">Kommer senere</h2>
+          <h2 className="section-title">{t('courses.later')}</h2>
           <p className="muted text-sm">{future.join(', ')}</p>
         </div>
       )}

@@ -90,3 +90,17 @@ test('a Python reference solution runs in the browser (Pyodide)', async ({ page 
   await expect(page.locator('.run-output').first()).toContainText('{1: False, 2: True, 3: False}', { timeout: 100_000 })
   await expect(page.locator('.run-output').first()).toContainText('None')
 })
+
+test('switching to English changes menus and week pages, not the course text', async ({ page }) => {
+  await page.goto('/#/indstillinger')
+  await page.getByRole('radio', { name: 'English' }).click()
+  await expect(page.getByRole('heading', { name: 'Settings' })).toBeVisible()
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+  await page.goto('/#/kurser')
+  await expect(page.getByRole('heading', { name: 'Courses' })).toBeVisible()
+  await expect(page.getByText('Danish only').first()).toBeVisible()
+  await page.goto('/#/kursus/quant/uge/3')
+  await expect(page.getByText('Week 3 of 16')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What you will learn' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Sandsynlighed I' })).toBeVisible()
+})

@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route, NavLink, Link, useLocation } from 'react-rou
 import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { StoreProvider } from '@/lib/store'
 import { useTheme } from '@/components/ThemeToggle'
+import { LangApplier, useT, type Key } from '@/i18n'
 import Dashboard from '@/pages/Dashboard'
 import Courses from '@/pages/Courses'
 import CoursePage from '@/pages/CoursePage'
@@ -22,21 +23,21 @@ const StatsPage = lazy(() => import('@/pages/StatsPage'))
 const PlacementPage = lazy(() => import('@/pages/PlacementPage'))
 const AddCoursePage = lazy(() => import('@/pages/AddCoursePage'))
 
-const NAV = [
-  { to: '/', label: 'Overblik', icon: '⌂', end: true },
-  { to: '/kurser', label: 'Kurser', icon: '▤' },
-  { to: '/traen', label: 'Træn', icon: '◎' },
+const NAV: { to: string; label: Key; icon: string; end?: boolean }[] = [
+  { to: '/', label: 'nav.overview', icon: '⌂', end: true },
+  { to: '/kurser', label: 'nav.courses', icon: '▤' },
+  { to: '/traen', label: 'nav.train', icon: '◎' },
 ]
 
 const MORE = [
-  { to: '/soeg', label: 'Søg' },
-  { to: '/statistik', label: 'Statistik' },
-  { to: '/ordliste', label: 'Ordliste' },
-  { to: '/logbog', label: 'Logbog' },
-  { to: '/interaktivt', label: 'Prøv selv' },
-  { to: '/kurser/tilfoej', label: 'Tilføj kursus' },
-  { to: '/indstillinger', label: 'Indstillinger' },
-]
+  { to: '/soeg', label: 'nav.search' },
+  { to: '/statistik', label: 'nav.stats' },
+  { to: '/ordliste', label: 'nav.glossary' },
+  { to: '/logbog', label: 'nav.logbook' },
+  { to: '/interaktivt', label: 'nav.tryIt' },
+  { to: '/kurser/tilfoej', label: 'nav.addCourse' },
+  { to: '/indstillinger', label: 'nav.settings' },
+] as const
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -54,6 +55,7 @@ function ScrollToTop() {
 }
 
 function MoreMenu({ placement }: { placement: 'down' | 'up' }) {
+  const t = useT()
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
   const ref = useRef<HTMLDivElement>(null)
@@ -76,14 +78,14 @@ function MoreMenu({ placement }: { placement: 'down' | 'up' }) {
         onClick={() => setOpen((o) => !o)}
       >
         {placement === 'up' && <span className="nav-icon" aria-hidden>⋯</span>}
-        <span>Mere</span>
+        <span>{t('nav.more')}</span>
         {placement === 'down' && <span aria-hidden className="text-xs">▾</span>}
       </button>
       {open && (
         <div role="menu" className={`menu ${placement === 'up' ? 'bottom-full right-0 mb-2' : 'right-0 top-full mt-2'}`}>
           {MORE.map((m) => (
             <NavLink key={m.to} role="menuitem" to={m.to} className={({ isActive }) => `menu-item ${isActive ? 'nav-active' : ''}`}>
-              {m.label}
+              {t(m.label)}
             </NavLink>
           ))}
         </div>
@@ -93,25 +95,26 @@ function MoreMenu({ placement }: { placement: 'down' | 'up' }) {
 }
 
 function Header() {
+  const t = useT()
   return (
     <>
       <header className="app-header sticky top-0 z-30">
         <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-3">
-          <Link to="/" className="flex items-center gap-2 text-lg font-bold tracking-tight" aria-label="Læring — forside">
+          <Link to="/" className="flex items-center gap-2 text-lg font-bold tracking-tight" aria-label={t('app.home')}>
             <span className="grid h-8 w-8 place-items-center rounded-lg text-base text-white" style={{ background: 'var(--accent)', fontFamily: 'Georgia, serif' }}>
               ∑
             </span>
-            <span>Læring</span>
+            <span>{t('app.name')}</span>
           </Link>
-          <nav className="ml-6 hidden items-center gap-1 md:flex" aria-label="Hovedmenu">
+          <nav className="ml-6 hidden items-center gap-1 md:flex" aria-label={t('nav.main')}>
             {NAV.map((n) => (
               <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `nav-item ${isActive ? 'nav-active' : ''}`}>
-                {n.label}
+                {t(n.label)}
               </NavLink>
             ))}
             <MoreMenu placement="down" />
           </nav>
-          <Link to="/soeg" className="icon-btn ml-auto" aria-label="Søg" title="Søg">
+          <Link to="/soeg" className="icon-btn ml-auto" aria-label={t('nav.search')} title={t('nav.search')}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-3.5-3.5" />
@@ -120,13 +123,13 @@ function Header() {
         </div>
       </header>
       {/* Phones: the same four items as a bottom tab bar. */}
-      <nav className="tabbar md:hidden" aria-label="Hovedmenu">
+      <nav className="tabbar md:hidden" aria-label={t('nav.main')}>
         {NAV.map((n) => (
           <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `nav-item ${isActive ? 'nav-active' : ''}`}>
             <span className="nav-icon" aria-hidden>
               {n.icon}
             </span>
-            <span>{n.label}</span>
+            <span>{t(n.label)}</span>
           </NavLink>
         ))}
         <MoreMenu placement="up" />
@@ -140,6 +143,20 @@ function ThemeApplier() {
   return null
 }
 
+function SkipLink() {
+  const t = useT()
+  return (
+    <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 btn">
+      {t('app.skip')}
+    </a>
+  )
+}
+
+function LoadingFallback() {
+  const t = useT()
+  return <p className="muted">{t('app.loading')}</p>
+}
+
 export default function App() {
   return (
     <StoreProvider>
@@ -147,12 +164,11 @@ export default function App() {
         <ScrollToTop />
         <AutoSync />
         <ThemeApplier />
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 btn">
-          Spring til indhold
-        </a>
+        <LangApplier />
+        <SkipLink />
         <Header />
         <main id="main" className="mx-auto max-w-5xl px-4 pb-28 pt-8 md:pb-16">
-          <Suspense fallback={<p className="muted">Indlæser…</p>}>
+          <Suspense fallback={<LoadingFallback />}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/kurser" element={<Courses />} />

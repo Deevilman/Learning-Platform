@@ -130,6 +130,11 @@ export function buildContent(opts: BuildOptions): BuildReport {
   const known = new Set(metas.map((m) => m.slug))
   for (const m of metas) {
     for (const p of m.prerequisites) if (!known.has(p)) report.errors.push({ file: `content/courses/${m.slug}/course.yaml`, line: 0, message: `forudsætningen "${p}" er ikke et kursus` })
+    if (m.translationOf) {
+      const orig = metas.find((x) => x.slug === m.translationOf)
+      if (!orig) report.errors.push({ file: `content/courses/${m.slug}.md`, line: 0, message: `"translation_of: ${m.translationOf}" er ikke et kursus` })
+      else if (orig.lang === m.lang) report.errors.push({ file: `content/courses/${m.slug}.md`, line: 0, message: `"translation_of: ${m.translationOf}" har samme sprog (${m.lang}); en sprogudgave skal have et andet "lang"` })
+    }
     for (const n of m.next) if (!known.has(n)) report.warnings.push(`${m.slug}: "next: ${n}" findes ikke endnu (vises som "kommer senere")`)
   }
 
