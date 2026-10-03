@@ -3,12 +3,13 @@
 
 import type { AutoCheck } from '@/types/content'
 import { evalExpr, exprVars, parseExpr, ExprError } from './expr'
+import { formatNumber, readNumber } from './format'
 
 /** Compare two expressions numerically at fixed pseudo-random points. */
 function checkExpression(check: Extract<AutoCheck, { type: 'expression' }>, answer: string) {
   let got
   try {
-    got = parseExpr(answer.replace(/·|×/g, '*').replace(/−/g, '-').replace(/,/g, '.'))
+    got = parseExpr(answer.replace(/·|×/g, '*').replace(/−/g, '-'))
   } catch (e) {
     return { correct: false, message: e instanceof ExprError ? `${e.message}.` : 'Udtrykket kunne ikke læses.' }
   }
@@ -28,48 +29,53 @@ function checkExpression(check: Extract<AutoCheck, { type: 'expression' }>, answ
   return compared ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: 'Udtrykket kunne ikke tjekkes.' }
 }
 
-/** Parse a number as a Danish or English learner might type it. */
+/** A typed number, fraction (1/4), percent (25 %) or scientific (1e-3); US format. Null if unreadable or ambiguous. */
 export function parseNumber(input: string): number | null {
+  const r = readAnswerNumber(input)
+  return r && 'value' in r ? r.value : null
+}
+
+/** Like parseNumber, but says what the learner probably meant when a decimal comma was used. */
+export function readAnswerNumber(input: string): { value: number } | { ask: string } | null {
   let s = input.trim().toLowerCase().replace(/−/g, '-').replace(/\s+/g, '')
   if (!s) return null
   let scale = 1
+  let suffix = ''
   if (s.endsWith('%')) {
     s = s.slice(0, -1)
     scale = 0.01
+    suffix = '%'
   } else if (s.endsWith('‰')) {
     s = s.slice(0, -1)
     scale = 0.001
+    suffix = '‰'
   }
-  s = s.replace(/(kr|dkk|usd|eur|\$|€)$/, '').replace(/^(kr\.?|\$|€)/, '')
-  // Fraction a/b
+  s = s.replace(/(kr\.?|dkk|usd|eur|\$|€)$/, '').replace(/^(kr\.?|\$|€)/, '')
   const frac = /^(-?[\d.,]+)\/(-?[\d.,]+)$/.exec(s)
   if (frac) {
-    const a = parseNumber(frac[1])
-    const b = parseNumber(frac[2])
-    return a !== null && b !== null && b !== 0 ? (a / b) * scale : null
+    const a = readNumber(frac[1])
+    const b = readNumber(frac[2])
+    if (!a || !b) return null
+    if ('ask' in a || 'ask' in b) return { ask: `${'ask' in a ? a.ask : frac[1]}/${'ask' in b ? b.ask : frac[2]}${suffix}` }
+    return b.value !== 0 ? { value: (a.value / b.value) * scale } : null
   }
-  // Scientific notation
-  if (/^-?\d+(?:[.,]\d+)?e-?\d+$/.test(s)) return Number(s.replace(',', '.')) * scale
-  const hasComma = s.includes(',')
-  const hasDot = s.includes('.')
-  if (hasComma && hasDot) {
-    // The last separator is the decimal separator.
-    if (s.lastIndexOf(',') > s.lastIndexOf('.')) s = s.replace(/\./g, '').replace(',', '.')
-    else s = s.replace(/,/g, '')
-  } else if (hasComma) {
-    s = s.replace(',', '.')
-  }
-  if (!/^-?\d*\.?\d+$/.test(s) && !/^-?\d+\.?$/.test(s)) return null
-  const v = Number(s)
-  return isFinite(v) ? v * scale : null
+  if (/^-?\d+(?:\.\d+)?e-?\d+$/.test(s)) return { value: Number(s) * scale }
+  const r = readNumber(s)
+  if (!r) return null
+  if ('ask' in r) return { ask: r.ask + suffix }
+  return isFinite(r.value) ? { value: r.value * scale } : null
 }
 
 export interface CheckResult {
   correct: boolean
   message: string
+  /** Not graded: the answer was ambiguous (e.g. a decimal comma); ask the learner instead. */
+  ask?: boolean
 }
 
-const fmt = (x: number) => (Math.abs(x) >= 1e6 || (Math.abs(x) < 1e-3 && x !== 0) ? x.toExponential(4) : String(+x.toPrecision(8))).replace('.', ',')
+const askComma = (meant: string) => ({ correct: false, ask: true, message: `Mente du ${meant}? Brug punktum som decimaltegn.` })
+
+const fmt = (x: number) => (Math.abs(x) >= 1e6 || (Math.abs(x) < 1e-3 && x !== 0) ? x.toExponential(4) : formatNumber(+x.toPrecision(8), { decimals: 8 }))
 
 export function numericClose(got: number, want: number, tolerance?: number, relative?: boolean): boolean {
   const tol = tolerance ?? Math.max(1e-9, Math.abs(want) * 1e-6)
@@ -82,13 +88,17 @@ export function evaluate(check: AutoCheck, answer: string): CheckResult {
       // When the expected value is itself in percent (unit "%"), "12,5 %" means 12.5;
       // otherwise "25 %" means 0.25.
       const pctUnit = check.unit === '%'
-      const v = parseNumber(pctUnit ? answer.replace(/%/g, '') : answer)
-      if (v === null) return { correct: false, message: 'Skriv et tal (fx 0,25 eller 1/4).' }
+      const read = readAnswerNumber(pctUnit ? answer.replace(/%/g, '') : answer)
+      if (read && 'ask' in read) return askComma(read.ask)
+      const v = read ? read.value : null
+      if (v === null) return { correct: false, message: 'Skriv et tal (fx 0.25 eller 1/4).' }
       const ok = numericClose(v, check.answer, check.tolerance, check.relative)
       return ok ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: `Ikke helt. Det forventede svar er ${fmt(check.answer)}${check.unit ? ' ' + check.unit : ''}.` }
     }
     case 'numeric-list': {
       const parts = answer.split(/[;\n]|,\s+|\s+/).map((p) => p.trim()).filter(Boolean)
+      const ambiguous = parts.map(readAnswerNumber).find((r) => r && 'ask' in r) as { ask: string } | undefined
+      if (ambiguous) return askComma(ambiguous.ask)
       const vals = parts.map(parseNumber)
       if (vals.some((v) => v === null) || vals.length !== check.answers.length)
         return { correct: false, message: `Skriv ${check.answers.length} tal adskilt af semikolon.` }

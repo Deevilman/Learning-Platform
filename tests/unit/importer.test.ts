@@ -61,7 +61,7 @@ describe('content pipeline', () => {
           expect(new Set(choices.options).size).toBe(choices.options.length)
           if (check?.type === 'numeric') {
             const unit = check.unit === '%' ? /\s%$/ : new RegExp(`\\s*${(check.unit || '').replace('.', '\\.')}$`)
-            const ok = choices.options.map((o: string) => evaluate(check, o.replace(unit, '').replace(/−/g, '-').replace(/(\d)\.(?=\d{3}\b)/g, '$1')).correct)
+            const ok = choices.options.map((o: string) => evaluate(check, o.replace(unit, '').replace(/−/g, '-')).correct)
             expect(ok.filter(Boolean), `${c} ${e.number}: ${choices.options.join(' | ')}`).toHaveLength(1)
             expect(ok[choices.correct]).toBe(true)
           }

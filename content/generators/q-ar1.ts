@@ -18,7 +18,7 @@ export default defineGenerator({
       { q: 'den ubetingede middelværdi $E[X_t]$', a: mean, sol: `$\\mu = c/(1-\\phi) = ${tex(c, 1)}/(1 - ${tex(phi, 2)}) = ${tex(mean, 4)}$.`, hint: 'Tag forventning på begge sider og brug stationaritet: $\\mu = c + \\phi\\mu$.' },
       { q: 'den ubetingede varians $\\mathrm{Var}(X_t)$', a: varr, sol: `$\\gamma_0 = \\sigma^2/(1-\\phi^2) = ${tex(s * s, 2)}/(1 - ${tex(phi * phi, 4)}) = ${tex(varr, 4)}$.`, hint: 'Varians på begge sider: $\\gamma_0 = \\phi^2\\gamma_0 + \\sigma^2$.' },
       { q: `autokorrelationen $\\rho(${k})$`, a: phi ** k, sol: `For AR(1) er $\\rho(k) = \\phi^k$, så $\\rho(${k}) = ${tex(phi, 2)}^{${k}} = ${tex(phi ** k, 4)}$.`, hint: 'Gang $X_t - \\mu = \\phi(X_{t-1} - \\mu) + \\varepsilon_t$ med $X_{t-k} - \\mu$ og tag forventning.' },
-      { q: 'halveringstiden for et stød (antal perioder, $h$ med $|\\phi|^h = \\tfrac12$)', a: half, sol: `$h = \\ln(0{,}5)/\\ln|\\phi| = ${tex(Math.log(0.5), 4)}/${tex(Math.log(Math.abs(phi)), 4)} = ${tex(half, 4)}$ perioder.`, hint: 'Et stød på $X$ henfalder som $\\phi^h$.' },
+      { q: 'halveringstiden for et stød (antal perioder, $h$ med $|\\phi|^h = \\tfrac12$)', a: half, sol: `$h = \\ln(0.5)/\\ln|\\phi| = ${tex(Math.log(0.5), 4)}/${tex(Math.log(Math.abs(phi)), 4)} = ${tex(half, 4)}$ perioder.`, hint: 'Et stød på $X$ henfalder som $\\phi^h$.' },
     ]
     const it = spec[d === 1 ? rng.int(0, 1) : d === 2 ? rng.int(1, 2) : rng.int(2, 3)]
     return {

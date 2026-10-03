@@ -7,6 +7,7 @@
 import type { AutoCheck } from '../types/content'
 import { makeRng } from './rng'
 import { evaluate, numericClose } from './check'
+import { formatNumber } from './format'
 
 export interface Choices {
   options: string[] // mini-Markdown (may contain $math$)
@@ -15,13 +16,9 @@ export interface Choices {
   explanations?: (string | undefined)[]
 }
 
-/** Danish number with a fixed number of decimals (trailing zeros kept for alignment). */
+/** A number with a fixed number of decimals (trailing zeros kept for alignment), minus as "−". */
 export function daFixed(x: number, decimals: number): string {
-  const r = Math.abs(x).toFixed(decimals)
-  const [i, f] = r.split('.')
-  const int = i.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-  const neg = x < 0 && Number(r) !== 0
-  return `${neg ? '−' : ''}${int}${f ? ',' + f : ''}`
+  return formatNumber(x, { decimals, fixed: true }).replace(/^-/, '−')
 }
 
 /** Decimals needed to show `answer` so a learner can tell the options apart. */

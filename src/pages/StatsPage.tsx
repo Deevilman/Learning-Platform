@@ -1,3 +1,4 @@
+import { formatNumber } from '@/lib/format'
 import { Link } from 'react-router-dom'
 import { loadCourse, loadIndex } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
@@ -35,7 +36,7 @@ export default function StatsPage() {
     { label: 'videoer set', value: checks.filter((c) => c.value && c.id.startsWith('video:') && c.updatedAt >= weekStart).length },
     { label: 'opgaver lavet', value: new Set(weekAttempts.map((a) => a.exerciseId)).size },
     { label: 'rigtige svar', value: weekAttempts.filter((a) => a.score >= 0.66).length },
-    { label: 'timer (logbog)', value: (logbook.filter((l) => new Date(l.date).getTime() >= weekStart - DAY / 2).reduce((s, l) => s + (l.minutes || 0), 0) / 60).toLocaleString('da-DK', { maximumFractionDigits: 1 }) },
+    { label: 'timer (logbog)', value: formatNumber((logbook.filter((l) => new Date(l.date).getTime() >= weekStart - DAY / 2).reduce((s, l) => s + (l.minutes || 0), 0) / 60), { decimals: 1 }) },
   ]
   const exTitle = new Set([...data.idx.exercises.map((e) => e.id), ...generators.map((g) => `gen:${g.id}`)])
   const due = srs.filter((c) => c.due <= now && exTitle.has(c.id)).sort((a, b) => a.due - b.due)

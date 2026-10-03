@@ -6,6 +6,7 @@ import type { AutoCheck, Difficulty } from '@/types/content'
 import type { Rng } from './rng'
 import { makeRng } from './rng'
 import { makeChoices, type Choices } from './choices'
+import { formatNumber } from './format'
 
 export interface GeneratedExercise {
   /** Mini-Markdown: paragraphs, **bold**, *italic*, lists, $math$, $$math$$, | tables |. */
@@ -69,25 +70,20 @@ export function parseGeneratedId(id: string): { generatorId: string; seed: numbe
   return m ? { generatorId: m[1], seed: Number(m[2]), difficulty: Number(m[3]) as Difficulty } : null
 }
 
-// ---------- formatting helpers for generator text (Danish conventions)
+// ---------- formatting helpers for generator text (US number format, see format.ts)
 
-/** Danish number: decimal comma, thin-space thousands separator in TeX. */
+/** A number for running text: 1,234.5 (up to `decimals` decimals). */
 export function da(x: number, decimals = 2): string {
-  const r = Number(x.toFixed(decimals))
-  let s = Math.abs(r).toFixed(decimals)
-  if (s.includes('.')) s = s.replace(/0+$/, '').replace(/\.$/, '')
-  const [i, f] = s.split('.')
-  const int = i.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-  return `${r < 0 ? '-' : ''}${int}${f ? ',' + f : ''}`
+  return formatNumber(x, { decimals })
 }
 
-/** Same as da() but for use inside $…$ (comma needs braces in TeX). */
+/** A number for use inside $…$: 1234.5 (no thousands separator). */
 export function tex(x: number, decimals = 2): string {
-  return da(x, decimals).replace(',', '{,}')
+  return formatNumber(x, { decimals, math: true })
 }
 
-export const pct = (x: number, decimals = 2) => `${da(x * 100, decimals)} %`
-export const texPct = (x: number, decimals = 2) => `${tex(x * 100, decimals)}\\,\\%`
+export const pct = (x: number, decimals = 2) => `${da(x * 100, decimals)}%`
+export const texPct = (x: number, decimals = 2) => `${tex(x * 100, decimals)}\\%`
 
 export function gcd(a: number, b: number): number {
   a = Math.abs(a)

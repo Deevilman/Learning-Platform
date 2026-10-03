@@ -10,6 +10,7 @@ import type { GeneratedExercise, Generator } from './generators'
 import { evaluate, numericClose } from './check'
 import { evalExpr, ExprError, parseExpr, type Expr } from './expr'
 import { makeRng, type Rng } from './rng'
+import { formatNumber } from './format'
 
 export const TEMPLATE_TYPES = ['tal', 'multiple-choice', 'tekst', 'udtryk', 'kode'] as const
 export type TemplateType = (typeof TEMPLATE_TYPES)[number]
@@ -55,11 +56,10 @@ const NAME_RE = /^[A-Za-z_][A-Za-z0-9_]*$/
 const KNOWN_KEYS = new Set(['id', 'titel', 'kursus', 'emner', 'svaerhed', 'type', 'variabler', 'beregn', 'betingelser', 'opgave', 'opgave_en', 'svar', 'hints', 'hints_en', 'loesning', 'loesning_en', 'distraktorer', 'niveauer'])
 const LEVEL_KEYS = new Set(['variabler', 'beregn', 'betingelser', 'opgave', 'opgave_en', 'svar', 'hints', 'hints_en', 'loesning', 'loesning_en', 'distraktorer', 'type'])
 
-/** A number as it appears in exercise text (one place, so the number format can change later). */
-export function fmtNum(x: number, decimals?: number): string {
-  if (decimals !== undefined) return roundTo(x, decimals).toFixed(decimals)
-  const r = +x.toPrecision(12)
-  return Object.is(r, -0) ? '0' : String(r)
+/** A number as it appears in exercise text: US format, no thousands separator inside $…$. */
+export function fmtNum(x: number, decimals?: number, math = true): string {
+  if (decimals !== undefined) return formatNumber(roundTo(x, decimals), { decimals, fixed: true, math })
+  return formatNumber(+x.toPrecision(12), { decimals: 10, math })
 }
 const roundTo = (x: number, d: number) => Math.round((x + Number.EPSILON * Math.sign(x)) * 10 ** d) / 10 ** d
 
@@ -233,7 +233,9 @@ function sample(def: TemplateDef, rng: Rng, compiled: Compiled): Values {
 export function interpolate(text: string, v: Values): string {
   return text.replace(/\{([A-Za-z_][A-Za-z0-9_]*)(?::\.(\d)f)?\}/g, (all, n: string, d: string | undefined, at: number) => {
     let out: string
-    if (Object.prototype.hasOwnProperty.call(v.nums, n)) out = fmtNum(v.nums[n], d === undefined ? undefined : Number(d))
+    // inside $…$ when an odd number of unescaped $ come before
+    const inMath = (text.slice(0, at).match(/(?<!\\)\$/g) || []).length % 2 === 1
+    if (Object.prototype.hasOwnProperty.call(v.nums, n)) out = fmtNum(v.nums[n], d === undefined ? undefined : Number(d), inMath)
     else if (Object.prototype.hasOwnProperty.call(v.strs, n)) out = v.strs[n]
     else return all
     return /(\\[A-Za-z]+|[}^_])$/.test(text.slice(0, at)) ? `{${out}}` : out
@@ -286,10 +288,10 @@ export function generateFromTemplate(template: TemplateDef, seed: number, diffic
   const answerNum = compiled.answer ? round(evalExpr(compiled.answer, v.nums)) : NaN
   const answerText = () => {
     if (def.svar.tekst !== undefined) return (Array.isArray(def.svar.tekst) ? def.svar.tekst : [def.svar.tekst]).map(t)
-    return [fmtNum(answerNum, def.svar.decimaler)]
+    return [fmtNum(answerNum, def.svar.decimaler, false)]
   }
   const unit = def.svar.enhed ? ` ${def.svar.enhed}` : ''
-  const dShow = (x: number | string) => (typeof x === 'number' ? fmtNum(round(x), def.svar.decimaler) + unit : t(x))
+  const dShow = (x: number | string) => (typeof x === 'number' ? fmtNum(round(x), def.svar.decimaler, false) + unit : t(x))
   const wrongValues = compiled.distractors.map((d) => ('e' in d ? round(evalExpr(d.e, v.nums)) : t(d.text)))
   let check: AutoCheck
   let distractors: (number | string)[] | undefined
@@ -331,8 +333,8 @@ const BAD = /NaN|undefined|Infinity|\[object|null/
 
 /** The number as it may be written in a solution. */
 function renderings(x: number, decimals?: number): string[] {
-  const out = new Set([fmtNum(x), String(x)])
-  if (decimals !== undefined) out.add(fmtNum(x, decimals))
+  const out = new Set([fmtNum(x), fmtNum(x, undefined, false), String(x)])
+  if (decimals !== undefined) (out.add(fmtNum(x, decimals)), out.add(fmtNum(x, decimals, false)))
   for (let k = 0; k <= 6; k++) out.add(x.toFixed(k).replace(/\.?0+$/, '') || '0')
   return [...out].filter((s) => s !== '-0')
 }

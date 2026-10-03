@@ -354,9 +354,13 @@ export function AnswerInput({
 }) {
   const [value, setValue] = useState('')
   const [result, setResult] = useState<CheckResult | null>(null)
+  const [ask, setAsk] = useState('')
   const mc = format === 'mc' && choices
   const submit = (v: string) => {
     const r = mc ? evaluate(choiceCheck(choices), v) : evaluate(check, v)
+    // an ambiguous answer (decimal comma) isn't graded: ask what was meant
+    if (r.ask) return setAsk(r.message)
+    setAsk('')
     const text = mc ? choices.options[Number(v)] : v
     // friendlier wording than the checker's
     const message = r.correct ? 'Rigtigt!' : mc ? `Ikke helt. Det rigtige svar er ${choices.options[choices.correct]}.` : r.message.replace(/^Forkert\.|^Ikke helt\./, 'Ikke helt.')
@@ -370,7 +374,7 @@ export function AnswerInput({
         {result.correct ? '✓ ' : ''}
         {mc && !result.correct ? (
           <>
-            Ikke helt. Det rigtige svar er <span dangerouslySetInnerHTML={{ __html: inlineMd(choices.options[choices.correct]) }} />.
+            Ikke helt.{choices.explanations?.[Number(value)] ? ` ${choices.explanations[Number(value)]}` : ''} Det rigtige svar er <span dangerouslySetInnerHTML={{ __html: inlineMd(choices.options[choices.correct]) }} />.
           </>
         ) : (
           result.message
@@ -422,7 +426,7 @@ export function AnswerInput({
       <label className="block text-sm font-medium">
         Dit svar{' '}
         <span className="muted font-normal">
-          {check.type === 'numeric' ? `(et tal — fx 0,25, 1/4 eller 25 %${check.unit ? `; enhed: ${check.unit}` : ''})` : check.type === 'numeric-list' ? `(${check.answers.length} tal adskilt af semikolon)` : ''}
+          {check.type === 'numeric' ? `(et tal — fx 0.25, 1/4 eller 25%${check.unit ? `; enhed: ${check.unit}` : ''})` : check.type === 'numeric-list' ? `(${check.answers.length} tal adskilt af semikolon)` : ''}
         </span>
       </label>
       <div className="flex flex-col gap-2 sm:flex-row">
@@ -437,6 +441,11 @@ export function AnswerInput({
           </button>
         )}
       </div>
+      {ask && (
+        <p role="status" className="text-sm" style={{ color: 'var(--warn)' }}>
+          {ask}
+        </p>
+      )}
       {feedback}
     </form>
   )

@@ -14,7 +14,7 @@ export default defineGenerator({
     if (d === 3) {
       const t = xbar / se
       return {
-        prompt: `En strategi har $n = ${n}$ dagsafkast med gennemsnit $\\bar x = ${tex(xbar, 2)}\\,\\%$ og standardafvigelse $s = ${tex(s, 2)}\\,\\%$. Beregn t-statistikken for $H_0: \\mu = 0$ (3 decimaler). Er afkastet signifikant forskelligt fra 0 på 5 %-niveau (tosidet, $|t| > 1{,}96$)?`,
+        prompt: `En strategi har $n = ${n}$ dagsafkast med gennemsnit $\\bar x = ${tex(xbar, 2)}\\,\\%$ og standardafvigelse $s = ${tex(s, 2)}\\,\\%$. Beregn t-statistikken for $H_0: \\mu = 0$ (3 decimaler). Er afkastet signifikant forskelligt fra 0 på 5 %-niveau (tosidet, $|t| > 1.96$)?`,
         hint: '$t = \\bar x / (s/\\sqrt n)$.',
         solution: `$SE = ${tex(s, 2)}/\\sqrt{${n}} = ${tex(se, 4)}$, $t = ${tex(xbar, 2)}/${tex(se, 4)} = ${tex(t, 3)}$. ${Math.abs(t) > 1.96 ? 'Signifikant på 5 %-niveau' : 'Ikke signifikant på 5 %-niveau'} — og husk: tester man mange strategier, skal grænsen være langt højere (multiple testing).\n\nSvar: **${da(t, 3)}**.`,
         check: { type: 'numeric', answer: Number(t.toFixed(3)), tolerance: 0.005 },

@@ -1,3 +1,4 @@
+import { formatNumber } from '@/lib/format'
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { loadIndex } from '@/lib/data'
@@ -104,7 +105,7 @@ export default function LogbookPage() {
         <section key={week} className="space-y-2">
           <h2 className="flex justify-between text-sm font-semibold">
             <span>{week.replace('-U', ', uge ')}</span>
-            <span className="muted">{(list.reduce((s, e) => s + e.minutes, 0) / 60).toLocaleString('da-DK', { maximumFractionDigits: 1 })} t</span>
+            <span className="muted">{formatNumber((list.reduce((s, e) => s + e.minutes, 0) / 60), { decimals: 1 })} t</span>
           </h2>
           {list.map((e) => (
             <article key={e.id} className="card space-y-1">

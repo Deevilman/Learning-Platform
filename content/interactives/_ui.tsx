@@ -2,6 +2,7 @@
 // files starting with "_" are not registered).
 
 import { useId, useMemo, type ReactNode } from 'react'
+import { formatNumber } from '@/lib/format'
 
 export const PALETTE = ['#7c3aed', '#2563eb', '#059669', '#dc2626', '#d97706', '#0891b2', '#db2777', '#65a30d']
 
@@ -65,7 +66,7 @@ export function Stat({ label, value }: { label: string; value: ReactNode }) {
 }
 
 export const fmt = (x: number, d = 2) =>
-  Number.isFinite(x) ? x.toLocaleString('da-DK', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—'
+  Number.isFinite(x) ? formatNumber(x, { decimals: d, fixed: true }) : '—'
 export const pct = (x: number, d = 1) => `${fmt(x * 100, d)} %`
 
 // ---------- seeded randomness for simulations
