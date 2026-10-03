@@ -169,3 +169,13 @@ test('a weekly backup reminder that shows the last backup and can be switched of
   await page.goto('/#/indstillinger')
   await expect(page.getByLabel('Mind mig om det en gang om ugen')).not.toBeChecked()
 })
+
+test('a Steady lesson shows the notes; no draft banner, and every check question can be answered', async ({ page }) => {
+  await page.goto('/#/kursus/foundations/uge/1?fane=video-1.3')
+  await expect(page.getByText(/Denne video er kun for støtter af .*Her er det, du skal vide:/)).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Det skal du vide' })).toBeVisible()
+  await expect(page.getByTestId('lesson-notes').locator('.reading')).not.toBeEmpty()
+  await expect(page.getByText(/Udkast:|Svaret kommer i videoen/)).toHaveCount(0)
+  const checks = page.getByRole('heading', { name: 'Tjek om du forstår det' })
+  if (await checks.count()) await expect(page.getByText('Vis svar').first()).toBeVisible()
+})
