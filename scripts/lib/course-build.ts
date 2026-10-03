@@ -8,7 +8,8 @@ import { applyForwardRefs, displayLongMath, firstStep, kindHint, splitSubquestio
 import { makeChoices, shuffledOptions } from '../../src/lib/choices.ts'
 import { validateTemplate, type TemplateDef } from '../../src/lib/templates.ts'
 import { danishNumbers } from './number-format.ts'
-import type { Flashcard, Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
+import { buildProblem, type ServerProblem } from './problems.ts'
+import type { CodeProblem, Flashcard, Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
 
 export interface BuildError {
   file: string
@@ -110,6 +111,8 @@ export interface CourseSource {
   overrides?: Overrides
   videos?: Record<string, any>
   forwardRefs?: ForwardRefs
+  /** ```problem blocks (line = the opening fence). */
+  problems?: { line: number; data: unknown }[]
   /** ```lesson blocks (line = the opening fence). */
   lessons?: { line: number; data: unknown }[]
   /** ```opgaveskabelon blocks (line = the opening fence). */
@@ -139,6 +142,8 @@ export interface CourseStats {
 }
 
 export interface CourseBuild {
+  /** Hidden tests and reference solutions: for the judge only, never written into the app's data. */
+  serverProblems: ServerProblem[]
   meta: CourseMeta
   course: CourseData
   weeks: Week[]
@@ -566,6 +571,20 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     }
     for (const [k, b] of lessonBlocks) if (!usedLessons.has(k)) err(src.files.plan, b.line, `Lektionen er til videoen "${k}", men den video findes ikke i planen (brug videoens nøgle, fx T1, eller nummer, fx 1.2).`)
 
+    // ---------- coding problems: the public part to the app, the rest to the judge
+    const problems: CodeProblem[] = []
+    const serverProblems: ServerProblem[] = []
+    for (const b of src.problems || []) {
+      const r = buildProblem(b.data, { course: slug, topics: topicIds, md: (s) => md(s, planFile, b.line), inl: (s) => inl(s, planFile, b.line) })
+      const id = (b.data as { id?: string })?.id || '(uden id)'
+      for (const e of r.errors) err(planFile, b.line, `Kodeopgaven "${id}": ${e}`)
+      if (!r.problem) continue
+      if (problems.some((p) => p.id === r.problem!.id)) err(planFile, b.line, `Kodeopgaven "${id}" findes to gange.`)
+      problems.push(r.problem)
+      serverProblems.push(r.server!)
+    }
+    if (problems.length) courseData.problems = problems
+
     // ---------- number format: the courses use 1,234.5
     const danish = danishNumbers(src.plan)
     for (const d of danish.slice(0, 20)) report.warnings.push(`${planFile}:${d.line}: "${d.text}" ligner dansk talformat (${d.reason.toLowerCase()}). Skriv tal som 1,234.5.`)
@@ -585,5 +604,5 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     }
     if (templates.length) courseData.templates = templates
     const stats: CourseStats = ({ slug, weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing, selftest: nSelf, interview: nInt })
-    return { meta, course: courseData, weeks, sets: setFiles, summaries: allSummaries, search, stats, ...report }
+    return { meta, course: courseData, weeks, sets: setFiles, summaries: allSummaries, search, stats, serverProblems, ...report }
 }

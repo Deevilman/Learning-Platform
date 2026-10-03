@@ -10,6 +10,8 @@ import YAML from 'yaml'
 import { buildCourse, type BuildEnv, type CourseSource, type CourseStats } from './lib/course-build.ts'
 import { parseCoursePack } from './lib/course-pack.ts'
 import { plannedFrom, validateGraph, type GraphNode } from './lib/course-graph.ts'
+import { checkReference, toolchainAvailable } from './lib/judge-local.ts'
+import type { ServerProblem } from './lib/problems.ts'
 import { validateTemplate, type TemplateDef } from '../src/lib/templates.ts'
 import type { ContentIndex, CourseMeta, ExerciseSummary, SearchDoc } from '../src/types/content.ts'
 
@@ -70,6 +72,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
   const search: SearchDoc[] = []
   const outputs: { path: string; data: unknown }[] = []
   const templates: TemplateDef[] = []
+  const serverProblems: ServerProblem[] = []
 
   // course folders and single course files
   const sources: CourseSource[] = []
@@ -118,6 +121,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       if (mainWeeks !== b.weeks.length) report.warnings.push(`${src.files.meta}: ${b.weeks.length} uger, men hovedudgaven har ${mainWeeks}; fremskridt deles uge for uge`)
       continue
     }
+    serverProblems.push(...b.serverProblems)
     metas.push(b.meta)
     templates.push(...(b.course.templates || []))
     allSummaries.push(...b.summaries)
@@ -158,6 +162,19 @@ export function buildContent(opts: BuildOptions): BuildReport {
   for (const e of validateGraph(nodes)) report.errors.push({ file: fileOf(e.slug), line: 0, message: `${e.slug}: ${e.message}` })
   const planned = graph.planned.filter((p) => !metas.some((m) => m.slug === p.slug))
 
+  // ---------- coding problems: every reference solution must pass all tests (public + hidden)
+  for (const p of serverProblems) {
+    const file = `content/courses/${p.course}.md`
+    if (!toolchainAvailable(p.reference.language)) {
+      const msg = `kodeopgaven "${p.id}": referenceløsningen (${p.reference.language}) kan ikke køres her, fordi værktøjet mangler`
+      if (process.env.CI) report.errors.push({ file, line: 0, message: msg })
+      else report.warnings.push(msg)
+      continue
+    }
+    const problem = checkReference(p.reference.language, p.reference.code, [...p.publicTests, ...p.hiddenTests], p.timeLimit)
+    if (problem) report.errors.push({ file, line: 0, message: `kodeopgaven "${p.id}": ${problem}` })
+  }
+
   report.ok = report.errors.length === 0
   if (report.ok) {
     if (existsSync(opts.out)) rmSync(opts.out, { recursive: true, force: true })
@@ -170,6 +187,10 @@ export function buildContent(opts: BuildOptions): BuildReport {
     const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries, interactives: allInteractives, templates, planned }
     writeFileSync(join(opts.out, 'index.json'), JSON.stringify(index))
     writeFileSync(join(opts.out, 'search.json'), JSON.stringify(search))
+    // hidden tests and reference solutions: for the judge (uploaded by the deploy workflow), never in public/
+    const judgeDir = join(opts.root, '.judge')
+    mkdirSync(judgeDir, { recursive: true })
+    writeFileSync(join(judgeDir, 'problems.json'), JSON.stringify(serverProblems))
   }
   return report
 }

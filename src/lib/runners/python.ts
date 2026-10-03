@@ -72,7 +72,7 @@ export const pythonRunner: CodeRunner = {
           resolve(r)
         },
       })
-      worker!.postMessage({ type: 'run', id, code })
+      worker!.postMessage({ type: 'run', id, code, stdin: opts.stdin })
     })
   },
 }

@@ -14,7 +14,7 @@ describe('course file (kursuspakke)', () => {
     const pack = parseCoursePack(fixture, 'testkursus.md')
     expect(pack.errors).toEqual([])
     expect(pack.source!.slug).toBe('testkursus')
-    expect(pack.blocks.map((b) => b.kind)).toEqual(['lesson', 'opgaveskabelon', 'lesson'])
+    expect(pack.blocks.map((b) => b.kind)).toEqual(['lesson', 'opgaveskabelon', 'problem', 'lesson'])
     expect(pack.blocks[0].data.video).toBe('T1')
     // the plan keeps the file's line numbers: "## Uge 1" is on the same line in both
     const fileLine = fixture.split('\n').findIndex((l) => l.startsWith('## Uge 1')) + 1
@@ -145,5 +145,42 @@ describe('a course in two languages (same slug, shared progress)', async () => {
     // two files with the same language is an error
     writeFileSync(join(root, 'content/courses/testkursus.da.md'), fixture)
     expect(buildContent({ root, out, quiet: true }).errors.map((e) => e.message)).toEqual([expect.stringMatching(/findes to gange på dansk/)])
+  })
+})
+
+describe('coding problems', async () => {
+  const { checkReference, toolchainAvailable } = await import('../../scripts/lib/judge-local')
+  const { sameOutput } = await import('../../scripts/lib/problems')
+  it('the app gets statement and public tests; hidden tests and the reference go to the judge only', () => {
+    const b = buildCourse(parseCoursePack(fixture, 'testkursus.md').source!, env)
+    expect(b.errors).toEqual([])
+    const p = b.course.problems![0]
+    expect(p).toMatchObject({ id: 'testkursus/tael-sande', languages: ['python', 'c'], hiddenCount: 2, timeLimit: 1, memoryLimit: 64 })
+    const json = JSON.stringify(b.course)
+    expect(json).not.toContain('sand\\nsand\\nsand\\nsand') // a hidden test's input
+    expect(json).not.toMatch(/hiddenTests|skjulte/)
+    expect(json).not.toContain('sum(input().strip()') // reference solution
+    expect(b.serverProblems[0].hiddenTests).toHaveLength(2)
+  })
+  it('explains a broken problem block with its line', () => {
+    const line = fixture.split('\n').indexOf('```problem') + 1
+    const bad = buildCourse(parseCoursePack(fixture.replace('sprog: [python, c]', 'sprog: [python, rust]'), 'x.md').source!, env)
+    expect(bad.errors.map((e) => [e.line, e.message])).toEqual([[line, expect.stringMatching(/Sproget "rust" kan ikke bruges/)]])
+  })
+  it.runIf(toolchainAvailable('python'))('runs the reference solution on all tests at build time', () => {
+    const tests = [
+      { input: '2\nsand\nfalsk\n', output: '1\n' },
+      { input: '1\nsand\n', output: '1' },
+    ]
+    expect(checkReference('python', 'n=int(input())\nprint(sum(input()=="sand" for _ in range(n)))', tests, 1)).toBeNull()
+    expect(checkReference('python', 'print(0)', tests, 1)).toMatch(/andet svar på test 1/)
+  })
+  it.runIf(toolchainAvailable('c'))('compiles C', () => {
+    expect(checkReference('c', '#include <stdio.h>\nint main(){int a,b;scanf("%d %d",&a,&b);printf("%d\\n",a+b);}', [{ input: '2 3', output: '5' }], 1)).toBeNull()
+    expect(checkReference('c', 'int main( {', [{ input: '', output: '' }], 1)).toMatch(/kunne ikke oversættes/)
+  })
+  it('compares output without caring about trailing spaces', () => {
+    expect(sameOutput('2 \n\n', '2')).toBe(true)
+    expect(sameOutput('2\n3', '2\n4')).toBe(false)
   })
 })

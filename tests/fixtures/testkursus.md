@@ -100,6 +100,38 @@ hints: ["Læg tallene sammen."]
 loesning: "${a} + {b} = {s}$"
 ```
 
+```problem
+id: testkursus/tael-sande
+titel: Tæl de sande udsagn
+svaerhed: 1
+emner: [udsagn]
+sprog: [python, c]
+tid: 1
+hukommelse: 64
+opgave: |
+  Første linje er et tal $n$. Derefter følger $n$ linjer med `sand` eller `falsk`.
+  Udskriv, hvor mange af udsagnene der er sande.
+offentlige_tests:
+  - { input: "3\nsand\nfalsk\nsand\n", output: "2\n" }
+skjulte_tests:
+  - { input: "1\nfalsk\n", output: "0\n" }
+  - { input: "4\nsand\nsand\nsand\nsand\n", output: "4\n" }
+reference:
+  sprog: python
+  kode: |
+    n = int(input())
+    print(sum(input().strip() == "sand" for _ in range(n)))
+startkode:
+  python: |
+    n = int(input())
+    # læs n linjer, og tæl dem, der er "sand"
+hints:
+  - Læs én linje ad gangen med `input()`.
+  - Sammenlign hver linje med "sand", og læg 1 til en tæller.
+loesning: |
+  Læs $n$, og gå $n$ linjer igennem. Tæl dem, der er lig med `sand`. Det tager tid proportional med $n$.
+```
+
 ### 🏁 Checkpoint
 
 Du er klar til næste uge, når du kan:
