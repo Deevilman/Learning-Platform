@@ -22,6 +22,8 @@ function correctAnswer(c: AutoCheck): string {
       return c.answers[0]
     case 'output':
       return c.expected
+    case 'expression':
+      return c.expected
   }
 }
 

@@ -34,6 +34,18 @@ describe('course file (kursuspakke)', () => {
     expect(b.weeks[0].exercises[0].prompt).toContain('class="subq"')
   })
 
+  it('runs exercise templates through 200 seeds and reports the block line', () => {
+    const b = buildCourse(parseCoursePack(fixture, 'testkursus.md').source!, env)
+    expect(b.course.templates?.map((t) => [t.id, t.kursus])).toEqual([['testkursus/addition', 'testkursus']])
+    const line = fixture.split('\n').indexOf('```opgaveskabelon') + 1
+    const broken = fixture.replace('loesning: "${a} + {b} = {s}$"', 'loesning: "Læg sammen."').replace('emner: [udsagn]', 'emner: [algebra]')
+    const bb = buildCourse(parseCoursePack(broken, 'x.md').source!, env)
+    expect(bb.errors.map((e) => e.line)).toEqual([line])
+    expect(bb.errors[0].message).toMatch(/Opgaveskabelonen "testkursus\/addition": Seed \d+: løsningen nævner ikke svaret/)
+    const topicOnly = buildCourse(parseCoursePack(fixture.replace('emner: [udsagn]', 'emner: [algebra]'), 'x.md').source!, env)
+    expect(topicOnly.errors[0].message).toMatch(/emnet "algebra" står ikke under "topics"/)
+  })
+
   it('explains mistakes in plain Danish with line numbers', () => {
     const broken = fixture.replace('slug: testkursus', 'slug: Test Kursus').replace('lang: da', 'lang: sv').replace('color: "#0ea5e9"', 'color: blå')
     const pack = parseCoursePack(broken, 'x.md')

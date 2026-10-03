@@ -2,6 +2,31 @@
 // ("0,25", "1.234,5", "12 %"), fractions ("1/3") and simple constants.
 
 import type { AutoCheck } from '@/types/content'
+import { evalExpr, exprVars, parseExpr, ExprError } from './expr'
+
+/** Compare two expressions numerically at fixed pseudo-random points. */
+function checkExpression(check: Extract<AutoCheck, { type: 'expression' }>, answer: string) {
+  let got
+  try {
+    got = parseExpr(answer.replace(/·|×/g, '*').replace(/−/g, '-').replace(/,/g, '.'))
+  } catch (e) {
+    return { correct: false, message: e instanceof ExprError ? `${e.message}.` : 'Udtrykket kunne ikke læses.' }
+  }
+  const unknown = [...exprVars(got)].filter((v) => !check.variables.includes(v))
+  if (unknown.length) return { correct: false, message: `Brug kun ${check.variables.join(', ')} — ikke ${unknown.join(', ')}.` }
+  const want = parseExpr(check.expected)
+  const tol = check.tolerance ?? 1e-6
+  let compared = 0
+  for (let i = 0; i < 12 && compared < 6; i++) {
+    const vars = Object.fromEntries(check.variables.map((v, j) => [v, 0.37 + ((i * 7 + j * 3) % 11) * 0.29]))
+    const a = evalExpr(want, vars)
+    const b = evalExpr(got, vars)
+    if (!isFinite(a)) continue // a point where the expression isn't defined
+    compared++
+    if (!isFinite(b) || Math.abs(a - b) > tol * Math.max(1, Math.abs(a))) return { correct: false, message: `Ikke helt. Et korrekt svar er ${check.expected}.` }
+  }
+  return compared ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: 'Udtrykket kunne ikke tjekkes.' }
+}
 
 /** Parse a number as a Danish or English learner might type it. */
 export function parseNumber(input: string): number | null {
@@ -77,13 +102,18 @@ export function evaluate(check: AutoCheck, answer: string): CheckResult {
     case 'choice': {
       const idx = Number(answer)
       const ok = idx === check.correct
-      return ok ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: `Ikke helt. Det rigtige svar er: ${check.options[check.correct]}` }
+      const why = check.explanations?.[idx]
+      return ok ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: `Ikke helt.${why ? ` ${why}` : ''} Det rigtige svar er: ${check.options[check.correct]}` }
     }
     case 'text': {
       const norm = (s: string) => (check.caseSensitive ? s : s.toLowerCase()).replace(/\s+/g, ' ').trim()
-      const ok = check.answers.some((a) => norm(a) === norm(answer))
+      // a set: the same elements in any order ("{1, 2, 3}" = "3,2,1")
+      const asSet = (s: string) => [...new Set(norm(s).replace(/^[{[(]|[}\])]$/g, '').split(/\s*[,;]\s*/).filter(Boolean))].sort().join(',')
+      const ok = check.answers.some((a) => (check.set ? asSet(a) === asSet(answer) : norm(a) === norm(answer)))
       return ok ? { correct: true, message: 'Rigtigt!' } : { correct: false, message: `Ikke helt. Et korrekt svar er: ${check.answers[0]}` }
     }
+    case 'expression':
+      return checkExpression(check, answer)
     case 'output': {
       const norm = (s: string) => s.replace(/\r/g, '').replace(/[ \t]+$/gm, '').trim()
       const ok = norm(answer) === norm(check.expected)
