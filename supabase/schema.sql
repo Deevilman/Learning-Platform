@@ -122,3 +122,34 @@ create table if not exists public.submissions (
 alter table public.submissions enable row level security;
 drop policy if exists "own submissions" on public.submissions;
 create policy "own submissions" on public.submissions for select using ((select auth.uid()) = user_id);
+
+-- ---------------------------------------------------------------- challenges (CTF)
+-- Flag hashes and write-ups of the site's challenges. Written by the deploy
+-- workflow; no policies, so only the Edge Function "flag" can read them.
+create table if not exists public.challenge_flags (
+  id text primary key,
+  course text not null,
+  data jsonb not null,
+  updated_at timestamptz not null default now()
+);
+alter table public.challenge_flags enable row level security;
+
+-- Flag guesses, for the rate limit (Edge Function only).
+create table if not exists public.flag_attempts (
+  user_id uuid not null references auth.users (id) on delete cascade,
+  challenge_id text not null,
+  ts timestamptz not null default now()
+);
+create index if not exists flag_attempts_user on public.flag_attempts (user_id, challenge_id, ts);
+alter table public.flag_attempts enable row level security;
+
+-- Solved challenges; each learner can read their own.
+create table if not exists public.challenge_solves (
+  user_id uuid not null references auth.users (id) on delete cascade,
+  challenge_id text not null,
+  solved_at timestamptz not null default now(),
+  primary key (user_id, challenge_id)
+);
+alter table public.challenge_solves enable row level security;
+drop policy if exists "own solves" on public.challenge_solves;
+create policy "own solves" on public.challenge_solves for select using ((select auth.uid()) = user_id);

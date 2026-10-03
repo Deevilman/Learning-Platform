@@ -12,6 +12,7 @@ import { parseCoursePack } from './lib/course-pack.ts'
 import { plannedFrom, validateGraph, type GraphNode } from './lib/course-graph.ts'
 import { checkReference, toolchainAvailable } from './lib/judge-local.ts'
 import type { ServerProblem } from './lib/problems.ts'
+import type { ServerChallenge } from './lib/challenges.ts'
 import { validateTemplate, type TemplateDef } from '../src/lib/templates.ts'
 import type { ContentIndex, CourseMeta, ExerciseSummary, SearchDoc } from '../src/types/content.ts'
 
@@ -73,6 +74,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
   const outputs: { path: string; data: unknown }[] = []
   const templates: TemplateDef[] = []
   const serverProblems: ServerProblem[] = []
+  const serverChallenges: ServerChallenge[] = []
 
   // course folders and single course files
   const sources: CourseSource[] = []
@@ -122,6 +124,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       continue
     }
     serverProblems.push(...b.serverProblems)
+    serverChallenges.push(...b.serverChallenges)
     metas.push(b.meta)
     templates.push(...(b.course.templates || []))
     allSummaries.push(...b.summaries)
@@ -191,6 +194,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
     const judgeDir = join(opts.root, '.judge')
     mkdirSync(judgeDir, { recursive: true })
     writeFileSync(join(judgeDir, 'problems.json'), JSON.stringify(serverProblems))
+    writeFileSync(join(judgeDir, 'challenges.json'), JSON.stringify(serverChallenges))
   }
   return report
 }

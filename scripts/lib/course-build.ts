@@ -9,7 +9,8 @@ import { makeChoices, shuffledOptions } from '../../src/lib/choices.ts'
 import { validateTemplate, type TemplateDef } from '../../src/lib/templates.ts'
 import { danishNumbers } from './number-format.ts'
 import { buildProblem, type ServerProblem } from './problems.ts'
-import type { CodeProblem, Flashcard, Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
+import { buildChallenge, type ServerChallenge } from './challenges.ts'
+import type { Challenge, CodeProblem, Flashcard, Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
 
 export interface BuildError {
   file: string
@@ -111,6 +112,8 @@ export interface CourseSource {
   overrides?: Overrides
   videos?: Record<string, any>
   forwardRefs?: ForwardRefs
+  /** ```challenge blocks (line = the opening fence). */
+  challenges?: { line: number; data: unknown }[]
   /** ```problem blocks (line = the opening fence). */
   problems?: { line: number; data: unknown }[]
   /** ```lesson blocks (line = the opening fence). */
@@ -144,6 +147,8 @@ export interface CourseStats {
 export interface CourseBuild {
   /** Hidden tests and reference solutions: for the judge only, never written into the app's data. */
   serverProblems: ServerProblem[]
+  /** Flag hashes and write-ups: for the flag checker only. */
+  serverChallenges: ServerChallenge[]
   meta: CourseMeta
   course: CourseData
   weeks: Week[]
@@ -585,6 +590,20 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     }
     if (problems.length) courseData.problems = problems
 
+    // ---------- challenges: text and hints to the app; flag hash and write-up to the server
+    const challenges: Challenge[] = []
+    const serverChallenges: ServerChallenge[] = []
+    for (const b of src.challenges || []) {
+      const r = buildChallenge(b.data, { course: slug, topics: topicIds, md: (s) => md(s, planFile, b.line) })
+      const id = (b.data as { id?: string })?.id || '(uden id)'
+      for (const e of r.errors) err(planFile, b.line, `Udfordringen "${id}": ${e}`)
+      if (!r.challenge) continue
+      if (challenges.some((c) => c.id === r.challenge!.id)) err(planFile, b.line, `Udfordringen "${id}" findes to gange.`)
+      challenges.push(r.challenge)
+      serverChallenges.push(r.server!)
+    }
+    if (challenges.length) courseData.challenges = challenges
+
     // ---------- number format: the courses use 1,234.5
     const danish = danishNumbers(src.plan)
     for (const d of danish.slice(0, 20)) report.warnings.push(`${planFile}:${d.line}: "${d.text}" ligner dansk talformat (${d.reason.toLowerCase()}). Skriv tal som 1,234.5.`)
@@ -604,5 +623,5 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     }
     if (templates.length) courseData.templates = templates
     const stats: CourseStats = ({ slug, weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing, selftest: nSelf, interview: nInt })
-    return { meta, course: courseData, weeks, sets: setFiles, summaries: allSummaries, search, stats, serverProblems, ...report }
+    return { meta, course: courseData, weeks, sets: setFiles, summaries: allSummaries, search, stats, serverProblems, serverChallenges, ...report }
 }

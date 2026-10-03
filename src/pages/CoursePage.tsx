@@ -179,6 +179,13 @@ export default function CoursePage() {
               </Link>
             </li>
           ))}
+          {course.challenges?.length ? (
+            <li>
+              <Link className="link" to="/udfordringer">
+                {t('ctf.courseLink', { n: course.challenges.length })}
+              </Link>
+            </li>
+          ) : null}
           {course.problems?.length ? (
             <li>
               <Link className="link" to={`/kode?kursus=${slug}`}>

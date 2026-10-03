@@ -99,15 +99,17 @@ export function parseCoursePack(text: string, file: string): CoursePack {
 
   // ---------- body: take out the special blocks, keep line numbers
   const body = lines.map((l, i) => (i <= end ? '' : l))
-  let open: { kind: BlockKind; start: number; fence: string } | null = null
+  let open: { kind: BlockKind; start: number; fence: string; indent: string } | null = null
   for (let i = end + 1; i < body.length; i++) {
     const l = body[i]
     if (!open) {
       const m = /^(\s*)(`{3,}|~{3,})\s*([\w-]+)\s*$/.exec(l)
-      if (m && (BLOCK_KINDS as readonly string[]).includes(m[3])) open = { kind: m[3] as BlockKind, start: i, fence: m[2] }
+      if (m && (BLOCK_KINDS as readonly string[]).includes(m[3])) open = { kind: m[3] as BlockKind, start: i, fence: m[2], indent: m[1] }
       continue
     }
-    if (l.trim() === open.fence || (l.trim().startsWith(open.fence) && /^[`~]+$/.test(l.trim()))) {
+    // the closing fence has the opening fence's indentation, so an indented ``` inside the YAML (a code example) doesn't close it
+    const bare = l.trimEnd()
+    if (bare.startsWith(open.indent) && bare.slice(open.indent.length).startsWith(open.fence) && /^[`~]+$/.test(bare.slice(open.indent.length))) {
       const yamlText = body.slice(open.start + 1, i).join('\n')
       try {
         blocks.push({ kind: open.kind, line: open.start + 1, data: YAML.parse(yamlText) })
@@ -138,6 +140,7 @@ export function parseCoursePack(text: string, file: string): CoursePack {
       forwardRefs: fm.forward_refs || {},
       lessons: blocks.filter((b) => b.kind === 'lesson').map((b) => ({ line: b.line, data: b.data })),
       problems: blocks.filter((b) => b.kind === 'problem').map((b) => ({ line: b.line, data: b.data })),
+      challenges: blocks.filter((b) => b.kind === 'challenge').map((b) => ({ line: b.line, data: b.data })),
       templates: blocks.filter((b) => b.kind === 'opgaveskabelon').map((b) => ({ line: b.line, data: b.data })),
       files: { meta: file, plan: file, overrides: file, videos: file, forwardRefs: file },
     },
