@@ -4,8 +4,10 @@ import { useAsync } from '@/lib/useAsync'
 import { Html } from '@/components/Html'
 import { ExerciseCard, fromBank } from '@/components/ExerciseCard'
 import { Crumbs, ErrorBox, Loading, useTrackPosition } from '@/components/ui'
+import { useT } from '@/i18n'
 
 export default function SetPage() {
+  const t = useT()
   const { slug = '', set = '' } = useParams()
   const { data, error } = useAsync(async () => ({ course: await loadCourse(slug), set: await loadSet(slug, set) }), [slug, set])
   const title = data?.set.title.replace(/^[^\p{L}]+/u, '') || ''
@@ -19,7 +21,7 @@ export default function SetPage() {
       {data.set.introHtml && <Html html={data.set.introHtml} className="card" />}
       {data.set.exercises.map((e) => (
         <div key={e.id} id={`q-${e.number}`}>
-          <ExerciseCard ex={fromBank(e)} heading={`Spørgsmål ${e.number}`} />
+          <ExerciseCard ex={fromBank(e)} heading={t('set.question', { n: e.number })} />
         </div>
       ))}
     </div>

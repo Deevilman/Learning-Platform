@@ -1,3 +1,4 @@
+import { formatNumber } from '@/lib/format'
 import { Link } from 'react-router-dom'
 import { loadCourse, loadIndex } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
@@ -7,6 +8,7 @@ import { computeMastery } from '@/lib/mastery'
 import { DAY } from '@/lib/srs'
 import { generators } from '@/lib/generators'
 import { CourseDot, ErrorBox, Loading, Progress } from '@/components/ui'
+import { useT } from '@/i18n'
 
 function startOfWeek(now: number) {
   const d = new Date(now)
@@ -16,6 +18,7 @@ function startOfWeek(now: number) {
 }
 
 export default function StatsPage() {
+  const t = useT()
   const { data, error } = useAsync(async () => {
     const idx = await loadIndex()
     return { idx, courses: await Promise.all(idx.courses.map((c) => loadCourse(c.slug))) }
@@ -32,10 +35,10 @@ export default function StatsPage() {
   const checkMap = new Map(checks.map((c) => [c.id, c.value]))
   const weekAttempts = attempts.filter((a) => a.ts >= weekStart)
   const stats = [
-    { label: 'videoer set', value: checks.filter((c) => c.value && c.id.startsWith('video:') && c.updatedAt >= weekStart).length },
-    { label: 'opgaver lavet', value: new Set(weekAttempts.map((a) => a.exerciseId)).size },
-    { label: 'rigtige svar', value: weekAttempts.filter((a) => a.score >= 0.66).length },
-    { label: 'timer (logbog)', value: (logbook.filter((l) => new Date(l.date).getTime() >= weekStart - DAY / 2).reduce((s, l) => s + (l.minutes || 0), 0) / 60).toLocaleString('da-DK', { maximumFractionDigits: 1 }) },
+    { label: t('stats.videos'), value: checks.filter((c) => c.value && c.id.startsWith('video:') && c.updatedAt >= weekStart).length },
+    { label: t('stats.exercises'), value: new Set(weekAttempts.map((a) => a.exerciseId)).size },
+    { label: t('stats.right'), value: weekAttempts.filter((a) => a.score >= 0.66).length },
+    { label: t('stats.hours'), value: formatNumber((logbook.filter((l) => new Date(l.date).getTime() >= weekStart - DAY / 2).reduce((s, l) => s + (l.minutes || 0), 0) / 60), { decimals: 1 }) },
   ]
   const exTitle = new Set([...data.idx.exercises.map((e) => e.id), ...generators.map((g) => `gen:${g.id}`)])
   const due = srs.filter((c) => c.due <= now && exTitle.has(c.id)).sort((a, b) => a.due - b.due)
@@ -43,10 +46,10 @@ export default function StatsPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <h1 className="page-title">Statistik</h1>
+      <h1 className="page-title">{t('nav.stats')}</h1>
 
       <section className="card space-y-3">
-        <h2 className="section-title">Denne uge</h2>
+        <h2 className="section-title">{t('stats.thisWeek')}</h2>
         <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="stat">
@@ -58,14 +61,14 @@ export default function StatsPage() {
       </section>
 
       <section className="card space-y-3">
-        <h2 className="section-title">Repetition</h2>
+        <h2 className="section-title">{t('train.reviewTag')}</h2>
         <p>
-          {due.length ? `${due.length} opgaver er klar til repetition i dag` : 'Ingen opgaver venter på repetition i dag.'}
-          {upcoming > 0 && <span className="muted"> · {upcoming} mere i løbet af ugen</span>}
+          {due.length ? t('stats.due', { n: due.length }) : t('stats.noneDue')}
+          {upcoming > 0 && <span className="muted"> · {t('stats.upcoming', { n: upcoming })}</span>}
         </p>
         {due.length > 0 && (
           <Link className="btn btn-primary" to="/traen?tilstand=gennemgang">
-            Start repetition
+            {t('stats.startReview')}
           </Link>
         )}
       </section>
@@ -80,23 +83,23 @@ export default function StatsPage() {
             </h2>
             <div className="space-y-1">
               <div className="muted flex justify-between text-sm">
-                <span>Uger gennemført</span>
+                <span>{t('courses.weeksDone')}</span>
                 <span>
-                  {done} af {c.weeks.length}
+                  {t('placement.of', { n: done, total: c.weeks.length })}
                 </span>
               </div>
-              <Progress value={done} max={c.weeks.length} color={c.meta.color} label={`Uger gennemført i ${c.meta.title}`} />
+              <Progress value={done} max={c.weeks.length} color={c.meta.color} label={t('stats.weeksIn', { title: c.meta.title })} />
             </div>
             <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
-              {c.meta.topics.map((t) => {
-                const m = computeMastery(ca.filter((a) => a.topics.includes(t.id)), now)
+              {c.meta.topics.map((tp) => {
+                const m = computeMastery(ca.filter((a) => a.topics.includes(tp.id)), now)
                 return (
-                  <li key={t.id}>
+                  <li key={tp.id}>
                     <div className="flex justify-between text-sm">
-                      <span>{t.name}</span>
-                      <span className="muted">{m.attempts ? `${Math.round(m.mastery * 100)} %` : '–'}</span>
+                      <span>{tp.name}</span>
+                      <span className="muted">{m.attempts ? `${Math.round(m.mastery * 100)}%` : '–'}</span>
                     </div>
-                    <Progress value={Math.round(m.mastery * 100)} max={100} color={c.meta.color} label={`Mestring: ${t.name}`} />
+                    <Progress value={Math.round(m.mastery * 100)} max={100} color={c.meta.color} label={t('stats.mastery', { name: tp.name })} />
                   </li>
                 )
               })}

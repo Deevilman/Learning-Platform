@@ -45,4 +45,5 @@ export function scoreToRating(score: number): Rating {
 }
 
 export const RATING_SCORE: Record<Rating, number> = { 0: 0, 1: 0.33, 2: 0.66, 3: 1 }
-export const RATING_LABEL: Record<Rating, string> = { 0: 'Kunne ikke', 1: 'Delvist', 2: 'Kunne med hint', 3: 'Kunne' }
+/** i18n keys for the self ratings. */
+export const RATING_LABEL = { 0: 'rating.0', 1: 'rating.1', 2: 'rating.2', 3: 'rating.3' } as const satisfies Record<Rating, string>

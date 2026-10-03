@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from '@/lib/store'
+import { useLang, useT } from '@/i18n'
 
 export function Crumbs({ items }: { items: { to?: string; label: string }[] }) {
+  const t = useT()
   return (
-    <nav aria-label="Brødkrummer" className="muted mb-3 flex flex-wrap items-center gap-1 text-sm">
+    <nav aria-label={t('app.crumbs')} className="muted mb-3 flex flex-wrap items-center gap-1 text-sm">
       {items.map((it, i) => (
         <span key={i} className="flex items-center gap-1">
           {i > 0 && <span aria-hidden>›</span>}
@@ -21,14 +23,17 @@ export function Crumbs({ items }: { items: { to?: string; label: string }[] }) {
   )
 }
 
-export function Loading({ what = 'indhold' }: { what?: string }) {
-  return <p className="muted">Indlæser {what}…</p>
+/** `what` is kept for call sites; the text is the same everywhere. */
+export function Loading(_: { what?: string }) {
+  const t = useT()
+  return <p className="muted">{t('app.loading')}</p>
 }
 
 export function ErrorBox({ error }: { error: Error }) {
+  const t = useT()
   return (
     <div className="card" style={{ borderColor: 'var(--bad)' }}>
-      <b>Noget gik galt.</b> <span className="muted">{error.message}</span>
+      <b>{t('app.error')}</b> <span className="muted">{error.message}</span>
     </div>
   )
 }
@@ -69,3 +74,11 @@ export function CourseDot({ color }: { color: string }) {
 
 /** Wrapper style that gives a page its course's accent colour (see .course-theme). */
 export const courseStyle = (color?: string): React.CSSProperties => (color ? ({ '--course': color } as React.CSSProperties) : {})
+
+/** "This course is only available in Danish" when the course isn't in the learner's language. */
+export function OnlyInNote({ meta }: { meta: { lang: 'da' | 'en' } }) {
+  const t = useT()
+  const [lang] = useLang()
+  if (meta.lang === lang) return null
+  return <p className="muted text-sm">{t(meta.lang === 'da' ? 'course.onlyDa' : 'course.onlyEn')}</p>
+}

@@ -9,21 +9,15 @@ import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { DailyGoalSettings } from '@/components/DailyGoal'
 import { loadCourse, loadIndex, loadWeek } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
+import { dateLocale, LANGS, useLang, useT } from '@/i18n'
 
 export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      <h1 className="page-title">Indstillinger</h1>
+      <SettingsTitle />
+      <LanguageSection />
       <ThemeSection />
-      <section className="card space-y-2">
-        <h2 className="section-title">Opgaver</h2>
-        <AnswerPrefPicker />
-        <p className="muted text-sm">Gælder i Træn og i ugernes øvelser. "Blandet" skifter mellem at vælge et svar og at skrive det selv.</p>
-      </section>
-      <section className="card space-y-2">
-        <h2 className="section-title">Dagligt mål</h2>
-        <DailyGoalSettings />
-      </section>
+      <ExerciseSection />
       <SyncSection />
       <BackupSection />
       <MissingVideos />
@@ -32,15 +26,56 @@ export default function SettingsPage() {
   )
 }
 
+function ExerciseSection() {
+  const t = useT()
+  return (
+    <>
+      <section className="card space-y-2">
+        <h2 className="section-title">{t('settings.exercises')}</h2>
+        <AnswerPrefPicker />
+        <p className="muted text-sm">{t('settings.exercisesIntro')}</p>
+      </section>
+      <section className="card space-y-2">
+        <h2 className="section-title">{t('settings.dailyGoal')}</h2>
+        <DailyGoalSettings />
+      </section>
+    </>
+  )
+}
+
+function SettingsTitle() {
+  const t = useT()
+  return <h1 className="page-title">{t('nav.settings')}</h1>
+}
+
+function LanguageSection() {
+  const t = useT()
+  const [lang, setLang] = useLang()
+  return (
+    <section className="card space-y-2">
+      <h2 className="section-title">{t('lang.label')}</h2>
+      <div className="flex gap-2" role="radiogroup" aria-label={t('lang.label')}>
+        {LANGS.map((l) => (
+          <button key={l} role="radio" lang={l} aria-checked={lang === l} className="btn" style={lang === l ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : undefined} onClick={() => setLang(l)}>
+            {t(l === 'da' ? 'lang.da' : 'lang.en')}
+          </button>
+        ))}
+      </div>
+      <p className="muted text-sm">{t('lang.intro')}</p>
+    </section>
+  )
+}
+
 function ThemeSection() {
+  const t = useT()
   const [pref, setPref] = useTheme()
   return (
     <section className="card space-y-2">
-      <h2 className="section-title">Udseende</h2>
-      <div className="flex gap-2" role="radiogroup" aria-label="Tema">
-        {(['system', 'light', 'dark'] as ThemePref[]).map((t) => (
-          <button key={t} role="radio" aria-checked={pref === t} className="btn" style={pref === t ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : undefined} onClick={() => setPref(t)}>
-            {t === 'system' ? 'Følg systemet' : t === 'light' ? 'Lys' : 'Mørk'}
+      <h2 className="section-title">{t('settings.look')}</h2>
+      <div className="flex gap-2" role="radiogroup" aria-label={t('settings.theme')}>
+        {(['system', 'light', 'dark'] as ThemePref[]).map((p) => (
+          <button key={p} role="radio" aria-checked={pref === p} className="btn" style={pref === p ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : undefined} onClick={() => setPref(p)}>
+            {p === 'system' ? t('settings.themeSystem') : p === 'light' ? t('settings.themeLight') : t('settings.themeDark')}
           </button>
         ))}
       </div>
@@ -50,6 +85,8 @@ function ThemeSection() {
 
 function SyncSection() {
   const store = useStore()
+  const t = useT()
+  const [lang] = useLang()
   const [email, setEmail] = useState<string | null | undefined>(undefined)
   const [form, setForm] = useState({ email: '', password: '' })
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
@@ -78,44 +115,42 @@ function SyncSection() {
 
   return (
     <section className="card space-y-3">
-      <h2 className="section-title">Brug Læring på flere enheder</h2>
-      <p className="muted text-sm">
-        Dine fremskridt gemmes altid på denne enhed. Logger du ind, kan du også fortsætte på din telefon eller en anden computer.
-      </p>
+      <h2 className="section-title">{t('sync.title')}</h2>
+      <p className="muted text-sm">{t('sync.intro')}</p>
       {email === undefined ? (
-        <p className="muted text-sm">Tjekker login…</p>
+        <p className="muted text-sm">{t('sync.checking')}</p>
       ) : email ? (
         <div className="space-y-3">
           <p className="text-sm">
-            Logget ind som <b>{email}</b>.{' '}
-            {last ? `Senest opdateret ${new Date(last).toLocaleString('da-DK', { dateStyle: 'short', timeStyle: 'short' })}.` : 'Ikke opdateret endnu.'}
+            {t('sync.loggedInAs')} <b>{email}</b>.{' '}
+            {last ? t('sync.lastUpdated', { when: new Date(last).toLocaleString(dateLocale(lang), { dateStyle: 'short', timeStyle: 'short' }) }) : t('sync.notYet')}
           </p>
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={auto} onChange={(e) => setAuto(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
-            Hold mine enheder opdateret automatisk
+            {t('sync.auto')}
           </label>
           <div className="flex flex-wrap gap-2">
             <button className="btn btn-primary" disabled={busy} onClick={() => run(async () => {
               const r = await syncNow(store)
               await syncCourses().catch(() => null)
-              return r.pushed + r.pulled ? 'Dine enheder er opdateret.' : 'Alt var allerede opdateret.'
+              return r.pushed + r.pulled ? t('sync.updated') : t('sync.upToDate')
             })}>
-              {busy ? 'Opdaterer…' : 'Opdatér nu'}
+              {busy ? t('sync.updating') : t('sync.updateNow')}
             </button>
-            <button className="btn" disabled={busy} onClick={() => run(async () => (await signOut(), 'Du er logget ud. Dine fremskridt på denne enhed er bevaret.'))}>
-              Log ud
+            <button className="btn" disabled={busy} onClick={() => run(async () => (await signOut(), t('sync.loggedOut')))}>
+              {t('sync.logOut')}
             </button>
           </div>
         </div>
       ) : (
-        <form className="space-y-2" onSubmit={(e) => (e.preventDefault(), run(async () => (await signIn(form.email, form.password), 'Du er logget ind.')))}>
+        <form className="space-y-2" onSubmit={(e) => (e.preventDefault(), run(async () => (await signIn(form.email, form.password), t('sync.loggedIn'))))}>
           <div className="grid gap-2 sm:grid-cols-2">
-            <input className="input" type="email" autoComplete="email" placeholder="E-mail" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required aria-label="E-mail" />
-            <input className="input" type="password" autoComplete="current-password" placeholder="Adgangskode (mindst 6 tegn)" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required minLength={6} aria-label="Adgangskode" />
+            <input className="input" type="email" autoComplete="email" placeholder={t('sync.email')} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required aria-label={t('sync.email')} />
+            <input className="input" type="password" autoComplete="current-password" placeholder={t('sync.passwordHint')} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required minLength={6} aria-label={t('sync.password')} />
           </div>
           <div className="flex flex-wrap gap-2">
             <button className="btn btn-primary" type="submit" disabled={busy}>
-              Log ind
+              {t('sync.logIn')}
             </button>
             <button
               className="btn"
@@ -124,11 +159,11 @@ function SyncSection() {
               onClick={() =>
                 run(async () => {
                   const r = await signUp(form.email, form.password)
-                  return r.needsConfirmation ? 'Konto oprettet. Bekræft din e-mail via linket i mailen, og log så ind her.' : 'Konto oprettet og logget ind.'
+                  return r.needsConfirmation ? t('sync.createdConfirm') : t('sync.created')
                 })
               }
             >
-              Opret konto
+              {t('sync.createAccount')}
             </button>
           </div>
         </form>
@@ -180,15 +215,14 @@ export function AutoSync() {
 
 function BackupSection() {
   const store = useStore()
+  const t = useT()
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
   const [mode, setMode] = useState<'merge' | 'replace'>('merge')
   const fileRef = useRef<HTMLInputElement>(null)
   return (
     <section className="card space-y-3">
-      <h2 className="section-title">Sikkerhedskopi</h2>
-      <p className="muted text-sm">
-        Gem alle dine fremskridt i en fil — svar, noter, sete videoer, logbog og indstillinger. Du kan hente filen ind igen senere eller på en anden enhed.
-      </p>
+      <h2 className="section-title">{t('backup.title')}</h2>
+      <p className="muted text-sm">{t('backup.intro')}</p>
       <div className="flex flex-wrap items-center gap-2">
         <button
           className="btn btn-primary"
@@ -202,14 +236,14 @@ function BackupSection() {
             setTimeout(() => URL.revokeObjectURL(a.href), 1000)
           }}
         >
-          Gem sikkerhedskopi
+          {t('backup.save')}
         </button>
-        <select className="input w-auto" value={mode} onChange={(e) => setMode(e.target.value as 'merge' | 'replace')} aria-label="Når du henter en kopi">
-          <option value="merge">Læg sammen med det, der er her</option>
-          <option value="replace">Erstat det, der er her</option>
+        <select className="input w-auto" value={mode} onChange={(e) => setMode(e.target.value as 'merge' | 'replace')} aria-label={t('backup.modeLabel')}>
+          <option value="merge">{t('backup.merge')}</option>
+          <option value="replace">{t('backup.replace')}</option>
         </select>
         <button className="btn" onClick={() => fileRef.current?.click()}>
-          Hent sikkerhedskopi…
+          {t('backup.load')}
         </button>
         <input
           ref={fileRef}
@@ -222,10 +256,10 @@ function BackupSection() {
             if (!f) return
             try {
               const data = JSON.parse(await f.text())
-              if (!validateExport(data)) throw new Error('Filen er ikke en sikkerhedskopi fra Læring.')
-              if (mode === 'replace' && !confirm('Erstat alle dine fremskridt på denne enhed med indholdet af filen?')) return
+              if (!validateExport(data)) throw new Error(t('backup.notBackup'))
+              if (mode === 'replace' && !confirm(t('backup.confirmReplace'))) return
               const n = await importAll(store, data, mode)
-              setMsg({ ok: true, text: `Sikkerhedskopien er hentet (${n} ting).` })
+              setMsg({ ok: true, text: t('backup.loaded', { n }) })
             } catch (err) {
               setMsg({ ok: false, text: (err as Error).message })
             }
@@ -242,6 +276,7 @@ function BackupSection() {
 }
 
 function MissingVideos() {
+  const t = useT()
   const overrides = useTable('videoIds')
   const { data } = useAsync(async () => {
     const idx = await loadIndex()
@@ -263,14 +298,14 @@ function MissingVideos() {
   const missing = (data || []).filter((m) => !filled.has(`${m.course}/${m.item}/${m.index}`))
   return (
     <section className="card space-y-2">
-      <h2 className="section-title">Videoer, vi mangler ({data ? missing.length : '…'})</h2>
-      <p className="muted text-sm">Finder du en af dem på YouTube, kan du indsætte linket direkte på ugens side.</p>
+      <h2 className="section-title">{t('missing.title', { n: data ? missing.length : '…' })}</h2>
+      <p className="muted text-sm">{t('missing.intro')}</p>
       {missing.length > 0 && (
         <ul className="max-h-72 space-y-1 overflow-auto text-sm">
           {missing.map((m) => (
             <li key={`${m.course}/${m.item}/${m.index}`}>
               <Link className="link" to={`/kursus/${m.course}/uge/${m.week}#video-${m.item}`}>
-                {m.title} · uge {m.week}
+                {m.title} · {t('missing.week', { n: m.week })}
               </Link>
               : {m.label}
             </li>
@@ -283,12 +318,13 @@ function MissingVideos() {
 
 function DangerSection() {
   const store = useStore()
+  const t = useT()
   return (
     <section className="card space-y-2" style={{ borderColor: 'var(--bad)' }}>
-      <h2 className="section-title">Nulstil</h2>
-      <p className="muted text-sm">Sletter alle dine fremskridt på denne enhed. Gem en sikkerhedskopi først, hvis du vil kunne fortryde.</p>
-      <button className="btn" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }} onClick={() => confirm('Slet alle dine fremskridt på denne enhed? Det kan ikke fortrydes.') && store.clear()}>
-        Slet alle fremskridt
+      <h2 className="section-title">{t('reset.title')}</h2>
+      <p className="muted text-sm">{t('reset.intro')}</p>
+      <button className="btn" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }} onClick={() => confirm(t('reset.confirm')) && store.clear()}>
+        {t('reset.button')}
       </button>
     </section>
   )

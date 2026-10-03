@@ -3,16 +3,18 @@ import { loadCourse, loadWeek } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 import { ExerciseCard, fromBank } from '@/components/ExerciseCard'
 import { Crumbs, ErrorBox, Loading, useTrackPosition } from '@/components/ui'
+import { useT } from '@/i18n'
 
 export default function ExercisePage() {
+  const t = useT()
   const { slug = '', week = '1', num = '' } = useParams()
   const n = Number(week)
   const { data, error } = useAsync(async () => ({ course: await loadCourse(slug), week: await loadWeek(slug, n) }), [slug, n])
   const ex = data?.week.exercises.find((e) => e.number === num)
-  useTrackPosition(data && ex ? { path: `/kursus/${slug}/uge/${n}/opgave/${num}`, label: `${data.course.meta.title} · Øvelse ${num}`, course: slug, week: n } : null)
+  useTrackPosition(data && ex ? { path: `/kursus/${slug}/uge/${n}/opgave/${num}`, label: `${data.course.meta.title} · ${t('exercise.title', { n: num })}`, course: slug, week: n } : null)
   if (error) return <ErrorBox error={error} />
   if (!data) return <Loading what="øvelse" />
-  if (!ex) return <p>Øvelsen {num} findes ikke i uge {n}.</p>
+  if (!ex) return <p>{t('exercise.notFound', { n: num, week: n })}</p>
   const i = data.week.exercises.indexOf(ex)
   const prev = data.week.exercises[i - 1]
   const next = data.week.exercises[i + 1]
@@ -21,8 +23,8 @@ export default function ExercisePage() {
       <Crumbs
         items={[
           { to: `/kursus/${slug}`, label: data.course.meta.title },
-          { to: `/kursus/${slug}/uge/${n}`, label: `Uge ${n}` },
-          { label: `Øvelse ${num}` },
+          { to: `/kursus/${slug}/uge/${n}`, label: t('crumb.week', { n }) },
+          { label: t('exercise.title', { n: num }) },
         ]}
       />
       <ExerciseCard ex={fromBank(ex)} />
@@ -36,11 +38,11 @@ export default function ExercisePage() {
         )}
         {next ? (
           <Link className="btn btn-primary" to={`/kursus/${slug}/uge/${n}/opgave/${next.number}`}>
-            Øvelse {next.number} →
+            {t('exercise.next', { n: next.number })}
           </Link>
         ) : (
           <Link className="btn btn-primary" to={`/kursus/${slug}/uge/${n}`}>
-            Tilbage til ugen
+            {t('exercise.backToWeek')}
           </Link>
         )}
       </nav>

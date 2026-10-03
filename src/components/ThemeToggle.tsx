@@ -27,14 +27,3 @@ export function useTheme(): [ThemePref, (t: ThemePref) => void] {
   return [pref, setPref]
 }
 
-const NEXT: Record<ThemePref, ThemePref> = { system: 'light', light: 'dark', dark: 'system' }
-const LABEL: Record<ThemePref, string> = { system: '◐ Auto', light: '☀ Lys', dark: '☾ Mørk' }
-
-export function ThemeToggle() {
-  const [pref, setPref] = useTheme()
-  return (
-    <button className="btn" onClick={() => setPref(NEXT[pref])} title="Skift tema (auto → lys → mørk)" aria-label={`Tema: ${LABEL[pref]}. Klik for at skifte.`}>
-      {LABEL[pref]}
-    </button>
-  )
-}

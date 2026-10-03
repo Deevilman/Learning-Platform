@@ -9,6 +9,7 @@ export default defineConfig({
   timeout: 90_000,
   retries: 0,
   use: {
+    locale: 'da-DK',
     baseURL: 'http://localhost:4174',
     launchOptions: existsSync(local) ? { executablePath: local } : {},
   },

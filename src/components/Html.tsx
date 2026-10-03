@@ -7,6 +7,8 @@ import { createRoot, type Root } from 'react-dom/client'
 import { interactiveLoaders } from '@/lib/interactives'
 import { hasRunner, externalPlayground } from '@/lib/runners'
 import { CodeRunPanel } from './CodeRunPanel'
+import { useT } from '@/i18n'
+import { tr } from '@/i18n/translate'
 
 let mermaidReady: Promise<typeof import('mermaid').default> | null = null
 let mermaidCount = 0
@@ -24,7 +26,7 @@ function lazyInteractive(id: string) {
   let c = lazyCache.get(id)
   if (!c) {
     const loader = interactiveLoaders.get(id)
-    c = lazy(async () => (loader ? loader() : { default: () => createElement('div', { className: 'chip' }, `Værktøjet kunne ikke vises.`) }))
+    c = lazy(async () => (loader ? loader() : { default: () => createElement('div', { className: 'chip' }, tr('tool.failed')) }))
     lazyCache.set(id, c)
   }
   return c
@@ -33,7 +35,7 @@ function lazyInteractive(id: string) {
 function InteractiveHost({ id, props }: { id: string; props: Record<string, string> }) {
   const C = lazyInteractive(id)
   return (
-    <Suspense fallback={<div className="widget muted text-sm">Henter værktøjet…</div>}>
+    <Suspense fallback={<div className="widget muted text-sm">{tr('tool.loading')}</div>}>
       <C props={props} />
     </Suspense>
   )
@@ -113,6 +115,7 @@ export function Html({ html, className = '' }: { html: string; className?: strin
 }
 
 function CodeTools({ lang, code, prelude }: { lang: string; code: string; prelude: string }) {
+  const t = useT()
   const [run, setRun] = useState(0)
   const [withPrelude, setWithPrelude] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -121,15 +124,15 @@ function CodeTools({ lang, code, prelude }: { lang: string; code: string; prelud
   return (
     <div>
       <div className="code-tools">
-        {runnable && <button onClick={() => (setWithPrelude(false), setRun((n) => n + 1))}>▶ Kør i browseren</button>}
+        {runnable && <button onClick={() => (setWithPrelude(false), setRun((n) => n + 1))}>{t('code.run')}</button>}
         {runnable && prelude && (
-          <button onClick={() => (setWithPrelude(true), setRun((n) => n + 1))} title="Kør også koden ovenfor først (den bygger videre på den)">
-            ▶ Kør med koden ovenfor
+          <button onClick={() => (setWithPrelude(true), setRun((n) => n + 1))} title={t('code.withAboveTitle')}>
+            {t('code.withAbove')}
           </button>
         )}
         {playground && (
           <a href={playground.url} target="_blank" rel="noopener noreferrer">
-            {playground.label} ↗
+            {t(playground.label)} ↗
           </a>
         )}
         <button
@@ -140,7 +143,7 @@ function CodeTools({ lang, code, prelude }: { lang: string; code: string; prelud
             })
           }}
         >
-          {copied ? 'Kopieret ✓' : 'Kopiér'}
+          {copied ? t('code.copied') : t('code.copy')}
         </button>
       </div>
       {run > 0 && <CodeRunPanel key={run} lang={lang} code={withPrelude ? `${prelude}\n\n${code}` : code} />}

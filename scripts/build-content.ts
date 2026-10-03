@@ -79,22 +79,44 @@ export function buildContent(opts: BuildOptions): BuildReport {
       const pack = parseCoursePack(readFileSync(join(coursesDir, d.name), 'utf8'), file)
       for (const e of pack.errors) report.errors.push(e)
       if (pack.source) {
-        if (pack.source.slug !== d.name.replace(/\.md$/, '')) report.errors.push({ file, line: 1, message: `slug "${pack.source.slug}" matcher ikke filnavnet "${d.name}"` })
-        sources.push(pack.source)
+        // <slug>.md, or <slug>.<lang>.md for another language version of the same course
+        const m = /^(.+?)(?:\.(da|en))?\.md$/.exec(d.name)!
+        if (pack.source.slug !== m[1]) report.errors.push({ file, line: 1, message: `slug "${pack.source.slug}" matcher ikke filnavnet "${d.name}"` })
+        if (m[2] && m[2] !== pack.source.meta?.lang) report.errors.push({ file, line: 1, message: `filnavnet "${d.name}" siger sproget "${m[2]}", men "lang" er "${pack.source.meta?.lang}"` })
+        sources.push(m[2] ? { ...pack.source, version: true } : pack.source)
       }
     }
   }
   const seen = new Set<string>()
+  // the main version of each course first, then its language versions
+  sources.sort((a, b) => Number(!!a.version) - Number(!!b.version))
   for (const src of sources) {
-    if (seen.has(src.slug)) report.errors.push({ file: src.files.meta, line: 0, message: `kurset "${src.slug}" findes to gange (mappe og kursusfil?)` })
-    seen.add(src.slug)
+    const lang = src.meta?.lang === 'en' ? 'en' : 'da'
+    const main = metas.find((m) => m.slug === src.slug)
+    if (seen.has(`${src.slug}/${lang}`) || (!src.version && main)) {
+      report.errors.push({ file: src.files.meta, line: 0, message: `kurset "${src.slug}" findes to gange på ${lang === 'en' ? 'engelsk' : 'dansk'}` })
+      continue
+    }
+    if (src.version && !main) {
+      report.errors.push({ file: src.files.meta, line: 0, message: `"${src.files.meta}" er en sprogudgave, men hovedfilen ${src.slug}.md findes ikke` })
+      continue
+    }
+    seen.add(`${src.slug}/${lang}`)
     const b = buildCourse(src, env)
     report.errors.push(...b.errors)
     report.warnings.push(...b.warnings)
     if (b.forwardRefsRemoved) report.forwardRefsRemoved = (report.forwardRefsRemoved || 0) + b.forwardRefsRemoved
-    for (const w of b.weeks) outputs.push({ path: `courses/${src.slug}/week-${w.number}.json`, data: w })
-    for (const s of b.sets) outputs.push({ path: `courses/${src.slug}/set-${s.slug}.json`, data: s })
-    outputs.push({ path: `courses/${src.slug}.json`, data: b.course })
+    // a language version lives next to the main one: courses/<slug>.<lang>.json and courses/<slug>.<lang>/…
+    const base = src.version ? `courses/${src.slug}.${lang}` : `courses/${src.slug}`
+    for (const w of b.weeks) outputs.push({ path: `${base}/week-${w.number}.json`, data: w })
+    for (const s of b.sets) outputs.push({ path: `${base}/set-${s.slug}.json`, data: s })
+    outputs.push({ path: `${base}.json`, data: b.course })
+    if (src.version) {
+      main!.langs = [...(main!.langs || [main!.lang]), lang]
+      const mainWeeks = outputs.filter((o) => o.path.startsWith(`courses/${src.slug}/week-`)).length
+      if (mainWeeks !== b.weeks.length) report.warnings.push(`${src.files.meta}: ${b.weeks.length} uger, men hovedudgaven har ${mainWeeks}; fremskridt deles uge for uge`)
+      continue
+    }
     metas.push(b.meta)
     templates.push(...(b.course.templates || []))
     allSummaries.push(...b.summaries)

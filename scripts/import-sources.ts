@@ -8,6 +8,9 @@ import { join } from 'node:path'
 import YAML from 'yaml'
 import { readPack, writePack } from './lib/pack-file.ts'
 import { parsePlan, type RawPlan } from './lib/plan-parser.ts'
+import { convertNumbers, type NumberReview } from './lib/number-format.ts'
+import type { PackFile } from './lib/pack-file.ts'
+import { writeFileSync } from 'node:fs'
 
 const ROOT = join(import.meta.dirname, '..')
 const SRC = join(ROOT, 'content/source')
@@ -196,9 +199,56 @@ function buildVideos(plan: RawPlan, entries: HandoffEntry[], existing: VideosFil
   return { file, report }
 }
 
+/**
+ * Danish → US number format: the plan (Danish, from the source) and the text
+ * in "overrides" and "forward_refs" (already US once converted). Returns the
+ * plan to write and what a person should look at.
+ */
+export function convertPackNumbers(p: PackFile, plan: string): { plan: string; review: NumberReview[] } {
+  const fmText = p.fm.toString({ lineWidth: 0, indentSeq: false }).trimEnd()
+  const headerLines = `---\n${fmText}\n---`.split('\n').length
+  const body = convertNumbers(`\n${plan}`, 'migrate')
+  const review = body.review.map((r) => ({ ...r, line: headerLines + r.line - 1 }))
+  for (const key of ['overrides', 'forward_refs']) {
+    const node = p.fm.get(key, true)
+    if (node)
+      YAML.visit(node as YAML.Node, {
+        Scalar(_k, s) {
+          if (typeof s.value !== 'string' || !/\d/.test(s.value)) return
+          const r = convertNumbers(s.value, 'us')
+          const line = s.range ? fmText.slice(0, s.range[0]).split('\n').length + 1 : 0
+          review.push(...r.review.map((x) => ({ ...x, line: line + x.line - 1 })))
+          if (r.changes) s.value = r.text
+        },
+      })
+  }
+  return { plan: body.text.slice(1), review }
+}
+
+function writeNumberReview(items: { file: string; review: NumberReview[] }[]) {
+  const total = items.reduce((n, i) => n + i.review.length, 0)
+  const lines = [
+    '# Tal, der skal tjekkes',
+    '',
+    'Kurserne bruger amerikansk talformat: punktum som decimaltegn (0.25) og komma mellem tusinder (1,000). `npm run import` retter de sikre tilfælde, når planerne hentes ind. Tallene herunder kan betyde to ting, så de står uændret. Ret dem i planen i `content/source/` (eller lad dem stå, hvis de er rigtige), og kør `npm run import` igen.',
+    '',
+    total ? `${total} steder:` : 'Ingen steder — alt er rettet.',
+    '',
+  ]
+  for (const { file, review } of items) {
+    if (!review.length) continue
+    lines.push(`## ${file}`, '', '| Linje | Tal | Hvorfor | Sammenhæng |', '|---:|---|---|---|')
+    for (const r of [...review].sort((a, b) => a.line - b.line)) lines.push(`| ${r.line} | \`${r.text}\` | ${r.reason} | ${r.context.replace(/\|/g, '\\|')} |`)
+    lines.push('')
+  }
+  writeFileSync(join(ROOT, 'content/NUMBER_FORMAT_REVIEW.md'), lines.join('\n'))
+  return total
+}
+
 function main() {
   const cfg = YAML.parse(readFileSync(join(SRC, 'sources.yaml'), 'utf8')) as SourceCfg[]
   let failed = false
+  const numberReview: { file: string; review: NumberReview[] }[] = []
   for (const c of cfg) {
     const packPath = join(COURSES, `${c.slug}.md`)
     if (!existsSync(packPath)) {
@@ -222,11 +272,14 @@ function main() {
       report = built.report
       pack.fm.set('videos', pack.fm.createNode(built.file.videos))
     }
-    writePack(pack, `\n${planText}`)
+    const converted = convertPackNumbers(pack, planText)
+    numberReview.push({ file: `content/courses/${c.slug}.md`, review: converted.review })
+    writePack(pack, `\n${converted.plan}`)
     const all = Object.values((pack.fm.toJS().videos || {}) as VideosFile['videos']).flatMap((v) => v.sources || [])
     console.log(`✓ ${c.slug}.md: planen er indsat, ${all.length} videoer (${all.filter((s) => s.youtube).length} med YouTube-ID)`)
     for (const r of report) console.log(`  ! ${r}`)
   }
+  console.log(`✓ content/NUMBER_FORMAT_REVIEW.md: ${writeNumberReview(numberReview)} tal at tjekke`)
   if (failed) process.exit(1)
 }
 

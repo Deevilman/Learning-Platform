@@ -36,6 +36,8 @@ export interface CourseMeta {
   estimated_weeks: number
   prerequisites: string[] // "requires" in a course file
   recommendedBefore: string[] // nice to have first, never required
+  /** Languages the course is written in (the main one first); versions share slug and progress. */
+  langs?: ('da' | 'en')[]
   next: string[]
   topics: Topic[]
   disclaimer?: string

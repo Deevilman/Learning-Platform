@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync, existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import YAML from 'yaml'
-import { generators, da } from '@/lib/generators'
+import { generators, da, tex } from '@/lib/generators'
 import { evaluate } from '@/lib/check'
 import { miniMarkdown } from '@/lib/mini-md'
 import type { AutoCheck } from '@/types/content'
@@ -13,9 +13,9 @@ const SEEDS = 200
 function correctAnswer(c: AutoCheck): string {
   switch (c.type) {
     case 'numeric':
-      return String(c.answer).replace('.', ',')
+      return String(c.answer)
     case 'numeric-list':
-      return c.answers.map((x) => String(x).replace('.', ',')).join('; ')
+      return c.answers.map((x) => String(x)).join('; ')
     case 'choice':
       return String(c.correct)
     case 'text':
@@ -29,8 +29,8 @@ function correctAnswer(c: AutoCheck): string {
 
 /** The number as it may be written in the solution text. */
 function renderings(x: number): string[] {
-  const out = new Set<string>([String(x), String(x).replace('.', ',')])
-  for (let k = 0; k <= 6; k++) out.add(da(x, k))
+  const out = new Set<string>([String(x)])
+  for (let k = 0; k <= 6; k++) (out.add(da(x, k)), out.add(tex(x, k)))
   return [...out]
 }
 
@@ -103,8 +103,8 @@ import { makeChoices } from '@/lib/choices'
 
 /** Grade an option string the way a learner typing it would be graded. */
 function optionIsCorrect(check: AutoCheck, option: string): boolean {
-  // options are Danish: "1.024,5" — make the thousands dots unambiguous for the parser
-  const text = option.replace(/−/g, '-').replace(/(\d)\.(?=\d{3}\b)/g, '$1').replace(/\s*(kr\.?|bp|år|dage|USD|mio\.|%)$/i, (m) => (m.includes('%') && check.type === 'numeric' && check.unit === '%' ? '' : m.includes('%') ? m : ''))
+  // options are US format: "1,024.5"
+  const text = option.replace(/−/g, '-').replace(/\s*(kr\.?|bp|år|dage|USD|mio\.|%)$/i, (m) => (m.includes('%') && check.type === 'numeric' && check.unit === '%' ? '' : m.includes('%') ? m : ''))
   return evaluate(check, text).correct
 }
 
@@ -139,9 +139,9 @@ describe('multiple-choice variants', () => {
   it('uses supplied distractors first and is deterministic', () => {
     const check: AutoCheck = { type: 'numeric', answer: 2.5, tolerance: 0.05, unit: '%' }
     const a = makeChoices(check, 'quant/10/10.2', [35, -7.5])!
-    expect(a.options).toContain('35,0\u00a0%')
-    expect(a.options).toContain('−7,5\u00a0%')
-    expect(a.options[a.correct]).toBe('2,5\u00a0%')
+    expect(a.options).toContain('35.0\u00a0%')
+    expect(a.options).toContain('−7.5\u00a0%')
+    expect(a.options[a.correct]).toBe('2.5\u00a0%')
     expect(makeChoices(check, 'quant/10/10.2', [35, -7.5])).toEqual(a)
   })
 })

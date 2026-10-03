@@ -6,6 +6,7 @@
 import { getSession, supabase } from '../storage/supabase-sync'
 import { getPack, listPacks, removeCourse, saveCourse, setHidden, type StoredPack } from './store'
 import { loadIndex } from '../data'
+import { tr } from '@/i18n/translate'
 
 export interface CourseRow {
   slug: string
@@ -52,9 +53,9 @@ export async function pushCourseWith(sb: CoursesClient, userId: string, pack: Pi
 /** Upload after "Tilføj". Returns a sentence for the learner. */
 export async function pushCourse(pack: Pick<StoredPack, 'slug' | 'title' | 'fileName' | 'text'>): Promise<string> {
   const c = await client()
-  if (!c) return 'Kurset er gemt på denne enhed. Log ind under Indstillinger, så kommer det også med på dine andre enheder.'
+  if (!c) return tr('add.savedLocal')
   await pushCourseWith(c.sb, c.userId, pack)
-  return 'Kurset er gemt og kommer med på dine andre enheder.'
+  return tr('add.savedCloud')
 }
 
 export async function setCloudHidden(slug: string, hidden: boolean) {
@@ -97,7 +98,7 @@ export async function syncCoursesWith(sb: CoursesClient, userId: string, build: 
     if (mine && mine.updatedAt > r.updated_at) continue // the local one is newer: pushed below
     const file = await sb.storage.from('courses').download(path(userId, r.slug))
     if (file.error || !file.data) {
-      problems.push(`${r.title}: ${file.error?.message || 'filen mangler'}`)
+      problems.push(`${r.title}: ${file.error?.message || tr('add.fileMissing')}`)
       continue
     }
     const text = await file.data.text()
@@ -122,7 +123,7 @@ export async function syncCoursesWith(sb: CoursesClient, userId: string, build: 
 export async function buildForSync(text: string, fileName: string) {
   const [{ prepareCourse }, index] = await Promise.all([import('./builder'), loadIndex()])
   const p = prepareCourse(text, fileName, index)
-  if (!p.build || p.errors.length) return { error: p.errors[0]?.message || 'kurset kunne ikke bygges' }
+  if (!p.build || p.errors.length) return { error: p.errors[0]?.message || tr('add.couldNotBuild') }
   const b = p.build
   return { title: b.meta.title, data: { meta: b.meta, course: b.course, weeks: b.weeks, sets: b.sets, summaries: b.summaries, search: b.search } }
 }

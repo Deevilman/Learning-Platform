@@ -7,13 +7,16 @@ import { weekProgress, type WeekProgress } from '@/lib/progress'
 import { computeMastery, masteryLevel, MASTERY_LEVEL_LABEL, MASTERY_LEVELS, type MasteryLevel } from '@/lib/mastery'
 import { placementKey, type PlacementRecord } from '@/lib/placement'
 import { Html } from '@/components/Html'
-import { courseStyle, Crumbs, ErrorBox, Loading, type Position, useTrackPosition } from '@/components/ui'
+import { dateLocale, useLang, useT } from '@/i18n'
+import { courseStyle, Crumbs, OnlyInNote, ErrorBox, Loading, type Position, useTrackPosition } from '@/components/ui'
 import type { CourseData } from '@/types/content'
 
 type NodeState = 'done' | 'known' | 'current' | 'started' | 'later'
 
 export default function CoursePage() {
   const { slug = '' } = useParams()
+  const t = useT()
+  const [lang] = useLang()
   const { data: course, error } = useAsync(() => loadCourse(slug), [slug])
   const checks = useTable('checks')
   const attempts = useTable('attempts')
@@ -44,11 +47,12 @@ export default function CoursePage() {
 
   return (
     <div className="course-theme mx-auto max-w-3xl space-y-6" style={courseStyle(course.meta.color)}>
-      <Crumbs items={[{ to: '/kurser', label: 'Kurser' }, { label: course.meta.title }]} />
+      <Crumbs items={[{ to: '/kurser', label: t('nav.courses') }, { label: course.meta.title }]} />
+      <OnlyInNote meta={course.meta} />
       <header className="space-y-3">
         <h1 className="page-title" dangerouslySetInnerHTML={{ __html: course.titleHtml }} />
         <p className="muted">
-          {course.meta.level} · ca. {course.meta.estimated_weeks} uger · {course.counts.exercises} øvelser · {course.counts.videos} videoer
+          {t('course.facts', { level: course.meta.level, weeks: course.meta.estimated_weeks, exercises: course.counts.exercises, videos: course.counts.videos })}
         </p>
         {course.meta.disclaimer && (
           <p className="rounded-xl px-4 py-2 text-sm" style={{ background: 'var(--warn-soft)' }}>
@@ -57,11 +61,11 @@ export default function CoursePage() {
         )}
         <div className="flex flex-wrap items-center gap-2 pt-1">
           <Link className="btn btn-primary" to={`/kursus/${slug}/uge/${next}`}>
-            {fresh && next === 1 ? 'Start uge 1' : `Fortsæt: uge ${next}`} →
+            {fresh && next === 1 ? t('course.start') : t('course.continue', { n: next })}
           </Link>
           {course.subtitleHtml && (
             <button className="btn" onClick={() => setShowIntro((s) => !s)} aria-expanded={showIntro}>
-              {showIntro ? 'Skjul introduktion' : 'Om kurset'}
+              {showIntro ? t('course.hideIntro') : t('course.about')}
             </button>
           )}
         </div>
@@ -76,15 +80,15 @@ export default function CoursePage() {
       {placementLoaded && (
         <section className="card-flat flex flex-wrap items-center gap-3" style={{ background: 'var(--accent-soft)' }}>
           <div className="min-w-0 flex-1">
-            <div className="font-semibold">{placement ? 'Hvad kan du allerede?' : 'Kan du noget af det allerede?'}</div>
+            <div className="font-semibold">{placement ? t('placement.whatYouKnow') : t('placement.doYouKnow')}</div>
             <p className="muted text-sm">
               {placement
-                ? `Testen ${new Date(placement.date).toLocaleDateString('da-DK')}: ${known.size ? `${known.size} ${known.size === 1 ? 'uge' : 'uger'} markeret "Kan du allerede"` : 'du startede fra begyndelsen'}.`
-                : 'Tag en kort test, så springer du over det, du allerede kan. Du kan også bare gå i gang.'}
+                ? t('placement.last', { date: new Date(placement.date).toLocaleDateString(dateLocale(lang)), result: known.size ? t(known.size === 1 ? 'placement.knownOne' : 'placement.known', { n: known.size }) : t('placement.fromStart') })
+                : t('placement.offer')}
             </p>
           </div>
           <Link className="btn shrink-0" to={`/kursus/${slug}/test`}>
-            {placement ? 'Tag testen igen' : 'Tag testen'}
+            {placement ? t('test.again') : t('test.take')}
           </Link>
         </section>
       )}
@@ -92,7 +96,7 @@ export default function CoursePage() {
       {/* ---------- course path */}
       <section aria-labelledby="path-h" className="space-y-3">
         <h2 id="path-h" className="section-title">
-          Din vej gennem kurset
+          {t('course.path')}
         </h2>
         <ol className="path">
           {course.weeks.map((w, i) => {
@@ -105,15 +109,15 @@ export default function CoursePage() {
                 </span>
                 <Link to={`/kursus/${slug}/uge/${w.number}`} className="path-card">
                   <div className="flex flex-wrap items-baseline gap-x-2">
-                    <span className="muted text-xs font-semibold uppercase tracking-wide">Uge {w.number}</span>
-                    {st === 'current' && <span className="path-tag">{here ? 'Du er her' : 'Næste'}</span>}
-                    {st === 'known' && <span className="path-tag path-tag-ok">Kan du allerede</span>}
-                    {st === 'done' && <span className="path-tag path-tag-ok">Gennemført</span>}
+                    <span className="muted text-xs font-semibold uppercase tracking-wide">{t('crumb.week', { n: w.number })}</span>
+                    {st === 'current' && <span className="path-tag">{here ? t('course.here') : t('course.next')}</span>}
+                    {st === 'known' && <span className="path-tag path-tag-ok">{t('course.alreadyKnown')}</span>}
+                    {st === 'done' && <span className="path-tag path-tag-ok">{t('course.done')}</span>}
                   </div>
                   <div className="font-semibold">{w.title}</div>
                   {(st === 'current' || st === 'started') && (
                     <div className="muted mt-1 text-xs">
-                      {p.videosDone}/{p.videos} videoer · {p.exercisesDone}/{p.exercises} øvelser · {p.checkpointDone}/{p.checkpoint} checkpoint
+                      {t('course.weekProgress', { v: p.videosDone, vt: p.videos, e: p.exercisesDone, et: p.exercises, c: p.checkpointDone, ct: p.checkpoint })}
                     </div>
                   )}
                 </Link>
@@ -126,13 +130,13 @@ export default function CoursePage() {
                 ★
               </span>
               <Link to={`/kursus/${slug}/projekt`} className="path-card">
-                <span className="muted text-xs font-semibold uppercase tracking-wide">Afslutning</span>
+                <span className="muted text-xs font-semibold uppercase tracking-wide">{t('course.finale')}</span>
                 <div className="font-semibold">{course.project.title.replace(/^[^\p{L}]+/u, '')}</div>
               </Link>
             </li>
           )}
         </ol>
-        <p className="muted text-xs">Rækkefølgen er en anbefaling — du kan åbne alle uger.</p>
+        <p className="muted text-xs">{t('course.orderNote')}</p>
       </section>
 
       <TopicMastery course={course} attempts={courseAttempts} now={now} />
@@ -140,16 +144,16 @@ export default function CoursePage() {
       {course.tryIt.length > 0 && (
         <section className="card space-y-3" aria-labelledby="try-h">
           <h2 id="try-h" className="section-title">
-            Prøv selv
+            {t('nav.tryIt')}
           </h2>
-          <p className="muted text-sm">Små værktøjer, du kan lege med. De står også i ugens kernebegreber, hvor de hører til.</p>
+          <p className="muted text-sm">{t('course.tryItIntro')}</p>
           <ul className="grid gap-2 sm:grid-cols-2">
-            {course.tryIt.map((t) => (
-              <li key={t.id}>
-                <Link to={`/kursus/${slug}/uge/${t.week}?fane=noter&prov=${t.id}`} className="block h-full rounded-xl p-3 hover:opacity-90" style={{ background: 'var(--surface-2)' }}>
-                  <div className="font-medium">{t.title}</div>
-                  <div className="muted text-xs">Uge {t.week}</div>
-                  {t.intro && <div className="mt-1 text-sm" dangerouslySetInnerHTML={{ __html: t.intro }} />}
+            {course.tryIt.map((it) => (
+              <li key={it.id}>
+                <Link to={`/kursus/${slug}/uge/${it.week}?fane=laes&prov=${it.id}`} className="block h-full rounded-xl p-3 hover:opacity-90" style={{ background: 'var(--surface-2)' }}>
+                  <div className="font-medium">{it.title}</div>
+                  <div className="muted text-xs">{t('crumb.week', { n: it.week })}</div>
+                  {it.intro && <div className="mt-1 text-sm" dangerouslySetInnerHTML={{ __html: it.intro }} />}
                 </Link>
               </li>
             ))}
@@ -158,18 +162,18 @@ export default function CoursePage() {
       )}
 
       <section className="card space-y-2">
-        <h2 className="section-title">Mere i kurset</h2>
+        <h2 className="section-title">{t('course.more')}</h2>
         <ul className="grid gap-1.5 text-sm sm:grid-cols-2">
           {course.sets.map((s) => (
             <li key={s.slug}>
               <Link className="link" to={`/kursus/${slug}/saet/${s.slug}`}>
-                {s.title} ({s.count} spørgsmål)
+                {t('course.setCount', { title: s.title, n: s.count })}
               </Link>
             </li>
           ))}
           <li>
             <Link className="link" to={`/ordliste?kursus=${slug}`}>
-              Ordliste ({course.glossary.length} begreber)
+              {t('course.glossaryCount', { n: course.glossary.length })}
             </Link>
           </li>
           {course.info.map((p) => (
@@ -186,34 +190,35 @@ export default function CoursePage() {
 }
 
 function TopicMastery({ course, attempts, now }: { course: CourseData; attempts: import('@/lib/storage/types').Attempt[]; now: number }) {
-  const rows = course.meta.topics.map((t) => {
-    const m = computeMastery(attempts.filter((a) => a.topics.includes(t.id)), now)
-    return { t, m, level: masteryLevel(m) }
+  const t = useT()
+  const rows = course.meta.topics.map((topic) => {
+    const m = computeMastery(attempts.filter((a) => a.topics.includes(topic.id)), now)
+    return { topic, m, level: masteryLevel(m) }
   })
   const count = (l: MasteryLevel) => rows.filter((r) => r.level === l).length
   return (
     <section className="card space-y-3" aria-labelledby="mastery-h">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 id="mastery-h" className="section-title">
-          Emner
+          {t('course.topics')}
         </h2>
         <div className="muted flex flex-wrap gap-3 text-xs">
           {MASTERY_LEVELS.map((l) => (
             <span key={l} className="flex items-center gap-1">
-              <span className={`lvl lvl-${l}`} aria-hidden /> {MASTERY_LEVEL_LABEL[l]} ({count(l)})
+              <span className={`lvl lvl-${l}`} aria-hidden /> {t(MASTERY_LEVEL_LABEL[l])} ({count(l)})
             </span>
           ))}
         </div>
       </div>
       <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
-        {rows.map(({ t, level }) => (
-          <li key={t.id} className="flex items-center gap-2 text-sm">
+        {rows.map(({ topic, level }) => (
+          <li key={topic.id} className="flex items-center gap-2 text-sm">
             <span className={`lvl lvl-${level}`} aria-hidden />
-            <span className="min-w-0 flex-1 truncate">{t.name}</span>
-            <span className="muted shrink-0 text-xs">{MASTERY_LEVEL_LABEL[level]}</span>
+            <span className="min-w-0 flex-1 truncate">{topic.name}</span>
+            <span className="muted shrink-0 text-xs">{t(MASTERY_LEVEL_LABEL[level])}</span>
             {level !== 'mestret' && level !== 'ikke-startet' && (
-              <Link className="link shrink-0 text-xs" to={`/traen?kursus=${course.meta.slug}&emne=${t.id}&start=1`}>
-                Træn
+              <Link className="link shrink-0 text-xs" to={`/traen?kursus=${course.meta.slug}&emne=${topic.id}&start=1`}>
+                {t('nav.train')}
               </Link>
             )}
           </li>

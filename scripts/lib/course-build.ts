@@ -7,6 +7,7 @@ import { renderMarkdown, renderInline, plainText, type RenderContext } from './m
 import { applyForwardRefs, displayLongMath, firstStep, kindHint, splitSubquestions, type ForwardRefRule } from './exercise-text.ts'
 import { makeChoices, shuffledOptions } from '../../src/lib/choices.ts'
 import { validateTemplate, type TemplateDef } from '../../src/lib/templates.ts'
+import { danishNumbers } from './number-format.ts'
 import type { Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
 
 export interface BuildError {
@@ -113,6 +114,8 @@ export interface CourseSource {
   lessons?: { line: number; data: unknown }[]
   /** ```opgaveskabelon blocks (line = the opening fence). */
   templates?: { line: number; data: unknown }[]
+  /** A language version (<slug>.<lang>.md) of a course whose main file is <slug>.md. */
+  version?: boolean
   /** Names used in error messages, e.g. "content/courses/quant/plan.md" or the uploaded file's name. */
   files: { meta: string; plan: string; overrides: string; videos: string; forwardRefs: string }
 }
@@ -542,6 +545,11 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
       tryIt,
     }
     for (const [k, b] of lessonBlocks) if (!usedLessons.has(k)) err(src.files.plan, b.line, `Lektionen er til videoen "${k}", men den video findes ikke i planen (brug videoens nøgle, fx T1, eller nummer, fx 1.2).`)
+
+    // ---------- number format: the courses use 1,234.5
+    const danish = danishNumbers(src.plan)
+    for (const d of danish.slice(0, 20)) report.warnings.push(`${planFile}:${d.line}: "${d.text}" ligner dansk talformat (${d.reason.toLowerCase()}). Skriv tal som 1,234.5.`)
+    if (danish.length > 20) report.warnings.push(`${planFile}: ${danish.length - 20} tal mere ligner dansk talformat`)
 
     // ---------- exercise templates: each must pass 200 seeds
     const templates: TemplateDef[] = []

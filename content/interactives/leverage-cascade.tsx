@@ -68,7 +68,7 @@ export default function LeverageCascade() {
         <Stat label="Tvangssalg (enheder)" value={fmt(res.sold, 2)} />
         <Stat label="Fonde udslettet" value={`${res.bust} af ${funds}`} />
       </div>
-      <p className="muted text-sm">Fond i har gearing {lev}× · (1 + 0,25i). Et lille stød kan udløse margin calls; salgene presser prisen, som udløser nye margin calls (LTCM 1998, kvant-krakket august 2007, Archegos 2021). Prøv at sænke gearingen eller øge antallet af fonde i samme handel.</p>
+      <p className="muted text-sm">Fond i har gearing {lev}× · (1 + 0.25i). Et lille stød kan udløse margin calls; salgene presser prisen, som udløser nye margin calls (LTCM 1998, kvant-krakket august 2007, Archegos 2021). Prøv at sænke gearingen eller øge antallet af fonde i samme handel.</p>
     </Widget>
   )
 }

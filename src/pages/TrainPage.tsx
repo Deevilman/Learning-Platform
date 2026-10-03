@@ -14,16 +14,18 @@ import { computeMastery } from '@/lib/mastery'
 import { ExerciseCard, fromBank, fromGenerated, STARS, type ExerciseView } from '@/components/ExerciseCard'
 import { ErrorBox, Loading } from '@/components/ui'
 import type { ContentIndex, Exercise } from '@/types/content'
+import { useT, type Key, type T } from '@/i18n'
 
 type Mode = 'blandet' | 'svage' | 'emner' | 'gennemgang'
-const MODES: { id: Mode; label: string; help: string }[] = [
-  { id: 'blandet', label: 'Lidt af det hele', help: 'Alle emner i de uger, du er nået til' },
-  { id: 'svage', label: 'Mine svage punkter', help: 'Det, du har mest gavn af at øve' },
-  { id: 'emner', label: 'Vælg emner', help: 'Du bestemmer selv' },
-  { id: 'gennemgang', label: 'Dagens repetition', help: 'Opgaver, det er tid til at se igen' },
+const MODES: { id: Mode; label: Key; help: Key }[] = [
+  { id: 'blandet', label: 'train.mixed', help: 'train.mixedHelp' },
+  { id: 'svage', label: 'train.weak', help: 'train.weakHelp' },
+  { id: 'emner', label: 'train.topics', help: 'train.topicsHelp' },
+  { id: 'gennemgang', label: 'train.review', help: 'train.reviewHelp' },
 ]
 
 export default function TrainPage() {
+  const t = useT()
   const [params, setParams] = useSearchParams()
   const { data: index, error } = useAsync(loadIndex, [])
   const attempts = useTable('attempts')
@@ -86,7 +88,7 @@ export default function TrainPage() {
         srsMap={srsMap}
         attempted={new Set(attempts.map((a) => a.exerciseId))}
         start={startLevel(scope.length ? avgMastery(attempts, scope, now) : undefined)}
-        scopeLabel={scopeLabel(index, scope)}
+        scopeLabel={scopeLabel(index, scope, t)}
         onStop={() => setRunning(false)}
       />
     )
@@ -94,16 +96,16 @@ export default function TrainPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       <div>
-        <h1 className="page-title">Træn</h1>
-        <p className="muted">Bliv ved, så længe du har lyst: opgaver, det er tid til at se igen, nye regneopgaver med andre tal og et par opgaver, du ikke har prøvet. Sværhedsgraden følger dig.</p>
+        <h1 className="page-title">{t('nav.train')}</h1>
+        <p className="muted">{t('train.intro')}</p>
       </div>
       <section className="card space-y-4">
         <div>
           <label className="mb-1 block text-sm font-semibold" htmlFor="course-sel">
-            Kursus
+            {t('train.course')}
           </label>
           <select id="course-sel" className="input" value={course} onChange={(e) => set('kursus', e.target.value === 'alle' ? null : e.target.value)}>
-            <option value="alle">Alle kurser</option>
+            <option value="alle">{t('train.allCourses')}</option>
             {index.courses.map((c) => (
               <option key={c.slug} value={c.slug}>
                 {c.title}
@@ -112,14 +114,14 @@ export default function TrainPage() {
           </select>
         </div>
         <fieldset>
-          <legend className="mb-1 text-sm font-semibold">Hvad vil du træne?</legend>
+          <legend className="mb-1 text-sm font-semibold">{t('train.what')}</legend>
           <div className="grid gap-2 sm:grid-cols-2">
             {MODES.map((m) => (
               <label key={m.id} className="flex cursor-pointer items-start gap-2 rounded-lg border p-3" style={{ borderColor: mode === m.id ? 'var(--accent)' : 'var(--border)' }}>
                 <input type="radio" name="mode" checked={mode === m.id} onChange={() => set('tilstand', m.id)} className="mt-1" />
                 <span>
-                  <span className="block font-medium">{m.label}</span>
-                  <span className="muted text-xs">{m.help}</span>
+                  <span className="block font-medium">{t(m.label)}</span>
+                  <span className="muted text-xs">{t(m.help)}</span>
                 </span>
               </label>
             ))}
@@ -131,19 +133,19 @@ export default function TrainPage() {
               <div key={c.slug}>
                 <div className="mb-1 text-sm font-semibold">{c.title}</div>
                 <div className="flex flex-wrap gap-1.5">
-                  {c.topics.map((t) => {
-                    const on = chosen.includes(t.id)
-                    const n = generators.filter((g) => g.course === c.slug && g.topics.includes(t.id)).length
+                  {c.topics.map((tp) => {
+                    const on = chosen.includes(tp.id)
+                    const n = generators.filter((g) => g.course === c.slug && g.topics.includes(tp.id)).length
                     return (
                       <button
-                        key={t.id}
+                        key={tp.id}
                         className="btn"
                         aria-pressed={on}
                         style={on ? { borderColor: 'var(--accent)', background: 'var(--accent-soft)', color: 'var(--accent)' } : undefined}
-                        onClick={() => set('emne', (on ? chosen.filter((x) => x !== t.id) : [...chosen, t.id]).join(','))}
+                        onClick={() => set('emne', (on ? chosen.filter((x) => x !== tp.id) : [...chosen, tp.id]).join(','))}
                       >
-                        {t.name}
-                        {n > 0 && <span className="opacity-60" title="Har regneopgaver med nye tal hver gang"> · ∞</span>}
+                        {tp.name}
+                        {n > 0 && <span className="opacity-60" title={t('train.infiniteTitle')}> · ∞</span>}
                       </button>
                     )
                   })}
@@ -153,19 +155,19 @@ export default function TrainPage() {
           </div>
         )}
         <div className="rounded-lg p-3 text-sm" style={{ background: 'var(--surface-2)' }}>
-          <b>Du træner:</b> {scopeLabel(index, scope) || 'ingen emner valgt'}
+          <b>{t('train.scope')}</b> {scopeLabel(index, scope, t) || t('train.noTopics')}
           <br />
-          {mode === 'gennemgang' ? `${bank.length + gens.length} ${bank.length + gens.length === 1 ? 'opgave' : 'opgaver'} klar til repetition` : `${bank.length} opgaver fra kurset (${dueCount} klar til repetition)`}
-          {mode !== 'gennemgang' && gens.length ? ' · plus regneopgaver med nye tal hver gang' : ''}
-          {pref !== 'blandet' && <span className="muted"> · {ANSWER_PREF_LABEL[pref].toLowerCase()}</span>}
+          {mode === 'gennemgang' ? t(bank.length + gens.length === 1 ? 'train.dueOne' : 'train.due', { n: bank.length + gens.length }) : t('train.fromCourse', { n: bank.length, due: dueCount })}
+          {mode !== 'gennemgang' && gens.length ? t('train.plusGenerated') : ''}
+          {pref !== 'blandet' && <span className="muted"> · {t(ANSWER_PREF_LABEL[pref]).toLowerCase()}</span>}
         </div>
         <AnswerPrefPicker />
         <button className="btn btn-primary w-full py-2.5 text-base" disabled={!bank.length && !gens.length} onClick={() => setRunning(true)}>
-          {mode === 'gennemgang' && !bank.length && !gens.length ? 'Intet at repetere i dag 🎉' : 'Start træning'}
+          {mode === 'gennemgang' && !bank.length && !gens.length ? t('train.nothingDue') : t('train.start')}
         </button>
       </section>
       <p className="muted text-sm">
-        ∞ = emnet har regneopgaver, der laves med nye tal hver gang. Vil du lege med begreberne, så prøv <Link className="link" to="/interaktivt">Prøv selv</Link>.
+        {t('train.infiniteNote')} <Link className="link" to="/interaktivt">{t('nav.tryIt')}</Link>.
       </p>
     </div>
   )
@@ -188,9 +190,9 @@ function avgMastery(attempts: import('@/lib/storage/types').Attempt[], scope: { 
   return vals.reduce((a, b) => a + b, 0) / vals.length
 }
 
-function scopeLabel(index: ContentIndex, scope: { course: string; topic: string }[]) {
-  const names = scope.map((s) => index.courses.find((c) => c.slug === s.course)?.topics.find((t) => t.id === s.topic)?.name).filter(Boolean)
-  return names.length > 6 ? `${names.slice(0, 6).join(', ')} + ${names.length - 6} flere` : names.join(', ')
+function scopeLabel(index: ContentIndex, scope: { course: string; topic: string }[], t: T) {
+  const names = scope.map((s) => index.courses.find((c) => c.slug === s.course)?.topics.find((tp) => tp.id === s.topic)?.name).filter(Boolean)
+  return names.length > 6 ? t('train.andMore', { list: names.slice(0, 6).join(', '), n: names.length - 6 }) : names.join(', ')
 }
 
 function Session(props: {
@@ -204,6 +206,7 @@ function Session(props: {
   scopeLabel: string
   onStop: () => void
 }) {
+  const t = useT()
   const session = useRef<TrainingSession>()
   if (!session.current)
     session.current = new TrainingSession({
@@ -260,50 +263,46 @@ function Session(props: {
   if (item === null)
     return (
       <div className="card mx-auto max-w-xl space-y-3 text-center">
-        <h1 className="text-xl font-bold">Færdig for nu 🎉</h1>
-        <p className="muted">
-          Du lavede {stats.n} øvelser, {stats.ok} sad i skabet.
-        </p>
+        <h1 className="text-xl font-bold">{t('train.finished')}</h1>
+        <p className="muted">{t('train.summary', { n: stats.n, ok: stats.ok })}</p>
         <button className="btn btn-primary" onClick={props.onStop}>
-          Tilbage
+          {t('train.back')}
         </button>
       </div>
     )
 
   const meta =
     item.kind === 'generated'
-      ? { label: `${props.gens.find((g) => g.id === item.generatorId)?.title}`, sub: 'Nye tal' }
-      : { label: `${props.index.courses.find((c) => c.slug === bankEx?.course)?.title || ''} · ${bankEx?.week ? `uge ${bankEx.week}` : bankEx?.set === 'selftest' ? 'selvtest' : bankEx?.set === 'interview' ? 'interviewtræning' : ''}`, sub: item.reason === 'due' ? 'Klar til repetition' : item.reason === 'new' ? 'Ny for dig' : 'Repetition' }
+      ? { label: `${props.gens.find((g) => g.id === item.generatorId)?.title}`, sub: t('train.newNumbers') }
+      : { label: `${props.index.courses.find((c) => c.slug === bankEx?.course)?.title || ''} · ${bankEx?.week ? t('missing.week', { n: bankEx.week }) : bankEx?.set === 'selftest' ? t('train.selftest') : bankEx?.set === 'interview' ? t('train.interview') : ''}`, sub: item.reason === 'due' ? t('train.dueTag') : item.reason === 'new' ? t('train.newTag') : t('train.reviewTag') }
 
   return (
     <div className="mx-auto max-w-3xl space-y-4">
       <div className="flex flex-wrap items-center gap-2 text-sm">
         <button className="btn" onClick={props.onStop}>
-          ← Stop
+          {t('train.stop')}
         </button>
-        <span className="chip">Øvelse {session.current.count}</span>
-        <span className="chip" title="Sværhedsgraden stiger efter 3 rigtige i træk og falder efter 2 fejl i træk">
-          Niveau <span style={{ color: 'var(--warn)', marginLeft: 4 }}>{STARS[level]}</span>
+        <span className="chip">{t('exercise.title', { n: session.current.count })}</span>
+        <span className="chip" title={t('train.levelTitle')}>
+          {t('train.level')} <span style={{ color: 'var(--warn)', marginLeft: 4 }}>{STARS[level]}</span>
         </span>
-        <span className="chip">
-          {stats.ok}/{stats.n} rigtige
-        </span>
+        <span className="chip">{t('train.right', { ok: stats.ok, n: stats.n })}</span>
         <span className="muted ml-auto truncate text-xs">{props.scopeLabel}</span>
       </div>
       <DailyGoal compact />
       <div className="muted text-xs">
         {meta.label} · {meta.sub}
       </div>
-      {view ? <ExerciseCard key={view.id} ex={view} compact={item.kind === 'generated'} onDone={onDone} heading={item.kind === 'bank' && bankEx ? `Øvelse ${bankEx.number}` : 'Opgave'} /> : <Loading what="øvelse" />}
+      {view ? <ExerciseCard key={view.id} ex={view} compact={item.kind === 'generated'} onDone={onDone} heading={item.kind === 'bank' && bankEx ? t('exercise.title', { n: bankEx.number }) : t('exercise.generic')} /> : <Loading what="øvelse" />}
       <div className="flex justify-end gap-2">
         {!done && (
           <button className="btn" onClick={advance}>
-            Spring over
+            {t('train.skip')}
           </button>
         )}
         {done && (
           <button className="btn btn-primary" onClick={advance} autoFocus>
-            Næste opgave → <span className="opacity-60">(Enter)</span>
+            {t('train.next')} <span className="opacity-60">(Enter)</span>
           </button>
         )}
       </div>
