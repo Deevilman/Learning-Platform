@@ -1,6 +1,9 @@
-// Loads the JSON produced by `npm run content` (lazily, cached).
+// Loads the JSON produced by `npm run content` (lazily, cached), merged with
+// the courses the learner has added in the app (IndexedDB). An added course
+// with the same slug as one of the site's replaces it.
 
 import type { ContentIndex, CourseData, ExerciseSet, SearchDoc, Week, Exercise } from '@/types/content'
+import { onCoursesChanged, visibleBuilds, type StoredBuild } from './courses/store'
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/') + 'data/'
 const cache = new Map<string, Promise<unknown>>()
@@ -18,11 +21,61 @@ function load<T>(path: string): Promise<T> {
   return p as Promise<T>
 }
 
-export const loadIndex = () => load<ContentIndex>('index.json')
-export const loadCourse = (slug: string) => load<CourseData>(`courses/${slug}.json`)
-export const loadWeek = (slug: string, n: number) => load<Week>(`courses/${slug}/week-${n}.json`)
-export const loadSet = (slug: string, set: string) => load<ExerciseSet>(`courses/${slug}/set-${set}.json`)
-export const loadSearch = () => load<SearchDoc[]>('search.json')
+// ---------- the learner's own courses
+let uploaded: Promise<Map<string, StoredBuild>> | null = null
+function uploadedCourses(): Promise<Map<string, StoredBuild>> {
+  if (!uploaded) {
+    uploaded = (typeof indexedDB === 'undefined' ? Promise.resolve([]) : visibleBuilds())
+      .then((list) => new Map(list.map((b) => [b.slug, b] as const)))
+      .catch(() => new Map<string, StoredBuild>())
+  }
+  return uploaded
+}
+onCoursesChanged(() => {
+  uploaded = null
+})
+
+export async function loadIndex(): Promise<ContentIndex> {
+  const [site, own] = await Promise.all([load<ContentIndex>('index.json'), uploadedCourses()])
+  if (!own.size) return site
+  const mine = [...own.values()].map((b) => b.data)
+  return {
+    ...site,
+    courses: [...site.courses.filter((c) => !own.has(c.slug)), ...mine.map((d) => ({ ...d.meta, uploaded: true }))],
+    exercises: [...site.exercises.filter((e) => !own.has(e.course)), ...mine.flatMap((d) => d.summaries)],
+  }
+}
+
+export async function loadCourse(slug: string): Promise<CourseData> {
+  const own = (await uploadedCourses()).get(slug)
+  return own ? { ...own.data.course, meta: { ...own.data.course.meta, uploaded: true } } : load<CourseData>(`courses/${slug}.json`)
+}
+
+export async function loadWeek(slug: string, n: number): Promise<Week> {
+  const own = (await uploadedCourses()).get(slug)
+  if (own) {
+    const w = own.data.weeks.find((x) => x.number === n)
+    if (!w) throw new Error(`Uge ${n} findes ikke i kurset.`)
+    return w
+  }
+  return load<Week>(`courses/${slug}/week-${n}.json`)
+}
+
+export async function loadSet(slug: string, set: string): Promise<ExerciseSet> {
+  const own = (await uploadedCourses()).get(slug)
+  if (own) {
+    const s = own.data.sets.find((x) => x.slug === set)
+    if (!s) throw new Error('Sættet findes ikke i kurset.')
+    return s
+  }
+  return load<ExerciseSet>(`courses/${slug}/set-${set}.json`)
+}
+
+export async function loadSearch(): Promise<SearchDoc[]> {
+  const [site, own] = await Promise.all([load<SearchDoc[]>('search.json'), uploadedCourses()])
+  if (!own.size) return site
+  return [...site.filter((d) => !own.has(d.course)), ...[...own.values()].flatMap((b) => b.data.search)]
+}
 
 /** Load a bank exercise by id ("quant/3/3.5" or "quant/selftest/4"). */
 export async function loadExercise(id: string): Promise<Exercise | undefined> {

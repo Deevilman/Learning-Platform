@@ -10,6 +10,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  issues: write
 
 concurrency:
   group: pages
@@ -25,8 +26,18 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Byg indhold (validerer alle planer)
+      - name: Byg indhold (validerer alle kurser)
+        id: content
         run: npm run content
+      - name: Fejl i et kursus → issue
+        if: failure() && steps.content.outcome == 'failure' && github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Et kursus kunne ikke bygges"
+          open=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')
+          if [ -n "$open" ]; then gh issue comment "$open" --body-file content-build-errors.md
+          else gh issue create --title "$title" --body-file content-build-errors.md; fi
       - name: Unit-tests (importer, generatorer, mestring, lagring, udvidelighed)
         run: npm test
       - name: "Tjek video-ID'er (blødt — fejler ikke uden netværk)"

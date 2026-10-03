@@ -6,3 +6,4 @@ playwright-report
 .vite
 *.local
 public/pyodide
+content-build-errors.md

@@ -1,11 +1,12 @@
 // npm run import
 // Turns the uploaded study plans + video handoffs (content/source/) into course
-// folders (content/courses/<slug>/plan.md + videos.yaml). Re-runnable: manual
-// edits in videos.yaml (YouTube IDs you added yourself) are kept.
+// course files (content/courses/<slug>.md: the plan after the front matter,
+// the videos in its front matter). Re-runnable: hand-checked video entries are kept.
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import YAML from 'yaml'
+import { readPack, writePack } from './lib/pack-file.ts'
 import { parsePlan, type RawPlan } from './lib/plan-parser.ts'
 
 const ROOT = join(import.meta.dirname, '..')
@@ -23,6 +24,9 @@ export interface VideoEntrySource {
   channel?: string
   youtube?: string
   search?: string
+  embed?: false
+  access?: 'steady'
+  url?: string
 }
 
 export interface VideosFile {
@@ -181,15 +185,12 @@ function buildVideos(plan: RawPlan, entries: HandoffEntry[], existing: VideosFil
       let sources: VideoEntrySource[] = [...fromHandoff, ...fromPlan]
       if (!sources.length && v.search) sources = [{ title: v.search, search: v.search }]
       if (!sources.length && v.key) sources = [{ title: v.title.replace(/[*_]/g, ''), search: v.title.replace(/[*_"]/g, '').replace(/\(.*?\)/g, '').trim() }]
-      // Entries with an ID in an earlier run were checked by hand (title, channel, ID): keep them as they are.
-      if (prev) {
-        sources = sources.map((s, j) => {
-          const p = prev.sources[j]
-          return p && p.youtube ? p : s
-        })
-        if (prev.sources.length > sources.length) sources.push(...prev.sources.slice(sources.length))
-      }
-      if (sources.length) file.videos[fileKey] = { key: v.key || undefined, sources }
+      // An entry someone has worked on by hand (an ID, Steady, removed, deliberately empty, own title)
+      // is kept exactly as it is; the handoff only fills entries that are still bare search slots.
+      const p = prev as any
+      const handled = p && (p.remove || p.title || p.links || (Array.isArray(p.sources) && (!p.sources.length || p.sources.some((x: any) => x.youtube || x.access))))
+      if (handled) file.videos[fileKey] = p
+      else if (sources.length) file.videos[fileKey] = { key: v.key || undefined, sources }
     })
   }
   return { file, report }
@@ -199,27 +200,31 @@ function main() {
   const cfg = YAML.parse(readFileSync(join(SRC, 'sources.yaml'), 'utf8')) as SourceCfg[]
   let failed = false
   for (const c of cfg) {
-    const dir = join(COURSES, c.slug)
-    mkdirSync(dir, { recursive: true })
-    copyFileSync(join(SRC, c.plan), join(dir, 'plan.md'))
-    const plan = parsePlan(readFileSync(join(dir, 'plan.md'), 'utf8'))
+    const packPath = join(COURSES, `${c.slug}.md`)
+    if (!existsSync(packPath)) {
+      console.error(`✗ ${c.slug}: kursusfilen ${packPath} findes ikke — opret den med front matter først (se CONTENT_GUIDE.md, afsnit 0)`)
+      failed = true
+      continue
+    }
+    const pack = readPack(packPath)
+    const planText = readFileSync(join(SRC, c.plan), 'utf8')
+    const plan = parsePlan(planText)
     if (plan.errors.length) {
       failed = true
-      for (const e of plan.errors) console.error(`✗ ${c.slug}/plan.md:${e.line}: ${e.message}`)
+      for (const e of plan.errors) console.error(`✗ ${c.plan}:${e.line}: ${e.message}`)
     }
-    if (!c.handoff) continue
-    const src = readFileSync(join(SRC, c.handoff), 'utf8')
-    const entries = /^\|\s*[A-Z]{1,2}\d+\.\d+/m.test(src) ? parseTableHandoff(src) : parseListHandoff(src)
-    const vpath = join(dir, 'videos.yaml')
-    const existing = existsSync(vpath) ? (YAML.parse(readFileSync(vpath, 'utf8')) as VideosFile) : null
-    const { file, report } = buildVideos(plan, entries, existing)
-    const header =
-      `# Video-ID'er for kurset "${c.slug}". Genereret af "npm run import" ud fra ${c.handoff}.\n` +
-      `# Nøgle: playlist-nøglen (fx Q3.2) eller "<uge>.<nr>" for punkter, hvis nøgle går igen.\n` +
-      `# Tilføj selv et YouTube-ID under "youtube:" — det bevares, når importen køres igen.\n`
-    writeFileSync(vpath, header + YAML.stringify(file, { lineWidth: 0 }))
-    const all = Object.values(file.videos).flatMap((v) => v.sources)
-    console.log(`✓ ${c.slug}: plan.md kopieret, videos.yaml: ${all.length} videoer (${all.filter((s) => s.youtube).length} med YouTube-ID)`)
+    let report: string[] = []
+    if (c.handoff) {
+      const src = readFileSync(join(SRC, c.handoff), 'utf8')
+      const entries = /^\|\s*[A-Z]{1,2}\d+\.\d+/m.test(src) ? parseTableHandoff(src) : parseListHandoff(src)
+      const existing = { videos: (pack.fm.toJS().videos || {}) } as VideosFile
+      const built = buildVideos(plan, entries, existing)
+      report = built.report
+      pack.fm.set('videos', pack.fm.createNode(built.file.videos))
+    }
+    writePack(pack, `\n${planText}`)
+    const all = Object.values((pack.fm.toJS().videos || {}) as VideosFile['videos']).flatMap((v) => v.sources || [])
+    console.log(`✓ ${c.slug}.md: planen er indsat, ${all.length} videoer (${all.filter((s) => s.youtube).length} med YouTube-ID)`)
     for (const r of report) console.log(`  ! ${r}`)
   }
   if (failed) process.exit(1)

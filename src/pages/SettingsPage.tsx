@@ -4,6 +4,7 @@ import { useSetting, useStore, useTable } from '@/lib/store'
 import { exportAll, importAll, validateExport } from '@/lib/storage/transfer'
 import { getSession, lastSync, signIn, signOut, signUp, syncNow } from '@/lib/storage/supabase-sync'
 import { useTheme, type ThemePref } from '@/components/ThemeToggle'
+import { syncCourses } from '@/lib/courses/cloud'
 import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { DailyGoalSettings } from '@/components/DailyGoal'
 import { loadCourse, loadIndex, loadWeek } from '@/lib/data'
@@ -96,6 +97,7 @@ function SyncSection() {
           <div className="flex flex-wrap gap-2">
             <button className="btn btn-primary" disabled={busy} onClick={() => run(async () => {
               const r = await syncNow(store)
+              await syncCourses().catch(() => null)
               return r.pushed + r.pulled ? 'Dine enheder er opdateret.' : 'Alt var allerede opdateret.'
             })}>
               {busy ? 'Opdaterer…' : 'Opdatér nu'}
@@ -152,7 +154,10 @@ export function AutoSync() {
       if (busy.current || stopped) return
       busy.current = true
       try {
-        if (await getSession()) await syncNow(store)
+        if (await getSession()) {
+          await syncNow(store)
+          await syncCourses().catch(() => null)
+        }
       } catch {
         /* offline or not configured — try again later */
       } finally {

@@ -71,6 +71,25 @@ describe('content pipeline', () => {
     expect(quizzes).toBeGreaterThanOrEqual(40)
   })
 
+  it('applies the video corrections: Steady cards, removed slots and a reading link', () => {
+    const w1 = JSON.parse(readFileSync(join(out, 'courses/foundations/week-1.json'), 'utf8'))
+    const steady = w1.videos.flatMap((v: { sources: { access?: string; youtube?: string; url?: string; search?: string }[] }) => v.sources).filter((s: { access?: string }) => s.access === 'steady')
+    expect(steady.length).toBe(1)
+    expect(steady[0].youtube).toBeUndefined() // the unlisted ID is never shipped
+    expect(steady[0].search).toBeUndefined()
+    expect(steady[0].url).toMatch(/^https:\/\/thebrightsideofmathematics\.com\/courses\//)
+    const titles = w1.videos.flatMap((v: { sources: { title: string }[] }) => v.sources.map((s) => s.title))
+    expect(titles.some((t: string) => /1\.4\.[67]/.test(t))).toBe(false)
+    const h9 = JSON.parse(readFileSync(join(out, 'courses/hedgefund/week-9.json'), 'utf8'))
+    const amaranth = h9.videos.find((v: { key: string }) => v.key === 'H9.5')
+    expect(amaranth.sources).toEqual([])
+    expect(amaranth.links[0]).toMatch(/senate\.gov/)
+    const h2 = JSON.parse(readFileSync(join(out, 'courses/hedgefund/week-2.json'), 'utf8'))
+    expect(h2.videos.some((v: { key: string }) => v.key === 'H2.2')).toBe(false)
+    // nothing is reported missing any more
+    for (const c of report.courses) expect(c.videosMissing, c.slug).toBe(0)
+  })
+
   it('shows sub-questions as lists and strips reviewed forward references', () => {
     const w1 = JSON.parse(readFileSync(join(out, 'courses/foundations/week-1.json'), 'utf8'))
     const e14 = w1.exercises.find((e: { number: string }) => e.number === '1.4')

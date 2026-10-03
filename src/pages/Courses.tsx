@@ -31,9 +31,14 @@ export default function Courses() {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
         <h1 className="page-title">Kurser</h1>
         <p className="muted">Kurserne bygger videre på hinanden — tag dem gerne i rækkefølge.</p>
+        </div>
+        <Link className="btn shrink-0" to="/kurser/tilfoej">
+          + Tilføj kursus
+        </Link>
       </div>
       <ol className="grid gap-4 md:grid-cols-3">
         {order.map((c, i) => {
@@ -45,6 +50,7 @@ export default function Courses() {
                   <CourseDot color={c.meta.color} /> Trin {i + 1}
                 </div>
                 <h2 className="text-lg font-bold">{c.meta.title}</h2>
+                {c.meta.uploaded && <span className="chip">Dit kursus</span>}
                 <p className="muted text-sm">{c.meta.short}</p>
                 <dl className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
                   <div className="stat">

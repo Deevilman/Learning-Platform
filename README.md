@@ -40,13 +40,15 @@ Data ligger altid lokalt i browseren (IndexedDB). Når du er logget ind, synkron
 
 Engangsopsætning i Supabase-projektet:
 
-1. **SQL Editor:** kør [`supabase/schema.sql`](supabase/schema.sql). Det opretter tabellen `records` med Row Level Security, så hver bruger kun kan se sine egne rækker.
+1. **SQL Editor:** kør [`supabase/schema.sql`](supabase/schema.sql) (igen, hvis du har kørt en ældre udgave — den er sikker at køre flere gange). Det opretter tabellerne `records` og `courses` og den private Storage-bucket `courses`, alle med Row Level Security, så hver bruger kun kan se sine egne rækker og filer.
 2. **Authentication → Providers → Email:** slå e-mail/adgangskode til. Det er nemmest at slå **Confirm email** fra (du er eneste bruger); ellers skal du sætte **Authentication → URL Configuration → Site URL** til Pages-adressen, så bekræftelseslinket virker.
 3. I appen: **Indstillinger → Opret konto**, og derefter **Log ind** på hver enhed.
 
 Projektets URL og anon-nøgle står i [`src/config.ts`](src/config.ts). Anon-nøglen er offentlig af design (den ender i browseren); sikkerheden kommer fra RLS-politikkerne. Brug aldrig `service_role`-nøglen i appen.
 
-Uden login virker alt stadig. Brug **Indstillinger → Eksportér (JSON)** som backup, og **Importér** for at flytte data.
+**Egne kurser:** et kursus, du tilføjer under *Mere → Tilføj kursus*, gemmes i browseren og — når du er logget ind — som fil i bucketen `courses` (`<dit bruger-id>/<slug>.md`). De andre enheder henter og bygger det ved næste synkronisering.
+
+Uden login virker alt stadig. Brug **Indstillinger → Gem sikkerhedskopi** som backup, og **Importér** for at flytte data.
 
 ## Arkitektur
 

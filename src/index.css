@@ -669,3 +669,21 @@ body {
 .dot-q {
   flex: 0.5;
 }
+
+/* Drop zone for course files */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  border: 2px dashed var(--border);
+  border-radius: 1rem;
+  text-align: center;
+  background: var(--surface);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.dropzone-on {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}

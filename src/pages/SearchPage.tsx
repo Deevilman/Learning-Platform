@@ -45,7 +45,7 @@ export default function SearchPage() {
                     <CourseDot color={color(h.doc.course)} />
                     <span className="chip">{TYPE_LABEL[h.doc.type]}</span>
                     <span className="muted">
-                      {h.doc.course}
+                      {data?.index.courses.find((c) => c.slug === h.doc.course)?.title || h.doc.course}
                       {h.doc.week ? ` · uge ${h.doc.week}` : ''}
                     </span>
                   </div>

@@ -32,14 +32,22 @@ export interface CourseMeta {
   icon: string
   level: string
   estimated_weeks: number
-  prerequisites: string[]
+  prerequisites: string[] // "requires" in a course file
+  recommendedBefore: string[] // nice to have first, never required
   next: string[]
   topics: Topic[]
   disclaimer?: string
+  lang: 'da' | 'en'
+  track?: string // groups courses on the course map
+  exam?: 'htx' | 'olympiade'
+  /** Uploaded by the learner (not part of the site's own content). */
+  uploaded?: boolean
 }
 
 export interface VideoItem {
   id: string // "<week>.<n>", unique within the course
+  /** Stable key from the course's video list (e.g. "Q3.2") — progress follows it when a course is re-uploaded. */
+  progressKey?: string
   key: string // playlist key from the plan, e.g. "P1" or "Q3.2"
   title: string // HTML
   optional: boolean
@@ -56,6 +64,8 @@ export interface VideoSource {
   youtube?: string // YouTube video ID; missing → the app asks for a URL
   search?: string // YouTube search query used when the ID is unknown
   embed?: false // the uploader has turned off playback on other sites
+  access?: 'steady' // only for the creator's paying supporters: never embedded or linked by ID
+  url?: string // where supporters can watch it (access: steady)
 }
 
 export interface ExerciseSummary {
@@ -112,6 +122,7 @@ export interface WeekSummary {
   number: number
   title: string
   videoCount: number
+  videos?: { id: string; progressKey?: string }[]
   exerciseCount: number
   checkpointCount: number
   topics: string[]

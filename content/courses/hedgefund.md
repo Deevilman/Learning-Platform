@@ -1,3 +1,571 @@
+---
+slug: hedgefund
+lang: da
+title: Hedgefonde
+short: Struktur, strategier og risiko
+color: "#059669"
+icon: bank
+level: universitet (introducerende)
+estimated_weeks: 12
+track: finans
+requires:
+- foundations
+- quant
+recommended_before: []
+next: []
+disclaimer: Undervisning, ikke investeringsrådgivning.
+topics:
+- { id: hf-basics, name: Hvad er en hedgefond?, weeks: [ 1 ] }
+- { id: fees-structure, name: "Struktur, gebyrer og investorer", weeks: [ 2 ] }
+- { id: valuation, name: Regnskab og værdiansættelse, weeks: [ 3 ] }
+- { id: long-short, name: Long/short equity, weeks: [ 4 ] }
+- { id: macro, name: Global makro, weeks: [ 5 ] }
+- { id: event-driven, name: "Event-driven, kredit og distressed", weeks: [ 6 ] }
+- { id: relative-value, name: Relativ værdi og arbitrage, weeks: [ 7 ] }
+- { id: quant-funds, name: Kvantitative fonde, weeks: [ 8 ] }
+- { id: risk-leverage, name: "Risiko, gearing og kollaps", weeks: [ 9 ] }
+- { id: performance, name: Performance og due diligence, weeks: [ 10 ] }
+- { id: ops-regulation, name: "Drift, regulering og etik", weeks: [ 11 ] }
+- { id: fund-launch, name: At starte en fond, weeks: [ 12 ] }
+videos:
+  H1.1:
+    key: H1.1
+    sources:
+    - title: Hedge funds, venture capital, and private equity | Finance & Capital Markets | Khan Academy
+      channel: Khan Academy
+      youtube: bLQBbA8yh7c
+  H1.2:
+    key: H1.2
+    sources:
+    - title: 20. Professional Money Managers and their Influence
+      channel: YaleCourses
+      youtube: txTaBKZ8qrs
+  H1.3:
+    key: H1.3
+    sources:
+    - title: 14. Guest Lecture by Andrew Redleaf
+      channel: YaleCourses
+      youtube: DMbhgSBIUfk
+  H2.1:
+    key: H2.1
+    sources:
+    - title: 9. Guest Lecture by David Swensen
+      channel: YaleCourses
+      youtube: AtSlRK0SZoM
+  H2.2:
+    key: H2.2
+    remove: true
+  H3.1:
+    key: H3.1
+    sources:
+    - title: "William Ackman: Everything You Need to Know About Finance and Investing in Under an Hour | Big Think"
+      channel: Big Think
+      youtube: WEDIj9JBTC8
+  H3.2:
+    key: H3.2
+    sources:
+    - title: "Session 2: The Bermuda Triangle of Valuation"
+      channel: Aswath Damodaran
+      youtube: Kv7j9SNexFM
+  H3.3:
+    key: H3.3
+    sources:
+    - title: "Session 4: The DCF Big Picture and first steps on Riskfree rates"
+      channel: Aswath Damodaran
+      youtube: bK6YC8oBX-c
+  H3.4:
+    key: H3.4
+    sources:
+    - title: "Session 7: Betas, relative risk and first steps on cost of debt"
+      channel: Aswath Damodaran
+      youtube: qWSxyWsA09w
+  H3.5:
+    key: H3.5
+    sources:
+    - title: "Session 12: The Terminal Value"
+      channel: Aswath Damodaran
+      youtube: A3MJAXEyJiY
+  H4.1:
+    key: H4.1
+    sources:
+    - title: "Session 21 (UG) and Session 19 (MBA): Pricing Analytics and Peer Groups"
+      channel: Aswath Damodaran
+      youtube: rjqwM6ZTpA0
+  H4.2:
+    key: H4.2
+    sources:
+    - title: A Short Explanation of Short Selling (feat. The Plain Bagel)
+      channel: Two Cents
+      youtube: 0PZxxT2ewvU
+  H4.3:
+    key: H4.3
+    sources:
+    - title: Everything You Thought You Knew About GameStop Was Wrong!
+      channel: Patrick Boyle
+      youtube: 3UOJ5tTZEZI
+  H4.4:
+    key: H4.4
+    sources:
+    - title: GameStop and Predatory Trading with Lasse Pedersen | Markus Academy | Ep. 54
+      channel: Markus' Academy
+      youtube: ADnRm5LWCjg
+  H5.1:
+    key: H5.1
+    sources:
+    - title: How The Economic Machine Works by Ray Dalio
+      channel: Principles by Ray Dalio
+      youtube: PHe0bXAIuk0
+  H5.2:
+    key: H5.2
+    sources:
+    - title: 18. Monetary Policy
+      channel: YaleCourses
+      youtube: _SpIaGTq0u8
+  H5.3:
+    key: H5.3
+    sources:
+    - title: How George Soros Broke the Bank of England
+      channel: Patrick Boyle
+      youtube: q4k8SGmJqIA
+  H6.1:
+    key: H6.1
+    sources:
+    - title: Merger Arbitrage Hedge Fund Strategy ― How Does it Work?
+      channel: Patrick Boyle
+      youtube: VnQs_HhfYKI
+  H6.2:
+    key: H6.2
+    sources:
+    - title: 15. Guest Lecture by Carl Icahn
+      channel: YaleCourses
+      youtube: HlfgQ4_7EYA
+  H6.3:
+    key: H6.3
+    sources:
+    - title: 'Howard Marks: "Mastering the Market Cycle"'
+      channel: Goldman Sachs
+      youtube: hMNxBHuzl4k
+  H7.1:
+    key: H7.1
+    sources:
+    - title: Long Term Capital Management and the Role of the Federal Reserve
+      channel: Ludwig Chincarini
+      youtube: i5KfP293MVQ
+  H7.2:
+    key: H7.2
+    sources:
+    - title: Victor Haghani - LTCM to Elm Partners
+      channel: Patrick Boyle
+      youtube: 6BUatQ10HA4
+  H7.3:
+    key: H7.3
+    sources:
+    - title: 8. Theory of Debt, Its Proper Role, Leverage Cycles
+      channel: YaleCourses
+      youtube: 3Ir6sbDAx4c
+  H8.1:
+    key: H8.1
+    sources:
+    - title: The mathematician who cracked Wall Street | Jim Simons
+      channel: TED
+      youtube: U5kIdtMJGc8
+  H8.2:
+    key: H8.2
+    sources:
+    - title: An introduction to Man AHL
+      channel: Man AHL
+      youtube: zf91UDTxbSM
+  H8.3:
+    key: H8.3
+    sources:
+    - title: AHL Explains - Momentum
+      channel: Man AHL
+      youtube: D_WhInJePC8
+  H8.4:
+    key: H8.4
+    sources:
+    - title: Cliff Asness on Factor Investing and the History of Financial Economics | Capitalism and Freedom
+      channel: Hoover Institution
+      youtube: 2QrPCewZO9E
+  H8.5:
+    key: H8.5
+    sources:
+    - title: "Adaptive Markets: Financial Evolution At The Speed Of Thought | Andrew W. Lo | Talks at Google"
+      channel: Talks at Google
+      youtube: __teQiAK0dg
+  H8.6:
+    key: H8.6
+    sources:
+    - title: Winton Founder David Harding on Rewriting His Hedge Fund's Strategy
+      channel: Bloomberg Television
+      youtube: LiuRFzLgPn4
+  H9.1:
+    key: H9.1
+    sources:
+    - title: Archegos Capital Blowup | Bill Hwang's Margin Call
+      channel: Patrick Boyle
+      youtube: 2t4lGmNDiHo
+  H9.2:
+    key: H9.2
+    sources:
+    - title: 7. Value At Risk (VAR) Models
+      channel: MIT OpenCourseWare
+      youtube: 92WaNz9mPeY
+  H9.3:
+    key: H9.3
+    sources:
+    - title: 25. The Leverage Cycle and the Subprime Mortgage Crisis
+      channel: YaleCourses
+      youtube: lb5Q1Jur0I0
+  H9.4:
+    key: H9.4
+    sources:
+    - title: 26. The Leverage Cycle and Crashes
+      channel: YaleCourses
+      youtube: yenfxh_arkg
+  H9.5:
+    key: H9.5
+    title: "Amaranth 2006: det amerikanske Senats rapport (læsning, ingen video)"
+    sources: []
+    links:
+    - https://www.hsgac.senate.gov/imo/media/doc/REPORTExcessiveSpeculationintheNaturalGasMarket.pdf
+  H10.1:
+    key: H10.1
+    sources:
+    - title: 2010 Methods Lecture, Andrew Lo, "Financial Econometrics in Action Analyzing Hedge Funds and..."
+      channel: NBER
+      youtube: kpGNvgzwDSE
+  H10.2:
+    key: H10.2
+    sources:
+    - title: "60 Minutes Archive: The man who figured out Madoff's Ponzi scheme"
+      channel: 60 Minutes
+      youtube: 3wUJesUik5A
+  H10.3:
+    key: H10.3
+    remove: true
+  H11.1:
+    key: H11.1
+    sources:
+    - title: 8. Human Foibles, Fraud, Manipulation, and Regulation
+      channel: YaleCourses
+      youtube: LEB2k9jJzzc
+  H11.2:
+    key: H11.2
+    sources:
+    - title: Opening Statement of Harry Markopolos
+      channel: PublicResourceOrg
+      youtube: AF-gzN3ppbE
+  H11.3:
+    key: H11.3
+    sources:
+    - title: Melvin Capital, Citadel CEOs on short selling interest in GameStop
+      channel: CNBC Television
+      youtube: fLVl9QfbrG0
+  H11.4:
+    key: H11.4
+    sources:
+    - title: Before The Mets, Steve Cohen Was The Hedge-Fund King (full documentary) | FRONTLINE (To Catch a Trader)
+      channel: FRONTLINE PBS | Official
+      youtube: 1szayJV505M
+  H12.1:
+    key: H12.1
+    sources:
+    - title: How to build a company where the best ideas win | Ray Dalio
+      channel: TED
+      youtube: HXbsVbFAczg
+  H12.2:
+    key: H12.2
+    sources:
+    - title: Jim Simons (full length interview) - Numberphile
+      channel: Numberphile2
+      youtube: QNznD9hMEh0
+  H12.3:
+    key: H12.3
+    sources:
+    - title: What Are Hedge Fund Pod Shops?
+      channel: Bob Elliott
+      youtube: Pq3_u1xNRhc
+overrides:
+  inserts:
+  - week: 2
+    before: "**6. Likviditetsvilkår.**"
+    markdown: ::interactive{id="fee-engine"}
+  - week: 3
+    before: "**6. Relativ værdiansættelse"
+    markdown: ::interactive{id="dcf-sensitivity"}
+  - week: 6
+    before: "**3. Aktiebytte og hedge-ratio.**"
+    markdown: ::interactive{id="merger-arb"}
+  - week: 9
+    before: "**4. Likviditetsrisiko.**"
+    markdown: ::interactive{id="leverage-cascade"}
+  - week: 10
+    before: "**6. Lo's korrektion"
+    markdown: ::interactive{id="return-smoothing"}
+  exercises:
+    "5.1":
+      quiz:
+        question: Nominel rente $4\,\%$ og inflation $2{,}5\,\%$. Hvad er den eksakte realrente?
+        check:
+          type: numeric
+          answer: 1.463
+          tolerance: 0.005
+          unit: "%"
+        distractors:
+        - 1.5
+        - 6.5
+        - 1.6
+        explain: $1{,}04/1{,}025 - 1 = 1{,}463\,\%$. Tilnærmelsen $i - \pi$ giver $1{,}5\,\%$.
+    "5.2":
+      quiz:
+        question: Spot $6{,}90$ DKK/USD, $i_{\text{DKK}} = 2\,\%$ og $i_{\text{USD}} = 4{,}5\,\%$. Hvad er den 1-årige terminskurs i DKK/USD?
+        check:
+          type: numeric
+          answer: 6.7349
+          tolerance: 0.0005
+        distractors:
+        - 7.0691
+        - 6.9
+        - 6.7275
+        explain: $F = 6{,}90 \cdot 1{,}02/1{,}045 = 6{,}7349$. Højrentevalutaen (USD) handles med terminsrabat.
+    "5.3":
+      quiz:
+        question: Den 1-årige rente er $4{,}0\,\%$ og den 2-årige $3{,}5\,\%$. Hvad er den implicitte 1-årige rente om et år?
+        check:
+          type: numeric
+          answer: 3.002
+          tolerance: 0.005
+          unit: "%"
+        distractors:
+        - 4.5
+        - 3.75
+        - 2.5
+        explain: $1{,}035^2/1{,}04 - 1 = 3{,}002\,\%$. Markedet venter en lavere kort rente om et år.
+    "5.4":
+      quiz:
+        question: Taylor-reglen $i = r^* + \pi + 0{,}5(\pi - \pi^*) + 0{,}5 \cdot \text{gap}$ med $r^* = 0{,}5\,\%$, $\pi^* = 2\,\%$, $\pi = 4\,\%$ og output gap $-1\,\%$. Hvad er den anbefalede styrerente?
+        check:
+          type: numeric
+          answer: 5
+          tolerance: 0.01
+          unit: "%"
+        distractors:
+        - 4.5
+        - 5.5
+        - 3
+        explain: $0{,}5 + 4 + 0{,}5 \cdot 2 + 0{,}5 \cdot (-1) = 5{,}0\,\%$.
+    "7.2":
+      quiz:
+        question: "LTCM primo 1998: egenkapital $4{,}7$ mia. USD og aktiver $125$ mia. USD. Hvor stort et procentvist fald i aktiverne udsletter egenkapitalen?"
+        check:
+          type: numeric
+          answer: 3.76
+          tolerance: 0.01
+          unit: "%"
+        distractors:
+        - 26.6
+        - 37.6
+        - 4.7
+        explain: Gearingen er $L = 125/4{,}7 \approx 26{,}6$, og et fald på $1/L = 3{,}76\,\%$ fjerner hele egenkapitalen.
+    "7.3":
+      quiz:
+        question: En fond køber obligationer i repo med haircut $2\,\%$. Hvad er den maksimale gearing?
+        check:
+          type: numeric
+          answer: 50
+          tolerance: 0
+        distractors:
+        - 2
+        - 20
+        - 98
+        explain: Hver krone egenkapital bærer $1/0{,}02 = 50$ kroner obligationer.
+    "7.4":
+      quiz:
+        question: En konvertibel obligation koster $1.100$ USD og kan konverteres til $20$ aktier à $45$ USD. Hvad er konverteringspræmien?
+        check:
+          type: numeric
+          answer: 22.22
+          tolerance: 0.05
+          unit: "%"
+        distractors:
+        - 18.18
+        - 10
+        - 81.82
+        explain: Konverteringsværdi $20 \cdot 45 = 900$, og præmien er $1.100/900 - 1 \approx 22{,}2\,\%$.
+    "8.2":
+      quiz:
+        question: Olie-futures har daglig volatilitet $1{,}2\,\%$. Hvad er den annualiserede volatilitet med $252$ handelsdage?
+        check:
+          type: numeric
+          answer: 19.05
+          tolerance: 0.01
+          unit: "%"
+        distractors:
+        - 302.4
+        - 14.4
+        - 4.38
+        explain: "Volatilitet skalerer med kvadratroden af tiden: $1{,}2\\,\\% \\cdot \\sqrt{252} \\approx 19{,}05\\,\\%$."
+    "8.3":
+      quiz:
+        question: Long $10$ mio. kr. i aktier med beta $1{,}2$ og short $10$ mio. kr. med beta $0{,}8$. Hvad er netto beta-eksponeringen i mio. kr.?
+        check:
+          type: numeric
+          answer: 4
+          tolerance: 0
+        distractors:
+        - 0
+        - 20
+        - 2
+        explain: $10 \cdot 1{,}2 - 10 \cdot 0{,}8 = 4$ mio. kr. — selvom fonden er "dollar-neutral".
+    "8.4":
+      quiz:
+        question: $200$ strategier uden nogen kant testes hver på $5\,\%$-niveau. Hvor mange "signifikante" strategier forventes?
+        check:
+          type: numeric
+          answer: 10
+          tolerance: 0
+        distractors:
+        - 1
+        - 5
+        - 20
+        explain: $0{,}05 \cdot 200 = 10$ — af ren tilfældighed.
+    "8.5":
+      quiz:
+        question: En fond har Sharpe ratio $0{,}5$ målt over $10$ år, og $\mathrm{SE} \approx 1/\sqrt{T}$. Hvad er $t$-værdien?
+        check:
+          type: numeric
+          answer: 1.58
+          tolerance: 0.005
+        distractors:
+        - 5
+        - 0.16
+        - 3.16
+        explain: $t = 0{,}5 \cdot \sqrt{10} \approx 1{,}58$ — under $1{,}96$, så ikke signifikant.
+    "11.1":
+      quiz:
+        question: Long $180$, kontanter $75$, tilgodehavender $2$, short-positioner $60$ og påløbne omkostninger $1$ (mio. kr.). Hvad er NAV før gebyrer i mio. kr.?
+        check:
+          type: numeric
+          answer: 196
+          tolerance: 0
+        distractors:
+        - 316
+        - 256
+        - 198
+        explain: $180 + 75 + 2 - 60 - 1 = 196$. Short-positioner og omkostninger er forpligtelser.
+    "11.4":
+      quiz:
+        question: En analytiker kombinerer lovligt købte kortdata, satellitbilleder og offentlige jobopslag og køber aktien. Er det lovligt efter EU MAR?
+        options:
+        - Ja — offentlige og lovligt erhvervede data plus egen analyse (mosaikteorien)
+        - Nej — det er insiderhandel
+        - Nej — alternative data må ikke bruges til at handle
+        - Kun hvis selskabet giver lov
+        explain: Ingen af brikkerne er intern viden. Datakilden skal dog være lovligt erhvervet.
+    "11.5":
+      quiz:
+        question: Rapporteret NAV er $110$ kr. pr. andel, men den sande er $100$ kr. En investor indløser $200.000$ andele til den rapporterede NAV. Hvor mange mio. kr. overføres fra de investorer, der bliver?
+        check:
+          type: numeric
+          answer: 2
+          tolerance: 0
+        distractors:
+        - 22
+        - 10
+        - 0.2
+        explain: "Den udtrædende får $10$ kr. for meget pr. andel: $200.000 \\cdot 10 = 2$ mio. kr."
+    "12.1":
+      quiz:
+        question: En ny fond har faste omkostninger på $4$ mio. USD om året og tager $1{,}5\,\%$ i management fee. Hvad er break-even-AUM i mio. USD?
+        check:
+          type: numeric
+          answer: 266.7
+          tolerance: 0.05
+        distractors:
+        - 200
+        - 400
+        - 26.7
+        explain: $4/0{,}015 \approx 266{,}7$ mio. USD.
+    "12.3":
+      quiz:
+        question: Bruttoafkast $14\,\%$ i en fond med "2 og 20" (performance fee af afkastet efter management fee). Hvad er investorens nettoafkast?
+        check:
+          type: numeric
+          answer: 9.6
+          tolerance: 0.01
+          unit: "%"
+        distractors:
+        - 9.2
+        - 7.2
+        - 12
+        explain: $(14 - 2) \cdot 0{,}8 = 9{,}6\,\%$.
+    "12.6":
+      quiz:
+        question: "Med $t \\approx \\mathrm{SR}\\sqrt{T}$: hvor mange år kræves for $t \\ge 2$, hvis den sande Sharpe ratio er $0{,}5$?"
+        check:
+          type: numeric
+          answer: 16
+          tolerance: 0
+        distractors:
+        - 4
+        - 8
+        - 2
+        explain: $T \ge (2/0{,}5)^2 = 16$ år.
+forward_refs:
+  "1.4":
+  - field: prompt
+    text: (bruges i uge 4)
+    action: remove
+  "1.11":
+  - field: prompt
+    text: (bruges i uge 10)
+    action: remove
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "5.8":
+  - field: prompt
+    text: (a) Hvis fastkursen holder, og pundet vender tilbage til centralkursen, hvad er tabet i %?
+    action: keep
+  "6.7":
+  - field: prompt
+    text: (bruges i uge 9)
+    action: remove
+  "8.5":
+  - field: prompt
+    text: (bruges i uge 10)
+    action: remove
+  - field: solution
+    text: (uge 10)
+    action: remove
+  "1.9":
+  - field: prompt
+    text: (uddybes i uge 2)
+    action: remove
+  - field: solution
+    text: Det er kernen i moral hazard-problemet i uge 2.
+    action: replace
+    with: Det er kernen i det, man kalder moral hazard.
+  "1.10":
+  - field: solution
+    text: (uge 2)
+    action: remove
+  "2.6":
+  - field: solution
+    text: "(risiko: strenge stop-loss-regler og mindre selvstændighed, uge 12)"
+    action: replace
+    with: "(risiko: strenge stop-loss-regler og mindre selvstændighed)"
+  "7.10":
+  - field: solution
+    text: (uge 9)
+    action: remove
+  "8.9":
+  - field: prompt
+    text: (bruges i 8.11 og uge 9)
+    action: replace
+    with: (bruges i 8.11)
+---
 # Hedgefonde: struktur, strategier og risiko
 
 *Læringsplan, noter, øvelser og løsninger til YouTube-playlisten **"Hedge Funds - Structure, Strategies and Risk"***

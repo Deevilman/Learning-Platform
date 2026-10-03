@@ -8,6 +8,7 @@ import remarkMath from 'remark-math'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
 import rehypeKatex from 'rehype-katex'
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 import { visit } from 'unist-util-visit'
 import katex from 'katex'
@@ -23,6 +24,8 @@ export interface RenderContext {
   interactiveMeta?: Map<string, { title: string; intro?: string }>
   errors: { file: string; line: number; message: string }[]
   directives: { id: string; file: string; line: number }[]
+  /** Uploaded courses: allow only safe HTML and the platform's own directives. */
+  sanitize?: boolean
 }
 
 const DIRECTIVE_RE = /^::interactive\{([^}]*)\}\s*$/
@@ -150,6 +153,23 @@ function rehypeLinks() {
   }
 }
 
+/**
+ * For uploaded courses: GitHub-style safe HTML plus what the platform itself
+ * emits (interactive placeholders, Mermaid, details, math). Runs before KaTeX.
+ */
+export const SAFE_SCHEMA = {
+  ...defaultSchema,
+  clobberPrefix: '',
+  tagNames: [...(defaultSchema.tagNames || []), 'details', 'summary'],
+  attributes: {
+    ...defaultSchema.attributes,
+    div: [...(defaultSchema.attributes?.div || []), ['className', 'interactive', 'mermaid', 'math', 'math-display', 'md-table'], 'dataInteractive', 'dataProps', 'dataMermaid'],
+    span: [...(defaultSchema.attributes?.span || []), ['className', 'math', 'math-inline', 'math-display']],
+    code: [...(defaultSchema.attributes?.code || []), ['className', /^language-/, 'math-inline', 'math-display']],
+    table: [['className', 'md-table']],
+  },
+}
+
 function makeProcessor(ctx: RenderContext) {
   return unified()
     .use(remarkParse)
@@ -157,6 +177,7 @@ function makeProcessor(ctx: RenderContext) {
     .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
+    .use(ctx.sanitize ? [[rehypeSanitize, SAFE_SCHEMA]] : [])
     .use(rehypeKatex, {
       output: 'html',
       throwOnError: false,

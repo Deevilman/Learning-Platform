@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { loadCourse, loadWeek } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 import { useCheck, useSetting, useStore, useTable } from '@/lib/store'
-import { checkpointId, videoCheckId, visitId } from '@/lib/progress'
+import { checkpointId, videoWatched, visitId } from '@/lib/progress'
 import { ANSWER_PREF_KEY, ANSWER_PREF_LABEL, filterByAnswerPref, type AnswerPref } from '@/lib/answer-type'
 import { splitLesson, type LessonStep } from '@/lib/lesson'
 import { questionsForWeek, WEEK_TEST_PASS, WEEK_TEST_SIZE, weekTestKey, type PlacementQuestion, type WeekTestRecord } from '@/lib/placement'
@@ -52,7 +52,7 @@ export default function WeekPage() {
   if (!data) return <Loading what="uge" />
   const { course, week: w } = data
   const checkMap = new Map((checks || []).map((c) => [c.id, c.value]))
-  const videosDone = w.videos.length > 0 && w.videos.every((v) => checkMap.get(videoCheckId(slug, v.id)))
+  const videosDone = w.videos.length > 0 && w.videos.every((v) => videoWatched(checkMap, slug, v))
   const checkpointDone = w.checkpoint.length > 0 && w.checkpoint.every((_, i) => checkMap.get(checkpointId(slug, n, i)))
   const done: Record<StepId, boolean> = { se: videosDone, laes: !!lesson?.done, oev: checkpointDone || (!!test && test.best >= WEEK_TEST_PASS) }
   const prev = n > 1 ? n - 1 : null

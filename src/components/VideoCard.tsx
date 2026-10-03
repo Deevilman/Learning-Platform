@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { VideoItem } from '@/types/content'
 import { useCheck, useRecord, useStore } from '@/lib/store'
-import { videoCheckId } from '@/lib/progress'
+import { videoCheckIds } from '@/lib/progress'
 
 export function parseYoutubeId(input: string): string | null {
   const s = input.trim()
@@ -69,6 +69,20 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
   const id = override?.youtube || source.youtube
   const label = `${source.title}${source.channel ? ` · ${source.channel}` : ''}`
 
+  // Paid content for the creator's supporters: never embed or link the video itself.
+  if (source.access === 'steady')
+    return (
+      <div className="min-w-0 space-y-2 rounded-xl p-4 text-sm" style={{ background: 'var(--surface-2)' }}>
+        <div className="font-medium">{source.title}</div>
+        <p className="muted">Denne del er kun for støtter af {source.channel || 'The Bright Side of Mathematics'} (Steady). Indholdet står i noterne herunder.</p>
+        {source.url && (
+          <a className="link" href={source.url} target="_blank" rel="noopener noreferrer">
+            Se kurset hos {source.channel || 'The Bright Side of Mathematics'} ↗
+          </a>
+        )}
+      </div>
+    )
+
   if (id && !editing)
     return (
       <div className="min-w-0 space-y-1">
@@ -117,7 +131,15 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
 }
 
 export function VideoCard({ course, item }: { course: string; item: VideoItem }) {
-  const [watched, setWatched] = useCheck(videoCheckId(course, item.id))
+  const [primary, legacy] = videoCheckIds(course, item)
+  const [watchedNew, setWatchedNew] = useCheck(primary)
+  const [watchedOld, setWatchedOld] = useCheck(legacy ?? primary)
+  const watched = watchedNew || (!!legacy && watchedOld)
+  // write the stable id; clear the old one when unticking so it can't keep the video ticked
+  const setWatched = (v: boolean) => {
+    setWatchedNew(v)
+    if (!v && legacy && watchedOld) setWatchedOld(false)
+  }
   return (
     <section id={`video-${item.id}`} className="card space-y-3">
       <div className="flex items-start gap-3">

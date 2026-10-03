@@ -7,6 +7,7 @@ on:
   push:
     branches-ignore: [main]
     paths:
+      - 'content/courses/*.md'
       - 'content/courses/*/videos.yaml'
       - 'scripts/verify-videos.ts'
       - 'scripts/find-videos.ts'
