@@ -651,3 +651,12 @@ niveauer:
 ```
 
 Felter under et niveau erstatter felterne ovenfor for den sværhed. Se flere i `content/templates/`.
+
+## 10. Flashcards
+
+Flashcards laves automatisk og kommer igen efter samme plan som opgaverne i Træn. Eleven vælger mellem "Vend kort" og "Skriv svaret".
+
+- **Ordlisten** (`## 📖 Ordliste: dansk–engelsk`): hver række bliver til to kort, dansk → engelsk og engelsk → dansk. Har tabellen en fjerde kolonne (`| Dansk | Engelsk | Uge | Forklaring |`), bliver forklaringen også til et kort (begreb → forklaring).
+- **Formler:** et afsnit, hvis overskrift starter med "Notation" eller "Formler", med tabellen `| Formel | Betydning | Uge |`. Rækker, hvor første kolonne indeholder `$…$`, bliver til kort (betydning → formel). Formelkort vendes altid; de skal ikke skrives.
+
+Kortenes id afhænger af det danske ord eller betydningen, så fremskridt følger med, selvom rækkefølgen ændres.

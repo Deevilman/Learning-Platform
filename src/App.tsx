@@ -22,6 +22,7 @@ const InteractivesPage = lazy(() => import('@/pages/InteractivesPage'))
 const StatsPage = lazy(() => import('@/pages/StatsPage'))
 const PlacementPage = lazy(() => import('@/pages/PlacementPage'))
 const AddCoursePage = lazy(() => import('@/pages/AddCoursePage'))
+const FlashcardsPage = lazy(() => import('@/pages/FlashcardsPage'))
 
 const NAV: { to: string; label: Key; icon: string; end?: boolean }[] = [
   { to: '/', label: 'nav.overview', icon: '⌂', end: true },
@@ -33,6 +34,7 @@ const MORE = [
   { to: '/soeg', label: 'nav.search' },
   { to: '/statistik', label: 'nav.stats' },
   { to: '/ordliste', label: 'nav.glossary' },
+  { to: '/kort', label: 'nav.flashcards' },
   { to: '/logbog', label: 'nav.logbook' },
   { to: '/interaktivt', label: 'nav.tryIt' },
   { to: '/kurser/tilfoej', label: 'nav.addCourse' },
@@ -205,6 +207,7 @@ export default function App() {
               <Route path="/traen" element={<TrainPage />} />
               <Route path="/soeg" element={<SearchPage />} />
               <Route path="/ordliste" element={<GlossaryPage />} />
+              <Route path="/kort" element={<FlashcardsPage />} />
               <Route path="/logbog" element={<LogbookPage />} />
               <Route path="/indstillinger" element={<SettingsPage />} />
               <Route path="/interaktivt" element={<InteractivesPage />} />

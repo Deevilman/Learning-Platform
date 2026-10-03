@@ -2,13 +2,13 @@
 // the JSON the app reads. Pure: no file system, so it runs both in the content
 // build (Node) and in the browser when a learner uploads a course file.
 
-import { parsePlan, parseGlossary, type RawPlan, type RawWeek, type RawQA } from './plan-parser.ts'
+import { parsePlan, parseGlossary, parseFormulaTable, type RawPlan, type RawWeek, type RawQA } from './plan-parser.ts'
 import { renderMarkdown, renderInline, plainText, type RenderContext } from './markdown.ts'
 import { applyForwardRefs, displayLongMath, firstStep, kindHint, splitSubquestions, type ForwardRefRule } from './exercise-text.ts'
 import { makeChoices, shuffledOptions } from '../../src/lib/choices.ts'
 import { validateTemplate, type TemplateDef } from '../../src/lib/templates.ts'
 import { danishNumbers } from './number-format.ts'
-import type { Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
+import type { Flashcard, Lesson, AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
 
 export interface BuildError {
   file: string
@@ -513,14 +513,33 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     // ---------- info pages + glossary
     const info: InfoPage[] = []
     const glossary: GlossaryEntry[] = []
+    const flashcards: Flashcard[] = []
+    const cardIds = new Set<string>()
+    const card = (c: Omit<Flashcard, 'id'>, key: string) => {
+      const id = `fc:${slug}:${c.kind}:${slugify(key).slice(0, 60)}`
+      if (cardIds.has(id)) return
+      cardIds.add(id)
+      flashcards.push({ id, ...c })
+    }
+    const firstWeek = (w?: string) => (w && /\d+/.test(w) ? Number(/\d+/.exec(w)![0]) : undefined)
     for (const s of [...plan.front, ...plan.back]) {
       const title = s.title.replace(/^[^\p{L}\d]+/u, '').trim()
       info.push({ slug: slugify(title), title, html: md(s.md, planFile, s.line) })
       search.push({ id: `${slug}/info/${slugify(title)}`, type: 'info', course: slug, title, text: plainText(s.md).slice(0, 2000), href: `/kursus/${slug}/info/${slugify(title)}` })
+      // formula tables: a section called "Notation…" or "Formler…" with | Formel | Betydning | Uge |
+      if (/^[^\p{L}]*(notation|formler)/iu.test(s.title))
+        for (const f of parseFormulaTable(s.md)) card({ kind: 'formula', front: inl(f.meaning, planFile, s.line), back: inl(f.formula, planFile, s.line), week: firstWeek(f.week) }, f.meaning)
       if (/ordliste/i.test(s.title)) {
         for (const g of parseGlossary(s.md)) {
           const entry = { course: slug, da: plainText(g.da), en: plainText(g.en), week: g.week ? plainText(g.week) : undefined }
-          glossary.push(entry)
+          const def = g.def ? plainText(g.def) : undefined
+          glossary.push(def ? { ...entry, def } : entry)
+          const week = firstWeek(entry.week)
+          if (entry.da && entry.en) {
+            card({ kind: 'da-en', front: inl(g.da, planFile, s.line), back: inl(g.en, planFile, s.line), answer: entry.en, week }, entry.da)
+            card({ kind: 'en-da', front: inl(g.en, planFile, s.line), back: inl(g.da, planFile, s.line), answer: entry.da, week }, entry.da)
+          }
+          if (def) card({ kind: 'definition', front: inl(g.da, planFile, s.line), back: inl(g.def!, planFile, s.line), week }, entry.da)
           search.push({ id: `${slug}/glossary/${slugify(entry.da)}`, type: 'glossary', course: slug, title: `${entry.da} — ${entry.en}`, text: `${entry.da} ${entry.en}`, href: `/ordliste?q=${encodeURIComponent(entry.da)}` })
         }
       }
@@ -541,6 +560,7 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
       project,
       sets,
       glossary,
+      ...(flashcards.length ? { flashcards } : {}),
       counts: { weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing },
       tryIt,
     }

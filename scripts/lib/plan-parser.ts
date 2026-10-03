@@ -469,13 +469,26 @@ function parseProject(title: string, line: number, body: Line[]) {
 }
 
 /** Parse "| Dansk | Engelsk | Uge |" glossary tables. */
-export function parseGlossary(md: string): { da: string; en: string; week?: string }[] {
-  const out: { da: string; en: string; week?: string }[] = []
+/** | Dansk | Engelsk | Uge | (Forklaring) | — the optional 4th column is a definition. */
+/** Rows of a formula table (| Formel | Betydning | Uge |): only rows whose first cell has math. */
+export function parseFormulaTable(md: string): { formula: string; meaning: string; week?: string }[] {
+  const out: { formula: string; meaning: string; week?: string }[] = []
+  for (const line of md.split('\n')) {
+    if (!line.startsWith('|')) continue
+    const cells = line.split(/(?<!\\)\|/).slice(1, -1).map((c) => c.trim())
+    if (cells.length < 2 || !cells[0].includes('$') || !cells[1]) continue
+    out.push({ formula: cells[0], meaning: cells[1], week: cells[2] })
+  }
+  return out
+}
+
+export function parseGlossary(md: string): { da: string; en: string; week?: string; def?: string }[] {
+  const out: { da: string; en: string; week?: string; def?: string }[] = []
   for (const line of md.split('\n')) {
     if (!line.startsWith('|')) continue
     const cells = line.split('|').slice(1, -1).map((c) => c.trim())
     if (cells.length < 2 || /^:?-+:?$/.test(cells[0]) || /^dansk$/i.test(cells[0])) continue
-    out.push({ da: cells[0], en: cells[1], week: cells[2] })
+    out.push({ da: cells[0], en: cells[1], week: cells[2], ...(cells[3] ? { def: cells[3] } : {}) })
   }
   return out
 }
