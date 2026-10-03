@@ -6,6 +6,7 @@ import { parsePlan, parseGlossary, type RawPlan, type RawWeek, type RawQA } from
 import { renderMarkdown, renderInline, plainText, type RenderContext } from './markdown.ts'
 import { applyForwardRefs, displayLongMath, firstStep, kindHint, splitSubquestions, type ForwardRefRule } from './exercise-text.ts'
 import { makeChoices, shuffledOptions } from '../../src/lib/choices.ts'
+import { validateTemplate, type TemplateDef } from '../../src/lib/templates.ts'
 import type { AutoCheck, CourseData, CourseMeta, Difficulty, Exercise, ExerciseKind, ExerciseSet, ExerciseSummary, GlossaryEntry, InfoPage, Project, SearchDoc, VideoItem, Week } from '../../src/types/content.ts'
 
 export interface BuildError {
@@ -108,6 +109,8 @@ export interface CourseSource {
   overrides?: Overrides
   videos?: Record<string, any>
   forwardRefs?: ForwardRefs
+  /** ```opgaveskabelon blocks (line = the opening fence). */
+  templates?: { line: number; data: unknown }[]
   /** Names used in error messages, e.g. "content/courses/quant/plan.md" or the uploaded file's name. */
   files: { meta: string; plan: string; overrides: string; videos: string; forwardRefs: string }
 }
@@ -486,6 +489,19 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
       counts: { weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing },
       tryIt,
     }
+    // ---------- exercise templates: each must pass 200 seeds
+    const templates: TemplateDef[] = []
+    for (const t of src.templates || []) {
+      const def = t.data as TemplateDef
+      const r = validateTemplate(def)
+      for (const e of r.errors) err(src.files.plan, t.line, `Opgaveskabelonen "${r.id}": ${e}`)
+      if (r.errors.length) continue
+      const unknown = def.emner.filter((x) => !topicIds.has(x))
+      if (unknown.length) err(src.files.plan, t.line, `Opgaveskabelonen "${r.id}": emnet ${unknown.map((x) => `"${x}"`).join(', ')} står ikke under "topics" i front matter.`)
+      if (templates.some((x) => x.id === def.id)) err(src.files.plan, t.line, `Opgaveskabelonen "${r.id}" findes to gange.`)
+      templates.push({ ...def, kursus: slug })
+    }
+    if (templates.length) courseData.templates = templates
     const stats: CourseStats = ({ slug, weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing, selftest: nSelf, interview: nInt })
     return { meta, course: courseData, weeks, sets: setFiles, summaries: allSummaries, search, stats, ...report }
 }

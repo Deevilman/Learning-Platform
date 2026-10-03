@@ -2,6 +2,8 @@
 // the courses the learner has added in the app (IndexedDB). An added course
 // with the same slug as one of the site's replaces it.
 
+import { registerGenerators } from './generators'
+import { templateToGenerator } from './templates'
 import type { ContentIndex, CourseData, ExerciseSet, SearchDoc, Week, Exercise } from '@/types/content'
 import { onCoursesChanged, visibleBuilds, type StoredBuild } from './courses/store'
 
@@ -37,13 +39,20 @@ onCoursesChanged(() => {
 
 export async function loadIndex(): Promise<ContentIndex> {
   const [site, own] = await Promise.all([load<ContentIndex>('index.json'), uploadedCourses()])
-  if (!own.size) return site
+  if (!own.size) return withTemplates(site)
   const mine = [...own.values()].map((b) => b.data)
-  return {
+  return withTemplates({
     ...site,
     courses: [...site.courses.filter((c) => !own.has(c.slug)), ...mine.map((d) => ({ ...d.meta, uploaded: true }))],
     exercises: [...site.exercises.filter((e) => !own.has(e.course)), ...mine.flatMap((d) => d.summaries)],
-  }
+    templates: [...(site.templates || []).filter((t) => !own.has(t.kursus || '')), ...mine.flatMap((d) => d.course.templates || [])],
+  })
+}
+
+/** Exercise templates become generators as soon as the index is known. */
+function withTemplates(index: ContentIndex): ContentIndex {
+  registerGenerators((index.templates || []).map((t) => templateToGenerator(t, t.kursus || '')))
+  return index
 }
 
 export async function loadCourse(slug: string): Promise<CourseData> {

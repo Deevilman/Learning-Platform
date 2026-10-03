@@ -9,6 +9,7 @@ import { join, relative, basename } from 'node:path'
 import YAML from 'yaml'
 import { buildCourse, type BuildEnv, type CourseSource, type CourseStats } from './lib/course-build.ts'
 import { parseCoursePack } from './lib/course-pack.ts'
+import { validateTemplate, type TemplateDef } from '../src/lib/templates.ts'
 import type { ContentIndex, CourseMeta, ExerciseSummary, SearchDoc } from '../src/types/content.ts'
 
 export interface BuildOptions {
@@ -67,6 +68,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
   const allSummaries: ExerciseSummary[] = []
   const search: SearchDoc[] = []
   const outputs: { path: string; data: unknown }[] = []
+  const templates: TemplateDef[] = []
 
   // course folders and single course files
   const sources: CourseSource[] = []
@@ -94,11 +96,35 @@ export function buildContent(opts: BuildOptions): BuildReport {
     for (const s of b.sets) outputs.push({ path: `courses/${src.slug}/set-${s.slug}.json`, data: s })
     outputs.push({ path: `courses/${src.slug}.json`, data: b.course })
     metas.push(b.meta)
+    templates.push(...(b.course.templates || []))
     allSummaries.push(...b.summaries)
     search.push(...b.search)
     report.courses.push(b.stats)
   }
 
+
+  // ---------- site exercise templates (content/templates/*.yaml, one per file)
+  const tplDir = join(contentDir, 'templates')
+  const courseTopics = new Map(metas.map((m) => [m.slug, new Set(m.topics.map((t) => t.id))]))
+  for (const f of existsSync(tplDir) ? readdirSync(tplDir).filter((n) => /\.ya?ml$/.test(n)).sort() : []) {
+    const file = relative(opts.root, join(tplDir, f))
+    let def: TemplateDef
+    try {
+      def = YAML.parse(readFileSync(join(tplDir, f), 'utf8'))
+    } catch (e) {
+      report.errors.push({ file, line: (e as { linePos?: { line: number }[] }).linePos?.[0]?.line || 0, message: `YAML-fejl: ${(e as Error).message}` })
+      continue
+    }
+    const r = validateTemplate(def)
+    for (const e of r.errors) report.errors.push({ file, line: 0, message: e })
+    if (r.errors.length) continue
+    if (`${def.id}.yaml` !== f && `${def.id}.yml` !== f) report.errors.push({ file, line: 0, message: `id "${def.id}" matcher ikke filnavnet` })
+    const topics = def.kursus ? courseTopics.get(def.kursus) : undefined
+    if (!topics) report.errors.push({ file, line: 0, message: `"kursus: ${def.kursus}" er ikke et kursus` })
+    else for (const t of def.emner) if (!topics.has(t)) report.errors.push({ file, line: 0, message: `emnet "${t}" findes ikke i kurset ${def.kursus}` })
+    if (templates.some((x) => x.id === def.id)) report.errors.push({ file, line: 0, message: `skabelonen "${def.id}" findes to gange` })
+    templates.push(def)
+  }
 
   // ---------- course graph
   const known = new Set(metas.map((m) => m.slug))
@@ -116,7 +142,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
       writeFileSync(p, JSON.stringify(o.data))
     }
     for (const [id, m] of interactiveMeta) allInteractives.push({ id, title: m.title, intro: m.intro, course: m.course })
-    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries, interactives: allInteractives }
+    const index: ContentIndex = { generatedAt: new Date().toISOString(), courses: metas, exercises: allSummaries, interactives: allInteractives, templates }
     writeFileSync(join(opts.out, 'index.json'), JSON.stringify(index))
     writeFileSync(join(opts.out, 'search.json'), JSON.stringify(search))
   }

@@ -136,6 +136,7 @@ export function parseCoursePack(text: string, file: string): CoursePack {
       overrides: (fm.overrides || {}) as Overrides,
       videos,
       forwardRefs: fm.forward_refs || {},
+      templates: blocks.filter((b) => b.kind === 'opgaveskabelon').map((b) => ({ line: b.line, data: b.data })),
       files: { meta: file, plan: file, overrides: file, videos: file, forwardRefs: file },
     },
     blocks,
