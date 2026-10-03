@@ -73,3 +73,20 @@ export function groupByTrack(nodes: MapNode[]): { track: string; layers: MapNode
   })
 }
 const rank = (t: string) => (TRACK_ORDER.includes(t) ? TRACK_ORDER.indexOf(t) : TRACK_ORDER.length)
+
+/**
+ * "Næste kursus": the next courses of a finished course (or of every finished
+ * course), plus courses whose prerequisites are all done now. Written courses
+ * first; planned ones show as "Kommer senere".
+ */
+export function recommendNext(nodes: MapNode[], from?: string): MapNode[] {
+  const by = new Map(nodes.map((n) => [n.slug, n]))
+  const out: MapNode[] = []
+  const add = (n?: MapNode) => {
+    if (n && n.status !== 'done' && n.status !== 'started' && !out.includes(n)) out.push(n)
+  }
+  const sources = from ? [by.get(from)].filter((n): n is MapNode => !!n) : nodes.filter((n) => n.status === 'done')
+  for (const s of sources) for (const x of s.next) add(by.get(x))
+  for (const n of nodes) if (n.requires.length && !n.missing.length && (!from || n.requires.includes(from))) add(n)
+  return out.sort((a, b) => Number(a.planned) - Number(b.planned))
+}

@@ -116,3 +116,16 @@ test('the language follows the browser at first and can be changed from the menu
   await expect(page.locator('html')).toHaveAttribute('lang', 'da')
   await ctx.close()
 })
+
+test('course map and a recommendation (never a lock) for missing prerequisites', async ({ page }) => {
+  await page.goto('/#/kurser')
+  await expect(page.getByRole('heading', { name: 'Programmering' })).toBeVisible()
+  await expect(page.getByText('Kommer senere').first()).toBeVisible()
+  await page.getByRole('link', { name: /Hedgefonde/ }).click()
+  await expect(page.getByText(/Vi anbefaler at tage .* først/)).toBeVisible()
+  await expect(page.getByRole('link', { name: /Gå til Matematikkens grundlag/ })).toBeVisible()
+  await page.getByRole('button', { name: 'Start alligevel' }).click()
+  await expect(page.getByText(/Vi anbefaler at tage/)).toHaveCount(0)
+  await page.getByRole('link', { name: /Start uge 1/ }).click()
+  await expect(page.getByText('Uge 1 af 12')).toBeVisible()
+})

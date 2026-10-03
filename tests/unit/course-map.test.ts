@@ -32,3 +32,22 @@ describe('course map', () => {
     expect(groups[1].layers[0][0].depth).toBe(2)
   })
 })
+
+describe('next course', async () => {
+  const { recommendNext } = await import('@/lib/course-map')
+  const a = meta('a', { next: ['b', 'p'] })
+  const b = meta('b', { prerequisites: ['a'] })
+  const d = meta('d', { prerequisites: ['a'] })
+  const data = new Map([a, b, d].map((m) => [m.slug, course(m)]))
+  const planned = [{ slug: 'p', title: 'P', track: 'cyber', requires: ['a'], recommendedBefore: [], next: [] }]
+  const checks = new Map([
+    ['video:a/1.1', true],
+    ['checkpoint:a/1/0', true],
+  ])
+  it('suggests "next" and courses whose prerequisites are now met — written first', () => {
+    const nodes = buildCourseMap([a, b, d], planned, data, checks, [], 0)
+    expect(recommendNext(nodes, 'a').map((n) => n.slug)).toEqual(['b', 'd', 'p'])
+    expect(recommendNext(nodes).map((n) => n.slug)).toEqual(['b', 'd', 'p'])
+    expect(nodes.find((n) => n.slug === 'b')!.status).toBe('ready')
+  })
+})

@@ -489,5 +489,13 @@
   "track.naturvidenskab": "Naturvidenskab (htx)",
   "track.programmering": "Programmering",
   "track.cyber": "Cybersikkerhed",
-  "track.other": "Andet"
+  "track.other": "Andet",
+  "prereq.title": "Vi anbefaler at tage {list} først",
+  "prereq.and": "og",
+  "prereq.text": "Kurset bygger på det. Du kan også starte alligevel — du kan altid slå op, hvad du mangler.",
+  "prereq.goTo": "Gå til {title}",
+  "prereq.startAnyway": "Start alligevel",
+  "nextCourse.title": "Næste kursus",
+  "nextCourse.text": "Du har gennemført {title}. Her er det, der bygger videre på det:",
+  "next.unlocked": "Du har nu det, kurset bygger på ({list})"
 }

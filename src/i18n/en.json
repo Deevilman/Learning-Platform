@@ -489,5 +489,13 @@
   "track.naturvidenskab": "Science (htx)",
   "track.programmering": "Programming",
   "track.cyber": "Cyber security",
-  "track.other": "Other"
+  "track.other": "Other",
+  "prereq.title": "We recommend taking {list} first",
+  "prereq.and": "and",
+  "prereq.text": "This course builds on it. You can also start anyway — you can always look up what you are missing.",
+  "prereq.goTo": "Go to {title}",
+  "prereq.startAnyway": "Start anyway",
+  "nextCourse.title": "Next course",
+  "nextCourse.text": "You have completed {title}. This is what builds on it:",
+  "next.unlocked": "You now have what the course builds on ({list})"
 }
