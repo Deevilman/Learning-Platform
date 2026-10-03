@@ -9,6 +9,7 @@ const SUPABASE = 'https://dttnflehddxlmprrstbf.supabase.co'
 function fakeSupabase() {
   const rows = new Map<string, Record<string, unknown>>()
   const files = new Map<string, string>()
+  const judged: Record<string, unknown>[] = []
   const user = { id: '00000000-0000-4000-8000-000000000001', email: 'elev@example.com', aud: 'authenticated', role: 'authenticated' }
   const session = { access_token: 'test-token', refresh_token: 'test-refresh', token_type: 'bearer', expires_in: 3600 * 24 * 365, expires_at: Math.floor(Date.now() / 1000) + 3600 * 24 * 365, user }
   async function attach(context: BrowserContext) {
@@ -43,10 +44,18 @@ function fakeSupabase() {
         return f === undefined ? json({ error: 'not found' }, 404) : route.fulfill({ status: 200, contentType: 'text/markdown', body: f })
       }
       if (url.pathname === '/storage/v1/object/courses' && req.method() === 'DELETE') return json([])
+      // the judge (Edge Function), answering like Judge0 would for a correct program
+      if (url.pathname === '/functions/v1/judge') {
+        const body = JSON.parse(req.postData() || '{}')
+        judged.push(body)
+        const pub = { verdict: 'AC', hidden: false, input: '3\nsand\nfalsk\nsand\n', expected: '2\n', got: '2\n', timeMs: 12 }
+        const hid = { verdict: 'AC', hidden: true, timeMs: 10 }
+        return json(body.mode === 'submit' ? { verdict: 'AC', tests: [pub, hid, hid], passed: 3, total: 3 } : { verdict: 'AC', tests: [pub], passed: 1, total: 1 })
+      }
       return json({})
     })
   }
-  return { attach, rows, files }
+  return { attach, rows, files, judged }
 }
 
 test('a single course file added in a clean browser works fully', async ({ page }) => {
@@ -127,4 +136,32 @@ test('a course added on one device appears on another device of the same learner
   await expect(pb.getByText('Øvelse 2.1')).toBeVisible()
   await a.close()
   await b.close()
+})
+
+test('a coding problem: run the examples in the browser, then submit to the judge', async ({ browser }) => {
+  const cloud = fakeSupabase()
+  const ctx = await browser.newContext({ locale: 'da-DK' })
+  await cloud.attach(ctx)
+  const page = await ctx.newPage()
+  await page.goto('/#/kurser/tilfoej')
+  await page.getByLabel('Kursusfil').setInputFiles(FIXTURE)
+  const preview = page.getByLabel('Forhåndsvisning')
+  await expect(preview.locator('.stat', { hasText: 'kodeopgaver' })).toContainText('1', { timeout: 30_000 })
+  await preview.getByRole('button', { name: 'Tilføj' }).click({ timeout: 60_000 })
+  await page.goto('/#/kode')
+  await expect(page.getByText('Næste opgave')).toBeVisible()
+  await page.getByRole('link', { name: /Tæl de sande udsagn/ }).first().click()
+  await expect(page.getByText('Dommeren prøver også 2 skjulte tests.')).toBeVisible()
+  const editor = page.getByRole('textbox', { name: 'Din kode' })
+  await editor.fill('n = int(input())\nprint(sum(input().strip() == "sand" for _ in range(n)))\n')
+  await page.getByRole('button', { name: '▶ Kør' }).click()
+  await expect(page.getByText('1 af 1 eksempler bestået')).toBeVisible({ timeout: 60_000 })
+  await page.getByRole('button', { name: 'Indsend' }).click()
+  await expect(page.getByText('3 af 3 tests bestået')).toBeVisible()
+  await expect(page.getByText('Skjult test 2')).toBeVisible()
+  expect(cloud.judged.at(-1)).toMatchObject({ mode: 'submit', course: 'testkursus', problemId: 'testkursus/tael-sande', language: 'python' })
+  await expect(page.getByRole('heading', { name: 'Dine indsendelser' })).toBeVisible()
+  await page.goto('/#/kode')
+  await expect(page.getByRole('link', { name: /Løst.*Tæl de sande udsagn/ })).toBeVisible()
+  await ctx.close()
 })

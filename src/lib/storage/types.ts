@@ -21,7 +21,7 @@ export interface Attempt extends Rec {
   score: number // 0..1
   rating?: Rating
   auto?: boolean // graded by an AutoCheck
-  source: 'bank' | 'generated'
+  source: 'bank' | 'generated' | 'judge'
   generatorId?: string
   seed?: number
   answer?: string
@@ -57,6 +57,18 @@ export interface SrsRec extends Rec {
   last: number
 }
 
+/** A program sent to the judge ("Indsend"). */
+export interface SubmissionRec extends Rec {
+  problemId: string
+  course: string
+  language: string
+  verdict: 'AC' | 'WA' | 'TLE' | 'MLE' | 'RE' | 'CE'
+  passed: number
+  total: number
+  code: string
+  ts: number
+}
+
 export interface SettingRec extends Rec {
   value: unknown
 }
@@ -70,16 +82,17 @@ export interface Tables {
   logbook: LogEntry
   srs: SrsRec // id = bank exercise id
   settings: SettingRec // id = setting key
+  submissions: SubmissionRec
 }
 
 export type TableName = keyof Tables
-export const TABLES: TableName[] = ['attempts', 'answers', 'notes', 'checks', 'videoIds', 'logbook', 'srs', 'settings']
+export const TABLES: TableName[] = ['attempts', 'answers', 'notes', 'checks', 'videoIds', 'logbook', 'srs', 'settings', 'submissions']
 
 export interface ExportFile {
   app: 'learning-platform'
   version: 1
   exportedAt: string
-  tables: { [K in TableName]: Tables[K][] }
+  tables: { [K in TableName]?: Tables[K][] } // older backups may lack newer tables
 }
 
 export interface StorageAdapter {

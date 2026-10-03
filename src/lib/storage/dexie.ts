@@ -14,6 +14,7 @@ class DB extends Dexie {
       srs: '&id, due, updatedAt',
       settings: '&id, updatedAt',
     })
+    this.version(2).stores({ submissions: '&id, problemId, ts, updatedAt' })
   }
 }
 

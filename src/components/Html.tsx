@@ -7,7 +7,6 @@ import { createRoot, type Root } from 'react-dom/client'
 import { interactiveLoaders } from '@/lib/interactives'
 import { hasRunner, externalPlayground } from '@/lib/runners'
 import { CodeRunPanel } from './CodeRunPanel'
-import { useT } from '@/i18n'
 import { tr } from '@/i18n/translate'
 
 let mermaidReady: Promise<typeof import('mermaid').default> | null = null
@@ -115,7 +114,8 @@ export function Html({ html, className = '' }: { html: string; className?: strin
 }
 
 function CodeTools({ lang, code, prelude }: { lang: string; code: string; prelude: string }) {
-  const t = useT()
+  // mounted in its own React root (no store context): use the current language directly
+  const t = tr
   const [run, setRun] = useState(0)
   const [withPrelude, setWithPrelude] = useState(false)
   const [copied, setCopied] = useState(false)

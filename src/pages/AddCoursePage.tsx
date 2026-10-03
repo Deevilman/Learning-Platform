@@ -19,6 +19,7 @@ export default function AddCoursePage() {
   const [siteSlugs, setSiteSlugs] = useState<Set<string>>(new Set())
   const [saved, setSaved] = useState<{ slug: string; title: string; cloud: string } | null>(null)
   const [drag, setDrag] = useState(false)
+  const [checking, setChecking] = useState(false)
   const input = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -44,11 +45,30 @@ export default function AddCoursePage() {
     await new Promise((r) => setTimeout(r, 30))
     try {
       const [{ prepareCourse }, index] = await Promise.all([import('@/lib/courses/builder'), loadIndex()])
-      setPrepared(prepareCourse(text, file.name, index))
+      const prep = prepareCourse(text, file.name, index)
+      setPrepared(prep)
+      // coding problems: the reference solution must pass every test — Python is checked right here
+      const refs = prep.build && !prep.errors.length ? prep.build.serverProblems : []
+      if (refs.length) {
+        setChecking(true)
+        const { runPythonLocally } = await import('@/lib/judge')
+        const errors = [...prep.errors]
+        const warnings = [...prep.warnings]
+        for (const sp of refs) {
+          if (sp.reference.language !== 'python') {
+            warnings.push(t('add.refLater', { id: sp.id }))
+            continue
+          }
+          const r = await runPythonLocally(sp.reference.code, [...sp.publicTests, ...sp.hiddenTests], sp.timeLimit)
+          if (r.verdict !== 'AC') errors.push({ file: file.name, line: 0, message: t('add.refFails', { id: sp.id, verdict: r.verdict, n: r.passed, total: r.total }) })
+        }
+        setPrepared({ ...prep, errors, warnings })
+      }
     } catch (e) {
       setPrepared({ fileName: file.name, text, errors: [{ file: file.name, line: 0, message: t('add.unreadable', { error: (e as Error).message }) }], warnings: [], blocks: [] })
     } finally {
       setBusy(false)
+      setChecking(false)
     }
   }
 
@@ -125,7 +145,8 @@ export default function AddCoursePage() {
         </section>
       )}
 
-      {prepared && <Preview prepared={prepared} existing={existing} replacesSite={!!prepared.slug && siteSlugs.has(prepared.slug)} onAdd={add} busy={busy} />}
+      {checking && <p className="muted fade-in">{t('add.checkingCode')}</p>}
+      {prepared && <Preview prepared={prepared} existing={existing} replacesSite={!!prepared.slug && siteSlugs.has(prepared.slug)} onAdd={add} busy={busy || checking} />}
 
       <section className="space-y-3">
         <h2 className="section-title">{t('add.yours')}</h2>
