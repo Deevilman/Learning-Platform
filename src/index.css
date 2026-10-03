@@ -590,62 +590,6 @@ body {
   background: var(--accent);
 }
 
-/* Se → Læs → Øv stepper */
-.stepper {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.5rem;
-  position: sticky;
-  top: 57px;
-  z-index: 20;
-  padding: 0.5rem 0;
-  background: var(--bg);
-}
-.step {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  min-width: 0;
-  border-radius: 0.9rem;
-  padding: 0.5rem 0.7rem;
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  transition: background-color 0.15s;
-}
-.step-on {
-  background: var(--accent-soft);
-  outline: 2px solid var(--accent);
-}
-.step-num {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 1.7rem;
-  height: 1.7rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  background: var(--surface-2);
-  color: var(--muted);
-}
-.step-on .step-num {
-  background: var(--accent);
-  color: white;
-}
-.step-done .step-num {
-  background: var(--ok);
-  color: white;
-}
-@media (max-width: 480px) {
-  .step .muted {
-    display: none;
-  }
-  .step {
-    justify-content: center;
-    padding: 0.5rem;
-  }
-}
-
 /* Lesson progress dots */
 .lesson-dots {
   display: flex;
@@ -686,4 +630,51 @@ body {
 .dropzone-on {
   border-color: var(--accent);
   background: var(--accent-soft);
+}
+
+/* The week as a row of pages: progress bar and one dot per page */
+.progress {
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 0.2s;
+}
+.page-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.page-dot {
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--surface);
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}
+.page-dot-on {
+  background: var(--accent);
+  color: white;
+}
+.page-dot-done:not(.page-dot-on) {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+.seg-ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+  font-weight: 600;
+}
+.seg-bad {
+  background: var(--bad-soft);
+  color: var(--bad);
 }
