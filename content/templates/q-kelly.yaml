@@ -1,0 +1,44 @@
+id: q-kelly
+titel: 'Kelly-kriteriet'
+kursus: quant
+emner: [strategies, risk-ml]
+type: tal
+niveauer:
+  1:
+    variabler:
+      pp: { interval: [51, 70] }
+    beregn: { p: pp / 100, q: 1 - p, b: 1, f: p - q / b }
+    opgave: 'Et væddemål vinder med sandsynlighed $p = {p}$ og betaler ${b}$ kr. pr. indsat krone ved gevinst (ellers tabes indsatsen). Hvilken andel af formuen skal man ifølge Kelly satse (4 decimaler)?'
+    svar: { udtryk: f, decimaler: 4, tolerance: 0.001 }
+    hints: ['$f^* = p - \dfrac{1-p}{b}$ (maksimerer $E[\ln(\text{formue})]$).']
+    loesning: |-
+      $f^* = {p} - {q}/{b} = {f:.4f}$.
+
+      Svar: **{f:.4f}**.
+  2:
+    variabler:
+      pp: { interval: [51, 70] }
+      b: { vaelg: [0.5, 1.5, 2, 3] }
+    beregn: { p: pp / 100, q: 1 - p, f: p - q / b }
+    opgave: 'Et væddemål vinder med sandsynlighed $p = {p}$ og betaler ${b}$ kr. pr. indsat krone ved gevinst (ellers tabes indsatsen). Hvilken andel af formuen skal man ifølge Kelly satse (4 decimaler)?'
+    svar: { udtryk: f, decimaler: 4, tolerance: 0.001 }
+    hints: ['$f^* = p - \dfrac{1-p}{b}$ (maksimerer $E[\ln(\text{formue})]$).']
+    loesning: |-
+      $f^* = {p} - {q}/{b} = {f:.4f}$. Er $f^*$ negativ, skal man lade være med at satse.
+
+      Svar: **{f:.4f}**.
+  3:
+    variabler:
+      mup: { interval: [4, 12] }
+      rp: { interval: [0, 3] }
+      sp: { interval: [12, 30] }
+    beregn: { mu: mup / 100, r: rp / 100, sigma: sp / 100, f: (mu - r) / sigma^2 }
+    opgave: 'En kontinuert strategi har forventet afkast $\mu = {mup}\,\%$, volatilitet $\sigma = {sp}\,\%$, og den risikofri rente er ${rp}\,\%$. Hvad er den Kelly-optimale gearing $f^*$ (4 decimaler)?'
+    svar: { udtryk: f, decimaler: 4, tolerance: 0.002 }
+    hints: ['Vækstraten er $g(f) = r + f(\mu - r) - \tfrac12 f^2\sigma^2$; maksimér i $f$.']
+    loesning: |-
+      $g'(f) = (\mu - r) - f\sigma^2 = 0 \Rightarrow f^* = ({mu} - {r})/{sigma}^2 = {f:.4f}$. I praksis bruger man ofte "halv Kelly", fordi $\mu$ er usikker.
+
+      Svar: **{f:.4f}**.
+    distraktorer:
+      - { udtryk: '(mu - r) / sigma', forklaring: 'Det er Sharpe ratio. Kelly dividerer med variansen $\sigma^2$.' }

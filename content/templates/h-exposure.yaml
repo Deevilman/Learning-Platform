@@ -1,0 +1,51 @@
+id: h-exposure
+titel: 'Brutto-, netto- og beta-justeret eksponering'
+kursus: hedgefund
+emner: [long-short, risk-leverage]
+type: tal
+niveauer:
+  1:
+    variabler:
+      nav: { vaelg: [100, 200, 500, 1000] }
+      kL: { interval: [0.8, 2.2], decimaler: 2 }
+      kS: { interval: [0.3, 1.8], decimaler: 2 }
+      brutto: { vaelg: [1, 0] }
+      ord: { vaelg: [bruttoeksponeringen, nettoeksponeringen], vaelg_par_med: brutto }
+    beregn: { L: round(nav * kL), S: round(nav * kS), gross: (L + S) / nav * 100, net: (L - S) / nav * 100, ans: brutto * gross + (1 - brutto) * net }
+    opgave: 'En long/short-fond med NAV ${nav}$ mio. kr. har ${L}$ mio. i long-positioner og ${S}$ mio. i short-positioner. Hvad er {ord} i % af NAV (2 decimaler)?'
+    svar: { udtryk: ans, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['Brutto = (long + short)/NAV. Netto = (long − short)/NAV.']
+    loesning: |-
+      Brutto $= ({L} + {S})/{nav} = {gross:.2f}\,\%$, netto $= ({L} - {S})/{nav} = {net:.2f}\,\%$.
+
+      Svar: **{ans:.2f} %**.
+  2:
+    variabler:
+      nav: { vaelg: [100, 200, 500, 1000] }
+      kL: { interval: [0.8, 2.2], decimaler: 2 }
+      kS: { interval: [0.3, 1.8], decimaler: 2 }
+      bl10: { interval: [8, 13] }
+      bs10: { interval: [6, 14] }
+    beregn: { L: round(nav * kL), S: round(nav * kS), bl: bl10 / 10, bs: bs10 / 10, net: (L - S) / nav * 100, adj: (L * bl - S * bs) / nav * 100 }
+    opgave: 'NAV ${nav}$, long ${L}$ (gns. beta ${bl}$), short ${S}$ (gns. beta ${bs}$), alle i mio. kr. Find den **beta-justerede** nettoeksponering i % af NAV (2 decimaler).'
+    svar: { udtryk: adj, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['Beta-justeret netto = (long·β_L − short·β_S)/NAV.']
+    loesning: |-
+      $({L} \cdot {bl} - {S} \cdot {bs})/{nav} = {adj:.2f}\,\%$ (rå netto: ${net:.2f}\,\%$).
+
+      Svar: **{adj:.2f} %**.
+  3:
+    variabler:
+      nav: { vaelg: [100, 200, 500, 1000] }
+      kL: { interval: [0.8, 2.2], decimaler: 2 }
+      kS: { interval: [0.3, 1.8], decimaler: 2 }
+      mLp: { interval: [-10, 10] }
+      mSp: { interval: [-10, 10] }
+    beregn: { L: round(nav * kL), S: round(nav * kS), mL: mLp / 100, mS: mSp / 100, mio: L * mL - S * mS, pnl: mio / nav * 100 }
+    opgave: 'NAV ${nav}$, long ${L}$, short ${S}$ (mio. kr.). I en måned stiger long-bogen ${mLp}\,\%$ og short-bogen (de shortede aktier) ${mSp}\,\%$. Hvad er fondens afkast på NAV i % (2 decimaler; ignorér gebyrer og rente)?'
+    svar: { udtryk: pnl, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['Short-positionen tjener, når de shortede aktier falder: P&L = long·r_L − short·r_S.']
+    loesning: |-
+      P&L $= {L} \cdot {mL} - {S} \cdot {mS} = {mio:.2f}$ mio., dvs. ${pnl:.2f}\,\%$ af NAV.
+
+      Svar: **{pnl:.2f} %**.

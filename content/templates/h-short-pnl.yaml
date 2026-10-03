@@ -1,0 +1,49 @@
+id: h-short-pnl
+titel: 'Short-salg: gevinst, lånegebyr og udbytte'
+kursus: hedgefund
+emner: [long-short]
+type: tal
+hints: ['Short-gevinst = antal × (salgskurs − tilbagekøbskurs). Træk lånegebyr og eventuelt udbytte fra.']
+svar: { udtryk: pnl, decimaler: 2, tolerance: 0.01 }
+niveauer:
+  1:
+    variabler:
+      n: { vaelg: [1000, 2000, 5000, 10000] }
+      P0: { interval: [50, 150] }
+      k: { interval: [0.6, 1.3], decimaler: 2 }
+      months: { vaelg: [3, 6, 12] }
+    beregn: { P1: round(P0 * k), pnl: n * (P0 - P1) }
+    opgave: 'Du shorter ${n}$ aktier til ${P0}$ kr. og lukker positionen {months} måneder senere til ${P1}$ kr. Hvad er din samlede gevinst/tab i kr.? (negativ = tab; 2 decimaler)'
+    loesning: |-
+      Kursgevinst: ${n} \cdot ({P0} - {P1}) = {pnl:.2f}$ kr. En short kan højst tjene 100 %, men tabet er ubegrænset.
+
+      Svar: **{pnl:.2f}**.
+  2:
+    variabler:
+      n: { vaelg: [1000, 2000, 5000, 10000] }
+      P0: { interval: [50, 150] }
+      k: { interval: [0.6, 1.3], decimaler: 2 }
+      fee: { vaelg: [0.005, 0.01, 0.03, 0.1, 0.25] }
+      months: { vaelg: [3, 6, 12] }
+    beregn: { P1: round(P0 * k), gross: n * (P0 - P1), feepct: fee * 100, borrow: n * P0 * fee * months / 12, pnl: gross - borrow }
+    opgave: 'Du shorter ${n}$ aktier til ${P0}$ kr. og lukker positionen {months} måneder senere til ${P1}$ kr. Lånegebyret er ${feepct:.1f}\,\%$ p.a. af den oprindelige markedsværdi. Hvad er din samlede gevinst/tab i kr.? (negativ = tab; 2 decimaler)'
+    loesning: |-
+      Kursgevinst: ${n} \cdot ({P0} - {P1}) = {gross:.2f}$. Lånegebyr: ${n} \cdot {P0} \cdot {fee} \cdot {months}/12 = {borrow:.2f}$. I alt: ${pnl:.2f}$ kr.
+
+      Svar: **{pnl:.2f}**.
+    distraktorer:
+      - { udtryk: gross, forklaring: 'Du har glemt lånegebyret.' }
+  3:
+    variabler:
+      n: { vaelg: [1000, 2000, 5000, 10000] }
+      P0: { interval: [50, 150] }
+      k: { interval: [0.6, 1.3], decimaler: 2 }
+      fee: { vaelg: [0.005, 0.01, 0.03, 0.1, 0.25] }
+      months: { vaelg: [3, 6, 12] }
+      div: { interval: [1, 4] }
+    beregn: { P1: round(P0 * k), gross: n * (P0 - P1), feepct: fee * 100, borrow: n * P0 * fee * months / 12, divPaid: n * div, pnl: gross - borrow - divPaid }
+    opgave: 'Du shorter ${n}$ aktier til ${P0}$ kr. og lukker positionen {months} måneder senere til ${P1}$ kr. Lånegebyret er ${feepct:.1f}\,\%$ p.a. af den oprindelige markedsværdi. Aktien betaler et udbytte på ${div}$ kr. i perioden, som du skal betale til långiveren. Hvad er din samlede gevinst/tab i kr.? (negativ = tab; 2 decimaler)'
+    loesning: |-
+      Kursgevinst: ${n} \cdot ({P0} - {P1}) = {gross:.2f}$. Lånegebyr: ${n} \cdot {P0} \cdot {fee} \cdot {months}/12 = {borrow:.2f}$. Udbytte: ${n} \cdot {div} = {divPaid:.2f}$. I alt: ${pnl:.2f}$ kr.
+
+      Svar: **{pnl:.2f}**.

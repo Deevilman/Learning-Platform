@@ -1,0 +1,45 @@
+id: q-sharpe
+titel: 'Sharpe ratio og annualisering'
+kursus: quant
+emner: [returns-risk]
+type: tal
+niveauer:
+  1:
+    variabler:
+      rfp: { interval: [0, 4] }
+      mup: { interval: [4, 15] }
+      sp: { interval: [8, 30] }
+    beregn: { rf: rfp / 100, mu: mup / 100, sigma: sp / 100, s: (mu - rf) / sigma }
+    opgave: 'En strategi har forventet årligt afkast ${mup}\,\%$ og årlig volatilitet ${sp}\,\%$. Den risikofri rente er ${rfp}\,\%$. Beregn Sharpe ratio (3 decimaler).'
+    svar: { udtryk: s, decimaler: 3, tolerance: 0.002 }
+    hints: ['$SR = (\mu - r_f)/\sigma$.']
+    loesning: |-
+      $SR = ({mu} - {rf}) / {sigma} = {s:.3f}$.
+
+      Svar: **{s:.3f}**.
+  2:
+    variabler:
+      rfp: { interval: [0, 4] }
+      mm: { interval: [3, 15] }
+      sm: { interval: [20, 60] }
+    beregn: { mu: mm / 1000, sd: sm / 1000, rf: rfp / 100, rper: rf / 12, mupct: mu * 100, sdpct: sd * 100, rperpct: rper * 100, srp: (mu - rper) / sd, s: srp * sqrt(12) }
+    opgave: 'Gennemsnitligt afkast pr. måned: ${mupct:.2f}\,\%$; standardafvigelse pr. måned: ${sdpct:.2f}\,\%$; risikofri rente ${rfp}\,\%$ p.a. Find den **annualiserede** Sharpe ratio (antag uafhængige afkast, 12 perioder pr. år; 3 decimaler).'
+    svar: { udtryk: s, decimaler: 3, tolerance: 0.005 }
+    hints: ['Middelværdien skaleres med $12$, standardafvigelsen med $\sqrt{12}$, så $SR_{\text{år}} = SR_{\text{periode}} \cdot \sqrt{12}$.']
+    loesning: |-
+      Risikofri rente pr. måned: ${rf}/12 = {rperpct:.5f}\,\%$. $SR_{\text{måned}} = ({mupct:.3f} - {rperpct:.5f}) / {sdpct:.2f} = {srp:.4f}$. Annualiseret: $\cdot \sqrt{12} = {s:.3f}$.
+
+      Svar: **{s:.3f}**.
+  3:
+    variabler:
+      rfp: { interval: [0, 4] }
+      md: { interval: [2, 12] }
+      sdd: { interval: [5, 20] }
+    beregn: { mu: md / 10000, sd: sdd / 1000, rf: rfp / 100, rper: rf / 252, mupct: mu * 100, sdpct: sd * 100, rperpct: rper * 100, srp: (mu - rper) / sd, s: srp * sqrt(252) }
+    opgave: 'Gennemsnitligt afkast pr. dag: ${mupct:.2f}\,\%$; standardafvigelse pr. dag: ${sdpct:.2f}\,\%$; risikofri rente ${rfp}\,\%$ p.a. Find den **annualiserede** Sharpe ratio (antag uafhængige afkast, 252 perioder pr. år; 3 decimaler).'
+    svar: { udtryk: s, decimaler: 3, tolerance: 0.005 }
+    hints: ['Middelværdien skaleres med $252$, standardafvigelsen med $\sqrt{252}$, så $SR_{\text{år}} = SR_{\text{periode}} \cdot \sqrt{252}$.']
+    loesning: |-
+      Risikofri rente pr. dag: ${rf}/252 = {rperpct:.5f}\,\%$. $SR_{\text{dag}} = ({mupct:.3f} - {rperpct:.5f}) / {sdpct:.2f} = {srp:.4f}$. Annualiseret: $\cdot \sqrt{252} = {s:.3f}$.
+
+      Svar: **{s:.3f}**.

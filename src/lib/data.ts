@@ -49,6 +49,8 @@ export async function loadIndex(): Promise<ContentIndex> {
   })
 }
 
+const templatesReady = () => loadIndex().catch(() => null)
+
 /** Exercise templates become generators as soon as the index is known. */
 function withTemplates(index: ContentIndex): ContentIndex {
   registerGenerators((index.templates || []).map((t) => templateToGenerator(t, t.kursus || '')))
@@ -56,6 +58,7 @@ function withTemplates(index: ContentIndex): ContentIndex {
 }
 
 export async function loadCourse(slug: string): Promise<CourseData> {
+  await templatesReady() // week pages use the course's generators
   const own = (await uploadedCourses()).get(slug)
   return own ? { ...own.data.course, meta: { ...own.data.course.meta, uploaded: true } } : load<CourseData>(`courses/${slug}.json`)
 }

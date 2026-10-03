@@ -1,0 +1,46 @@
+id: h-margin-call
+titel: 'Gearing og margin call'
+kursus: hedgefund
+emner: [risk-leverage]
+type: tal
+niveauer:
+  1:
+    variabler:
+      E: { vaelg: [10, 20, 50, 100] }
+      lev: { vaelg: [2, 3, 4, 5, 8, 10] }
+      dp: { interval: [2, 15] }
+    beregn: { A: E * lev, drop: dp / 100, loss: drop * A, ret: -dp * lev, ndp: -dp }
+    opgave: 'En fond har egenkapital ${E}$ mio. og køber aktiver for ${A}$ mio. (gearing ${lev}\times$, resten er lånt). Aktiverne falder ${dp}\,\%$. Hvad er afkastet på egenkapitalen i % (2 decimaler)?'
+    svar: { udtryk: ret, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['Tabet rammer først egenkapitalen: afkast = gearing × aktivafkast (ignorér rente).']
+    loesning: |-
+      Tab $= {drop} \cdot {A} = {loss:.2f}$ mio., dvs. ${ret:.2f}\,\%$ af egenkapitalen (= ${lev} \times {ndp}\,\%$).
+
+      Svar: **{ret:.2f} %**.
+    distraktorer:
+      - { udtryk: ndp, forklaring: 'Det er aktivernes fald. Gearingen forstørrer tabet på egenkapitalen.' }
+  2:
+    variabler:
+      lev: { vaelg: [2, 3, 4, 5, 8, 10] }
+    beregn: { wipe: 100 / lev }
+    opgave: 'Med gearing ${lev}\times$ (aktiver = {lev} × egenkapital): hvor stort et procentvis fald i aktiverne udsletter hele egenkapitalen (2 decimaler)?'
+    svar: { udtryk: wipe, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['Egenkapitalen er $1/L$ af aktiverne.']
+    loesning: |-
+      Egenkapital/aktiver $= 1/{lev}$, så et fald på ${wipe:.2f}\,\%$ udsletter den.
+
+      Svar: **{wipe:.2f} %**.
+  3:
+    variabler:
+      E: { vaelg: [10, 20, 50, 100] }
+      lev: { vaelg: [2, 3, 4, 5] }
+      mm: { vaelg: [0.1, 0.15, 0.2, 0.25] }
+    betingelser: ['mm < 1 / lev - 0.02']
+    beregn: { A: E * lev, B: A - E, mmp: mm * 100, Am: A * (1 - mm), x: (1 - B / Am) * 100 }
+    opgave: 'En position: aktiver ${A}$ mio., lån ${B}$ mio., egenkapital ${E}$ mio. Prime brokeren kræver en vedligeholdelsesmargin på ${mmp}\,\%$ (egenkapital/aktiver). Hvor stort et procentvis fald i aktiverne udløser et margin call (2 decimaler)?'
+    svar: { udtryk: x, decimaler: 2, tolerance: 0.01, enhed: '%' }
+    hints: ['Efter et fald $x$: aktiver $A(1-x)$, egenkapital $A(1-x) - B$. Løs $\frac{A(1-x) - B}{A(1-x)} = $ kravet.']
+    loesning: |-
+      $\frac{A(1-x) - B}{A(1-x)} = {mm} \iff 1 - x = \frac{B}{A(1 - {mm})} = \frac{{B}}{{Am:.2f}}$, så $x = {x:.2f}\,\%$.
+
+      Svar: **{x:.2f} %**.

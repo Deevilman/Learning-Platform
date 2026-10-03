@@ -147,3 +147,29 @@ describe('exercise templates', () => {
     expect(evaluate(ex.check, String((ex.check as { answer: number }).answer)).correct).toBe(true)
   })
 })
+
+describe('site templates (content/templates)', async () => {
+  const { readdirSync } = await import('node:fs')
+  const { miniMarkdown } = await import('@/lib/mini-md')
+  const dir = join(import.meta.dirname, '../../content/templates')
+  for (const f of readdirSync(dir).filter((n) => n.endsWith('.yaml'))) {
+    it(`${f}: 200 seeds per level and KaTeX renders`, () => {
+      const def = YAML.parse(readFileSync(join(dir, f), 'utf8')) as TemplateDef
+      expect(validateTemplate(def).errors).toEqual([])
+      const g = templateToGenerator(def, '')
+      for (const d of g.difficulties)
+        for (let s = 1; s <= 40; s++) {
+          const ex = g.generate(s * 101, d)
+          for (const t of [ex.prompt, ex.solution, ex.hint, ...(ex.moreHints || [])]) expect(miniMarkdown(t).includes('katex-error'), `${f} d=${d}: ${t}`).toBe(false)
+        }
+    })
+  }
+})
+
+describe('the examples in CONTENT_GUIDE section 9', () => {
+  const guide = readFileSync(join(import.meta.dirname, '../../CONTENT_GUIDE.md'), 'utf8')
+  const section = guide.slice(guide.indexOf('## 9. Opgaveskabeloner'))
+  const blocks = [...section.matchAll(/```yaml\n([\s\S]*?)\n```/g)].map((m) => YAML.parse(m[1]) as TemplateDef)
+  it('has five examples', () => expect(blocks).toHaveLength(5))
+  for (const def of blocks) it(`${def.id} passes 200 seeds`, () => expect(validateTemplate(def).errors).toEqual([]))
+})
