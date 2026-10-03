@@ -7,3 +7,4 @@ playwright-report
 *.local
 public/pyodide
 content-build-errors.md
+.judge/

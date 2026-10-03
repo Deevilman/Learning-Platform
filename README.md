@@ -48,6 +48,23 @@ Projektets URL og anon-nøgle står i [`src/config.ts`](src/config.ts). Anon-nø
 
 **Egne kurser:** et kursus, du tilføjer under *Mere → Tilføj kursus*, gemmes i browseren og — når du er logget ind — som fil i bucketen `courses` (`<dit bruger-id>/<slug>.md`). De andre enheder henter og bygger det ved næste synkronisering.
 
+## Kodedommeren (Judge0)
+
+Kodeopgaver køres sådan: **Kør** tester koden på de offentlige tests. Python kører i browseren (Pyodide), de andre sprog hos dommeren. **Indsend** kører altid hos dommeren, også de skjulte tests. Dommeren er Supabase Edge Function'en [`supabase/functions/judge`](supabase/functions/judge/index.ts). Den tjekker login, begrænser antal forsøg (10 i minuttet og 300 om dagen pr. elev), sætter loft over tid og hukommelse og sender koden videre til Judge0 (C, C++, C#, NASM og Python). De skjulte tests kommer aldrig ud til browseren.
+
+Engangsopsætning:
+
+1. **Judge0 via RapidAPI:** opret en konto på rapidapi.com, abonnér på *Judge0 CE*, og kopiér din API-nøgle. Gratisplanen dækker et lille forbrug pr. dag. Til mere skal du vælge en betalt plan (se prisen på siden).
+2. **Supabase:** kør `supabase/schema.sql` igen (den opretter `problem_tests`, `judge_usage` og `submissions`). Kør derefter:
+   ```
+   supabase secrets set JUDGE0_API_KEY=<din nøgle>
+   supabase functions deploy judge
+   ```
+   Vil du bruge en selvhostet Judge0 i stedet, så sæt også `JUDGE0_URL` (og evt. `JUDGE0_HOST`).
+3. **GitHub → Settings → Secrets → Actions:** tilføj `SUPABASE_URL` og `SUPABASE_SERVICE_ROLE_KEY`. Deploy-workflowet lægger de skjulte tests op i `problem_tests` (fra `.judge/problems.json`, som aldrig kommer med på siden). Service-nøglen bruges kun i workflowet, aldrig i appen.
+
+Uden opsætningen virker Python-opgaverne stadig på de offentlige tests i browseren. Indsendelser får besked om, at dommeren ikke er sat op.
+
 Uden login virker alt stadig. Brug **Indstillinger → Gem sikkerhedskopi** som backup, og **Importér** for at flytte data.
 
 ## Arkitektur

@@ -187,6 +187,32 @@ export interface GlossaryEntry {
   def?: string
 }
 
+export type JudgeLanguage = 'python' | 'c' | 'cpp' | 'csharp' | 'nasm'
+
+export interface ProblemTest {
+  input: string
+  output: string
+}
+
+/** A coding problem as the app sees it: the hidden tests stay on the server. */
+export interface CodeProblem {
+  id: string
+  course: string
+  title: string
+  difficulty: Difficulty
+  topics: string[]
+  languages: JudgeLanguage[]
+  timeLimit: number // seconds
+  memoryLimit: number // MB
+  statementHtml: string
+  publicTests: ProblemTest[]
+  hiddenCount: number
+  hintsHtml: string[]
+  editorialHtml: string
+  starter: Partial<Record<JudgeLanguage, string>>
+  week?: number
+}
+
 /** A flashcard from the glossary or a formula table. Reviewed with the same scheduler as exercises. */
 export interface Flashcard {
   id: string // "fc:<course>:<key>", stable across rebuilds
@@ -214,6 +240,8 @@ export interface CourseData {
   templates?: TemplateDef[]
   /** Flashcards from the glossary and the formula tables. */
   flashcards?: Flashcard[]
+  /** Coding problems (```problem blocks). */
+  problems?: CodeProblem[]
 }
 
 export interface SearchDoc {

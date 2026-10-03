@@ -174,6 +174,13 @@ export default function CoursePage() {
               </Link>
             </li>
           ))}
+          {course.problems?.length ? (
+            <li>
+              <Link className="link" to={`/kode?kursus=${slug}`}>
+                {t('code.courseLink', { n: course.problems.length })}
+              </Link>
+            </li>
+          ) : null}
           {course.flashcards?.length ? (
             <li>
               <Link className="link" to={`/kort?kursus=${slug}`}>

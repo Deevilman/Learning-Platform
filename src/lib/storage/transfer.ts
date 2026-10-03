@@ -1,6 +1,7 @@
 // JSON export/import of everything in storage.
 
 import { TABLES, type ExportFile, type Rec, type StorageAdapter, type TableName } from './types'
+import { tr } from '@/i18n/translate'
 
 export async function exportAll(store: StorageAdapter): Promise<ExportFile> {
   const tables = {} as ExportFile['tables']
@@ -17,7 +18,7 @@ export function validateExport(data: any): data is ExportFile {
  * keeps whichever version of each record is newer (last write wins).
  */
 export async function importAll(store: StorageAdapter, data: ExportFile, mode: 'replace' | 'merge' = 'merge') {
-  if (!validateExport(data)) throw new Error('Filen er ikke en gyldig eksport fra læringsplatformen.')
+  if (!validateExport(data)) throw new Error(tr('backup.notBackup'))
   if (mode === 'replace') await store.clear()
   let count = 0
   for (const t of TABLES) {

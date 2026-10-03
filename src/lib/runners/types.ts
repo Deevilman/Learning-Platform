@@ -11,6 +11,8 @@ export interface RunResult {
 
 export interface RunOptions {
   timeoutMs?: number
+  /** Text the program reads from standard input. */
+  stdin?: string
   onStatus?: (s: string) => void
 }
 

@@ -23,6 +23,9 @@ self.onmessage = async (e: MessageEvent) => {
     let stderr = ''
     pyodide.setStdout({ batched: (s: string) => (stdout += s + '\n') })
     pyodide.setStderr({ batched: (s: string) => (stderr += s + '\n') })
+    // standard input: everything at once, then end of file
+    let input: string | null = m.stdin ?? ''
+    pyodide.setStdin({ stdin: () => { const s = input; input = null; return s ?? undefined } })
     try {
       const imports: string[] = pyodide.pyimport('pyodide.code').find_imports(m.code).toJs()
       const missing = imports.filter((x: string) => ['numpy', 'pandas', 'scipy', 'matplotlib', 'sympy', 'networkx'].includes(x))

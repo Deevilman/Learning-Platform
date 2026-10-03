@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { getRunner, type RunResult } from '@/lib/runners'
-import { useT } from '@/i18n'
+import { tr } from '@/i18n/translate'
 
 /** Runs code once on mount and shows the output. */
 export function CodeRunPanel({ lang, code, onResult }: { lang: string; code: string; onResult?: (r: RunResult) => void }) {
-  const t = useT()
+  // also mounted inside notes (its own React root), so no context hooks
+  const t = tr
   const [status, setStatus] = useState(t('run.starting'))
   const [result, setResult] = useState<RunResult | null>(null)
 
