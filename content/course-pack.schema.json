@@ -21,11 +21,8 @@
       "enum": [
         "da",
         "en"
-      ]
-    },
-    "translation_of": {
-      "type": "string",
-      "description": "Slug på kurset, som dette er en udgave af på et andet sprog (skrevet af et menneske, ikke maskinoversat). Vises i stedet for originalen, når appen står på dette sprog."
+      ],
+      "description": "Kursets sprog. En anden sprogudgave af samme kursus ligger i <slug>.<lang>.md med samme slug (fremskridt deles)."
     },
     "title": {
       "type": "string"

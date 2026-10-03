@@ -70,7 +70,7 @@ test('progress survives a reload, and export → import restores it in a clean p
 
 test('training mode serves generated exercises and checks answers', async ({ page }) => {
   await page.goto('/#/traen?kursus=quant&emne=time-value&start=1')
-  await expect(page.getByText(/Øvelse 1/)).toBeVisible()
+  await expect(page.getByText('Øvelse 1', { exact: true })).toBeVisible()
   const card = page.locator('article').first()
   await expect(card).toBeVisible()
   // Give up on whatever comes first and move on; the session keeps going.
@@ -103,4 +103,16 @@ test('switching to English changes menus and week pages, not the course text', a
   await expect(page.getByText('Week 3 of 16')).toBeVisible()
   await expect(page.getByRole('heading', { name: 'What you will learn' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Sandsynlighed I' })).toBeVisible()
+})
+
+test('the language follows the browser at first and can be changed from the menu', async ({ browser }) => {
+  const ctx = await browser.newContext({ locale: 'en-US' })
+  const page = await ctx.newPage()
+  await page.goto('/#/traen')
+  await expect(page.getByRole('heading', { name: 'Practice' })).toBeVisible()
+  await page.getByRole('button', { name: 'More' }).first().click()
+  await page.getByRole('menuitemradio', { name: 'Dansk' }).click()
+  await expect(page.getByRole('heading', { name: 'Træn' })).toBeVisible()
+  await expect(page.locator('html')).toHaveAttribute('lang', 'da')
+  await ctx.close()
 })

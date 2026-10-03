@@ -4,17 +4,26 @@
 
 import { registerGenerators } from './generators'
 import { templateToGenerator } from './templates'
+import { currentLang, tr } from '@/i18n/translate'
 import type { ContentIndex, CourseData, ExerciseSet, SearchDoc, Week, Exercise } from '@/types/content'
 import { onCoursesChanged, visibleBuilds, type StoredBuild } from './courses/store'
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/') + 'data/'
 const cache = new Map<string, Promise<unknown>>()
 
+/** Path prefix of a course in the current language: "courses/quant" or "courses/quant.en". */
+async function coursePath(slug: string): Promise<string> {
+  // the learner's language: a course written in it (<slug>.<lang>.json) is loaded instead of the main version
+  const lang = currentLang()
+  const meta = (await loadIndex()).courses.find((c) => c.slug === slug)
+  return meta && meta.lang !== lang && meta.langs?.includes(lang) ? `courses/${slug}.${lang}` : `courses/${slug}`
+}
+
 function load<T>(path: string): Promise<T> {
   let p = cache.get(path)
   if (!p) {
     p = fetch(base + path).then((r) => {
-      if (!r.ok) throw new Error(`Kunne ikke hente indholdet (fejl ${r.status}). Tjek din forbindelse, og prøv igen.`)
+      if (!r.ok) throw new Error(tr('error.load', { status: r.status }))
       return r.json()
     })
     p.catch(() => cache.delete(path))
@@ -60,27 +69,27 @@ function withTemplates(index: ContentIndex): ContentIndex {
 export async function loadCourse(slug: string): Promise<CourseData> {
   await templatesReady() // week pages use the course's generators
   const own = (await uploadedCourses()).get(slug)
-  return own ? { ...own.data.course, meta: { ...own.data.course.meta, uploaded: true } } : load<CourseData>(`courses/${slug}.json`)
+  return own ? { ...own.data.course, meta: { ...own.data.course.meta, uploaded: true } } : load<CourseData>(`${await coursePath(slug)}.json`)
 }
 
 export async function loadWeek(slug: string, n: number): Promise<Week> {
   const own = (await uploadedCourses()).get(slug)
   if (own) {
     const w = own.data.weeks.find((x) => x.number === n)
-    if (!w) throw new Error(`Uge ${n} findes ikke i kurset.`)
+    if (!w) throw new Error(tr('error.noWeek', { n }))
     return w
   }
-  return load<Week>(`courses/${slug}/week-${n}.json`)
+  return load<Week>(`${await coursePath(slug)}/week-${n}.json`)
 }
 
 export async function loadSet(slug: string, set: string): Promise<ExerciseSet> {
   const own = (await uploadedCourses()).get(slug)
   if (own) {
     const s = own.data.sets.find((x) => x.slug === set)
-    if (!s) throw new Error('Sættet findes ikke i kurset.')
+    if (!s) throw new Error(tr('error.noSet'))
     return s
   }
-  return load<ExerciseSet>(`courses/${slug}/set-${set}.json`)
+  return load<ExerciseSet>(`${await coursePath(slug)}/set-${set}.json`)
 }
 
 export async function loadSearch(): Promise<SearchDoc[]> {

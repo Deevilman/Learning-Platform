@@ -3,7 +3,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import da from '@/i18n/da.json'
 import en from '@/i18n/en.json'
-import { coursesForLang, translate } from '@/i18n'
+import { hasLang, translate } from '@/i18n'
 
 const SRC = join(import.meta.dirname, '../../src')
 const files = (dir: string): string[] => readdirSync(dir).flatMap((f) => (statSync(join(dir, f)).isDirectory() ? files(join(dir, f)) : /\.tsx?$/.test(f) ? [join(dir, f)] : []))
@@ -31,10 +31,9 @@ describe('UI text in Danish and English', () => {
 })
 
 describe('course versions per language', () => {
-  const c = (slug: string, lang: 'da' | 'en', translationOf?: string) => ({ meta: { slug, lang, translationOf } })
-  const all = [c('quant', 'da'), c('quant-en', 'en', 'quant'), c('kemi', 'da'), c('python', 'en')]
-  it('shows the version in the chosen language, and other courses as written', () => {
-    expect(coursesForLang(all, 'en').map((x) => x.meta.slug)).toEqual(['quant-en', 'kemi', 'python'])
-    expect(coursesForLang(all, 'da').map((x) => x.meta.slug)).toEqual(['quant', 'kemi', 'python'])
+  it('a course can be read in its own language and its versions', () => {
+    expect(hasLang({ lang: 'da', langs: ['da', 'en'] }, 'en')).toBe(true)
+    expect(hasLang({ lang: 'da' }, 'en')).toBe(false)
+    expect(hasLang({ lang: 'en' }, 'en')).toBe(true)
   })
 })

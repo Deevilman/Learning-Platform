@@ -4,6 +4,7 @@
 import type { CourseData, CourseMeta } from '@/types/content'
 import type { Attempt, CheckRec } from './storage/types'
 import { computeMastery } from './mastery'
+import { tr } from '@/i18n/translate'
 
 /** Legacy, position-based id ("video:quant/3.2"). */
 export const videoCheckId = (course: string, itemId: string) => `video:${course}/${itemId}`
@@ -113,7 +114,7 @@ export function nextSteps(
       for (const n of d.meta.next) {
         const nm = courses.find((c) => c.slug === n)
         if (!nm) {
-          out.push({ kind: 'course', course: n, title: n, reason: `Kommer senere — næste skridt efter ${d.meta.title}` })
+          out.push({ kind: 'course', course: n, title: n, reason: tr('next.later', { title: d.meta.title }) })
           continue
         }
         const missing = nm.prerequisites.filter((p) => !complete.get(p))
@@ -121,17 +122,17 @@ export function nextSteps(
           kind: 'course',
           course: n,
           title: nm.title,
-          reason: missing.length ? `Næste kursus efter ${d.meta.title} (mangler stadig: ${missing.join(', ')})` : `Du har gennemført ${d.meta.title} — fortsæt her`,
+          reason: missing.length ? tr('next.missing', { title: d.meta.title, list: missing.join(', ') }) : tr('next.completed', { title: d.meta.title }),
         })
       }
       continue
     }
     const next = d.weeks.find((w) => !weekProgress(d, w.number, checks, attempts).done)
-    if (next) out.push({ kind: 'week', course: slug, week: next.number, title: `Uge ${next.number}: ${next.title}`, reason: `Næste uge i ${d.meta.title} som du ikke har afsluttet` })
+    if (next) out.push({ kind: 'week', course: slug, week: next.number, title: tr('placement.weekTitle', { n: next.number, title: next.title }), reason: tr('next.week', { title: d.meta.title }) })
   }
   if (!out.length && courses.length) {
     const first = courses.find((c) => !c.prerequisites.length) || courses[0]
-    out.push({ kind: 'week', course: first.slug, week: 1, title: `Uge 1 i ${first.title}`, reason: 'Start her' })
+    out.push({ kind: 'week', course: first.slug, week: 1, title: tr('next.firstWeek', { title: first.title }), reason: tr('placement.startHere') })
   }
   return out
 }

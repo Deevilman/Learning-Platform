@@ -8,13 +8,16 @@ import { generators } from '@/lib/generators'
 import { nextSteps, reachedWeeks, weekProgress } from '@/lib/progress'
 import { CourseDot, ErrorBox, Loading, Progress, type Position } from '@/components/ui'
 import { DailyGoal } from '@/components/DailyGoal'
+import { dateLocale, useLang, useT, type T } from '@/i18n'
 
-function greeting(now: Date) {
+function greeting(now: Date, t: T) {
   const h = now.getHours()
-  return h < 10 ? 'Godmorgen' : h < 18 ? 'Hej' : 'Godaften'
+  return h < 10 ? t('home.morning') : h < 18 ? t('home.hello') : t('home.evening')
 }
 
 export default function Dashboard() {
+  const t = useT()
+  const [lang] = useLang()
   const { data, error } = useAsync(async () => {
     const idx = await loadIndex()
     const courses = await Promise.all(idx.courses.map((c) => loadCourse(c.slug)))
@@ -49,8 +52,8 @@ export default function Dashboard() {
     <div className="mx-auto max-w-3xl space-y-6">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="page-title">{greeting(new Date(now))}!</h1>
-          <p className="muted">{new Date(now).toLocaleDateString('da-DK', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+          <h1 className="page-title">{greeting(new Date(now), t)}!</h1>
+          <p className="muted">{new Date(now).toLocaleDateString(dateLocale(lang), { weekday: 'long', day: 'numeric', month: 'long' })}</p>
         </div>
         <DailyGoal />
       </header>
@@ -58,7 +61,7 @@ export default function Dashboard() {
       {/* 1. Fortsæt */}
       <section className="card space-y-4" aria-labelledby="cont-h">
         <h2 id="cont-h" className="section-title">
-          {position ? 'Fortsæt hvor du slap' : 'Kom i gang'}
+          {position ? t('home.continueTitle') : t('home.getStarted')}
         </h2>
         {position ? (
           <>
@@ -67,26 +70,24 @@ export default function Dashboard() {
               {wp && (
                 <div className="mt-3 space-y-1">
                   <div className="muted flex justify-between text-sm">
-                    <span>Ugens øvelser</span>
-                    <span>
-                      {wp.exercisesDone} af {wp.exercises}
-                    </span>
+                    <span>{t('home.weekExercises')}</span>
+                    <span>{t('placement.of', { n: wp.exercisesDone, total: wp.exercises })}</span>
                   </div>
-                  <Progress value={wp.exercisesDone} max={wp.exercises} color={course?.meta.color} label="Ugens øvelser" />
+                  <Progress value={wp.exercisesDone} max={wp.exercises} color={course?.meta.color} label={t('home.weekExercises')} />
                 </div>
               )}
             </div>
             <Link className="btn btn-primary w-full sm:w-auto" to={position.path}>
-              Fortsæt →
+              {t('home.continue')}
             </Link>
           </>
         ) : (
           <>
             <p>
-              Begynd med <b>{first?.title}</b>. Du kan tage en kort test først, så du kan springe det over, du allerede kan.
+              {t('home.beginWith')} <b>{first?.title}</b>. {t('home.testFirst')}
             </p>
             <Link className="btn btn-primary w-full sm:w-auto" to={`/kursus/${first?.slug}`}>
-              Start {first?.title} →
+              {t('home.start', { title: first?.title || '' })}
             </Link>
           </>
         )}
@@ -95,7 +96,7 @@ export default function Dashboard() {
       {/* 2. Træn mere på */}
       <section className="card space-y-3" aria-labelledby="weak-h">
         <h2 id="weak-h" className="section-title">
-          Træn mere på
+          {t('home.practiseMore')}
         </h2>
         {derived.weak.length ? (
           <ul className="divide-y" style={{ borderColor: 'var(--border)' }}>
@@ -109,18 +110,18 @@ export default function Dashboard() {
                     <div className="muted truncate text-sm">{w.reasons[0]}</div>
                   </div>
                   <Link className="btn shrink-0" to={`/traen?kursus=${w.course}&emne=${w.topic}&start=1`}>
-                    Træn
+                    {t('nav.train')}
                   </Link>
                 </li>
               )
             })}
           </ul>
         ) : (
-          <p className="muted">Når du har lavet et par opgaver, viser jeg her, hvad du har mest gavn af at øve.</p>
+          <p className="muted">{t('home.weakEmpty')}</p>
         )}
         {due > 0 && (
           <Link className="link inline-block text-sm" to="/traen?tilstand=gennemgang">
-            {due === 1 ? '1 opgave' : `${due} opgaver`} er klar til repetition i dag →
+            {t(due === 1 ? 'home.dueOne' : 'home.due', { n: due })}
           </Link>
         )}
       </section>
@@ -128,7 +129,7 @@ export default function Dashboard() {
       {/* 3. Næste skridt */}
       <section className="card space-y-3" aria-labelledby="next-h">
         <h2 id="next-h" className="section-title">
-          Næste skridt
+          {t('home.nextSteps')}
         </h2>
         <ul className="space-y-2">
           {derived.steps.slice(0, 3).map((s, i) => {
@@ -151,7 +152,7 @@ export default function Dashboard() {
 
       <p className="text-center">
         <Link className="link" to="/statistik">
-          Se din statistik →
+          {t('home.seeStats')}
         </Link>
       </p>
     </div>

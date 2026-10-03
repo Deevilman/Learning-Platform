@@ -1,7 +1,7 @@
 // One exercise: prompt, hints one step at a time, answer (typed, multiple
 // choice or free text you rate yourself), solution, notes and history.
 
-import { useT } from '@/i18n'
+import { dateLocale, useLang, useT, type Key } from '@/i18n'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { AutoCheck, Difficulty, Exercise, Quiz } from '@/types/content'
 import { Html } from './Html'
@@ -17,14 +17,14 @@ import { choiceCheck, type Choices } from '@/lib/choices'
 import { ANSWER_PREF_KEY, answerFormat, type AnswerPref } from '@/lib/answer-type'
 
 export const STARS: Record<Difficulty, string> = { 1: '★', 2: '★★', 3: '★★★' }
-export const KIND_LABEL: Record<string, string> = {
-  compute: 'Beregning',
-  proof: 'Bevis',
-  code: 'Kode',
-  explain: 'Forklar',
-  interview: 'Interview',
-  selftest: 'Selvtest',
-  project: 'Projekt',
+export const KIND_LABEL: Record<string, Key> = {
+  compute: 'kind.compute',
+  proof: 'kind.proof',
+  code: 'kind.code',
+  explain: 'kind.explain',
+  interview: 'kind.interview',
+  selftest: 'kind.selftest',
+  project: 'kind.project',
 }
 
 /** Score for a correct auto-checked answer: each hint used costs a little. */
@@ -123,6 +123,8 @@ export function ExerciseCard({
   onDone?: (score: number) => void
 }) {
   const store = useStore()
+  const t = useT()
+  const [lang] = useLang()
   const [pref] = useSetting<AnswerPref>(ANSWER_PREF_KEY, 'blandet')
   const [answer, setAnswer] = useDebouncedSave('answers', ex.id)
   const [note, setNote] = useDebouncedSave('notes', ex.id)
@@ -175,15 +177,15 @@ export function ExerciseCard({
     <article className="card space-y-4" aria-labelledby={`ex-h-${ex.id}`}>
       <header className="flex flex-wrap items-center gap-2">
         <h3 id={`ex-h-${ex.id}`} className="text-base font-bold">
-          {heading ?? (ex.number ? `Øvelse ${ex.number}` : 'Opgave')}
+          {heading ?? (ex.number ? t('exercise.title', { n: ex.number }) : t('exercise.generic'))}
         </h3>
-        <span className="chip" title={`Sværhedsgrad ${ex.difficulty} af 3`} style={{ color: 'var(--warn)' }}>
+        <span className="chip" title={t('exercise.difficulty', { n: ex.difficulty })} style={{ color: 'var(--warn)' }}>
           {STARS[ex.difficulty]}
         </span>
-        <span className="chip">{KIND_LABEL[ex.kind] || ex.kind}</span>
+        <span className="chip">{KIND_LABEL[ex.kind] ? t(KIND_LABEL[ex.kind]) : ex.kind}</span>
         {history.length > 0 && (
-          <span className="chip ml-auto" title="Seneste forsøg">
-            {history.length} forsøg · senest {history[0].rating !== undefined ? RATING_LABEL[history[0].rating].toLowerCase() : history[0].score >= 0.6 ? 'rigtigt' : 'ikke rigtigt'}
+          <span className="chip ml-auto" title={t('exercise.lastAttempt')}>
+            {t('exercise.attempts', { n: history.length, last: history[0].rating !== undefined ? t(RATING_LABEL[history[0].rating]).toLowerCase() : history[0].score >= 0.6 ? t('exercise.right') : t('exercise.wrong') })}
           </span>
         )}
       </header>
@@ -198,7 +200,7 @@ export function ExerciseCard({
           {quizCaps && ex.quiz && (
             <div className="rounded-xl p-4" style={{ background: 'var(--accent-soft)' }}>
               <div className="mb-1 text-sm font-semibold" style={{ color: 'var(--accent)' }}>
-                Tjek dig selv
+                {t('exercise.checkYourself')}
               </div>
               <Html html={ex.quiz.question} />
               <div className="mt-3">
@@ -221,7 +223,7 @@ export function ExerciseCard({
           {freeAnswer && (
             <div className="space-y-2">
               <label className="block text-sm font-medium" htmlFor={`ans-${ex.id}`}>
-                {isCode ? 'Din kode' : 'Dit svar'} <span className="muted font-normal">(gemmes automatisk)</span>
+                {isCode ? t('exercise.yourCode') : t('answer.yours')} <span className="muted font-normal">{t('exercise.autosave')}</span>
               </label>
               <textarea
                 id={`ans-${ex.id}`}
@@ -233,18 +235,18 @@ export function ExerciseCard({
                 onKeyDown={(e) => {
                   if (isCode && e.key === 'Tab') {
                     e.preventDefault()
-                    const t = e.currentTarget
-                    const s = t.selectionStart
-                    setAnswer(answer.slice(0, s) + '    ' + answer.slice(t.selectionEnd))
-                    requestAnimationFrame(() => (t.selectionStart = t.selectionEnd = s + 4))
+                    const el = e.currentTarget
+                    const s = el.selectionStart
+                    setAnswer(answer.slice(0, s) + '    ' + answer.slice(el.selectionEnd))
+                    requestAnimationFrame(() => (el.selectionStart = el.selectionEnd = s + 4))
                   }
                 }}
-                placeholder={isCode ? '# Skriv Python her (kun standardbiblioteket)…' : 'Skriv dit svar, din udregning eller dit bevis her…'}
+                placeholder={isCode ? t('exercise.codePlaceholder') : t('exercise.answerPlaceholder')}
               />
               {canRun && (
                 <div>
                   <button className="btn" onClick={() => setRunKey((k) => k + 1)} disabled={!answer.trim()}>
-                    ▶ Kør min kode
+                    {t('exercise.run')}
                   </button>
                   {runKey > 0 && <CodeRunPanel key={runKey} lang="python" code={answer} />}
                 </div>
@@ -260,8 +262,7 @@ export function ExerciseCard({
           {ex.hintsHtml.slice(0, hintsShown).map((h, i) => (
             <li key={i} className="fade-in rounded-xl p-3" style={{ background: 'var(--warn-soft)' }}>
               <div className="mb-1 text-sm font-semibold">
-                Hint {i + 1}
-                {ex.hintsHtml.length > 1 ? ` af ${ex.hintsHtml.length}` : ''}
+                {ex.hintsHtml.length > 1 ? t('exercise.hintOf', { n: i + 1, total: ex.hintsHtml.length }) : t('exercise.hint', { n: i + 1 })}
               </div>
               <Html html={h} />
             </li>
@@ -271,19 +272,19 @@ export function ExerciseCard({
       <div className="flex flex-wrap gap-2">
         {!showSolution && hintsShown < ex.hintsHtml.length && (
           <button className="btn" onClick={() => setHintsShown((n) => n + 1)}>
-            💡 {hintsShown === 0 ? 'Vis hint' : 'Vis næste hint'}
+            💡 {hintsShown === 0 ? t('exercise.showHint') : t('exercise.nextHint')}
           </button>
         )}
         {!showSolution && (
           <button className={freeAnswer && hintsShown >= ex.hintsHtml.length ? 'btn btn-primary' : 'btn'} onClick={() => setShowSolution(true)}>
-            {ex.check ? 'Vis løsningen' : 'Vis løsning'}
+            {t('exercise.showSolution')}
           </button>
         )}
       </div>
-      {hintsShown > 0 && !showSolution && <p className="muted -mt-2 text-xs">Hints trækker lidt fra, når opgaven tæller med i din mestring.</p>}
+      {hintsShown > 0 && !showSolution && <p className="muted -mt-2 text-xs">{t('exercise.hintCost')}</p>}
       {showSolution && (
         <div className="fade-in rounded-xl p-4" style={{ background: 'var(--surface-2)' }}>
-          <div className="mb-1 text-sm font-semibold">Løsning</div>
+          <div className="mb-1 text-sm font-semibold">{t('exercise.solution')}</div>
           <Html html={ex.solutionHtml} />
         </div>
       )}
@@ -291,8 +292,8 @@ export function ExerciseCard({
       {/* ---------- self rating for free answers */}
       {showSolution && freeAnswer && (
         <div>
-          <div className="mb-2 text-sm font-medium">Hvordan gik det?</div>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Vurdér dig selv">
+          <div className="mb-2 text-sm font-medium">{t('exercise.howDidItGo')}</div>
+          <div className="flex flex-wrap gap-2" role="group" aria-label={t('exercise.rateYourself')}>
             {([0, 1, 2, 3] as Rating[]).map((r) => (
               <button
                 key={r}
@@ -302,11 +303,11 @@ export function ExerciseCard({
                 disabled={rated !== null}
                 aria-pressed={rated === r}
               >
-                {RATING_LABEL[r]}
+                {t(RATING_LABEL[r])}
               </button>
             ))}
           </div>
-          {rated !== null && <p className="muted mt-2 text-sm">Gemt. {hintsShown && rated === 3 ? '(Talt som "Kunne med hint", fordi du brugte et hint.)' : ''}</p>}
+          {rated !== null && <p className="muted mt-2 text-sm">{t('exercise.saved')} {hintsShown && rated === 3 ? t('exercise.countedWithHint') : ''}</p>}
         </div>
       )}
 
@@ -314,22 +315,22 @@ export function ExerciseCard({
       {!compact && (
         <div className="border-t pt-3" style={{ borderColor: 'var(--border)' }}>
           <button className="link text-sm font-medium" onClick={() => setShowNotes((s) => !s)} aria-expanded={showNotes}>
-            {showNotes ? '▾' : '▸'} Mine noter og forsøg {note ? '•' : ''}
+            {showNotes ? '▾' : '▸'} {t('exercise.notesAndAttempts')} {note ? '•' : ''}
           </button>
           {showNotes && (
             <div className="mt-2 space-y-3">
-              <textarea className="input min-h-[4rem]" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Noter til dig selv (fx hvor du gik i stå)…" aria-label="Mine noter" />
+              <textarea className="input min-h-[4rem]" value={note} onChange={(e) => setNote(e.target.value)} placeholder={t('exercise.notePlaceholder')} aria-label={t('exercise.myNotes')} />
               {history.length > 0 ? (
                 <ul className="space-y-1 text-sm">
                   {history.slice(0, 10).map((a) => (
                     <li key={a.id} className="flex gap-3">
-                      <span className="muted">{new Date(a.ts).toLocaleString('da-DK', { dateStyle: 'short', timeStyle: 'short' })}</span>
-                      <span>{a.rating !== undefined ? RATING_LABEL[a.rating] : a.score >= 0.6 ? '✓ rigtigt' : 'ikke rigtigt'}</span>
+                      <span className="muted">{new Date(a.ts).toLocaleString(dateLocale(lang), { dateStyle: 'short', timeStyle: 'short' })}</span>
+                      <span>{a.rating !== undefined ? t(RATING_LABEL[a.rating]) : a.score >= 0.6 ? `✓ ${t('exercise.right')}` : t('exercise.wrong')}</span>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="muted text-sm">Ingen forsøg endnu.</p>
+                <p className="muted text-sm">{t('exercise.noAttempts')}</p>
               )}
             </div>
           )}
@@ -365,7 +366,7 @@ export function AnswerInput({
     setAsk('')
     const text = mc ? choices.options[Number(v)] : v
     // friendlier wording than the checker's
-    const message = r.correct ? t('answer.right') : mc ? `${t('answer.notQuite')} ${t('answer.rightIs')} ${choices.options[choices.correct]}.` : r.message.replace(/^Forkert\.|^Ikke helt\./, 'Ikke helt.')
+    const message = r.correct ? t('answer.right') : mc ? `${t('answer.notQuite')} ${t('answer.rightIs')} ${choices.options[choices.correct]}.` : r.message
     const res = { ...r, message }
     setResult(res)
     onChecked(res, text)

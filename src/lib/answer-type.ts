@@ -3,7 +3,7 @@
 
 export type AnswerPref = 'blandet' | 'mc' | 'skriv'
 export const ANSWER_PREF_KEY = 'answerType'
-export const ANSWER_PREF_LABEL: Record<AnswerPref, string> = { blandet: 'Blandet', mc: 'Kun multiple choice', skriv: 'Kun skriv selv' }
+export const ANSWER_PREF_LABEL = { blandet: 'pref.mixed', mc: 'pref.mc', skriv: 'pref.typed' } as const satisfies Record<AnswerPref, string>
 
 export interface AnswerCapabilities {
   /** Can be answered by picking one of several options. */

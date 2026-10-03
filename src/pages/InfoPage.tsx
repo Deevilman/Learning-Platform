@@ -3,14 +3,16 @@ import { loadCourse } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 import { Html } from '@/components/Html'
 import { Crumbs, ErrorBox, Loading } from '@/components/ui'
+import { useT } from '@/i18n'
 
 export default function InfoPage() {
+  const t = useT()
   const { slug = '', page = '' } = useParams()
   const { data: course, error } = useAsync(() => loadCourse(slug), [slug])
   if (error) return <ErrorBox error={error} />
   if (!course) return <Loading />
   const p = course.info.find((x) => x.slug === page)
-  if (!p) return <p>Siden findes ikke.</p>
+  if (!p) return <p>{t('notFound.title')}.</p>
   return (
     <div className="mx-auto max-w-4xl space-y-4">
       <Crumbs items={[{ to: `/kursus/${slug}`, label: course.meta.title }, { label: p.title }]} />

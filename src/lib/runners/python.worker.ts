@@ -27,7 +27,7 @@ self.onmessage = async (e: MessageEvent) => {
       const imports: string[] = pyodide.pyimport('pyodide.code').find_imports(m.code).toJs()
       const missing = imports.filter((x: string) => ['numpy', 'pandas', 'scipy', 'matplotlib', 'sympy', 'networkx'].includes(x))
       if (missing.length) {
-        ;(self as any).postMessage({ type: 'status', text: `Henter ${missing.join(', ')}…` })
+        ;(self as any).postMessage({ type: 'status', packages: missing })
         await pyodide.loadPackagesFromImports(m.code)
       }
       // Fresh globals per run so runs don't leak into each other.

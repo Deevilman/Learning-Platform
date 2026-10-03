@@ -73,7 +73,8 @@ export function masteryByWeek(attempts: Attempt[], course: string, now: number):
 
 /** Khan-style levels shown to the learner. */
 export type MasteryLevel = 'ikke-startet' | 'oevet' | 'kendt' | 'mestret'
-export const MASTERY_LEVEL_LABEL: Record<MasteryLevel, string> = { 'ikke-startet': 'Ikke startet', oevet: 'Øvet', kendt: 'Kendt', mestret: 'Mestret' }
+/** i18n keys for the levels. */
+export const MASTERY_LEVEL_LABEL = { 'ikke-startet': 'mastery.notStarted', oevet: 'mastery.practised', kendt: 'mastery.known', mestret: 'mastery.mastered' } as const satisfies Record<MasteryLevel, string>
 export const MASTERY_LEVELS: MasteryLevel[] = ['ikke-startet', 'oevet', 'kendt', 'mestret']
 
 /**

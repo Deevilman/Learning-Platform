@@ -1,3 +1,4 @@
+import type { Key } from '@/i18n/translate'
 import type { CodeRunner } from './types'
 
 export type { CodeRunner, RunResult, RunOptions } from './types'
@@ -21,8 +22,8 @@ export async function getRunner(lang: string): Promise<CodeRunner | null> {
 }
 
 /** External playgrounds for languages we cannot run in the browser. */
-export function externalPlayground(lang: string, code: string): { label: string; url: string } | null {
+export function externalPlayground(lang: string, code: string): { label: Key; url: string } | null {
   const l = lang.toLowerCase()
-  if (l === 'lean' || l === 'lean4') return { label: 'Åbn i Lean 4-editoren', url: `https://live.lean-lang.org/#code=${encodeURIComponent(code)}` }
+  if (l === 'lean' || l === 'lean4') return { label: 'code.lean', url: `https://live.lean-lang.org/#code=${encodeURIComponent(code)}` }
   return null
 }

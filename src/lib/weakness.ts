@@ -5,6 +5,7 @@ import type { CourseMeta } from '@/types/content'
 import type { Attempt } from './storage/types'
 import { computeMastery, type Mastery } from './mastery'
 import { DAY } from './srs'
+import { tr } from '@/i18n/translate'
 
 export interface WeakTopic {
   course: string
@@ -16,7 +17,7 @@ export interface WeakTopic {
 }
 
 const STARS = { 1: '★', 2: '★★', 3: '★★★' } as const
-const pct = (x: number) => `${Math.round(x * 100)} %`
+const pct = (x: number) => `${Math.round(x * 100)}%`
 
 /**
  * reachedWeeks: per course, the weeks the learner has started (any attempt,
@@ -35,18 +36,18 @@ export function findWeakTopics(courses: CourseMeta[], attempts: Attempt[], reach
       const reasons: string[] = []
       const last5 = m.recent.slice(-5)
       const wrong = last5.filter((s) => s < 0.5).length
-      if (last5.length >= 3 && wrong >= 2) reasons.push(`${wrong} af de sidste ${last5.length} forkert`)
+      if (last5.length >= 3 && wrong >= 2) reasons.push(tr('weak.wrong', { n: wrong, total: last5.length }))
       for (const d of [1, 2, 3] as const) {
         const bd = m.byDifficulty[d]
-        if (bd.n >= 2 && bd.avg < 0.5) reasons.push(`${STARS[d]}-øvelser under 50 % (${pct(bd.avg)})`)
+        if (bd.n >= 2 && bd.avg < 0.5) reasons.push(tr('weak.difficulty', { stars: STARS[d], pct: pct(bd.avg) }))
       }
       if (m.lastTs) {
         const days = Math.floor((now - m.lastTs) / DAY)
-        if (days >= 14) reasons.push(`ikke øvet i ${days} dage`)
+        if (days >= 14) reasons.push(tr('weak.days', { n: days }))
       }
-      if (m.attempts === 0) reasons.push('ikke øvet endnu')
-      else if (m.attempts < 3) reasons.push(`kun ${m.attempts} forsøg`)
-      if (m.attempts >= 3 && m.mastery < 0.6) reasons.push(`mestring ${pct(m.mastery)}`)
+      if (m.attempts === 0) reasons.push(tr('weak.never'))
+      else if (m.attempts < 3) reasons.push(tr('weak.few', { n: m.attempts }))
+      if (m.attempts >= 3 && m.mastery < 0.6) reasons.push(tr('weak.mastery', { pct: pct(m.mastery) }))
 
       // Weakness score: low (forgetting-adjusted) mastery dominates; topics
       // with few attempts get a smaller, but non-zero, push.

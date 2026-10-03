@@ -15,7 +15,7 @@ import { ExerciseCard, fromBank, STARS } from '@/components/ExerciseCard'
 import { AnswerPrefPicker } from '@/components/AnswerPrefPicker'
 import { QuickQuestion } from '@/components/QuickQuestion'
 import { useT } from '@/i18n'
-import { courseStyle, Crumbs, ErrorBox, Loading, useTrackPosition } from '@/components/ui'
+import { courseStyle, Crumbs, OnlyInNote, ErrorBox, Loading, useTrackPosition } from '@/components/ui'
 import type { CourseData, Exercise, LessonQuestion, VideoItem, Week } from '@/types/content'
 
 type Page = { id: string; label: string; kind: 'video' | 'laes' | 'oev' | 'checkpoint'; video?: VideoItem }
@@ -72,7 +72,8 @@ export default function WeekPage() {
 
   return (
     <div className="course-theme mx-auto max-w-3xl space-y-5" style={courseStyle(course.meta.color)}>
-      <Crumbs items={[{ to: '/kurser', label: 'Kurser' }, { to: `/kursus/${slug}`, label: course.meta.title }, { label: `Uge ${n}` }]} />
+      <Crumbs items={[{ to: '/kurser', label: t('nav.courses') }, { to: `/kursus/${slug}`, label: course.meta.title }, { label: t('crumb.week', { n }) }]} />
+      <OnlyInNote meta={course.meta} />
       <header className="space-y-2">
         <div className="text-sm font-semibold" style={{ color: 'var(--accent)' }}>
           {t('week.of', { n, total: course.weeks.length })}
@@ -261,6 +262,7 @@ function LessonQuestionView({ q }: { q: LessonQuestion }) {
 type LessonItem = { kind: 'text'; step: LessonStep } | { kind: 'question'; q: PlacementQuestion }
 
 function Lesson({ course, week, focus, onDone }: { course: CourseData; week: Week; focus: string | null; onDone: () => void }) {
+  const t = useT()
   const slug = course.meta.slug
   const [saved, setSaved, loaded] = useSetting<{ step: number; done: boolean } | null>(`lesson:${slug}/${week.number}`, null)
   const [all, setAll] = useState(false)
@@ -302,10 +304,10 @@ function Lesson({ course, week, focus, onDone }: { course: CourseData; week: Wee
 
   if (all)
     return (
-      <section className="space-y-4" role="tabpanel" aria-label="Læs">
+      <section className="space-y-4" role="tabpanel" aria-label={t('week.read')}>
         <div className="flex justify-end">
           <button className="link text-sm" onClick={() => setAll(false)}>
-            Vis trin for trin
+            {t('read.stepByStep')}
           </button>
         </div>
         {items.map((it, k) =>
@@ -317,14 +319,14 @@ function Lesson({ course, week, focus, onDone }: { course: CourseData; week: Wee
         )}
         <div className="flex justify-end">
           <button className="btn btn-primary" onClick={() => (setSaved({ step: items.length - 1, done: true }), onDone())}>
-            Videre: Øv →
+            {t('read.toExercises')}
           </button>
         </div>
       </section>
     )
 
   return (
-    <section className="space-y-4" role="tabpanel" aria-label="Læs">
+    <section className="space-y-4" role="tabpanel" aria-label={t('week.read')}>
       <div className="flex items-center gap-3">
         <div className="lesson-dots" aria-hidden>
           {items.map((it, k) => (
@@ -332,7 +334,7 @@ function Lesson({ course, week, focus, onDone }: { course: CourseData; week: Wee
           ))}
         </div>
         <span className="muted shrink-0 text-xs">
-          Trin {items.slice(0, i + 1).filter((x) => x.kind === 'text').length} af {textSteps}
+          {t('read.step', { n: items.slice(0, i + 1).filter((x) => x.kind === 'text').length, total: textSteps })}
         </span>
       </div>
       <div key={i} className="card fade-in space-y-3">
@@ -344,7 +346,7 @@ function Lesson({ course, week, focus, onDone }: { course: CourseData; week: Wee
         ) : (
           <>
             <div className="text-sm font-semibold" style={{ color: 'var(--accent)' }}>
-              Hvad tror du?
+              {t('read.guess')}
             </div>
             <QuickQuestion q={item.q} quizById={quizById} onAnswered={(ok) => setAnswered((a) => ({ ...a, [i]: ok }))} />
           </>
@@ -353,20 +355,20 @@ function Lesson({ course, week, focus, onDone }: { course: CourseData; week: Wee
       <div className="flex items-center justify-between gap-2">
         {i > 0 ? (
           <button className="btn" onClick={() => go(i - 1)}>
-            ← Tilbage
+            {t('read.back')}
           </button>
         ) : (
           <button className="link text-sm" onClick={() => setAll(true)}>
-            Vis alt på én side
+            {t('read.all')}
           </button>
         )}
         {i < items.length - 1 ? (
           <button className="btn btn-primary" onClick={() => go(i + 1)}>
-            {item.kind === 'question' && answered[i] === undefined ? 'Spring over' : 'Fortsæt'} →
+            {item.kind === 'question' && answered[i] === undefined ? t('read.skip') : t('read.continue')}
           </button>
         ) : (
           <button className="btn btn-primary" onClick={() => (setSaved({ step: i, done: true }), onDone())}>
-            Færdig — videre til Øv →
+            {t('read.done')}
           </button>
         )}
       </div>
@@ -377,6 +379,7 @@ function Lesson({ course, week, focus, onDone }: { course: CourseData; week: Wee
 // ---------------------------------------------------------------- Øv: exercises, Øv mere, ugens test, checkpoint
 
 function Practice({ course, week: w }: { course: CourseData; week: Week }) {
+  const t = useT()
   const slug = course.meta.slug
   const n = w.number
   const attempts = useTable('attempts')
@@ -394,20 +397,20 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
   const practiceTopics = topics.filter((t) => weekGenerators(course, n).some((g) => g.topics.includes(t.id)))
 
   return (
-    <section className="space-y-4" role="tabpanel" aria-label="Øv">
+    <section className="space-y-4" role="tabpanel" aria-label={t('week.exercises')}>
       {w.exercisesIntro && <Html html={w.exercisesIntro} className="card reading" />}
       <div className="space-y-2">
         <AnswerPrefPicker compact />
         <div className="flex flex-wrap items-center gap-2 text-sm">
-          <span className="muted">Vis:</span>
+          <span className="muted">{t('practice.show')}</span>
           {(
             [
-              ['alle', 'Alle'],
+              ['alle', t('practice.all')],
               ['1', STARS[1]],
               ['2', STARS[2]],
               ['3', STARS[3]],
-              ['kode', 'Kode'],
-              ['ikke', 'Ikke prøvet'],
+              ['kode', t('practice.code')],
+              ['ikke', t('practice.untried')],
             ] as const
           ).map(([k, label]) => (
             <button key={k} className={filter === k ? 'seg seg-on' : 'seg'} aria-pressed={filter === k} onClick={() => setFilter(k)}>
@@ -415,7 +418,7 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
             </button>
           ))}
           <span className="muted ml-auto">
-            {tried.size} af {w.exercises.length} prøvet
+            {t('practice.tried', { n: tried.size, total: w.exercises.length })}
           </span>
         </div>
       </div>
@@ -425,7 +428,7 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
             ex={fromBank(e)}
             heading={
               <Link className="hover:underline" to={`/kursus/${slug}/uge/${n}/opgave/${e.number}`}>
-                Øvelse {e.number}
+                {t('exercise.title', { n: e.number })}
               </Link>
             }
           />
@@ -433,24 +436,24 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
       ))}
       {byPref.hidden > 0 && (
         <p className="muted text-sm">
-          {byPref.hidden} af ugens øvelser er skjult, fordi du har valgt "{ANSWER_PREF_LABEL[pref].toLowerCase()}".{' '}
+          {t('practice.hidden', { n: byPref.hidden, pref: t(ANSWER_PREF_LABEL[pref]).toLowerCase() })}{' '}
           <button className="link" onClick={() => setPref('blandet')}>
-            Vis alle
+            {t('practice.showAll')}
           </button>
         </p>
       )}
-      {!exercises.length && <p className="muted">Ingen øvelser passer til det valgte.</p>}
+      {!exercises.length && <p className="muted">{t('practice.none')}</p>}
 
       {practiceTopics.length > 0 && (
         <section className="card space-y-3" aria-labelledby="more-h">
           <h2 id="more-h" className="section-title">
-            Øv mere
+            {t('practice.more')}
           </h2>
-          <p className="muted text-sm">Bliv ved med nye opgaver i ugens emner — med nye tal hver gang, så længe du har lyst.</p>
+          <p className="muted text-sm">{t('practice.moreIntro')}</p>
           <div className="flex flex-wrap gap-2">
-            {practiceTopics.map((t) => (
-              <Link key={t.id} className="btn" to={`/traen?kursus=${slug}&emne=${t.id}&start=1`}>
-                {t.name} →
+            {practiceTopics.map((tp) => (
+              <Link key={tp.id} className="btn" to={`/traen?kursus=${slug}&emne=${tp.id}&start=1`}>
+                {tp.name} →
               </Link>
             ))}
           </div>
@@ -464,20 +467,21 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
 // ---------------------------------------------------------------- Checkpoint: the week's test and "kan du det her?"
 
 function CheckpointPage({ course, week: w }: { course: CourseData; week: Week }) {
+  const t = useT()
   const slug = course.meta.slug
   const n = w.number
   return (
-    <section className="space-y-4" role="tabpanel" aria-label="Checkpoint">
+    <section className="space-y-4" role="tabpanel" aria-label={t('week.checkpoint')}>
       <WeekTest course={course} week={w} />
 
       {w.connection && (
         <div className="card">
-          <h2 className="section-title mb-2">Sådan hænger det sammen</h2>
+          <h2 className="section-title mb-2">{t('checkpoint.connection')}</h2>
           <Html html={w.connection} className="reading" />
         </div>
       )}
       <div className="card space-y-3">
-        <h2 className="section-title">Checkpoint: kan du det her?</h2>
+        <h2 className="section-title">{t('checkpoint.title')}</h2>
         {w.checkpointIntro && <Html html={w.checkpointIntro} />}
         <ul className="space-y-2">
           {w.checkpoint.map((c, i) => (
@@ -492,6 +496,7 @@ function CheckpointPage({ course, week: w }: { course: CourseData; week: Week })
 
 function WeekTest({ course, week }: { course: CourseData; week: Week }) {
   const slug = course.meta.slug
+  const t = useT()
   const [record, setRecord] = useSetting<WeekTestRecord | null>(weekTestKey(slug, week.number), null)
   const quizById = useMemo(() => new Map<string, Exercise>(week.exercises.filter((e) => e.quiz).map((e) => [e.id, e])), [week])
   const [run, setRun] = useState<{ qs: PlacementQuestion[]; i: number; right: number; answered: boolean | null } | null>(null)
@@ -503,13 +508,13 @@ function WeekTest({ course, week }: { course: CourseData; week: Week }) {
     const passed = run.right >= Math.min(WEEK_TEST_PASS, run.qs.length)
     return (
       <section className="card fade-in space-y-3">
-        <h2 className="section-title">Ugens test</h2>
+        <h2 className="section-title">{t('test.title')}</h2>
         <p className="text-lg font-semibold">
-          {run.right} af {run.qs.length} rigtige {passed ? '— bestået ✓' : ''}
+          {t('test.score', { n: run.right, total: run.qs.length })} {passed ? t('test.passed') : ''}
         </p>
-        <p className="muted text-sm">{passed ? 'Godt gået. Ugen tæller som klaret.' : 'Kig på de øvelser, der drillede, og prøv igen, når du er klar.'}</p>
+        <p className="muted text-sm">{passed ? t('test.passedText') : t('test.failedText')}</p>
         <button className="btn" onClick={start}>
-          Tag testen igen
+          {t('test.again')}
         </button>
       </section>
     )
@@ -517,11 +522,11 @@ function WeekTest({ course, week }: { course: CourseData; week: Week }) {
   if (run) {
     const q = run.qs[run.i]
     return (
-      <section className="card space-y-3" aria-label="Ugens test">
+      <section className="card space-y-3" aria-label={t('test.title')}>
         <div className="flex items-center justify-between">
-          <h2 className="section-title">Ugens test</h2>
+          <h2 className="section-title">{t('test.title')}</h2>
           <span className="muted text-sm">
-            Spørgsmål {run.i + 1} af {run.qs.length}
+            {t('test.question', { n: run.i + 1, total: run.qs.length })}
           </span>
         </div>
         <QuickQuestion key={run.i} q={q} quizById={quizById} onAnswered={(ok) => setRun({ ...run, answered: ok })} />
@@ -537,7 +542,7 @@ function WeekTest({ course, week }: { course: CourseData; week: Week }) {
                 if (i >= run.qs.length && (!record || right > record.best)) setRecord({ best: right, of: run.qs.length, date: Date.now() })
               }}
             >
-              {run.i + 1 < run.qs.length ? 'Næste →' : 'Se resultatet'}
+              {run.i + 1 < run.qs.length ? t('test.next') : t('test.result')}
             </button>
           </div>
         )}
@@ -547,13 +552,13 @@ function WeekTest({ course, week }: { course: CourseData; week: Week }) {
   return (
     <section className="card flex flex-wrap items-center gap-3">
       <div className="min-w-0 flex-1">
-        <h2 className="section-title">Ugens test</h2>
+        <h2 className="section-title">{t('test.title')}</h2>
         <p className="muted text-sm">
-          {WEEK_TEST_SIZE} korte spørgsmål om ugens stof. {record ? `Bedste: ${record.best} af ${record.of}${record.best >= WEEK_TEST_PASS ? ' ✓' : ''}.` : `Klarer du ${WEEK_TEST_PASS}, er ugen klaret.`}
+          {t('test.intro', { n: WEEK_TEST_SIZE })} {record ? t('test.best', { n: record.best, total: record.of }) + (record.best >= WEEK_TEST_PASS ? ' ✓' : '') : t('test.passIf', { n: WEEK_TEST_PASS })}
         </p>
       </div>
       <button className="btn shrink-0" onClick={start}>
-        {record ? 'Tag den igen' : 'Tag testen'}
+        {record ? t('test.retake') : t('test.take')}
       </button>
     </section>
   )
@@ -573,6 +578,7 @@ function CheckpointItem({ id, html }: { id: string; html: string }) {
 
 function WeekNote({ course, week }: { course: string; week: number }) {
   const store = useStore()
+  const t = useT()
   const id = `week:${course}/${week}`
   const [text, setText] = useState<string | null>(null)
   useEffect(() => {
@@ -580,15 +586,15 @@ function WeekNote({ course, week }: { course: string; week: number }) {
   }, [store, id])
   useEffect(() => {
     if (text === null) return
-    const t = setTimeout(() => store.put('notes', { id, text }), 500)
-    return () => clearTimeout(t)
+    const timer = setTimeout(() => store.put('notes', { id, text }), 500)
+    return () => clearTimeout(timer)
   }, [text, id, store])
   return (
     <div className="card space-y-2">
-      <h2 className="section-title">Mine noter til ugen</h2>
-      <textarea className="input min-h-[6rem]" value={text ?? ''} onChange={(e) => setText(e.target.value)} placeholder="De tre vigtigste idéer med mine egne ord, og det, jeg ikke har forstået endnu …" aria-label="Mine noter til ugen" />
+      <h2 className="section-title">{t('notes.title')}</h2>
+      <textarea className="input min-h-[6rem]" value={text ?? ''} onChange={(e) => setText(e.target.value)} placeholder={t('notes.placeholder')} aria-label={t('notes.title')} />
       <p className="muted text-xs">
-        Skriv din tid i <Link className="link" to={`/logbog?kursus=${course}&uge=${week}`}>logbogen</Link>.
+        {t('notes.logPrefix')} <Link className="link" to={`/logbog?kursus=${course}&uge=${week}`}>{t('notes.logLink')}</Link>.
       </p>
     </div>
   )

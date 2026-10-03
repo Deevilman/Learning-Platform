@@ -4,7 +4,7 @@ import { loadIndex, loadCourse } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 import { useTable } from '@/lib/store'
 import { weekProgress } from '@/lib/progress'
-import { coursesForLang, useLang, useT } from '@/i18n'
+import { hasLang, useLang, useT } from '@/i18n'
 import { CourseDot, ErrorBox, Loading, Progress } from '@/components/ui'
 
 export default function Courses() {
@@ -22,8 +22,7 @@ export default function Courses() {
   if (error) return <ErrorBox error={error} />
   if (!data) return <Loading what="kurser" />
   // Topological order of the course graph (prerequisites first).
-  const shown = coursesForLang(data.courses, lang)
-  const order = [...shown].sort((a, b) => depth(a.meta.slug) - depth(b.meta.slug))
+  const order = [...data.courses].sort((a, b) => depth(a.meta.slug) - depth(b.meta.slug))
   function depth(slug: string, seen = new Set<string>()): number {
     const c = data!.courses.find((x) => x.meta.slug === slug)
     if (!c || seen.has(slug)) return 0
@@ -55,7 +54,7 @@ export default function Courses() {
                 </div>
                 <h2 className="text-lg font-bold">{c.meta.title}</h2>
                 {c.meta.uploaded && <span className="chip">{t('courses.yours')}</span>}
-                {c.meta.lang !== lang && <span className="chip">{t(c.meta.lang === 'en' ? 'courses.onlyEn' : 'courses.onlyDa')}</span>}
+                {!hasLang(data.idx.courses.find((m) => m.slug === c.meta.slug) || c.meta, lang) && <span className="chip">{t(c.meta.lang === 'en' ? 'courses.onlyEn' : 'courses.onlyDa')}</span>}
                 <p className="muted text-sm">{c.meta.short}</p>
                 <dl className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
                   <div className="stat">

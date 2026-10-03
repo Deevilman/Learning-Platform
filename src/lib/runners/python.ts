@@ -3,6 +3,7 @@
 // fetched from the Pyodide CDN on demand (the copied lock file points there).
 
 import type { CodeRunner, RunOptions, RunResult } from './types'
+import { tr } from '@/i18n/translate'
 
 let worker: Worker | null = null
 let ready: Promise<void> | null = null
@@ -18,7 +19,7 @@ function start() {
       const m = e.data
       if (m.type === 'ready') resolve()
       else if (m.type === 'init-error') reject(new Error(m.error))
-      else if (m.type === 'status') statusCb?.(m.text)
+      else if (m.type === 'status') statusCb?.(tr('run.fetching', { list: m.packages.join(', ') }))
       else if (m.type === 'result') {
         const p = pending.get(m.id)
         if (p) {
@@ -27,7 +28,7 @@ function start() {
         }
       }
     }
-    worker!.onerror = (e) => reject(new Error(e.message || 'Python stoppede uventet. Prøv igen.'))
+    worker!.onerror = (e) => reject(new Error(e.message || tr('run.crashed')))
   })
   worker.postMessage({ type: 'init', indexURL })
 }
@@ -45,16 +46,16 @@ export const pythonRunner: CodeRunner = {
     const timeoutMs = opts.timeoutMs ?? 60000
     statusCb = opts.onStatus
     if (!worker) {
-      opts.onStatus?.('Indlæser Python (første gang tager det et par sekunder)…')
+      opts.onStatus?.(tr('run.loading'))
       start()
     }
     try {
       await ready
     } catch (e) {
       kill()
-      return { stdout: '', stderr: '', error: `Python kunne ikke starte: ${(e as Error).message}`, ms: 0 }
+      return { stdout: '', stderr: '', error: tr('run.noStart', { error: (e as Error).message }), ms: 0 }
     }
-    opts.onStatus?.('Kører…')
+    opts.onStatus?.(tr('run.running'))
     const id = ++seq
     const started = Date.now()
     return new Promise<RunResult>((resolve) => {
@@ -62,7 +63,7 @@ export const pythonRunner: CodeRunner = {
         if (!pending.has(id)) return
         pending.delete(id)
         kill() // the only way to stop a busy worker
-        resolve({ stdout: '', stderr: '', error: `Stoppet efter ${timeoutMs / 1000} s (uendelig løkke?)`, timedOut: true, ms: Date.now() - started })
+        resolve({ stdout: '', stderr: '', error: tr('run.timeout', { n: timeoutMs / 1000 }), timedOut: true, ms: Date.now() - started })
       }, timeoutMs)
       pending.set(id, {
         started,

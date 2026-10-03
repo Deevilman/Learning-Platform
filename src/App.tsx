@@ -2,7 +2,7 @@ import { HashRouter, Routes, Route, NavLink, Link, useLocation } from 'react-rou
 import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { StoreProvider } from '@/lib/store'
 import { useTheme } from '@/components/ThemeToggle'
-import { LangApplier, useT, type Key } from '@/i18n'
+import { LangApplier, LANGS, useLang, useT, type Key } from '@/i18n'
 import Dashboard from '@/pages/Dashboard'
 import Courses from '@/pages/Courses'
 import CoursePage from '@/pages/CoursePage'
@@ -88,8 +88,24 @@ function MoreMenu({ placement }: { placement: 'down' | 'up' }) {
               {t(m.label)}
             </NavLink>
           ))}
+          <LangSwitch />
         </div>
       )}
+    </div>
+  )
+}
+
+/** Dansk | English, at the bottom of the Mere menu (also under Indstillinger). */
+function LangSwitch() {
+  const t = useT()
+  const [lang, setLang] = useLang()
+  return (
+    <div className="flex gap-1 border-t px-2 pt-2" style={{ borderColor: 'var(--border)' }} role="group" aria-label={t('lang.label')}>
+      {LANGS.map((l) => (
+        <button key={l} lang={l} role="menuitemradio" aria-checked={lang === l} className={lang === l ? 'seg seg-on' : 'seg'} onClick={() => setLang(l)}>
+          {t(l === 'da' ? 'lang.da' : 'lang.en')}
+        </button>
+      ))}
     </div>
   )
 }
@@ -157,6 +173,12 @@ function LoadingFallback() {
   return <p className="muted">{t('app.loading')}</p>
 }
 
+/** Pages are remounted when the language changes, so they load the course in the new language. */
+function LangRoutes({ children }: { children: React.ReactNode }) {
+  const [lang] = useLang()
+  return <Routes key={lang}>{children}</Routes>
+}
+
 export default function App() {
   return (
     <StoreProvider>
@@ -169,7 +191,7 @@ export default function App() {
         <Header />
         <main id="main" className="mx-auto max-w-5xl px-4 pb-28 pt-8 md:pb-16">
           <Suspense fallback={<LoadingFallback />}>
-            <Routes>
+            <LangRoutes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/kurser" element={<Courses />} />
               <Route path="/kurser/tilfoej" element={<AddCoursePage />} />
@@ -188,7 +210,7 @@ export default function App() {
               <Route path="/interaktivt" element={<InteractivesPage />} />
               <Route path="/statistik" element={<StatsPage />} />
               <Route path="*" element={<NotFound />} />
-            </Routes>
+            </LangRoutes>
           </Suspense>
         </main>
       </HashRouter>

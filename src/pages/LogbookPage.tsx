@@ -5,14 +5,8 @@ import { loadIndex } from '@/lib/data'
 import { useAsync } from '@/lib/useAsync'
 import { uid, useStore, useTable } from '@/lib/store'
 import type { LogEntry } from '@/lib/storage/types'
+import { dateLocale, useLang, useT } from '@/i18n'
 
-const TEMPLATE = `De tre vigtigste idéer, med mine egne ord:
-  1.
-  2.
-  3.
-Det har jeg endnu ikke forstået:
-Én forbindelse til en tidligere uge:
-Checkpoint bestået? ja / nej, gentager: `
 
 const today = () => new Date().toISOString().slice(0, 10)
 
@@ -25,6 +19,8 @@ function isoWeek(dateStr: string) {
 }
 
 export default function LogbookPage() {
+  const t = useT()
+  const [lang] = useLang()
   const [params] = useSearchParams()
   const store = useStore()
   const entries = useTable('logbook')
@@ -51,18 +47,18 @@ export default function LogbookPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       <div>
-        <h1 className="page-title">Logbog</h1>
-        <p className="muted">Fem minutter efter hver arbejdsgang. Tiden tæller med i din statistik.</p>
+        <h1 className="page-title">{t('nav.logbook')}</h1>
+        <p className="muted">{t('log.intro')}</p>
       </div>
       <form className="card space-y-3" onSubmit={save}>
-        <h2 className="font-semibold">{draft.id ? 'Ret indlæg' : 'Nyt indlæg'}</h2>
+        <h2 className="font-semibold">{draft.id ? t('log.edit') : t('log.new')}</h2>
         <div className="grid gap-3 sm:grid-cols-4">
           <label className="text-sm">
-            Dato
+            {t('log.date')}
             <input type="date" className="input mt-1" value={draft.date} onChange={(e) => setDraft({ ...draft, date: e.target.value })} required />
           </label>
           <label className="text-sm">
-            Kursus
+            {t('train.course')}
             <select className="input mt-1" value={draft.course || ''} onChange={(e) => setDraft({ ...draft, course: e.target.value })}>
               <option value="">—</option>
               {index?.courses.map((c) => (
@@ -73,30 +69,30 @@ export default function LogbookPage() {
             </select>
           </label>
           <label className="text-sm">
-            Uge
+            {t('log.week')}
             <input type="number" min={1} max={30} className="input mt-1" value={draft.week ?? ''} onChange={(e) => setDraft({ ...draft, week: e.target.value ? Number(e.target.value) : undefined })} />
           </label>
           <label className="text-sm">
-            Minutter
+            {t('log.minutes')}
             <input type="number" min={0} step={5} className="input mt-1" value={draft.minutes} onChange={(e) => setDraft({ ...draft, minutes: Number(e.target.value) })} />
           </label>
         </div>
         <label className="block text-sm">
-          Noter
+          {t('log.notes')}
           <textarea className="input mt-1 min-h-[8rem]" value={draft.text} onChange={(e) => setDraft({ ...draft, text: e.target.value })} />
         </label>
         <div className="flex flex-wrap gap-2">
           <button className="btn btn-primary" type="submit">
-            Gem
+            {t('video.save')}
           </button>
           {!draft.text && (
-            <button type="button" className="btn" onClick={() => setDraft({ ...draft, text: TEMPLATE })}>
-              Indsæt skabelon
+            <button type="button" className="btn" onClick={() => setDraft({ ...draft, text: t('log.template') })}>
+              {t('log.insertTemplate')}
             </button>
           )}
           {draft.id && (
             <button type="button" className="btn" onClick={() => setDraft(blank())}>
-              Annullér
+              {t('log.cancel')}
             </button>
           )}
         </div>
@@ -104,21 +100,21 @@ export default function LogbookPage() {
       {groups.map(([week, list]) => (
         <section key={week} className="space-y-2">
           <h2 className="flex justify-between text-sm font-semibold">
-            <span>{week.replace('-U', ', uge ')}</span>
-            <span className="muted">{formatNumber((list.reduce((s, e) => s + e.minutes, 0) / 60), { decimals: 1 })} t</span>
+            <span>{week.replace('-U', `, ${t('log.week').toLowerCase()} `)}</span>
+            <span className="muted">{t('log.hours', { n: formatNumber(list.reduce((s, e) => s + e.minutes, 0) / 60, { decimals: 1 }) })}</span>
           </h2>
           {list.map((e) => (
             <article key={e.id} className="card space-y-1">
               <div className="flex flex-wrap items-center gap-2 text-sm">
-                <b>{new Date(e.date + 'T12:00:00').toLocaleDateString('da-DK', { weekday: 'short', day: 'numeric', month: 'short' })}</b>
-                {e.course && <span className="chip">{courseTitle(e.course)}{e.week ? ` · uge ${e.week}` : ''}</span>}
+                <b>{new Date(e.date + 'T12:00:00').toLocaleDateString(dateLocale(lang), { weekday: 'short', day: 'numeric', month: 'short' })}</b>
+                {e.course && <span className="chip">{courseTitle(e.course)}{e.week ? ` · ${t('missing.week', { n: e.week })}` : ''}</span>}
                 <span className="muted">{e.minutes} min</span>
                 <span className="ml-auto flex gap-2">
                   <button className="link text-xs" onClick={() => (setDraft(e), window.scrollTo({ top: 0, behavior: 'smooth' }))}>
-                    Ret
+                    {t('log.editShort')}
                   </button>
-                  <button className="link text-xs" onClick={() => confirm('Slet indlægget?') && store.delete('logbook', e.id)}>
-                    Slet
+                  <button className="link text-xs" onClick={() => confirm(t('log.confirmDelete')) && store.delete('logbook', e.id)}>
+                    {t('add.delete')}
                   </button>
                 </span>
               </div>
@@ -127,7 +123,7 @@ export default function LogbookPage() {
           ))}
         </section>
       ))}
-      {entries && !entries.length && <p className="muted">Ingen indlæg endnu.</p>}
+      {entries && !entries.length && <p className="muted">{t('log.none')}</p>}
     </div>
   )
 }
