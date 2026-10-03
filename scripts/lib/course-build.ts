@@ -301,6 +301,7 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
       const videos: VideoItem[] = w.videos.map((v, i): VideoItem | null => {
         const id = `${w.number}.${i + 1}`
         const entry: any = videoMap[id] || (v.key ? videoMap[v.key] : undefined)
+        const mapKey = videoMap[id] ? undefined : v.key && videoMap[v.key] ? v.key : undefined
         if (videoMap[id]) usedVideoKeys.add(id)
         else if (v.key && videoMap[v.key]) usedVideoKeys.add(v.key)
         // "remove: true": no suitable video exists and the notes cover it — drop the item (ids of the others stay stable)
@@ -326,6 +327,7 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
         const links = [...v.urls.filter((u) => !/youtu/.test(u)), ...(entry?.links || []).map(String)]
         return {
           id,
+          ...(mapKey ? { progressKey: mapKey } : {}),
           key: v.key,
           title: entry?.title ? inl(String(entry.title), planFile, v.line) : inl(v.title.replace(/\s*[—–-]\s*\(valgfri\)\s*$/, ''), planFile, v.line),
           optional: v.optional,
@@ -377,6 +379,7 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
         number: w.number,
         title: w.title,
         videoCount: videos.length,
+        videos: videos.map((v) => ({ id: v.id, ...(v.progressKey ? { progressKey: v.progressKey } : {}) })),
         exerciseCount: exercises.length,
         checkpointCount: week.checkpoint.length,
         topics: weekTopics(w.number),

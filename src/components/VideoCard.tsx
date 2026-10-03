@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { VideoItem } from '@/types/content'
 import { useCheck, useRecord, useStore } from '@/lib/store'
-import { videoCheckId } from '@/lib/progress'
+import { videoCheckIds } from '@/lib/progress'
 
 export function parseYoutubeId(input: string): string | null {
   const s = input.trim()
@@ -131,7 +131,15 @@ function Source({ course, itemId, index, source }: { course: string; itemId: str
 }
 
 export function VideoCard({ course, item }: { course: string; item: VideoItem }) {
-  const [watched, setWatched] = useCheck(videoCheckId(course, item.id))
+  const [primary, legacy] = videoCheckIds(course, item)
+  const [watchedNew, setWatchedNew] = useCheck(primary)
+  const [watchedOld, setWatchedOld] = useCheck(legacy ?? primary)
+  const watched = watchedNew || (!!legacy && watchedOld)
+  // write the stable id; clear the old one when unticking so it can't keep the video ticked
+  const setWatched = (v: boolean) => {
+    setWatchedNew(v)
+    if (!v && legacy && watchedOld) setWatchedOld(false)
+  }
   return (
     <section id={`video-${item.id}`} className="card space-y-3">
       <div className="flex items-start gap-3">

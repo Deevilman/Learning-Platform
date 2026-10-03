@@ -39,3 +39,52 @@ create policy "own rows: select" on public.records for select using (auth.uid() 
 create policy "own rows: insert" on public.records for insert with check (auth.uid() = user_id);
 create policy "own rows: update" on public.records for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own rows: delete" on public.records for delete using (auth.uid() = user_id);
+
+-- ---------------------------------------------------------------------------
+-- Egne kurser ("Tilføj kursus"): én række pr. kursus + selve kursusfilen i
+-- den private Storage-bucket "courses" under <bruger-id>/<slug>.md.
+-- Kun ejeren kan se, ændre og slette sine kurser.
+
+create table if not exists public.courses (
+  owner      uuid    not null default auth.uid() references auth.users (id) on delete cascade,
+  slug       text    not null check (slug ~ '^[a-z0-9][a-z0-9-]{1,40}$'),
+  title      text    not null default '',
+  file_name  text    not null default '',
+  hash       text    not null default '',
+  hidden     boolean not null default false,
+  deleted    boolean not null default false,
+  updated_at bigint  not null,
+  primary key (owner, slug)
+);
+
+alter table public.courses enable row level security;
+
+drop policy if exists "own courses: select" on public.courses;
+drop policy if exists "own courses: insert" on public.courses;
+drop policy if exists "own courses: update" on public.courses;
+drop policy if exists "own courses: delete" on public.courses;
+
+create policy "own courses: select" on public.courses for select using ((select auth.uid()) = owner);
+create policy "own courses: insert" on public.courses for insert with check ((select auth.uid()) = owner);
+create policy "own courses: update" on public.courses for update using ((select auth.uid()) = owner) with check ((select auth.uid()) = owner);
+create policy "own courses: delete" on public.courses for delete using ((select auth.uid()) = owner);
+
+-- Privat bucket til kursusfilerne (højst 5 MB pr. fil, kun tekst).
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('courses', 'courses', false, 5242880, array['text/markdown', 'text/plain'])
+on conflict (id) do update set public = false, file_size_limit = excluded.file_size_limit, allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists "own course files: select" on storage.objects;
+drop policy if exists "own course files: insert" on storage.objects;
+drop policy if exists "own course files: update" on storage.objects;
+drop policy if exists "own course files: delete" on storage.objects;
+
+-- Filen skal ligge i en mappe med brugerens eget id: <uid>/<slug>.md
+create policy "own course files: select" on storage.objects for select to authenticated
+  using (bucket_id = 'courses' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy "own course files: insert" on storage.objects for insert to authenticated
+  with check (bucket_id = 'courses' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy "own course files: update" on storage.objects for update to authenticated
+  using (bucket_id = 'courses' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy "own course files: delete" on storage.objects for delete to authenticated
+  using (bucket_id = 'courses' and (storage.foldername(name))[1] = (select auth.uid())::text);

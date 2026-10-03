@@ -5,7 +5,18 @@ import type { CourseData, CourseMeta } from '@/types/content'
 import type { Attempt, CheckRec } from './storage/types'
 import { computeMastery } from './mastery'
 
+/** Legacy, position-based id ("video:quant/3.2"). */
 export const videoCheckId = (course: string, itemId: string) => `video:${course}/${itemId}`
+/**
+ * Ids under which "watched" is stored for a video: the stable one from the
+ * course's video key (kept when the course is re-uploaded and videos move),
+ * then the legacy position-based one. Write the first; read either.
+ */
+export function videoCheckIds(course: string, item: { id: string; progressKey?: string }): string[] {
+  const week = item.id.split('.')[0]
+  return item.progressKey ? [`video:${course}/${week}/k:${item.progressKey}`, videoCheckId(course, item.id)] : [videoCheckId(course, item.id)]
+}
+export const videoWatched = (checks: Map<string, boolean>, course: string, item: { id: string; progressKey?: string }) => videoCheckIds(course, item).some((id) => checks.get(id))
 export const checkpointId = (course: string, week: number, i: number) => `checkpoint:${course}/${week}/${i}`
 export const visitId = (course: string, week: number) => `visit:${course}/${week}`
 export const projectCheckId = (course: string, part: string, i: number) => `project:${course}/${part}/${i}`
@@ -40,8 +51,9 @@ export interface WeekProgress {
 
 export function weekProgress(course: CourseData, week: number, checks: Map<string, boolean>, attempts: Attempt[], videoIds?: string[]): WeekProgress {
   const ws = course.weeks.find((w) => w.number === week)!
-  const ids = videoIds || Array.from({ length: ws.videoCount }, (_, i) => `${week}.${i + 1}`)
-  const videosDone = ids.filter((id) => checks.get(videoCheckId(course.meta.slug, id))).length
+  const items = videoIds ? videoIds.map((id) => ({ id })) : ws.videos || Array.from({ length: ws.videoCount }, (_, i) => ({ id: `${week}.${i + 1}` }))
+  const ids = items
+  const videosDone = items.filter((v) => videoWatched(checks, course.meta.slug, v)).length
   let checkpointDone = 0
   for (let i = 0; i < ws.checkpointCount; i++) if (checks.get(checkpointId(course.meta.slug, week, i))) checkpointDone++
   const exercisesDone = new Set(attempts.filter((a) => a.course === course.meta.slug && a.week === week && a.source === 'bank').map((a) => a.exerciseId)).size

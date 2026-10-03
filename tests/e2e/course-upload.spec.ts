@@ -1,0 +1,122 @@
+import { test, expect, type BrowserContext } from '@playwright/test'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+const FIXTURE = join(import.meta.dirname, '../fixtures/testkursus.md')
+const SUPABASE = 'https://dttnflehddxlmprrstbf.supabase.co'
+
+/** A tiny stand-in for Supabase (auth session, records, courses table, storage), shared by two "devices". */
+function fakeSupabase() {
+  const rows = new Map<string, Record<string, unknown>>()
+  const files = new Map<string, string>()
+  const user = { id: '00000000-0000-4000-8000-000000000001', email: 'elev@example.com', aud: 'authenticated', role: 'authenticated' }
+  const session = { access_token: 'test-token', refresh_token: 'test-refresh', token_type: 'bearer', expires_in: 3600 * 24 * 365, expires_at: Math.floor(Date.now() / 1000) + 3600 * 24 * 365, user }
+  async function attach(context: BrowserContext) {
+    await context.addInitScript((s) => localStorage.setItem('lp-supabase-auth', JSON.stringify(s)), session)
+    await context.route(`${SUPABASE}/**`, async (route) => {
+      const req = route.request()
+      const url = new URL(req.url())
+      const json = (body: unknown, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
+      if (url.pathname.startsWith('/auth/v1/user')) return json(user)
+      if (url.pathname.startsWith('/auth/v1/token')) return json(session)
+      if (url.pathname === '/rest/v1/records') return req.method() === 'GET' ? json([]) : json([], 201)
+      if (url.pathname === '/rest/v1/courses') {
+        if (req.method() === 'GET') return json([...rows.values()])
+        const body = JSON.parse(req.postData() || '{}')
+        for (const r of Array.isArray(body) ? body : [body]) rows.set(r.slug, { ...(rows.get(r.slug) || {}), ...r })
+        return json([], 201)
+      }
+      const obj = /^\/storage\/v1\/object\/(?:authenticated\/)?courses\/(.+)$/.exec(url.pathname)
+      if (obj && (req.method() === 'POST' || req.method() === 'PUT')) {
+        let body = req.postDataBuffer()?.toString('utf8') || ''
+        // supabase-js sends a Blob as multipart form data: keep only the file part
+        const boundary = /boundary=(.+)$/.exec(req.headers()['content-type'] || '')?.[1]
+        if (boundary) {
+          const part = body.split(`--${boundary}`).find((p) => /filename=|name="file"|name=""/.test(p) && p.includes('---')) || ''
+          body = part.slice(part.indexOf('\r\n\r\n') + 4).replace(/\r\n$/, '')
+        }
+        files.set(decodeURIComponent(obj[1]), body)
+        return json({ Key: `courses/${obj[1]}` })
+      }
+      if (obj && req.method() === 'GET') {
+        const f = files.get(decodeURIComponent(obj[1]))
+        return f === undefined ? json({ error: 'not found' }, 404) : route.fulfill({ status: 200, contentType: 'text/markdown', body: f })
+      }
+      if (url.pathname === '/storage/v1/object/courses' && req.method() === 'DELETE') return json([])
+      return json({})
+    })
+  }
+  return { attach, rows, files }
+}
+
+test('a single course file added in a clean browser works fully', async ({ page }) => {
+  await page.goto('/#/kurser')
+  await page.getByRole('link', { name: '+ Tilføj kursus' }).click()
+  await page.getByLabel('Kursusfil').setInputFiles(FIXTURE)
+  const preview = page.getByLabel('Forhåndsvisning')
+  await expect(preview.getByRole('heading', { name: 'Testkursus i logik' })).toBeVisible({ timeout: 30_000 })
+  await expect(preview.getByText('uger')).toBeVisible()
+  await expect(preview.locator('.stat', { hasText: 'øvelser' })).toContainText('4')
+  await expect(preview.locator('.stat', { hasText: 'lektioner' })).toContainText('2')
+  await preview.getByRole('button', { name: 'Tilføj' }).click()
+  await expect(page.getByText('"Testkursus i logik" er tilføjet')).toBeVisible()
+  await expect(page.getByText(/Log ind under Indstillinger/)).toBeVisible()
+
+  // the course is on the course list and works like the site's own
+  await page.getByRole('link', { name: 'Gå til kurset →' }).click()
+  await expect(page.getByRole('heading', { name: 'Testkursus i logik' })).toBeVisible()
+  await expect(page.getByText('Din vej gennem kurset')).toBeVisible()
+  await page.getByRole('link', { name: /Start uge 1/ }).click()
+  await expect(page.getByRole('heading', { name: 'Udsagn', exact: true })).toBeVisible()
+  await page.getByRole('tab', { name: /Læs/ }).click()
+  await expect(page.getByText(/Trin 1 af/)).toBeVisible()
+  await page.getByRole('tab', { name: /Øv/ }).click()
+  await expect(page.getByText('Tjek dig selv')).toBeVisible()
+  await page.locator('label.choice', { hasText: '7 er et primtal' }).click()
+  await page.getByRole('button', { name: 'Tjek svar' }).click()
+  await expect(page.getByText('Rigtigt!')).toBeVisible()
+
+  // placement test, search and the course list all know the course
+  await page.goto('/#/kursus/testkursus/test')
+  await page.getByRole('button', { name: 'Start testen' }).click()
+  await expect(page.getByText(/Uge 1: Udsagn/)).toBeVisible()
+  await page.goto('/#/soeg?q=kvantor')
+  await expect(page.getByText(/Testkursus i logik/).first()).toBeVisible()
+  await page.goto('/#/kurser')
+  await expect(page.getByText('Dit kursus')).toBeVisible()
+
+  // a broken file is explained with line numbers and cannot be added
+  await page.goto('/#/kurser/tilfoej')
+  const broken = readFileSync(FIXTURE, 'utf8').replace('lang: da', 'lang: sv')
+  await page.getByLabel('Kursusfil').setInputFiles({ name: 'fejl.md', mimeType: 'text/markdown', buffer: Buffer.from(broken) })
+  await expect(page.getByText(/Linje 3:/)).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByRole('button', { name: 'Tilføj' })).toHaveCount(0)
+})
+
+test('a course added on one device appears on another device of the same learner', async ({ browser }) => {
+  const cloud = fakeSupabase()
+  const a = await browser.newContext()
+  await cloud.attach(a)
+  const pa = await a.newPage()
+  await pa.goto('/#/kurser/tilfoej')
+  await pa.getByLabel('Kursusfil').setInputFiles(FIXTURE)
+  await pa.getByLabel('Forhåndsvisning').getByRole('button', { name: 'Tilføj' }).click({ timeout: 30_000 })
+  await expect(pa.getByText('Kurset er gemt og kommer med på dine andre enheder.')).toBeVisible()
+  expect(cloud.rows.get('testkursus')).toMatchObject({ title: 'Testkursus i logik', deleted: false })
+  expect([...cloud.files.keys()]).toEqual(['00000000-0000-4000-8000-000000000001/testkursus.md'])
+  expect(cloud.files.get('00000000-0000-4000-8000-000000000001/testkursus.md')).toBe(readFileSync(FIXTURE, 'utf8'))
+
+  // second device: a fresh browser profile, logged in as the same learner
+  const b = await browser.newContext()
+  await cloud.attach(b)
+  const pb = await b.newPage()
+  await pb.goto('/#/indstillinger')
+  await pb.getByRole('button', { name: 'Opdatér nu' }).click()
+  await expect(pb.getByText(/Dine enheder er opdateret|Alt var allerede opdateret/)).toBeVisible({ timeout: 30_000 })
+  await pb.goto('/#/kurser')
+  await expect(pb.getByText('Testkursus i logik')).toBeVisible()
+  await pb.goto('/#/kursus/testkursus/uge/2?fane=oev')
+  await expect(pb.getByText('Øvelse 2.1')).toBeVisible()
+  await a.close()
+  await b.close()
+})

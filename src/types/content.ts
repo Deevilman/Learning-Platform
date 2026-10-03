@@ -46,6 +46,8 @@ export interface CourseMeta {
 
 export interface VideoItem {
   id: string // "<week>.<n>", unique within the course
+  /** Stable key from the course's video list (e.g. "Q3.2") — progress follows it when a course is re-uploaded. */
+  progressKey?: string
   key: string // playlist key from the plan, e.g. "P1" or "Q3.2"
   title: string // HTML
   optional: boolean
@@ -120,6 +122,7 @@ export interface WeekSummary {
   number: number
   title: string
   videoCount: number
+  videos?: { id: string; progressKey?: string }[]
   exerciseCount: number
   checkpointCount: number
   topics: string[]

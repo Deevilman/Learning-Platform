@@ -58,3 +58,14 @@ describe('storage', () => {
     await expect(importAll(fresh(), { foo: 1 } as never)).rejects.toThrow()
   })
 })
+
+import { videoCheckIds, videoWatched } from '@/lib/progress'
+describe('video progress follows the video key', () => {
+  it('reads the new key-based id and the old position-based one', () => {
+    const item = { id: '3.2', progressKey: 'Q3.2' }
+    expect(videoCheckIds('quant', item)).toEqual(['video:quant/3/k:Q3.2', 'video:quant/3.2'])
+    expect(videoWatched(new Map([['video:quant/3.2', true]]), 'quant', item)).toBe(true) // ticked before the change
+    expect(videoWatched(new Map([['video:quant/3/k:Q3.2', true]]), 'quant', { id: '3.5', progressKey: 'Q3.2' })).toBe(true) // moved within the week after a re-upload
+    expect(videoCheckIds('foundations', { id: '1.1' })).toEqual(['video:foundations/1.1'])
+  })
+})
