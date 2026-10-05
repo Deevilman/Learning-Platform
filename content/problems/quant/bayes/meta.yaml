@@ -1,0 +1,9 @@
+titel: "Bayes: hvor meget er en alarm værd?"
+svaerhed: 1
+emner: [probability]
+sprog: [python, c, cpp]
+uge: 3
+hints:
+  - "Tælleren er sandsynligheden for \"krak og alarm\"."
+  - "Nævneren er sandsynligheden for \"alarm\" i alt: alarm ved krak plus falsk alarm."
+  - "Prøv med $a = 0.01$, $s = 0.9$, $f = 0.05$: de fleste alarmer er falske, fordi krak er sjældne."

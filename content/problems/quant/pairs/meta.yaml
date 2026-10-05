@@ -1,0 +1,9 @@
+titel: "Pairs trading: z-score af spread"
+svaerhed: 2
+emner: [strategies]
+sprog: [python, c, cpp]
+uge: 11
+hints:
+  - "Regn kun spreadet ud for de sidste $k$ dage."
+  - "Gennemsnit og standardafvigelse (del med $k-1$) af de $k$ spreads."
+  - "Z-scoren siger, hvor mange standardafvigelser i dag ligger fra gennemsnittet."

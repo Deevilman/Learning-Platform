@@ -1,0 +1,9 @@
+titel: "Minimum-varians med to aktiver"
+svaerhed: 2
+emner: [portfolio]
+sprog: [python, c, cpp]
+uge: 7
+hints:
+  - "Indsæt i formlen for $w^*$."
+  - "Indsæt $w^*$ i formlen for variansen, og tag kvadratroden."
+  - "Ved $\\rho = -1$ kan risikoen gå helt i 0. Variansen kan så blive et lille negativt tal på grund af afrunding; brug `max(var, 0.0)` før kvadratroden."

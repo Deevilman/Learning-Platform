@@ -1,0 +1,9 @@
+titel: "Logistisk regression: forudsig retningen"
+svaerhed: 1
+emner: [risk-ml]
+sprog: [python, c, cpp]
+uge: 16
+hints:
+  - "Regn $z = w_0 + \\sum_j w_j x_j$ for hver linje."
+  - "Sandsynligheden er $1/(1 + e^{-z})$."
+  - "Træfsikkerheden er antallet af rigtige forudsigelser delt med $n$."

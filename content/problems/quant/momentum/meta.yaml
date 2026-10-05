@@ -1,0 +1,9 @@
+titel: "Momentum-rangering"
+svaerhed: 1
+emner: [strategies]
+sprog: [python, c, cpp]
+uge: 12
+hints:
+  - "Regn afkastet ud for hver aktie."
+  - "Sortér efter afkast faldende og navn stigende: nøglen `(-afkast, navn)`."
+  - "Afrund afkastet (fx til 10 decimaler) i sorteringsnøglen, så matematisk ens afkast også bliver ens."

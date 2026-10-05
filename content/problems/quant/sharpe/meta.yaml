@@ -1,0 +1,9 @@
+titel: "Sharpe-ratio"
+svaerhed: 2
+emner: [returns-risk]
+sprog: [python, c, cpp]
+uge: 2
+hints:
+  - "Træk $r_f$ fra hvert afkast først."
+  - "Regn gennemsnit og stikprøvens standardafvigelse (del med $n-1$) af merafkastene."
+  - "Del gennemsnittet med standardafvigelsen, og gang med $\\sqrt{252}$."

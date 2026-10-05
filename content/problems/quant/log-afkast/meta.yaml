@@ -1,0 +1,9 @@
+titel: "Samlet afkast og log-afkast"
+svaerhed: 1
+emner: [returns-risk]
+sprog: [python, c, cpp]
+uge: 2
+hints:
+  - "Det samlede afkast: gang alle faktorerne $(1 + r_t)$ sammen, og træk 1 fra."
+  - "Log-afkastet: læg $\\ln(1 + r_t)$ sammen. `math.log1p(x)` regner $\\ln(1+x)$ præcist, også når $x$ er lille."
+  - "Tjek dig selv: $e^{\\ell} - 1$ skal give det samme som $R$."

@@ -1,0 +1,9 @@
+titel: "Middelværdi og varians"
+svaerhed: 1
+emner: [probability]
+sprog: [python, c, cpp]
+uge: 3
+hints:
+  - "Læs $x_i$ og $p_i$ parvis."
+  - "Middelværdien er den vægtede sum $\\sum p_i x_i$."
+  - "Variansen er det vægtede gennemsnit af $(x_i - E[X])^2$. Brug den form frem for $E[X^2] - E[X]^2$, som kan give små afrundingsfejl."

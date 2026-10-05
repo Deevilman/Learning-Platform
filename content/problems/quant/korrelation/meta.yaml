@@ -1,0 +1,9 @@
+titel: "Korrelation mellem to aktier"
+svaerhed: 2
+emner: [statistics]
+sprog: [python, c, cpp]
+uge: 5
+hints:
+  - "Regn begge gennemsnit ud først."
+  - "Læg produkterne af afvigelserne sammen i tælleren, og de kvadrerede afvigelser i hver sin sum."
+  - "Del tælleren med kvadratroden af produktet af de to summer."

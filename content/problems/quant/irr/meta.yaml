@@ -1,0 +1,9 @@
+titel: "Den interne rente"
+svaerhed: 3
+emner: [time-value]
+sprog: [python, c, cpp]
+uge: 1
+hints:
+  - "Lav en funktion `npv(r)`, der regner nutidsværdien ud."
+  - "`npv` er positiv ved $r = -0.9$ og negativ ved $r = 10$. Halvér intervallet igen og igen (bisektion), og behold den halvdel, hvor fortegnet skifter."
+  - "Efter et par hundrede halveringer er intervallet langt mindre end $10^{-4}$."

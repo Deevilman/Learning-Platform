@@ -1,0 +1,9 @@
+titel: "Spread i basispoint"
+svaerhed: 1
+emner: [microstructure]
+sprog: [python, c, cpp]
+uge: 15
+hints:
+  - "Regn midtprisen ud for hver linje."
+  - "Spreadet i basispoint er $(ask - bid)/\\text{midtpris} \\cdot 10000$."
+  - "Læg spreadene sammen undervejs, så du kan regne gennemsnittet ud til sidst."

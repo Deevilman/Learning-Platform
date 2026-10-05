@@ -1,0 +1,9 @@
+titel: "EWMA-volatilitet"
+svaerhed: 2
+emner: [timeseries]
+sprog: [python, c, cpp]
+uge: 9
+hints:
+  - "Start med $\\sigma_1^2 = r_1^2$."
+  - "Opdatér variansen én dag ad gangen med formlen."
+  - "Tag kvadratroden af den sidste varians til sidst."

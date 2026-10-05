@@ -1,0 +1,9 @@
+titel: "Kelly-andelen"
+svaerhed: 2
+emner: [probability]
+sprog: [python, c, cpp]
+uge: 4
+hints:
+  - "Regn $f^* = p - (1-p)/b$ ud, og sæt den til 0, hvis den er negativ: `max(0.0, …)`."
+  - "Indsæt $f^*$ i formlen for $g$. Brug `math.log`."
+  - "Når $f^* = 0$, er $g = 0$: du spiller ikke, så formuen står stille."

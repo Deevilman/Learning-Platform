@@ -1,0 +1,9 @@
+titel: "Parametrisk VaR"
+svaerhed: 1
+emner: [risk-ml]
+sprog: [python, c, cpp]
+uge: 16
+hints:
+  - "Over $h$ dage er middelværdien $\\mu h$ og standardafvigelsen $\\sigma\\sqrt{h}$."
+  - "Tabet ved kvantilen er $z\\sigma\\sqrt{h} - \\mu h$ i procent af positionen."
+  - "Gang med $V$ for at få kroner."

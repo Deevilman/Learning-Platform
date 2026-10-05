@@ -20,8 +20,9 @@ if (!url || !key) {
 const problems: ServerProblem[] = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : []
 const sb = createClient(url, key, { auth: { persistSession: false } })
 const rows = problems.map((p) => ({ id: p.id, course: p.course, data: p, updated_at: new Date().toISOString() }))
-if (rows.length) {
-  const { error } = await sb.from('problem_tests').upsert(rows)
+// a few problems per request: the hidden tests can be several MB in total
+for (let i = 0; i < rows.length; i += 5) {
+  const { error } = await sb.from('problem_tests').upsert(rows.slice(i, i + 5))
   if (error) throw new Error(error.message)
 }
 // problems that no longer exist

@@ -1,0 +1,9 @@
+titel: "VWAP"
+svaerhed: 1
+emner: [microstructure]
+sprog: [python, c, cpp]
+uge: 15
+hints:
+  - "Læg $p_i q_i$ sammen og $q_i$ sammen hver for sig."
+  - "Del de to summer med hinanden til sidst."
+  - "Den samlede volumen er et helt tal; udskriv den uden decimaler."

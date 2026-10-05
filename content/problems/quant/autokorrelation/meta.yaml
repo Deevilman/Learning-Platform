@@ -1,0 +1,9 @@
+titel: "Autokorrelation"
+svaerhed: 2
+emner: [timeseries]
+sprog: [python, c, cpp]
+uge: 9
+hints:
+  - "Træk gennemsnittet fra alle værdier først."
+  - "Nævneren er den samme for alle lags; regn den ud én gang."
+  - "For lag $k$: læg $d_t \\cdot d_{t-k}$ sammen for $t$ fra $k$ til $n-1$ (nummereret fra 0)."

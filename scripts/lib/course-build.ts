@@ -112,10 +112,10 @@ export interface CourseSource {
   overrides?: Overrides
   videos?: Record<string, any>
   forwardRefs?: ForwardRefs
-  /** ```challenge blocks (line = the opening fence). */
-  challenges?: { line: number; data: unknown }[]
-  /** ```problem blocks (line = the opening fence). */
-  problems?: { line: number; data: unknown }[]
+  /** ```challenge blocks (line = the opening fence), or folders under content/challenges (file = the folder). */
+  challenges?: { line: number; data: unknown; file?: string }[]
+  /** ```problem blocks (line = the opening fence), or folders under content/problems (file = the folder). */
+  problems?: { line: number; data: unknown; file?: string }[]
   /** ```lesson blocks (line = the opening fence). */
   lessons?: { line: number; data: unknown }[]
   /** ```opgaveskabelon blocks (line = the opening fence). */
@@ -392,11 +392,12 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
         vidCount += sources.length
         vidMissing += sources.filter((s: any) => !s.youtube && s.search).length
         const links = [...v.urls.filter((u) => !/youtu/.test(u)), ...(entry?.links || []).map(String)]
+        const found = sources.length > 0 && sources.every((s: any) => s.youtube || s.access === 'steady')
         return {
           id,
           ...(mapKey ? { progressKey: mapKey } : {}),
           key: v.key,
-          title: entry?.title ? inl(String(entry.title), planFile, v.line) : inl(v.title.replace(/\s*[—–-]\s*\(valgfri\)\s*$/, ''), planFile, v.line),
+          title: entry?.title ? inl(String(entry.title), planFile, v.line) : inl(cleanItemTitle(v.title, { found, urls: v.urls }), planFile, v.line),
           optional: v.optional,
           added: v.added,
           focus: v.focus ? inl(v.focus.replace(/^\*+|\*+$/g, ''), planFile, v.line) : undefined,
@@ -580,11 +581,12 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     const problems: CodeProblem[] = []
     const serverProblems: ServerProblem[] = []
     for (const b of src.problems || []) {
-      const r = buildProblem(b.data, { course: slug, topics: topicIds, md: (s) => md(s, planFile, b.line), inl: (s) => inl(s, planFile, b.line) })
+      const where = b.file || planFile
+      const r = buildProblem(b.data, { course: slug, topics: topicIds, md: (s) => md(s, where, b.line), inl: (s) => inl(s, where, b.line) })
       const id = (b.data as { id?: string })?.id || '(uden id)'
-      for (const e of r.errors) err(planFile, b.line, `Kodeopgaven "${id}": ${e}`)
+      for (const e of r.errors) err(where, b.line, `Kodeopgaven "${id}": ${e}`)
       if (!r.problem) continue
-      if (problems.some((p) => p.id === r.problem!.id)) err(planFile, b.line, `Kodeopgaven "${id}" findes to gange.`)
+      if (problems.some((p) => p.id === r.problem!.id)) err(where, b.line, `Kodeopgaven "${id}" findes to gange.`)
       problems.push(r.problem)
       serverProblems.push(r.server!)
     }
@@ -594,11 +596,12 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     const challenges: Challenge[] = []
     const serverChallenges: ServerChallenge[] = []
     for (const b of src.challenges || []) {
-      const r = buildChallenge(b.data, { course: slug, topics: topicIds, md: (s) => md(s, planFile, b.line) })
+      const where = b.file || planFile
+      const r = buildChallenge(b.data, { course: slug, topics: topicIds, md: (s) => md(s, where, b.line) })
       const id = (b.data as { id?: string })?.id || '(uden id)'
-      for (const e of r.errors) err(planFile, b.line, `Udfordringen "${id}": ${e}`)
+      for (const e of r.errors) err(where, b.line, `Udfordringen "${id}": ${e}`)
       if (!r.challenge) continue
-      if (challenges.some((c) => c.id === r.challenge!.id)) err(planFile, b.line, `Udfordringen "${id}" findes to gange.`)
+      if (challenges.some((c) => c.id === r.challenge!.id)) err(where, b.line, `Udfordringen "${id}" findes to gange.`)
       challenges.push(r.challenge)
       serverChallenges.push(r.server!)
     }
@@ -624,4 +627,35 @@ export function buildCourse(src: CourseSource, env: BuildEnv): CourseBuild {
     if (templates.length) courseData.templates = templates
     const stats: CourseStats = ({ slug, weeks: plan.weeks.length, exercises: exCount, solutions: solCount, videos: vidCount, videosMissing: vidMissing, selftest: nSelf, interview: nInt })
     return { meta, course: courseData, weeks, sets: setFiles, summaries: allSummaries, search, stats, serverProblems, serverChallenges, ...report }
+}
+
+/**
+ * The plan's title for a video or reading, as the learner should see it:
+ * without the author's markers "(tilføjet)" and "(valgfri)" (the app shows
+ * "valgfri" as a chip), without URLs that are already a player or a link
+ * button, and without "Søgeplads:"/"(søg: …)" once the video has been found.
+ */
+export function cleanItemTitle(title: string, { found, urls }: { found: boolean; urls: string[] }): string {
+  // a marker may sit inside its own emphasis, "*(tilføjet)*", or open a longer one, "**(valgfri) P7 …**"
+  let t = title.replace(/(\*{1,2}|_{1,2})?\(([^()]*)\)(\*{1,2}|_{1,2})?\s*/g, (m, pre = '', inner: string, post = '') => {
+    const parts = inner.split(',').map((p) => p.trim())
+    if (!parts.every((p) => /^(tilføjet|valgfri|avanceret)$/i.test(p))) return m
+    const keep = parts.filter((p) => /^avanceret$/i.test(p))
+    const rest = keep.length ? `(${keep.join(', ')})` : ''
+    if (pre && pre === post) return rest ? `${pre}${rest}${post} ` : ''
+    return `${pre}${rest ? `${rest} ` : ''}${post}`
+  })
+  if (found) t = t.replace(/\s*\(søg:\s*["“][^"”]*["”]\)/g, '').replace(/^\s*Søgeplads:\s*/i, '')
+  for (const u of urls) {
+    const esc = u.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    t = t.replace(new RegExp(`(^|[^(])\\s*:?\\s*<?${esc}>?`, 'g'), '$1')
+  }
+  t = t
+    .replace(/\s*[—–-]\s*$/, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/[\s:]+$/, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+  // "kort ZFC-overblik" → "Kort ZFC-overblik" when a prefix was taken away
+  return t !== title.trim() && /^\p{Ll}/u.test(t) ? t[0].toUpperCase() + t.slice(1) : t
 }

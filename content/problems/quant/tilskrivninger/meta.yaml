@@ -1,0 +1,9 @@
+titel: "Renter tilskrevet flere gange om året"
+svaerhed: 1
+emner: [time-value]
+sprog: [python, c, cpp]
+uge: 1
+hints:
+  - "Del renten ud på tilskrivningerne: hver gang ganges beløbet med $1 + r/m$."
+  - "Der er $m \\cdot t$ tilskrivninger i alt, så beløbet er $P(1+r/m)^{mt}$."
+  - "Til $m = 0$ skal du bruge `math.exp(r * t)`."

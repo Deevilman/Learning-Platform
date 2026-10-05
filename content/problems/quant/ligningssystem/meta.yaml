@@ -1,0 +1,9 @@
+titel: "Løs et lineært ligningssystem"
+svaerhed: 3
+emner: [linalg-regression]
+sprog: [python, c, cpp]
+uge: 6
+hints:
+  - "Arbejd med den udvidede matrix $[A \\mid b]$, så $b$ følger med i rækkeoperationerne."
+  - "For hver kolonne $c$: byt den række med størst $|a_{ic}|$ (for $i \\ge c$) op på plads $c$, og træk et passende multiplum af den fra alle rækker under."
+  - "Når matricen er øvre trekantet, findes $x_n$ først, så $x_{n-1}$ og så videre (baglæns substitution)."

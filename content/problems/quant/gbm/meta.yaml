@@ -1,0 +1,9 @@
+titel: "Geometrisk brownsk bevægelse"
+svaerhed: 2
+emner: [stochastic]
+sprog: [python, c, cpp]
+uge: 13
+hints:
+  - "$E[S_T]$ og medianen er direkte formler."
+  - "$P(S_T > S_0) = P(W_T > -(\\mu - \\sigma^2/2)T/\\sigma)$. Standardisér med $\\sqrt{T}$."
+  - "Python har `math.erf`, så $\\Phi(x)$ = `0.5 * (1 + math.erf(x / math.sqrt(2)))`."

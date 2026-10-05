@@ -1,0 +1,9 @@
+titel: "Rentes rente"
+svaerhed: 1
+emner: [time-value]
+sprog: [python, c, cpp]
+uge: 1
+hints:
+  - "Efter ét år er beløbet $P(1+r)$. Efter to år ganges der med $(1+r)$ igen."
+  - "Efter $n$ år er beløbet $P(1+r)^n$. I Python skrives en potens med `**`."
+  - "Udskriv med to decimaler: `print(f\"{x:.2f}\")`."

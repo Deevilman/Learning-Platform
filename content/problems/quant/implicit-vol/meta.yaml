@@ -1,0 +1,9 @@
+titel: "Implicit volatilitet"
+svaerhed: 3
+emner: [derivatives]
+sprog: [python, c, cpp]
+uge: 14
+hints:
+  - "Lav en funktion, der giver Black–Scholes-prisen for et givet $\\sigma$."
+  - "Prisen vokser med $\\sigma$, så du kan bruge bisektion mellem 0.01 og 3."
+  - "Er modelprisen for lav, skal $\\sigma$ op; er den for høj, skal $\\sigma$ ned."

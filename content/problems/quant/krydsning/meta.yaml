@@ -1,0 +1,9 @@
+titel: "Backtest af en glidende-gennemsnit-strategi"
+svaerhed: 3
+emner: [backtesting]
+sprog: [python, c, cpp]
+uge: 10
+hints:
+  - "Hold to glidende summer (kort og lang), og opdatér dem i $O(1)$ pr. dag."
+  - "Sammenlign gennemsnittene uden at dele: $S_s/s > S_l/l \\iff S_s \\cdot l > S_l \\cdot s$. Med hele tal er det helt præcist."
+  - "Positionen fra dag $t$ bruges på afkastet fra dag $t$ til $t+1$. Tæl en handel, hver gang den nye position er forskellig fra den gamle."

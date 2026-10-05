@@ -25,7 +25,8 @@ const OLD_TABS: Record<string, string> = { noter: 'laes', oevelser: 'oev', oevel
 /** The week as a row of pages: one per video, then reading, exercises and the checkpoint. */
 function weekPages(w: Week, t: ReturnType<typeof useT>): Page[] {
   return [
-    ...w.videos.map((v, i): Page => ({ id: `video-${v.id}`, label: t('week.video', { n: i + 1 }), kind: 'video', video: v })),
+    // an item with only links (a book chapter, a game) is a "Kilde", not a "Video"
+    ...w.videos.map((v, i): Page => ({ id: `video-${v.id}`, label: t(v.sources.length || !v.links.length ? 'week.video' : 'week.source', { n: i + 1 }), kind: 'video', video: v })),
     { id: 'laes', label: t('week.read'), kind: 'laes' },
     { id: 'oev', label: t('week.exercises'), kind: 'oev' },
     { id: 'checkpoint', label: t('week.checkpoint'), kind: 'checkpoint' },
@@ -40,6 +41,7 @@ export default function WeekPage() {
   const store = useStore()
   const t = useT()
   const checks = useTable('checks')
+  const attempts = useTable('attempts')
   const fane = params.get('fane') || ''
   const goTo = (id: string) => {
     const p = new URLSearchParams(params)
@@ -64,8 +66,10 @@ export default function WeekPage() {
   const page = pages[at]
   const checkMap = new Map((checks || []).map((c) => [c.id, c.value]))
   const checkpointDone = w.checkpoint.length > 0 && w.checkpoint.every((_, i) => checkMap.get(checkpointId(slug, n, i)))
+  const tried = new Set((attempts || []).filter((a) => a.course === slug && a.week === n && a.source === 'bank').map((a) => a.exerciseId))
+  const triedAll = w.exercises.length > 0 && w.exercises.every((e) => tried.has(e.id))
   const isDone = (p: Page) =>
-    p.kind === 'video' ? videoWatched(checkMap, slug, p.video!) : p.kind === 'laes' ? !!lesson?.done : p.kind === 'checkpoint' ? checkpointDone || (!!test && test.best >= WEEK_TEST_PASS) : false
+    p.kind === 'video' ? videoWatched(checkMap, slug, p.video!) : p.kind === 'laes' ? !!lesson?.done : p.kind === 'checkpoint' ? checkpointDone || (!!test && test.best >= WEEK_TEST_PASS) : triedAll
   const prevPage = pages[at - 1]
   const nextPage = pages[at + 1]
   const prev = n > 1 ? n - 1 : null
@@ -408,6 +412,7 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
   })
   const topics = course.meta.topics.filter((t) => t.weeks.includes(n))
   const practiceTopics = topics.filter((t) => weekGenerators(course, n).some((g) => g.topics.includes(t.id)))
+  const weekProblems = (course.problems || []).filter((p) => p.week === n)
 
   return (
     <section className="space-y-4" role="tabpanel" aria-label={t('week.exercises')}>
@@ -456,6 +461,25 @@ function Practice({ course, week: w }: { course: CourseData; week: Week }) {
         </p>
       )}
       {!exercises.length && <p className="muted">{t('practice.none')}</p>}
+
+      {weekProblems.length > 0 && (
+        <section className="card space-y-3" aria-labelledby="code-h">
+          <h2 id="code-h" className="section-title">
+            {t('practice.code.title')}
+          </h2>
+          <p className="muted text-sm">{t('practice.code.intro')}</p>
+          <ul className="space-y-1">
+            {weekProblems.map((p) => (
+              <li key={p.id}>
+                <Link className="link" to={`/kode/opgave?id=${encodeURIComponent(p.id)}`}>
+                  {p.title}
+                </Link>{' '}
+                <span className="muted text-xs">{STARS[p.difficulty]}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {practiceTopics.length > 0 && (
         <section className="card space-y-3" aria-labelledby="more-h">

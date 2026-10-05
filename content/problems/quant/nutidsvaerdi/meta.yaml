@@ -1,0 +1,9 @@
+titel: "Nutidsværdi af betalinger"
+svaerhed: 1
+emner: [time-value]
+sprog: [python, c, cpp]
+uge: 1
+hints:
+  - "Betalingen $c_t$ ved tid $t$ er $c_t/(1+r)^t$ værd i dag."
+  - "Gå betalingerne igennem med `enumerate`, så du har både $t$ og $c_t$."
+  - "Læg alle nutidsværdierne sammen."

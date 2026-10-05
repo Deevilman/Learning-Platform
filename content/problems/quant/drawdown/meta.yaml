@@ -1,0 +1,9 @@
+titel: "Største fald (max drawdown)"
+svaerhed: 2
+emner: [returns-risk]
+sprog: [python, c, cpp]
+uge: 2
+hints:
+  - "Hold styr på den højeste værdi indtil nu, mens du går frem gennem dagene."
+  - "Regn for hver dag faldet fra toppen ud, og husk det største."
+  - "Én gennemgang er nok. Undgå at gå tilbage og lede efter toppen igen for hver dag; det bliver $O(n^2)$."

@@ -1,0 +1,9 @@
+titel: "Daglige afkast"
+svaerhed: 1
+emner: [returns-risk]
+sprog: [python, c, cpp]
+uge: 2
+hints:
+  - "Gå kurserne igennem parvis: (dag 1, dag 2), (dag 2, dag 3) og så videre."
+  - "`zip(p, p[1:])` giver netop de par."
+  - "Saml linjerne i en liste, og udskriv dem på én gang med `print(\"\\n\".join(...))`. Det er meget hurtigere end mange `print` for store $n$."

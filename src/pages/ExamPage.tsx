@@ -31,7 +31,19 @@ export default function ExamPage() {
   return (
     <div className="course-theme mx-auto max-w-3xl space-y-5" style={courseStyle(course.meta.color)}>
       <Crumbs items={[{ to: '/kurser', label: t('nav.courses') }, { to: `/kursus/${slug}`, label: course.meta.title }, { label: t('exam.title') }]} />
-      {course.meta.exam === 'olympiade' ? <Olympiad course={course} weeks={weeks} /> : <Htx course={course} weeks={weeks} />}
+      {!course.meta.exam ? (
+        <section className="card space-y-3">
+          <h1 className="page-title">{t('exam.title')}</h1>
+          <p>{t('exam.none')}</p>
+          <Link className="btn" to={`/kursus/${slug}`}>
+            {t('exam.backToCourse')}
+          </Link>
+        </section>
+      ) : course.meta.exam === 'olympiade' ? (
+        <Olympiad course={course} weeks={weeks} />
+      ) : (
+        <Htx course={course} weeks={weeks} />
+      )}
     </div>
   )
 }

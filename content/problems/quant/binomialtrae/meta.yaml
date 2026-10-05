@@ -1,0 +1,10 @@
+titel: "Binomialtræ (Cox–Ross–Rubinstein)"
+svaerhed: 3
+emner: [derivatives]
+sprog: [python, c, cpp]
+uge: 14
+tid: 4
+hints:
+  - "Lav først listen med de $N+1$ udbetalinger ved udløb; knude $j$ har aktiekursen $S u^j d^{N-j}$."
+  - "Gå baglæns ét skridt ad gangen. Du kan genbruge den samme liste: plads $j$ får værdien ud fra plads $j$ og $j+1$."
+  - "For en amerikansk option: sammenlign i hver knude med udbetalingen ved at indfri med det samme, $S u^j d^{\\text{skridt}-j}$."

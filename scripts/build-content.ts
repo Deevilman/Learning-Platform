@@ -12,6 +12,7 @@ import { parseCoursePack } from './lib/course-pack.ts'
 import { plannedFrom, validateGraph, type GraphNode } from './lib/course-graph.ts'
 import { checkReference, toolchainAvailable } from './lib/judge-local.ts'
 import type { ServerProblem } from './lib/problems.ts'
+import { readChallengeFolders, readProblemFolders } from './lib/content-folders.ts'
 import type { ServerChallenge } from './lib/challenges.ts'
 import { validateTemplate, type TemplateDef } from '../src/lib/templates.ts'
 import type { ContentIndex, CourseMeta, ExerciseSummary, SearchDoc } from '../src/types/content.ts'
@@ -93,6 +94,14 @@ export function buildContent(opts: BuildOptions): BuildReport {
       }
     }
   }
+  // coding problems and challenges kept as folders (content/problems/<course>/…, content/challenges/<course>/…)
+  for (const [kind, items] of [['problems', readProblemFolders(opts.root)], ['challenges', readChallengeFolders(opts.root)]] as const)
+    for (const item of items) {
+      for (const e of item.errors) report.errors.push({ file: item.file, line: 0, message: e })
+      const src = sources.find((s) => s.slug === item.course && !s.version)
+      if (!src) report.errors.push({ file: item.file, line: 0, message: `kurset "${item.course}" findes ikke (mappen skal hedde som kursets slug)` })
+      else (src[kind] ||= []).push({ line: 0, data: item.data, file: item.file })
+    }
   const seen = new Set<string>()
   // the main version of each course first, then its language versions
   sources.sort((a, b) => Number(!!a.version) - Number(!!b.version))
@@ -167,7 +176,7 @@ export function buildContent(opts: BuildOptions): BuildReport {
 
   // ---------- coding problems: every reference solution must pass all tests (public + hidden)
   for (const p of serverProblems) {
-    const file = `content/courses/${p.course}.md`
+    const file = existsSync(join(contentDir, 'problems', p.id)) ? `content/problems/${p.id}` : `content/courses/${p.course}.md`
     if (!toolchainAvailable(p.reference.language)) {
       const msg = `kodeopgaven "${p.id}": referenceløsningen (${p.reference.language}) kan ikke køres her, fordi værktøjet mangler`
       if (process.env.CI) report.errors.push({ file, line: 0, message: msg })
