@@ -1,0 +1,9 @@
+titel: "Historisk VaR og Expected Shortfall"
+svaerhed: 2
+emner: [risk-ml]
+sprog: [python, c, cpp]
+uge: 16
+hints:
+  - "Sortér afkastene stigende; de værste dage kommer først."
+  - "Regn $k$ ud med hele tal, så du undgår afrundingsfejl som $\\lceil 5.000000000000004 \\rceil = 6$."
+  - "VaR er minus det $k$-te mindste afkast, og ES er minus gennemsnittet af de $k$ mindste."

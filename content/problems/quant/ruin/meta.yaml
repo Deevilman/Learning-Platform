@@ -1,0 +1,9 @@
+titel: "Spillerens ruin"
+svaerhed: 2
+emner: [probability]
+sprog: [python, c, cpp]
+uge: 4
+hints:
+  - "Skeln mellem $p = 0.5$ og alle andre $p$."
+  - "Regn $\\rho = (1-p)/p$ ud, og sæt ind i brøken."
+  - "Et lille hus-fordel betyder meget: sammenlign $p = 0.5$ og $p = 0.49$ med $N = 20$."

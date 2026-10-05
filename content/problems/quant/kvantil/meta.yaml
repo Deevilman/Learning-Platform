@@ -1,0 +1,9 @@
+titel: "Kvantiler med interpolation"
+svaerhed: 2
+emner: [statistics]
+sprog: [python, c, cpp]
+uge: 5
+hints:
+  - "Sortér data én gang. Python: `sorted(...)`."
+  - "Regn $h = (n-1)q$ og $j = \\lfloor h \\rfloor$ ud for hver $q$."
+  - "Interpolér lineært mellem nabo-værdierne $x_{(j)}$ og $x_{(j+1)}$, og husk tilfældet $j = n - 1$."

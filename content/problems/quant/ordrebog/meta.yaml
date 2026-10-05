@@ -1,0 +1,9 @@
+titel: "En lille ordrebog"
+svaerhed: 3
+emner: [microstructure]
+sprog: [python, c, cpp]
+uge: 15
+hints:
+  - "Brug to prioritetskøer (heaps): én med salgsordrer sorteret efter (pris, tid) og én med købsordrer efter (-pris, tid)."
+  - "En ny ordre handler med toppen af den modsatte kø, så længe prisen passer og der er noget tilbage af ordren."
+  - "En delvist udført hvilende ordre bliver liggende øverst med det resterende antal; gem antallet i noget, der kan ændres, fx en liste."

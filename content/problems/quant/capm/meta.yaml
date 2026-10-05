@@ -1,0 +1,9 @@
+titel: "CAPM og alfa"
+svaerhed: 1
+emner: [portfolio]
+sprog: [python, c, cpp]
+uge: 7
+hints:
+  - "Regn $E[R]$ og $\\alpha$ ud for hver aktie."
+  - "Sortér med en nøgle: `rows.sort(key=lambda t: (-alpha, navn))`."
+  - "To alfaer, der matematisk er ens, kan afvige i 16. decimal. Afrund alfa, fx til 10 decimaler, før du sammenligner dem."

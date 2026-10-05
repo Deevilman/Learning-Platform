@@ -1,0 +1,9 @@
+titel: "Z-score på tværs af aktier"
+svaerhed: 1
+emner: [factors]
+sprog: [python, c, cpp]
+uge: 8
+hints:
+  - "Regn gennemsnit og standardafvigelse (del med $n$) én gang for alle aktier."
+  - "Standardisér hver aktie for sig."
+  - "`zs.index(max(zs))` giver den første position med den største værdi."

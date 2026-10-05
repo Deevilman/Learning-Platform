@@ -1,0 +1,9 @@
+titel: "Markovkæde: tyre- og bjørnemarked"
+svaerhed: 2
+emner: [probability]
+sprog: [python, c, cpp]
+uge: 4
+hints:
+  - "Skriv $\\pi_{k+1}$ som funktion af $\\pi_k$: $\\pi_{k+1} = a\\pi_k + (1-b)(1-\\pi_k)$."
+  - "Afvigelsen fra $\\pi^*$ ganges med $\\lambda = a + b - 1$ hver dag, så $\\pi_k = \\pi^* + \\lambda^k(\\pi_0 - \\pi^*)$."
+  - "Regn $\\lambda^k$ med gentagen kvadrering i $O(\\log k)$ skridt. Pas på, når $\\lambda = -1$: så afhænger svaret af, om $k$ er lige eller ulige."

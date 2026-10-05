@@ -1,0 +1,9 @@
+titel: "Glidende gennemsnit"
+svaerhed: 2
+emner: [timeseries]
+sprog: [python, c, cpp]
+uge: 9
+hints:
+  - "Summen for dag $t+1$ er summen for dag $t$ plus den nye kurs minus den, der falder ud."
+  - "Start med summen af de første $k$ kurser, og opdatér den i én gennemgang."
+  - "Saml outputtet i en liste, og skriv det på én gang."

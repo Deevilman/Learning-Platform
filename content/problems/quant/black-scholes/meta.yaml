@@ -1,0 +1,9 @@
+titel: "Black–Scholes-prisen"
+svaerhed: 2
+emner: [derivatives]
+sprog: [python, c, cpp]
+uge: 14
+hints:
+  - "Regn $d_1$ og $d_2$ ud først."
+  - "Lav en funktion `Phi` med `math.erf`."
+  - "Tjek dig selv med put-call-pariteten: $C - P = S - Ke^{-rT}$."

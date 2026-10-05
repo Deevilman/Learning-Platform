@@ -1,0 +1,9 @@
+titel: "Handelsomkostninger"
+svaerhed: 2
+emner: [backtesting]
+sprog: [python, c, cpp]
+uge: 10
+hints:
+  - "Hold styr på gårsdagens vægt; den starter i 0."
+  - "Omsætningen i dag er $|w_t - w_{t-1}|$. Den koster $c$ gange omsætningen."
+  - "Gang brutto- og nettofaktorerne sammen hver for sig."

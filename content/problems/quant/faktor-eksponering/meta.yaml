@@ -1,0 +1,9 @@
+titel: "Porteføljens faktoreksponering"
+svaerhed: 1
+emner: [factors]
+sprog: [python, c, cpp]
+uge: 8
+hints:
+  - "Lav en liste med $k$ nuller til resultatet."
+  - "For hver aktie: læg $w_i \\beta_{ij}$ til plads $j$."
+  - "Det er en matrix-vektor-multiplikation: $B = \\beta^T w$."

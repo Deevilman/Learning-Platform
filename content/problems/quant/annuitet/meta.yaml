@@ -1,0 +1,9 @@
+titel: "Den månedlige ydelse på et lån"
+svaerhed: 2
+emner: [time-value]
+sprog: [python, c, cpp]
+uge: 1
+hints:
+  - "Regn først månedsrenten $i = r/12$ og antallet af ydelser $m = 12n$ ud."
+  - "Sæt ind i formlen. Husk særtilfældet $r = 0$, hvor formlen ville dele med 0."
+  - "De samlede renter er alt det, du betaler, minus det, du lånte: $y \\cdot m - H$."

@@ -1,0 +1,9 @@
+titel: "Hit rate og profit factor"
+svaerhed: 1
+emner: [backtesting]
+sprog: [python, c, cpp]
+uge: 10
+hints:
+  - "Del gevinsterne og tabene op i to lister."
+  - "Hit rate er antallet af gevinster delt med $n$."
+  - "Husk de to særtilfælde: ingen gevinster og ingen tab."

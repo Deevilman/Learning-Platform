@@ -1,0 +1,9 @@
+titel: "Er afkastet forskelligt fra 0?"
+svaerhed: 1
+emner: [statistics]
+sprog: [python, c, cpp]
+uge: 5
+hints:
+  - "Regn gennemsnit og stikprøvens standardafvigelse ud (del med $n-1$)."
+  - "Standardfejlen på gennemsnittet er $s/\\sqrt{n}$. Del gennemsnittet med den."
+  - "Sammenlign $|t|$ med 1.96. Brug `abs(t)`, så også et signifikant negativt afkast tæller."

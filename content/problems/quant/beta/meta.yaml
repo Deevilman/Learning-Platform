@@ -1,0 +1,9 @@
+titel: "Beta og idiosynkratisk risiko"
+svaerhed: 2
+emner: [factors]
+sprog: [python, c, cpp]
+uge: 8
+hints:
+  - "Beta er hældningen i en regression af aktiens afkast på markedets."
+  - "Når du har $\\alpha$ og $\\beta$, regner du residualerne $e_t = r_t - \\alpha - \\beta m_t$ ud."
+  - "Del summen af $e_t^2$ med $n - 2$, fordi der er estimeret to parametre."

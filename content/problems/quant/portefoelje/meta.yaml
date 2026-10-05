@@ -1,0 +1,9 @@
+titel: "Porteføljens afkast og risiko"
+svaerhed: 2
+emner: [portfolio]
+sprog: [python, c, cpp]
+uge: 7
+hints:
+  - "Det forventede afkast er bare den vægtede sum $\\sum w_i \\mu_i$."
+  - "Variansen er $w^T \\Sigma w$: læg $w_i w_j \\Sigma_{ij}$ sammen over alle par $(i, j)$."
+  - "Husk kvadratroden til sidst; volatiliteten er standardafvigelsen."

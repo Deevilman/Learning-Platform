@@ -1,0 +1,9 @@
+titel: "Binomialfordelingen"
+svaerhed: 1
+emner: [probability]
+sprog: [python, c, cpp]
+uge: 3
+hints:
+  - "Brug formlen direkte. `math.comb(n, k)` regner $\\binom{n}{k}$ ud uden at gå over."
+  - "$P(X \\le k)$ er summen af $P(X = j)$ for $j = 0, 1, \\dots, k$."
+  - "Pas på $0^0$: i Python er `0.0 ** 0` lig med 1, som det skal være her."

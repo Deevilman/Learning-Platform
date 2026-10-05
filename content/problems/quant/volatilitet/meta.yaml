@@ -1,0 +1,9 @@
+titel: "Volatilitet"
+svaerhed: 2
+emner: [returns-risk]
+sprog: [python, c, cpp]
+uge: 2
+hints:
+  - "Regn først gennemsnittet $\\bar r$ ud."
+  - "Læg de kvadrerede afvigelser $(r_t - \\bar r)^2$ sammen, og del med $n - 1$ (ikke $n$)."
+  - "Tag kvadratroden for at få $s$, og gang med $\\sqrt{252}$ for den årlige."

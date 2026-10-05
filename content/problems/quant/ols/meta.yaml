@@ -1,0 +1,9 @@
+titel: "Mindste kvadraters linje"
+svaerhed: 2
+emner: [linalg-regression]
+sprog: [python, c, cpp]
+uge: 6
+hints:
+  - "Regn gennemsnittene $\\bar x$ og $\\bar y$ ud."
+  - "$\\beta$ er summen af $(x_t - \\bar x)(y_t - \\bar y)$ delt med summen af $(x_t - \\bar x)^2$. Så er $\\alpha = \\bar y - \\beta\\bar x$."
+  - "For $R^2$: læg de kvadrerede residualer sammen, og sammenlign med den samlede variation i $y$."
