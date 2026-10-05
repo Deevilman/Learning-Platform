@@ -690,6 +690,21 @@ loesning: |
 
 Output sammenlignes uden at tage hensyn til mellemrum sidst på linjen eller tomme linjer til sidst. Bygget kører referenceløsningen på alle tests (python3, gcc, g++, mcs/mono, nasm/ld). Ved upload i appen tjekkes Python-løsninger i browseren.
 
+**Som mappe** (via GitHub; praktisk, når koden skal være rigtige filer): læg opgaven i `content/problems/<kursus-slug>/<navn>/`. Id'et bliver `<kursus-slug>/<navn>`.
+
+```
+content/problems/quant/afkast/
+  meta.yaml              titel, svaerhed, emner, sprog, tid, hukommelse, uge, hints
+  opgave.md              opgaveteksten
+  loesning.md            gennemgangen af løsningen
+  reference.py           referenceløsningen (.py, .c, .cpp, .cs eller .asm)
+  start.py               startkode (valgfri, én fil pr. sprog)
+  tests/offentlig/1.in   eksempler, som eleven ser (1.in + 1.out, 2.in + 2.out …)
+  tests/offentlig/1.out
+  tests/skjult/1.in      kun hos dommeren
+  tests/skjult/1.out
+```
+
 ## 12. Sikkerhedsudfordringer (` ```challenge `)
 
 Udfordringer i CTF-stil. **Læring hoster aldrig sårbare systemer.** Miljøet (`miljoe`) er et af disse:
@@ -719,6 +734,8 @@ flag_hash: sha256:<salt>:<hash>   # lav den med: npm run flag-hash -- "FLAG{…}
 **Skriv aldrig selve flaget i filen**, kun hashen. Flag tjekkes på serveren (Edge Function'en `flag`, med rate limit), og gennemgangen sendes først, når flaget er godkendt. Bygget og CI tjekker, at hverken flag, hashes, gennemgange, skjulte tests eller referenceløsninger kommer med i det, der udgives. Før den første `local-lab`- eller `external`-udfordring skal eleven bekræfte, at der kun øves lovligt (egne systemer eller skriftlig tilladelse, straffelovens § 263, responsible disclosure).
 
 Se `tests/fixtures/ctf-testkursus.md` for et kursus med en udfordring af hver af typerne `none`, `files` og `browser-sandbox`.
+
+**Som mappe**: `content/challenges/<kursus-slug>/<navn>/` med `meta.yaml` (titel, miljoe, svaerhed, emner, hints, flag_hash eller flag_pr_elev, lab, ekstern), `opgave.md`, `writeup.md`, og efter behov `sandbox.html` (browser-sandbox) eller mappen `filer/` (files: harmløse, gennemsete tekstfiler).
 
 ## 13. Prøveeksamen
 
