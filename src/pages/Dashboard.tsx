@@ -6,6 +6,8 @@ import { useSetting, useTable } from '@/lib/store'
 import { findWeakTopics } from '@/lib/weakness'
 import { generators } from '@/lib/generators'
 import { nextSteps, reachedWeeks, weekProgress } from '@/lib/progress'
+import { courseMastery } from '@/lib/course-overview'
+import { courseStarted } from '@/lib/course-map'
 import { CourseDot, ErrorBox, Loading, Progress, type Position } from '@/components/ui'
 import { BackupReminder } from '@/components/BackupReminder'
 import { DailyGoal } from '@/components/DailyGoal'
@@ -96,7 +98,42 @@ export default function Dashboard() {
         )}
       </section>
 
-      {/* 2. Træn mere på */}
+      {/* 2. Mine kurser: how far you are in each, one tap away */}
+      <section className="card space-y-3" aria-labelledby="mine-h">
+        <div className="flex items-baseline justify-between gap-2">
+          <h2 id="mine-h" className="section-title">
+            {t('home.myCourses')}
+          </h2>
+          <Link className="link text-sm" to="/kurser">
+            {t('home.allCourses')}
+          </Link>
+        </div>
+        <ul className="space-y-2">
+          {[...data.courses.values()]
+            .map((c) => ({ c, started: courseStarted(c, derived.checkMap, attempts || []) }))
+            .sort((a, b) => Number(b.started) - Number(a.started))
+            .map(({ c, started }) => {
+              const done = c.weeks.filter((w) => weekProgress(c, w.number, derived.checkMap, attempts || []).done).length
+              const m = courseMastery(c, attempts || [], now)
+              return (
+                <li key={c.meta.slug}>
+                  <Link to={`/kursus/${c.meta.slug}`} className="block rounded-xl border p-3 hover:opacity-90" style={{ borderColor: 'var(--border)' }}>
+                    <div className="flex items-center gap-2">
+                      <CourseDot color={c.meta.color} />
+                      <span className="min-w-0 flex-1 font-medium leading-snug">{c.meta.title}</span>
+                    </div>
+                    <div className="mt-2">
+                      <Progress value={done} max={c.weeks.length} color={c.meta.color} label={c.meta.title} />
+                    </div>
+                    <div className="muted mt-1 text-xs">{started ? t('home.courseState', { done, total: c.weeks.length, pct: m.percent }) : t('home.notStarted')}</div>
+                  </Link>
+                </li>
+              )
+            })}
+        </ul>
+      </section>
+
+      {/* 3. Træn mere på */}
       <section className="card space-y-3" aria-labelledby="weak-h">
         <h2 id="weak-h" className="section-title">
           {t('home.practiseMore')}
@@ -129,7 +166,7 @@ export default function Dashboard() {
         )}
       </section>
 
-      {/* 3. Næste skridt */}
+      {/* 4. Næste skridt */}
       <section className="card space-y-3" aria-labelledby="next-h">
         <h2 id="next-h" className="section-title">
           {t('home.nextSteps')}

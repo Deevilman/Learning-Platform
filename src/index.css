@@ -682,17 +682,17 @@ body {
 /* Course map: layers of courses left to right, arrows between */
 .course-map {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: 0.75rem;
-  overflow-x: auto;
   padding-bottom: 0.25rem;
 }
 .course-map-layer {
-  flex: 0 0 15rem;
+  flex: 0 0 13rem;
 }
 .course-map-arrow {
   align-self: flex-start;
-  margin-top: 4rem;
+  margin-top: 0.9rem;
   color: var(--muted);
   font-size: 1.25rem;
 }
@@ -710,4 +710,155 @@ body {
     margin-top: 0;
     transform: rotate(90deg);
   }
+}
+
+/* Course overview (Khan Academy style) */
+.course-hero {
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  background: linear-gradient(180deg, var(--accent-soft), var(--surface) 70%);
+  box-shadow: var(--shadow);
+}
+.mastery-bar {
+  display: flex;
+  height: 0.75rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+.mastery-seg {
+  min-width: 4px;
+}
+.mastery-mestret {
+  background: var(--accent);
+}
+.mastery-kendt {
+  background: color-mix(in srgb, var(--accent) 60%, var(--surface));
+}
+.mastery-oevet {
+  background: color-mix(in srgb, var(--accent) 28%, var(--surface));
+}
+.up-next {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--accent);
+  transition: transform 0.15s;
+}
+.up-next:hover {
+  transform: translateY(-1px);
+}
+.unit-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.unit-item {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.45rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  transition: transform 0.1s;
+}
+.unit-item:hover {
+  transform: scale(1.08);
+  border-color: var(--accent);
+}
+.unit-part {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: linear-gradient(0deg, var(--accent-soft) 50%, var(--surface) 50%);
+}
+.unit-done {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+}
+.unit-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+}
+.unit-nav:hover {
+  background: var(--surface-2);
+}
+.unit-nav-on {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+.unit-ring {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background:
+    radial-gradient(closest-side, var(--surface) 72%, transparent 74%),
+    conic-gradient(var(--accent) var(--p), var(--surface-2) 0);
+}
+.btn-quiet {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Course tiles on "Kurser" and compact nodes on the course map */
+.course-tile {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.course-tile:hover {
+  transform: translateY(-2px);
+}
+.course-tile-band {
+  height: 0.6rem;
+}
+.map-node {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+a.map-node:hover {
+  outline: 2px solid var(--accent-soft);
+}
+.map-node-planned {
+  background: transparent;
+  box-shadow: none;
+  border: 1.5px dashed var(--border);
+  color: var(--muted);
+}
+.map-node > :first-child {
+  margin-top: 0.4rem;
+}
+.map-status {
+  display: inline-block;
+  margin-top: 0.2rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
 }

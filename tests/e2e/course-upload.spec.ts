@@ -138,7 +138,7 @@ test('a course added on one device appears on another device of the same learner
   await pb.getByRole('button', { name: 'Opdatér nu' }).click()
   await expect(pb.getByText(/Dine enheder er opdateret|Alt var allerede opdateret/)).toBeVisible({ timeout: 30_000 })
   await pb.goto('/#/kurser')
-  await expect(pb.getByText('Testkursus i logik')).toBeVisible()
+  await expect(pb.getByText('Testkursus i logik').first()).toBeVisible()
   await pb.goto('/#/kursus/testkursus/uge/2?fane=oev')
   await expect(pb.getByText('Øvelse 2.1')).toBeVisible()
   await a.close()

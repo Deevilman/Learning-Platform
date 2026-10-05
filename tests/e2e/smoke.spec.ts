@@ -121,7 +121,7 @@ test('course map and a recommendation (never a lock) for missing prerequisites',
   await page.goto('/#/kurser')
   await expect(page.getByRole('heading', { name: 'Programmering' })).toBeVisible()
   await expect(page.getByText('Kommer senere').first()).toBeVisible()
-  await page.getByRole('link', { name: /Hedgefonde/ }).click()
+  await page.getByRole('link', { name: /Hedgefonde/ }).first().click()
   await expect(page.getByText(/Vi anbefaler at tage .* først/)).toBeVisible()
   await expect(page.getByRole('link', { name: /Gå til Matematikkens grundlag/ })).toBeVisible()
   await page.getByRole('button', { name: 'Start alligevel' }).click()

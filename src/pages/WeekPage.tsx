@@ -41,6 +41,7 @@ export default function WeekPage() {
   const store = useStore()
   const t = useT()
   const checks = useTable('checks')
+  const attempts = useTable('attempts')
   const fane = params.get('fane') || ''
   const goTo = (id: string) => {
     const p = new URLSearchParams(params)
@@ -65,8 +66,10 @@ export default function WeekPage() {
   const page = pages[at]
   const checkMap = new Map((checks || []).map((c) => [c.id, c.value]))
   const checkpointDone = w.checkpoint.length > 0 && w.checkpoint.every((_, i) => checkMap.get(checkpointId(slug, n, i)))
+  const tried = new Set((attempts || []).filter((a) => a.course === slug && a.week === n && a.source === 'bank').map((a) => a.exerciseId))
+  const triedAll = w.exercises.length > 0 && w.exercises.every((e) => tried.has(e.id))
   const isDone = (p: Page) =>
-    p.kind === 'video' ? videoWatched(checkMap, slug, p.video!) : p.kind === 'laes' ? !!lesson?.done : p.kind === 'checkpoint' ? checkpointDone || (!!test && test.best >= WEEK_TEST_PASS) : false
+    p.kind === 'video' ? videoWatched(checkMap, slug, p.video!) : p.kind === 'laes' ? !!lesson?.done : p.kind === 'checkpoint' ? checkpointDone || (!!test && test.best >= WEEK_TEST_PASS) : triedAll
   const prevPage = pages[at - 1]
   const nextPage = pages[at + 1]
   const prev = n > 1 ? n - 1 : null
