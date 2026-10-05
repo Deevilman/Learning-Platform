@@ -179,41 +179,6 @@ function SyncSection() {
 }
 
 /** Background sync while logged in (mounted once in App). */
-export function AutoSync() {
-  const store = useStore()
-  const [auto, , loaded] = useSetting('sync.auto', true)
-  const busy = useRef(false)
-  useEffect(() => {
-    if (!loaded || !auto) return
-    let stopped = false
-    const tick = async () => {
-      if (busy.current || stopped) return
-      busy.current = true
-      try {
-        if (await getSession()) {
-          await syncNow(store)
-          await syncCourses().catch(() => null)
-        }
-      } catch {
-        /* offline or not configured — try again later */
-      } finally {
-        busy.current = false
-      }
-    }
-    const first = setTimeout(tick, 2000)
-    const timer = setInterval(tick, 5 * 60 * 1000)
-    const onHide = () => document.visibilityState === 'hidden' && tick()
-    document.addEventListener('visibilitychange', onHide)
-    return () => {
-      stopped = true
-      clearTimeout(first)
-      clearInterval(timer)
-      document.removeEventListener('visibilitychange', onHide)
-    }
-  }, [auto, loaded, store])
-  return null
-}
-
 function BackupSection() {
   const store = useStore()
   const t = useT()

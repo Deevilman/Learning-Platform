@@ -14,7 +14,15 @@ export default function ExercisePage() {
   useTrackPosition(data && ex ? { path: `/kursus/${slug}/uge/${n}/opgave/${num}`, label: `${data.course.meta.title} · ${t('exercise.title', { n: num })}`, course: slug, week: n } : null)
   if (error) return <ErrorBox error={error} />
   if (!data) return <Loading what="øvelse" />
-  if (!ex) return <p>{t('exercise.notFound', { n: num, week: n })}</p>
+  if (!ex)
+    return (
+      <div className="card mx-auto max-w-xl space-y-3">
+        <p>{t('exercise.notFound', { n: num, week: n })}</p>
+        <Link className="btn" to={`/kursus/${slug}/uge/${n}?fane=oev`}>
+          {t('exercise.backToWeek', { n })}
+        </Link>
+      </div>
+    )
   const i = data.week.exercises.indexOf(ex)
   const prev = data.week.exercises[i - 1]
   const next = data.week.exercises[i + 1]

@@ -3,20 +3,24 @@ import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { StoreProvider } from '@/lib/store'
 import { useTheme } from '@/components/ThemeToggle'
 import { LangApplier, LANGS, useLang, useT, type Key } from '@/i18n'
+import { AutoSync } from '@/components/AutoSync'
 import Dashboard from '@/pages/Dashboard'
-import Courses from '@/pages/Courses'
-import CoursePage from '@/pages/CoursePage'
-import WeekPage from '@/pages/WeekPage'
-import ExercisePage from '@/pages/ExercisePage'
-import SetPage from '@/pages/SetPage'
-import ProjectPage from '@/pages/ProjectPage'
-import InfoPage from '@/pages/InfoPage'
-import SearchPage from '@/pages/SearchPage'
-import GlossaryPage from '@/pages/GlossaryPage'
-import LogbookPage from '@/pages/LogbookPage'
-import SettingsPage, { AutoSync } from '@/pages/SettingsPage'
 import NotFound from '@/pages/NotFound'
 
+// Every page but the dashboard is loaded when it is first opened, so the
+// first visit downloads less (KaTeX, the course builder and Pyodide glue
+// only come with the pages that use them).
+const Courses = lazy(() => import('@/pages/Courses'))
+const CoursePage = lazy(() => import('@/pages/CoursePage'))
+const WeekPage = lazy(() => import('@/pages/WeekPage'))
+const ExercisePage = lazy(() => import('@/pages/ExercisePage'))
+const SetPage = lazy(() => import('@/pages/SetPage'))
+const ProjectPage = lazy(() => import('@/pages/ProjectPage'))
+const InfoPage = lazy(() => import('@/pages/InfoPage'))
+const SearchPage = lazy(() => import('@/pages/SearchPage'))
+const GlossaryPage = lazy(() => import('@/pages/GlossaryPage'))
+const LogbookPage = lazy(() => import('@/pages/LogbookPage'))
+const SettingsPage = lazy(() => import('@/pages/SettingsPage'))
 const TrainPage = lazy(() => import('@/pages/TrainPage'))
 const InteractivesPage = lazy(() => import('@/pages/InteractivesPage'))
 const StatsPage = lazy(() => import('@/pages/StatsPage'))
@@ -182,10 +186,16 @@ function LoadingFallback() {
   return <p className="muted">{t('app.loading')}</p>
 }
 
-/** Pages are remounted when the language changes, so they load the course in the new language. */
+/**
+ * Pages are remounted when the language changes, so they load the course in
+ * the new language, and when the path changes, so nothing from one course,
+ * week or exercise (a test half taken, a hint shown) carries over to the next.
+ * Only ?fane= and #anchors keep the page as it is.
+ */
 function LangRoutes({ children }: { children: React.ReactNode }) {
   const [lang] = useLang()
-  return <Routes key={lang}>{children}</Routes>
+  const { pathname } = useLocation()
+  return <Routes key={`${lang}:${pathname}`}>{children}</Routes>
 }
 
 export default function App() {

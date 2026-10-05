@@ -155,6 +155,7 @@ test('a coding problem: run the examples in the browser, then submit to the judg
   const preview = page.getByLabel('Forhåndsvisning')
   await expect(preview.locator('.stat', { hasText: 'kodeopgaver' })).toContainText('1', { timeout: 30_000 })
   await preview.getByRole('button', { name: 'Tilføj' }).click({ timeout: 60_000 })
+  await expect(page.getByText(/er tilføjet/)).toBeVisible({ timeout: 30_000 })
   await page.goto('/#/kode')
   await expect(page.getByText('Næste opgave')).toBeVisible()
   await page.getByRole('link', { name: /Tæl de sande udsagn/ }).first().click()
