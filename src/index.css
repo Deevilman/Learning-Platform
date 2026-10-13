@@ -862,3 +862,13 @@ a.map-node:hover {
   border-radius: 999px;
   font-size: 0.7rem;
 }
+
+/* a long inline formula scrolls sideways instead of widening the page */
+.katex-wide {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  padding: 0.15em 0;
+}

@@ -20,6 +20,18 @@ export function videoUnavailable(item: VideoItem): boolean {
   return !item.sources.length || item.sources.every((s) => s.access === 'steady' || !s.youtube)
 }
 
+// a week's notes are split once, not once per video on the page
+const splits = new Map<string, LessonStep[]>()
+function splitCached(html: string, doc?: Document): LessonStep[] {
+  let steps = splits.get(html)
+  if (!steps) {
+    if (splits.size > 50) splits.clear()
+    steps = splitLesson(html, doc)
+    splits.set(html, steps)
+  }
+  return steps
+}
+
 /** The notes step whose sub-heading best matches the video's Fokus (and title). */
 export function notesForVideo(notesHtml: string, item: VideoItem, doc?: Document): LessonStep | undefined {
   if (!notesHtml.trim()) return undefined
@@ -27,7 +39,7 @@ export function notesForVideo(notesHtml: string, item: VideoItem, doc?: Document
   if (!want.size) return undefined
   let best: LessonStep | undefined
   let bestScore = 0
-  for (const step of splitLesson(notesHtml, doc)) {
+  for (const step of splitCached(notesHtml, doc)) {
     const score = new Set(words(step.title).filter((w) => want.has(w))).size
     if (score > bestScore) [best, bestScore] = [step, score]
   }
