@@ -2,7 +2,8 @@ import { describe, it, expect, beforeAll } from 'vitest'
 import { mkdtempSync, readFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { buildContent, type BuildReport } from '../../scripts/build-content'
+import type { BuildReport } from '../../scripts/build-content'
+import { buildContentInChild } from '../helpers/build-in-child'
 import { parsePlan } from '../../scripts/lib/plan-parser'
 import { normaliseDisplayMath } from '../../scripts/lib/markdown'
 import { evaluate } from '../../src/lib/check'
@@ -12,10 +13,10 @@ const ROOT = join(import.meta.dirname, '../..')
 describe('content pipeline', () => {
   let report: BuildReport
   let out: string
-  beforeAll(() => {
+  beforeAll(async () => {
     out = mkdtempSync(join(tmpdir(), 'lp-data-'))
-    report = buildContent({ root: ROOT, out })
-  }, 120000)
+    report = await buildContentInChild({ root: ROOT, out })
+  }, 300000)
 
   it('builds without validation errors', () => {
     expect(report.errors).toEqual([])
@@ -36,7 +37,7 @@ describe('content pipeline', () => {
     expect(w.notes).toContain('class="katex')
     expect(w.videos[0].sources[0].youtube).toMatch(/^[\w-]{11}$/)
     const idx = JSON.parse(readFileSync(join(out, 'index.json'), 'utf8'))
-    expect(idx.exercises.length).toBe(177 + 205 + 146 + 20 + 20 + 15 + 20)
+    expect(idx.exercises.length).toBe(177 + 205 + 146 + 20 + 20 + 15 + 20 + 287 + 286 + 306 + 3 * 20) // + fysik-a, kemi-a, matematik-a (øvelser + selvtest)
   })
 
   it('places every interactive directive and renders mermaid placeholders', () => {

@@ -189,12 +189,20 @@ function makeProcessor(ctx: RenderContext) {
     .use(rehypeStringify)
     .use(function collectKatexErrors() {
       return (tree: any) => {
-        visit(tree, 'element', (node: any) => {
+        visit(tree, 'element', (node: any, _i: unknown, parent: any) => {
           const cls: string[] = node.properties?.className || []
           if (cls.includes('katex-error')) ctx.errors.push({ file: ctx.file, line: ctx.line, message: `KaTeX-fejl: ${node.properties?.title || ''}` })
+          // long inline formulas (e.g. a whole reaction in \ce{…}) can't wrap: let them scroll instead of widening the page
+          const display = (parent?.properties?.className || []).includes('katex-display')
+          if (cls.includes('katex') && !display && textLength(node) > 24) node.properties.className = [...cls, 'katex-wide']
         })
       }
     })
+}
+
+function textLength(node: any): number {
+  if (node.type === 'text') return node.value.length
+  return (node.children || []).reduce((n: number, c: any) => n + textLength(c), 0)
 }
 
 export function renderMarkdown(md: string, ctx: RenderContext): string {

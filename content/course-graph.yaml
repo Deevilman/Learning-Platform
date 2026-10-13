@@ -11,8 +11,6 @@ planned:
   - { slug: lineaer-algebra-analyse, title: Lineær algebra og analyse, track: matematik, requires: [foundations], next: [aktuar] }
   - { slug: sandsynlighed, title: Sandsynlighedsregning, track: matematik, next: [aktuar] }
   - { slug: aktuar, title: Aktuarmatematik, track: finans, requires: [lineaer-algebra-analyse, sandsynlighed] }
-  - { slug: kemi-a, title: Kemi A, track: naturvidenskab, exam: htx }
-  - { slug: fysik-a, title: Fysik A, track: naturvidenskab, exam: htx }
   - { slug: linux-shell, title: Linux og kommandolinjen, track: programmering, next: [python, cybersikkerhed] }
   - { slug: python, title: Python, track: programmering, recommended_before: [linux-shell], next: [algoritmer] }
   - { slug: algoritmer, title: Algoritmer og datastrukturer, track: programmering, requires: [python], next: [c] }

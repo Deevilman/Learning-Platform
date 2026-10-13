@@ -26,6 +26,9 @@ const UNIT_AFTER = /^\s?(kr|mio|mia|aktier|stk|personer|dage|år|usd|dkk|eur|dol
  * two thousand five hundred and "1.645" a decimal; only certain Danish forms
  * are converted (and reported by the build).
  */
+/** Locants in chemical names are not numbers: 2,2-dimethylpropan, buta-1,3-dien, 1,2,3-triol. */
+const locant = (seg: string, at: number, len: number) => /^-\p{L}/u.test(seg.slice(at + len, at + len + 2)) || /\p{L}-$/u.test(seg.slice(Math.max(0, at - 2), at))
+
 export function convertNumbers(src: string, mode: 'migrate' | 'us' = 'migrate'): NumberConversion {
   const review: NumberReview[] = []
   let changes = 0
@@ -58,8 +61,9 @@ export function convertNumbers(src: string, mode: 'migrate' | 'us' = 'migrate'):
       return `${int.replace(/\./g, ',')}.${dec}`
     })
     // lists like 1,2,3 are not numbers
-    seg.replace(/(?<![\d.,])\d+(,\d+){2,}(?![\d])/g, (m, _g, at: number) => (/^\d{1,3}(,\d{3})+$/.test(m) && mode === 'us' ? m : (note(base, at, seg, m.length, 'Liste eller decimaltal?'), m)))
+    seg.replace(/(?<![\d.,])\d+(,\d+){2,}(?![\d])/g, (m, _g, at: number) => (locant(seg, at, m.length) || (seg[at - 1] === '{' && seg[at + m.length] === '}') || (/^\d{1,3}(,\d{3})+$/.test(m) && mode === 'us') ? m : (note(base, at, seg, m.length, 'Liste eller decimaltal?'), m)))
     seg = seg.replace(/(?<![\d.,])(\d+),(\d+)(?![\d]|[.,]\d)/g, (m, left: string, right: string, at: number) => {
+      if (locant(seg, at, m.length)) return m
       const before = seg[at - 1] || ''
       const after = seg[at + m.length] || ''
       if (/[([]/.test(before) && /[)\]]/.test(after)) return mode === 'us' ? m : note(base, at, seg, m.length, 'Par/interval eller decimaltal?'), m
@@ -87,7 +91,8 @@ export function convertNumbers(src: string, mode: 'migrate' | 'us' = 'migrate'):
     // a bare comma between digits in math is usually a separator: (0,1), {0,1,2}; flag a lone 0,5
     seg.replace(/(?<![\d.,])0,(\d+)(?![\d]|,\d)/g, (m, _r, at: number) => {
       const before = seg[at - 1] || ''
-      if (!/[([{,]/.test(before) && !/\\lbrace\s*$/.test(seg.slice(0, at))) note(base, at, seg, m.length, 'Decimaltal i en formel? Skriv 0.5')
+      // S_0,0 in max(V-S_0,0) is a subscript followed by an argument separator
+      if (!/[([{,_^]/.test(before) && !/\\lbrace\s*$/.test(seg.slice(0, at))) note(base, at, seg, m.length, 'Decimaltal i en formel? Skriv 0.5')
       return m
     })
     return seg
@@ -116,7 +121,7 @@ export function danishNumbers(src: string): NumberReview[] {
   const changed: NumberReview[] = []
   for (let i = 0; i < a.length && changed.length < 50; i++)
     if (a[i] !== b[i]) {
-      const m = /\d[\d.]*\{?,\}?\d+/.exec(a[i])
+      const m = [...a[i].matchAll(/(?<![\d.,])\d[\d.]*\{?,\}?\d+(?![\d]|[.,]\d)/g)].find((x) => !locant(a[i], x.index!, x[0].length))
       changed.push({ line: i + 1, text: m?.[0] || '', context: a[i].trim().slice(0, 80), reason: 'Dansk talformat' })
     }
   return [...changed, ...r.review]

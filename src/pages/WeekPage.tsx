@@ -249,7 +249,7 @@ function LessonQuestionView({ q }: { q: LessonQuestion }) {
           {q.options.map((o, i) => (
             <button
               key={i}
-              className={`seg ${picked === i ? (i === q.correct ? 'seg-ok' : 'seg-bad') : ''}`}
+              className={`seg max-w-full whitespace-normal text-left ${picked === i ? (i === q.correct ? 'seg-ok' : 'seg-bad') : ''}`}
               aria-pressed={picked === i}
               onClick={() => setPicked(i)}
               dangerouslySetInnerHTML={{ __html: o }}
