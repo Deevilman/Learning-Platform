@@ -41,7 +41,7 @@ jobs:
           if [ -n "$open" ]; then gh issue comment "$open" --body-file content-build-errors.md
           else gh issue create --title "$title" --body-file content-build-errors.md; fi
       - name: Unit-tests (importer, generatorer, mestring, lagring, udvidelighed)
-        run: npm test
+        run: npm test -- --reporter=default --reporter=github-actions
       - name: "Tjek video-ID'er (blødt — fejler ikke uden netværk)"
         run: npm run verify-videos
       - name: Typecheck og build
