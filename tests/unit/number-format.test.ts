@@ -28,3 +28,12 @@ describe('Danish → US number format in course text', () => {
     for (const c of ['foundations', 'quant', 'hedgefund']) expect(readFileSync(join(import.meta.dirname, `../../content/courses/${c}.md`), 'utf8')).not.toContain('{,}')
   })
 })
+
+describe('chemical names', () => {
+  it('leaves locants like 2,2-dimethylpropan and buta-1,3-dien alone', async () => {
+    const { convertNumbers, danishNumbers } = await import('../../scripts/lib/number-format')
+    const text = 'Navne: 2,2-dimethylpropan, buta-1,3-dien, 1,2,3-propantriol og 1,4-dimethylbenzen; {2,2,4} slår {3,5,5}. Men 0,25 er et decimaltal.'
+    expect(convertNumbers(text).text).toBe('Navne: 2,2-dimethylpropan, buta-1,3-dien, 1,2,3-propantriol og 1,4-dimethylbenzen; {2,2,4} slår {3,5,5}. Men 0.25 er et decimaltal.')
+    expect(danishNumbers(text).map((d) => d.text)).toEqual(['0,25'])
+  })
+})
