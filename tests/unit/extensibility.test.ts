@@ -7,7 +7,8 @@ import { cpSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } f
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { createServer, type ViteDevServer } from 'vite'
-import { buildContent, type BuildReport } from '../../scripts/build-content'
+import type { BuildReport } from '../../scripts/build-content'
+import { buildContentInChild } from '../helpers/build-in-child'
 
 const ROOT = join(import.meta.dirname, '../..')
 
@@ -100,7 +101,7 @@ describe('adding a course by adding files only', () => {
   let report: BuildReport
   let server: ViteDevServer | undefined
 
-  beforeAll(() => {
+  beforeAll(async () => {
     tmp = mkdtempSync(join(tmpdir(), 'lp-ext-'))
     // the big htx courses aren't needed to prove that files alone add a course, and they would double the build time
     const skip = [join('content', 'source'), ...['fysik-a', 'kemi-a', 'matematik-a'].map((s) => join('content', 'courses', `${s}.md`))]
@@ -112,7 +113,7 @@ describe('adding a course by adding files only', () => {
     writeFileSync(join(tmp, 'content/courses/testkursus/plan.md'), PLAN)
     writeFileSync(join(tmp, 'content/courses/testkursus/videos.yaml'), VIDEOS)
     writeFileSync(join(tmp, 'content/generators/zz-test-gen.ts'), GENERATOR)
-    report = buildContent({ root: tmp, out: join(tmp, 'public/data') })
+    report = await buildContentInChild({ root: tmp, out: join(tmp, 'public/data') })
   }, 300000)
 
   afterAll(async () => {
