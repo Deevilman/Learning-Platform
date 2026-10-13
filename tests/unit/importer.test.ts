@@ -36,7 +36,7 @@ describe('content pipeline', () => {
     expect(w.notes).toContain('class="katex')
     expect(w.videos[0].sources[0].youtube).toMatch(/^[\w-]{11}$/)
     const idx = JSON.parse(readFileSync(join(out, 'index.json'), 'utf8'))
-    expect(idx.exercises.length).toBe(177 + 205 + 146 + 20 + 20 + 15 + 20)
+    expect(idx.exercises.length).toBe(177 + 205 + 146 + 20 + 20 + 15 + 20 + 287 + 286 + 306 + 3 * 20) // + fysik-a, kemi-a, matematik-a (øvelser + selvtest)
   })
 
   it('places every interactive directive and renders mermaid placeholders', () => {
