@@ -102,7 +102,9 @@ describe('adding a course by adding files only', () => {
 
   beforeAll(() => {
     tmp = mkdtempSync(join(tmpdir(), 'lp-ext-'))
-    cpSync(join(ROOT, 'content'), join(tmp, 'content'), { recursive: true, filter: (p) => !p.includes(`${join('content', 'source')}`) })
+    // the big htx courses aren't needed to prove that files alone add a course, and they would double the build time
+    const skip = [join('content', 'source'), ...['fysik-a', 'kemi-a', 'matematik-a'].map((s) => join('content', 'courses', `${s}.md`))]
+    cpSync(join(ROOT, 'content'), join(tmp, 'content'), { recursive: true, filter: (p) => !skip.some((s) => p.includes(s)) })
     cpSync(join(ROOT, 'src'), join(tmp, 'src'), { recursive: true })
     // The only change: new files.
     mkdirSync(join(tmp, 'content/courses/testkursus'), { recursive: true })
@@ -111,7 +113,7 @@ describe('adding a course by adding files only', () => {
     writeFileSync(join(tmp, 'content/courses/testkursus/videos.yaml'), VIDEOS)
     writeFileSync(join(tmp, 'content/generators/zz-test-gen.ts'), GENERATOR)
     report = buildContent({ root: tmp, out: join(tmp, 'public/data') })
-  }, 120000)
+  }, 300000)
 
   afterAll(async () => {
     await server?.close()

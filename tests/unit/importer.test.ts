@@ -15,7 +15,7 @@ describe('content pipeline', () => {
   beforeAll(() => {
     out = mkdtempSync(join(tmpdir(), 'lp-data-'))
     report = buildContent({ root: ROOT, out })
-  }, 120000)
+  }, 300000)
 
   it('builds without validation errors', () => {
     expect(report.errors).toEqual([])
