@@ -1,6 +1,8 @@
 /// <reference lib="webworker" />
 // Classic worker: loads Pyodide with importScripts and runs code on request.
 
+import { stdinReader } from './stdin'
+
 declare function importScripts(...urls: string[]): void
 declare function loadPyodide(opts: Record<string, unknown>): Promise<any>
 
@@ -23,9 +25,8 @@ self.onmessage = async (e: MessageEvent) => {
     let stderr = ''
     pyodide.setStdout({ batched: (s: string) => (stdout += s + '\n') })
     pyodide.setStderr({ batched: (s: string) => (stderr += s + '\n') })
-    // standard input: everything at once, then end of file
-    let input: string | null = m.stdin ?? ''
-    pyodide.setStdin({ stdin: () => { const s = input; input = null; return s ?? undefined } })
+    // standard input in chunks, then end of file
+    pyodide.setStdin(stdinReader(m.stdin ?? ''))
     try {
       const imports: string[] = pyodide.pyimport('pyodide.code').find_imports(m.code).toJs()
       const missing = imports.filter((x: string) => ['numpy', 'pandas', 'scipy', 'matplotlib', 'sympy', 'networkx'].includes(x))
